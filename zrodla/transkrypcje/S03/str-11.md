@@ -29,9 +29,9 @@ Bronikowski Ł[?]uszczyńska[?]
 
 ## S03-p11-s04
 typ: tekst
-[red.: na wysokości „Teodor Łęczyński[?] h. Nałęcz / Mikorska” ze str. 10]
+[red.: na wysokości „Teodor Łączyński h. Nałęcz / Mikorska” ze str. 10]
 
-Łęczyński[?] Wierzchleyska
+Łączyński Wierzchleyska
 
 ## S03-p11-s05
 typ: tekst

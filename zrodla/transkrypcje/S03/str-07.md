@@ -52,12 +52,12 @@ h. Jastrzębiec 1800+1877
 ## S03-p07-s05
 typ: tekst
 
-Walerja Łęczyńska[?]
+Walerja Łączyńska
 h. Nałęcz
 Aleksander Skrzyński
         ] Teodor Mikorska
 
-[red.: nazwisko Walerii czyta się „Łęczyńska” lub „Zęczyńska” (tak samo na str. 10); w notatkach z inwentaryzacji S07 — „ze Szczepańskich” — do porównania w 3. przejściu; „Teodor Mikorska” — skrót: Teodor [ojciec] i [N.] Mikorska]
+[red.: nazwisko zapisane niewyraźnie (samogłoska ą/ę nierozróżnialna); przejście 3: Łączyńska — por. str. 10 „bratanica p. Walewskiej” (Maria Walewska z d. Łączyńska, h. Nałęcz) i str. 21 „z Łączyńskich”; „Teodor Mikorska” — skrót: Teodor [Łączyński] i [N.] Mikorska]
 
 ## S03-p07-s06
 typ: tekst

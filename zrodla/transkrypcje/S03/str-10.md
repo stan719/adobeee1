@@ -69,9 +69,9 @@ h. Jastrzębiec poch. w Leźnicy
 typ: tekst
 
 Aleksander Skrzyński
-Walerja Łęczyńska[?] h. Nałęcz
+Walerja Łączyńska h. Nałęcz
 bratanica p. Walewskiej
-        ] Teodor Łęczyński[?] h. Nałęcz
+        ] Teodor Łączyński h. Nałęcz
           Mikorska
 
 ## S03-p10-s07
