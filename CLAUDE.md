@@ -13,8 +13,8 @@ Najważniejsze zasady:
 
 ## Stan prac
 - [x] Plan zatwierdzony
-- [~] Etap 0 — inwentaryzacja zdjęć: `zrodla/zrodla.yaml` i `zrodla/katalog.yaml` gotowe (201 zdjęć, źródła S01–S08); czekamy, aż użytkownik potwierdzi podział i odpowie na pytania (brakujące IMG_5818–5831, tytuł S08, autorzy S02/S07). Zdjęcia leżą w `Zdjęcia/`, a nie w `zrodla/zdjecia/`.
-- [ ] Etap 1 — transkrypcja
+- [x] Etap 0 — inwentaryzacja: 215 zdjęć, źródła S01–S10 (`zrodla/zrodla.yaml`, `zrodla/katalog.yaml`). Zdjęcia leżą w `Zdjęcia/` (poza gitem, `.gitignore`). Tytuł S08 na razie bez karty tytułowej (decyzja użytkownika). Autorami rękopisów na razie się nie zajmujemy.
+- [~] Etap 1 — transkrypcja: S01 gotowe (`zrodla/transkrypcje/S01/`, zasady w `zrodla/transkrypcje/ZASADY.md`, wątpliwości w `dane/watpliwosci.md`). Następne: rękopisy S03–S07 i S10, S02, potem S08 i S09. Narzędzie do powiększeń: `narzedzia/powieksz.py`.
 - [ ] Etap 2 — uporządkowanie i uwspółcześnienie
 - [ ] Etap 3 — baza danych
 - [ ] Etap 4 — strona internetowa
