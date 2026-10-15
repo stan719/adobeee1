@@ -1,0 +1,1637 @@
+# Katalog zdjęć — Etap 0 (inwentaryzacja), 2026-10-15.
+# Zdjęcia: folder Zdjęcia/ (iPhone 14, 3024×4032, wykonane 2026-10-15 19:04–19:27).
+# Brak duplikatów (sumy MD5 różne). Luka w numeracji: IMG_6000 (bez straty — s. 127 i 128 następują po sobie). IMG_5818–5831 dograne 2026-10-15.
+# jakosc: dobra = czytelne w całości na podglądzie; uwagi = co sprawdzić przy transkrypcji.
+
+- plik: "IMG_5810(1).JPEG"
+  zrodlo: S01
+  strona: "karta tytułowa"
+  temat: "karta tytułowa t. V + wyklejka"
+  wykonane: "2026:10:15 19:04:06"
+  md5: 5ac7c8cec4babfe92fdf6625a4236e6a
+  jakosc: dobra
+- plik: "IMG_5811(1).JPEG"
+  zrodlo: S01
+  strona: "s. 132–133"
+  temat: "rozkładówka"
+  wykonane: "2026:10:15 19:04:16"
+  md5: a3e38e9587c4a99af518b31909f4ec9a
+  jakosc: dobra
+  uwagi:
+    - "zdjęcie obrócone o 90°"
+    - "drobny druk przypisów — czytać na powiększeniu"
+    - "s. 132: początek dodatku o Radoszewskich h. Oksza (żywa pagina GRABOWSKI)"
+- plik: "IMG_5812(2).JPEG"
+  zrodlo: S01
+  strona: "s. 134–135"
+  temat: "rozkładówka"
+  wykonane: "2026:10:15 19:04:21"
+  md5: 3953e0e713b1e0dc73ea5dc6c1b01aaf
+  jakosc: dobra
+  uwagi:
+    - "zdjęcie obrócone o 90°"
+    - "drobny druk przypisów — czytać na powiększeniu"
+- plik: "IMG_5813(1).JPEG"
+  zrodlo: S01
+  strona: "s. 136–137"
+  temat: "rozkładówka"
+  wykonane: "2026:10:15 19:04:26"
+  md5: c60534a0b793aa0da6037cf842061712
+  jakosc: dobra
+  uwagi:
+    - "zdjęcie obrócone o 90°"
+    - "drobny druk przypisów — czytać na powiększeniu"
+    - "gwiazdka na marginesie (ręczna)"
+- plik: "IMG_5814(1).JPEG"
+  zrodlo: S01
+  strona: "s. 138–139"
+  temat: "rozkładówka"
+  wykonane: "2026:10:15 19:04:31"
+  md5: 76b21a70de6a738fec04e291213e2047
+  jakosc: dobra
+  uwagi:
+    - "zdjęcie obrócone o 90°"
+    - "drobny druk przypisów — czytać na powiększeniu"
+    - "gwiazdka i dopisek „85 lat” (ręczne)"
+- plik: "IMG_5815(1).JPEG"
+  zrodlo: S01
+  strona: "s. 140–141"
+  temat: "rozkładówka"
+  wykonane: "2026:10:15 19:04:35"
+  md5: 3a9f2a3a1c7b5148bec055d94fec2f8f
+  jakosc: dobra
+  uwagi:
+    - "zdjęcie obrócone o 90°"
+    - "drobny druk przypisów — czytać na powiększeniu"
+    - "znaki „+” i podkreślenia (ręczne)"
+- plik: "IMG_5816(1).JPEG"
+  zrodlo: S01
+  strona: "s. 142–143"
+  temat: "rozkładówka"
+  wykonane: "2026:10:15 19:04:42"
+  md5: 30c198c59f7adc385752cbdabf159b30
+  jakosc: dobra
+  uwagi:
+    - "zdjęcie obrócone o 90°"
+    - "drobny druk przypisów — czytać na powiększeniu"
+    - "gwiazdka i podkreślenia (ręczne)"
+- plik: "IMG_5817.JPEG"
+  zrodlo: S01
+  strona: "s. 144–145"
+  temat: "rozkładówka"
+  wykonane: "2026:10:15 19:04:47"
+  md5: edc085c1bda05092ee85431062add2c1
+  jakosc: dobra
+  uwagi:
+    - "zdjęcie obrócone o 90°"
+    - "drobny druk przypisów — czytać na powiększeniu"
+    - "s. 145: koniec tekstu; sygnatura arkusza „Przewodnik heraldyczny 10.”"
+- plik: "IMG_5818(1).JPEG"
+  zrodlo: S09
+  strona: "kartka 1"
+  temat: "odręczny szkic mapy okolic (Wieluń, Uniejów, Krępa, Śmiechów, Dominikowice, Wartkowice, Leźnica, Kościerzyn…)"
+  wykonane: "2026:10:15 19:05:14"
+  md5: 5be3718bf08e7bdb1ecff19ae212958a
+  jakosc: dobra
+  uwagi:
+    - "kartka obrócona — przy odczycie obrócić"
+    - "data w rogu (8.07.2017?)"
+    - "zaznaczenia pomarańczowym zakreślaczem"
+- plik: "IMG_5819(1).JPEG"
+  zrodlo: S10
+  strona: "str. 1"
+  temat: "nagłówek (Stefan Łakomy, Radoszewice, 20.03.1978, do PTTK Sieradz); temat; początek: położenie wsi, Słownik geograficzny"
+  wykonane: "2026:10:15 19:05:48"
+  md5: 397b92ce5ef7a71d4d3fbc6994419e66
+  jakosc: dobra
+  uwagi:
+    - "kartki w kratkę w tekturowym skoroszycie; dopisek „1200” nad „1000” mieszkańców"
+- plik: "IMG_5820(1).JPEG"
+  zrodlo: S10
+  strona: "str. 2"
+  temat: "Słownik geograficzny cd.; Box-Radoszewscy; kaplica w kolegiacie wieluńskiej"
+  wykonane: "2026:10:15 19:05:57"
+  md5: 7078a727ef0de22f9ee31066fff5b573
+  jakosc: dobra
+  uwagi:
+    - "na górze kadru widoczne wycinanki z okładki S02 — nie należą do tej strony"
+- plik: "IMG_5821(1).JPEG"
+  zrodlo: S10
+  strona: "str. 3"
+  temat: "nagrobki Jerzego, Andrzeja, Marka; Niemojowscy; Ludwik Niemojowski (ur. 1823)"
+  wykonane: "2026:10:15 19:06:05"
+  md5: eda8475c6ce32bc962a232e96ea7eff1
+  jakosc: dobra
+- plik: "IMG_5822(1).JPEG"
+  zrodlo: S10
+  strona: "str. 4"
+  temat: "Ludwik Niemojowski — twórczość, zesłanie, bitwa pod Radoszewicami 27 III 1863"
+  wykonane: "2026:10:15 19:06:17"
+  md5: df730fb631949a82f7d48d500b4befb6
+  jakosc: dobra
+- plik: "IMG_5823(1).JPEG"
+  zrodlo: S10
+  strona: "str. 5"
+  temat: "Niemojowska — sztandar powstańczy 1863"
+  wykonane: "2026:10:15 19:06:25"
+  md5: 3ab0eada5853d1514240c66b340eb8e7
+  jakosc: dobra
+- plik: "IMG_5824(1).JPEG"
+  zrodlo: S10
+  strona: "str. 6"
+  temat: "Niemojowska cd.; właściciele po Niemojowskich (Duryński, Piekarscy, Niemcy)"
+  wykonane: "2026:10:15 19:06:33"
+  md5: 037b92838d925c3aa89637ad2b80aa2c
+  jakosc: dobra
+- plik: "IMG_5825(1).JPEG"
+  zrodlo: S10
+  strona: "str. 7"
+  temat: "po 1945: parcelacja, pałacyk jako szkoła — stan budynku"
+  wykonane: "2026:10:15 19:06:39"
+  md5: 686fb14722ad07eaf55892c37690a0ac
+  jakosc: dobra
+- plik: "IMG_5826(2).JPEG"
+  zrodlo: S10
+  strona: "str. 8"
+  temat: "park — stary i młody, drzewostan"
+  wykonane: "2026:10:15 19:06:46"
+  md5: 27c0b92d6496c5d7e12d6085bd95214c
+  jakosc: dobra
+- plik: "IMG_5827(2).JPEG"
+  zrodlo: S10
+  strona: "str. 9"
+  temat: "park cd.; zakończenie; podpis Stefan Łakomy"
+  wykonane: "2026:10:15 19:06:52"
+  md5: 8e0af236383f93f20b1af6066c142d5c
+  jakosc: dobra
+- plik: "IMG_5828(1).JPEG"
+  zrodlo: S02
+  strona: "okładka"
+  temat: "okładka (wycinanki z rycerzami; podpis „Stefan Łakomy, Z dziejów Radoszewic”)"
+  wykonane: "2026:10:15 19:07:14"
+  md5: 8370e85405c15b5186c138012497e57e
+  jakosc: dobra
+- plik: "IMG_5829(1).JPEG"
+  zrodlo: S02
+  strona: "str. 01"
+  temat: "strona tytułowa „Z dziejów Radoszewic cz. I, Radoszewice 1981”; „I Pierwsze wzmianki o Radoszewicach”"
+  wykonane: "2026:10:15 19:07:21"
+  md5: 0346c728881fdab590b10fe7a98986bb
+  jakosc: dobra
+- plik: "IMG_5830(1).JPEG"
+  zrodlo: S02
+  strona: "str. 02"
+  temat: "opis wsi wg Słownika geograficznego (przyp. 1)"
+  wykonane: "2026:10:15 19:07:28"
+  md5: 2e706f9938a21a90ad0b86f23e8e04ec
+  jakosc: dobra
+- plik: "IMG_5831(2).JPEG"
+  zrodlo: S02
+  strona: "str. 03"
+  temat: "kościół i parafia w Siemkowicach; Radoszewice 1552"
+  wykonane: "2026:10:15 19:07:30"
+  md5: 0549cee53791116458b35a8a90660361
+  jakosc: dobra
+- plik: "IMG_5832(1).JPEG"
+  zrodlo: S02
+  strona: "str. 04"
+  temat: "kościół w Radoszewicach (Marcin Boksa, 1625); dobra Radoszewice w 1885"
+  wykonane: "2026:10:15 19:07:33"
+  md5: 5cdc16d3d746ade9b28c460c237421cc
+  jakosc: dobra
+- plik: "IMG_5833(2).JPEG"
+  zrodlo: S02
+  strona: "str. 05"
+  temat: "skład dóbr i gminy Radoszewice (liczby)"
+  wykonane: "2026:10:15 19:07:35"
+  md5: 8786b030ba588c2251d4ad7699f3cbb8
+  jakosc: dobra
+- plik: "IMG_5834(2).JPEG"
+  zrodlo: S02
+  strona: "str. 06"
+  temat: "osady i ludność; trakt handlowy (przyp. 2)"
+  wykonane: "2026:10:15 19:07:41"
+  md5: 1e25b11910d2ac1147f565027ee65938
+  jakosc: dobra
+- plik: "IMG_5835(1).JPEG"
+  zrodlo: S02
+  strona: "str. 07"
+  temat: "nazwy miejscowe, Kuźnica Radoszewska (przyp. 3); dolna połowa pusta"
+  wykonane: "2026:10:15 19:07:43"
+  md5: 55a861a57c95449e574912ffe9ef2c3c
+  jakosc: dobra
+- plik: "IMG_5836(2).JPEG"
+  zrodlo: S02
+  strona: "str. 08"
+  temat: "„II Radoszewscy właścicielami Radoszewic” — kaplica w kolegiacie wieluńskiej"
+  wykonane: "2026:10:15 19:07:48"
+  md5: 7b939616dc059f8a4b5bc0f714c29a7d
+  jakosc: dobra
+- plik: "IMG_5837(2).JPEG"
+  zrodlo: S02
+  strona: "str. 09"
+  temat: "nagrobki Jerzego, Andrzeja i Marka w kaplicy"
+  wykonane: "2026:10:15 19:07:50"
+  md5: c774878dce22d7619daaa90352db5279
+  jakosc: dobra
+- plik: "IMG_5838(2).JPEG"
+  zrodlo: S02
+  strona: "str. 10"
+  temat: "przydomek Boxa; Marek kasztelan (przyp. 4–6)"
+  wykonane: "2026:10:15 19:08:10"
+  md5: 80818278ac2001e87bd486bb4e01e4c8
+  jakosc: dobra
+  uwagi:
+    - "od tej strony niebieski atrament"
+- plik: "IMG_5839(2).JPEG"
+  zrodlo: S02
+  strona: "str. 11"
+  temat: "Jerzy podkomorzy wieluński; rokosz"
+  wykonane: "2026:10:15 19:08:11"
+  md5: e3b22d91fad823f9be59441db1bf7a56
+  jakosc: dobra
+- plik: "IMG_5840(2).JPEG"
+  zrodlo: S02
+  strona: "str. 12"
+  temat: "Marek; nagrobek 1641 (przyp. 6)"
+  wykonane: "2026:10:15 19:08:17"
+  md5: fd3a00b94235d30e4acbbb0767f6300b
+  jakosc: dobra
+- plik: "IMG_5841(3).JPEG"
+  zrodlo: S02
+  strona: "str. 13"
+  temat: "rokosz Zebrzydowskiego"
+  wykonane: "2026:10:15 19:08:19"
+  md5: de9619eccf1845ab024ae4bddb422e7c
+  jakosc: dobra
+- plik: "IMG_5842(1).JPEG"
+  zrodlo: S02
+  strona: "str. 14"
+  temat: "rokosz — zjazd lubelski"
+  wykonane: "2026:10:15 19:08:25"
+  md5: f7c9d5946c1ad3451d62ef061b3a1743
+  jakosc: dobra
+- plik: "IMG_5843(2).JPEG"
+  zrodlo: S02
+  strona: "str. 15"
+  temat: "sejmik wieluński"
+  wykonane: "2026:10:15 19:08:26"
+  md5: c1ca6e8270695a351ac22d2ea1f0bf57
+  jakosc: dobra
+- plik: "IMG_5844.JPEG"
+  zrodlo: S02
+  strona: "str. 16"
+  temat: "regaliści: Marek i Piotr Radoszewscy"
+  wykonane: "2026:10:15 19:08:31"
+  md5: bf339888b81210453d00fe2301e9bdda
+  jakosc: dobra
+- plik: "IMG_5845(1).JPEG"
+  zrodlo: S02
+  strona: "str. 17"
+  temat: "rokosz 1607"
+  wykonane: "2026:10:15 19:08:33"
+  md5: a48fee500c883a631200f09c0add257a
+  jakosc: dobra
+- plik: "IMG_5846(1).JPEG"
+  zrodlo: S02
+  strona: "str. 18"
+  temat: "Jerzy Radoszewski posłem do rokoszan"
+  wykonane: "2026:10:15 19:08:45"
+  md5: e51c9b390842c2d7fd3bed358ac563f2
+  jakosc: dobra
+- plik: "IMG_5847(1).JPEG"
+  zrodlo: S02
+  strona: "str. 19"
+  temat: "bitwa pod Guzowem; kultura (przyp. 7)"
+  wykonane: "2026:10:15 19:08:46"
+  md5: 6dc00d05a3081dc78227bf2a28fc644d
+  jakosc: dobra
+- plik: "IMG_5848(1).JPEG"
+  zrodlo: S02
+  strona: "str. 20"
+  temat: "obraz „Grosz czynszowy”; Andrzej chorąży 1630, sukienka w Pajęcznie (przyp. 8–9)"
+  wykonane: "2026:10:15 19:08:50"
+  md5: dc812d519bedd072f5c97df590be1459
+  jakosc: dobra
+- plik: "IMG_5849(1).JPEG"
+  zrodlo: S02
+  strona: "str. 21"
+  temat: "Radoszewice u Niemojowskich; koniec rozdziału"
+  wykonane: "2026:10:15 19:08:52"
+  md5: 4a1222d816a7980fa9887e2060d5354a
+  jakosc: dobra
+  uwagi:
+    - "dopisek na lewym marginesie innym pismem"
+- plik: "IMG_5850(1).JPEG"
+  zrodlo: S02
+  strona: "str. 22"
+  temat: "„Z odczytu Franciszka B…[?]” (setna rocznica powstania styczniowego)"
+  wykonane: "2026:10:15 19:09:02"
+  md5: 4fac28f8b507cd9fd94b691e135cb86e
+  jakosc: dobra
+- plik: "IMG_5851(1).JPEG"
+  zrodlo: S02
+  strona: "str. 23"
+  temat: "gospodarka w Radoszewicach 1562–1588 (przyp. 32); koniec"
+  wykonane: "2026:10:15 19:09:03"
+  md5: b10ad903955b6dca2522e8cc02dc5c14
+  jakosc: dobra
+- plik: "IMG_5852(1).JPEG"
+  zrodlo: S03
+  strona: "kolejna str. 01"
+  temat: "strona dedykacyjna; „The History of Our Family”"
+  wykonane: "2026:10:15 19:09:40"
+  md5: f4af2ee1b42acc7e5a0c093bda718f2e
+  jakosc: dobra
+- plik: "IMG_5853(1).JPEG"
+  zrodlo: S03
+  strona: "kolejna str. 02"
+  temat: "„Noli me tangere”; Teresa, rodzice, rodzeństwo, mąż"
+  wykonane: "2026:10:15 19:09:52"
+  md5: 52a95243619cf2be2f67b641ca7c7e18
+  jakosc: dobra
+- plik: "IMG_5854(1).JPEG"
+  zrodlo: S03
+  strona: "kolejna str. 03"
+  temat: "„Genealogia Męża” — Jerzy Zieliński"
+  wykonane: "2026:10:15 19:10:01"
+  md5: 8e724454c5268fbc2de9f71ce9173133
+  jakosc: dobra
+  uwagi:
+    - "strona w większości pusta"
+- plik: "IMG_5855(1).JPEG"
+  zrodlo: S03
+  strona: "kolejna str. 04"
+  temat: "„Nasze Dzieci” — Anna Maria (ur. 6 VIII 1974)"
+  wykonane: "2026:10:15 19:10:07"
+  md5: aa81f56ce0279a3bc70dfffa08f3fe88
+  jakosc: dobra
+  uwagi:
+    - "strona w większości pusta"
+- plik: "IMG_5856(1).JPEG"
+  zrodlo: S03
+  strona: "kolejna str. 05"
+  temat: "„Nasze drzewo genealogiczne” — wersja 1, cz. 1"
+  wykonane: "2026:10:15 19:10:13"
+  md5: 86d6c4da4003ab14222326be387dbaff
+  jakosc: dobra
+- plik: "IMG_5857(1).JPEG"
+  zrodlo: S03
+  strona: "kolejna str. 06"
+  temat: "drzewo — wersja 1, cz. 2"
+  wykonane: "2026:10:15 19:10:15"
+  md5: d3f016f02521d336647b1550546f7f7a
+  jakosc: dobra
+- plik: "IMG_5858(1).JPEG"
+  zrodlo: S03
+  strona: "kolejna str. 07"
+  temat: "drzewo — wersja 1, cz. 3 (pokolenie prapradziadków)"
+  wykonane: "2026:10:15 19:10:20"
+  md5: 0e78c26acd007def6b87b541b8b4a114
+  jakosc: dobra
+- plik: "IMG_5859(1).JPEG"
+  zrodlo: S03
+  strona: "kolejna str. 08"
+  temat: "drzewo — wersja 2, cz. 1 (Teresa, rodzice z datami)"
+  wykonane: "2026:10:15 19:10:27"
+  md5: b2ffa921a8590eed31c6edc8781e03dd
+  jakosc: dobra
+- plik: "IMG_5860(1).JPEG"
+  zrodlo: S03
+  strona: "kolejna str. 09"
+  temat: "drzewo — wersja 2, cz. 2 (dziadkowie, pradziadkowie)"
+  wykonane: "2026:10:15 19:10:29"
+  md5: af97d910e776c6c968146163f3510885
+  jakosc: dobra
+- plik: "IMG_5861.JPEG"
+  zrodlo: S03
+  strona: "kolejna str. 10"
+  temat: "drzewo — wersja 2, cz. 3 (prapradziadkowie)"
+  wykonane: "2026:10:15 19:10:39"
+  md5: 4ea7982f1680a5fe46fe9a9929f9e0c8
+  jakosc: dobra
+- plik: "IMG_5862(1).JPEG"
+  zrodlo: S03
+  strona: "kolejna str. 11"
+  temat: "drzewo — wersja 2, cz. 4 (starsze pokolenia, kolumna dat)"
+  wykonane: "2026:10:15 19:10:41"
+  md5: 322e38b231cfd4df47cd7cfcdd97a5ca
+  jakosc: dobra
+- plik: "IMG_5863(1).JPEG"
+  zrodlo: S03
+  strona: "kolejna str. 12"
+  temat: "„Rodzeństwo Teresy”"
+  wykonane: "2026:10:15 19:10:49"
+  md5: 5a31627724c194c80b9640fe1a5f7b9c
+  jakosc: dobra
+- plik: "IMG_5864(1).JPEG"
+  zrodlo: S03
+  strona: "kolejna str. 13"
+  temat: "„Rodzina rodziców matki”"
+  wykonane: "2026:10:15 19:10:56"
+  md5: bad3fb5cdf92743b3d46885abec08fc3
+  jakosc: dobra
+- plik: "IMG_5865(1).JPEG"
+  zrodlo: S03
+  strona: "kolejna str. 14"
+  temat: "współmałżonkowie (prawa kolumna)"
+  wykonane: "2026:10:15 19:10:58"
+  md5: f52579e45fe4c1e0e52bdb90168204f0
+  jakosc: dobra
+- plik: "IMG_5866.JPEG"
+  zrodlo: S03
+  strona: "kolejna str. 15"
+  temat: "„Rodzeństwo Dziadków” — Grabińscy"
+  wykonane: "2026:10:15 19:11:27"
+  md5: f65baed9b596d726b33485d59ca0738a
+  jakosc: dobra
+- plik: "IMG_5867.JPEG"
+  zrodlo: S03
+  strona: "kolejna str. 16"
+  temat: "Stanisław Prządzyński i rodzeństwo"
+  wykonane: "2026:10:15 19:11:29"
+  md5: 3efd4638893283836a706e79a5e595fd
+  jakosc: dobra
+- plik: "IMG_5868(1).JPEG"
+  zrodlo: S03
+  strona: "kolejna str. 17"
+  temat: "„Rodzeństwo ich” — Radoszewscy"
+  wykonane: "2026:10:15 19:11:36"
+  md5: 04e9f49563eaa19bde11f421cccda1d5
+  jakosc: dobra
+- plik: "IMG_5869(1).JPEG"
+  zrodlo: S03
+  strona: "kolejna str. 18"
+  temat: "„bracia i siostry — strona ojca”"
+  wykonane: "2026:10:15 19:11:38"
+  md5: 3a6da1cb8f83e7239839b05c61d21a46
+  jakosc: dobra
+- plik: "IMG_5870(1).JPEG"
+  zrodlo: S03
+  strona: "kolejna str. 19"
+  temat: "„Pradziadkowie — ich bracia” — Prządzyńscy"
+  wykonane: "2026:10:15 19:11:41"
+  md5: 67bf7963fd15144881f65f474ceae34a
+  jakosc: dobra
+- plik: "IMG_5871(1).JPEG"
+  zrodlo: S03
+  strona: "kolejna str. 20"
+  temat: "„i siostry — strona matki”; Edward i Władysław Prządzyńscy"
+  wykonane: "2026:10:15 19:11:43"
+  md5: bb8575f741bf6197067682ecaa78d541
+  jakosc: dobra
+- plik: "IMG_5872(1).JPEG"
+  zrodlo: S03
+  strona: "kolejna str. 21"
+  temat: "dzieci Władysława Prządzyńskiego; Wincenty Prządzyński"
+  wykonane: "2026:10:15 19:11:52"
+  md5: 49a15c08e414cdccac7143362eb7d8af
+  jakosc: dobra
+- plik: "IMG_5873(1).JPEG"
+  zrodlo: S03
+  strona: "kolejna str. 22"
+  temat: "drzewo pokrewieństwa ze Szczepańskimi"
+  wykonane: "2026:10:15 19:11:53"
+  md5: 9cda48e63270c069b9610cde934cfe12
+  jakosc: dobra
+- plik: "IMG_5874(1).JPEG"
+  zrodlo: S03
+  strona: "kolejna str. 23"
+  temat: "„Pradziadkowie — strona matki” (Skrzyńscy)"
+  wykonane: "2026:10:15 19:12:03"
+  md5: 194c9649999a8da97ed1e3e0cfdeb0c5
+  jakosc: dobra
+- plik: "IMG_5875(1).JPEG"
+  zrodlo: S03
+  strona: "kolejna str. 24"
+  temat: "Skrzyńscy cd.; potomkowie"
+  wykonane: "2026:10:15 19:12:06"
+  md5: b56a6867e39d6131c16f6bff1b204ae6
+  jakosc: dobra
+- plik: "IMG_5876(1).JPEG"
+  zrodlo: S03
+  strona: "kolejna str. 25"
+  temat: "„Pra-pradziadkowie ze strony ojca”"
+  wykonane: "2026:10:15 19:12:15"
+  md5: 77a3e03bbc1ca7bc2fccb980065a4966
+  jakosc: dobra
+- plik: "IMG_5877(1).JPEG"
+  zrodlo: S03
+  strona: "kolejna str. 26"
+  temat: "cd."
+  wykonane: "2026:10:15 19:12:17"
+  md5: ffe8ab19860527dad7c460bef4fa765e
+  jakosc: dobra
+- plik: "IMG_5878(1).JPEG"
+  zrodlo: S03
+  strona: "kolejna str. 27"
+  temat: "„Uroczystości religijne” — Teresa"
+  wykonane: "2026:10:15 19:12:25"
+  md5: 2cba5fc044bff6454f34aec878d69dca
+  jakosc: dobra
+- plik: "IMG_5879.JPEG"
+  zrodlo: S03
+  strona: "kolejna str. 28"
+  temat: "„Uroczystości religijne” — Anna"
+  wykonane: "2026:10:15 19:12:30"
+  md5: ea3d519565a855c3ef537c6e1182b68a
+  jakosc: dobra
+- plik: "IMG_5880.JPEG"
+  zrodlo: S03
+  strona: "kolejna str. 29"
+  temat: "„Miejsca kultu”"
+  wykonane: "2026:10:15 19:12:45"
+  md5: 4c34a72c8d1483581f347e7cdee37d76
+  jakosc: dobra
+- plik: "IMG_5881.JPEG"
+  zrodlo: S03
+  strona: "kolejna str. 30"
+  temat: "„Cmentarze” — kaplica w Uniejowie"
+  wykonane: "2026:10:15 19:12:59"
+  md5: 4b7e5f318044c81190b20ffc3c3e0877
+  jakosc: dobra
+- plik: "IMG_5882(1).JPEG"
+  zrodlo: S03
+  strona: "kolejna str. 31"
+  temat: "kaplica w Wartkowicach"
+  wykonane: "2026:10:15 19:13:00"
+  md5: 81d0235110e5074c93ec6341b4289fb4
+  jakosc: dobra
+- plik: "IMG_5883.JPEG"
+  zrodlo: S03
+  strona: "kolejna str. 32"
+  temat: "kaplica w Leźnicy k. Łęczycy"
+  wykonane: "2026:10:15 19:13:06"
+  md5: 9497afbf0839787ebc53d4320760eb24
+  jakosc: dobra
+- plik: "IMG_5884.JPEG"
+  zrodlo: S03
+  strona: "kolejna str. 33"
+  temat: "grób Radoszewskich, Powązki kw. 157 rz. 6"
+  wykonane: "2026:10:15 19:13:08"
+  md5: 54a6a39f0cbab9fc3a8dd705702bf625
+  jakosc: dobra
+  uwagi:
+    - "dopiski innym długopisem (zgony 1996 i 1999)"
+- plik: "IMG_5885.JPEG"
+  zrodlo: S03
+  strona: "kolejna str. 34"
+  temat: "Powązki kw. 157 rz. 5 nr 14 (pusta)"
+  wykonane: "2026:10:15 19:13:14"
+  md5: 5051e00b0abdd4b24159000ac81fb6a9
+  jakosc: dobra
+  uwagi:
+    - "strona w większości pusta"
+- plik: "IMG_5886(1).JPEG"
+  zrodlo: S03
+  strona: "kolejna str. 35"
+  temat: "cmentarz ewangelicko-augsburski — Ignacy baron Radoszewski"
+  wykonane: "2026:10:15 19:13:16"
+  md5: e68939a6d3b38a6724b6ac73496cdefd
+  jakosc: dobra
+- plik: "IMG_5887(1).JPEG"
+  zrodlo: S03
+  strona: "kolejna str. 36"
+  temat: "Powązki — Prządzyńscy, Grabińscy"
+  wykonane: "2026:10:15 19:13:20"
+  md5: bebc24a72c73b119d284bb74a1934a3c
+  jakosc: dobra
+- plik: "IMG_5888(1).JPEG"
+  zrodlo: S03
+  strona: "kolejna str. 37"
+  temat: "inne groby na Powązkach"
+  wykonane: "2026:10:15 19:13:22"
+  md5: f9e1680a6f27af6d4541d2d541e68758
+  jakosc: dobra
+- plik: "IMG_5889.JPEG"
+  zrodlo: S03
+  strona: "kolejna str. 38"
+  temat: "„Nasze domy”"
+  wykonane: "2026:10:15 19:13:27"
+  md5: 4e833cc36cd30bf09fae50850742a7ca
+  jakosc: dobra
+- plik: "IMG_5890(1).JPEG"
+  zrodlo: S03
+  strona: "kolejna str. 39"
+  temat: "„Gdzie mieszkali nasi przodkowie”"
+  wykonane: "2026:10:15 19:13:30"
+  md5: 9a1a416757663be47ccc5c00bb4281c4
+  jakosc: dobra
+- plik: "IMG_5891(1).JPEG"
+  zrodlo: S03
+  strona: "kolejna str. 40"
+  temat: "„Szkoła lub uniwersytet”"
+  wykonane: "2026:10:15 19:13:35"
+  md5: 15ea6d219f7f1c3e1844f6ed05d35733
+  jakosc: dobra
+- plik: "IMG_5892(1).JPEG"
+  zrodlo: S03
+  strona: "kolejna str. 41"
+  temat: "„Rodzinne wakacje”"
+  wykonane: "2026:10:15 19:13:41"
+  md5: d2e7b46d3f27d8721eccb73b72942dfa
+  jakosc: dobra
+- plik: "IMG_5893.JPEG"
+  zrodlo: S03
+  strona: "kolejna str. 42"
+  temat: "„Niezwykłe wydarzenia, które przeżyliśmy” (1939–1945)"
+  wykonane: "2026:10:15 19:13:49"
+  md5: 6b6cdf53c12bfa1148acdcf75d3340cb
+  jakosc: dobra
+- plik: "IMG_5894.JPEG"
+  zrodlo: S03
+  strona: "kolejna str. 43"
+  temat: "kalendarz rocznic i imienin — styczeń"
+  wykonane: "2026:10:15 19:14:18"
+  md5: e65dd2ce7099ce9a9f6543a5acd6122a
+  jakosc: dobra
+- plik: "IMG_5895.JPEG"
+  zrodlo: S03
+  strona: "kolejna str. 44"
+  temat: "kalendarz rocznic i imienin — luty"
+  wykonane: "2026:10:15 19:14:20"
+  md5: a06334715e0e4c053fb7a7c6c8a43547
+  jakosc: dobra
+- plik: "IMG_5896.JPEG"
+  zrodlo: S03
+  strona: "kolejna str. 45"
+  temat: "kalendarz rocznic i imienin — marzec"
+  wykonane: "2026:10:15 19:14:31"
+  md5: c657266730dd27288027439e28d27afc
+  jakosc: dobra
+- plik: "IMG_5897.JPEG"
+  zrodlo: S03
+  strona: "kolejna str. 46"
+  temat: "kalendarz rocznic i imienin — kwiecień"
+  wykonane: "2026:10:15 19:14:33"
+  md5: e7516dc95bd0c4645a75a97f4f1c2727
+  jakosc: dobra
+- plik: "IMG_5898.JPEG"
+  zrodlo: S03
+  strona: "kolejna str. 47"
+  temat: "kalendarz rocznic i imienin — maj"
+  wykonane: "2026:10:15 19:14:41"
+  md5: af94477fcce3bd64a86e0e32548980aa
+  jakosc: dobra
+- plik: "IMG_5899.JPEG"
+  zrodlo: S03
+  strona: "kolejna str. 48"
+  temat: "kalendarz rocznic i imienin — czerwiec"
+  wykonane: "2026:10:15 19:14:51"
+  md5: cd565ed82bbac13907a714b0df1b6e45
+  jakosc: dobra
+- plik: "IMG_5900.JPEG"
+  zrodlo: S03
+  strona: "kolejna str. 49"
+  temat: "kalendarz rocznic i imienin — lipiec"
+  wykonane: "2026:10:15 19:14:52"
+  md5: eb1c687c9a240f63ce3217fab74635c5
+  jakosc: dobra
+  uwagi:
+    - "późniejszy dopisek: 10 VII 1999"
+- plik: "IMG_5901.JPEG"
+  zrodlo: S03
+  strona: "kolejna str. 50"
+  temat: "kalendarz rocznic i imienin — sierpień"
+  wykonane: "2026:10:15 19:15:00"
+  md5: 7a7cea5b44d8a23fb59832e5adb3cdce
+  jakosc: dobra
+- plik: "IMG_5902.JPEG"
+  zrodlo: S03
+  strona: "kolejna str. 51"
+  temat: "kalendarz rocznic i imienin — wrzesień"
+  wykonane: "2026:10:15 19:15:02"
+  md5: a80daa87c27b31b1403b5e0377f73ca7
+  jakosc: dobra
+- plik: "IMG_5903.JPEG"
+  zrodlo: S03
+  strona: "kolejna str. 52"
+  temat: "kalendarz rocznic i imienin — październik"
+  wykonane: "2026:10:15 19:15:08"
+  md5: b9366b4da0f569a887cb229900534326
+  jakosc: dobra
+- plik: "IMG_5904.JPEG"
+  zrodlo: S03
+  strona: "kolejna str. 53"
+  temat: "kalendarz rocznic i imienin — listopad"
+  wykonane: "2026:10:15 19:15:10"
+  md5: be2ac351fd7a248662f232ba3c1bd919
+  jakosc: dobra
+- plik: "IMG_5905.JPEG"
+  zrodlo: S03
+  strona: "kolejna str. 54"
+  temat: "kalendarz rocznic i imienin — grudzień"
+  wykonane: "2026:10:15 19:15:14"
+  md5: b8225208847894efce97b60c29bf008c
+  jakosc: dobra
+  uwagi:
+    - "późniejsze dopiski: 6 XII 1996; „z Grabińskich” fioletowym"
+- plik: "IMG_5906(1).JPEG"
+  zrodlo: S04
+  strona: "str. 1"
+  temat: "biogram Jerzego Radoszewskiego (1902–1967)"
+  wykonane: "2026:10:15 19:15:26"
+  md5: 6a7543471f9405b64e897130256385d3
+  jakosc: dobra
+- plik: "IMG_5907(1).JPEG"
+  zrodlo: S04
+  strona: "str. 2"
+  temat: "biogram cd.; dzieci i wnuki"
+  wykonane: "2026:10:15 19:15:33"
+  md5: e230441ed05fbc456966c49d29260dc6
+  jakosc: dobra
+- plik: "IMG_5908(1).JPEG"
+  zrodlo: S05
+  strona: "str. 1"
+  temat: "kaplica w Uniejowie — lista pochowanych; duchowni z rodu"
+  wykonane: "2026:10:15 19:15:42"
+  md5: e10869fbf00c90efabb8f4a95d3b2ef1
+  jakosc: dobra
+- plik: "IMG_5909(1).JPEG"
+  zrodlo: S05
+  strona: "str. 2"
+  temat: "Radoszewscy po 1772; Krępa, Śmiechów; powstanie 1863; Niemysłów"
+  wykonane: "2026:10:15 19:15:48"
+  md5: 3fbf58f854f11692ec9605472363bade
+  jakosc: dobra
+- plik: "IMG_5910(1).JPEG"
+  zrodlo: S06
+  strona: "str. 1"
+  temat: "bibliografia"
+  wykonane: "2026:10:15 19:16:10"
+  md5: 48db1a22f1ca12d4ef9b4738995f057d
+  jakosc: dobra
+- plik: "IMG_5911(1).JPEG"
+  zrodlo: S07
+  strona: "kolejna str. 01"
+  temat: "drzewo linii prostej Radoszewskich (Imbram 1412 → Anna 1974)"
+  wykonane: "2026:10:15 19:16:31"
+  md5: 98f2502f6addf4d57800a99d8f61de81
+  jakosc: dobra
+- plik: "IMG_5912(1).JPEG"
+  zrodlo: S07
+  strona: "kolejna str. 02"
+  temat: "„4 senatorów od 1618–1782”"
+  wykonane: "2026:10:15 19:16:32"
+  md5: 7e53d68aa8e0a5d706a20a61209ffea6
+  jakosc: dobra
+- plik: "IMG_5913(1).JPEG"
+  zrodlo: S07
+  strona: "kolejna str. 03"
+  temat: "herb Oksza, przydomek Boxa, dewiza, legenda o Wrszowcach"
+  wykonane: "2026:10:15 19:16:38"
+  md5: d8792016c0cd007c49bbb446a630699d
+  jakosc: dobra
+- plik: "IMG_5914(1).JPEG"
+  zrodlo: S07
+  strona: "kolejna str. 04"
+  temat: "Imbram; Mikołaj; Jerzy podkomorzy"
+  wykonane: "2026:10:15 19:16:39"
+  md5: c4d7b7591ad03f030f03eaab1f8b8728
+  jakosc: dobra
+- plik: "IMG_5915(1).JPEG"
+  zrodlo: S07
+  strona: "kolejna str. 05"
+  temat: "Jerzy cd.; Marek kasztelan; Stanisław; Franciszek; Michał kasztelan"
+  wykonane: "2026:10:15 19:16:45"
+  md5: ceb8f1b362ae6d5227a480a9a92f8038
+  jakosc: dobra
+- plik: "IMG_5916(1).JPEG"
+  zrodlo: S07
+  strona: "kolejna str. 06"
+  temat: "Roch; Franciszek; Józefat"
+  wykonane: "2026:10:15 19:16:47"
+  md5: 399b91068bb18e521e29e7635b56826d
+  jakosc: dobra
+- plik: "IMG_5917(1).JPEG"
+  zrodlo: S07
+  strona: "kolejna str. 07"
+  temat: "Józefat i Teofila; Michał Edmund"
+  wykonane: "2026:10:15 19:16:54"
+  md5: 5aa98372359850964d8416ef9fc307b6
+  jakosc: dobra
+- plik: "IMG_5918(1).JPEG"
+  zrodlo: S07
+  strona: "kolejna str. 08"
+  temat: "Michał cd.; Ewa (Ewelina) z Drohojowskich"
+  wykonane: "2026:10:15 19:16:55"
+  md5: 4264c84d4977a557a18b59133a5abba3
+  jakosc: dobra
+- plik: "IMG_5919(1).JPEG"
+  zrodlo: S07
+  strona: "kolejna str. 09"
+  temat: "Ewa cd."
+  wykonane: "2026:10:15 19:17:09"
+  md5: ea89213364a1b5c31155354388fefe39
+  jakosc: dobra
+- plik: "IMG_5920(1).JPEG"
+  zrodlo: S07
+  strona: "kolejna str. 10"
+  temat: "Jerzy (1902–1967) — dzieciństwo, 1920"
+  wykonane: "2026:10:15 19:17:11"
+  md5: 13b00ad0579bbcac9a4c6ffcecdf9316
+  jakosc: dobra
+- plik: "IMG_5921(1).JPEG"
+  zrodlo: S07
+  strona: "kolejna str. 11"
+  temat: "Jerzy cd. — wojna 1920"
+  wykonane: "2026:10:15 19:17:16"
+  md5: 54b6bd434bc00cd94533a8d596865d74
+  jakosc: dobra
+- plik: "IMG_5922(1).JPEG"
+  zrodlo: S07
+  strona: "kolejna str. 12"
+  temat: "Jerzy cd. — medal, studia, wojsko, Krępa"
+  wykonane: "2026:10:15 19:17:18"
+  md5: 1c6cac81636ca40c2795c5c4a65e117d
+  jakosc: dobra
+- plik: "IMG_5923(1).JPEG"
+  zrodlo: S07
+  strona: "kolejna str. 13"
+  temat: "Krępa — gorzelnia, młyn, park"
+  wykonane: "2026:10:15 19:17:23"
+  md5: 357175700faf99d5a4ea0d3e8fab0c89
+  jakosc: dobra
+- plik: "IMG_5924(1).JPEG"
+  zrodlo: S07
+  strona: "kolejna str. 14"
+  temat: "Anna z Prządzyńskich — młodość, ślub 1937, wojna"
+  wykonane: "2026:10:15 19:17:25"
+  md5: 89ec0b3b44bdc54f1214f361de98a8de
+  jakosc: dobra
+- plik: "IMG_5925(1).JPEG"
+  zrodlo: S07
+  strona: "kolejna str. 15"
+  temat: "Anna cd. — 1942–1962; reszta pusta"
+  wykonane: "2026:10:15 19:17:29"
+  md5: 7f1bfcc18344f190ac3016f9d572a3e5
+  jakosc: dobra
+- plik: "IMG_5926(1).JPEG"
+  zrodlo: S07
+  strona: "kolejna str. 16"
+  temat: "„Siostry Michała Radoszewskiego”"
+  wykonane: "2026:10:15 19:17:36"
+  md5: 3b65f88fd9882475b2a59403772373a9
+  jakosc: dobra
+- plik: "IMG_5927(1).JPEG"
+  zrodlo: S07
+  strona: "kolejna str. 17"
+  temat: "rodzina Ewy z Drohojowskich — kanonik Julian, Stanisława Pepłowska"
+  wykonane: "2026:10:15 19:17:43"
+  md5: e797ea9ae34f7aeb9e66dea867a0e908
+  jakosc: dobra
+- plik: "IMG_5928(1).JPEG"
+  zrodlo: S07
+  strona: "kolejna str. 18"
+  temat: "Drohojowscy cd. — Bolesław, Jan"
+  wykonane: "2026:10:15 19:17:48"
+  md5: bfd9d1d61e4486b6207145598881f434
+  jakosc: dobra
+- plik: "IMG_5929(1).JPEG"
+  zrodlo: S07
+  strona: "kolejna str. 19"
+  temat: "Drohojowscy cd. — Maria Madeyska"
+  wykonane: "2026:10:15 19:17:54"
+  md5: 50fa9b3f1282a4f84147ea489e079df8
+  jakosc: dobra
+- plik: "IMG_5930(1).JPEG"
+  zrodlo: S07
+  strona: "kolejna str. 20"
+  temat: "Drohojowscy cd.; grób w Zarzeczu; reszta pusta"
+  wykonane: "2026:10:15 19:17:56"
+  md5: d72b3edfeacd53d5a043c0e7234e97fc
+  jakosc: dobra
+- plik: "IMG_5931(1).JPEG"
+  zrodlo: S07
+  strona: "kolejna str. 21"
+  temat: "drzewo Drohojowskich (zapisane w poprzek strony)"
+  wykonane: "2026:10:15 19:18:01"
+  md5: 4812ccd6a4602bffa6cf678c33054912
+  jakosc: dobra
+  uwagi:
+    - "tekst w poprzek strony — przy transkrypcji obrócić"
+- plik: "IMG_5932(1).JPEG"
+  zrodlo: S07
+  strona: "kolejna str. 22"
+  temat: "„Inne osoby z rodziny” (XV–XVII w.)"
+  wykonane: "2026:10:15 19:18:10"
+  md5: 586bd82bca123b0f02a7947b3ad07ec8
+  jakosc: dobra
+- plik: "IMG_5933(1).JPEG"
+  zrodlo: S07
+  strona: "kolejna str. 23"
+  temat: "cd. — biskup Bogusław"
+  wykonane: "2026:10:15 19:18:12"
+  md5: 8f5eefdd5b80e17e05719c3b16f2dd4b
+  jakosc: dobra
+- plik: "IMG_5934(1).JPEG"
+  zrodlo: S07
+  strona: "kolejna str. 24"
+  temat: "cd. — duchowni XVII–XVIII w."
+  wykonane: "2026:10:15 19:18:20"
+  md5: c809ed8c2fdaeed30108b1666a06b809
+  jakosc: dobra
+- plik: "IMG_5935(1).JPEG"
+  zrodlo: S07
+  strona: "kolejna str. 25"
+  temat: "Józef Radoszewski (1791–1831), Ignacy baron, Opatówek"
+  wykonane: "2026:10:15 19:18:22"
+  md5: 48e05d6a0654493fd2825776cca06972
+  jakosc: dobra
+- plik: "IMG_5936(1).JPEG"
+  zrodlo: S07
+  strona: "kolejna str. 26"
+  temat: "Albin Radoszewski z Neru i potomkowie"
+  wykonane: "2026:10:15 19:18:28"
+  md5: bc90d28203424aa570772c7e68bb470d
+  jakosc: dobra
+- plik: "IMG_5937(1).JPEG"
+  zrodlo: S07
+  strona: "kolejna str. 27"
+  temat: "Radoszewscy z Neru cd."
+  wykonane: "2026:10:15 19:18:30"
+  md5: b7a351c0421c0769ace229459cb56272
+  jakosc: dobra
+- plik: "IMG_5938(1).JPEG"
+  zrodlo: S07
+  strona: "kolejna str. 28"
+  temat: "drzewo Prządzyńskich h. Grzymała"
+  wykonane: "2026:10:15 19:18:40"
+  md5: eac4e2f0d614e72657172aff30248f91
+  jakosc: dobra
+  uwagi:
+    - "dopisek innym pismem (2007)"
+- plik: "IMG_5939(1).JPEG"
+  zrodlo: S07
+  strona: "kolejna str. 29"
+  temat: "Prządzyńscy — gałąź; Stanisław (1761–1817)"
+  wykonane: "2026:10:15 19:18:42"
+  md5: 9032c585f2fee9d5961f9b70d8226a74
+  jakosc: dobra
+- plik: "IMG_5940(1).JPEG"
+  zrodlo: S07
+  strona: "kolejna str. 30"
+  temat: "gen. Ignacy Prządzyński"
+  wykonane: "2026:10:15 19:18:47"
+  md5: f6177ac2813ea61d0047e8ff1902c926
+  jakosc: dobra
+- plik: "IMG_5941(1).JPEG"
+  zrodlo: S07
+  strona: "kolejna str. 31"
+  temat: "gen. Ignacy cd.; jego dzieci"
+  wykonane: "2026:10:15 19:18:49"
+  md5: aac0cefcd81c23145ada67e192a28ee5
+  jakosc: dobra
+- plik: "IMG_5942(1).JPEG"
+  zrodlo: S07
+  strona: "kolejna str. 32"
+  temat: "senator Wincenty Prządzyński"
+  wykonane: "2026:10:15 19:18:55"
+  md5: 28667eeae6f2ad7244a44a0478be5754
+  jakosc: dobra
+- plik: "IMG_5943(1).JPEG"
+  zrodlo: S07
+  strona: "kolejna str. 33"
+  temat: "Salomea z Mierzyńskich; Władysław Prządzyński"
+  wykonane: "2026:10:15 19:18:56"
+  md5: 61b23dbb9d044065d344bf53eb74fc0a
+  jakosc: dobra
+- plik: "IMG_5944(1).JPEG"
+  zrodlo: S07
+  strona: "kolejna str. 34"
+  temat: "Stanisław Prządzyński i rodzeństwo; Wincenty (1839–1895)"
+  wykonane: "2026:10:15 19:19:02"
+  md5: e0127d9667d3cd6367ad3e89cc791364
+  jakosc: dobra
+- plik: "IMG_5945(1).JPEG"
+  zrodlo: S07
+  strona: "kolejna str. 35"
+  temat: "Wincenty cd.; Stanisław — Kościerzyn"
+  wykonane: "2026:10:15 19:19:03"
+  md5: 1926b70b7e69d54923f6c1f017f1ba3d
+  jakosc: dobra
+- plik: "IMG_5946(1).JPEG"
+  zrodlo: S07
+  strona: "kolejna str. 36"
+  temat: "Kościerzyn — gospodarstwo"
+  wykonane: "2026:10:15 19:19:08"
+  md5: 88b98516dabe02cb5427966d6a2f1679
+  jakosc: dobra
+- plik: "IMG_5947(1).JPEG"
+  zrodlo: S07
+  strona: "kolejna str. 37"
+  temat: "Kościerzyn cd.; reszta pusta"
+  wykonane: "2026:10:15 19:19:10"
+  md5: b55a5cf9b79eca308f11f78feecf1f72
+  jakosc: dobra
+- plik: "IMG_5948.JPEG"
+  zrodlo: S07
+  strona: "kolejna str. 38"
+  temat: "Stanisława z Grabińskich Prządzyńska"
+  wykonane: "2026:10:15 19:19:15"
+  md5: 2538b6511eae9247715ed9d74b18d813
+  jakosc: dobra
+- plik: "IMG_5949.JPEG"
+  zrodlo: S07
+  strona: "kolejna str. 39"
+  temat: "Stanisława cd. — życie w Kościerzynie"
+  wykonane: "2026:10:15 19:19:17"
+  md5: 7478f53d63fc0962f90e62a4616e176c
+  jakosc: dobra
+- plik: "IMG_5950.JPEG"
+  zrodlo: S07
+  strona: "kolejna str. 40"
+  temat: "Stanisława cd. — wojna; reszta pusta"
+  wykonane: "2026:10:15 19:19:26"
+  md5: 50f4c539d21e954eae3dae18fb935f7d
+  jakosc: dobra
+- plik: "IMG_5951.JPEG"
+  zrodlo: S07
+  strona: "kolejna str. 41"
+  temat: "siostry gen. Prządzyńskiego (Krasiccy, Moszczeńscy)"
+  wykonane: "2026:10:15 19:19:27"
+  md5: 370098711610ab8701c3c0746180873f
+  jakosc: dobra
+- plik: "IMG_5952(1).JPEG"
+  zrodlo: S07
+  strona: "kolejna str. 42"
+  temat: "Maria z Brandlów Grabińska"
+  wykonane: "2026:10:15 19:19:40"
+  md5: fcfa8bb0a68d04fabf2fe63061f6937d
+  jakosc: dobra
+- plik: "IMG_5953.JPEG"
+  zrodlo: S07
+  strona: "kolejna str. 43"
+  temat: "Brandlowie cd.; Konstanty Brandel"
+  wykonane: "2026:10:15 19:19:44"
+  md5: a6e3e5e23a36573467c5348fb06d5a2e
+  jakosc: dobra
+  uwagi:
+    - "dolna część innym, drobniejszym pismem"
+- plik: "IMG_5954.JPEG"
+  zrodlo: S07
+  strona: "kolejna str. 44"
+  temat: "„Rodzeństwo Babci Stasi” (Grabińscy)"
+  wykonane: "2026:10:15 19:19:50"
+  md5: b4aa2565a1de40fffae0a1c0c03243c4
+  jakosc: dobra
+- plik: "IMG_5955(1).JPEG"
+  zrodlo: S07
+  strona: "kolejna str. 45"
+  temat: "Grabińscy cd.; reszta pusta"
+  wykonane: "2026:10:15 19:19:52"
+  md5: 1940687e12c6701e54706da73e93a1ff
+  jakosc: dobra
+- plik: "IMG_5956.JPEG"
+  zrodlo: S07
+  strona: "kolejna str. 46"
+  temat: "drzewo Grabińskich h. Pomian"
+  wykonane: "2026:10:15 19:20:02"
+  md5: fb5924dfb46cfdc6227a382a0806f19d
+  jakosc: dobra
+- plik: "IMG_5957.JPEG"
+  zrodlo: S07
+  strona: "kolejna str. 47"
+  temat: "„Pokrewieństwo ze Szczepańskimi h. Nałęcz”"
+  wykonane: "2026:10:15 19:20:09"
+  md5: 67cd482550075e7e82e103ae73ec0f78
+  jakosc: dobra
+- plik: "IMG_5958.JPEG"
+  zrodlo: S07
+  strona: "kolejna str. 48"
+  temat: "„Rodzeństwo moje” (Prządzyńscy)"
+  wykonane: "2026:10:15 19:20:17"
+  md5: d739334ac90bc0067d587c013c13e5e3
+  jakosc: dobra
+- plik: "IMG_5959(1).JPEG"
+  zrodlo: S07
+  strona: "kolejna str. 49"
+  temat: "„Źródła” — bibliografia, cz. 1"
+  wykonane: "2026:10:15 19:20:24"
+  md5: e8ae814d668e8c3be23967801fd9f946
+  jakosc: dobra
+- plik: "IMG_5960(1).JPEG"
+  zrodlo: S07
+  strona: "kolejna str. 50"
+  temat: "źródła, cz. 2"
+  wykonane: "2026:10:15 19:20:26"
+  md5: f01a546e364951496f2aa01403138b42
+  jakosc: dobra
+- plik: "IMG_5961.JPEG"
+  zrodlo: S07
+  strona: "kolejna str. 51"
+  temat: "źródła, cz. 3; reszta pusta"
+  wykonane: "2026:10:15 19:20:32"
+  md5: 8f94f888bb7916f7d7b7c5bd648ebb07
+  jakosc: dobra
+- plik: "IMG_5962.JPEG"
+  zrodlo: S07
+  strona: "kolejna str. 52"
+  temat: "miejsca pamięci: Poznań, Jarząbkowo, Oliwa"
+  wykonane: "2026:10:15 19:20:42"
+  md5: eaea9f578a791b0d5710a1b64a841e43
+  jakosc: dobra
+- plik: "IMG_5963.JPEG"
+  zrodlo: S07
+  strona: "kolejna str. 53"
+  temat: "„Przemyśl, katedra — kaplica Drohojowskich” (tylko nagłówek)"
+  wykonane: "2026:10:15 19:20:43"
+  md5: 3fc70a9b6a32ff2dba0b851d837a20eb
+  jakosc: dobra
+  uwagi:
+    - "strona w większości pusta"
+- plik: "IMG_5964(1).JPEG"
+  zrodlo: S07
+  strona: "kolejna str. 54"
+  temat: "groby: Uniejów; Powązki kw. 157 rz. 6"
+  wykonane: "2026:10:15 19:20:52"
+  md5: 652139d245ecf2b63a1ca2610cc01449
+  jakosc: dobra
+  uwagi:
+    - "dopisek długopisem (ks. prałat, nr telefonu)"
+- plik: "IMG_5965(1).JPEG"
+  zrodlo: S07
+  strona: "kolejna str. 55"
+  temat: "groby: Powązki cd."
+  wykonane: "2026:10:15 19:20:54"
+  md5: 8a4f23fb5ce5ea9f58c8c59e716cdec9
+  jakosc: dobra
+- plik: "IMG_5966(1).JPEG"
+  zrodlo: S07
+  strona: "kolejna str. 56"
+  temat: "groby: Powązki, cmentarz ewangelicki"
+  wykonane: "2026:10:15 19:21:01"
+  md5: 4411f1eaaed187e5f308563f5a9121b8
+  jakosc: dobra
+- plik: "IMG_5967(1).JPEG"
+  zrodlo: S07
+  strona: "kolejna str. 57"
+  temat: "groby: Wartkowice, Leźnica"
+  wykonane: "2026:10:15 19:21:03"
+  md5: 5bdd538aa89dbae530ebcd4520e0519b
+  jakosc: dobra
+- plik: "IMG_5968(1).JPEG"
+  zrodlo: S07
+  strona: "kolejna str. 58"
+  temat: "groby: Kraków, Zarzecze, Wieluń, Opatówek"
+  wykonane: "2026:10:15 19:21:08"
+  md5: b6327e88fa75a0dd528f21ab9835ac8c
+  jakosc: dobra
+- plik: "IMG_5969(1).JPEG"
+  zrodlo: S07
+  strona: "kolejna str. 59"
+  temat: "groby: Montmorency, Obrzycko[?], Pniewy, Bolonia"
+  wykonane: "2026:10:15 19:21:10"
+  md5: 0dff63fe08809d880a663940192e607a
+  jakosc: dobra
+- plik: "IMG_5970(1).JPEG"
+  zrodlo: S07
+  strona: "kolejna str. 60"
+  temat: "nieruchomości i hipoteki, cz. 1"
+  wykonane: "2026:10:15 19:21:23"
+  md5: f9684a08db11cec4a14d84c715c2b796
+  jakosc: dobra
+- plik: "IMG_5971(1).JPEG"
+  zrodlo: S07
+  strona: "kolejna str. 61"
+  temat: "nieruchomości i hipoteki, cz. 2"
+  wykonane: "2026:10:15 19:21:25"
+  md5: 7f4cd71fabf70597d8cc5511915b196c
+  jakosc: dobra
+  uwagi:
+    - "ostatnie 2 wiersze innym długopisem"
+- plik: "IMG_5972(1).JPEG"
+  zrodlo: S08
+  strona: "okładka"
+  temat: "okładka"
+  wykonane: "2026:10:15 19:22:16"
+  md5: dd62604fab5701457b385a9579df6c0e
+  jakosc: dobra
+- plik: "IMG_5973(1).JPEG"
+  zrodlo: S08
+  strona: "s. 57"
+  temat: "Kościerzyn — dwory"
+  wykonane: "2026:10:15 19:23:13"
+  md5: 84bde6f709a4c17005a8754fe499a90e
+  jakosc: dobra
+  uwagi:
+    - "początek hasła"
+- plik: "IMG_5974.JPEG"
+  zrodlo: S08
+  strona: "s. 58"
+  temat: "Kościerzyn — dwory"
+  wykonane: "2026:10:15 19:23:23"
+  md5: 433a68dc64be69e37b2816e9a4356c9f
+  jakosc: dobra
+  uwagi:
+    - "palec w kadrze na marginesie — tekst niezasłonięty"
+- plik: "IMG_5975.JPEG"
+  zrodlo: S08
+  strona: "s. 59"
+  temat: "Kościerzyn — dwory"
+  wykonane: "2026:10:15 19:23:24"
+  md5: 027dc2c8617b2dda8d29e52119a2c9cc
+  jakosc: dobra
+- plik: "IMG_5976.JPEG"
+  zrodlo: S08
+  strona: "s. 60"
+  temat: "Kościerzyn — dwory"
+  wykonane: "2026:10:15 19:23:35"
+  md5: 605e43b9c1462ba3d37ea627c1e677ff
+  jakosc: dobra
+  uwagi:
+    - "plan sytuacyjny"
+    - "palec w kadrze na marginesie — tekst niezasłonięty"
+- plik: "IMG_5977.JPEG"
+  zrodlo: S08
+  strona: "s. 61"
+  temat: "Kościerzyn — dwory"
+  wykonane: "2026:10:15 19:23:37"
+  md5: de6dd59caecd414c46eb41d46aac9b7c
+  jakosc: dobra
+- plik: "IMG_5978.JPEG"
+  zrodlo: S08
+  strona: "s. 62"
+  temat: "Kościerzyn — dwory"
+  wykonane: "2026:10:15 19:23:44"
+  md5: c8c906aaf5c9f69dc31c8f7678b4a0a2
+  jakosc: dobra
+  uwagi:
+    - "palec w kadrze na marginesie — tekst niezasłonięty"
+- plik: "IMG_5979(1).JPEG"
+  zrodlo: S08
+  strona: "s. 63"
+  temat: "Kościerzyn — dwory"
+  wykonane: "2026:10:15 19:23:46"
+  md5: 6da847aff93e76c29db823cd958a845c
+  jakosc: dobra
+- plik: "IMG_5980.JPEG"
+  zrodlo: S08
+  strona: "s. 64"
+  temat: "Kościerzyn — dwory"
+  wykonane: "2026:10:15 19:23:51"
+  md5: 63dbfb947353b058d67caa3994af5500
+  jakosc: dobra
+- plik: "IMG_5981.JPEG"
+  zrodlo: S08
+  strona: "s. 65"
+  temat: "Kościerzyn — dwory"
+  wykonane: "2026:10:15 19:23:53"
+  md5: 962d0bc9714ff4f1536389bd6384794f
+  jakosc: dobra
+  uwagi:
+    - "rzuty parteru i piętra"
+- plik: "IMG_5982(1).JPEG"
+  zrodlo: S08
+  strona: "s. 66"
+  temat: "Kościerzyn — dwory"
+  wykonane: "2026:10:15 19:24:00"
+  md5: b68fd461962f98164fbd9616a0763552
+  jakosc: dobra
+  uwagi:
+    - "palec w kadrze na marginesie — tekst niezasłonięty"
+- plik: "IMG_5983(1).JPEG"
+  zrodlo: S08
+  strona: "s. 67"
+  temat: "Kościerzyn — dwory"
+  wykonane: "2026:10:15 19:24:02"
+  md5: 6bef41d54bc608e0600915c80ecbd168
+  jakosc: dobra
+- plik: "IMG_5984(1).JPEG"
+  zrodlo: S08
+  strona: "s. 68"
+  temat: "Kościerzyn — dwory"
+  wykonane: "2026:10:15 19:24:07"
+  md5: 03b742e0acc7a887625e2631820fd477
+  jakosc: dobra
+  uwagi:
+    - "palec w kadrze na marginesie — tekst niezasłonięty"
+- plik: "IMG_5985.JPEG"
+  zrodlo: S08
+  strona: "s. 69"
+  temat: "Kościerzyn — dwory"
+  wykonane: "2026:10:15 19:24:10"
+  md5: 3a20f14e02fc27af56d14d5dbca02413
+  jakosc: dobra
+  uwagi:
+    - "„5. Aneks źródłowy” (AGAD, 1783)"
+- plik: "IMG_5986(1).JPEG"
+  zrodlo: S08
+  strona: "s. 70"
+  temat: "Kościerzyn — dwory"
+  wykonane: "2026:10:15 19:24:16"
+  md5: a80c6afc3c8ae8d22451aebf48752126
+  jakosc: dobra
+  uwagi:
+    - "koniec hasła; dolna połowa strony pusta"
+    - "palec w kadrze na marginesie — tekst niezasłonięty"
+- plik: "IMG_5987.JPEG"
+  zrodlo: S08
+  strona: "s. 71"
+  temat: "Krempa — dwór"
+  wykonane: "2026:10:15 19:24:18"
+  md5: 2839f1a0ce1cb61aae58466c663e9a50
+  jakosc: dobra
+  uwagi:
+    - "początek hasła"
+- plik: "IMG_5988.JPEG"
+  zrodlo: S08
+  strona: "s. 72"
+  temat: "Krempa — dwór"
+  wykonane: "2026:10:15 19:24:23"
+  md5: 1e79635e071f26dde3bfd81bf9a3fed5
+  jakosc: dobra
+- plik: "IMG_5989(1).JPEG"
+  zrodlo: S08
+  strona: "s. 73"
+  temat: "Krempa — dwór"
+  wykonane: "2026:10:15 19:24:25"
+  md5: e6626f39db4d010a7c25fa1a5432d3ec
+  jakosc: dobra
+- plik: "IMG_5990.JPEG"
+  zrodlo: S08
+  strona: "s. 74"
+  temat: "Krempa — dwór"
+  wykonane: "2026:10:15 19:24:30"
+  md5: 922a305baa866561f1738c30e0722c71
+  jakosc: dobra
+- plik: "IMG_5991.JPEG"
+  zrodlo: S08
+  strona: "s. 75"
+  temat: "Krempa — dwór"
+  wykonane: "2026:10:15 19:24:31"
+  md5: 5a7781b80c1e8d62b1dcf4bd0f1ef6ab
+  jakosc: dobra
+- plik: "IMG_5992(1).JPEG"
+  zrodlo: S08
+  strona: "s. 76"
+  temat: "Krempa — dwór"
+  wykonane: "2026:10:15 19:24:37"
+  md5: b645709898ad244215a7c693d20c5f8c
+  jakosc: dobra
+  uwagi:
+    - "rzut parteru z funkcjami pomieszczeń"
+    - "palec w kadrze na marginesie — tekst niezasłonięty"
+- plik: "IMG_5993.JPEG"
+  zrodlo: S08
+  strona: "s. 77"
+  temat: "Krempa — dwór"
+  wykonane: "2026:10:15 19:24:39"
+  md5: 781e62ddc9f92cfef7623c37feb8a7f2
+  jakosc: dobra
+- plik: "IMG_5994.JPEG"
+  zrodlo: S08
+  strona: "s. 78 (wnioskowana)"
+  temat: "Krempa — dwór"
+  wykonane: "2026:10:15 19:24:47"
+  md5: a654b29826130ace7b9dea89f9a50b12
+  jakosc: dobra
+  uwagi:
+    - "koniec hasła (8 wierszy); numer strony poza kadrem"
+- plik: "IMG_5995.JPEG"
+  zrodlo: S08
+  strona: "s. 123"
+  temat: "Radoszewice — dwory"
+  wykonane: "2026:10:15 19:25:08"
+  md5: ccbf5cc4491e48f49f27231c4b412fb1
+  jakosc: dobra
+  uwagi:
+    - "początek hasła"
+- plik: "IMG_5996.JPEG"
+  zrodlo: S08
+  strona: "s. 124"
+  temat: "Radoszewice — dwory"
+  wykonane: "2026:10:15 19:25:12"
+  md5: c3a958061fe9a916125d5f6899364ca0
+  jakosc: dobra
+  uwagi:
+    - "plan sytuacyjny (cała strona)"
+- plik: "IMG_5997(1).JPEG"
+  zrodlo: S08
+  strona: "s. 125"
+  temat: "Radoszewice — dwory"
+  wykonane: "2026:10:15 19:25:14"
+  md5: f8573f871133d608fabc39f83d15bb2a
+  jakosc: dobra
+  uwagi:
+    - "rzut parteru"
+- plik: "IMG_5998(1).JPEG"
+  zrodlo: S08
+  strona: "s. 126"
+  temat: "Radoszewice — dwory"
+  wykonane: "2026:10:15 19:25:21"
+  md5: c5bbbe7eb7ed8312adc41d6ba6a1fb99
+  jakosc: dobra
+- plik: "IMG_5999(1).JPEG"
+  zrodlo: S08
+  strona: "s. 127"
+  temat: "Radoszewice — dwory"
+  wykonane: "2026:10:15 19:25:23"
+  md5: a715d27e3c565e287e33bf2be81d54fc
+  jakosc: dobra
+- plik: "IMG_6001(1).JPEG"
+  zrodlo: S08
+  strona: "s. 128"
+  temat: "Radoszewice — dwory"
+  wykonane: "2026:10:15 19:25:30"
+  md5: 84eba1a3dd5a419bef00e487a66439c4
+  jakosc: dobra
+  uwagi:
+    - "palec w kadrze na marginesie — tekst niezasłonięty"
+- plik: "IMG_6002(1).JPEG"
+  zrodlo: S08
+  strona: "tablica bez numeru (między s. 128 a 129?)"
+  temat: "Radoszewice — dwory"
+  wykonane: "2026:10:15 19:25:35"
+  md5: 007d7fc46b2e34040700c6cba476b448
+  jakosc: dobra
+  uwagi:
+    - "rysunki elewacji frontowej i ogrodowej; zdjęcie obrócone; numer strony niewidoczny"
+- plik: "IMG_6003(1).JPEG"
+  zrodlo: S08
+  strona: "s. 129"
+  temat: "Radoszewice — dwory"
+  wykonane: "2026:10:15 19:25:42"
+  md5: 651d02e80facd217df07c2a78466c55e
+  jakosc: dobra
+- plik: "IMG_6004(1).JPEG"
+  zrodlo: S08
+  strona: "s. 130"
+  temat: "Radoszewice — dwory"
+  wykonane: "2026:10:15 19:25:54"
+  md5: 02690a7ca51f88ceeb9ab4b7a03a185f
+  jakosc: dobra
+- plik: "IMG_6005(1).JPEG"
+  zrodlo: S08
+  strona: "s. 131"
+  temat: "Radoszewice — dwory"
+  wykonane: "2026:10:15 19:25:58"
+  md5: 4bf7b45877cb1cb7a06fefddcc4ab9ab
+  jakosc: dobra
+- plik: "IMG_6006(1).JPEG"
+  zrodlo: S08
+  strona: "s. 132"
+  temat: "Radoszewice — dwory"
+  wykonane: "2026:10:15 19:26:02"
+  md5: f31ffd7cb3388208c18c6b20147fc3ec
+  jakosc: dobra
+- plik: "IMG_6007(1).JPEG"
+  zrodlo: S08
+  strona: "s. 133"
+  temat: "Radoszewice — dwory"
+  wykonane: "2026:10:15 19:26:04"
+  md5: 5da82708d921096b7d50ffc146bc1458
+  jakosc: dobra
+  uwagi:
+    - "„3. Aneks źródłowy” (Castr. Vielun. obl. 48, 1791)"
+- plik: "IMG_6008(1).JPEG"
+  zrodlo: S08
+  strona: "s. 134"
+  temat: "Radoszewice — dwory"
+  wykonane: "2026:10:15 19:26:10"
+  md5: 7bd7b146e900b61bf3291ac5bd5f6ed8
+  jakosc: dobra
+  uwagi:
+    - "palec w kadrze na marginesie — tekst niezasłonięty"
+- plik: "IMG_6009(1).JPEG"
+  zrodlo: S08
+  strona: "s. 135"
+  temat: "Radoszewice — dwory"
+  wykonane: "2026:10:15 19:26:12"
+  md5: 05f4211cd03c64f6c5efb29c1e3f8968
+  jakosc: dobra
+- plik: "IMG_6010(1).JPEG"
+  zrodlo: S08
+  strona: "s. 136"
+  temat: "Radoszewice — dwory"
+  wykonane: "2026:10:15 19:26:18"
+  md5: 260f3e08e2fdd90ef7bf0cade80ea999
+  jakosc: dobra
+  uwagi:
+    - "palec w kadrze na marginesie — tekst niezasłonięty"
+- plik: "IMG_6011(1).JPEG"
+  zrodlo: S08
+  strona: "s. 137 (wnioskowana)"
+  temat: "Radoszewice — dwory"
+  wykonane: "2026:10:15 19:26:20"
+  md5: 9769a61ae04e287b479be5cc1bb71731
+  jakosc: dobra
+  uwagi:
+    - "koniec aneksu; numer strony poza kadrem; s. 138 nie sfotografowana (prawdopodobnie pusta)"
+- plik: "IMG_6012(1).JPEG"
+  zrodlo: S08
+  strona: "s. 139"
+  temat: "Siemkowice — dwory"
+  wykonane: "2026:10:15 19:26:25"
+  md5: addd52be87fdb494889d90ab1511914e
+  jakosc: dobra
+  uwagi:
+    - "początek hasła"
+- plik: "IMG_6013(1).JPEG"
+  zrodlo: S08
+  strona: "s. 140 (wnioskowana)"
+  temat: "Siemkowice — dwory"
+  wykonane: "2026:10:15 19:26:30"
+  md5: e09bd10b94ee1747c543e8b4493cdbbf
+  jakosc: dobra
+  uwagi:
+    - "plan sytuacyjny; zdjęcie obrócone; numer strony niewyraźny"
+- plik: "IMG_6014(1).JPEG"
+  zrodlo: S08
+  strona: "s. 141"
+  temat: "Siemkowice — dwory"
+  wykonane: "2026:10:15 19:26:32"
+  md5: 9184ba02f072f725a63fb17aefc22640
+  jakosc: dobra
+  uwagi:
+    - "plan wyspy z wykopami 1974"
+- plik: "IMG_6015.JPEG"
+  zrodlo: S08
+  strona: "s. 142"
+  temat: "Siemkowice — dwory"
+  wykonane: "2026:10:15 19:26:38"
+  md5: 992b37668ea4931731b32e65bed530b9
+  jakosc: dobra
+  uwagi:
+    - "rzuty piwnic, parteru, poddasza"
+    - "palec w kadrze na marginesie — tekst niezasłonięty"
+- plik: "IMG_6016(1).JPEG"
+  zrodlo: S08
+  strona: "s. 143"
+  temat: "Siemkowice — dwory"
+  wykonane: "2026:10:15 19:26:42"
+  md5: fbf569defdfddd2032e3c5a7876708cf
+  jakosc: dobra
+  uwagi:
+    - "rzut z okresu międzywojennego"
+- plik: "IMG_6017.JPEG"
+  zrodlo: S08
+  strona: "s. 144"
+  temat: "Siemkowice — dwory"
+  wykonane: "2026:10:15 19:26:45"
+  md5: 477295013171864d0b61b7cb2309d77d
+  jakosc: dobra
+- plik: "IMG_6018(1).JPEG"
+  zrodlo: S08
+  strona: "s. 145"
+  temat: "Siemkowice — dwory"
+  wykonane: "2026:10:15 19:26:48"
+  md5: 3615639be0e86a35b040d0634a2380b3
+  jakosc: dobra
+- plik: "IMG_6019(1).JPEG"
+  zrodlo: S08
+  strona: "s. 146"
+  temat: "Siemkowice — dwory"
+  wykonane: "2026:10:15 19:26:54"
+  md5: 00fba5fd89d09b7a7bcb26c8fb547112
+  jakosc: dobra
+  uwagi:
+    - "palec w kadrze na marginesie — tekst niezasłonięty"
+- plik: "IMG_6020(1).JPEG"
+  zrodlo: S08
+  strona: "s. 147"
+  temat: "Siemkowice — dwory"
+  wykonane: "2026:10:15 19:26:57"
+  md5: 3dc5ce30cb05b88d1292a1e9f22459e1
+  jakosc: dobra
+- plik: "IMG_6021(1).JPEG"
+  zrodlo: S08
+  strona: "s. 148"
+  temat: "Siemkowice — dwory"
+  wykonane: "2026:10:15 19:27:02"
+  md5: c7c4883d103fea83fc8a766de4110c60
+  jakosc: dobra
+  uwagi:
+    - "palec w kadrze na marginesie — tekst niezasłonięty"
+- plik: "IMG_6022(1).JPEG"
+  zrodlo: S08
+  strona: "s. 149"
+  temat: "Siemkowice — dwory"
+  wykonane: "2026:10:15 19:27:03"
+  md5: 9f75b6ff809dc01e5d4330ccc1885b4a
+  jakosc: dobra
+- plik: "IMG_6023.JPEG"
+  zrodlo: S08
+  strona: "s. 150"
+  temat: "Siemkowice — dwory"
+  wykonane: "2026:10:15 19:27:09"
+  md5: 8e435f1e7f40f326211e20a0973bd0ae
+  jakosc: dobra
+  uwagi:
+    - "palec w kadrze na marginesie — tekst niezasłonięty"
+- plik: "IMG_6024(1).JPEG"
+  zrodlo: S08
+  strona: "s. 151"
+  temat: "Siemkowice — dwory"
+  wykonane: "2026:10:15 19:27:11"
+  md5: 087e4545b3c956642e839954e9d500ea
+  jakosc: dobra
+- plik: "IMG_6025(1).JPEG"
+  zrodlo: S08
+  strona: "s. 152 (wnioskowana)"
+  temat: "Siemkowice — dwory"
+  wykonane: "2026:10:15 19:27:21"
+  md5: 4883e3ad70eeb3240aba755f795cefc2
+  jakosc: dobra
+  uwagi:
+    - "koniec hasła; numer strony zasłonięty/niewyraźny"

@@ -1,0 +1,109 @@
+# Opis źródeł — Etap 0 (inwentaryzacja), stan na 2026-10-15.
+# Pola oznaczone "?" lub w `do_ustalenia` wymagają potwierdzenia przez użytkownika.
+
+S01:
+  typ: druk
+  tytul: "Przewodnik heraldyczny. Monografie, genealogje i spis rodzin senatorskich i tytuły honorowe posiadających. [T.] V"
+  autor: "Ad. Am. Kosiński (ułożył)"
+  miejsce_rok: "Warszawa 1885"
+  wydawca: "Druk Braci Jeżyńskich (dawniej J. Ungra), przy ulicy Nowolipki Nr 3"
+  zakres: "karta tytułowa + s. 132–145 — dodatek o rodzinie Radoszewskich h. Oksza, drukowany pod żywą paginą „GRABOWSKI” („Już po oddaniu do druku niniejszego Tomu Przewodnika, otrzymałem dawne […] drzewo genealogiczne rodziny Radoszewskich herbu Oksza…”)"
+  zdjecia: "IMG_5810–IMG_5817 (8)"
+  uwagi:
+    - "Egzemplarz z odręcznymi znakami czytelnika (niebieski długopis/atrament): podkreślenia, gwiazdki, krzyżyki na marginesach, dopisek „85 lat” na s. 139."
+    - "Zdjęcia rozkładówek obrócone o 90°; drobny druk przypisów — w Etapie 1 czytać na powiększeniach."
+  do_ustalenia:
+    - "Na żywej paginie widnieje „GRABOWSKI” — tekst o Radoszewskich jest częścią hasła Grabowskich (dodatek). Do odnotowania w opisie, nie błąd."
+
+S02:
+  typ: rękopis
+  tytul: "Z dziejów Radoszewic, cz. I"
+  autor: "Stefan Łakomy"
+  datowanie: "Radoszewice 1981 (strona tytułowa)"
+  zakres: "okładka + 23 strony: I. Pierwsze wzmianki o Radoszewicach; kościół; dobra w 1885; II. Radoszewscy właścicielami Radoszewic; rokosz Zebrzydowskiego; Radoszewice u Niemojowskich; „Z odczytu Franciszka B…[?]”; przypisy 1–32"
+  zdjecia: "IMG_5828–IMG_5851 (24)"
+  uwagi:
+    - "Zeszyt w kratkę, okładka oklejona wycinankami (rycerze, husarz)."
+    - "Zmiana atramentu z czarnego na niebieski od IMG_5838."
+    - "Na marginesie IMG_5849 dopisek innym pismem (o Michale kasztelanie brzezińskim / Rochu)."
+    - "Część treści pokrywa się dosłownie z S10 (ten sam autor, wcześniejsza praca)."
+
+S03:
+  typ: rękopis
+  tytul: "„The History of Our Family” — księga rodzinna (zeszyt w linie w brązowej skórzanej okładce „…PRESIT”)"
+  autor: "Teresa Boxa Radoszewska-Zielińska (ur. 30 IV 1942, zm. 6 XII 1996)"
+  datowanie: "ok. 1974–1996 (wpisy o córce Annie ur. 1974; I Komunia 1983); późniejsze dopiski innym długopisem (śmierć Teresy 1996, Anny z Prządzyńskich 1999)"
+  zakres: "dedykacja; dane własne, męża i dziecka; drzewo genealogiczne (2 wersje); rodzeństwo i krewni ze stron ojca i matki; uroczystości religijne; miejsca kultu; cmentarze i groby; „Nasze domy”; gdzie mieszkali przodkowie; szkoły; wakacje; wydarzenia 1939–1945; kalendarz rocznic i imienin (12 miesięcy)"
+  zdjecia: "IMG_5852–IMG_5905 (54)"
+  uwagi:
+    - "Formularz wg wzoru „książki przywiezionej z Londynu przez Andrzeja Radoszewskiego” (IMG_5852)."
+    - "Wiele stron w większości pustych (tylko nagłówki lub kilka wpisów)."
+
+S04:
+  typ: rękopis (luźna kartka)
+  tytul: "„Jerzy Radoszewski Boxa h. Oksza 1902+1967 ur. w Krępie pow. Sieradzki” — biogram"
+  autor: "nieznany (prawdopodobnie Anna z Prządzyńskich Radoszewska lub Teresa — do ustalenia)"
+  zakres: "biografia Jerzego, majątek Krępa–Śmiechów, rodzina, dzieci i wnuki"
+  zdjecia: "IMG_5906–IMG_5907 (2)"
+  uwagi:
+    - "Biała kartka bez linii, włożona do księgi S03 (?)."
+
+S05:
+  typ: rękopis (luźna kartka)
+  tytul: "Kaplica Boxa Radoszewskich na cmentarzu w Uniejowie; Radoszewscy po I rozbiorze, Krępa, Niemysłów"
+  autor: "nieznany"
+  zakres: "lista pochowanych w krypcie w Uniejowie; senatorowie i duchowni z rodu; historia Krępy i Śmiechowa; powstanie 1863; parafia Niemysłów"
+  zdjecia: "IMG_5908–IMG_5909 (2)"
+  uwagi:
+    - "Kartka w kratkę, zginana; dwie strony (lub dwie kartki — do potwierdzenia)."
+
+S06:
+  typ: rękopis (luźna kartka)
+  tytul: "Bibliografia (spis lektur o rodzinie)"
+  autor: "nieznany"
+  zakres: "Przewodnik heraldyczny, Almanach Błękitny, „Wołanie z Wołynia”, Nitecki, Prokop, Rocznik Kaliski t. XXVIII i in."
+  zdjecia: "IMG_5910 (1)"
+  uwagi:
+    - "Kartka w linie z czerwonym marginesem. Odnotowuje m.in. „Przewodnik heraldyczny II … Warszawa 1880, s. 467–470” — inny tom niż S01 (t. V, 1885)."
+
+S07:
+  typ: rękopis
+  tytul: "[Wspomnienia i genealogia rodzin Radoszewskich, Prządzyńskich, Drohojowskich, Grabińskich — zeszyt w kratkę] (tytuł roboczy)"
+  autor: "Anna z Prządzyńskich Boxa-Radoszewska (ur. 22 III 1914, zm. 10 VII 1999)? — narracja w 1. osobie („Rodzeństwo moje”, „u nas w Milanówku”, „moja prababka”)"
+  datowanie: "po 2005 (cytuje wydawnictwo z 2005 r.)? — do sprawdzenia w Etapie 1; dopisek z 2007 r. innym pismem"
+  zakres: "drzewo linii prostej Radoszewskich od Imbrama (1412); herb i legenda; biografie kolejnych pokoleń (Jerzy podkomorzy, Marek, Michał kasztelan, Roch, Franciszek, Józefat, Michał, Jerzy); siostry Michała; Drohojowscy; inne osoby z rodu (duchowni, senatorowie); Józef i Ignacy Radoszewscy (Opatówek); Radoszewscy z Neru; Prządzyńscy (gen. Ignacy, senator Wincenty, Stanisław z Kościerzyna); Grabińscy, Brandlowie; Szczepańscy; źródła; cmentarze i groby (wersja szczegółowa); nieruchomości z numerami hipotek"
+  zdjecia: "IMG_5911–IMG_5971 (61)"
+  uwagi:
+    - "Część dat różni się od S03 (np. Stanisław Prządzyński: 3-VII-1871 w S03, 2 lipca 1871 w S07) — nie scalać, oznaczyć w Etapie 3."
+    - "IMG_5931: drzewo Drohojowskich zapisane w poprzek strony."
+
+S08:
+  typ: druk
+  tytul: "?? Na okładce: „Pałace i dwory w dawnym województwie sieradzkim” t. 2 (?); sygnatury arkuszy: „Materiały do dziejów…” — pełny tytuł do ustalenia (brak zdjęcia karty tytułowej)"
+  autor: "?? Rozdziały prawdopodobnie autorstwa Leszka Kajzera (autor pisze „W pracy opublikowanej w roku 1984 sugerowałem…”, co odpowiada przyp. 24: L. Kajzer, Dwory obronne Wieluńskiego, s. 90) — hipoteza"
+  datowanie: "1991 lub później (cytuje materiały z 1991 r.)"
+  zakres: "4 hasła: Kościerzyn — dwory (s. 57–70, z aneksem źródłowym 1783), Krempa — dwór (s. 71–78), Radoszewice — dwory (s. 123–137, z aneksem 1791/92), Siemkowice — dwory (s. 139–152)"
+  zdjecia: "IMG_5972–IMG_6025 (53)"
+  uwagi:
+    - "Autor korzystał z opracowań rodzinnych: A. Radoszewska, „Dwór w Krempie”, Brwinów 1991 (przyp. 13); „Opis dworu w Kościerzynie”, Brwinów 1991 i list Anny z Prządzyńskich Radoszewskiej z 18 III 1991 (przyp. 25–26). Te maszynopisy/rękopisy byłyby cennymi dodatkowymi źródłami."
+    - "Brak IMG_6000 — strony 127 (IMG_5999) i 128 (IMG_6001) następują bezpośrednio po sobie, więc nic nie zginęło."
+
+S09:
+  typ: rękopis (luźna kartka)
+  tytul: "[Odręczny szkic mapy miejscowości związanych z rodziną] (tytuł roboczy)"
+  autor: "nieznany"
+  datowanie: "data w rogu kartki — prawdopodobnie 8.07.2017 (do odczytania)"
+  zakres: "Wieluń, Radoszewice, Siemkowice, Pajęczno, Uniejów, Dominikowice, Krępa, Śmiechów, Niemysłów, Wartkowice, Ner, Gostków, Leźnica, Łęczyca, Kościerzyn, Poddębice, Opatówek, Kalisz i in.; drogi, rzeki, kościoły"
+  zdjecia: "IMG_5818 (1)"
+  uwagi:
+    - "Kartka A4 sfotografowana bokiem; zaznaczenia zakreślaczem. Materiał pomocniczy do mapy na stronie."
+
+S10:
+  typ: rękopis
+  tytul: "Dwór i założenia parkowe w Radoszewicach k. Wielunia"
+  autor: "Stefan Łakomy, 97-625 Radoszewice, woj. sieradzkie"
+  datowanie: "20.03.1978"
+  zakres: "praca programowa PTTK „Polska naszych dni” dla Wojewódzkiej Komisji Opieki nad Zabytkami PTTK w Sieradzu: położenie i dzieje wsi, Radoszewscy, Niemojowscy (Ludwik Niemojowski, bitwa pod Radoszewicami 27 III 1863), późniejsi właściciele, pałacyk-szkoła, park"
+  zdjecia: "IMG_5819–IMG_5827 (9)"
+  uwagi:
+    - "Kartki w kratkę w tekturowym skoroszycie; tekst odwołuje się do fotografii nr 1–5, których nie sfotografowano."
