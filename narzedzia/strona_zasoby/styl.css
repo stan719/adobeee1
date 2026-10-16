@@ -133,3 +133,41 @@ ul.czas .rok{display:inline-block;min-width:3.4em;font-family:var(--szeryf);font
   .fakt .et{display:block}
 }
 .mapa-przycisk{font:inherit;font-size:.85rem;padding:5px 10px;border:1px solid #888;border-radius:4px;background:#fff;color:#222;cursor:pointer}
+/* miejsca — karty według kategorii */
+.legenda{display:flex;flex-wrap:wrap;gap:6px 16px;font-size:.88rem;margin:4px 0}
+.legenda label{display:flex;align-items:center;gap:5px;cursor:pointer}
+.kropka{display:inline-block;width:12px;height:12px;border-radius:50%;flex:none}
+.kropka.duza{width:14px;height:14px;margin-right:8px;vertical-align:middle}
+.karty-mj{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:12px}
+.karta-mj{background:var(--karta);border:1px solid var(--linia);border-top:4px solid;border-radius:8px;padding:10px 14px;box-shadow:var(--cien)}
+.karta-mj h3{margin:.1em 0 .2em;font-size:1.2rem}
+.karta-mj p{margin:.25em 0;font-size:.9rem}
+.karta-mj .dzis{color:var(--slaby);font-size:.82rem}
+.karta-mj .liczby-mj b{color:var(--akcent)}
+.karta-mj .pod{font-size:.82rem;color:var(--slaby)}
+.przycisk.maly,.na-mapie{font:inherit;font-size:.8rem;padding:2px 9px;border:1px solid var(--akcent);border-radius:5px;background:none;color:var(--akcent);cursor:pointer;text-decoration:none}
+.na-mapie:hover,.przycisk.maly:hover{background:var(--akcent);color:var(--karta)}
+details.rzadkie{margin:10px 0;background:var(--karta);border:1px solid var(--linia);border-radius:6px;padding:6px 12px}
+details.rzadkie summary{cursor:pointer;color:var(--slaby)}
+/* całe drzewo */
+.zakladki{display:flex;gap:4px;border-bottom:2px solid var(--linia);margin:4px 0 10px}
+.zakladki a{padding:6px 14px;text-decoration:none;color:var(--tekst);border:1px solid var(--linia);border-bottom:none;border-radius:6px 6px 0 0;background:var(--karta)}
+.zakladki a.on{background:var(--akcent);color:var(--karta);border-color:var(--akcent)}
+.zoom button{font:inherit;min-width:2.2em;padding:4px 8px;border:1px solid var(--linia);background:var(--karta);color:var(--tekst);border-radius:5px;cursor:pointer}
+.cale{position:relative;overflow:auto;height:75vh;border:1px solid var(--linia);border-radius:8px;background:var(--tlo)}
+.cale::after{content:"";display:block;width:var(--w);height:var(--h)}
+#plotno{position:absolute;left:12px;top:12px;transform-origin:0 0}
+svg.linie{position:absolute;left:0;top:0;overflow:visible}
+svg.linie path{fill:none;stroke:var(--slaby);stroke-width:1.2;opacity:.7}
+.wz{position:absolute;width:230px;box-sizing:border-box;background:var(--karta);border:1px solid var(--linia);border-left:4px solid #999;
+  border-radius:6px;padding:3px 8px;font-size:.8rem;line-height:1.35;overflow:hidden;box-shadow:var(--cien)}
+.wz.m{border-left-color:#4a6fa5} .wz.k{border-left-color:#b5577a}
+.wz.cel{outline:3px solid var(--akcent2);z-index:2}
+.wz .im{font-weight:700;text-decoration:none;display:inline-block;max-width:180px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;vertical-align:bottom}
+.wz .rodz{float:right;text-decoration:none;color:var(--slaby)}
+.wz .lata{display:block;font-size:.75rem}
+.wz .mz{white-space:nowrap;overflow:hidden;text-overflow:ellipsis;color:var(--slaby)}
+.wz .mz .lata{display:inline}
+.wz .mz a{color:var(--link)} .wz .skok{text-decoration:none;font-weight:700}
+.wz .alt{font-style:italic;color:var(--akcent);font-size:.72rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.rod-tytul{position:absolute;left:0;font-family:var(--szeryf);font-size:1.1rem;color:var(--akcent);font-weight:700}

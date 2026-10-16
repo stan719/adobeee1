@@ -38,6 +38,8 @@ class Baza:
             m = self.miejsca.get(i)
             if m and w.get('wsp') and not w.get('odrzucone') and not m.get('wsp'):
                 m['wsp'] = w['wsp']
+                if w.get('sprawdzone'):
+                    m['osm_nazwa'] = w['znaleziono']
                 m['wsp_zrodlo'] = (f'OpenStreetMap Nominatim: „{w["znaleziono"]}”' +
                                    ('' if w.get('sprawdzone') else ' — dopasowanie automatyczne, do sprawdzenia'))
         for m in self.miejsca.values():      # obiekty w miejscowości (kościół, dwór, cmentarz) — położenie miejscowości
@@ -400,7 +402,7 @@ def osoba_strona(b, i):
         h.append(f'<p class="utoz"><b>Utożsamienie:</b> {esc(o["utozsamienie"])}</p>')
     if o.get('uwagi'):
         h.append(f'<p class="uwagi-os"><b>Uwagi:</b> {esc(o["uwagi"])}</p>')
-    h.append(f'<p><a class="przycisk" href="drzewo.html#{i}">Pokaż w drzewie</a></p>')
+    h.append(f'<p><a class="przycisk" href="drzewo.html#{i}">Pokaż w całym drzewie</a> <a class="przycisk" href="drzewo-osoba.html#{i}">Rodzina w drzewie</a></p>')
 
     rodzice, malz, dzieci, rodz = rodzina(b, i)
     if rodzice or malz or dzieci or rodz:
@@ -512,37 +514,132 @@ LEAFLET_SKRYPT = ('<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
 OPRACOWANIE_KOTWICE = {}
 
 
+KATEGORIE = [
+    ('majatki', 'Majątki i dobra rodzinne', '#8a3b2e', 'Wsie i dwory, które należały do rodziny — z właścicielami w czasie.'),
+    ('groby', 'Groby, kaplice i cmentarze', '#4b4f7a', 'Miejsca pochówku i pamięci.'),
+    ('koscioly', 'Kościoły i fundacje', '#9c6b1f', 'Parafie, kościoły i klasztory związane z rodziną.'),
+    ('zycie', 'Miejsca życia', '#2f6d5a', 'Miejsca urodzenia, zamieszkania, nauki i śmierci.'),
+    ('inne', 'Wydarzenia i inne wzmianki', '#6f655b', 'Bitwy, podróże, miejsca wspomniane przy okazji.'),
+]
+
+
+SAMODZIELNE_W_MIESCIE = {'cmentarz', 'kaplica', 'kościół', 'majątek'}
+
+
+def osobna_karta(b, i):
+    """Cmentarz, kościół czy majątek w mieście dostaje własną kartę, zamiast ginąć w karcie miasta."""
+    m = b.miejsca[i]
+    p = b.miejsca.get(m.get('nadrzedne'))
+    return p is None or (p['typ'] in ('miasto', 'region') and m['typ'] in SAMODZIELNE_W_MIESCIE)
+
+
+def poddrzewo(b, i):
+    w = [i]
+    for c in b.dzieci_miejsc[i]:
+        if not osobna_karta(b, c):
+            w += poddrzewo(b, c)
+    return w
+
+
+def fakty_miejsca(b, ids):
+    wyn, widz = [], set()
+    for x in ids:
+        for t in b.po_podmiocie[x] + b.po_obiekcie[x] + b.po_miejscu[x]:
+            if t['id'] not in widz:
+                widz.add(t['id'])
+                wyn.append(t)
+    return wyn
+
+
+def kategoria_miejsca(b, i):
+    ids = poddrzewo(b, i)
+    typy = {b.miejsca[x]['typ'] for x in ids}
+    fs = fakty_miejsca(b, ids)
+    rel = collections.Counter(t['relacja'] for t in fs)
+    if b.miejsca[i]['typ'] in ('miasto', 'region'):
+        typy = {b.miejsca[i]['typ']}
+        fs = [t for t in fs if i in (t['podmiot'], t.get('obiekt'), t.get('miejsce'))]
+        rel = collections.Counter(t['relacja'] for t in fs)
+        ids = [i]
+    if 'majątek' in typy or any(t['relacja'] == 'wlasnosc' and t.get('obiekt') in ids for t in fs):
+        return 'majatki'
+    if typy & {'cmentarz', 'kaplica'} or rel['pochowek'] >= max(1, len(fs) // 2):
+        return 'groby'
+    if 'kościół' in typy or rel['fundacja']:
+        return 'koscioly'
+    if rel['urodzenie'] + rel['smierc'] + rel['zamieszkanie'] + rel['chrzest'] + rel['slub'] + rel['wyksztalcenie'] + rel['pochowek']:
+        return 'zycie'
+    return 'inne'
+
+
+def dzis_krotko(m):
+    if m.get('dzis'):
+        return m['dzis']
+    n = m.get('osm_nazwa')
+    if not n:
+        return ''
+    cz = [c.strip() for c in n.split(',')[1:] if not re.fullmatch(r'[\d\- ]+', c.strip()) and c.strip() != 'Polska']
+    cz = [c for c in cz if c.startswith(('gmina', 'powiat', 'województwo')) or len(cz) <= 2]
+    return ', '.join(cz[-3:])
+
+
 def miejsca_lista(b):
-    wsp = [{'id': m['id'], 'n': m['nazwa'], 'lat': m['wsp'][0], 'lon': m['wsp'][1],
-            'f': len(b.po_podmiocie[m['id']]) + len(b.po_obiekcie[m['id']]) + len(b.po_miejscu[m['id']])}
-           for m in b.miejsca.values() if m.get('wsp') and not m.get('wsp_dziedz')]
-    h = ['<h1>Miejsca i majątki</h1>']
-    if wsp:
-        h.append(f'<div id="mapa" class="mapa"></div><p class="drobne">Na mapie {len(wsp)} z {len(b.miejsca)} miejsc '
-                 '(pozostałe nie mają ustalonych współrzędnych — np. ulice, groby, miejsca niepewne). '
-                 'Podkład © współtwórcy OpenStreetMap.</p>')
-    else:
-        h.append('<p class="uwaga">Mapa pojawi się po uzupełnieniu współrzędnych miejsc.</p>')
-    h.append('<h2>Cztery majątki z monografii</h2><ul class="kafle">')
-    for i in ('radoszewice', 'siemkowice', 'krempa', 'koscierzyn'):
-        h.append(f'<li>{b.link(i)}<br><a class="drobne" href="opracowanie-majatki.html#{OPRACOWANIE_KOTWICE.get(i, "")}">opracowanie</a></li>')
-    h.append('</ul><h2>Wszystkie miejsca</h2><p><input id="filtr" type="search" placeholder="Filtruj listę…" class="filtr"></p>'
-             '<div id="lista-osob">')
-    typy = collections.defaultdict(list)
-    for m in b.miejsca.values():
-        if not m.get('nadrzedne') or m['nadrzedne'] not in b.miejsca:
-            typy[m['typ']].append(m['id'])
-    for typ in sorted(typy):
-        h.append(f'<section class="grupa"><h3>{esc(typ)}</h3><ul class="osoby">')
-        for i in sorted(typy[typ], key=lambda x: norm_szukaj(b.nazwa(x))):
-            dz = b.dzieci_miejsc[i]
-            pod = (' <span class="drobne">(' + ', '.join(b.link(c) for c in sorted(dz, key=b.nazwa)) + ')</span>') if dz else ''
-            h.append(f'<li data-s="{esc(norm_szukaj(b.nazwa(i) + " " + " ".join(b.nazwa(c) for c in dz)))}">{b.link(i)}{pod}</li>')
-        h.append('</ul></section>')
-    h.append('</div>')
-    dane = f'<script>window.MIEJSCA={json.dumps(wsp, ensure_ascii=False)};</script>'
-    skr = '<script src="filtr.js"></script>' + (LEAFLET_SKRYPT + dane + '<script src="mapa.js"></script>' if wsp else '')
-    zapisz('miejsca.html', strona('Miejsca', '\n'.join(h), 'miejsca.html', LEAFLET_GLOWA if wsp else '', skr))
+    gora = [m['id'] for m in b.miejsca.values() if osobna_karta(b, m['id'])]
+    karty = collections.defaultdict(list)
+    punkty = []
+    for i in gora:
+        ids = poddrzewo(b, i)
+        fs = fakty_miejsca(b, ids)
+        kat = kategoria_miejsca(b, i)
+        lata = [r for t in fs for r in [rok((t.get('data') or {}).get('od') or (t.get('data') or {}).get('do'))]
+                if r and r > 1000 and str(r) in str((t.get('data') or {}).get('tekst') or '')]   # tylko lata zapisane w źródle
+        osoby = collections.Counter(e for t in fs for e in (t['podmiot'], t.get('obiekt')) if e in b.osoby)
+        karty[kat].append({'id': i, 'fs': fs, 'lata': lata, 'osoby': osoby, 'ids': ids})
+        m = b.miejsca[i]
+        if m.get('wsp') and not m.get('wsp_dziedz'):
+            punkty.append({'id': i, 'n': m['nazwa'], 'lat': m['wsp'][0], 'lon': m['wsp'][1], 'f': len(fs), 'k': kat})
+    h = ['<h1>Miejsca i majątki</h1>',
+         f'<p class="lead">{len(gora)} miejscowości i miejsc, pogrupowanych według tego, co łączy je z rodziną. '
+         'Najpierw miejsca ważne (3 i więcej faktów), niżej — zwinięte — rzadkie wzmianki.</p>',
+         '<div id="mapa" class="mapa"></div><div class="legenda" id="legenda">' +
+         ''.join(f'<label><input type="checkbox" data-k="{k}" checked><span class="kropka" style="background:{kol}"></span>{esc(n)}</label>'
+                 for k, n, kol, _ in KATEGORIE) + '</div>',
+         f'<p class="drobne">Na mapie {len(punkty)} miejsc z ustalonym położeniem (OpenStreetMap, przejrzane ręcznie). '
+         'Wielkość kółka = liczba faktów.</p>',
+         '<nav class="spis">' + ' · '.join(f'<a href="#k-{k}">{esc(n)}</a> ({len(karty[k])})' for k, n, _, _ in KATEGORIE) + '</nav>']
+    for k, nazwa, kol, opis in KATEGORIE:
+        lst = sorted(karty[k], key=lambda x: (-len(x['fs']), norm_szukaj(b.nazwa(x['id']))))
+        wazne = [x for x in lst if len(x['fs']) >= 3]
+        rzadkie = [x for x in lst if len(x['fs']) < 3]
+        h.append(f'<section id="k-{k}"><h2><span class="kropka duza" style="background:{kol}"></span>{esc(nazwa)}</h2>'
+                 f'<p class="drobne">{esc(opis)}</p><div class="karty-mj">')
+        for x in wazne:
+            m = b.miejsca[x['id']]
+            okres = f'{min(x["lata"])}–{max(x["lata"])}' if x['lata'] and min(x['lata']) != max(x['lata']) else (str(x['lata'][0]) if x['lata'] else '')
+            dz = dzis_krotko(m)
+            osoby = ', '.join(b.link(o) for o, _ in x['osoby'].most_common(4))
+            pod = [c for c in x['ids'][1:]]
+            na_mapie = (f'<button type="button" class="na-mapie" data-id="{x["id"]}">na mapie</button>'
+                        if m.get('wsp') and not m.get('wsp_dziedz') else '')
+            h.append(f'<article class="karta-mj" style="border-top-color:{kol}"><h3>{b.link(x["id"])}</h3>'
+                     + (f'<p class="dzis">{esc(dz)}</p>' if dz else '') +
+                     f'<p class="liczby-mj"><b>{len(x["fs"])}</b> faktów' + (f' · <b>{okres}</b>' if okres else '') +
+                     f' · {len(x["osoby"])} osób</p>'
+                     + (f'<p class="osoby-mj">{osoby}</p>' if osoby else '')
+                     + (('<p class="pod">W tym: ' + ', '.join(b.link(c) for c in pod[:6]) + (' …' if len(pod) > 6 else '') + '</p>') if pod else '')
+                     + (f'<p><a class="przycisk maly" href="opracowanie-majatki.html#{OPRACOWANIE_KOTWICE[x["id"]]}">dzieje majątku</a> {na_mapie}</p>'
+                        if x['id'] in OPRACOWANIE_KOTWICE else (f'<p>{na_mapie}</p>' if na_mapie else ''))
+                     + '</article>')
+        h.append('</div>')
+        if rzadkie:
+            h.append(f'<details class="rzadkie"><summary>Rzadkie wzmianki ({len(rzadkie)})</summary><ul class="osoby">' +
+                     ''.join(f'<li>{b.link(x["id"])} <span class="drobne">{esc(dzis_krotko(b.miejsca[x["id"]]))}</span></li>'
+                             for x in sorted(rzadkie, key=lambda x: norm_szukaj(b.nazwa(x['id'])))) + '</ul></details>')
+        h.append('</section>')
+    kol = {k: c for k, _, c, _ in KATEGORIE}
+    dane = f'<script>window.MIEJSCA={json.dumps(punkty, ensure_ascii=False)};window.KOLORY={json.dumps(kol)};</script>'
+    zapisz('miejsca.html', strona('Miejsca', '\n'.join(h), 'miejsca.html', LEAFLET_GLOWA,
+                                  LEAFLET_SKRYPT + dane + '<script src="mapa.js"></script>'))
 
 
 # ============================================================ groby, oś czasu
@@ -723,6 +820,78 @@ def sprawdzenie(b):
 
 # ============================================================ drzewo, szukaj, start
 
+def drzewo_cale(b):
+    """Las drzew: każde dziecko pod jednym „głównym” rodzicem (ojciec; gdy brak — matka). Matka pokazana jako żona ojca;
+    sprzeczne przekazy (dwóch ojców) zaznaczone przy dziecku, nie scalane."""
+    waga = collections.Counter()
+    rodzice = collections.defaultdict(list)
+    malz = collections.defaultdict(list)
+    for t in b.tw:
+        if t['relacja'] == 'rodzic' and t['podmiot'] in b.osoby and t.get('obiekt') in b.osoby:
+            waga[(t['podmiot'], t['obiekt'])] += 1
+            if t['obiekt'] not in rodzice[t['podmiot']]:
+                rodzice[t['podmiot']].append(t['obiekt'])
+        if t['relacja'] in ('malzonek', 'slub') and t['podmiot'] in b.osoby and t.get('obiekt') in b.osoby:
+            for a, c in ((t['podmiot'], t['obiekt']), (t['obiekt'], t['podmiot'])):
+                if c not in malz[a]:
+                    malz[a].append(c)
+    plec = lambda x: b.osoby[x]['plec']
+    glowny, uwagi = {}, collections.defaultdict(list)
+    for c, ps in rodzice.items():
+        ojcowie = sorted([p for p in ps if plec(p) == 'm'], key=lambda p: -waga[(c, p)])
+        matki = sorted([p for p in ps if plec(p) != 'm'], key=lambda p: -waga[(c, p)])
+        g = (ojcowie or matki)[0]
+        glowny[c] = g
+        for p in (ojcowie if plec(g) == 'm' else matki)[1:]:
+            uwagi[c].append(f'wg innego przekazu {"syn" if plec(c) == "m" else "córka"}: {b.nazwa_osoby(p)}')
+        for mt in (matki if plec(g) == 'm' else []):
+            if mt not in malz[g]:
+                uwagi[c].append(f'matka: {b.nazwa_osoby(mt)}')
+    dzieci = collections.defaultdict(list)
+    for c, g in glowny.items():
+        dzieci[g].append(c)
+    def rok_ur(i):
+        l = b.lata(i)
+        m = re.match(r'(\d{3,4})', l or '')
+        return int(m.group(1)) if m else 9999
+    for g in dzieci:
+        dzieci[g].sort(key=lambda c: (rok_ur(c), b.nazwa_osoby(c)))
+    def wielkosc(i, byly=None):
+        byly = byly or set()
+        if i in byly:
+            return 0
+        byly.add(i)
+        return 1 + sum(wielkosc(c, byly) for c in dzieci[i])
+    korzenie = []
+    for i in b.osoby:
+        if i in glowny:
+            continue
+        if not dzieci[i] and (malz[i] or not any(i in v for v in rodzice.values())):
+            continue      # tylko jako małżonek (albo bez żadnych powiązań) — pokazany w ramce partnera
+        korzenie.append(i)
+    korzenie.sort(key=lambda i: -wielkosc(i))
+    N = {i: [b.nazwa_osoby(i), b.lata(i), plec(i), malz[i], dzieci[i], uwagi[i]] for i in b.osoby}
+    T = [[k, wielkosc(k)] for k in korzenie]
+    w_drzewie = {x for k in korzenie for x in [k]} | set(glowny) | {s for i in list(glowny) + korzenie for s in malz[i]}
+    h = ['<h1>Drzewo genealogiczne</h1>',
+         '<p class="zakladki"><a class="on" href="drzewo.html">Całe drzewo</a><a href="drzewo-osoba.html">Wokół jednej osoby</a></p>',
+         '<p class="filtry"><label>Ród: <select id="rod">' +
+         ''.join(f'<option value="{k}">{esc(b.nazwa_osoby(k))} — {n} os.</option>' for k, n in T if n > 1) +
+         '<option value="*">wszystkie rody naraz</option></select></label> '
+         '<input id="szukaj-os" list="lista-os" class="filtr" placeholder="Znajdź osobę w drzewie…">'
+         '<datalist id="lista-os">' + ''.join(f'<option value="{esc(b.nazwa_osoby(i) + (" " + b.lata(i) if b.lata(i) else ""))}" data-id="{i}">'
+                                         for i in sorted(w_drzewie, key=lambda x: norm_szukaj(b.nazwa_osoby(x)))) + '</datalist> '
+         '<span class="zoom"><button type="button" data-z="-1" title="pomniejsz">−</button><button type="button" data-z="0" title="100%">100%</button>'
+         '<button type="button" data-z="1" title="powiększ">+</button></span></p>',
+         '<p class="drobne">Pokolenia od lewej do prawej. W ramce: osoba, lata życia, pod spodem ∞ małżonkowie. '
+         'Dzieci pod ojcem (gdy źródła nie podają ojca — pod matką). Gdy źródła podają różnych ojców, dziecko stoi pod jednym, '
+         'a drugi przekaz jest wpisany w ramce (kursywą). Kliknięcie imienia otwiera kartę osoby, „⤢” — widok rodziny.</p>',
+         '<div id="cale" class="cale"><div id="plotno"></div></div>']
+    skr = (f'<script>window.CALE={json.dumps({"N": N, "T": T}, ensure_ascii=False)};</script>'
+           '<script src="drzewo-cale.js"></script>')
+    zapisz('drzewo.html', strona('Drzewo', '\n'.join(h), 'drzewo.html', skrypty=skr))
+
+
 def drzewo(b):
     P = {}
     for i, o in b.osoby.items():
@@ -739,6 +908,7 @@ def drzewo(b):
                     malz[a].append(c)
     dane = {'P': P, 'R': rodzice, 'M': malz}
     h = ['<h1>Drzewo genealogiczne</h1>',
+         '<p class="zakladki"><a href="drzewo.html">Całe drzewo</a><a class="on" href="drzewo-osoba.html">Wokół jednej osoby</a></p>',
          '<p class="filtry"><input id="wybor" list="lista" placeholder="Wpisz imię lub nazwisko…" class="filtr"> '
          '<datalist id="lista">' + ''.join(f'<option value="{esc(P[i]["n"] + (" " + P[i]["l"] if P[i]["l"] else ""))}" data-id="{i}">'
                                          for i in sorted(P, key=lambda x: norm_szukaj(P[x]['n']))) + '</datalist> '
@@ -747,7 +917,7 @@ def drzewo(b):
          'Gdy źródła podają różnych rodziców, pokazani są wszyscy (ramka przerywana = sprzeczne przekazy).</p>',
          '<div id="drzewo"></div>']
     skr = f'<script>window.DRZEWO={json.dumps(dane, ensure_ascii=False)};</script><script src="drzewo.js"></script>'
-    zapisz('drzewo.html', strona('Drzewo', '\n'.join(h), 'drzewo.html', skrypty=skr))
+    zapisz('drzewo-osoba.html', strona('Drzewo — rodzina osoby', '\n'.join(h), 'drzewo.html', skrypty=skr))
 
 
 def szukaj(b):
@@ -790,7 +960,7 @@ def start(b):
          f'<ul class="liczby"><li><b>{len(b.osoby)}</b> osób</li><li><b>{len(b.miejsca)}</b> miejsc</li>'
          f'<li><b>{len(b.tw)}</b> faktów</li><li><b>{len(b.zr)}</b> źródeł</li><li><b>{sum(len(v) for v in b.strony.values())}</b> stron</li></ul></section>',
          '<section><h2>Od czego zacząć</h2><ul class="kafle">'
-         '<li><a href="drzewo.html#radoszewski-jerzy-1902">Drzewo genealogiczne</a><span>pokolenia i gałęzie</span></li>'
+         '<li><a href="drzewo.html">Drzewo genealogiczne</a><span>pokolenia i gałęzie</span></li>'
          '<li><a href="miejsca.html">Miejsca i majątki</a><span>Radoszewice, Siemkowice, Krempa, Kościerzyn…</span></li>'
          '<li><a href="zrodla.html">Źródła</a><span>zdjęcia stron obok transkrypcji</span></li>'
          '<li><a href="czas.html">Oś czasu</a><span>od XII do XXI wieku</span></li>'
@@ -830,6 +1000,7 @@ def main():
     zrodla_lista(b)
     sprawdzenie(b)
     drzewo(b)
+    drzewo_cale(b)
     szukaj(b)
     start(b)
     n = len(glob.glob(os.path.join(WYJ, '*.html')))
