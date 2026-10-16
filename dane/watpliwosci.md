@@ -143,3 +143,39 @@ Narratorka pisze w 1. osobie o pensji Plater, o „Dziadziu Stasiu” i o życiu
 - Żona Franciszka z Neru: **Ludmiła** (S03, S07 s. 26) i **Ludomira** (S07 s. 57).
 - Grób na Powązkach kw. 157 rz. 6: „grób **12/13**” (S03) i „grób **1**” (S07 s. 54). Numer ewidencyjny Marii Mierzyńskiej: **13345**/65 (S03) i **13845**/65 (S07 s. 55).
 - Józef Radoszewski (1791–1831): ojciec **Jan** (Wielkopolski Słownik Biograficzny) albo **Roch** (Dunin Borkowski). Autorka sama zestawia oba źródła (S07 s. 25).
+
+## S02 — Stefan Łakomy, „Z dziejów Radoszewic” cz. I (1981)
+
+### Nazwiska, miejsca, wyrazy do potwierdzenia
+| Strona | Niepewny odczyt | Kontekst / kadr |
+|---|---|---|
+| 3 | łany „**częściowej**”[?] szlachty; „Jana **Hieronima**[?] i Mikołaja” | Radoszewice 1552 (Pawiński) — `IMG_5831 0.15 0.60 0.95 0.72` |
+| 4 | „**Mieczanów**”[?], przyległ. „**Szmury**”[?]; „Kuszyna” (może „Kruszyna”) | dobra Radoszewice 1885 — `IMG_5832 0.15 0.62 0.88 0.80` |
+| 5 | „Kuźnica al. **Kuźnica**[?]”; wś. „**Łaski**”[?] (Laski?) | skład dóbr |
+| 6 | komora celna „w **Krzytach**”[?], „ze **Krzytowa**”[?] (Krzętów?); „**Skrzelin**”[?] | trakt handlowy (Rosin) — `IMG_5834 0.15 0.49 0.95 0.80` |
+| 13 | „skierowany już **ostrzem**[?] wyraźnie” | rokosz |
+| 14 | „stężycki **zwoływał**[?]”; „Umożyły się” (sic?) | rokosz |
+| 15–16 | Jan **Kurzyński**[?], Maciej **Mowiński**[?], Eliasz **Gołkowski**[?] | szlachta wieluńska 1606 |
+| 21 | dopisek na marginesie: „stracił **chyba**[?] Michał Kasztelan Brzeziński 1775 albo Roch Kasztelanic pochowany w Uniejowie **+1828**[?]” | `IMG_5849 0.10 0.20 0.32 0.46 --kolor` |
+| 22 | „Z odczytu Franciszka **Borzyka**[?]” | odczyt w 100. rocznicę powstania styczniowego (1963) |
+| 23 | „Radoszewicach, **Lipniku**[?] i Kuszynie”; skreślony wyraz w przypisie 32 | gospodarka stawowa 1562–1588 |
+
+### Osobliwości i rozbieżności (nie poprawiane)
+- Numeracja przypisów: dwa przypisy „6” (s. 10 i s. 12), brak przypisu 5 (odsyłacz „5” na s. 10), po przypisie 9 (s. 20) od razu przypis 32 (s. 23).
+- s. 20: znaczki „*2)” i „+1)” — autor zamienia kolejność dwóch akapitów (sukienka w Pajęcznie / walki z Turkami).
+- Jerzy Radoszewski: „wówczas 70-letni” w 1607 r. (s. 18), a zm. 23 X 1614 w wieku 80 lat (s. 9) — ur. ok. 1534, w 1607 miałby ok. 73 lata.
+- Jan Węgierski: „pisarz ziemski wieluński” (s. 15) i „sędzia ziemski wieluński” (s. 16).
+- Czas posiadania Radoszewic: „przez przeszło VI wieków” (S02 s. 8), „przez ok. 4 wieki” (S10 s. 2, poprawione z 3).
+- Słownik geograficzny: S02 s. 6 pomija „17 osad włośc.”, które są w S10 s. 2.
+- Roch Radoszewski: na marginesie S02 s. 21 „+1828”[?], we wszystkich innych źródłach (S03, S05, S07) +1820.
+
+## S10 — Stefan Łakomy, praca PTTK „Dwór i założenia parkowe w Radoszewicach” (1978)
+
+| Strona | Niepewny odczyt | Kontekst |
+|---|---|---|
+| 1 | drobna pieczątka/znak pod datą — nieczytelny | nagłówek |
+| 8 | „wybudowania **kuchty**[?] sprzętowej” (bazy? kuźni?) | po latach 50. |
+| 8 | „**zwarcie łączący się**”[?] | opis parku |
+| 5 | „**Zimogrodzkiego**” — odczyt prawdopodobny | |
+
+Ten sam autor przepisał w S02 i S10 te same cytaty (Słownik geograficzny t. 9 s. 437; ks. W. Prygodzki, „Z przeszłości Wielunia” s. 19). Oba teksty są zgodne co do dat: Jerzy zm. 23 X 1614, Andrzej zm. 1621, Marek zm. 28 XI 1641 w wieku 64 lat. Prygodzki potwierdza też odczyt „Prygodzki” w miejsce „Prygielski?” z inwentaryzacji.
