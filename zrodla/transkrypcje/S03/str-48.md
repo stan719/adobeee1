@@ -3,7 +3,7 @@ zrodlo: S03
 strona: "48"
 zdjecie: "IMG_5899.JPEG"
 polozenie: lewa strona; kalendarz — czerwiec; u dołu sekcja „Imieniny”
-przejscia: [1, 2]
+przejscia: [1, 2, 3]  # 3 = kontrola krzyżowa w obrębie S03–S06
 ---
 
 ## S03-p48-s01

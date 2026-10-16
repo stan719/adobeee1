@@ -3,7 +3,7 @@ zrodlo: S03
 strona: "3"
 zdjecie: "IMG_5854(1).JPEG"
 polozenie: lewa strona (widoczna okładka z napisem „PRES…”, palec na dole); poza nagłówkiem i 2 wierszami pusta
-przejscia: [1, 2]
+przejscia: [1, 2, 3]  # 3 = kontrola krzyżowa w obrębie S03–S06
 ---
 
 ## S03-p03-s01

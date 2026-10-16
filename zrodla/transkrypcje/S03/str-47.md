@@ -3,7 +3,7 @@ zrodlo: S03
 strona: "47"
 zdjecie: "IMG_5898.JPEG"
 polozenie: prawa strona; kalendarz — maj; u dołu sekcja „Imieniny”
-przejscia: [1, 2]
+przejscia: [1, 2, 3]  # 3 = kontrola krzyżowa w obrębie S03–S06
 ---
 
 ## S03-p47-s01

@@ -3,7 +3,7 @@ zrodlo: S03
 strona: "13"
 zdjecie: "IMG_5864(1).JPEG"
 polozenie: lewa strona; po prawej (str. 14) współmałżonkowie wpisani na tej samej wysokości — czytać obie strony razem
-przejscia: [1, 2]
+przejscia: [1, 2, 3]  # 3 = kontrola krzyżowa w obrębie S03–S06
 ---
 
 ## S03-p13-s01

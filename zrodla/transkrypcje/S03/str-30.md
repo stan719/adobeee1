@@ -3,7 +3,7 @@ zrodlo: S03
 strona: "30"
 zdjecie: "IMG_5881.JPEG"
 polozenie: lewa strona; dolna część pusta; palce w kadrze
-przejscia: [1, 2]
+przejscia: [1, 2, 3]  # 3 = kontrola krzyżowa w obrębie S03–S06
 ---
 
 [red.: numeracja kolejna stron S03 obejmuje tylko strony sfotografowane; prawa strona obok „Miejsc kultu” (str. 29) nie była sfotografowana osobno — prawdopodobnie pusta]

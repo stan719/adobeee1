@@ -3,7 +3,7 @@ zrodlo: S03
 strona: "20"
 zdjecie: "IMG_5871(1).JPEG"
 polozenie: prawa strona; górna część: współmałżonkowie (na wysokości Władysława i Edwarda ze str. 19); dolna: tekst ciągły
-przejscia: [1, 2]
+przejscia: [1, 2, 3]  # 3 = kontrola krzyżowa w obrębie S03–S06
 ---
 
 ## S03-p20-s01

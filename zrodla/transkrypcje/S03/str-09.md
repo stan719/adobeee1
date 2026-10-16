@@ -3,7 +3,7 @@ zrodlo: S03
 strona: "9"
 zdjecie: "IMG_5860(1).JPEG"
 polozenie: prawa strona; drzewo (wersja 2) — lewa kolumna: dziadkowie, prawa: pradziadkowie
-przejscia: [1, 2]
+przejscia: [1, 2, 3]  # 3 = kontrola krzyżowa w obrębie S03–S06
 ---
 
 ## S03-p09-s01

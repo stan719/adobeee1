@@ -3,7 +3,7 @@ zrodlo: S03
 strona: "43"
 zdjecie: "IMG_5894.JPEG"
 polozenie: lewa strona; kalendarz rocznic — styczeń (bez sekcji imienin); dolna część pusta; na okładce widoczne „…ESIT”
-przejscia: [1, 2]
+przejscia: [1, 2, 3]  # 3 = kontrola krzyżowa w obrębie S03–S06
 ---
 
 ## S03-p43-s01

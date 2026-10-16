@@ -3,7 +3,7 @@ zrodlo: S03
 strona: "31"
 zdjecie: "IMG_5882(1).JPEG"
 polozenie: prawa strona; dolna część pusta
-przejscia: [1, 2]
+przejscia: [1, 2, 3]  # 3 = kontrola krzyżowa w obrębie S03–S06
 ---
 
 ## S03-p31-s01

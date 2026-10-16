@@ -3,7 +3,7 @@ zrodlo: S03
 strona: "26"
 zdjecie: "IMG_5877.JPEG"
 polozenie: prawa strona; współmałżonkowie osób ze str. 25 na tej samej wysokości; gwiazdka odsyła do „*” ze str. 25
-przejscia: [1, 2]
+przejscia: [1, 2, 3]  # 3 = kontrola krzyżowa w obrębie S03–S06
 ---
 
 ## S03-p26-s01

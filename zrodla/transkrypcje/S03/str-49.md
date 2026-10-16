@@ -3,7 +3,7 @@ zrodlo: S03
 strona: "49"
 zdjecie: "IMG_5900.JPEG"
 polozenie: prawa strona; kalendarz — lipiec; u dołu sekcja „Imieniny”
-przejscia: [1, 2]
+przejscia: [1, 2, 3]  # 3 = kontrola krzyżowa w obrębie S03–S06
 ---
 
 ## S03-p49-s01

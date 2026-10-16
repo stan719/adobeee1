@@ -3,7 +3,7 @@ zrodlo: S03
 strona: "7"
 zdjecie: "IMG_5858(1).JPEG"
 polozenie: lewa strona; dalszy ciąg drzewa (wersja 1) — lewa kolumna: prapradziadkowie, prawa: ich rodzice; palec w kadrze na dole
-przejscia: [1, 2]
+przejscia: [1, 2, 3]  # 3 = kontrola krzyżowa w obrębie S03–S06
 ---
 
 ## S03-p07-s01

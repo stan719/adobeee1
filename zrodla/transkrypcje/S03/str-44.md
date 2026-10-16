@@ -3,7 +3,7 @@ zrodlo: S03
 strona: "44"
 zdjecie: "IMG_5895.JPEG"
 polozenie: prawa strona; kalendarz — luty; u dołu sekcja „imieniny”
-przejscia: [1, 2]
+przejscia: [1, 2, 3]  # 3 = kontrola krzyżowa w obrębie S03–S06
 ---
 
 ## S03-p44-s01

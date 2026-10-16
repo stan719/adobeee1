@@ -3,7 +3,7 @@ zrodlo: S03
 strona: "16"
 zdjecie: "IMG_5867.JPEG"
 polozenie: prawa strona; dolna część pusta; dwie grupy imion obwiedzione owalami
-przejscia: [1, 2]
+przejscia: [1, 2, 3]  # 3 = kontrola krzyżowa w obrębie S03–S06
 ---
 
 ## S03-p16-s01
@@ -37,7 +37,7 @@ Stanisław
 typ: tekst
 [red.: obwiedzione owalem]
 
-Barbara                      Wrzodarski[?]
+Barbara                      Wrzodarski
 ich dzieci Maria
 Wojciech
 

@@ -3,7 +3,7 @@ zrodlo: S03
 strona: "28"
 zdjecie: "IMG_5879.JPEG"
 polozenie: prawa strona; dalsze rubryki formularza ze str. 27 (chrzestni, miejsce) na tej samej wysokości
-przejscia: [1, 2]
+przejscia: [1, 2, 3]  # 3 = kontrola krzyżowa w obrębie S03–S06
 ---
 
 ## S03-p28-s01

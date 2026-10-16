@@ -3,7 +3,7 @@ zrodlo: S06
 strona: "1"
 zdjecie: "IMG_5910(1).JPEG"
 polozenie: kartka w linie z wyrwanego notesu (postrzępiony lewy brzeg); pozycje oddzielone poziomymi kreskami
-przejscia: [1, 2]
+przejscia: [1, 2, 3]  # 3 = kontrola krzyżowa w obrębie S03–S06
 ---
 
 ## S06-p01-s01

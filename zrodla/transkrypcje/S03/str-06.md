@@ -3,7 +3,7 @@ zrodlo: S03
 strona: "6"
 zdjecie: "IMG_5857(1).JPEG"
 polozenie: prawa strona rozkładówki „Nasze drzewo genealogiczne” (wersja 1)
-przejscia: [1, 2]
+przejscia: [1, 2, 3]  # 3 = kontrola krzyżowa w obrębie S03–S06
 ---
 
 ## S03-p06-s01

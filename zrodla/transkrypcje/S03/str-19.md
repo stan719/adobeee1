@@ -3,7 +3,7 @@ zrodlo: S03
 strona: "19"
 zdjecie: "IMG_5870(1).JPEG"
 polozenie: lewa strona; nagłówek ciągnie się na str. 20; dolna część pusta; na lewym marginesie biała plama (korektor lub ubytek papieru); palce w kadrze
-przejscia: [1, 2]
+przejscia: [1, 2, 3]  # 3 = kontrola krzyżowa w obrębie S03–S06
 ---
 
 ## S03-p19-s01

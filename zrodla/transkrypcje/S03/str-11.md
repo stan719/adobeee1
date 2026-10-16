@@ -3,7 +3,7 @@ zrodlo: S03
 strona: "11"
 zdjecie: "IMG_5862(1).JPEG"
 polozenie: prawa strona; drzewo (wersja 2) — kolejne pokolenie wstecz; wpisy na wysokości odpowiednich osób ze str. 10
-przejscia: [1, 2]
+przejscia: [1, 2, 3]  # 3 = kontrola krzyżowa w obrębie S03–S06
 ---
 
 ## S03-p11-s01

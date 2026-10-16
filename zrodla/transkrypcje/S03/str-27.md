@@ -3,7 +3,7 @@ zrodlo: S03
 strona: "27"
 zdjecie: "IMG_5878(1).JPEG"
 polozenie: lewa strona; formularz (rubryki: chrzest, I Komunia, bierzmowanie) — górna połowa Teresa, dolna Anna; ciąg dalszy wierszy na str. 28; na okładce widoczne „…RESIT”
-przejscia: [1, 2]
+przejscia: [1, 2, 3]  # 3 = kontrola krzyżowa w obrębie S03–S06
 ---
 
 ## S03-p27-s01

@@ -3,7 +3,7 @@ zrodlo: S03
 strona: "1"
 zdjecie: "IMG_5852(1).JPEG"
 polozenie: pierwsza strona zeszytu w linie (po lewej wewnętrzna strona okładki)
-przejscia: [1, 2]
+przejscia: [1, 2, 3]  # 3 = kontrola krzyżowa w obrębie S03–S06
 ---
 
 ## S03-p01-s01

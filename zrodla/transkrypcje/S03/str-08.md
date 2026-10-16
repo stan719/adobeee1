@@ -3,7 +3,7 @@ zrodlo: S03
 strona: "8"
 zdjecie: "IMG_5859(1).JPEG"
 polozenie: lewa strona; drzewo (wersja 2) — Teresa i rodzice z datami; na okładce widoczny napis „…PRESIT”; palce w kadrze
-przejscia: [1, 2]
+przejscia: [1, 2, 3]  # 3 = kontrola krzyżowa w obrębie S03–S06
 ---
 
 ## S03-p08-s01

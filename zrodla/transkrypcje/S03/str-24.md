@@ -3,7 +3,7 @@ zrodlo: S03
 strona: "24"
 zdjecie: "IMG_5875(1).JPEG"
 polozenie: prawa strona; współmałżonkowie osób ze str. 23 na tej samej wysokości; dolna część pusta
-przejscia: [1, 2]
+przejscia: [1, 2, 3]  # 3 = kontrola krzyżowa w obrębie S03–S06
 ---
 
 ## S03-p24-s01

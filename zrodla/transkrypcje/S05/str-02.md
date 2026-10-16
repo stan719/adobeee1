@@ -3,7 +3,7 @@ zrodlo: S05
 strona: "2"
 zdjecie: "IMG_5909(1).JPEG"
 polozenie: kartka w kratkę, zgięta w poprzek, strona 2 (ta sama ręka co str. 1)
-przejscia: [1, 2]
+przejscia: [1, 2, 3]  # 3 = kontrola krzyżowa w obrębie S03–S06
 ---
 
 ## S05-p02-s01
