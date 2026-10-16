@@ -51,3 +51,24 @@
 - {segment: S07-p27-d1, powod: "ślady innym pisakiem (litera W i krzyżyk)"}
 - {segment: S07-p32-d1, powod: "gwiazdka na marginesie"}
 - {segment: S02-p07-d1, powod: "pusta połowa strony, przebitka pisma z odwrocia"}
+- {segment: S01-p132-s00, powod: "pagina / stopka arkusza"}
+- {segment: S01-p133-s00, powod: "pagina / stopka arkusza"}
+- {segment: S01-p134-s00, powod: "pagina / stopka arkusza"}
+- {segment: S01-p135-s00, powod: "pagina / stopka arkusza"}
+- {segment: S01-p136-s00, powod: "pagina / stopka arkusza"}
+- {segment: S01-p137-s00, powod: "pagina / stopka arkusza"}
+- {segment: S01-p138-s00, powod: "pagina / stopka arkusza"}
+- {segment: S01-p139-s00, powod: "pagina / stopka arkusza"}
+- {segment: S01-p140-s00, powod: "pagina / stopka arkusza"}
+- {segment: S01-p141-s00, powod: "pagina / stopka arkusza"}
+- {segment: S01-p142-s00, powod: "pagina / stopka arkusza"}
+- {segment: S01-p143-s00, powod: "pagina / stopka arkusza"}
+- {segment: S01-p144-s00, powod: "pagina / stopka arkusza"}
+- {segment: S01-p145-s00, powod: "pagina / stopka arkusza"}
+- {segment: S01-p145-s03, powod: "pagina / stopka arkusza"}
+- {segment: S01-p136-d1, powod: "odręczny znak czytelnika (gwiazdka) bez treści"}
+- {segment: S01-p138-d1, powod: "odręczny znak czytelnika (gwiazdka) bez treści"}
+- {segment: S01-p139-d2, powod: "odręczny znak czytelnika (gwiazdka) bez treści"}
+- {segment: S01-p140-d1, powod: "odręczny znak czytelnika (gwiazdka) bez treści"}
+- {segment: S01-p141-d1, powod: "odręczny znak czytelnika (gwiazdka) bez treści"}
+- {segment: S01-p143-d1, powod: "odręczny znak czytelnika (gwiazdka) bez treści"}

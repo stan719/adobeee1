@@ -1125,3 +1125,70 @@
   nazwa: "Janowiec"
   typ: miasto
   pewnosc_identyfikacji: pewna
+
+- id: imbramowice
+  nazwa: "Imbramowice (klasztor)"
+  typ: kościół
+  pewnosc_identyfikacji: pewna
+
+- id: warna
+  nazwa: "Warna"
+  typ: miasto
+  pewnosc_identyfikacji: pewna
+
+- id: praga-czeska
+  nazwa: "Praga (Czechy)"
+  typ: miasto
+  pewnosc_identyfikacji: pewna
+
+- id: terebesz
+  nazwa: "Terebesz (Węgry)"
+  typ: inny
+  pewnosc_identyfikacji: prawdopodobna
+  uwagi: "Nadanie Mikołaja V wraz z Kamieńcem (S01)."
+
+- id: wielun-augustianie
+  nazwa: "Klasztor augustianów w Wieluniu"
+  typ: kościół
+  nadrzedne: wielun
+  pewnosc_identyfikacji: pewna
+
+- id: czestochowa-jasna-gora
+  nazwa: "Jasna Góra (Częstochowa)"
+  typ: kościół
+  pewnosc_identyfikacji: pewna
+
+- id: ozegow
+  nazwa: "Ożegów"
+  typ: wieś
+  pewnosc_identyfikacji: prawdopodobna
+
+- id: raduczyce
+  nazwa: "Raduczyce"
+  typ: wieś
+  pewnosc_identyfikacji: pewna
+
+- id: brzoszencin
+  nazwa: "Broszencin / Brzoszencin"
+  typ: wieś
+  pewnosc_identyfikacji: do_ustalenia
+
+- id: konopnica-widawa
+  nazwa: "Konopnica u Widawy"
+  typ: wieś
+  pewnosc_identyfikacji: pewna
+
+- id: strzelce
+  nazwa: "Strzelce"
+  typ: wieś
+  pewnosc_identyfikacji: do_ustalenia
+
+- id: bleszno
+  nazwa: "Błeszno u Częstochowy"
+  typ: wieś
+  pewnosc_identyfikacji: pewna
+
+- id: prusiecko
+  nazwa: "Prusiecko u Warty"
+  typ: wieś
+  pewnosc_identyfikacji: prawdopodobna

@@ -1653,7 +1653,8 @@
   nazwisko: "Radoszewski"
   herb: Oksza
   plec: m
-  warianty: ["Stogniew z Siemkowic"]
+  warianty: ["Stogniew z Siemkowic", "Stogneus junior, dictus Imbramicz"]
+  utozsamienie: "„Stogneus junior” z S01 (syn Imbrama, wziął Siemkowce, od niego Siemkowscy) = Stogniew z Siemkowic z S07 (1467) — prawdopodobne."
   uwagi: "Z Siemkowic — może protoplasta Siemkowskich (S01, S08)."
 
 - id: radoszewski-marcin-1597
@@ -2371,7 +2372,8 @@
   imiona: ["Jan"]
   nazwisko: "Wrszowiec"
   plec: m
-  warianty: ["Jan (Gesko) Wrszowiec"]
+  warianty: ["Jan (Gesko) Wrszowiec", "Comes Joannes I seu Stogneus", "Jan Werszowec"]
+  utozsamienie: "„Comes Joannes I seu Stogneus” z drzewa S01 = Jan (Gesko) Wrszowiec z S02/S10: ta sama tradycja (Czech z domu Wrszowców, nadanie od Krzywoustego, Radoszewice i Siemkowice)."
   uwagi: "Według tradycji z herbarzy Okolskiego i Niesieckiego: wychodźca czeski, zabójca ks. Świętopełka, protoplasta Okszyców (S10)."
 
 - id: niemojowski-ludwik-1823
@@ -2560,3 +2562,309 @@
   plec: m
   warianty: ["ojciec Franciszka Borzyka[?]"]
   uwagi: "Wójt gminy Radoszewice (S02)."
+
+- id: okszyc-jan-pok2
+  imiona: ["Jan"]
+  nazwisko: null
+  herb: Oksza
+  plec: m
+  warianty: ["Comes Joannes (pok. II)"]
+  uwagi: "S01 pok. II, syn Jana I; potomstwo zginęło."
+
+- id: okszyc-stogniew-i
+  imiona: ["Stogniew"]
+  nazwisko: null
+  herb: Oksza
+  plec: m
+  warianty: ["Comes Stogneus I"]
+  uwagi: "S01 pok. II, syn Jana I."
+
+- id: okszyc-raciborz
+  imiona: ["Racibor"]
+  nazwisko: null
+  herb: Oksza
+  plec: m
+  warianty: ["Comes Ratiborus", "Raciborz"]
+  uwagi: "S01 pok. II, syn Jana I; wrócił do Czech."
+
+- id: okszyc-stogniew-ii
+  imiona: ["Stogniew"]
+  nazwisko: null
+  herb: Oksza
+  plec: m
+  warianty: ["Comes Stogneus II"]
+  uwagi: "S01 pok. III, syn Stogniewa I."
+
+- id: okszyc-jan-ii
+  imiona: ["Jan"]
+  nazwisko: null
+  herb: Oksza
+  plec: m
+  warianty: ["Comes Joannes II"]
+  uwagi: "S01 pok. III, syn Stogniewa I."
+
+- id: okszyc-stogniew-iii
+  imiona: ["Stogniew"]
+  nazwisko: null
+  herb: Oksza
+  plec: m
+  warianty: ["Comes Stogneus III"]
+  uwagi: "S01 pok. IV, syn Jana II."
+
+- id: okszyc-jan-iii
+  imiona: ["Jan"]
+  nazwisko: null
+  herb: Oksza
+  plec: m
+  warianty: ["Comes Joannes III"]
+  uwagi: "S01 pok. IV, syn Jana II."
+
+- id: okszyc-mikolaj-i
+  imiona: ["Mikołaj"]
+  nazwisko: null
+  herb: Oksza
+  plec: m
+  warianty: ["Comes Nicolaus I"]
+  uwagi: "S01 pok. IV, syn Jana II."
+
+- id: okszyc-wroclaw-i
+  imiona: ["Wrocław", "Marcin"]
+  nazwisko: null
+  herb: Oksza
+  plec: m
+  warianty: ["Comes Vratislaus I vel Martinus"]
+  uwagi: "S01 pok. IV, syn Jana II."
+
+- id: okszyc-stogniew-iv-boxa
+  imiona: ["Stogniew", "Bogusław"]
+  nazwisko: null
+  herb: Oksza
+  plec: m
+  warianty: ["Comes Stogneus IV, seu Boguslaus — vul. Boxa", "Wojewoda Boxa", "Boksza"]
+  uwagi: "S01 pok. V, syn Mikołaja I; wojewoda sandomierski; od niego przydomek Boxa."
+
+- id: okszyc-dzierzslaw-i
+  imiona: ["Dzierżsław"]
+  nazwisko: null
+  herb: Oksza
+  plec: m
+  warianty: ["Comes Derslaus vul. Derzko"]
+  uwagi: "S01 pok. VI, syn Wojewody Boxy."
+
+- id: okszyc-pawel-pasko
+  imiona: ["Paweł"]
+  nazwisko: null
+  herb: Oksza
+  plec: m
+  warianty: ["Paulus vul. Pasko"]
+  uwagi: "S01 pok. VI, syn Wojewody Boxy."
+
+- id: okszyc-stogniew-v
+  imiona: ["Stogniew"]
+  nazwisko: null
+  herb: Oksza
+  plec: m
+  warianty: ["Comes Stogneus V, Boxic dictus"]
+  uwagi: "S01 pok. VI, syn Wojewody Boxy."
+
+- id: okszyc-mikolaj-ii-wontrubka
+  imiona: ["Mikołaj"]
+  nazwisko: null
+  herb: Oksza
+  plec: m
+  warianty: ["Comes Nicolaus II, dictus Wontrubka"]
+  uwagi: "S01 pok. VI, syn Wojewody Boxy; od niego Strzeleccy."
+
+- id: okszyc-jan-iv-ryj
+  imiona: ["Jan"]
+  nazwisko: null
+  herb: Oksza
+  plec: m
+  warianty: ["Comes Joannes IV, dictus Ryj"]
+  uwagi: "S01 pok. VI, syn Wojewody Boxy; od niego Rejowie."
+
+- id: nankier-biskup
+  imiona: ["Nankier"]
+  nazwisko: null
+  plec: m
+  warianty: ["Biskup Nankierus"]
+  uwagi: "Biskup, wg S01 potomek Dzierżka (pok. VI)."
+
+- id: strzelecki-jan-arcybiskup
+  imiona: ["Jan"]
+  nazwisko: "Strzelecki"
+  herb: Oksza
+  plec: m
+  warianty: ["Jan Arcybiskup Lwowski"]
+  uwagi: "Wg S01 z Okszyców Strzeleckich."
+
+- id: rej-mikolaj-poeta
+  imiona: ["Mikołaj"]
+  nazwisko: "Rej"
+  herb: Oksza
+  plec: m
+  warianty: ["pan Mikołaj poeta wielki"]
+  uwagi: "Wg S01 z potomków Jana IV „Ryja”."
+
+- id: orzechowski-stanislaw
+  imiona: ["Stanisław"]
+  nazwisko: "Orzechowski"
+  herb: Oksza
+  plec: m
+  warianty: ["pan Stanisław, co kanonik żonę pojął"]
+  uwagi: "Wg S01 Orzechowscy jednego z Rejami pochodzenia."
+
+- id: okszyc-jan-v
+  imiona: ["Jan"]
+  nazwisko: null
+  herb: Oksza
+  plec: m
+  warianty: ["Joannes V"]
+  uwagi: "S01 pok. VII, syn Stogniewa V; pisał się z Raduczyc."
+
+- id: kozieglowska-zona-jana-v
+  imiona: []
+  nazwisko: null
+  nazwisko_rodowe: "Koziegłowska"
+  plec: k
+  uwagi: "Żona Jana V (S01), potem mniszka w Imbramowicach."
+
+- id: okszyc-mikolaj-iii-boxic
+  imiona: ["Mikołaj"]
+  nazwisko: null
+  herb: Oksza
+  plec: m
+  warianty: ["Nicolaus III dictus Boxic"]
+  uwagi: "S01 pok. VII, syn Stogniewa V."
+
+- id: okszyc-stogniew-vi
+  imiona: ["Stogniew"]
+  nazwisko: null
+  herb: Oksza
+  plec: m
+  warianty: ["Stogneus VI"]
+  uwagi: "S01 pok. VII, syn Stogniewa V; od niego Konopniccy i Grabowscy."
+
+- id: okszyc-dzierzslaw-ii-siekierka
+  imiona: ["Dzierżsław"]
+  nazwisko: null
+  herb: Oksza
+  plec: m
+  warianty: ["Derslaus II zwany Siekierka"]
+  uwagi: "S01 pok. VII, syn Stogniewa V; od niego Błeszyńscy."
+
+- id: okszyc-stogniew-vii
+  imiona: ["Stogniew"]
+  nazwisko: null
+  herb: Oksza
+  plec: m
+  warianty: ["Stogneus VII"]
+  uwagi: "S01 pok. VIII, syn Mikołaja III; poległ pod Warną."
+
+- id: wierusz-zona-stogniewa-vii
+  imiona: []
+  nazwisko: null
+  nazwisko_rodowe: "Wierusz"
+  plec: k
+  warianty: ["z domu Wieruszów co z Kowal"]
+  uwagi: "Żona Stogniewa VII (S01)."
+
+- id: larys-jachna
+  imiona: ["Jachna"]
+  nazwisko: null
+  nazwisko_rodowe: "Larysz"
+  plec: k
+  warianty: ["Jejmość Pani Jachna z Ossiakowa z domu Larysów"]
+  uwagi: "Żona Imbrama (S01)."
+
+- id: okszyc-mikolaj-juvenis
+  imiona: ["Mikołaj"]
+  nazwisko: null
+  herb: Oksza
+  plec: m
+  warianty: ["Nicolaus juvenis"]
+  uwagi: "S01 pok. VIII, syn Mikołaja III; zmarł młodo."
+
+- id: okszyc-stogniew-viii-senior
+  imiona: ["Stogniew", "Imbram"]
+  nazwisko: null
+  herb: Oksza
+  plec: m
+  warianty: ["Stogneus VIII senior, a także Imbramus"]
+  uwagi: "S01 pok. IX, syn Imbrama; zmarł młodo w Pradze."
+
+- id: siemkowski-jan-syn-stogniewa
+  imiona: ["Jan"]
+  nazwisko: null
+  herb: Oksza
+  plec: m
+  uwagi: "Syn Stogniewa juniora „Imbramicza” (S01), wysłany do Prus przeciw Krzyżakom."
+
+- id: radoszewski-boguslaw-ii
+  imiona: ["Bogusław"]
+  nazwisko: "Radoszewski"
+  herb: Oksza
+  plec: m
+  warianty: ["Boguslaus II"]
+  uwagi: "S01 pok. X, syn Bogusława (Boxy); zm. bezżenny w Wieluniu."
+
+- id: radoszewski-jan-peregrynant
+  imiona: ["Jan"]
+  nazwisko: "Radoszewski"
+  herb: Oksza
+  plec: m
+  warianty: ["Joannes (pok. X)"]
+  uwagi: "S01 pok. X, syn Bogusława z drugiej żony; podróżnik, zbieracz dokumentów rodzinnych."
+
+- id: radoszewski-marcin-podole
+  imiona: ["Marcin"]
+  nazwisko: "Radoszewski"
+  herb: Oksza
+  plec: m
+  warianty: ["Martinus (pok. X)"]
+  uwagi: "S01 pok. X, najmłodszy syn Bogusława; przepadł na Podolu."
+
+- id: konopnicka-zofia
+  imiona: ["Zofia"]
+  nazwisko: null
+  nazwisko_rodowe: "Konopnicka"
+  plec: k
+  warianty: ["J. M. p. Zofia Konopnicka Sędzianka z Kroczowa"]
+  uwagi: "Żona Mikołaja V (S01); por. kurzepnicka (żona Mikołaja wg S07)."
+
+- id: radoszewski-andrzej-rotmistrz
+  imiona: ["Andrzej"]
+  nazwisko: "Radoszewski"
+  herb: Oksza
+  plec: m
+  warianty: ["Andreas Boxa Radoszeski de Siemkowice Rothmagister S. R. M."]
+  uwagi: "S01 pok. XI, syn Mikołaja V; rotmistrz JKM. Utożsamienie z radoszewski-andrzej-1574 / -1621 / -1630 nieustalone."
+
+- id: grabowski-zm-1831
+  imiona: []
+  nazwisko: "Grabowski"
+  plec: m
+  uwagi: "Bohater hasła GRABOWSKI z s. 131–132 S01 (s. 131 niesfotografowana); zm. 1831."
+
+- id: scipio-del-campo-weronika
+  imiona: ["Weronika"]
+  nazwisko: "Grabowska"
+  nazwisko_rodowe: "Scipio del Campo"
+  plec: k
+  uwagi: "Żona Grabowskiego zm. 1831 (S01)."
+
+- id: wilk-jan-grabowa
+  imiona: ["Jan"]
+  nazwisko: "Wilk"
+  plec: m
+  warianty: ["Jan Wilk na Grabowie i Konopnicy"]
+  uwagi: "Konopniccy-Grabowscy (S01, dodatek do przyp. 24 s. 93)."
+
+- id: zborowska-jachna
+  imiona: ["Jachna"]
+  nazwisko: "Wilk"
+  nazwisko_rodowe: "Zborowska"
+  herb: Jastrzębiec
+  plec: k
+  warianty: ["Jachna z Świerczowa"]
+  uwagi: "Żona Jana Wilka (S01)."
