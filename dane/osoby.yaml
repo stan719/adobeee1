@@ -2939,3 +2939,129 @@
   nazwisko: "Bajbuza"
   plec: m
   uwagi: "Dzierżawca browaru, obór i stajni w Krempie 1747 (S08)."
+
+- id: radoszewski-lukasz-1588
+  imiona: ["Łukasz"]
+  nazwisko: "Radoszewski"
+  herb: Oksza
+  plec: m
+  uwagi: "Syn Jana; przy dziale 1588 dostał stare siedlisko w Radoszewicach (S08)."
+
+- id: radoszewski-stanislaw-1679
+  imiona: ["Stanisław"]
+  nazwisko: "Radoszewski"
+  herb: Oksza
+  plec: m
+  warianty: ["Stanisław Boksa z Siemkowic Radoszewski"]
+  uwagi: "Zm. 1679, żona Salomea z Mycielina (S08). Może ten sam co radoszewski-stanislaw-1657 (żona Wiktoria Oleśnińska wg S07) — nie scalam."
+
+- id: mycielin-salomea
+  imiona: ["Salomea"]
+  nazwisko: "Radoszewska"
+  nazwisko_rodowe: "z Mycielina"
+  plec: k
+  warianty: ["Salomea z Mycielina Radoszewska"]
+  uwagi: "Wdowa po Stanisławie (zm. 1679) (S08)."
+
+- id: radoszewski-andrzej-1679
+  imiona: ["Andrzej"]
+  nazwisko: "Radoszewski"
+  herb: Oksza
+  plec: m
+  warianty: ["Imci Pan Andrzej Radoszewski syn nieboszczykowski"]
+  uwagi: "Syn Stanisława (zm. 1679); otrzymał testamentem rumaka (S08)."
+
+- id: niemojowski-andrzej-stolnik
+  imiona: ["Andrzej"]
+  nazwisko: "Niemojowski"
+  herb: Wierusz
+  plec: m
+  warianty: ["Andrzej Wierusz Niemojowski"]
+  uwagi: "Stolnik wieluński; kupił Radoszewice w latach 70. XVIII w. (S08)."
+
+- id: wezyk-martyna
+  imiona: ["Martyna"]
+  nazwisko: "Niemojowska"
+  nazwisko_rodowe: "Wężyk"
+  plec: k
+  warianty: ["Martina de Wężyk"]
+  uwagi: "Wdowa po Andrzeju Niemojowskim, stolniku wieluńskim (S08)."
+
+- id: niemojowski-antoni-1767
+  imiona: ["Antoni"]
+  nazwisko: "Niemojowski"
+  herb: Wierusz
+  plec: m
+  uwagi: "Ojciec Feliksa (S08)."
+
+- id: niemojowski-feliks-1792
+  imiona: ["Feliks"]
+  nazwisko: "Niemojowski"
+  herb: Wierusz
+  plec: m
+  warianty: ["Feliks Wierusz Niemojowski"]
+  uwagi: "Dziedzic Słupi k. Kępna, łowczy ostrzeszowski (1767), cześnik wieluński (1769); zm. przed 1 VI 1792 (S08)."
+
+- id: walkowska-aniela
+  imiona: ["Aniela"]
+  nazwisko: "Niemojowska"
+  nazwisko_rodowe: "Walkowska"
+  plec: k
+  uwagi: "Żona Feliksa Niemojowskiego (S08)."
+
+- id: niemojowski-gabriel-1854
+  imiona: ["Gabriel"]
+  nazwisko: "Niemojowski"
+  herb: Wierusz
+  plec: m
+  uwagi: "Syn Feliksa; właściciel Radoszewic; zm. 1 IX 1854 (S08)."
+
+- id: lubowidzka-katarzyna
+  imiona: ["Katarzyna"]
+  nazwisko: "Niemojowska"
+  nazwisko_rodowe: "Lubowidzka"
+  plec: k
+  warianty: ["Katarzyna z Lubowidzkich Niemojowska"]
+  uwagi: "Żona Gabriela; zm. ok. 1858 (S08)."
+
+- id: niemojowski-wincenty-1784
+  imiona: ["Wincenty"]
+  nazwisko: "Niemojowski"
+  herb: Wierusz
+  plec: m
+  warianty: ["Wincenty Wierusz Niemojowski"]
+  uwagi: "Syn Feliksa; działacz polityczny, poseł (1784–1834) (S08)."
+
+- id: niemojowski-bonawentura-1787
+  imiona: ["Bonawentura"]
+  nazwisko: "Niemojowski"
+  herb: Wierusz
+  plec: m
+  uwagi: "Syn Feliksa; poseł, właściciel Marchwacza (1787–1835) (S08)."
+
+- id: kaczkowska-emilia
+  imiona: ["Emilia"]
+  nazwisko: "Niemojowska"
+  nazwisko_rodowe: "Kaczkowska"
+  plec: k
+  warianty: ["Emilia z Kaczkowskich"]
+  uwagi: "Żona Ludwika Niemojowskiego, zm. przed 1855 (S08)."
+
+- id: niemojowska-katarzyna-obzowska
+  imiona: ["Katarzyna"]
+  nazwisko: "Niemojowska"
+  plec: k
+  warianty: ["Katarzyna Niemojowska (z pierwszego męża Obzowska)"]
+  uwagi: "Wdowa po Antonim Obzowskim, stolniku piotrkowskim (S08)."
+
+- id: obzowski-antoni
+  imiona: ["Antoni"]
+  nazwisko: "Obzowski"
+  plec: m
+  uwagi: "Stolnik piotrkowski, zm. przed 1782 (S08)."
+
+- id: piekarski-henryk
+  imiona: ["Henryk"]
+  nazwisko: "Piekarski"
+  plec: m
+  uwagi: "Syn Maksa; współwłaściciel Radoszewic w okresie międzywojennym wg S08 (S10 podaje braci Maksa i Bernarda)."

@@ -1235,3 +1235,23 @@
   nazwa: "Krajkowice"
   typ: wieś
   pewnosc_identyfikacji: prawdopodobna
+
+- id: slupia-kepno
+  nazwa: "Słupia koło Kępna"
+  typ: wieś
+  pewnosc_identyfikacji: pewna
+
+- id: oleszno
+  nazwa: "Oleszno"
+  typ: wieś
+  pewnosc_identyfikacji: pewna
+
+- id: marchwacz
+  nazwa: "Marchwacz koło Kalisza"
+  typ: wieś
+  pewnosc_identyfikacji: pewna
+
+- id: praszka
+  nazwa: "Praszka"
+  typ: miasto
+  pewnosc_identyfikacji: pewna
