@@ -44,10 +44,10 @@ pow. Kowel
 typ: tekst
 
 Marceli Terlecki
-Ludwika Paprocka[?]
+Ludwika Paprocka
         ]
 
-[red.: nazwisko zapisane jak „Pąprocka”/„Pyprocka”; w notatkach S07 — „z Paprockich”]
+[red.: nazwisko zapisane niewyraźnie; potwierdzone w S07-p09-s01 („i Ludwiki z Paprockich”)]
 
 ## S03-p10-s05
 typ: tekst

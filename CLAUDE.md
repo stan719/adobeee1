@@ -14,7 +14,7 @@ Najważniejsze zasady:
 ## Stan prac
 - [x] Plan zatwierdzony
 - [x] Etap 0 — inwentaryzacja: 215 zdjęć, źródła S01–S10 (`zrodla/zrodla.yaml`, `zrodla/katalog.yaml`). Zdjęcia leżą w `Zdjęcia/` (poza gitem, `.gitignore`). Tytuł S08 na razie bez karty tytułowej (decyzja użytkownika). Autorami rękopisów na razie się nie zajmujemy.
-- [~] Etap 1 — transkrypcja: S01 gotowe (`zrodla/transkrypcje/S01/`, zasady w `zrodla/transkrypcje/ZASADY.md`, wątpliwości w `dane/watpliwosci.md`). Rękopisy: S04, S05, S06 gotowe; S03 str. 1–49 gotowe (zostały str. 50–54 = IMG_5901–5905, kalendarz sierpień–grudzień; podglądy robi `narzedzia/pasy.py`). Potem: S07, S10, S02, S08, S09. Na koniec S03 dopisać jego wątpliwości do `dane/watpliwosci.md` (na razie tylko w notatkach `[red.: …]` w plikach stron). Narzędzie do powiększeń: `narzedzia/powieksz.py`.
+- [~] Etap 1 — transkrypcja: S01 gotowe (`zrodla/transkrypcje/S01/`, zasady w `zrodla/transkrypcje/ZASADY.md`, wątpliwości w `dane/watpliwosci.md`). Rękopisy: S04, S05, S06 gotowe; S03 gotowe (54 str.), wątpliwości S03–S06 w `dane/watpliwosci.md`. W toku: S07 (IMG_5911–5971). Potem: S10, S02, S08, S09. Podglądy: `narzedzia/pasy.py`. Narzędzie do powiększeń: `narzedzia/powieksz.py`.
 - [ ] Etap 2 — uporządkowanie i uwspółcześnienie
 - [ ] Etap 3 — baza danych
 - [ ] Etap 4 — strona internetowa

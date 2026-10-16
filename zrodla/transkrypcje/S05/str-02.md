@@ -28,9 +28,9 @@ typ: tekst
 Ostatni właściciel Krempy Jerzy w wieku 18 lat jako ochotnik
 brał udział w wojnie 1920 r. Był w bitwie pod Grodnem
 i na szlaku Białystok–Lida w baterii 1 pułku artylerii
-zenitowej użytej wówczas jako baterja zwykła[?].
+zenitowej użytej wówczas jako baterja zwykła.
 
-[red.: wiersz „i na szlaku Białystok–Lida…” leży na zgięciu kartki; ostatnie słowo zdania niepewne („zwykła” / „zwykłą”)]
+[red.: wiersz „i na szlaku Białystok–Lida…” leży na zgięciu kartki; ostatnie słowo potwierdzone w S07-p12-s01 („użytej wówczas jako artylerja zwykła polowa”)]
 
 ## S05-p02-s03
 typ: tekst
