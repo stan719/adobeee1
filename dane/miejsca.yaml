@@ -1,0 +1,68 @@
+# Miejsca (zob. SCHEMAT.md). Współrzędne — w Etapie 4 (geokodowanie ze źródłem).
+
+- id: krempa
+  nazwa: Krempa
+  warianty: [Krępa]
+  typ: wieś
+  dzis: "Krępa, gm. Poddębice (pow. poddębicki, woj. łódzkie)"
+  pewnosc_identyfikacji: prawdopodobna
+  uwagi: "S08-p071-s03: ok. 8 km na zachód od Poddębic; S08-p072-s01: wieś w gminie Poddębice; S04 podaje „pow. Sieradzki” (stan po 1975 r.)."
+
+- id: smiechow
+  nazwa: Śmiechów
+  typ: wieś
+  pewnosc_identyfikacji: do_ustalenia
+
+- id: warszawa
+  nazwa: Warszawa
+  warianty: [W-wa]
+  typ: miasto
+  dzis: "Warszawa"
+  pewnosc_identyfikacji: pewna
+
+- id: ciszecin-wielki
+  nazwa: Ciszecin Wielki
+  warianty: ["Ciszecina W.", "Ciszecin W."]
+  typ: wieś
+  pewnosc_identyfikacji: do_ustalenia
+  uwagi: "Według S07 „k/Jarosławia”, parafia Zarzecze."
+
+- id: grodno
+  nazwa: Grodno
+  typ: miasto
+  dzis: "Grodno, Białoruś"
+  pewnosc_identyfikacji: pewna
+
+- id: bialystok
+  nazwa: Białystok
+  typ: miasto
+  pewnosc_identyfikacji: pewna
+
+- id: lida
+  nazwa: Lida
+  typ: miasto
+  dzis: "Lida, Białoruś"
+  pewnosc_identyfikacji: pewna
+
+- id: bochnia
+  nazwa: Bochnia
+  typ: miasto
+  pewnosc_identyfikacji: pewna
+
+- id: grodzisk-mazowiecki
+  nazwa: Grodzisk Mazowiecki
+  warianty: ["Grodzisk Maz."]
+  typ: miasto
+  pewnosc_identyfikacji: pewna
+
+- id: koscierzyn
+  nazwa: Kościerzyn
+  typ: wieś
+  dzis: "Kościerzyn, gm. Wróblew (pow. sieradzki, woj. łódzkie)"
+  pewnosc_identyfikacji: pewna
+  uwagi: "S08-p057-s03."
+
+- id: sieradz
+  nazwa: Sieradz
+  typ: miasto
+  pewnosc_identyfikacji: pewna

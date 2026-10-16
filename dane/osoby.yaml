@@ -1,0 +1,119 @@
+# Osoby — tożsamość i warianty zapisu; fakty są w twierdzenia.yaml (zob. SCHEMAT.md)
+# id: nazwisko (dla zamężnych kobiet — rodowe) + imię + rok orientacyjny
+
+- id: radoszewski-jerzy-1902
+  imiona: [Jerzy, Józefat]
+  nazwisko: Radoszewski
+  przydomek: Boxa
+  herb: Oksza
+  plec: m
+  warianty: ["Jerzy Radoszewski Boxa", "Jerzy Józefat", "Jerzy Boxa Radoszewski", "Tatuś"]
+  utozsamienie: "S04 (kartka o Jerzym), S03 (ojciec autorki — „Tatuś”), S07, S08 — zgodne lata 1902–1967 i rodzice Michał i Ewelina."
+
+- id: radoszewski-michal-1865
+  imiona: [Michał, Edmund]
+  nazwisko: Radoszewski
+  przydomek: Boxa
+  herb: Oksza
+  plec: m
+  warianty: ["Michał", "Michał Edmund", "Michał Boxa Radoszewski"]
+
+- id: drohojowska-ewelina-1880
+  imiona: [Ewelina]
+  nazwisko: Radoszewska
+  nazwisko_rodowe: Drohojowska
+  herb: Korczak
+  plec: k
+  warianty: ["Ewelina z hr. Drohojowskich", "Ewa (Ewelina) z hr. Drohojowskich", "Ewa Drohojowska", "Babcia Ela"]
+
+- id: radoszewski-jozefat-1830
+  imiona: [Józefat]
+  nazwisko: Radoszewski
+  przydomek: Boxa
+  herb: Oksza
+  plec: m
+  warianty: ["Józefat", "Józefat Boxa Radoszewski"]
+
+- id: przadzynska-anna-1914
+  imiona: [Anna, Maria]
+  nazwisko: Radoszewska
+  nazwisko_rodowe: Prządzyńska
+  herb: Grzymała
+  plec: k
+  warianty: ["Anna z Prządzyńskich", "Anna Maria Prządzyńska", "Anna z Prządzyńskich Boxa-Radoszewska"]
+
+- id: przadzynski-stanislaw-1871
+  imiona: [Stanisław]
+  nazwisko: Prządzyński
+  herb: Grzymała
+  plec: m
+  warianty: ["Stanisław Prządzyński z Kościerzyna", "Dziadzio Staś"]
+
+- id: grabinska-stanislawa-1890
+  imiona: [Stanisława]
+  nazwisko: Prządzyńska
+  nazwisko_rodowe: Grabińska
+  herb: Pomian
+  plec: k
+  warianty: ["Stanisława z Grabińskich", "Babcia Stacha"]
+
+- id: radoszewski-andrzej-1938
+  imiona: [Andrzej, Michał]
+  nazwisko: Radoszewski
+  plec: m
+  warianty: ["Andrzej", "Jędrek"]
+
+- id: lewandowska-halina-1940
+  imiona: [Halina]
+  nazwisko: Radoszewska
+  nazwisko_rodowe: Lewandowska
+  plec: k
+
+- id: radoszewska-agnieszka-1968
+  imiona: [Agnieszka]
+  nazwisko: Radoszewska
+  plec: k
+  warianty: ["Agusia"]
+
+- id: radoszewska-anna-1971
+  imiona: [Anna]
+  nazwisko: Radoszewska
+  plec: k
+  warianty: ["Ania"]
+
+- id: radoszewska-elzbieta-1938
+  imiona: [Elżbieta, Stanisława]
+  nazwisko: Mosek
+  nazwisko_rodowe: Radoszewska
+  plec: k
+  warianty: ["Elżbieta Radoszewska Mosek", "Halszka"]
+
+- id: mosek-krzysztof-1932
+  imiona: [Krzysztof]
+  nazwisko: Mosek
+  plec: m
+
+- id: mosek-robert-1969
+  imiona: [Robert, Krzysztof]
+  nazwisko: Mosek
+  plec: m
+  warianty: ["Krzyś"]
+
+- id: radoszewska-teresa-1942
+  imiona: [Teresa, Ewa]
+  nazwisko: Zielińska
+  nazwisko_rodowe: Radoszewska
+  plec: k
+  warianty: ["Teresa Radoszewska Zielińska", "Teresa Boxa Radoszewska Zielińska", "Tereska"]
+
+- id: zielinski-jerzy-1937
+  imiona: [Jerzy]
+  nazwisko: Zieliński
+  plec: m
+  warianty: ["Jurek"]
+
+- id: radoszewska-zielinska-anna-1974
+  imiona: [Anna, Maria]
+  nazwisko: Radoszewska-Zielińska
+  plec: k
+  warianty: ["Anna Radoszewska Zielińska", "Anna Maria Boxa Radoszewska Zielińska", "Anulka"]

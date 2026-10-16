@@ -1,0 +1,530 @@
+# Twierdzenia — atomowe fakty ze źródłami (zob. SCHEMAT.md). Pilotaż: S04.
+
+- id: T000001
+  podmiot: radoszewski-jerzy-1902
+  relacja: urodzenie
+  data: {tekst: "1902", od: 1902, do: 1902}
+  miejsce: krempa
+  zrodla:
+    - segment: S04-p01-s01
+      cytat: "Jerzy Radoszewski Boxa h. Oksza 1902+1967 ur. w Krempie pow. Sieradzki"
+  pewnosc_odczytu: pewna
+
+- id: T000002
+  podmiot: radoszewski-jerzy-1902
+  relacja: smierc
+  data: {tekst: "1967", od: 1967, do: 1967}
+  zrodla:
+    - segment: S04-p01-s01
+      cytat: "1902+1967"
+  pewnosc_odczytu: pewna
+
+- id: T000003
+  podmiot: radoszewski-jerzy-1902
+  relacja: herb
+  wartosc: Oksza
+  zrodla:
+    - segment: S04-p01-s01
+      cytat: "Jerzy Radoszewski Boxa h. Oksza"
+  pewnosc_odczytu: pewna
+
+- id: T000004
+  podmiot: radoszewski-jerzy-1902
+  relacja: rodzic
+  obiekt: radoszewski-michal-1865
+  zrodla:
+    - segment: S04-p01-s02
+      cytat: "Ojciec Michał"
+  pewnosc_odczytu: pewna
+
+- id: T000005
+  podmiot: radoszewski-michal-1865
+  relacja: urodzenie
+  data: {tekst: "1865", od: 1865, do: 1865}
+  zrodla:
+    - segment: S04-p01-s02
+      cytat: "Ojciec Michał ur. 1865+1942"
+  pewnosc_odczytu: pewna
+
+- id: T000006
+  podmiot: radoszewski-michal-1865
+  relacja: smierc
+  data: {tekst: "1942", od: 1942, do: 1942}
+  zrodla:
+    - segment: S04-p01-s02
+      cytat: "ur. 1865+1942"
+  pewnosc_odczytu: pewna
+
+- id: T000007
+  podmiot: radoszewski-jerzy-1902
+  relacja: rodzic
+  obiekt: drohojowska-ewelina-1880
+  zrodla:
+    - segment: S04-p01-s02
+      cytat: "matka Ewelina z hr. Drohojowskich h. Korczak z Ciszeciny W."
+  pewnosc_odczytu: pewna
+
+- id: T000008
+  podmiot: drohojowska-ewelina-1880
+  relacja: herb
+  wartosc: Korczak
+  zrodla:
+    - segment: S04-p01-s02
+      cytat: "Ewelina z hr. Drohojowskich h. Korczak"
+  pewnosc_odczytu: pewna
+
+- id: T000009
+  podmiot: drohojowska-ewelina-1880
+  relacja: zamieszkanie
+  miejsce: ciszecin-wielki
+  wartosc: "pochodzenie: z Ciszecina Wielkiego"
+  zrodla:
+    - segment: S04-p01-s02
+      cytat: "z Ciszeciny W."
+  pewnosc_odczytu: pewna
+
+- id: T000010
+  podmiot: radoszewski-jerzy-1902
+  relacja: wyksztalcenie
+  wartosc: "gimnazjum Konopczyńskiego w Warszawie, potem SGGW"
+  miejsce: warszawa
+  zrodla:
+    - segment: S04-p01-s03
+      cytat: "Kończył gim. Konopczyńskiego w W-wie potem SGGW w W-wie"
+  pewnosc_odczytu: pewna
+
+- id: T000011
+  podmiot: radoszewski-jerzy-1902
+  relacja: wlasnosc
+  obiekt: krempa
+  wartosc: "majątek ziemski Krempa i Śmiechów, 616 ha lasów i ziemi ornej; gorzelnia i młyn"
+  zrodla:
+    - segment: S04-p01-s04
+      cytat: "Posiadał majątek ziemski Krempa Śmiechów 616 ha lasów i ziemi ornej W majątku była gorzelnia i młyn"
+  pewnosc_odczytu: pewna
+
+- id: T000012
+  podmiot: radoszewski-jerzy-1902
+  relacja: wlasnosc
+  obiekt: smiechow
+  zrodla:
+    - segment: S04-p01-s04
+      cytat: "Posiadał majątek ziemski Krempa Śmiechów"
+  pewnosc_odczytu: pewna
+
+- id: T000013
+  podmiot: radoszewski-jerzy-1902
+  relacja: opis
+  wartosc: "członek Związku Ziemian powiatu tureckiego"
+  zrodla:
+    - segment: S04-p01-s04
+      cytat: "Należał do Związku Ziemian pow. Tureckiego."
+  pewnosc_odczytu: pewna
+
+- id: T000014
+  podmiot: radoszewski-jerzy-1902
+  relacja: udzial_w_wydarzeniu
+  wartosc: "rozbrajanie Niemców w Warszawie"
+  data: {tekst: "1918", od: 1918, do: 1918}
+  miejsce: warszawa
+  zrodla:
+    - segment: S04-p01-s05
+      cytat: "Brał udział w rozbrajaniu Niemców w W-wie w 1918 r."
+  pewnosc_odczytu: pewna
+
+- id: T000015
+  podmiot: radoszewski-jerzy-1902
+  relacja: udzial_w_wydarzeniu
+  wartosc: "wojna 1920 r. — 1 pułk artylerii zenitowej, pod Grodnem i na szlaku Białystok–Lida"
+  data: {tekst: "1920", od: 1920, do: 1920}
+  miejsce: grodno
+  zrodla:
+    - segment: S04-p01-s05
+      cytat: "w wojnie 1920 r. był w 1 pułku artylerii zenitowej pod Grodnem i na szlaku Białystok Lida."
+  pewnosc_odczytu: pewna
+
+- id: T000016
+  podmiot: radoszewski-jerzy-1902
+  relacja: odznaczenie
+  wartosc: "medal „Polska swemu obrońcy”"
+  zrodla:
+    - segment: S04-p01-s05
+      cytat: "Otrzymał medal „Polska swemu obrońcy”."
+  pewnosc_odczytu: pewna
+
+- id: T000017
+  podmiot: radoszewski-jerzy-1902
+  relacja: udzial_w_wydarzeniu
+  wartosc: "wysiedlony przez Niemców z żoną i dziećmi do obozu dla przesiedleńców w Bochni"
+  data: {tekst: "8 grudnia 1939", od: 1939-12-08, do: 1939-12-08}
+  miejsce: bochnia
+  zrodla:
+    - segment: S04-p01-s06
+      cytat: "Wysiedlony przez Niemców 8 grudnia 1939 r razem z żoną i dziećmi do obozu dla przesiedleńców do Bochni."
+  pewnosc_odczytu: pewna
+
+- id: T000018
+  podmiot: radoszewski-jerzy-1902
+  relacja: zamieszkanie
+  miejsce: warszawa
+  wartosc: "w czasie wojny z rodziną"
+  data: {tekst: "w czasie wojny", od: 1939, do: 1945}
+  zrodla:
+    - segment: S04-p01-s07
+      cytat: "W czasie wojny razem z rodziną mieszkał"
+    - segment: S04-p02-s01
+      cytat: "w W-wie,"
+  pewnosc_odczytu: pewna
+
+- id: T000019
+  podmiot: radoszewski-jerzy-1902
+  relacja: zawod
+  wartosc: "współwłaściciel i założyciel domu handlowego „Estyma”"
+  zrodla:
+    - segment: S04-p02-s01
+      cytat: "handlowego „Estyma”"
+  pewnosc_odczytu: pewna
+  uwagi: "Wcześniejsza część zdania („Był współwłaścicielem i założycielem … domu”) zawiera nieczytelną wstawkę nad wierszem."
+
+- id: T000020
+  podmiot: radoszewski-jerzy-1902
+  relacja: zawod
+  wartosc: "po wojnie — Spółdzielnia Poligraficzna im. Hanki Sawickiej[?] w Grodzisku Mazowieckim"
+  miejsce: grodzisk-mazowiecki
+  zrodla:
+    - segment: S04-p02-s01
+      cytat: "Po wojnie pracował w Spół. Poligraficznej im. Hanki Sawickiej[?] w Grodzisku Maz."
+  pewnosc_odczytu: niepewna
+
+- id: T000021
+  podmiot: krempa
+  relacja: opis
+  wartosc: "majątek należał przez 400 lat do Radoszewskich"
+  zrodla:
+    - segment: S04-p02-s02
+      cytat: "Maj. Krempa należał przez 400 lat do Radoszewskich."
+  pewnosc_odczytu: pewna
+
+- id: T000022
+  podmiot: radoszewski-jozefat-1830
+  relacja: fundacja
+  obiekt: krempa
+  wartosc: "zbudował dwór w Krempie (XIX w.)"
+  data: {tekst: "w XIX w.", od: 1801, do: 1900}
+  zrodla:
+    - segment: S04-p02-s02
+      cytat: "Dwór który stał do 1981 r. budował Józefat (dziadek Jerzego) w XIX w."
+  pewnosc_odczytu: pewna
+
+- id: T000023
+  podmiot: krempa
+  relacja: opis
+  wartosc: "dwór zaliczony do zabytków, rozebrany w 1981 r.; park wycięty i podzielony na działki"
+  data: {tekst: "1981", od: 1981, do: 1981}
+  zrodla:
+    - segment: S04-p02-s02
+      cytat: "Był zaliczony do zabytków rozebrany w 1981 r park wycięty i podzielony na działki."
+  pewnosc_odczytu: pewna
+
+- id: T000024
+  podmiot: radoszewski-michal-1865
+  relacja: rodzic
+  obiekt: radoszewski-jozefat-1830
+  zrodla:
+    - segment: S04-p02-s02
+      cytat: "Józefat (dziadek Jerzego)"
+  pewnosc_odczytu: pewna
+  uwagi: "Wniosek z określenia „dziadek Jerzego” i z T000004 (ojciec Jerzego — Michał)."
+
+- id: T000025
+  podmiot: radoszewski-jerzy-1902
+  relacja: malzonek
+  obiekt: przadzynska-anna-1914
+  zrodla:
+    - segment: S04-p02-s03
+      cytat: "Żona Anna z Prządzyńskich h. Grzymały"
+  pewnosc_odczytu: pewna
+
+- id: T000026
+  podmiot: przadzynska-anna-1914
+  relacja: herb
+  wartosc: Grzymała
+  zrodla:
+    - segment: S04-p02-s03
+      cytat: "Anna z Prządzyńskich h. Grzymały"
+  pewnosc_odczytu: pewna
+
+- id: T000027
+  podmiot: przadzynska-anna-1914
+  relacja: zamieszkanie
+  miejsce: koscierzyn
+  wartosc: "pochodzenie: z Kościerzyna k. Sieradza"
+  zrodla:
+    - segment: S04-p02-s03
+      cytat: "Kościerzyna k/Sieradza"
+  pewnosc_odczytu: pewna
+
+- id: T000028
+  podmiot: przadzynska-anna-1914
+  relacja: rodzic
+  obiekt: przadzynski-stanislaw-1871
+  zrodla:
+    - segment: S04-p02-s03
+      cytat: "córka Stanisława i Stanisławy z Grabińskich h. Pomian."
+  pewnosc_odczytu: pewna
+
+- id: T000029
+  podmiot: przadzynska-anna-1914
+  relacja: rodzic
+  obiekt: grabinska-stanislawa-1890
+  zrodla:
+    - segment: S04-p02-s03
+      cytat: "córka Stanisława i Stanisławy z Grabińskich h. Pomian."
+  pewnosc_odczytu: pewna
+
+- id: T000030
+  podmiot: grabinska-stanislawa-1890
+  relacja: herb
+  wartosc: Pomian
+  zrodla:
+    - segment: S04-p02-s03
+      cytat: "Stanisławy z Grabińskich h. Pomian."
+  pewnosc_odczytu: pewna
+
+- id: T000031
+  podmiot: radoszewski-andrzej-1938
+  relacja: rodzic
+  obiekt: radoszewski-jerzy-1902
+  zrodla:
+    - segment: S04-p02-s03
+      cytat: "Ich dzieci"
+    - segment: S04-p02-s04
+      cytat: "Andrzej 1938"
+  pewnosc_odczytu: pewna
+
+- id: T000032
+  podmiot: radoszewski-andrzej-1938
+  relacja: rodzic
+  obiekt: przadzynska-anna-1914
+  zrodla:
+    - segment: S04-p02-s03
+      cytat: "Ich dzieci"
+    - segment: S04-p02-s04
+      cytat: "Andrzej 1938"
+  pewnosc_odczytu: pewna
+
+- id: T000033
+  podmiot: radoszewski-andrzej-1938
+  relacja: urodzenie
+  data: {tekst: "1938", od: 1938, do: 1938}
+  zrodla:
+    - segment: S04-p02-s04
+      cytat: "Andrzej 1938"
+  pewnosc_odczytu: pewna
+
+- id: T000034
+  podmiot: radoszewski-andrzej-1938
+  relacja: zawod
+  wartosc: "magister inżynier budownictwa lądowego"
+  zrodla:
+    - segment: S04-p02-s04
+      cytat: "mag. inż budownictwa lądowego"
+  pewnosc_odczytu: pewna
+
+- id: T000035
+  podmiot: radoszewski-andrzej-1938
+  relacja: malzonek
+  obiekt: lewandowska-halina-1940
+  zrodla:
+    - segment: S04-p02-s04
+      cytat: "Halina Lewandowska"
+  pewnosc_odczytu: pewna
+
+- id: T000036
+  podmiot: radoszewska-agnieszka-1968
+  relacja: rodzic
+  obiekt: radoszewski-andrzej-1938
+  zrodla:
+    - segment: S04-p02-s04
+      cytat: "córki: Agnieszka 1968"
+  pewnosc_odczytu: pewna
+
+- id: T000037
+  podmiot: radoszewska-agnieszka-1968
+  relacja: urodzenie
+  data: {tekst: "1968", od: 1968, do: 1968}
+  zrodla:
+    - segment: S04-p02-s04
+      cytat: "Agnieszka 1968"
+  pewnosc_odczytu: pewna
+
+- id: T000038
+  podmiot: radoszewska-anna-1971
+  relacja: rodzic
+  obiekt: radoszewski-andrzej-1938
+  zrodla:
+    - segment: S04-p02-s04
+      cytat: "córki: Agnieszka 1968 Anna 1971"
+  pewnosc_odczytu: pewna
+
+- id: T000039
+  podmiot: radoszewska-anna-1971
+  relacja: urodzenie
+  data: {tekst: "1971", od: 1971, do: 1971}
+  zrodla:
+    - segment: S04-p02-s04
+      cytat: "Anna 1971"
+  pewnosc_odczytu: pewna
+
+- id: T000040
+  podmiot: radoszewska-elzbieta-1938
+  relacja: rodzic
+  obiekt: radoszewski-jerzy-1902
+  zrodla:
+    - segment: S04-p02-s03
+      cytat: "Ich dzieci"
+    - segment: S04-p02-s05
+      cytat: "Elżbieta 1938"
+  pewnosc_odczytu: pewna
+
+- id: T000041
+  podmiot: radoszewska-elzbieta-1938
+  relacja: rodzic
+  obiekt: przadzynska-anna-1914
+  zrodla:
+    - segment: S04-p02-s03
+      cytat: "Ich dzieci"
+    - segment: S04-p02-s05
+      cytat: "Elżbieta 1938"
+  pewnosc_odczytu: pewna
+
+- id: T000042
+  podmiot: radoszewska-elzbieta-1938
+  relacja: urodzenie
+  data: {tekst: "1938", od: 1938, do: 1938}
+  zrodla:
+    - segment: S04-p02-s05
+      cytat: "Elżbieta 1938"
+  pewnosc_odczytu: pewna
+
+- id: T000043
+  podmiot: radoszewska-elzbieta-1938
+  relacja: zawod
+  wartosc: "lekarz ginekolog"
+  zrodla:
+    - segment: S04-p02-s05
+      cytat: "lekarz ginekolog"
+  pewnosc_odczytu: pewna
+
+- id: T000044
+  podmiot: radoszewska-elzbieta-1938
+  relacja: malzonek
+  obiekt: mosek-krzysztof-1932
+  zrodla:
+    - segment: S04-p02-s05
+      cytat: "Krzysztof Mosek dr. med. rentg."
+  pewnosc_odczytu: pewna
+
+- id: T000045
+  podmiot: mosek-krzysztof-1932
+  relacja: zawod
+  wartosc: "doktor medycyny, rentgenolog"
+  zrodla:
+    - segment: S04-p02-s05
+      cytat: "Krzysztof Mosek dr. med. rentg."
+  pewnosc_odczytu: pewna
+
+- id: T000046
+  podmiot: mosek-robert-1969
+  relacja: rodzic
+  obiekt: radoszewska-elzbieta-1938
+  zrodla:
+    - segment: S04-p02-s05
+      cytat: "syn Robert Krzysztof 1969"
+  pewnosc_odczytu: pewna
+
+- id: T000047
+  podmiot: mosek-robert-1969
+  relacja: urodzenie
+  data: {tekst: "1969", od: 1969, do: 1969}
+  zrodla:
+    - segment: S04-p02-s05
+      cytat: "syn Robert Krzysztof 1969"
+  pewnosc_odczytu: pewna
+  uwagi: "Ostatnia cyfra poprawiana w oryginale."
+
+- id: T000048
+  podmiot: radoszewska-teresa-1942
+  relacja: rodzic
+  obiekt: radoszewski-jerzy-1902
+  zrodla:
+    - segment: S04-p02-s03
+      cytat: "Ich dzieci"
+    - segment: S04-p02-s06
+      cytat: "Teresa 1942"
+  pewnosc_odczytu: pewna
+
+- id: T000049
+  podmiot: radoszewska-teresa-1942
+  relacja: rodzic
+  obiekt: przadzynska-anna-1914
+  zrodla:
+    - segment: S04-p02-s03
+      cytat: "Ich dzieci"
+    - segment: S04-p02-s06
+      cytat: "Teresa 1942"
+  pewnosc_odczytu: pewna
+
+- id: T000050
+  podmiot: radoszewska-teresa-1942
+  relacja: urodzenie
+  data: {tekst: "1942", od: 1942, do: 1942}
+  zrodla:
+    - segment: S04-p02-s06
+      cytat: "Teresa 1942"
+  pewnosc_odczytu: pewna
+
+- id: T000051
+  podmiot: radoszewska-teresa-1942
+  relacja: zawod
+  wartosc: "lekarz, specjalista rehabilitacji i fizykoterapii"
+  zrodla:
+    - segment: S04-p02-s06
+      cytat: "lekarz spec. rehabilitacja i fizykoterapia"
+  pewnosc_odczytu: pewna
+
+- id: T000052
+  podmiot: radoszewska-teresa-1942
+  relacja: malzonek
+  obiekt: zielinski-jerzy-1937
+  zrodla:
+    - segment: S04-p02-s06
+      cytat: "Jerzy Zieliński prac. hand. zag."
+  pewnosc_odczytu: pewna
+
+- id: T000053
+  podmiot: zielinski-jerzy-1937
+  relacja: zawod
+  wartosc: "pracownik handlu zagranicznego"
+  zrodla:
+    - segment: S04-p02-s06
+      cytat: "prac. hand. zag."
+  pewnosc_odczytu: pewna
+
+- id: T000054
+  podmiot: radoszewska-zielinska-anna-1974
+  relacja: rodzic
+  obiekt: radoszewska-teresa-1942
+  zrodla:
+    - segment: S04-p02-s06
+      cytat: "córka Anna 1974 ma 2 nazwiska Radoszewska-Zielińska"
+  pewnosc_odczytu: pewna
+
+- id: T000055
+  podmiot: radoszewska-zielinska-anna-1974
+  relacja: urodzenie
+  data: {tekst: "1974", od: 1974, do: 1974}
+  zrodla:
+    - segment: S04-p02-s06
+      cytat: "córka Anna 1974"
+  pewnosc_odczytu: pewna
