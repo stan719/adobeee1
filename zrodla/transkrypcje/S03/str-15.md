@@ -36,9 +36,9 @@ typ: tekst
 
 {nad: adwokat}
 Adam zamordowany w obozie we Flossenburgu
-+18-XII-1944 r. żona Renata Krzyżanowska h. Dębno[?]
++18-XII-1944 r. żona Renata Krzyżanowska h. Dębno
 
-[red.: „Flossenburgu” — końcówka ucięta krawędzią; herb Renaty urwany na krawędzi („h. Dębn…”/„Dąbr…”) [?]; w „18” druga cyfra niewyraźna (10/18)]
+[red.: „Flossenburgu” — końcówka ucięta krawędzią; herb Renaty urwany na krawędzi — potwierdzony w S07-p44-s04 („h. Dębno”); w „18” druga cyfra niewyraźna (10/18)]
 
 ## S03-p15-s05
 typ: tekst

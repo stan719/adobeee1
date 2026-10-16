@@ -29,8 +29,8 @@ Ewa Zaborowska
 │                 └─ Anna Radoszewska Zielińska
 ├─ Maria Walewska 1786
 └─ Antonina Katarzyna
-   I Łaszewska[?]
+   I Łasocka[?]
    II Rychłowska[?]
    III Radomanowa[?]
 
-[red.: „Łączyński” — samogłoska jak w innych miejscach (ą/ę); „Benedykt” zapisany po lewej, poza główną kreską — rodzeństwo Teodora; „1785+1842” wpisane nad imieniem „Teodor”; nazwiska po mężach Antoniny Katarzyny niepewne — „I Łaszewska/Łoszewska”, „II Rychłowska/Ryszewska”, „III Radomanowa/Radwanowa”; w notatkach z inwentaryzacji: „I Starska? II Rychłowska III Radomanowa”]
+[red.: „Łączyński” — samogłoska jak w innych miejscach (ą/ę); „Benedykt” zapisany po lewej, poza główną kreską — rodzeństwo Teodora; „1785+1842” wpisane nad imieniem „Teodor”; nazwiska po mężach Antoniny Katarzyny niepewne (por. S07-p47-s02 — odczyt „Łasocka”) — „I Łaszewska/Łasocka”, „II Rychłowska/Ryszewska”, „III Radomanowa/Radwanowa”; w notatkach z inwentaryzacji: „I Starska? II Rychłowska III Radomanowa”]

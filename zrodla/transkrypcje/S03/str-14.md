@@ -20,7 +20,7 @@ Andrzej Bezdniakow[?]
 
 Tomasz Szweycer
 
-Zofia Kenarska[?]
+Zofia Konarska
 
 Jan Suski
 
@@ -28,4 +28,4 @@ Piotr Karasiewicz
 
 Andrzej Krzeptowski
 
-[red.: nazwiska „Bezdniakow” (może „Bezdnia­ków”), „Kenarska”, „Karasiewicz” — potwierdzone w S03-p47-s04 („Zosi … Karasiewiczowej”); „Suski” potwierdzone w S03-p44 („Mai Suskiej”); „Krzeptowski” w S03-p47 („Magdy Krzeptowskiej”); pozostałe odczyty niepewne]
+[red.: nazwiska „Bezdniakow” (S07-p48-s02: „Bezdiniaków”? — nadal niepewne), „Konarska” (potwierdzona w S07-p48-s03), „Karasiewicz” — potwierdzone w S03-p47-s04 („Zosi … Karasiewiczowej”); „Suski” potwierdzone w S03-p44 („Mai Suskiej”); „Krzeptowski” w S03-p47 („Magdy Krzeptowskiej”); pozostałe odczyty niepewne]

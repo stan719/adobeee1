@@ -16,7 +16,7 @@ typ: tekst
 ,, {podkr: Brandel Konstanty} Kw. 174 rząd 4 № grobu 29
 ,, {podkr: Andrzeja Prządzyńskiego (Wiktorji[?])} Kw. 6 rząd 6 gr. 12
 
-[red.: „№ 10/11 239” wpisane nad wierszem — prawdopodobnie numer grobu i kwatery dla grobu Stefanii; „Pow. IV Wr.” — skrót niejasny (Powązki, IV … ? — może „IV Wojskowe”?); nazwisko generała „Makowieckiego”/„Makowskiego” [?]; „(Wiktorji)” — może imię żony/osoby pochowanej z Andrzejem [?]]
+[red.: „№ 10/11 239” wpisane nad wierszem — prawdopodobnie numer grobu i kwatery dla grobu Stefanii; „Pow. IV Wr.” — wg S07-p56-s03 („Powązki 239 rząd I № 10; 11 IV brama”) to „IV brama”; nazwisko generała „Makowieckiego”/„Makowskiego” [?]; „(Wiktorji)” — może imię żony/osoby pochowanej z Andrzejem [?]]
 
 ## S03-p37-s02
 typ: tekst
