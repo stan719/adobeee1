@@ -858,3 +858,77 @@
   typ: ulica/dom
   nadrzedne: poznan
   pewnosc_identyfikacji: prawdopodobna
+
+- id: szlak-przodkow-2017
+  nazwa: "Szlak przodków Boxa-Radoszewskich (szkic trasy, 2017)"
+  typ: inny
+  pewnosc_identyfikacji: pewna
+  uwagi: "Trasa z Warszawy przez miejsca rodzinne do Ciszecina (S09)."
+
+- id: warszawa-aleja-3-maja
+  nazwa: "Warszawa, Aleja 3 Maja (start trasy)"
+  typ: ulica/dom
+  nadrzedne: warszawa
+  pewnosc_identyfikacji: pewna
+
+- id: emilia-wezel
+  nazwa: "Węzeł Emilia (A-2)"
+  typ: inny
+  pewnosc_identyfikacji: prawdopodobna
+
+- id: strykow
+  nazwa: "Stryków"
+  typ: miasto
+  pewnosc_identyfikacji: pewna
+
+- id: leczyca
+  nazwa: "Łęczyca (zamek)"
+  typ: miasto
+  pewnosc_identyfikacji: pewna
+
+- id: biernacice
+  nazwa: "Biernacice"
+  typ: wieś
+  pewnosc_identyfikacji: do_ustalenia
+  uwagi: "Majątek Dzierżbickich[?], pałac w ruinie (S09)."
+
+- id: poddebice
+  nazwa: "Poddębice"
+  typ: miasto
+  pewnosc_identyfikacji: pewna
+
+- id: rzeka-warta
+  nazwa: "Warta (rzeka)"
+  typ: inny
+  pewnosc_identyfikacji: pewna
+
+- id: rzeka-ner
+  nazwa: "Ner (rzeka)"
+  typ: inny
+  pewnosc_identyfikacji: pewna
+
+- id: byszewo
+  nazwa: "Byszewo[?]"
+  typ: majątek
+  pewnosc_identyfikacji: do_ustalenia
+  uwagi: "„maj. J.[?] A.[?] Radoszew…” (S09)."
+
+- id: kielce
+  nazwa: "Kielce"
+  typ: miasto
+  pewnosc_identyfikacji: pewna
+
+- id: sandomierz
+  nazwa: "Sandomierz"
+  typ: miasto
+  pewnosc_identyfikacji: pewna
+
+- id: rzeszow
+  nazwa: "Rzeszów"
+  typ: miasto
+  pewnosc_identyfikacji: pewna
+
+- id: lancut
+  nazwa: "Łańcut[?]"
+  typ: miasto
+  pewnosc_identyfikacji: prawdopodobna

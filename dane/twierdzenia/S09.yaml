@@ -1,0 +1,55 @@
+# Twierdzenia ze źródła S09 (szkic trasy „szlak przodków Boxa-Radoszewskich”, 8.07.2017)
+# Każdy punkt szkicu = twierdzenie „opis” przy miejscu; trasa jako całość: szlak-przodkow-2017.
+
+- {id: S09-001, podmiot: szlak-przodkow-2017, relacja: opis, wartosc: "tytuł szkicu: „szlak przodków Boxa-Radoszewskich”; data 8.07.2017 i podpis", data: {tekst: "8.07.2017", od: 2017-07-08, do: 2017-07-08},
+   zrodla: [{segment: S09-p1-s01, cytat: "szlak przodków Boxa-Radoszewskich"}, {segment: S09-p1-s15, cytat: "8.07.2017"}], pewnosc_odczytu: niepewna, uwagi: "Miesiąc poprawiany (07/08); podpis nieczytelny."}
+- {id: S09-002, podmiot: szlak-przodkow-2017, relacja: opis, wartosc: "w rogu kartki „Anulka[?]” — może adresatka szkicu",
+   zrodla: [{segment: S09-p1-s00, cytat: "Anulka[?]"}], pewnosc_odczytu: niepewna}
+- {id: S09-003, podmiot: warszawa-aleja-3-maja, relacja: opis, wartosc: "start trasy",
+   zrodla: [{segment: S09-p1-s02, cytat: "Aleja 3 Maja (start)"}], pewnosc_odczytu: pewna}
+- {id: S09-004, podmiot: emilia-wezel, relacja: opis, wartosc: "trasa autostradą A-2 przez węzeł Emilia i Stryków",
+   zrodla: [{segment: S09-p1-s03, cytat: "A-2 Emilia Stryków"}], pewnosc_odczytu: pewna}
+- {id: S09-005, podmiot: radoszewski-pawel-zatuskow, relacja: wlasnosc, obiekt: zatuskow, wartosc: "„Zatusków – maj. Pawła R.”",
+   zrodla: [{segment: S09-p1-s03, cytat: "Zatusków – maj. Pawła R."}], pewnosc_odczytu: pewna}
+- {id: S09-006, podmiot: leczyca, relacja: opis, wartosc: "punkt trasy: Łęczyca (zamek)",
+   zrodla: [{segment: S09-p1-s04, cytat: "Łęczyca (zamek)"}], pewnosc_odczytu: pewna}
+- {id: S09-007, podmiot: leznica-kaplica, relacja: opis, wartosc: "punkt trasy: kaplica Prządzyńskich w Leźnicy Wielkiej",
+   zrodla: [{segment: S09-p1-s04, cytat: "Leźnica Wielka kapl. Prządz."}], pewnosc_odczytu: pewna}
+- {id: S09-008, podmiot: gostkow, relacja: opis, wartosc: "punkt trasy: Gostków (pałac)",
+   zrodla: [{segment: S09-p1-s05, cytat: "Gostków (pałac)"}], pewnosc_odczytu: pewna}
+- {id: S09-009, podmiot: wartkowice-kaplica, relacja: opis, wartosc: "punkt trasy: Wartkowice (kaplica Radoszewskich)",
+   zrodla: [{segment: S09-p1-s05, cytat: "Wartkowice (kaplica Radoszewskich)"}], pewnosc_odczytu: pewna}
+- {id: S09-010, podmiot: ner, relacja: opis, wartosc: "punkt trasy: majątek Ner nad rzeką Ner",
+   zrodla: [{segment: S09-p1-s06, cytat: "rzeka Ner maj. Ner."}], pewnosc_odczytu: pewna}
+- {id: S09-011, podmiot: biernacice, relacja: opis, wartosc: "majątek (Dzierżbickich[?]), piękny pałac w ruinie",
+   zrodla: [{segment: S09-p1-s06, cytat: "Biernacice – maj. (Dzierżbickim[?] piękny pałac w ruinie"}], pewnosc_odczytu: niepewna}
+- {id: S09-012, podmiot: uniejow-kaplica-radoszewskich, relacja: opis, wartosc: "punkt trasy: Uniejów — kaplica",
+   zrodla: [{segment: S09-p1-s07, cytat: "Uniejów Kaplica"}], pewnosc_odczytu: pewna}
+- {id: S09-013, podmiot: dominikowice, relacja: opis, wartosc: "punkt trasy: majątek Dominikowice",
+   zrodla: [{segment: S09-p1-s08, cytat: "maj. Dominikowice"}], pewnosc_odczytu: pewna}
+- {id: S09-014, podmiot: smiechow, relacja: opis, wartosc: "punkt trasy: Śmiechów",
+   zrodla: [{segment: S09-p1-s08, cytat: "Śmiechów"}], pewnosc_odczytu: pewna}
+- {id: S09-015, podmiot: krempa, relacja: opis, wartosc: "punkt trasy: majątek Krempa z parkiem; obok znak budowli „Uniejów[?] zamek przebudowany[?]”",
+   zrodla: [{segment: S09-p1-s08, cytat: "Krempa maj. Park Uniejów[?] zamek przebudowany[?]"}], pewnosc_odczytu: niepewna}
+- {id: S09-016, podmiot: niemyslow, relacja: opis, wartosc: "punkt trasy: Niemysłów — kościół",
+   zrodla: [{segment: S09-p1-s09, cytat: "Niemysłów kościół"}], pewnosc_odczytu: pewna}
+- {id: S09-017, podmiot: poddebice, relacja: opis, wartosc: "kierunek z Krempy na Poddębice",
+   zrodla: [{segment: S09-p1-s10, cytat: "Poddębice"}], pewnosc_odczytu: pewna}
+- {id: S09-018, podmiot: rzeka-warta, relacja: opis, wartosc: "rzeka Warta zaznaczona ołówkiem między Uniejowem a Kaliszem",
+   zrodla: [{segment: S09-p1-s11, cytat: "Warta"}], pewnosc_odczytu: pewna}
+- {id: S09-019, podmiot: opatowek, relacja: opis, wartosc: "punkt trasy koło Kalisza: Opatówek — mauzoleum[?], muzeum[?]",
+   zrodla: [{segment: S09-p1-s12, cytat: "Kalisz Opatówek mauzoleum[?] muzeum[?]"}], pewnosc_odczytu: niepewna}
+- {id: S09-020, podmiot: byszewo, relacja: opis, wartosc: "„Byszewo[?] maj. J.[?] A.[?] Radoszew…” — majątek Radoszewskich (inicjały niepewne)",
+   zrodla: [{segment: S09-p1-s12, cytat: "Byszewo[?] maj. J.[?] A.[?] Radoszew[…]"}], pewnosc_odczytu: niepewna}
+- {id: S09-021, podmiot: koscierzyn, relacja: opis, wartosc: "punkt trasy: Kościerzyn",
+   zrodla: [{segment: S09-p1-s13, cytat: "Kościerzyn Sieradz Wieluń"}], pewnosc_odczytu: pewna}
+- {id: S09-022, podmiot: radoszewice, relacja: opis, wartosc: "punkt trasy: Radoszewice — dwór",
+   zrodla: [{segment: S09-p1-s13, cytat: "Radoszewice dwór ⌀"}], pewnosc_odczytu: pewna}
+- {id: S09-023, podmiot: siemkowice, relacja: opis, wartosc: "punkt trasy: Siemkowice — zamek",
+   zrodla: [{segment: S09-p1-s13, cytat: "Siemkowice zamek ⌀"}], pewnosc_odczytu: pewna}
+- {id: S09-024, podmiot: pajeczno, relacja: opis, wartosc: "punkt trasy: Pajęczno — kościół",
+   zrodla: [{segment: S09-p1-s13, cytat: "Pajęczno, kościół"}], pewnosc_odczytu: pewna}
+- {id: S09-025, podmiot: kielce, relacja: opis, wartosc: "dalsza trasa na wschód: Kielce (~97 km), Święty Krzyż i Łysa Góra, Klimontów, Sandomierz, A-4, Rzeszów, Łańcut[?], Ciszecin W.",
+   zrodla: [{segment: S09-p1-s14, cytat: "Kielce ~ 97 km (Św. Krzyż i Łysa Góra) b. cichy[?] ↓ (Klimontów) Sandomierz Wiązów[?] A-4 Rzeszów Łańcut[?]"}], pewnosc_odczytu: niepewna}
+- {id: S09-026, podmiot: ciszecin-wielki, relacja: opis, wartosc: "koniec trasy: Ciszecin Wielki[?]",
+   zrodla: [{segment: S09-p1-s14, cytat: "Ciszecin[?] W."}], pewnosc_odczytu: niepewna}
