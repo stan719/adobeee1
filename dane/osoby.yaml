@@ -3065,3 +3065,101 @@
   nazwisko: "Piekarski"
   plec: m
   uwagi: "Syn Maksa; współwłaściciel Radoszewic w okresie międzywojennym wg S08 (S10 podaje braci Maksa i Bernarda)."
+
+- id: siemkowski-jerzy-1564
+  imiona: ["Jerzy"]
+  nazwisko: "Siemkowski"
+  herb: Oksza
+  plec: m
+  warianty: ["Jerzy Siemikowski"]
+  uwagi: "Zm. 1564; płyta nagrobna w kościele w Siemkowicach; prawdopodobny budowniczy renesansowego dworu (S08)."
+
+- id: siemkowski-jan-1563
+  imiona: ["Jan"]
+  nazwisko: "Siemkowski"
+  herb: Oksza
+  plec: m
+  uwagi: "Przy dziale 1563 dostał „zameczek”; zapewne skarbnik sieradzki i poborca podatkowy (S08)."
+
+- id: bogucka-zofia-1587
+  imiona: ["Zofia"]
+  nazwisko: "Bogucka"
+  plec: k
+  uwagi: "Zm. 1587; płyta nagrobna w kościele w Siemkowicach (S08)."
+
+- id: swiecicki-franciszek-1797
+  imiona: ["Franciszek"]
+  nazwisko: "Święcicki"
+  herb: Jastrzębiec
+  plec: m
+  uwagi: "Kolator w Siemkowicach 1797 (S08)."
+
+- id: karsnicki-jacek-1802
+  imiona: ["Jacek"]
+  nazwisko: "Karśnicki"
+  herb: Jastrzębiec
+  plec: m
+  warianty: ["Jacek Fundament Karśnicki"]
+  uwagi: "Kolator w Siemkowicach 1802 (S08)."
+
+- id: karsnicki-ignacy-1937
+  imiona: ["Ignacy"]
+  nazwisko: "Karśnicki"
+  herb: Jastrzębiec
+  plec: m
+  uwagi: "Przedostatni właściciel Siemkowic, zm. 1937 (S08)."
+
+- id: karczewska-zofia-1951
+  imiona: ["Zofia"]
+  nazwisko: "Karśnicka"
+  nazwisko_rodowe: "Karczewska"
+  herb: Samson
+  plec: k
+  warianty: ["Zofia z Karczewskich Karśnicka"]
+  uwagi: "Żona Ignacego, zm. 1951 (S08)."
+
+- id: karsnicki-ksawery-1896
+  imiona: ["Ksawery", "Franciszek"]
+  nazwisko: "Karśnicki"
+  herb: Jastrzębiec
+  plec: m
+  warianty: ["Ksawery Franciszek Karśnicki"]
+  uwagi: "Ostatni właściciel Siemkowic (1896–1939), poległ we wrześniu 1939 (S08)."
+
+- id: orzechowska-wanda
+  imiona: ["Wanda"]
+  nazwisko: "Karśnicka"
+  nazwisko_rodowe: "Orzechowska"
+  plec: k
+  uwagi: "Żona Ksawerego Franciszka Karśnickiego (S08)."
+
+- id: karsnicka-kozlowska-teresa
+  imiona: ["Teresa"]
+  nazwisko: "Kozłowska"
+  nazwisko_rodowe: "Karśnicka"
+  plec: k
+  warianty: ["T. Karśnicka-Kozłowska"]
+  uwagi: "Córka Ksawerego Franciszka; autorka „Opisu dworu w Siemkowicach” (Gdańsk 1991) (S08)."
+
+- id: karsnicki-antoni-1991
+  imiona: ["Antoni"]
+  nazwisko: "Karśnicki"
+  herb: Jastrzębiec
+  plec: m
+  uwagi: "Syn ostatniego właściciela Siemkowic (wg s. 152 syn Ignacego); zm. 1 IV 1991 w Gliwicach (S08)."
+
+- id: bielski-marcin
+  imiona: ["Marcin"]
+  nazwisko: "Bielski"
+  plec: m
+  warianty: ["M. Bielski"]
+  uwagi: "Kronikarz z Białej, sąsiad Siemkowic (S08)."
+
+- id: siemkowska-matka-bielskiego
+  imiona: []
+  nazwisko: "Bielska"
+  nazwisko_rodowe: "Siemkowska"
+  herb: Oksza
+  plec: k
+  warianty: ["Siemkowska herbu Oxe"]
+  uwagi: "Matka Joachima Bielskiego, z Siemkowic (S08, za kroniką M. Bielskiego)."

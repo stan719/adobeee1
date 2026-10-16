@@ -1255,3 +1255,32 @@
   nazwa: "Praszka"
   typ: miasto
   pewnosc_identyfikacji: pewna
+
+- id: siemkowice-dwor
+  nazwa: "„Zameczek” — dwór obronny w Siemkowicach"
+  typ: majątek
+  nadrzedne: siemkowice
+  pewnosc_identyfikacji: pewna
+
+- id: siemkowice-kopiec-laki
+  nazwa: "Siemkowice — kopiec w łąkach (dawny dwór drewniany)"
+  typ: inny
+  nadrzedne: siemkowice
+  pewnosc_identyfikacji: pewna
+  uwagi: "Ok. 200 m na NW od dworu; rozwieziony ok. 1971."
+
+- id: siemkowice-park
+  nazwa: "Park dworski w Siemkowicach"
+  typ: inny
+  nadrzedne: siemkowice
+  pewnosc_identyfikacji: pewna
+
+- id: oporow
+  nazwa: "Oporów koło Kutna (zamek)"
+  typ: inny
+  pewnosc_identyfikacji: pewna
+
+- id: gliwice
+  nazwa: "Gliwice"
+  typ: miasto
+  pewnosc_identyfikacji: pewna
