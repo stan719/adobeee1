@@ -1,0 +1,376 @@
+# Twierdzenia ze źródła S07 (zeszyt wspomnień i genealogii) — cz. 1: s. 1–15
+
+# s. 1: drzewo linii głównej (pionowa oś: każde pokolenie jest dzieckiem poprzedniego)
+- {id: S07-001, podmiot: radoszewski-imbram-1412, relacja: opis, wartosc: "Imbram z Siemkowic — wzmianka 1412", data: {tekst: "1412", od: 1412, do: 1412}, miejsce: siemkowice,
+   zrodla: [{segment: S07-p01-s01, cytat: "Imbram z Siemkowic 1412"}, {segment: S07-p04-s01, cytat: "Imbram z Siemkowic 1412"}], pewnosc_odczytu: pewna}
+- {id: S07-002, podmiot: radoszewski-boguslaw-1441, relacja: rodzic, obiekt: radoszewski-imbram-1412,
+   zrodla: [{segment: S07-p01-s01, cytat: "Imbram z Siemkowic 1412 Bogusław | 1441 z Radoszewic"}], pewnosc_odczytu: pewna, uwagi: "Z osi drzewa."}
+- {id: S07-003, podmiot: radoszewski-boguslaw-1441, relacja: opis, wartosc: "Bogusław z Radoszewic — 1441", data: {tekst: "1441", od: 1441, do: 1441}, miejsce: radoszewice,
+   zrodla: [{segment: S07-p01-s01, cytat: "Bogusław | 1441 z Radoszewic"}], pewnosc_odczytu: pewna}
+- {id: S07-004, podmiot: radoszewski-mikolaj-1574, relacja: rodzic, obiekt: radoszewski-boguslaw-1441,
+   zrodla: [{segment: S07-p01-s01, cytat: "Bogusław | 1441 z Radoszewic Mikołaj +1574"}], pewnosc_odczytu: pewna, uwagi: "Z osi drzewa (pokolenia mogą być pominięte)."}
+- {id: S07-005, podmiot: radoszewski-mikolaj-1574, relacja: smierc, data: {tekst: "+1574 w wieku 85 lat", od: 1574, do: 1574},
+   zrodla: [{segment: S07-p01-s01, cytat: "Mikołaj +1574 + w wieku 85 lat"}, {segment: S07-p04-s03, cytat: "Mikołaj +1574 (żył 85 lat)"}], pewnosc_odczytu: pewna}
+- {id: S07-006, podmiot: radoszewski-mikolaj-1574, relacja: urodzenie, data: {tekst: "ok. 1489 (wyliczone: 1574 − 85)", od: 1488, do: 1489},
+   zrodla: [{segment: S07-p01-s01, cytat: "Mikołaj +1574 + w wieku 85 lat"}], pewnosc_odczytu: pewna, uwagi: "Data wyliczona z wieku."}
+- {id: S07-007, podmiot: radoszewski-jerzy-1614, relacja: rodzic, obiekt: radoszewski-mikolaj-1574,
+   zrodla: [{segment: S07-p01-s01, cytat: "Mikołaj +1574 + w wieku 85 lat Jerzy Podkomorzy wieluński"}], pewnosc_odczytu: pewna, uwagi: "Z osi drzewa."}
+- {id: S07-008, podmiot: radoszewski-jerzy-1614, relacja: urzad, wartosc: "podkomorzy wieluński",
+   zrodla: [{segment: S07-p01-s01, cytat: "Jerzy Podkomorzy wieluński"}, {segment: S07-p04-s04, cytat: "Jerzy podkomorzy wieluński"}], pewnosc_odczytu: pewna}
+- {id: S07-009, podmiot: radoszewski-jerzy-1614, relacja: urzad, wartosc: "poseł z woj. sieradzkiego na zjazd wiślicki 1587 i na sejm koronacyjny Zygmunta III", data: {tekst: "1587", od: 1587, do: 1587}, miejsce: wislica,
+   zrodla: [{segment: S07-p01-s01, cytat: "poseł na sejm 1587 +1613 Mogilnicka h/Korczak Koronacyjny Zygmunta III"},
+            {segment: S07-p04-s04, cytat: "poseł z woj. sieradzkiego na zjazd Wiślicki 1587 i na sejm Koronacyjny Króla Zygmunta III"}], pewnosc_odczytu: pewna}
+- {id: S07-010, podmiot: radoszewski-jerzy-1614, relacja: smierc, data: {tekst: "+1613", od: 1613, do: 1613},
+   zrodla: [{segment: S07-p01-s01, cytat: "poseł na sejm 1587 +1613"}], pewnosc_odczytu: pewna}
+- {id: S07-011, podmiot: radoszewski-jerzy-1614, relacja: malzonek, obiekt: mogilnicka,
+   zrodla: [{segment: S07-p01-s01, cytat: "Mogilnicka h/Korczak"}, {segment: S07-p04-s04, cytat: "Żona Mogilnicka h/Korczak."}], pewnosc_odczytu: pewna}
+- {id: S07-012, podmiot: radoszewski-marek-1641, relacja: rodzic, obiekt: radoszewski-jerzy-1614,
+   zrodla: [{segment: S07-p01-s01, cytat: "Marek Kasztelan wieluński"}], pewnosc_odczytu: pewna, uwagi: "Z osi drzewa. S01 przedstawia Marka jako brata Jerzego — rozbieżność."}
+- {id: S07-013, podmiot: radoszewski-marek-1641, relacja: urzad, wartosc: "kasztelan wieluński",
+   zrodla: [{segment: S07-p01-s01, cytat: "Marek Kasztelan wieluński"}, {segment: S07-p05-s02, cytat: "Marek Kasztelan Wieluński"}], pewnosc_odczytu: pewna}
+- {id: S07-014, podmiot: radoszewski-marek-1641, relacja: udzial_w_wydarzeniu, wartosc: "podpisał elekcję Władysława IV", data: {tekst: "1630 r.", od: 1630, do: 1630},
+   zrodla: [{segment: S07-p01-s01, cytat: "podpisał elekcję Władysława IV Biskupska | 1630 r."}], pewnosc_odczytu: pewna, uwagi: "Elekcja Władysława IV — 1632 (S07-p05-s02)."}
+- {id: S07-015, podmiot: radoszewski-marek-1641, relacja: udzial_w_wydarzeniu, wartosc: "podpisał elekcję Władysława IV", data: {tekst: "1632 r.", od: 1632, do: 1632},
+   zrodla: [{segment: S07-p05-s02, cytat: "Podpisał elekcję Władysława IV 1632 r."}], pewnosc_odczytu: pewna}
+- {id: S07-016, podmiot: radoszewski-marek-1641, relacja: malzonek, obiekt: biskupska-anna,
+   zrodla: [{segment: S07-p01-s01, cytat: "Biskupska |"}, {segment: S07-p05-s02, cytat: "żona Anna Biskupska."}], pewnosc_odczytu: pewna}
+- {id: S07-017, podmiot: radoszewski-stanislaw-1657, relacja: rodzic, obiekt: radoszewski-marek-1641,
+   zrodla: [{segment: S07-p01-s01, cytat: "Biskupska | 1630 r. Stanisław 1657"}], pewnosc_odczytu: pewna, uwagi: "Z osi drzewa."}
+- {id: S07-018, podmiot: radoszewski-stanislaw-1657, relacja: opis, wartosc: "Stanisław z Radoszewic — 1657", data: {tekst: "1657", od: 1657, do: 1657}, miejsce: radoszewice,
+   zrodla: [{segment: S07-p01-s01, cytat: "Stanisław 1657"}, {segment: S07-p05-s03, cytat: "Stanisław z Radoszewic"}], pewnosc_odczytu: pewna}
+- {id: S07-019, podmiot: radoszewski-stanislaw-1657, relacja: malzonek, obiekt: olesninska-wiktoria,
+   zrodla: [{segment: S07-p01-s01, cytat: "Wiktorja Oleśnińska h/Ostoja mieli 6 synów"}, {segment: S07-p05-s03, cytat: "żona Wiktorja Oleśnińska h. Ostoja. Miał 6 synów."}], pewnosc_odczytu: pewna}
+- {id: S07-020, podmiot: radoszewski-franciszek-starosta, relacja: rodzic, obiekt: radoszewski-stanislaw-1657,
+   zrodla: [{segment: S07-p01-s01, cytat: "Franciszek starosta szadkowski"}], pewnosc_odczytu: pewna, uwagi: "Z osi drzewa."}
+- {id: S07-021, podmiot: radoszewski-franciszek-starosta, relacja: urzad, wartosc: "starosta szadkowski",
+   zrodla: [{segment: S07-p01-s01, cytat: "Franciszek starosta szadkowski"}, {segment: S07-p05-s04, cytat: "Franciszek starosta szadkowski"}], pewnosc_odczytu: pewna}
+- {id: S07-022, podmiot: radoszewski-franciszek-starosta, relacja: malzonek, obiekt: niborowska, wartosc: "II żona",
+   zrodla: [{segment: S07-p01-s01, cytat: "II Niborowska h/Prawdzic"}, {segment: S07-p05-s04, cytat: "żona II Niborowska h. Prawdzic."}], pewnosc_odczytu: pewna}
+- {id: S07-023, podmiot: radoszewski-michal-1775, relacja: rodzic, obiekt: radoszewski-franciszek-starosta,
+   zrodla: [{segment: S07-p01-s01, cytat: "Michał starosta szadkowski Kasztelan +1775"}], pewnosc_odczytu: pewna, uwagi: "Z osi drzewa."}
+- {id: S07-024, podmiot: radoszewski-michal-1775, relacja: urzad, wartosc: "starosta szadkowski (1764)",
+   zrodla: [{segment: S07-p01-s01, cytat: "Michał starosta szadkowski"}, {segment: S07-p02-s02, cytat: "Michał starosta szadkowski 1764"}], pewnosc_odczytu: pewna}
+- {id: S07-025, podmiot: radoszewski-michal-1775, relacja: urzad, wartosc: "kasztelan brzeziński (1775–82)", data: {tekst: "1775–82", od: 1775, do: 1782},
+   zrodla: [{segment: S07-p02-s02, cytat: "Kasztelan brzeziński 1775–82"}, {segment: S07-p05-s05, cytat: "Michał +1775 Kasztelan brzeziński"}], pewnosc_odczytu: pewna}
+- {id: S07-026, podmiot: radoszewski-michal-1775, relacja: smierc, data: {tekst: "+1775", od: 1775, do: 1775},
+   zrodla: [{segment: S07-p01-s01, cytat: "Kasztelan +1775"}, {segment: S07-p05-s05, cytat: "Michał +1775"}], pewnosc_odczytu: pewna,
+   uwagi: "S07-p02-s02 podaje kasztelanię 1775–82 — niespójne z †1775."}
+- {id: S07-027, podmiot: radoszewski-michal-1775, relacja: malzonek, obiekt: olszewska-maria,
+   zrodla: [{segment: S07-p01-s01, cytat: "Marja Olszewska h/Prus"}, {segment: S07-p05-s05, cytat: "żona Marja Olszewska."}], pewnosc_odczytu: pewna}
+- {id: S07-028, podmiot: radoszewski-roch-1820, relacja: rodzic, obiekt: radoszewski-michal-1775,
+   zrodla: [{segment: S07-p01-s01, cytat: "Roch +1820"}], pewnosc_odczytu: pewna, uwagi: "Z osi drzewa."}
+- {id: S07-029, podmiot: radoszewski-roch-1820, relacja: rodzic, obiekt: olszewska-maria,
+   zrodla: [{segment: S07-p01-s01, cytat: "Marja Olszewska h/Prus | Roch +1820"}], pewnosc_odczytu: pewna, uwagi: "Z osi drzewa."}
+- {id: S07-030, podmiot: radoszewski-roch-1820, relacja: smierc, data: {tekst: "+1820", od: 1820, do: 1820},
+   zrodla: [{segment: S07-p01-s01, cytat: "Roch +1820"}, {segment: S07-p06-s02, cytat: "Roch +1820 Kasztelanic"}], pewnosc_odczytu: pewna}
+- {id: S07-031, podmiot: radoszewski-roch-1820, relacja: malzonek, obiekt: wierzchleyska-kunegunda-1828,
+   zrodla: [{segment: S07-p01-s01, cytat: "Kunegunda Wierzchleyska h/Bernstein +1828"}, {segment: S07-p06-s02, cytat: "żona Kunegunda Wierzchleyska +1828 h. Berstein."}], pewnosc_odczytu: pewna}
+- {id: S07-032, podmiot: wierzchleyska-kunegunda-1828, relacja: smierc, data: {tekst: "+1828", od: 1828, do: 1828},
+   zrodla: [{segment: S07-p01-s01, cytat: "Kunegunda Wierzchleyska h/Bernstein +1828"}, {segment: S07-p06-s02, cytat: "Wierzchleyska +1828"}], pewnosc_odczytu: pewna, uwagi: "Na s. 1 ostatnia cyfra poprawiana."}
+- {id: S07-033, podmiot: wierzchleyska-kunegunda-1828, relacja: herb, wartosc: Bernstein,
+   zrodla: [{segment: S07-p01-s01, cytat: "Kunegunda Wierzchleyska h/Bernstein"}], pewnosc_odczytu: pewna}
+- {id: S07-034, podmiot: radoszewski-franciszek-1790, relacja: rodzic, obiekt: radoszewski-roch-1820,
+   zrodla: [{segment: S07-p01-s01, cytat: "Franciszek 1790+1846"}], pewnosc_odczytu: pewna, uwagi: "Z osi drzewa."}
+- {id: S07-035, podmiot: radoszewski-franciszek-1790, relacja: rodzic, obiekt: wierzchleyska-kunegunda-1828,
+   zrodla: [{segment: S07-p01-s01, cytat: "Franciszek 1790+1846"}], pewnosc_odczytu: pewna, uwagi: "Z osi drzewa."}
+- {id: S07-036, podmiot: radoszewski-franciszek-1790, relacja: urodzenie, data: {tekst: "1790", od: 1790, do: 1790},
+   zrodla: [{segment: S07-p01-s01, cytat: "Franciszek 1790+1846"}, {segment: S07-p06-s03, cytat: "Franciszek 1790+1846"}], pewnosc_odczytu: pewna}
+- {id: S07-037, podmiot: radoszewski-franciszek-1790, relacja: smierc, data: {tekst: "+1846", od: 1846, do: 1846},
+   zrodla: [{segment: S07-p01-s01, cytat: "Franciszek 1790+1846"}, {segment: S07-p06-s03, cytat: "Franciszek 1790+1846"}], pewnosc_odczytu: pewna}
+- {id: S07-038, podmiot: radoszewski-franciszek-1790, relacja: malzonek, obiekt: skrzynska-jozefa-1807,
+   zrodla: [{segment: S07-p01-s01, cytat: "Skrzyńska Józefa h/Zaremba 1807+1856"}, {segment: S07-p06-s03, cytat: "żona Józefa Skrzyńska h. Zaremba 1807+1856 z Nowej Wsi i Gostkowa."}], pewnosc_odczytu: pewna}
+- {id: S07-039, podmiot: skrzynska-jozefa-1807, relacja: urodzenie, data: {tekst: "1807", od: 1807, do: 1807},
+   zrodla: [{segment: S07-p01-s01, cytat: "Skrzyńska Józefa h/Zaremba 1807+1856"}, {segment: S07-p06-s03, cytat: "h. Zaremba 1807+1856"}], pewnosc_odczytu: pewna}
+- {id: S07-040, podmiot: skrzynska-jozefa-1807, relacja: smierc, data: {tekst: "+1856", od: 1856, do: 1856},
+   zrodla: [{segment: S07-p01-s01, cytat: "Skrzyńska Józefa h/Zaremba 1807+1856"}, {segment: S07-p06-s03, cytat: "h. Zaremba 1807+1856"}], pewnosc_odczytu: pewna}
+- {id: S07-041, podmiot: skrzynska-jozefa-1807, relacja: zamieszkanie, miejsce: gostkow, wartosc: "pochodzenie: z Nowej Wsi i Gostkowa",
+   zrodla: [{segment: S07-p06-s03, cytat: "z Nowej Wsi i Gostkowa."}], pewnosc_odczytu: pewna}
+- {id: S07-042, podmiot: radoszewski-jozefat-1830, relacja: rodzic, obiekt: radoszewski-franciszek-1790,
+   zrodla: [{segment: S07-p01-s01, cytat: "Józefat 1830+1892"}], pewnosc_odczytu: pewna, uwagi: "Z osi drzewa."}
+- {id: S07-043, podmiot: radoszewski-jozefat-1830, relacja: rodzic, obiekt: skrzynska-jozefa-1807,
+   zrodla: [{segment: S07-p01-s01, cytat: "Józefat 1830+1892"}], pewnosc_odczytu: pewna, uwagi: "Z osi drzewa."}
+- {id: S07-044, podmiot: radoszewski-jozefat-1830, relacja: urodzenie, data: {tekst: "1830", od: 1830, do: 1830},
+   zrodla: [{segment: S07-p01-s01, cytat: "Józefat 1830+1892"}, {segment: S07-p06-s04, cytat: "Józefat 1830–1892"}], pewnosc_odczytu: pewna}
+- {id: S07-045, podmiot: radoszewski-jozefat-1830, relacja: smierc, data: {tekst: "+1892", od: 1892, do: 1892},
+   zrodla: [{segment: S07-p01-s01, cytat: "Józefat 1830+1892"}, {segment: S07-p06-s04, cytat: "Józefat 1830–1892"}], pewnosc_odczytu: pewna}
+- {id: S07-046, podmiot: radoszewski-jozefat-1830, relacja: malzonek, obiekt: szeliska-teofila-1842,
+   zrodla: [{segment: S07-p01-s01, cytat: "Teofila Szeliska h. Szeliga"}, {segment: S07-p06-s04, cytat: "żona Teofila Szeliska h. Szeliga z Marzenina k/Warty[?] 1842+1909."}], pewnosc_odczytu: pewna}
+- {id: S07-047, podmiot: szeliska-teofila-1842, relacja: herb, wartosc: Szeliga,
+   zrodla: [{segment: S07-p01-s01, cytat: "Teofila Szeliska h. Szeliga"}, {segment: S07-p06-s04, cytat: "Teofila Szeliska h. Szeliga"}], pewnosc_odczytu: pewna}
+- {id: S07-048, podmiot: radoszewski-michal-1865, relacja: rodzic, obiekt: radoszewski-jozefat-1830,
+   zrodla: [{segment: S07-p01-s01, cytat: "Michał 1865+1942"}, {segment: S07-p07-s03, cytat: "Michał Edmund syn Józefata i Teofili"}], pewnosc_odczytu: pewna}
+- {id: S07-049, podmiot: radoszewski-michal-1865, relacja: rodzic, obiekt: szeliska-teofila-1842,
+   zrodla: [{segment: S07-p07-s03, cytat: "Michał Edmund syn Józefata i Teofili"}], pewnosc_odczytu: pewna}
+- {id: S07-050, podmiot: radoszewski-michal-1865, relacja: smierc, data: {tekst: "+1942", od: 1942, do: 1942}, miejsce: warszawa,
+   zrodla: [{segment: S07-p01-s01, cytat: "Michał 1865+1942"}, {segment: S07-p07-s03, cytat: "+1942 r. w W-wie"}], pewnosc_odczytu: pewna}
+- {id: S07-051, podmiot: radoszewski-michal-1865, relacja: malzonek, obiekt: drohojowska-ewelina-1880,
+   zrodla: [{segment: S07-p01-s01, cytat: "Ewa Drohojowska h. Korczak 1880+1955"}, {segment: S07-p07-s03, cytat: "żona Ewa (Ewelina) z hr. Drohojowskich h. Korczak z Ciszecina Wielkiego k/Jarosławia"}], pewnosc_odczytu: pewna}
+- {id: S07-052, podmiot: drohojowska-ewelina-1880, relacja: urodzenie, data: {tekst: "1880", od: 1880, do: 1880},
+   zrodla: [{segment: S07-p01-s01, cytat: "Ewa Drohojowska h. Korczak 1880+1955"}, {segment: S07-p07-s03, cytat: "1880+1955"}, {segment: S07-p08-s02, cytat: "ur. 1880 +1955 w Milanówku."}], pewnosc_odczytu: pewna}
+- {id: S07-053, podmiot: drohojowska-ewelina-1880, relacja: smierc, data: {tekst: "+1955", od: 1955, do: 1955}, miejsce: milanowek,
+   zrodla: [{segment: S07-p01-s01, cytat: "Ewa Drohojowska h. Korczak 1880+1955"}, {segment: S07-p08-s02, cytat: "ur. 1880 +1955 w Milanówku."}], pewnosc_odczytu: pewna}
+- {id: S07-054, podmiot: radoszewski-jerzy-1902, relacja: rodzic, obiekt: radoszewski-michal-1865,
+   zrodla: [{segment: S07-p01-s01, cytat: "Jerzy 1902+1967"}], pewnosc_odczytu: pewna, uwagi: "Z osi drzewa."}
+- {id: S07-055, podmiot: radoszewski-jerzy-1902, relacja: rodzic, obiekt: drohojowska-ewelina-1880,
+   zrodla: [{segment: S07-p01-s01, cytat: "Jerzy 1902+1967"}], pewnosc_odczytu: pewna, uwagi: "Z osi drzewa."}
+- {id: S07-056, podmiot: radoszewski-jerzy-1902, relacja: urodzenie, data: {tekst: "1902", od: 1902, do: 1902}, miejsce: krempa,
+   zrodla: [{segment: S07-p01-s01, cytat: "Jerzy 1902+1967"}, {segment: S07-p10-s01, cytat: "Jerzy ur. 1902 w Krempie"}], pewnosc_odczytu: pewna}
+- {id: S07-057, podmiot: radoszewski-jerzy-1902, relacja: smierc, data: {tekst: "+1967", od: 1967, do: 1967}, miejsce: warszawa-szpital-przemienienia,
+   zrodla: [{segment: S07-p01-s01, cytat: "Jerzy 1902+1967"}, {segment: S07-p10-s01, cytat: "+1967 w W-wie w szpitalu Przemienienia na Pradze."}], pewnosc_odczytu: pewna}
+- {id: S07-058, podmiot: radoszewski-jerzy-1902, relacja: malzonek, obiekt: przadzynska-anna-1914,
+   zrodla: [{segment: S07-p01-s01, cytat: "Anna Prządzyńska h. Grzymała 1914"}], pewnosc_odczytu: pewna}
+- {id: S07-059, podmiot: przadzynska-anna-1914, relacja: urodzenie, data: {tekst: "1914", od: 1914, do: 1914},
+   zrodla: [{segment: S07-p01-s01, cytat: "Anna Prządzyńska h. Grzymała 1914"}], pewnosc_odczytu: pewna}
+- {id: S07-060, podmiot: radoszewska-ludwika-1827, relacja: rodzic, obiekt: radoszewski-franciszek-1790,
+   zrodla: [{segment: S07-p01-s02, cytat: "Ludwika 1827–75 Radoszewska"}], pewnosc_odczytu: pewna, uwagi: "Rodzeństwo Józefata wpisane przy Franciszku (kreski)."}
+- {id: S07-061, podmiot: radoszewska-ludwika-1827, relacja: urodzenie, data: {tekst: "1827", od: 1827, do: 1827},
+   zrodla: [{segment: S07-p01-s02, cytat: "Ludwika 1827–75 Radoszewska"}], pewnosc_odczytu: pewna}
+- {id: S07-062, podmiot: radoszewska-ludwika-1827, relacja: smierc, data: {tekst: "75 (1875)", od: 1875, do: 1875},
+   zrodla: [{segment: S07-p01-s02, cytat: "Ludwika 1827–75 Radoszewska"}], pewnosc_odczytu: pewna}
+- {id: S07-063, podmiot: radoszewska-julia, relacja: rodzic, obiekt: radoszewski-franciszek-1790,
+   zrodla: [{segment: S07-p01-s02, cytat: "Julja Otocka +1860"}], pewnosc_odczytu: pewna}
+- {id: S07-064, podmiot: radoszewska-julia, relacja: smierc, data: {tekst: "+1860", od: 1860, do: 1860},
+   zrodla: [{segment: S07-p01-s02, cytat: "Julja Otocka +1860"}], pewnosc_odczytu: pewna}
+- {id: S07-065, podmiot: radoszewski-henryk-1861, relacja: rodzic, obiekt: radoszewski-franciszek-1790,
+   zrodla: [{segment: S07-p01-s02, cytat: "Henryk +1861 Kawaler"}], pewnosc_odczytu: pewna}
+- {id: S07-066, podmiot: radoszewski-henryk-1861, relacja: smierc, data: {tekst: "+1861", od: 1861, do: 1861},
+   zrodla: [{segment: S07-p01-s02, cytat: "Henryk +1861 Kawaler"}], pewnosc_odczytu: pewna}
+- {id: S07-067, podmiot: radoszewski-henryk-1861, relacja: opis, wartosc: "kawaler (bezżenny)",
+   zrodla: [{segment: S07-p01-s02, cytat: "Henryk +1861 Kawaler"}], pewnosc_odczytu: pewna}
+- {id: S07-068, podmiot: radoszewska-jozefa-1864, relacja: rodzic, obiekt: radoszewski-jozefat-1830,
+   zrodla: [{segment: S07-p01-s03, cytat: "Józefa Wierzchleyska 1864+1933"}], pewnosc_odczytu: pewna, uwagi: "Rodzeństwo Michała wpisane przy Józefacie."}
+- {id: S07-069, podmiot: radoszewska-jozefa-1864, relacja: urodzenie, data: {tekst: "1864", od: 1864, do: 1864},
+   zrodla: [{segment: S07-p01-s03, cytat: "Józefa Wierzchleyska 1864+1933"}, {segment: S07-p16-s02, cytat: "1864+1933"}], pewnosc_odczytu: pewna}
+- {id: S07-070, podmiot: radoszewska-jozefa-1864, relacja: smierc, data: {tekst: "+1933", od: 1933, do: 1933},
+   zrodla: [{segment: S07-p01-s03, cytat: "Józefa Wierzchleyska 1864+1933"}, {segment: S07-p16-s02, cytat: "1864+1933"}], pewnosc_odczytu: pewna}
+- {id: S07-071, podmiot: radoszewski-henryk-1862, relacja: smierc, data: {tekst: "+1867", od: 1867, do: 1867},
+   zrodla: [{segment: S07-p01-s03, cytat: "Henryś +1867"}], pewnosc_odczytu: pewna, uwagi: "Na s. 16 i 54 tego zeszytu: 1870."}
+- {id: S07-072, podmiot: radoszewski-henryk-1862, relacja: rodzic, obiekt: radoszewski-jozefat-1830,
+   zrodla: [{segment: S07-p01-s03, cytat: "Henryś +1867"}], pewnosc_odczytu: pewna}
+- {id: S07-073, podmiot: radoszewska-maria-1867, relacja: rodzic, obiekt: radoszewski-jozefat-1830,
+   zrodla: [{segment: S07-p01-s03, cytat: "Marja Mierzyńska 1867+1965"}], pewnosc_odczytu: pewna}
+- {id: S07-074, podmiot: radoszewska-maria-1867, relacja: urodzenie, data: {tekst: "1867", od: 1867, do: 1867},
+   zrodla: [{segment: S07-p01-s03, cytat: "Marja Mierzyńska 1867+1965"}, {segment: S07-p16-s03, cytat: "Marja 1867+1965"}], pewnosc_odczytu: pewna}
+- {id: S07-075, podmiot: radoszewska-maria-1867, relacja: smierc, data: {tekst: "+1965", od: 1965, do: 1965},
+   zrodla: [{segment: S07-p01-s03, cytat: "Marja Mierzyńska 1867+1965"}, {segment: S07-p16-s03, cytat: "Marja 1867+1965"}], pewnosc_odczytu: pewna}
+- {id: S07-076, podmiot: radoszewski-andrzej-1938, relacja: rodzic, obiekt: radoszewski-jerzy-1902,
+   zrodla: [{segment: S07-p01-s04, cytat: "Andrzej 1938 Elżbieta 1938 Teresa"}], pewnosc_odczytu: pewna}
+- {id: S07-077, podmiot: radoszewska-elzbieta-1938, relacja: rodzic, obiekt: radoszewski-jerzy-1902,
+   zrodla: [{segment: S07-p01-s04, cytat: "Andrzej 1938 Elżbieta 1938 Teresa"}], pewnosc_odczytu: pewna}
+- {id: S07-078, podmiot: radoszewska-teresa-1942, relacja: rodzic, obiekt: radoszewski-jerzy-1902,
+   zrodla: [{segment: S07-p01-s04, cytat: "Andrzej 1938 Elżbieta 1938 Teresa"}], pewnosc_odczytu: pewna}
+- {id: S07-079, podmiot: radoszewski-andrzej-1938, relacja: malzonek, obiekt: lewandowska-halina-1940,
+   zrodla: [{segment: S07-p01-s04, cytat: "Halina Lewandowska Krzysztof Mosek Jerzy Zieliński"}], pewnosc_odczytu: pewna}
+- {id: S07-080, podmiot: radoszewska-elzbieta-1938, relacja: malzonek, obiekt: mosek-krzysztof-1932,
+   zrodla: [{segment: S07-p01-s04, cytat: "Halina Lewandowska Krzysztof Mosek Jerzy Zieliński"}], pewnosc_odczytu: pewna}
+- {id: S07-081, podmiot: radoszewska-teresa-1942, relacja: malzonek, obiekt: zielinski-jerzy-1937,
+   zrodla: [{segment: S07-p01-s04, cytat: "Krzysztof Mosek Jerzy Zieliński"}], pewnosc_odczytu: pewna}
+- {id: S07-082, podmiot: radoszewska-agnieszka-1968, relacja: rodzic, obiekt: radoszewski-andrzej-1938,
+   zrodla: [{segment: S07-p01-s04, cytat: "Agnieszka 1968 Anna 1971"}], pewnosc_odczytu: pewna}
+- {id: S07-083, podmiot: radoszewska-anna-1971, relacja: rodzic, obiekt: radoszewski-andrzej-1938,
+   zrodla: [{segment: S07-p01-s04, cytat: "Agnieszka 1968 Anna 1971"}], pewnosc_odczytu: pewna}
+- {id: S07-084, podmiot: mosek-robert-1969, relacja: rodzic, obiekt: radoszewska-elzbieta-1938,
+   zrodla: [{segment: S07-p01-s04, cytat: "Robert Krzysztof Anna Radoszewska 1969 1974 Zielińska"}], pewnosc_odczytu: pewna}
+- {id: S07-085, podmiot: radoszewska-zielinska-anna-1974, relacja: rodzic, obiekt: radoszewska-teresa-1942,
+   zrodla: [{segment: S07-p01-s04, cytat: "Anna Radoszewska 1969 1974 Zielińska"}], pewnosc_odczytu: pewna}
+
+# s. 2–4: senatorowie, herb, pochodzenie
+- {id: S07-086, podmiot: radoszewski-jerzy-1902, relacja: opis, wartosc: "w rodzie 4 senatorów w latach 1618–1782: Bogusław (biskup), Marek, Andrzej (kasztelanowie wieluńscy), Michał (kasztelan brzeziński)",
+   zrodla: [{segment: S07-p02-s01, cytat: "4 senatorów od 1618–1782"}], pewnosc_odczytu: pewna, uwagi: "Podmiot umowny (opis rodu)."}
+- {id: S07-087, podmiot: radoszewski-boguslaw-1638, relacja: urzad, wartosc: "biskup kijowski i czernichowski (1610); biskup łucki 1633–1638", data: {tekst: "1610; 1633–1638", od: 1610, do: 1638},
+   zrodla: [{segment: S07-p02-s02, cytat: "Bogusław biskup kijowski i czernichowski 1610 biskup łucki 1633–1638 +1638"}], pewnosc_odczytu: pewna}
+- {id: S07-088, podmiot: radoszewski-boguslaw-1638, relacja: smierc, data: {tekst: "+1638", od: 1638, do: 1638},
+   zrodla: [{segment: S07-p02-s02, cytat: "1633–1638 +1638"}, {segment: S07-p23-s01, cytat: "+1638 Bogusław (syn Jerzego)"}], pewnosc_odczytu: pewna}
+- {id: S07-089, podmiot: radoszewski-marek-1641, relacja: urzad, wartosc: "podkomorzy (1616), kasztelan wieluński 1661–1677", data: {tekst: "1616; 1661–1677", od: 1616, do: 1677},
+   zrodla: [{segment: S07-p02-s02, cytat: "Marek Podkomorzy 1616 Kasztelan wieluński 1661–1677"}], pewnosc_odczytu: pewna, uwagi: "Daty kasztelanii niespójne ze śmiercią w 1641 r."}
+- {id: S07-090, podmiot: radoszewski-andrzej-kasztelan, relacja: urzad, wartosc: "kasztelan wieluński", data: {tekst: "1661+1677", od: 1661, do: 1677},
+   zrodla: [{segment: S07-p02-s02, cytat: "Andrzej Kasztelan wieluński 1661+1677"}], pewnosc_odczytu: pewna}
+- {id: S07-091, podmiot: radoszewski-jerzy-1902, relacja: herb, wartosc: "Oksza (topór) — w polu czerwonym oksza srebrna, czyli halabarda, ostrzem w prawo; dewiza „Noli me tangere”; przydomek Boxa; herb możnej rodziny czeskiej Werszowców",
+   zrodla: [{segment: S07-p03-s01, cytat: "Radoszewscy h/Oksza przydomek Boxa"}, {segment: S07-p03-s02, cytat: "Dewiza „Noli me tangere” (nie dotykaj mnie)"},
+            {segment: S07-p03-s03, cytat: "„Oksza (topór) w polu czerwonym oksza srebrna czyli halabarda ostrzem w prawo."},
+            {segment: S07-p03-s03, cytat: "Herb możnej rodziny czeskiej Werszowców."}], pewnosc_odczytu: pewna, uwagi: "Podmiot umowny (herb rodu)."}
+- {id: S07-092, podmiot: radoszewski-jerzy-1902, relacja: opis, wartosc: "„Nosił hetmanem w Koronie także halabardę ostrzem w lewo” — zdanie niejasne",
+   zrodla: [{segment: S07-p03-s03, cytat: "osił hetmanem w Koronie także halabardę ostrzem w lewo”."}], pewnosc_odczytu: niepewna}
+- {id: S07-093, podmiot: radoszewski-imbram-1412, relacja: opis, wartosc: "Radoszewscy wywodzą się od czeskich Werszowców; w 1103 r. Jesko (Jan) zabił księcia czeskiego Świętopełka, który z cesarzem Henrykiem V napadł na Polskę, i dostał od Bolesława Krzywoustego Siemkowice, Radoszewice itd.", data: {tekst: "1103", od: 1103, do: 1103},
+   zrodla: [{segment: S07-p03-s04, cytat: "Radoszewscy wywodzą się od Werszowców czeskich."},
+            {segment: S07-p03-s05, cytat: "W 1103 r. Jesko (Jan) zabił Świętopełka Księcia czeskiego, który z cesarzem niemieckim Henrykiem V napadł na Polskę. W 1103 r dostał od Bolesława Krzywoustego liczne włości: Siemkowice, Radoszewice i t. d."}], pewnosc_odczytu: pewna}
+- {id: S07-094, podmiot: siemkowice, relacja: opis, wartosc: "drewniany dwór z obronną wieżą Imbrama; ślady 400 m od dworu, prace wykopaliskowe prowadził Leszek Kajzer",
+   zrodla: [{segment: S07-p04-s02, cytat: "Drewniany dwór z obronną wieżą, której ślady są 400 m od dworu (Leszek Kajser prowadził tam prace wykopaliskowe)"}], pewnosc_odczytu: pewna}
+- {id: S07-095, podmiot: radoszewski-mikolaj-1574, relacja: malzonek, obiekt: kurzepnicka,
+   zrodla: [{segment: S07-p04-s03, cytat: "żona Kurzepnicka[?]"}], pewnosc_odczytu: niepewna}
+- {id: S07-096, podmiot: radoszewski-mikolaj-1574, relacja: opis, wartosc: "bywał i walczył na Węgrzech, zasłużył się królowi Ludwikowi, od którego otrzymał zamki Kamienice i Trebar[?]; po śmierci Ludwika wrócił do Polski",
+   zrodla: [{segment: S07-p04-s03, cytat: "Bywał i walczył na Węgrzech. Zasłużył się Królowi Ludwikowi od którego otrzymał zamki na Węgrzech: Kamienice i Trebar[?]. Po śmierci Ludwika wrócił do Polski"}], pewnosc_odczytu: niepewna}
+- {id: S07-097, podmiot: radoszewski-jerzy-1614, relacja: pochowek, miejsce: wielun-kolegiata-kaplica, wartosc: "piękny sarkofag w stylu wczesnego baroku",
+   zrodla: [{segment: S07-p04-s04, cytat: "W Kolegjacie wieluńskiej w kaplicy Radoszewskich był piękny sarkofag w stylu wczesnego baroku."}], pewnosc_odczytu: pewna}
+- {id: S07-098, podmiot: radoszewski-jerzy-1614, relacja: opis, wartosc: "sprowadził z Włoch obraz „Grosz czynszowy” (szkoła Tycjana) i „Widzenie św. Teresy”; posiadał jeden z większych księgozbiorów; dwa razy poseł do arcyksięcia Maksymiliana i króla Zygmunta III",
+   zrodla: [{segment: S07-p04-s04, cytat: "Sprowadził z Włoch do dziś zachowany obraz „Grosz czynszowy” ze szkoły Tycjana oraz „Widzenie Św. Teresy”. Posiadał też jeden z większych księgozbiorów. Dwa razy był posłem do do Arcyksięcia Maksymiljana i Króla Zygmunta III."}], pewnosc_odczytu: pewna}
+- {id: S07-099, podmiot: radoszewski-jerzy-1614, relacja: udzial_w_wydarzeniu, wartosc: "przeciwnik rokoszu Zebrzydowskiego (1607), po stronie Zygmunta III", data: {tekst: "1607 r.", od: 1607, do: 1607},
+   zrodla: [{segment: S07-p05-s01, cytat: "Był przeciwny rokoszowi Zebrzydowskiego Mikołaja 1607 r. Był po stronie Zygmunta III"}], pewnosc_odczytu: pewna}
+
+# s. 5–9
+- {id: S07-100, podmiot: radoszewski-marek-1641, relacja: pochowek, miejsce: wielun-kolegiata-kaplica, wartosc: "marmurowa tablica i portret na miedzi w kaplicy; portret w muzeum w Wieluniu",
+   zrodla: [{segment: S07-p05-s02, cytat: "Upamiętniła go marmurowa tablica i piękny portret na miedzi w tejże Kaplicy umieszczony (w Wieluniu w Kolegjacie) Portret zachował się i znajduje się w muzeum w Wieluniu."}], pewnosc_odczytu: pewna}
+- {id: S07-101, podmiot: radoszewski-marek-1641, relacja: smierc, data: {tekst: "1641 r.", od: 1641, do: 1641},
+   zrodla: [{segment: S07-p05-s02, cytat: "Zmarł w 1641 r."}], pewnosc_odczytu: pewna}
+- {id: S07-102, podmiot: olesninska-wiktoria, relacja: herb, wartosc: Ostoja,
+   zrodla: [{segment: S07-p05-s03, cytat: "Oleśnińska h. Ostoja."}], pewnosc_odczytu: pewna}
+- {id: S07-103, podmiot: radoszewski-stanislaw-1657, relacja: opis, wartosc: "miał 6 synów",
+   zrodla: [{segment: S07-p05-s03, cytat: "Miał 6 synów."}], pewnosc_odczytu: pewna}
+- {id: S07-104, podmiot: niborowska, relacja: herb, wartosc: Prawdzic,
+   zrodla: [{segment: S07-p05-s04, cytat: "II Niborowska h. Prawdzic."}], pewnosc_odczytu: pewna}
+- {id: S07-105, podmiot: radoszewski-michal-1775, relacja: odznaczenie, wartosc: "Order św. Stanisława",
+   zrodla: [{segment: S07-p05-s05, cytat: "Order Św. Stanisława,"}], pewnosc_odczytu: pewna}
+- {id: S07-106, podmiot: radoszewski-michal-1775, relacja: fundacja, obiekt: siemkowice, wartosc: "„przemysłowo[?]” rozbudował dwór w Siemkowicach",
+   zrodla: [{segment: S07-p05-s05, cytat: "Przemysłowo[?] rozbudował dwór w Siemkowicach."}], pewnosc_odczytu: niepewna}
+- {id: S07-107, podmiot: radoszewski-michal-1775, relacja: udzial_w_wydarzeniu, wartosc: "na sejmie 1773 r. wystąpił razem z Rejtanem przeciw rozbiorowi Polski", data: {tekst: "1773 r.", od: 1773, do: 1773},
+   zrodla: [{segment: S07-p05-s05, cytat: "Na sejmie 1773 r. wystąpił razem z Reytanem przeciw rozbiorowi Polski."}], pewnosc_odczytu: pewna}
+- {id: S07-108, podmiot: radoszewski-michal-1775, relacja: opis, wartosc: "po rozbiorze wpadł w depresję, stracił wszystkie dobra (m.in. Matyń[?] k. Zadzimia[?]); został tylko Śmiechów, Krempa i Dominikowice",
+   zrodla: [{segment: S07-p05-s05, cytat: "Po rozbiorze wpadł w depresję, stracił wszystkie dobra w tym też Matyń[?] k/Zadzimia[?]"},
+            {segment: S07-p06-s01, cytat: "Został tylko Śmiechów, Krempa i Dominikowice"}], pewnosc_odczytu: niepewna}
+- {id: S07-109, podmiot: radoszewski-roch-1820, relacja: pochowek, miejsce: uniejow-kaplica-radoszewskich, wartosc: "ciała Rocha i Kunegundy przeniesiono do kaplicy w Uniejowie po jej wybudowaniu",
+   zrodla: [{segment: S07-p06-s02, cytat: "Po wybudowaniu Kaplicy w Uniejowie tam przeniesiono ich ciała."}], pewnosc_odczytu: pewna}
+- {id: S07-110, podmiot: wierzchleyska-kunegunda-1828, relacja: pochowek, miejsce: uniejow-kaplica-radoszewskich,
+   zrodla: [{segment: S07-p06-s02, cytat: "Po wybudowaniu Kaplicy w Uniejowie tam przeniesiono ich ciała."}], pewnosc_odczytu: pewna}
+- {id: S07-111, podmiot: radoszewski-roch-1820, relacja: opis, wartosc: kasztelanic,
+   zrodla: [{segment: S07-p06-s02, cytat: "Roch +1820 Kasztelanic"}], pewnosc_odczytu: pewna}
+- {id: S07-112, podmiot: radoszewski-franciszek-1790, relacja: pochowek, miejsce: powazki,
+   zrodla: [{segment: S07-p06-s03, cytat: "Pochowani na Powązkach."}], pewnosc_odczytu: pewna}
+- {id: S07-113, podmiot: skrzynska-jozefa-1807, relacja: pochowek, miejsce: powazki,
+   zrodla: [{segment: S07-p06-s03, cytat: "Pochowani na Powązkach."}], pewnosc_odczytu: pewna}
+- {id: S07-114, podmiot: radoszewski-franciszek-1790, relacja: opis, wartosc: "portret u A. Radoszewskiej",
+   zrodla: [{segment: S07-p06-s03, cytat: "Portret u A. Radoszewskiej"}], pewnosc_odczytu: pewna}
+- {id: S07-115, podmiot: szeliska-teofila-1842, relacja: urodzenie, data: {tekst: "1842", od: 1842, do: 1842},
+   zrodla: [{segment: S07-p06-s04, cytat: "1842+1909."}, {segment: S07-p07-s02, cytat: "Teofila 1842–1909"}], pewnosc_odczytu: pewna}
+- {id: S07-116, podmiot: szeliska-teofila-1842, relacja: smierc, data: {tekst: "+1909", od: 1909, do: 1909},
+   zrodla: [{segment: S07-p06-s04, cytat: "1842+1909."}, {segment: S07-p07-s02, cytat: "Teofila 1842–1909"}], pewnosc_odczytu: pewna}
+- {id: S07-117, podmiot: szeliska-teofila-1842, relacja: zamieszkanie, miejsce: marzenin, wartosc: "pochodzenie: z Marzenina k/Warty[?]",
+   zrodla: [{segment: S07-p06-s04, cytat: "z Marzenina k/Warty[?]"}, {segment: S07-p07-s02, cytat: "z Marzenina."}], pewnosc_odczytu: pewna}
+- {id: S07-118, podmiot: radoszewski-jozefat-1830, relacja: pochowek, miejsce: uniejow-kaplica-radoszewskich,
+   zrodla: [{segment: S07-p06-s04, cytat: "Pochowani w Kaplicy w Uniejowie"}, {segment: S07-p07-s01, cytat: "Józefat i Teofila pochowani są w Uniejowie."}], pewnosc_odczytu: pewna}
+- {id: S07-119, podmiot: szeliska-teofila-1842, relacja: pochowek, miejsce: uniejow-kaplica-radoszewskich,
+   zrodla: [{segment: S07-p06-s04, cytat: "Pochowani w Kaplicy w Uniejowie"}, {segment: S07-p07-s01, cytat: "Józefat i Teofila pochowani są w Uniejowie."}], pewnosc_odczytu: pewna}
+- {id: S07-120, podmiot: szeliski-michal-1800, relacja: pochowek, miejsce: uniejow-kaplica-radoszewskich,
+   zrodla: [{segment: S07-p06-s04, cytat: "jak też i ojciec Teofili"}], pewnosc_odczytu: pewna}
+- {id: S07-121, podmiot: szeliski-michal-1800, relacja: zamieszkanie, miejsce: krempa, wartosc: "po sprzedaniu Marzenina mieszkał w Krempie",
+   zrodla: [{segment: S07-p06-s04, cytat: "który po sprzedaniu Marzenina k/Warty[?] mieszkał w Krempie."}], pewnosc_odczytu: pewna}
+- {id: S07-122, podmiot: radoszewski-jozefat-1830, relacja: fundacja, obiekt: krempa, wartosc: "zbudował dwór w Krempie (poprzedni dwór był w Śmiechowie)",
+   zrodla: [{segment: S07-p06-s04, cytat: "Józefat wybudował dwór w Krempie (poprzedni dwór był w Śmiechowie)"}], pewnosc_odczytu: pewna}
+- {id: S07-123, podmiot: radoszewski-jozefat-1830, relacja: fundacja, obiekt: uniejow-kaplica-radoszewskich,
+   zrodla: [{segment: S07-p06-s04, cytat: "i Kaplicę w Uniejowie na cmentarzu."}], pewnosc_odczytu: pewna}
+- {id: S07-124, podmiot: radoszewski-jozefat-1830, relacja: opis, wartosc: "„uniósł[?]” (zniósł?) serwituty; bardzo gościnny; sławne kuligi w Krempie",
+   zrodla: [{segment: S07-p06-s04, cytat: "serwituty. Był b. gościnny. Sławne były kuligi w Krempie."}], pewnosc_odczytu: niepewna}
+- {id: S07-125, podmiot: radoszewski-jozefat-1830, relacja: urzad, wartosc: "naczelnik powiatu w powstaniu 1863 r.; pół roku więziony w Cytadeli Warszawskiej", data: {tekst: "1863 r.", od: 1863, do: 1864}, miejsce: cytadela-warszawska,
+   zrodla: [{segment: S07-p06-s04, cytat: "Józefat był Naczelnikiem Powiatu w Powstaniu 1863 r. Pół roku był więziony w Cytadeli War."}], pewnosc_odczytu: pewna}
+- {id: S07-126, podmiot: radoszewski-jozefat-1830, relacja: opis, wartosc: "portrety Józefata i Teofili u A. Radoszewskiego",
+   zrodla: [{segment: S07-p07-s01, cytat: "Portrety u A. Radoszewskiego."}], pewnosc_odczytu: pewna}
+- {id: S07-127, podmiot: szeliska-teofila-1842, relacja: herb, wartosc: "Lubicz (nadpisane w miejsce skreślonego „Szeliga”)",
+   zrodla: [{segment: S07-p07-s02, cytat: "Lubicz Teofila 1842–1909 z domu Szeliska h. Szeliga"}], pewnosc_odczytu: pewna}
+- {id: S07-128, podmiot: szeliska-teofila-1842, relacja: udzial_w_wydarzeniu, wartosc: "w 1863 r. po bitwie „pod Niewierszem[?]” rannych powstańców ukryto w Krempie (we dworze i „kuchmalach[?]”); Teofila (w ciąży) przemówiła do dragonów rosyjskich tak, że odjechali bez rewizji", data: {tekst: "1863 r", od: 1863, do: 1863}, miejsce: krempa,
+   zrodla: [{segment: S07-p07-s02, cytat: "Podczas Powstania 1863 r po bitwie pod Niewierszem rannych powstańców przywieziono do Krempy. Schowani byli we dworze i w kuchmalach[?]. Dragoni rosyjscy otoczyli dwór i chcieli szukać rannych. Teofila wyszła na ganek (a była wtedy w ciąży) i tak do nich przemówiła, że odjechali nie szukając powstańców."}], pewnosc_odczytu: niepewna}
+- {id: S07-129, podmiot: szeliska-teofila-1842, relacja: opis, wartosc: "prowadziła w Krempie ochronkę[?] (do II wojny); hodowała jedwabniki; kuracje w Karlsbadzie i Marienbadzie (szkła i kryształy z monogramami); po ślubie syna Michała mieszkała w Dominikowicach",
+   zrodla: [{segment: S07-p07-s02, cytat: "Teofila prowadziła w Krempie dzienną[?] ochronkę[?] które były do II wojny światowej. Hodowała jedwabniki. Na kuracje jeździła do Karlsbadu i Marjenbadu (przywoziła piękne szkła i kryształy z monogramami) Po ślubie syna Michała mieszkała w Dominikowicach."}], pewnosc_odczytu: niepewna}
+- {id: S07-130, podmiot: szeliska-teofila-1842, relacja: zamieszkanie, miejsce: dominikowice, wartosc: "po ślubie syna Michała",
+   zrodla: [{segment: S07-p07-s02, cytat: "Po ślubie syna Michała mieszkała w Dominikowicach."}], pewnosc_odczytu: pewna}
+- {id: S07-131, podmiot: radoszewski-michal-1865, relacja: urodzenie, data: {tekst: "16 list. 1865", od: 1865-11-16, do: 1865-11-16}, miejsce: krempa,
+   zrodla: [{segment: S07-p07-s03, cytat: "ur. 16 list. 1865 r. w Krempie"}], pewnosc_odczytu: pewna}
+- {id: S07-132, podmiot: drohojowska-ewelina-1880, relacja: zamieszkanie, miejsce: ciszecin-wielki, wartosc: "pochodzenie: z Ciszecina Wielkiego k. Jarosławia i Przeworska",
+   zrodla: [{segment: S07-p07-s03, cytat: "z Ciszecina Wielkiego k/Jarosławia"}, {segment: S07-p08-s02, cytat: "z Ciszecina W. k/Jarosławia i Przeworska"}], pewnosc_odczytu: pewna}
+- {id: S07-133, podmiot: radoszewski-michal-1865, relacja: pochowek, miejsce: powazki,
+   zrodla: [{segment: S07-p08-s01, cytat: "Pochowani na Powązkach."}, {segment: S07-p09-s01, cytat: "Pochowani są na Powązkach."}], pewnosc_odczytu: pewna}
+- {id: S07-134, podmiot: drohojowska-ewelina-1880, relacja: pochowek, miejsce: powazki,
+   zrodla: [{segment: S07-p08-s01, cytat: "Pochowani na Powązkach."}, {segment: S07-p09-s01, cytat: "Pochowani są na Powązkach."}], pewnosc_odczytu: pewna}
+- {id: S07-135, podmiot: radoszewski-michal-1865, relacja: slub, obiekt: drohojowska-ewelina-1880, miejsce: krakow-kosciol-sw-barbary,
+   zrodla: [{segment: S07-p08-s01, cytat: "Ślub w Krakowie w Kościele Św. Barbary."}], pewnosc_odczytu: pewna}
+- {id: S07-136, podmiot: radoszewski-michal-1865, relacja: wyksztalcenie, wartosc: "gimnazjum rządowe w Warszawie, prawo na Uniwersytecie Warszawskim; stancja u prof. Skłodowskiego (kolegi Józefata, ojca Marii)", miejsce: warszawa,
+   zrodla: [{segment: S07-p08-s01, cytat: "Michał kończył gimnazjum rządowe w W-wie a potem prawo na Uniw. War. Mieszkał na stancji u prof. Skłodowskiego kolegi Józefata a ojca Marji."}], pewnosc_odczytu: pewna}
+- {id: S07-137, podmiot: sklodowski-prof, relacja: opis, wartosc: "kolega Józefata Radoszewskiego, ojciec Marii; u niego na stancji mieszkał Michał",
+   zrodla: [{segment: S07-p08-s01, cytat: "u prof. Skłodowskiego kolegi Józefata a ojca Marji."}], pewnosc_odczytu: pewna}
+- {id: S07-138, podmiot: radoszewski-michal-1865, relacja: urzad, wartosc: "wybieralny sędzia pokoju (na kilka gmin)",
+   zrodla: [{segment: S07-p08-s01, cytat: "Był wybieralnym sędzią pokoju (przez kilka gmin)"}], pewnosc_odczytu: pewna}
+- {id: S07-139, podmiot: radoszewski-michal-1865, relacja: fundacja, obiekt: krempa, wartosc: "dobudował do dworu przybudówkę, przebudował „kuchmalnię[?]” na gorzelnię, powiększył bibliotekę w Krempie do 5000 tomów (zniszczona przez Niemców w II wojnie)",
+   zrodla: [{segment: S07-p08-s01, cytat: "Dobudował do dworu przybu-dówkę i przebudował kuchmalnię[?] na gorzelnię. Powiększył bibliotekę w Krempie do 5.000 tomów. W czasie II wojny została całkowicie zniszczona przez Niemców."}], pewnosc_odczytu: niepewna}
+- {id: S07-140, podmiot: radoszewski-michal-1865, relacja: wlasnosc, obiekt: dominikowice, wartosc: "w 1914 r. sprzedał Dominikowice i kupił dom w Warszawie, Marszałkowska 59 róg Koszykowej", data: {tekst: "1914 r.", od: 1914, do: 1914},
+   zrodla: [{segment: S07-p08-s01, cytat: "W 1914 r. sprzedał Dominikowice i kupił dom w W-wie na ul. Marszałkowskiej 59 róg Koszykowej."}], pewnosc_odczytu: pewna}
+- {id: S07-141, podmiot: radoszewski-michal-1865, relacja: wlasnosc, obiekt: warszawa-marszalkowska-59, data: {tekst: "od 1914 r.", od: 1914, do: null},
+   zrodla: [{segment: S07-p08-s01, cytat: "kupił dom w W-wie na ul. Marszałkowskiej 59 róg Koszykowej."}], pewnosc_odczytu: pewna}
+- {id: S07-142, podmiot: radoszewski-michal-1865, relacja: opis, wartosc: "nie był gospodarzem; Krempa oddana w dzierżawę bardzo podupadła; rozparcelował 200 morgów",
+   zrodla: [{segment: S07-p08-s01, cytat: "Gospodarzem nie był i Krempa oddana w dzierżawę b. podupadła."}, {segment: S07-p13-s01, cytat: "Michał (ojciec Jerzego) rozparcelował 200 morgów."}], pewnosc_odczytu: pewna}
+- {id: S07-143, podmiot: drohojowska-ewelina-1880, relacja: chrzest, miejsce: zarzecze,
+   zrodla: [{segment: S07-p08-s02, cytat: "Ochrzczona w Zarzeczu."}], pewnosc_odczytu: pewna}
+- {id: S07-144, podmiot: drohojowska-ewelina-1880, relacja: rodzic, obiekt: drohojowski-boleslaw-1848,
+   zrodla: [{segment: S07-p08-s02, cytat: "Rodzice hr. Bolesław Drohojowski h. Korczak"}], pewnosc_odczytu: pewna}
+- {id: S07-145, podmiot: drohojowska-ewelina-1880, relacja: rodzic, obiekt: terlecka-bronislawa-1847,
+   zrodla: [{segment: S07-p09-s01, cytat: "Matka Bronisława Terlecka córka Marcelego i Ludwiki z Paprockich."}], pewnosc_odczytu: pewna}
+- {id: S07-146, podmiot: drohojowski-boleslaw-1848, relacja: rodzic, obiekt: drohojowski-wladyslaw,
+   zrodla: [{segment: S07-p08-s02, cytat: "syn Władysława i Emilji Wolskiej."}], pewnosc_odczytu: pewna}
+- {id: S07-147, podmiot: drohojowski-boleslaw-1848, relacja: rodzic, obiekt: wolska-emilia,
+   zrodla: [{segment: S07-p08-s02, cytat: "syn Władysława i Emilji Wolskiej."}], pewnosc_odczytu: pewna}
+- {id: S07-148, podmiot: terlecka-bronislawa-1847, relacja: rodzic, obiekt: terlecki-marceli,
+   zrodla: [{segment: S07-p09-s01, cytat: "córka Marcelego i Ludwiki z Paprockich."}], pewnosc_odczytu: pewna}
+- {id: S07-149, podmiot: terlecka-bronislawa-1847, relacja: rodzic, obiekt: paprocka-ludwika,
+   zrodla: [{segment: S07-p09-s01, cytat: "córka Marcelego i Ludwiki z Paprockich."}], pewnosc_odczytu: pewna}
+- {id: S07-150, podmiot: drohojowska-ewelina-1880, relacja: opis, wartosc: "w Krempie utrzymywała ochronkę z tajnym nauczaniem; po 1918 w Dozorze szkolnym; Koło Ziemianek, Koło Gospodyń Wiejskich, zarząd Kasy Oszczędności, Mleczarnia Spółdzielcza",
+   zrodla: [{segment: S07-p09-s01, cytat: "Ewa w Krempie utrzy-mywała ochronkę w której też odbywało się tajne nauczanie, gdyż rząd carski nie pozwalał na polskie szkoły. Po odzyskaniu niepodległości była wybierana do Dozoru szkolnego. Należała do Koła Ziemianek, była w Kole Gospodyń Wiejskich w Zarządzie Kasy Oszczędności w Mleczarni Spółdzielczej"}], pewnosc_odczytu: pewna}
+- {id: S07-151, podmiot: radoszewski-michal-1865, relacja: zamieszkanie, miejsce: warszawa-koszykowa-11, wartosc: "po ślubie syna Jerzego (koło Al. Ujazdowskich); dom spalony we wrześniu 1939",
+   zrodla: [{segment: S07-p09-s01, cytat: "Po ślubie syna Jerzego zamieszkali w W-wie na ul. Koszykowej 11 m 3, koło Al. Ujazdowskich. Dom ten w wrześniu 1939 r. został spalony."}], pewnosc_odczytu: pewna}
+- {id: S07-152, podmiot: radoszewski-michal-1865, relacja: zamieszkanie, miejsce: warszawa-nowogrodzka-10, wartosc: "u siostry Marii Mierzyńskiej; tam zmarł w 1942 r.",
+   zrodla: [{segment: S07-p09-s01, cytat: "Potem mieszkali na ul. Nowogrodzkiej 10 u siostry Michała Marji Mierzyńskiej. Michał tam zmarł 1942 r."}], pewnosc_odczytu: pewna}
+- {id: S07-153, podmiot: drohojowska-ewelina-1880, relacja: zamieszkanie, miejsce: milanowek, wartosc: "po powstaniu w Piotrkowie[?], od 1945 r. do śmierci (1955) w Milanówku „u nas”", data: {tekst: "od 1945 r do śmierci 1955 r.", od: 1945, do: 1955},
+   zrodla: [{segment: S07-p09-s01, cytat: "Ewa po powstaniu mieszkała w Piotrkowie, a od 1945 r do śmierci 1955 r. w Milanówku u nas."}], pewnosc_odczytu: pewna}
+
+# s. 10–15: Jerzy i Anna
+- {id: S07-154, podmiot: radoszewski-jerzy-1902, relacja: chrzest, miejsce: niemyslow, wartosc: "chrzcił przyjaciel i wieloletni proboszcz ks. Zawiński[?]",
+   zrodla: [{segment: S07-p10-s01, cytat: "Chrzest w Niemysłowie w parafji Krempa (Ławka Kolatorska z herbem) Chrzcił przyjaciel i wieloletni proboszcz Ks. Zawiński[?]."}], pewnosc_odczytu: niepewna}
+- {id: S07-155, podmiot: radoszewski-jerzy-1902, relacja: wyksztalcenie, wartosc: "nauka w domu (nauczyciel, Niemka, Francuzka); od 1916 szkoła im. Konopczyńskiego (potem Mickiewicza) w Warszawie, kl. IV; POW", data: {tekst: "1916", od: 1916, do: null}, miejsce: warszawa,
+   zrodla: [{segment: S07-p10-s01, cytat: "Jerzy uczył się w domu z nauczycielem, niemką i francuską. W 1916 r. poszedł do szkoły w W-wie im. Konopczyńskiego (potem Mickiewicza) do IV kl."}], pewnosc_odczytu: pewna}
+- {id: S07-156, podmiot: radoszewski-jerzy-1902, relacja: udzial_w_wydarzeniu, wartosc: "1916 świadek wejścia Legionów do Warszawy; w szkole w POW; 9 XI 1918 rozdawanie karabinów, 10 XI rozbrajanie Niemców; powrót Piłsudskiego", data: {tekst: "1916–1918", od: 1916, do: 1918}, miejsce: warszawa,
+   zrodla: [{segment: S07-p10-s01, cytat: "W 1916 r był świadkiem wejścia Legjonów do W-wy (był jeszcze gub. niemiecki) W szkole zapisał się do POW (Polska Orga-nizacja Wojskowa)"},
+            {segment: S07-p10-s01, cytat: "9 list. rozdawano stare karabiny i 10 list. rozbrajano na ulicach Niemców."}], pewnosc_odczytu: pewna}
+- {id: S07-157, podmiot: radoszewski-jerzy-1902, relacja: udzial_w_wydarzeniu, wartosc: "1920: ochotnik w artylerii zenitowej (instruktorzy i sprzęt francuski), obrona mostów warszawskich, 15 VIII na warcie; front pod Sokółką, Grodno, Lida; pochwała Piłsudskiego; bateria przydzielona do kawalerii", data: {tekst: "1920", od: 1920, do: 1920},
+   zrodla: [{segment: S07-p10-s01, cytat: "W 1920 r. gdy Bolszewicy podchodzili pod W-wę Jerzy wstąpił jako ochotnik do artylerji i został przydzielony do artylerji"},
+            {segment: S07-p11-s01, cytat: "zenitowej – przeciwlotniczej, gdyż znał język francuski a instruktorami byli Francuzi i sprzęt był francuski. Jerzy został przydzielony do obrony mostów warszawskich. 15 sierpnia (cud nad Wisłą) stał na warcie."},
+            {segment: S07-p11-s01, cytat: "Podczas inspekcji Naczelnika Piłsudskiego Jerzy stał na warcie i został przez niego pochwalony, że jest najmłodszy w baterji, a dobrze zna regulamin."},
+            {segment: S07-p11-s01, cytat: "Po zdobyciu Grodna posuwali się do Lidy ostrzeliwani bezpośrednio z karabinów ręcznych i maszynowych, a wielokrotnie też z artylerji."}], pewnosc_odczytu: pewna}
+- {id: S07-158, podmiot: radoszewski-jerzy-1902, relacja: odznaczenie, wartosc: "medal „Polska swemu Obrońcy” za udział w wojnie 1920 r. (rozkaz Dowództwa Okręgu Korpusu nr 1; odznaczono 6 osób)",
+   zrodla: [{segment: S07-p12-s01, cytat: "Jerzy otrzymał order-medal „Polska swemu Obrońcy” za udział w wojnie 1920 r jako, że był w bitwie pod Grodnem i na szlaku Białystok–Lida w baterii zenitowej (przeciwlotniczej) użytej wówczas jako artylerja zwykła polowa. (Zostało odznaczo-nych 6 osób) Rozkaz Dowództwa Okręgu Korpusu № 1."}], pewnosc_odczytu: pewna}
+- {id: S07-159, podmiot: radoszewski-jerzy-1902, relacja: wyksztalcenie, wartosc: "matura 1922 w szkole dla byłych wojskowych, egzamin konkursowy na SGGW", data: {tekst: "1922 r.", od: 1922, do: 1922},
+   zrodla: [{segment: S07-p12-s01, cytat: "Po wyjściu z wojska poszedł do szkoły dla byłych wojskowych, gdzie w 1922 r. zdał maturę, a potem egzamin konkursowy na SGGW."}], pewnosc_odczytu: pewna}
+- {id: S07-160, podmiot: radoszewski-jerzy-1902, relacja: opis, wartosc: "jeszcze w VI kl. administrował domem Marszałkowska 59, aby zarobić na utrzymanie (Krempa po dzierżawie bez dochodu)",
+   zrodla: [{segment: S07-p12-s01, cytat: "Będąc jeszcze w szkole w VI kl. musiał objąć administrację domu na ul. Marszałkowskiej 59, aby wygospodarować pieniądze na swoje utrzymanie. Krempa po minionej dzierżawie nie przynosiła dochodu."}], pewnosc_odczytu: pewna}
+- {id: S07-161, podmiot: radoszewski-jerzy-1902, relacja: udzial_w_wydarzeniu, wartosc: "służba wojskowa VII 1925 – X 1926 w 30 pułku art. polowej we Włodzimierzu „k/Brześcia Litewskiego”", data: {tekst: "lipiec 1925 – październik 1926", od: 1925-07, do: 1926-10}, miejsce: wlodzimierz,
+   zrodla: [{segment: S07-p12-s01, cytat: "Od lipca 1925 r. do października 1926 r. służył w Wojsku Pol. w 30 pułku art. polowej we Włodzimierzu k/Brześcia Litewskiego."}], pewnosc_odczytu: pewna}
+- {id: S07-162, podmiot: radoszewski-jerzy-1902, relacja: wlasnosc, obiekt: krempa, wartosc: "po wojsku przejął Krempę w złym stanie; po 4 latach uruchomił gorzelnię (części zabrali Niemcy w 1914–18); 1937 młyn motorowy z prądem dla majątku; ziemia i las dobrze zagospodarowane",
+   zrodla: [{segment: S07-p12-s01, cytat: "Po powrocie z wojska przejął Krempę w b. stanie"},
+            {segment: S07-p13-s01, cytat: "Jerzy uruchomił gorzelnię z której w latach 1914–18 Niemcy zabrali wszystkie części z metali. W 1937 wybudował młyn motorowy, który dostarczał energję elektryczną do majątku."}], pewnosc_odczytu: pewna}
+- {id: S07-163, podmiot: krempa, relacja: opis, wartosc: "zwierzyna (dziki, lisy, borsuki, sarny, zające, kuropatwy, bażanty); park i ogród długości 1 km, aleje, podjazd wysadzany cisami[?] i jaśminami[?], trzy stawy; figura MB w dziupli dębu (fundacja Józefy Wierzchleyskiej) przeniesiona do Niemysłowa po wkroczeniu Niemców",
+   zrodla: [{segment: S07-p13-s01, cytat: "W lesie i polu było dużo zwierzyny: dziki, lisy, borsuki, sarny, zające, kuropatwy, bażanty. Park i ogród w Krempie miał 1 km. długości."},
+            {segment: S07-p13-s01, cytat: "Trzy stawy."},
+            {segment: S07-p13-s01, cytat: "ciotka Józefa z Radoszewskich Wierzchleyska (siostra Michała) ufundowała figurę Matki Boskiej, którą po wkroczeniu Niemców przenie-siono do Kościoła w Niemysłowie."}], pewnosc_odczytu: niepewna}
+- {id: S07-164, podmiot: radoszewska-jozefa-1864, relacja: fundacja, wartosc: "figura Matki Boskiej w dziupli dębu w Krempie", miejsce: krempa,
+   zrodla: [{segment: S07-p13-s01, cytat: "W dużej podmurowanej dziupli w dębie ciotka Józefa z Radoszewskich Wierzchleyska (siostra Michała) ufundowała figurę Matki Boskiej"}], pewnosc_odczytu: pewna}
+- {id: S07-165, podmiot: przadzynska-anna-1914, relacja: rodzic, obiekt: przadzynski-stanislaw-1871,
+   zrodla: [{segment: S07-p13-s02, cytat: "Anna z Prządzyńskich h. Grzymała z Kościerzyna ziemi Sieradzkiej córka Stanisława i Stanisławy"}], pewnosc_odczytu: pewna}
+- {id: S07-166, podmiot: przadzynska-anna-1914, relacja: rodzic, obiekt: grabinska-stanislawa-1890,
+   zrodla: [{segment: S07-p14-s01, cytat: "z Grabińskich h. Pomian ur. 22-III–1914 r."}], pewnosc_odczytu: pewna}
+- {id: S07-167, podmiot: przadzynska-anna-1914, relacja: urodzenie, data: {tekst: "22-III–1914", od: 1914-03-22, do: 1914-03-22},
+   zrodla: [{segment: S07-p14-s01, cytat: "ur. 22-III–1914 r."}], pewnosc_odczytu: pewna}
+- {id: S07-168, podmiot: przadzynska-anna-1914, relacja: wyksztalcenie, wartosc: "do VII kl. nauka w domu (coroczny egzamin); dwa lata pensja hr. Cecylii Plater-Zyberk (Piękna 24), matura 1933, przełożona p. Jadwiga Reutt", data: {tekst: "W 1933 r. matura", od: 1933, do: 1933}, miejsce: warszawa-pensja-plater,
+   zrodla: [{segment: S07-p14-s01, cytat: "Do VII kl. nauka w domu z nauczycielem nauczycielką i francuską. Co roku na wiosnę egzamin. Dwa lata przed maturą pensja hr. Cecylji Plater-Zyberk. Piękna 24. W 1933 r. matura. Przełożoną była p. Jadwiga Reutt."}], pewnosc_odczytu: pewna}
+- {id: S07-169, podmiot: przadzynska-anna-1914, relacja: slub, obiekt: radoszewski-jerzy-1902, data: {tekst: "1937 r.", od: 1937, do: 1937}, miejsce: charlupia-mala, wartosc: "kareta zaprzężona w 4 konie",
+   zrodla: [{segment: S07-p14-s01, cytat: "W 1937 r. ślub z Jerzym Radoszewskim w Charłupi Małej (Kareta 4 konie)"}], pewnosc_odczytu: pewna}
+- {id: S07-170, podmiot: radoszewski-andrzej-1938, relacja: urodzenie, data: {tekst: "1938 r.", od: 1938, do: 1938}, miejsce: warszawa-elzbietanki, wartosc: "bliźnięta z Elżbietą",
+   zrodla: [{segment: S07-p14-s01, cytat: "W 1938 r. urodziny bliźniąt Andrzeja i Elżbiety w W-wie u Elżbietanek na Mokotowie."}], pewnosc_odczytu: pewna}
+- {id: S07-171, podmiot: radoszewska-elzbieta-1938, relacja: urodzenie, data: {tekst: "1938 r.", od: 1938, do: 1938}, miejsce: warszawa-elzbietanki, wartosc: "bliźnięta z Andrzejem",
+   zrodla: [{segment: S07-p14-s01, cytat: "W 1938 r. urodziny bliźniąt Andrzeja i Elżbiety w W-wie u Elżbietanek na Mokotowie."}], pewnosc_odczytu: pewna}
+- {id: S07-172, podmiot: przadzynska-anna-1914, relacja: udzial_w_wydarzeniu, wartosc: "1939: ewakuacja z Krempy (I linia frontu), oblężenie i bombardowanie Warszawy, spalenie domu Koszykowa 11 m 3, powrót do zajętej Krempy; 8 XII 1939 wysiedleni z dziećmi i wychowawczynią p. Rózią przez Turek i Koło do obozu w Bochni; okupacja w Warszawie i w Czarnej k. Radzymina u Urszulanek (przełożona — babcia Netka)", data: {tekst: "1939", od: 1939, do: 1944}, miejsce: bochnia,
+   zrodla: [{segment: S07-p14-s01, cytat: "W 1939 r ewakuacja z Krempy (I linja frontu) Oblężenie i bombardowanie W-wy. Dom i mieszkanie Koszykowa 11 m 3 spalone i zbombardowane. Powrót do Krempy zajętej przez Niemców. 8 grudnia 39 r. wysiedleni razem z 1½ roczny[mi] Dziećmi i ich wychowawczynią p. Rózią do obozu dla przesiedleńców w Bochni przez Turek, Koło. Okupacja w W-wie i Czarnej k/Radzymina u SS. Urszulanek, gdzie przełożoną była Babcia Netka Prządzyńska"}], pewnosc_odczytu: pewna}
+- {id: S07-173, podmiot: rozia-wychowawczyni, relacja: zawod, wartosc: "wychowawczyni dzieci Jerzego i Anny; wysiedlona z nimi do Bochni (1939)",
+   zrodla: [{segment: S07-p14-s01, cytat: "Dziećmi i ich wychowawczynią p. Rózią"}], pewnosc_odczytu: pewna}
+- {id: S07-174, podmiot: przadzynska-anna-1879, relacja: urzad, wartosc: "przełożona Urszulanek w Czarnej k. Radzymina (okupacja)", miejsce: czarna,
+   zrodla: [{segment: S07-p14-s01, cytat: "u SS. Urszulanek, gdzie przełożoną była Babcia Netka Prządzyńska"}], pewnosc_odczytu: pewna}
+- {id: S07-175, podmiot: reutt-jadwiga, relacja: urzad, wartosc: "przełożona pensji Plater (1933)", miejsce: warszawa-pensja-plater,
+   zrodla: [{segment: S07-p14-s01, cytat: "Przełożoną była p. Jadwiga Reutt."}], pewnosc_odczytu: pewna}
+- {id: S07-176, podmiot: radoszewska-teresa-1942, relacja: urodzenie, data: {tekst: "1942 r.", od: 1942, do: 1942},
+   zrodla: [{segment: S07-p15-s01, cytat: "w 1942 r. urodziny Tereski."}], pewnosc_odczytu: pewna}
+- {id: S07-177, podmiot: przadzynska-anna-1914, relacja: udzial_w_wydarzeniu, wartosc: "początek powstania warszawskiego w swoim domu na ul. Błękitnej, potem w Czarnej; znowu I linia frontu — ewakuacja do Dębów k. Łaskarzewa; po wyzwoleniu Piotrków, Milanówek, od 1962 Brwinów", data: {tekst: "1944–1962", od: 1944, do: 1962}, miejsce: wawer-blekitna,
+   zrodla: [{segment: S07-p15-s01, cytat: "Początek Powstania w Warsze w swoim domu na ul. Błękitnej potem w Czarnej. Znowu I linja frontu ewakuacja do Dębów k/Łaskarzewa[?]. Po wyzwoleniu Piotrków, Milanówek a od 1962 r. Brwinów."}], pewnosc_odczytu: pewna}

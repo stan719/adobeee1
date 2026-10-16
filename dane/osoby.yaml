@@ -1376,3 +1376,142 @@
   plec: m
   warianty: ["Wujek Stanisław Prządzyński[?]"]
   uwagi: "Zm. 17-III-1976; tożsamość do ustalenia (nazwisko niepewne)."
+
+- id: radoszewski-imbram-1412
+  imiona: ["Imbram"]
+  nazwisko: "Radoszewski"
+  herb: Oksza
+  plec: m
+  warianty: ["Imbram z Siemkowic", "Imram-Imbram", "Imbramus dictus Boxa"]
+  uwagi: "Protoplasta Radoszewskich i Siemkowskich; utożsamienie z „Imbramus dictus Boxa” z drzewa S01 — prawdopodobne (S08: Imbram 1412–1413)."
+
+- id: radoszewski-boguslaw-1441
+  imiona: ["Bogusław"]
+  nazwisko: "Radoszewski"
+  herb: Oksza
+  plec: m
+  warianty: ["Bogusław z Radoszewic", "Boguslaus dictus Boxa", "Bogusław-Boksza"]
+  uwagi: "Syn Imbrama; utożsamienie z „Boguslaus dictus Boxa” (S01, pok. IX) — prawdopodobne."
+
+- id: radoszewski-mikolaj-1574
+  imiona: ["Mikołaj"]
+  nazwisko: "Radoszewski"
+  herb: Oksza
+  plec: m
+  warianty: ["Mikułasz", "Nicolaus V, vul. Miklasz, dictus Boxa"]
+  uwagi: "Utożsamienie z Mikołajem V z drzewa S01 — prawdopodobne (Węgry, Kamieniec/Terebesz)."
+
+- id: kurzepnicka
+  imiona: []
+  nazwisko: null
+  nazwisko_rodowe: "Kurzepnicka[?]"
+  plec: k
+  uwagi: "Żona Mikołaja (+1574) wg S07; S01 podaje Zofię Konopnicką — może inna żona."
+
+- id: radoszewski-jerzy-1614
+  imiona: ["Jerzy"]
+  nazwisko: "Radoszewski"
+  herb: Oksza
+  plec: m
+  warianty: ["Jerzy Podkomorzy wieluński", "Georgius Boxa Radoszeski"]
+
+- id: mogilnicka
+  imiona: []
+  nazwisko: null
+  nazwisko_rodowe: "Mogilnicka"
+  herb: Korczak
+  plec: k
+  uwagi: "Żona Jerzego, podkomorzego wieluńskiego."
+
+- id: radoszewski-marek-1641
+  imiona: ["Marek"]
+  nazwisko: "Radoszewski"
+  herb: Oksza
+  plec: m
+  warianty: ["Marek Kasztelan wieluński", "Marcus Boxa Radoszeski"]
+
+- id: biskupska-anna
+  imiona: ["Anna"]
+  nazwisko: "Radoszewska"
+  nazwisko_rodowe: "Biskupska"
+  plec: k
+  warianty: ["Anna z Rudnik Biskupska", "Anna Biskupska", "Anna z Biskupskich"]
+
+- id: radoszewski-stanislaw-1657
+  imiona: ["Stanisław"]
+  nazwisko: "Radoszewski"
+  herb: Oksza
+  plec: m
+  warianty: ["Stanisław z Radoszewic"]
+
+- id: olesninska-wiktoria
+  imiona: ["Wiktoria"]
+  nazwisko: "Radoszewska"
+  nazwisko_rodowe: "Oleśnińska"
+  herb: Ostoja
+  plec: k
+
+- id: radoszewski-franciszek-starosta
+  imiona: ["Franciszek"]
+  nazwisko: "Radoszewski"
+  herb: Oksza
+  plec: m
+  warianty: ["Franciszek starosta szadkowski"]
+
+- id: niborowska
+  imiona: []
+  nazwisko: null
+  nazwisko_rodowe: "Niborowska"
+  herb: Prawdzic
+  plec: k
+  uwagi: "II żona Franciszka, starosty szadkowskiego."
+
+- id: radoszewski-michal-1775
+  imiona: ["Michał"]
+  nazwisko: "Radoszewski"
+  herb: Oksza
+  plec: m
+  warianty: ["Michał Kasztelan brzeziński", "Michał z Siemkowic Boksa Radoszewski"]
+
+- id: olszewska-maria
+  imiona: ["Maria"]
+  nazwisko: "Radoszewska"
+  nazwisko_rodowe: "Olszewska"
+  herb: Prus
+  plec: k
+  warianty: ["Marja Olszewska", "Marianna Olszewska"]
+
+- id: radoszewski-andrzej-kasztelan
+  imiona: ["Andrzej"]
+  nazwisko: "Radoszewski"
+  plec: m
+  warianty: ["Andrzej Kasztelan wieluński"]
+  uwagi: "Według S07-p02-s02 kasztelan wieluński 1661–1677 (te same lata co Marek); możliwe pomieszanie osób."
+
+- id: sklodowski-prof
+  imiona: []
+  nazwisko: "Skłodowski"
+  plec: m
+  warianty: ["prof. Skłodowski"]
+  uwagi: "Kolega Józefata, ojciec Marii (Skłodowskiej-Curie)."
+
+- id: plater-zyberk-cecylia
+  imiona: ["Cecylia"]
+  nazwisko: "Plater-Zyberk"
+  plec: k
+  warianty: ["hr. Cecylja Plater-Zyberk"]
+  uwagi: "Założycielka pensji (Piękna 24, Warszawa)."
+
+- id: reutt-jadwiga
+  imiona: ["Jadwiga"]
+  nazwisko: "Reutt[?]"
+  plec: k
+  warianty: ["p. Jadwiga Reutt[?]"]
+  uwagi: "Przełożona pensji Plater; nazwisko niepewne."
+
+- id: rozia-wychowawczyni
+  imiona: ["Rózia"]
+  nazwisko: null
+  plec: k
+  warianty: ["p. Rózia"]
+  uwagi: "Wychowawczyni dzieci Jerzego i Anny (1939)."

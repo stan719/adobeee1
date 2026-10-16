@@ -440,3 +440,95 @@
   nazwa: "Libia"
   typ: region
   pewnosc_identyfikacji: pewna
+
+- id: wielun
+  nazwa: "Wieluń"
+  typ: miasto
+  pewnosc_identyfikacji: pewna
+
+- id: wielun-kolegiata-kaplica
+  nazwa: "Kaplica Radoszewskich w kolegiacie wieluńskiej"
+  typ: kaplica
+  nadrzedne: wielun
+  pewnosc_identyfikacji: pewna
+  uwagi: "Zniszczona w 1939 r."
+
+- id: wielun-muzeum
+  nazwa: "Muzeum w Wieluniu"
+  typ: inny
+  nadrzedne: wielun
+  pewnosc_identyfikacji: pewna
+
+- id: wislica
+  nazwa: "Wiślica"
+  typ: miasto
+  pewnosc_identyfikacji: pewna
+
+- id: matyn
+  nazwa: "Matyń[?]"
+  typ: majątek
+  pewnosc_identyfikacji: do_ustalenia
+  uwagi: "„Matyń k/Zadzimia[?]” (S07-p05-s05)."
+
+- id: cytadela-warszawska
+  nazwa: "Cytadela Warszawska"
+  typ: inny
+  nadrzedne: warszawa
+  pewnosc_identyfikacji: pewna
+
+- id: karlsbad
+  nazwa: "Karlsbad (Karlowe Wary)"
+  typ: miasto
+  pewnosc_identyfikacji: pewna
+
+- id: marienbad
+  nazwa: "Marienbad (Mariańskie Łaźnie)"
+  typ: miasto
+  pewnosc_identyfikacji: pewna
+
+- id: warszawa-nowogrodzka-10
+  nazwa: "Warszawa, Nowogrodzka 10"
+  typ: ulica/dom
+  nadrzedne: warszawa
+  pewnosc_identyfikacji: pewna
+
+- id: piotrkow
+  nazwa: "Piotrków[?]"
+  typ: miasto
+  pewnosc_identyfikacji: prawdopodobna
+  uwagi: "„Piotrkowie” — może Piotrków Trybunalski."
+
+- id: warszawa-szpital-przemienienia
+  nazwa: "Szpital Przemienienia Pańskiego na Pradze (Warszawa)"
+  typ: inny
+  nadrzedne: warszawa
+  pewnosc_identyfikacji: pewna
+
+- id: sokolka
+  nazwa: "Sokółka"
+  typ: miasto
+  pewnosc_identyfikacji: pewna
+
+- id: wlodzimierz
+  nazwa: "Włodzimierz (Wołyński?)"
+  typ: miasto
+  pewnosc_identyfikacji: prawdopodobna
+  uwagi: "„we Włodzimierzu k/Brześcia Litewskiego” (S07-p12-s01)."
+
+- id: warszawa-pensja-plater
+  nazwa: "Pensja hr. Cecylii Plater-Zyberk, Piękna 24, Warszawa"
+  typ: inny
+  nadrzedne: warszawa
+  pewnosc_identyfikacji: pewna
+
+- id: warszawa-elzbietanki
+  nazwa: "Szpital Elżbietanek na Mokotowie (Warszawa)"
+  typ: inny
+  nadrzedne: warszawa
+  pewnosc_identyfikacji: pewna
+
+- id: wawer-blekitna
+  nazwa: "Wawer (Warszawa), ul. Błękitna"
+  typ: ulica/dom
+  nadrzedne: warszawa
+  pewnosc_identyfikacji: pewna
