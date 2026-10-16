@@ -71,15 +71,15 @@
 - id: sgkp-t9-1888
   opis: "Słownik geograficzny Królestwa Polskiego i innych krajów słowiańskich, t. 9, Warszawa 1888"
   dotyczy: "Radoszewice s. 437"
-  segmenty: [S10-p1-s05, S10-p2-s01]
+  segmenty: [S10-p1-s05, S10-p2-s01, S02-p02-f1]
 - id: okolski-niesiecki-herbarze
   opis: "Herbarze Szymona Okolskiego i Kaspra Niesieckiego (tradycja o nadaniu Radoszewic Janowi Wrszowcowi)"
   dotyczy: "Okszyce, Radoszewice"
   segmenty: [S10-p2-s01]
 - id: prygodzki-z-przeszlosci-wielunia
-  opis: "ks. Wincenty Prygodzki, Z przeszłości Wielunia"
+  opis: "ks. Wincenty Prygodzki, Z przeszłości Wielunia, Częstochowa 1928"
   dotyczy: "kaplica Radoszewskich w kolegiacie wieluńskiej s. 19"
-  segmenty: [S10-p2-s04, S10-p3-s01]
+  segmenty: [S10-p2-s04, S10-p3-s01, S02-p10-f4]
 - id: zimogrodzki-wojewodztwo-kaliskie-1863
   opis: "J. Zimogrodzki[?], Województwo Kaliskie w walce w roku 1863 i 1864"
   dotyczy: "bitwa pod Radoszewicami, Niemojowska s. 10"
@@ -88,3 +88,23 @@
   opis: "Maria Bruchnalska, Miejsce Piastowe, 1934"
   dotyczy: "p. Niemojowska w bitwie pod Radoszewicami s. 221"
   segmenty: [S10-p5-s04, S10-p6-s01]
+- id: pawinski-wielkopolska-2
+  opis: "A. Pawiński, Wielkopolska t. II (Źródła dziejowe)"
+  dotyczy: "Radoszewice 1552, s. 289"
+  segmenty: [S02-p03-s01]
+- id: rosin-ziemia-wielunska-1961
+  opis: "Ryszard Rosin, Ziemia wieluńska w XII–XVI w., Łódź 1961"
+  dotyczy: "trakt handlowy przez Radoszewice s. 224; Kuźnica Radoszewska s. 188"
+  segmenty: [S02-p06-f2, S02-p07-f3]
+- id: szczygielski-dzieje-ziemi-wielunskiej-1969
+  opis: "Wojciech Szczygielski, Dzieje Ziemi Wieluńskiej, Łódź 1969"
+  dotyczy: "Marek Radoszewski s. 23, 106–107; rokosz Zebrzydowskiego s. 111–115; kultura s. 124–125"
+  segmenty: [S02-p10-f6, S02-p12-f6, S02-p19-f7, S02-p20-f8]
+- id: nejman-cudowny-obraz-pajeczno
+  opis: "ks. Stanisław Nejman, Cudowny obraz Matki B. Pajęczańskiej"
+  dotyczy: "srebrna sukienka od Andrzeja Radoszewskiego (1630)"
+  segmenty: [S02-p20-f9]
+- id: szczygielski-produkcja-rolnicza-1963
+  opis: "Wojciech Szczygielski, Produkcja rolnicza gospodarstwa folwarcznego w Wieluńskim od XVI do XVIII wieku, Łódź 1963"
+  dotyczy: "gospodarka stawowa w dobrach Radoszewskich 1562–1588, s. 141"
+  segmenty: [S02-p23-f32]

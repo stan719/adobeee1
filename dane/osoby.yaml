@@ -2446,3 +2446,117 @@
   nazwisko: "Skirmunt"
   plec: k
   uwagi: "Jak wyżej (S10)."
+
+- id: radoszewski-jan-hieronim-1552
+  imiona: ["Jan", "Hieronim[?]"]
+  nazwisko: "Radoszewski"
+  herb: Oksza
+  plec: m
+  warianty: ["Jan Hieronim[?] Radoszewski"]
+  uwagi: "Współwłaściciel Radoszewic w 1552 r. (S02, za Pawińskim)."
+
+- id: radoszewski-mikolaj-1552
+  imiona: ["Mikołaj"]
+  nazwisko: "Radoszewski"
+  herb: Oksza
+  plec: m
+  uwagi: "Współwłaściciel Radoszewic w 1552 r. (S02). Może ten sam co radoszewski-mikolaj-1574 — nie scalam bez potwierdzenia."
+
+- id: radoszewski-piotr-1606
+  imiona: ["Piotr"]
+  nazwisko: "Radoszewski"
+  herb: Oksza
+  plec: m
+  warianty: ["Piotr Radoszewski"]
+  uwagi: "Regalista w ziemi wieluńskiej 1606 (S02, za Szczygielskim)."
+
+- id: koniecpolski-aleksander-1609
+  imiona: ["Aleksander"]
+  nazwisko: "Koniecpolski"
+  plec: m
+  uwagi: "Starosta wieluński, wojewoda; zm. 1609; przywódca regalistów wieluńskich (S02, za Szczygielskim)."
+
+- id: koniecpolski-zygmunt-1606
+  imiona: ["Zygmunt"]
+  nazwisko: "Koniecpolski"
+  plec: m
+  uwagi: "Regalista wieluński 1606 (S02)."
+
+- id: zebrzydowski-mikolaj
+  imiona: ["Mikołaj"]
+  nazwisko: "Zebrzydowski"
+  plec: m
+  uwagi: "Wojewoda krakowski, przywódca rokoszu 1606–1607 (S02)."
+
+- id: kurzynski-jan-1606
+  imiona: ["Jan"]
+  nazwisko: "Kurzyński[?]"
+  plec: m
+  uwagi: "Marszałek koła rycerskiego sejmiku wieluńskiego 1606 (S02); nazwisko niepewne."
+
+- id: mowinski-maciej-1606
+  imiona: ["Maciej"]
+  nazwisko: "Mowiński[?]"
+  plec: m
+  uwagi: "Pisarz grodzki wieluński 1606 (S02); nazwisko niepewne."
+
+- id: wegierski-jan-1606
+  imiona: ["Jan"]
+  nazwisko: "Węgierski"
+  plec: m
+  uwagi: "Pisarz ziemski / sędzia ziemski wieluński 1606 (S02)."
+
+- id: brodnicki-jan-1606
+  imiona: ["Jan"]
+  nazwisko: "Brodnicki"
+  plec: m
+  uwagi: "Burgrabia wieluński 1606 (S02)."
+
+- id: skorkowski-jerzy-1606
+  imiona: ["Jerzy"]
+  nazwisko: "Skórkowski"
+  plec: m
+  uwagi: "Regalista wieluński 1606 (S02)."
+
+- id: kowalski-mikolaj-1606
+  imiona: ["Mikołaj"]
+  nazwisko: "Kowalski"
+  plec: m
+  uwagi: "Regalista wieluński 1606 (S02)."
+
+- id: skrzynski-bartosz-1606
+  imiona: ["Bartosz"]
+  nazwisko: "Skrzyński"
+  plec: m
+  uwagi: "Regalista wieluński 1606 (S02)."
+
+- id: skrzynski-piotr-1606
+  imiona: ["Piotr"]
+  nazwisko: "Skrzyński"
+  plec: m
+  uwagi: "Regalista wieluński 1606 (S02)."
+
+- id: golkowski-eliasz-1606
+  imiona: ["Eliasz"]
+  nazwisko: "Gołkowski[?]"
+  plec: m
+  uwagi: "Regalista wieluński 1606 (S02); nazwisko niepewne (może Gotkowski)."
+
+- id: czechowski-waclaw-1606
+  imiona: ["Wacław"]
+  nazwisko: "Czechowski"
+  plec: m
+  uwagi: "Regalista wieluński 1606 (S02)."
+
+- id: borzyk-franciszek
+  imiona: ["Franciszek"]
+  nazwisko: "Borzyk[?]"
+  plec: m
+  uwagi: "Autor odczytu w Radoszewicach w setną rocznicę powstania styczniowego (S02); nazwisko niepewne."
+
+- id: borzyk-ojciec
+  imiona: []
+  nazwisko: "Borzyk[?]"
+  plec: m
+  warianty: ["ojciec Franciszka Borzyka[?]"]
+  uwagi: "Wójt gminy Radoszewice (S02)."

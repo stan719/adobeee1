@@ -970,3 +970,158 @@
   nazwa: "Syberia Wschodnia"
   typ: region
   pewnosc_identyfikacji: pewna
+
+- id: radoszewice-kosciol
+  nazwa: "Kościół w Radoszewicach (pw. św. Marii Magdaleny)"
+  typ: kościół
+  nadrzedne: radoszewice
+  pewnosc_identyfikacji: pewna
+
+- id: siemkowice-kosciol
+  nazwa: "Kościół parafialny w Siemkowicach"
+  typ: kościół
+  nadrzedne: siemkowice
+  pewnosc_identyfikacji: pewna
+
+- id: chorzew
+  nazwa: "Chorzew"
+  typ: wieś
+  pewnosc_identyfikacji: pewna
+
+- id: kuszyna
+  nazwa: "Kuszyna"
+  typ: wieś
+  pewnosc_identyfikacji: pewna
+  uwagi: "Folwark i wieś w dobrach Radoszewice (S02); może „Kruszyna”."
+
+- id: dolina-folwark
+  nazwa: "Dolina (folwark w dobrach Radoszewice)"
+  typ: majątek
+  pewnosc_identyfikacji: prawdopodobna
+
+- id: mierzanow
+  nazwa: "Mieczanów[?] / Mierzanów"
+  typ: wieś
+  pewnosc_identyfikacji: prawdopodobna
+  uwagi: "Kolonia wieczysto-czynszowa dóbr Radoszewice; w S02 „Mieczanów[?]”, w S08 „Mierzanów”."
+
+- id: katarzynopol
+  nazwa: "Katarzynopol"
+  typ: wieś
+  pewnosc_identyfikacji: prawdopodobna
+  uwagi: "Kolonia wieczysto-czynszowa dóbr Radoszewice (S02)."
+
+- id: borkowe
+  nazwa: "Borkowe (osada młyńska)"
+  typ: inny
+  pewnosc_identyfikacji: prawdopodobna
+
+- id: sznury
+  nazwa: "Szmury[?] / Sznury"
+  typ: inny
+  pewnosc_identyfikacji: prawdopodobna
+  uwagi: "Przyległość dóbr Radoszewice; w S02 „Szmury[?]”, w S08 „Sznury”."
+
+- id: wymyslow
+  nazwa: "Wymysłów"
+  typ: inny
+  pewnosc_identyfikacji: prawdopodobna
+  uwagi: "Przyległość dóbr Radoszewice (S02); w S08 „Wymysłówek”."
+
+- id: kuznica-radoszewska
+  nazwa: "Kuźnica (al. Kuźnica[?]); może Kuźnica Ługowska, dawniej „Kuźnica Radoszewska”"
+  typ: wieś
+  pewnosc_identyfikacji: do_ustalenia
+
+- id: laski
+  nazwa: "Łaski[?] / Laski"
+  typ: wieś
+  pewnosc_identyfikacji: do_ustalenia
+
+- id: zmyslona
+  nazwa: "Zmyślona"
+  typ: wieś
+  pewnosc_identyfikacji: prawdopodobna
+
+- id: gabryelow
+  nazwa: "Gabryelów (Gabrielów)"
+  typ: wieś
+  pewnosc_identyfikacji: prawdopodobna
+
+- id: kije
+  nazwa: "Kije"
+  typ: wieś
+  pewnosc_identyfikacji: prawdopodobna
+
+- id: bugaj-radoszewicki
+  nazwa: "Bugaj (Bugaj Radoszewicki)"
+  typ: wieś
+  pewnosc_identyfikacji: prawdopodobna
+
+- id: krzetow
+  nazwa: "Krzyty[?] / Krzytów[?] (zapewne Krzętów k. Pajęczna)"
+  typ: wieś
+  pewnosc_identyfikacji: do_ustalenia
+  uwagi: "Komora celna (S02, za Rosinem)."
+
+- id: kamien-wielunski
+  nazwa: "Kamień (komora celna)"
+  typ: wieś
+  pewnosc_identyfikacji: do_ustalenia
+
+- id: skrzelin
+  nazwa: "Skrzelin[?]"
+  typ: wieś
+  pewnosc_identyfikacji: do_ustalenia
+
+- id: konopnice
+  nazwa: "Konopnice"
+  typ: wieś
+  pewnosc_identyfikacji: prawdopodobna
+
+- id: rychlocice
+  nazwa: "Rychłocice"
+  typ: wieś
+  pewnosc_identyfikacji: prawdopodobna
+
+- id: lipnik
+  nazwa: "Lipnik[?]"
+  typ: wieś
+  pewnosc_identyfikacji: do_ustalenia
+  uwagi: "Dobra Radoszewskich z gospodarką stawową 1562–1588 (S02)."
+
+- id: radoszewice-stawy
+  nazwa: "Stawy w Radoszewicach z kaplicą św. Jana"
+  typ: inny
+  nadrzedne: radoszewice
+  pewnosc_identyfikacji: pewna
+
+- id: stezyca
+  nazwa: "Stężyca"
+  typ: miasto
+  pewnosc_identyfikacji: pewna
+
+- id: lublin
+  nazwa: "Lublin"
+  typ: miasto
+  pewnosc_identyfikacji: pewna
+
+- id: sroda-wlkp
+  nazwa: "Środa (Wielkopolska)"
+  typ: miasto
+  pewnosc_identyfikacji: pewna
+
+- id: jedrzejow
+  nazwa: "Jędrzejów"
+  typ: miasto
+  pewnosc_identyfikacji: pewna
+
+- id: guzow
+  nazwa: "Guzów"
+  typ: wieś
+  pewnosc_identyfikacji: pewna
+
+- id: janowiec
+  nazwa: "Janowiec"
+  typ: miasto
+  pewnosc_identyfikacji: pewna
