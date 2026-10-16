@@ -2911,3 +2911,31 @@
   plec: m
   warianty: ["Władysław Karol de Widawa Wężyk"]
   uwagi: "Notariusz i burgrabia zamku ostrzeszowskiego; spisał inwentarz Kościerzyna 1723 (S08)."
+
+- id: zajaczek-jozef-general
+  imiona: ["Józef"]
+  nazwisko: "Zajączek"
+  herb: Świnka
+  plec: m
+  warianty: ["Józef Zajączek"]
+  uwagi: "Generał, namiestnik Królestwa Polskiego od 1815, książę od 1818, zm. 1826 (S08)."
+
+- id: radoszewski-jozefat-starszy
+  imiona: ["Józefat"]
+  nazwisko: "Radoszewski"
+  herb: Oksza
+  plec: m
+  warianty: ["Józefat starszy"]
+  uwagi: "Brat Franciszka (1790–1846), stryj Józefata (1830–1892); siedziba w Śmiechowie (S08). Może ten sam co radoszewski-jozef-1850 („Józef, brat Franciszka” w S07) — nie scalam."
+
+- id: olszowski-antoni-1727
+  imiona: ["Antoni"]
+  nazwisko: "Olszowski"
+  plec: m
+  uwagi: "Właściciel Krempy, Dominikowic, Krajkowic i Śmiechowa, zm. 1727 (S08)."
+
+- id: bajbuza-antoni
+  imiona: ["Antoni"]
+  nazwisko: "Bajbuza"
+  plec: m
+  uwagi: "Dzierżawca browaru, obór i stajni w Krempie 1747 (S08)."

@@ -1218,3 +1218,20 @@
   typ: inny
   nadrzedne: koscierzyn
   pewnosc_identyfikacji: pewna
+
+- id: krempa-dwor
+  nazwa: "Dwór Radoszewskich w Krempie (murowany, ok. 1860, rozebrany ok. 1985)"
+  typ: majątek
+  nadrzedne: krempa
+  pewnosc_identyfikacji: pewna
+
+- id: krempa-park
+  nazwa: "Park dworski w Krempie"
+  typ: inny
+  nadrzedne: krempa
+  pewnosc_identyfikacji: pewna
+
+- id: krajkowice
+  nazwa: "Krajkowice"
+  typ: wieś
+  pewnosc_identyfikacji: prawdopodobna
