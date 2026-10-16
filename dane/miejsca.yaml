@@ -690,3 +690,122 @@
   nazwa: "Miedzechów[?] / Miechocin[?]"
   typ: inny
   pewnosc_identyfikacji: do_ustalenia
+
+- id: papratnia
+  nazwa: "Papratnia[?] w Konińskim[?]"
+  typ: majątek
+  pewnosc_identyfikacji: do_ustalenia
+
+- id: berlin
+  nazwa: "Berlin"
+  typ: miasto
+  pewnosc_identyfikacji: pewna
+
+- id: topola-katowa
+  nazwa: "Topola Katowa"
+  typ: majątek
+  pewnosc_identyfikacji: do_ustalenia
+
+- id: zlotniki
+  nazwa: "Złotniki[?]"
+  typ: majątek
+  pewnosc_identyfikacji: do_ustalenia
+
+- id: karskow
+  nazwa: "Karsków[?]"
+  typ: majątek
+  pewnosc_identyfikacji: do_ustalenia
+
+- id: wegrzy
+  nazwa: "Węgrzy (Węgrze?)"
+  typ: majątek
+  pewnosc_identyfikacji: do_ustalenia
+  uwagi: "Majątek Mierzyńskich („z Węgrzy”)."
+
+- id: kuznice-zakopane
+  nazwa: "Kuźnice k. Zakopanego (szkoła gen. Zamoyskiej)"
+  typ: inny
+  pewnosc_identyfikacji: pewna
+
+- id: krakow-urszulanki
+  nazwa: "Szkoła SS. Urszulanek w Krakowie"
+  typ: inny
+  nadrzedne: krakow
+  pewnosc_identyfikacji: pewna
+
+- id: warszawa-miodowa
+  nazwa: "Warszawa, ul. Miodowa (firma „Prządzyński i Tryliński”)"
+  typ: ulica/dom
+  nadrzedne: warszawa
+  pewnosc_identyfikacji: pewna
+
+- id: sedziejowice
+  nazwa: "Sędziejowice"
+  typ: wieś
+  pewnosc_identyfikacji: pewna
+
+- id: kalisz
+  nazwa: "Kalisz"
+  typ: miasto
+  pewnosc_identyfikacji: pewna
+
+- id: pruszkow-oboz
+  nazwa: "Obóz przejściowy w Pruszkowie"
+  typ: inny
+  pewnosc_identyfikacji: pewna
+
+- id: domanice
+  nazwa: "Domanice k. Siedlec"
+  typ: wieś
+  pewnosc_identyfikacji: pewna
+
+- id: zakopane
+  nazwa: "Zakopane"
+  typ: miasto
+  pewnosc_identyfikacji: pewna
+
+- id: antony
+  nazwa: "Antony pod Paryżem"
+  typ: miasto
+  pewnosc_identyfikacji: pewna
+
+- id: pawiak
+  nazwa: "Pawiak (więzienie)"
+  typ: inny
+  nadrzedne: warszawa
+  pewnosc_identyfikacji: pewna
+
+- id: oranienburg
+  nazwa: "Oranienburg (obóz)"
+  typ: inny
+  pewnosc_identyfikacji: pewna
+
+- id: oswiecim
+  nazwa: "Oświęcim (obóz)"
+  typ: inny
+  pewnosc_identyfikacji: pewna
+
+- id: genewa
+  nazwa: "Genewa"
+  typ: miasto
+  pewnosc_identyfikacji: pewna
+
+- id: nowy-jork
+  nazwa: "Nowy Jork"
+  typ: miasto
+  pewnosc_identyfikacji: pewna
+
+- id: cieszyn
+  nazwa: "Cieszyn"
+  typ: miasto
+  pewnosc_identyfikacji: pewna
+
+- id: jeruzale-zwolen
+  nazwa: "Jeruzale[?] k. Zwolenia[?]"
+  typ: wieś
+  pewnosc_identyfikacji: do_ustalenia
+
+- id: grabno
+  nazwa: "Grabno"
+  typ: wieś
+  pewnosc_identyfikacji: do_ustalenia

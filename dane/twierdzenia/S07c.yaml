@@ -1,0 +1,496 @@
+# S07 cz. 3: s. 32–48 (senator Wincenty, Prządzyńscy z Leźnicy i Kościerzyna, Grabińscy, Brandlowie, Łączyńscy, rodzeństwo autorki)
+
+# s. 32–33: senator Wincenty i Salomea
+- {id: S07-418, podmiot: przadzynski-wincenty-1795, relacja: urodzenie, data: {tekst: "5-IV-1795", od: 1795-04-05, do: 1795-04-05}, miejsce: gniezno,
+   zrodla: [{segment: S07-p32-s01, cytat: "Młodszy brat gen. Wincenty 5-IV-1795 r. w Gnieźnie"}], pewnosc_odczytu: pewna}
+- {id: S07-419, podmiot: przadzynski-wincenty-1795, relacja: smierc, data: {tekst: "19 list. 1858", od: 1858-11-19, do: 1858-11-19}, miejsce: warszawa, wartosc: "zmarł nagle",
+   zrodla: [{segment: S07-p32-s01, cytat: "+19 list. 1858 r."}, {segment: S07-p32-s01, cytat: "Zmarł nagle w W-wie."}], pewnosc_odczytu: pewna}
+- {id: S07-420, podmiot: przadzynski-wincenty-1795, relacja: rodzenstwo, obiekt: przadzynski-ignacy-1792, wartosc: "młodszy brat generała",
+   zrodla: [{segment: S07-p32-s01, cytat: "Młodszy brat gen. Wincenty"}], pewnosc_odczytu: pewna}
+- {id: S07-421, podmiot: przadzynski-wincenty-1795, relacja: wyksztalcenie, wartosc: "wydział prawa w Warszawie", miejsce: warszawa,
+   zrodla: [{segment: S07-p32-s01, cytat: "Kończył wydział prawa w W-wie"}], pewnosc_odczytu: pewna}
+- {id: S07-422, podmiot: przadzynski-wincenty-1795, relacja: malzonek, obiekt: mierzynska-salomea-1800,
+   zrodla: [{segment: S07-p32-s01, cytat: "ożeniony z Salomeą Mierzyńską z Węgrzy h. Jastrzębiec córką Rafała i Marcjanny z Zagajewskich h. Pomian."}], pewnosc_odczytu: pewna}
+- {id: S07-423, podmiot: mierzynska-salomea-1800, relacja: rodzic, obiekt: mierzynski-rafal-starszy,
+   zrodla: [{segment: S07-p32-s01, cytat: "córką Rafała i Marcjanny z Zagajewskich h. Pomian."}, {segment: S07-p33-s01, cytat: "córka Rafała i Marcjanny z Zagajewskich."}], pewnosc_odczytu: pewna}
+- {id: S07-424, podmiot: mierzynska-salomea-1800, relacja: rodzic, obiekt: zagajewska-marcjanna,
+   zrodla: [{segment: S07-p32-s01, cytat: "Marcjanny z Zagajewskich h. Pomian."}, {segment: S07-p33-s01, cytat: "Marcjanny z Zagajewskich."}], pewnosc_odczytu: pewna}
+- {id: S07-425, podmiot: przadzynski-wincenty-1795, relacja: urzad, wartosc: "po 1831 komisarz pełnomocny do uregulowania granic Królestwa z Galicją i Poznańskim (5 lat w Berlinie); 1840 dyrektor wydziału w Komisji Rządowej Sprawiedliwości i rzeczywisty radca stanu; 1850 członek warszawskiego departamentu Senatu", data: {tekst: "po 1831 – 1850", od: 1831, do: 1850},
+   zrodla: [{segment: S07-p32-s01, cytat: "Po 1831 r. powołany do służby czynnej jako Komisarz pełnomocny do uregulowania granic między Królestwem Polskim a Galicją i Poznańskim. Przez 5 lat pracował w tym charakterze w Berlinie."},
+            {segment: S07-p32-s01, cytat: "W 1840 r. dostał nominację na dyr. wydziału w Komisji rządowej sprawiedliwości i tytuł rzeczywistego radcy stanu. W 1850 r. został mianowany członkiem War. departamen-tu senatu."}], pewnosc_odczytu: pewna}
+- {id: S07-426, podmiot: przadzynski-wincenty-1795, relacja: wlasnosc, obiekt: leznica-wielka, wartosc: "dobra: Papratnia[?] w Konińskim[?], Złotniki[?], Karsków[?], Leźnica Wielka w Łęczyckiem, Topola Katowa, Kobierzycko; 1846 kupił Wolę Wiązową",
+   zrodla: [{segment: S07-p32-s01, cytat: "Osiadł na wsi w dobrach swych Papratni[?] w Koninskim[?]."}, {segment: S07-p32-s01, cytat: "Po powrocie zamieszkał w swych dobrach Leźnicy W. w Łęczyckim."},
+            {segment: S07-p32-s01, cytat: "Posiadał dobra Papratnię, Złotniki[?], Karsków[?], Leźnicę W. Topolę Katową, Kobierzycko a w 1846 r. nabył Wolę Wiązową."}], pewnosc_odczytu: niepewna}
+- {id: S07-427, podmiot: przadzynski-wincenty-1795, relacja: wlasnosc, obiekt: wola-wiazowa, data: {tekst: "1846 r.", od: 1846, do: 1846},
+   zrodla: [{segment: S07-p32-s01, cytat: "a w 1846 r. nabył Wolę Wiązową."}], pewnosc_odczytu: pewna}
+- {id: S07-428, podmiot: przadzynski-wincenty-1795, relacja: wlasnosc, obiekt: kobierzycko,
+   zrodla: [{segment: S07-p32-s01, cytat: "Leźnicę W. Topolę Katową, Kobierzycko"}], pewnosc_odczytu: pewna}
+- {id: S07-429, podmiot: przadzynski-wincenty-1795, relacja: pochowek, miejsce: leznica-wielka, wartosc: "w grobach rodzinnych",
+   zrodla: [{segment: S07-p32-s01, cytat: "Pochowany w grobach rodzinnych w Leźnicy."}], pewnosc_odczytu: pewna}
+- {id: S07-430, podmiot: mierzynska-salomea-1800, relacja: urodzenie, data: {tekst: "1800", od: 1800, do: 1800}, miejsce: wegrzy,
+   zrodla: [{segment: S07-p33-s01, cytat: "Salomea z Mierzyńskich h/Jastrzębiec ur. 1800 w Węgrzach"}], pewnosc_odczytu: pewna}
+- {id: S07-431, podmiot: mierzynska-salomea-1800, relacja: smierc, data: {tekst: "12-III-1877", od: 1877-03-12, do: 1877-03-12}, miejsce: warszawa,
+   zrodla: [{segment: S07-p33-s01, cytat: "zm. w W-wie 12-III-1877 r."}], pewnosc_odczytu: pewna}
+- {id: S07-432, podmiot: przadzynski-wincenty-1795, relacja: opis, wartosc: "Wincenty i Salomea mieli 5 synów i 2 córki; w młodym wieku zmarli Stanisław (portret u Halszki), Bolesław (portret u Tereski) i Michalina — pochowani w Leźnicy",
+   zrodla: [{segment: S07-p33-s01, cytat: "Wincenty i Salomea mieli 5 synów i 2 córki. W młodym wieku zmarli Stanisław (portret u Halszki) Bolesław („ u Tereski) 1837 Michalina 1848 wszyscy pochowani w Leźnicy"}], pewnosc_odczytu: pewna}
+- {id: S07-433, podmiot: przadzynski-stanislaw-1828, relacja: rodzic, obiekt: przadzynski-wincenty-1795,
+   zrodla: [{segment: S07-p33-s01, cytat: "W młodym wieku zmarli Stanisław (portret u Halszki)"}], pewnosc_odczytu: pewna}
+- {id: S07-434, podmiot: przadzynski-stanislaw-1828, relacja: pochowek, miejsce: leznica-wielka,
+   zrodla: [{segment: S07-p33-s01, cytat: "wszyscy pochowani w Leźnicy"}], pewnosc_odczytu: pewna}
+- {id: S07-435, podmiot: przadzynski-boleslaw-1842, relacja: rodzic, obiekt: przadzynski-wincenty-1795,
+   zrodla: [{segment: S07-p33-s01, cytat: "Bolesław („ u Tereski) 1837"}], pewnosc_odczytu: pewna}
+- {id: S07-436, podmiot: przadzynski-boleslaw-1842, relacja: opis, wartosc: "przy imieniu liczba 1837 (bez znaku); portret u Tereski", data: {tekst: "1837", od: 1837, do: 1837},
+   zrodla: [{segment: S07-p33-s01, cytat: "Bolesław („ u Tereski) 1837"}], pewnosc_odczytu: pewna}
+- {id: S07-437, podmiot: przadzynski-boleslaw-1842, relacja: pochowek, miejsce: leznica-wielka,
+   zrodla: [{segment: S07-p33-s01, cytat: "wszyscy pochowani w Leźnicy"}], pewnosc_odczytu: pewna}
+- {id: S07-438, podmiot: przadzynska-michalina-1826, relacja: rodzic, obiekt: przadzynski-wincenty-1795,
+   zrodla: [{segment: S07-p33-s01, cytat: "Michalina 1848 wszyscy pochowani w Leźnicy"}], pewnosc_odczytu: pewna}
+- {id: S07-439, podmiot: przadzynska-michalina-1826, relacja: opis, wartosc: "przy imieniu liczba 1848 (bez znaku)", data: {tekst: "1848", od: 1848, do: 1848},
+   zrodla: [{segment: S07-p33-s01, cytat: "Michalina 1848"}], pewnosc_odczytu: pewna}
+- {id: S07-440, podmiot: przadzynska-michalina-1826, relacja: pochowek, miejsce: leznica-wielka,
+   zrodla: [{segment: S07-p33-s01, cytat: "wszyscy pochowani w Leźnicy"}], pewnosc_odczytu: pewna}
+- {id: S07-441, podmiot: przadzynski-wladyslaw-1837, relacja: rodzic, obiekt: przadzynski-wincenty-1795,
+   zrodla: [{segment: S07-p33-s02, cytat: "Pozostali synowie: Władysław 3 czerw. 1837 +1898"}], pewnosc_odczytu: pewna}
+- {id: S07-442, podmiot: przadzynski-wladyslaw-1837, relacja: urodzenie, data: {tekst: "3 czerw. 1837", od: 1837-06-03, do: 1837-06-03},
+   zrodla: [{segment: S07-p33-s02, cytat: "Władysław 3 czerw. 1837 +1898"}], pewnosc_odczytu: pewna}
+- {id: S07-443, podmiot: przadzynski-wladyslaw-1837, relacja: smierc, data: {tekst: "+1898", od: 1898, do: 1898},
+   zrodla: [{segment: S07-p33-s02, cytat: "Władysław 3 czerw. 1837 +1898"}, {segment: S07-p28-s04, cytat: "Władysław z Leźnicy W. Aleksander 1837+1898"}], pewnosc_odczytu: pewna}
+- {id: S07-444, podmiot: przadzynski-edward-1838, relacja: rodzic, obiekt: przadzynski-wincenty-1795,
+   zrodla: [{segment: S07-p33-s02, cytat: "Edward 13 paźdz. 1838 +1995"}], pewnosc_odczytu: pewna}
+- {id: S07-445, podmiot: przadzynski-edward-1838, relacja: urodzenie, data: {tekst: "13 paźdz. 1838", od: 1838-10-13, do: 1838-10-13},
+   zrodla: [{segment: S07-p33-s02, cytat: "Edward 13 paźdz. 1838"}], pewnosc_odczytu: pewna}
+- {id: S07-446, podmiot: przadzynski-edward-1838, relacja: smierc, data: {tekst: "+1995 (sic)", od: 1995, do: 1995},
+   zrodla: [{segment: S07-p33-s02, cytat: "13 paźdz. 1838 +1995"}], pewnosc_odczytu: niepewna, uwagi: "Oczywista omyłka pisarska (1895); zapisane jako wersja źródła."}
+- {id: S07-447, podmiot: przadzynski-wladyslaw-1837, relacja: wyksztalcenie, wartosc: "szkoła w Warszawie, uniwersytet w Paryżu", miejsce: paryz,
+   zrodla: [{segment: S07-p33-s03, cytat: "Władysław uczęszczał do szkoły w W-wie a na uniw. w Paryżu."}], pewnosc_odczytu: pewna}
+- {id: S07-448, podmiot: przadzynski-wladyslaw-1837, relacja: urzad, wartosc: "sędzia pokoju okręgu łęczyckiego (po reorganizacji sądownictwa)",
+   zrodla: [{segment: S07-p33-s03, cytat: "Po reorganizacji sądownictwa pełnił obowiązki sędziego pokoju okręgu Łęczyckiego."}], pewnosc_odczytu: pewna}
+- {id: S07-449, podmiot: przadzynski-wladyslaw-1837, relacja: slub, obiekt: skrzynska-anna-1848, data: {tekst: "14-IV-1870", od: 1870-04-14, do: 1870-04-14},
+   zrodla: [{segment: S07-p33-s03, cytat: "W 1870 r. 14-IV-1870 r. poślubił Annę Skrzyńską h/Zaremba z Gostkowa"}], pewnosc_odczytu: pewna}
+- {id: S07-450, podmiot: skrzynska-anna-1848, relacja: urodzenie, data: {tekst: "28-VII-1848", od: 1848-07-28, do: 1848-07-28}, miejsce: gostkow,
+   zrodla: [{segment: S07-p33-s03, cytat: "z Gostkowa ur 28-VII-1848–1883"}], pewnosc_odczytu: pewna}
+- {id: S07-451, podmiot: skrzynska-anna-1848, relacja: smierc, data: {tekst: "1883", od: 1883, do: 1883},
+   zrodla: [{segment: S07-p33-s03, cytat: "ur 28-VII-1848–1883"}, {segment: S07-p28-s04, cytat: "h. Zaremba 1848+1883"}], pewnosc_odczytu: pewna}
+- {id: S07-452, podmiot: skrzynska-anna-1848, relacja: rodzic, obiekt: laczynska-waleria,
+   zrodla: [{segment: S07-p33-s03, cytat: "córkę Aleksandra i Walerii z Łączyńskich h/Nałęcz"}], pewnosc_odczytu: pewna}
+- {id: S07-453, podmiot: przadzynski-wladyslaw-1837, relacja: opis, wartosc: "po śmierci żony nie ożenił się ponownie; z wielką miłością wychowywał dzieci",
+   zrodla: [{segment: S07-p33-s03, cytat: "Po śmierci żony nie ożenił się i z wielką miłością i troskliwością wychowywał dzieci"}], pewnosc_odczytu: pewna}
+- {id: S07-454, podmiot: przadzynski-stanislaw-1871, relacja: urodzenie, data: {tekst: "1871, 2 lipca", od: 1871-07-02, do: 1871-07-02},
+   zrodla: [{segment: S07-p34-s01, cytat: "Stanisław 1871 2 lipca"}], pewnosc_odczytu: pewna}
+- {id: S07-455, podmiot: przadzynski-stanislaw-1871, relacja: smierc, data: {tekst: "+2-II-1957", od: 1957-02-02, do: 1957-02-02},
+   zrodla: [{segment: S07-p34-s01, cytat: "+2-II-1957."}], pewnosc_odczytu: pewna, uwagi: "Cyfra dnia poprawiana."}
+- {id: S07-456, podmiot: przadzynski-ignacy-1872, relacja: urodzenie, data: {tekst: "28-VII–1872", od: 1872-07-28, do: 1872-07-28},
+   zrodla: [{segment: S07-p34-s01, cytat: "Ignacy 28-VII–1872 +1890"}], pewnosc_odczytu: pewna}
+- {id: S07-457, podmiot: przadzynski-ignacy-1872, relacja: smierc, data: {tekst: "+1890", od: 1890, do: 1890},
+   zrodla: [{segment: S07-p34-s01, cytat: "Ignacy 28-VII–1872 +1890"}], pewnosc_odczytu: pewna}
+- {id: S07-458, podmiot: przadzynski-zdzislaw-1874, relacja: urodzenie, data: {tekst: "6-III–1874", od: 1874-03-06, do: 1874-03-06},
+   zrodla: [{segment: S07-p34-s01, cytat: "Zdzisław 6-III–1874"}], pewnosc_odczytu: pewna}
+- {id: S07-459, podmiot: przadzynska-wladyslawa-1879, relacja: malzonek, obiekt: wilski-stefan,
+   zrodla: [{segment: S07-p34-s01, cytat: "Władysława ⎫ mąż Stefan Wilski +1933"}], pewnosc_odczytu: pewna}
+- {id: S07-460, podmiot: przadzynska-wladyslawa-1879, relacja: urodzenie, data: {tekst: "ur. 1879", od: 1879, do: 1879},
+   zrodla: [{segment: S07-p34-s01, cytat: "⎬ ur. 1879"}], pewnosc_odczytu: pewna, uwagi: "Klamra łączy Władysławę i Annę."}
+- {id: S07-461, podmiot: przadzynska-anna-1879, relacja: urodzenie, data: {tekst: "ur. 1879", od: 1879, do: 1879},
+   zrodla: [{segment: S07-p34-s01, cytat: "⎬ ur. 1879 Anna ⎭"}], pewnosc_odczytu: pewna, uwagi: "Klamra łączy Władysławę i Annę — prawdopodobnie bliźnięta."}
+- {id: S07-462, podmiot: przadzynska-anna-1879, relacja: smierc, data: {tekst: "+1960", od: 1960, do: 1960},
+   zrodla: [{segment: S07-p34-s01, cytat: "Babcia Netka +1960 przełożona SS. Ursz. w Pniewach"}], pewnosc_odczytu: pewna}
+- {id: S07-463, podmiot: przadzynska-anna-1879, relacja: wyksztalcenie, wartosc: "szkoła SS. Urszulanek w Krakowie, potem szkoła dla panien gen. Zamoyskiej w Kuźnicach k. Zakopanego (razem z Władysławą)", miejsce: kuznice-zakopane,
+   zrodla: [{segment: S07-p34-s01, cytat: "Kończyły szkołę SS Urszulanek w Krakowie potem szkołę dla panien p. gen. Zamoyskiej w Kuźnicach k/Zakopanego."}], pewnosc_odczytu: pewna}
+- {id: S07-464, podmiot: przadzynska-wladyslawa-1879, relacja: wyksztalcenie, wartosc: "szkoła SS. Urszulanek w Krakowie, potem szkoła gen. Zamoyskiej w Kuźnicach", miejsce: kuznice-zakopane,
+   zrodla: [{segment: S07-p34-s01, cytat: "Kończyły szkołę SS Urszulanek w Krakowie"}], pewnosc_odczytu: pewna}
+- {id: S07-465, podmiot: przadzynski-wincenty-1839, relacja: rodzic, obiekt: przadzynski-wincenty-1795,
+   zrodla: [{segment: S07-p34-s02, cytat: "Wincenty Prządzyński syn senatora 1839–1895"}], pewnosc_odczytu: pewna}
+- {id: S07-466, podmiot: przadzynski-wincenty-1839, relacja: urodzenie, data: {tekst: "1839", od: 1839, do: 1839},
+   zrodla: [{segment: S07-p34-s02, cytat: "syn senatora 1839–1895"}], pewnosc_odczytu: pewna}
+- {id: S07-467, podmiot: przadzynski-wincenty-1839, relacja: smierc, data: {tekst: "1895", od: 1895, do: 1895},
+   zrodla: [{segment: S07-p34-s02, cytat: "syn senatora 1839–1895"}], pewnosc_odczytu: pewna}
+- {id: S07-468, podmiot: przadzynski-wincenty-1839, relacja: opis, wartosc: "wydział techniczny w Paryżu; majątki Kobierzycko i Kościerzyn; radca Tow. Ziemskiego; bardzo postępowy — w Kobierzycku fabryka sztucznych nawozów (mączki kostnej), młyn parowy, narzędzia rolnicze; firma „Prządzyński i Tryliński” przy ul. Miodowej (senatorowa, jego matka, odwracała się od szyldu)",
+   zrodla: [{segment: S07-p34-s02, cytat: "Kończył wydział techniczny w Paryżu miał maj. Kobierzycko i Kościerzyn. Był radcą Tow. Ziemskiego. Był b. postępowy założył w Kobierzycku fabrykę sztucznych nawozów mączki kostnej, młyn parowy. Wytwarzał narzędzia rolnicze. Przy ul. Miodowej firma „Prządzyński i Tryliński”."},
+            {segment: S07-p34-s02, cytat: "Dziadzio opowiadał, że gdy Senatorowa matka Wincentego, jechała karetą przez Miodową to odwracała się, aby nie patrzeć na firmę."}], pewnosc_odczytu: pewna}
+- {id: S07-469, podmiot: przadzynski-stanislaw-1871, relacja: opis, wartosc: "miał metalowy nóż do papieru — reklamę firmy „Prządzyński i Tryliński”",
+   zrodla: [{segment: S07-p34-s02, cytat: "(Pamiętam, że Dziadzio Staś miał metalowy nóż do papieru, jako reklamę tej firmy)."}], pewnosc_odczytu: pewna}
+- {id: S07-470, podmiot: przadzynski-wincenty-1839, relacja: udzial_w_wydarzeniu, wartosc: "powstanie styczniowe — bitwa pod Sędziejowicami", data: {tekst: "63 r.", od: 1863, do: 1863}, miejsce: sedziejowice,
+   zrodla: [{segment: S07-p35-s01, cytat: "Wincenty brał czynny udział w Pow. Stycz. 63 r. był w bitwie pod Sędziejowicami."}], pewnosc_odczytu: pewna}
+- {id: S07-471, podmiot: przadzynski-wincenty-1839, relacja: opis, wartosc: "pod koniec życia stracił wzrok i popadł w kłopoty materialne; kawaler; ratował go bratanek Stanisław",
+   zrodla: [{segment: S07-p35-s01, cytat: "Pod koniec życia stracił wzrok i popadł w kłopoty materjalne wtedy Dziadzio Staś Prządzyński 1871+1957 musiał jako młody chłopak przyje-chać ratować i zająć się stryjem, który był kawalerem."}], pewnosc_odczytu: pewna}
+- {id: S07-472, podmiot: przadzynski-stanislaw-1871, relacja: wlasnosc, obiekt: koscierzyn, wartosc: "kupił Kościerzyn na licytacji; doprowadził majątek do kwitnącego stanu",
+   zrodla: [{segment: S07-p35-s01, cytat: "Na licytacji kupił Kościerzyn. Dzięki wielkiej pracy i umiejętnościach orga-nizacyjnych doprowadził majątek do kwitnącego stanu."}], pewnosc_odczytu: pewna}
+- {id: S07-473, podmiot: przadzynski-stanislaw-1871, relacja: urzad, wartosc: "1922–1939 prezes Związku Ziemian; Rada Nadzorcza Syndykatu Rolniczego w Kaliszu, Sp. Rolnicza Kaliska, założyciel Spółdzielni Rolniczej w Sieradzu", data: {tekst: "1922–1939", od: 1922, do: 1939},
+   zrodla: [{segment: S07-p35-s01, cytat: "Od 1922 r do 1939 był Prezesem Związku Ziemian, który to oddział uważany był za najlepszy w Zarządzie w W-wie[?] Duże zasługi miał w organizowaniu handlu rolniczego. Pracował w Radzie Nadzorczej Syndykatu Rolniczego w Kaliszu później w Sp. Rolniczej Kaliskiej, a po zlikwidowaniu tych jednostek zorganizował sprawnie pracującą do II wojny Spół. Rolniczą w Sieradzu."}], pewnosc_odczytu: pewna}
+- {id: S07-474, podmiot: koscierzyn, relacja: opis, wartosc: "gospodarstwo i hodowla na wysokim poziomie: ziarno siewne, buraki cukrowe, kartofle na Śląsk; hodowla koni (ogiery i klacze z Węgier, młodzież sprzedawana na „remontach” wojsku); masło i baranina do Francji i Belgii; tuczone gęsi; wełna do Leszczyna[?] na samodziały i koce",
+   zrodla: [{segment: S07-p35-s01, cytat: "W Kościerzynie gospodarstwo rolne i hodowlę postawione były b. wysoko. Produkowano"},
+            {segment: S07-p36-s01, cytat: "ziarno siewne, buraki cukrowe, kartofle wysyłane były na Śląsk. Była piękna hodowla koni. Z Węgier sprowadzane były ogiery i klacze rozpłodowe."},
+            {segment: S07-p36-s01, cytat: "Masło i baranina wysyłane były do Francji i Belgji. Gęsi (tylko tuczone) sprzedawane były na mięso. Wełna szła do Leszczyna[?] zamie-niana na samodziały i koce."}], pewnosc_odczytu: pewna}
+- {id: S07-475, podmiot: przadzynski-stanislaw-1871, relacja: fundacja, obiekt: koscierzyn, wartosc: "nowy dwór ukończony ok. 1916 r. (kanalizacja, centralne ogrzewanie, elektrownia, telefon); dom dla rządcy, czworaki, budynki gospodarcze", data: {tekst: "±1916 r.", od: 1915, do: 1917},
+   zrodla: [{segment: S07-p36-s01, cytat: "Nowy dwór skończył Dziadzio budować ±1916 r. Była w nim kanalizacja, centralne ogrzewanie, elektryczność z własnej elektrowni."},
+            {segment: S07-p36-s01, cytat: "Dziadzio wybudował też ładny dom dla rządcy,"},
+            {segment: S07-p37-s01, cytat: "czworaki dla ordynarjuszy i parę budynków"}], pewnosc_odczytu: pewna}
+- {id: S07-476, podmiot: wojciech-centralka, relacja: zawod, wartosc: "obsługiwał centralkę telefoniczną w starym dworze; wcześniej nosił teczkę za senatorem Prządzyńskim do senatu",
+   zrodla: [{segment: S07-p36-s01, cytat: "Telefon przeniesiony był ze starego dworu (była tam centralka obsługi-wana przez starego Wojciecha będącego na emeryturze, poprzednio nosił za senatorem Prządzyńskim teczkę do senatu."}], pewnosc_odczytu: pewna}
+- {id: S07-477, podmiot: przadzynski-stanislaw-1871, relacja: opis, wartosc: "pracowity, energiczny, wymagający, sprawiedliwy, dbały o pracowników (rzadko odchodzili); dobry organizator — co roku przyjmował praktykantów-studentów rolnictwa",
+   zrodla: [{segment: S07-p37-s01, cytat: "Dziadzio był bardzo pracowity, energiczny i wyma-gający od siebie i pracowników o których b. dbał i był sprawiedliwy. Ludzie b. rzadko odchodzili."},
+            {segment: S07-p37-s01, cytat: "proszono, aby przyjął praktykantów studjujących rolnictwo."}], pewnosc_odczytu: pewna}
+- {id: S07-478, podmiot: grabinska-stanislawa-1890, relacja: urodzenie, data: {tekst: "1890", od: 1890, do: 1890},
+   zrodla: [{segment: S07-p38-s01, cytat: "Stanisława z Grabińskich h/Pomian Prządzyńska 1890+1980 r."}, {segment: S07-p28-s05, cytat: "Stanisława z Grabińskich h. Pomian 1890+1980"}], pewnosc_odczytu: pewna}
+- {id: S07-479, podmiot: grabinska-stanislawa-1890, relacja: smierc, data: {tekst: "+1980", od: 1980, do: 1980},
+   zrodla: [{segment: S07-p38-s01, cytat: "1890+1980 r."}], pewnosc_odczytu: pewna}
+- {id: S07-480, podmiot: grabinska-stanislawa-1890, relacja: wyksztalcenie, wartosc: "pensja p. Kotwickiej[?] w Warszawie, szkoła dla panien gen. Zamoyskiej w Kuźnicach; biegle francuski, niemiecki, rosyjski", miejsce: kuznice-zakopane,
+   zrodla: [{segment: S07-p38-s01, cytat: "Po ukończeniu pensji w W-wie p. Kotwickiej[?] skończyła szkołę dla panien w Kuźnicach k/Zakopanego p. gen. Zamoyskiej. Znała biegle francuski, niemiecki i rosyjski."}], pewnosc_odczytu: niepewna}
+- {id: S07-481, podmiot: grabinska-stanislawa-1890, relacja: slub, obiekt: przadzynski-stanislaw-1871, data: {tekst: "19-XII-1912", od: 1912-12-19, do: 1912-12-19}, miejsce: warszawa,
+   zrodla: [{segment: S07-p38-s01, cytat: "(19-XII-1912 r w W-wie)"}], pewnosc_odczytu: pewna}
+- {id: S07-482, podmiot: grabinska-stanislawa-1890, relacja: opis, wartosc: "w Kościerzynie opiekowała się pracownikami i gospodarzami (upinała welony pannom młodym), prowadziła ochronkę, pomagała potrzebującym, Koło Ziemianek; park, ogród, szklarnie (chryzantemy, fiołki alpejskie, tulipany, konwalie, hiacynty, róże „Maréchal Niel”), inspekty, pasieka 50 uli; kaplica dworska z nabożeństwem majowym (ks. prałat Cieplinski — jej prefekt, ks. prałat Hilken); zjazdy rodzinne, imieniny (strzelanie z batów), dożynki ze strojami sieradzkimi", miejsce: koscierzyn,
+   zrodla: [{segment: S07-p38-s01, cytat: "Babcia zamieszkała w Kościerzynie. Opiekowała się pracownikami dba[jąc] o ich potrzeby i zdrowie, jak też i o gospodarzy mieszkających na wsi."},
+            {segment: S07-p38-s01, cytat: "Utrzymywała ochronkę dla dzieci. Pomagała wielu potrzebującym. Należała do Koła Ziemianek."},
+            {segment: S07-p38-s01, cytat: "Pasieka z 50 uli dostarczała miodu"},
+            {segment: S07-p39-s01, cytat: "We dworze była kaplica wyposażona we wszystko co potrzeba do Mszy św. Przez cały maj odprawiała tam Babcia nabożeństwo majowe. Często przyjeżdżali przyjaciele ks. prałat Cieplinski (prefekt Babci) i ks. prałat Hilken i odprawiali Msze św. w kaplicy"},
+            {segment: S07-p39-s01, cytat: "Na zakończenie żniw urządzane były huczne dożynki."}], pewnosc_odczytu: pewna}
+- {id: S07-483, podmiot: cieplinski-ks, relacja: opis, wartosc: "ks. prałat, prefekt Stanisławy Grabińskiej, przyjaciel domu; odprawiał msze w kaplicy w Kościerzynie",
+   zrodla: [{segment: S07-p39-s01, cytat: "ks. prałat Cieplinski (prefekt Babci)"}], pewnosc_odczytu: pewna}
+- {id: S07-484, podmiot: hilken-ks, relacja: opis, wartosc: "ks. prałat, przyjaciel domu; odprawiał msze w kaplicy w Kościerzynie",
+   zrodla: [{segment: S07-p39-s01, cytat: "i ks. prałat Hilken i odprawiali Msze św. w kaplicy"}], pewnosc_odczytu: pewna}
+- {id: S07-485, podmiot: przadzynski-stanislaw-1871, relacja: udzial_w_wydarzeniu, wartosc: "wysiedleni przez Niemców z Kościerzyna; w Warszawie w swoim domu Nowogrodzka 42 róg Poznańskiej; podczas powstania wywiezieni do obozu w Pruszkowie; dom spalony, po odbudowie zabrany bez odszkodowania", data: {tekst: "1939–1944", od: 1939, do: 1944}, miejsce: pruszkow-oboz,
+   zrodla: [{segment: S07-p39-s02, cytat: "Po wkroczeniu Niemców Babcia i Dziadzio byli wysiedleni z Kościerzyna. Mieszkali w W-wie w swoim domu na Nowogrodzkiej 42 róg"},
+            {segment: S07-p40-s01, cytat: "Poznańskiej. Podczas Powstania wywiezieni byli do obozu w Pruszkowie. Dom był spalony a po odbudowie zabrany bez odszkodowania."}], pewnosc_odczytu: pewna}
+- {id: S07-486, podmiot: grabinska-stanislawa-1890, relacja: udzial_w_wydarzeniu, wartosc: "wysiedlenie z Kościerzyna, Nowogrodzka 42, obóz w Pruszkowie (1944); „nigdy nie narzekali”", data: {tekst: "1939–1944", od: 1939, do: 1944}, miejsce: pruszkow-oboz,
+   zrodla: [{segment: S07-p39-s02, cytat: "Babcia i Dziadzio byli wysiedleni z Kościerzyna."}, {segment: S07-p40-s01, cytat: "Mimo zupełnej zmiany warunków nigdy nie narzekali i umieli dostosować się do ciężkiej rzeczywistości."}], pewnosc_odczytu: pewna}
+- {id: S07-487, podmiot: przadzynski-stanislaw-1871, relacja: wlasnosc, obiekt: warszawa-nowogrodzka-42,
+   zrodla: [{segment: S07-p39-s02, cytat: "w swoim domu na Nowogrodzkiej 42 róg"}], pewnosc_odczytu: pewna}
+
+# s. 41: siostry generała
+- {id: S07-488, podmiot: przadzynska-sylwia-siostra, relacja: slub, obiekt: krasicki-jan, data: {tekst: "1831 r.", od: 1831, do: 1831},
+   zrodla: [{segment: S07-p41-s01, cytat: "Siostry Gen. Prządzyńskiego."}, {segment: S07-p41-s02, cytat: "Sylwja +1862 mąż Jan Rogala hr. Krasicki z Liciny[?], czy też z Ruchocina k/Gniezna ślub był 1831 r. (portret u A. Radoszewskiego)."}], pewnosc_odczytu: pewna}
+- {id: S07-489, podmiot: krasicki-jan, relacja: udzial_w_wydarzeniu, wartosc: "bił się pod Lipskiem, Ostrołęką i Smoleńskiem",
+   zrodla: [{segment: S07-p41-s02, cytat: "Bił się pod Lipskiem, Ostrołęką i Smoleńskiem."}], pewnosc_odczytu: pewna}
+- {id: S07-490, podmiot: krasicki-gabriel, relacja: rodzic, obiekt: przadzynska-sylwia-siostra,
+   zrodla: [{segment: S07-p41-s02, cytat: "Ich dzieci Gabryjel Krasicki[?]."}], pewnosc_odczytu: niepewna}
+- {id: S07-491, podmiot: krasicka-roza, relacja: rodzic, obiekt: przadzynska-sylwia-siostra,
+   zrodla: [{segment: S07-p41-s02, cytat: "Róża mąż Gutowski"}], pewnosc_odczytu: pewna}
+- {id: S07-492, podmiot: krasicka-roza, relacja: malzonek, obiekt: gutowski,
+   zrodla: [{segment: S07-p41-s02, cytat: "Róża mąż Gutowski"}], pewnosc_odczytu: pewna}
+- {id: S07-493, podmiot: krasicki-jozef, relacja: rodzic, obiekt: przadzynska-sylwia-siostra,
+   zrodla: [{segment: S07-p41-s02, cytat: "⎧ Józef żona Lutomska bliźnięta ⎨"}], pewnosc_odczytu: pewna}
+- {id: S07-494, podmiot: krasicki-jozef, relacja: malzonek, obiekt: lutomska,
+   zrodla: [{segment: S07-p41-s02, cytat: "Józef żona Lutomska"}], pewnosc_odczytu: pewna}
+- {id: S07-495, podmiot: krasicki-kazimierz, relacja: rodzic, obiekt: przadzynska-sylwia-siostra,
+   zrodla: [{segment: S07-p41-s02, cytat: "⎩ Kazimierz „ dr. filozofji Ak. Krak."}], pewnosc_odczytu: pewna, uwagi: "Bliźniak z Józefem; chronologia (żona ur. 1902) wskazuje raczej na późniejsze pokolenie."}
+- {id: S07-496, podmiot: krasicki-kazimierz, relacja: zawod, wartosc: "dr filozofii, Akademia Krakowska",
+   zrodla: [{segment: S07-p41-s02, cytat: "Kazimierz „ dr. filozofji Ak. Krak."}], pewnosc_odczytu: pewna}
+- {id: S07-497, podmiot: krasicki-kazimierz, relacja: malzonek, obiekt: kleczkowska-maria,
+   zrodla: [{segment: S07-p41-s02, cytat: "żona Marja Kleczkowska ur. 1902 w Krakowie."}], pewnosc_odczytu: pewna}
+- {id: S07-498, podmiot: kleczkowska-maria, relacja: urodzenie, data: {tekst: "1902", od: 1902, do: 1902}, miejsce: krakow,
+   zrodla: [{segment: S07-p41-s02, cytat: "Marja Kleczkowska ur. 1902 w Krakowie."}], pewnosc_odczytu: pewna}
+- {id: S07-499, podmiot: krasicki-kazimierz, relacja: wlasnosc, obiekt: zakopane, wartosc: "willa „Cicha” w Zakopanem; często przyjeżdżali do Kościerzyna",
+   zrodla: [{segment: S07-p41-s02, cytat: "Mieli w Zakopanem willę „Cicha” często przyjeżdżali do Kośc[ierzyna]"}], pewnosc_odczytu: pewna}
+- {id: S07-500, podmiot: krasicka-anna, relacja: rodzic, obiekt: krasicki-kazimierz,
+   zrodla: [{segment: S07-p41-s02, cytat: "mieli dzieci Annę mąż gen. lot. Ujejski[?]"}], pewnosc_odczytu: pewna}
+- {id: S07-501, podmiot: krasicka-anna, relacja: malzonek, obiekt: ujejski-gen,
+   zrodla: [{segment: S07-p41-s02, cytat: "Annę mąż gen. lot. Ujejski[?]"}], pewnosc_odczytu: niepewna}
+- {id: S07-502, podmiot: krasicka-maria, relacja: rodzic, obiekt: krasicki-kazimierz,
+   zrodla: [{segment: S07-p41-s02, cytat: "Marja „ Krisi[?]"}], pewnosc_odczytu: niepewna}
+- {id: S07-503, podmiot: krasicki-jan-rolnik, relacja: rodzic, obiekt: krasicki-kazimierz,
+   zrodla: [{segment: S07-p41-s02, cytat: "Jan rolnik żona Iwanicka z Włodkowa[?]"}], pewnosc_odczytu: pewna}
+- {id: S07-504, podmiot: krasicki-jan-rolnik, relacja: malzonek, obiekt: iwanicka,
+   zrodla: [{segment: S07-p41-s02, cytat: "Jan rolnik żona Iwanicka z Włodkowa[?]"}], pewnosc_odczytu: niepewna}
+- {id: S07-505, podmiot: krasicki-kazimierz-dyplomata, relacja: rodzic, obiekt: krasicki-kazimierz,
+   zrodla: [{segment: S07-p41-s02, cytat: "Kazimierz dyplomata"}], pewnosc_odczytu: pewna}
+- {id: S07-506, podmiot: krasicki-kazimierz-dyplomata, relacja: zawod, wartosc: dyplomata,
+   zrodla: [{segment: S07-p41-s02, cytat: "Kazimierz dyplomata"}], pewnosc_odczytu: pewna}
+- {id: S07-507, podmiot: moszczenski-teodor, relacja: rodzic, obiekt: przadzynska-nepomucena,
+   zrodla: [{segment: S07-p41-s03, cytat: "Nepomucena mąż Antoni Moszczeński syn Teodor"}], pewnosc_odczytu: pewna}
+- {id: S07-508, podmiot: moszczenski-teodor, relacja: smierc, wartosc: "dwudziestoletni, walczył pod wodzą wuja gen. Prządzyńskiego, poległ pod Domanicami k. Siedlec", miejsce: domanice,
+   zrodla: [{segment: S07-p41-s03, cytat: "Teodor dwudziestoletni walczył pod wodzą wuja gen. Prządzyńskiego i poległ pod Domanicami k/Siedlec."}], pewnosc_odczytu: pewna}
+- {id: S07-509, podmiot: moszczenski-jerzy, relacja: rodzic, obiekt: przadzynska-nepomucena,
+   zrodla: [{segment: S07-p41-s03, cytat: "Drugi syn Jerzy towarzyszył wujowi na Helgoland"}], pewnosc_odczytu: pewna}
+- {id: S07-510, podmiot: moszczenski-jerzy, relacja: opis, wartosc: "towarzyszył wujowi (gen. Prządzyńskiemu) na Helgolandzie", miejsce: helgoland,
+   zrodla: [{segment: S07-p41-s03, cytat: "Drugi syn Jerzy towarzyszył wujowi na Helgoland"}], pewnosc_odczytu: pewna}
+
+# s. 42–45: Grabińscy, Brandlowie
+- {id: S07-511, podmiot: brandel-maria-1870, relacja: urodzenie, data: {tekst: "1870", od: 1870, do: 1870},
+   zrodla: [{segment: S07-p42-s01, cytat: "Prababcia Marja z Brandlów Grabińska 1870+14-II–1945"}], pewnosc_odczytu: pewna}
+- {id: S07-512, podmiot: brandel-maria-1870, relacja: smierc, data: {tekst: "14-II–1945", od: 1945-02-14, do: 1945-02-14}, miejsce: krakow,
+   zrodla: [{segment: S07-p42-s01, cytat: "1870+14-II–1945"}, {segment: S07-p43-s01, cytat: "wywieziona do Krakowa, gdzie zmarła."}], pewnosc_odczytu: pewna}
+- {id: S07-513, podmiot: brandel-maria-1870, relacja: malzonek, obiekt: grabinski-edward-1859,
+   zrodla: [{segment: S07-p42-s02, cytat: "wcześnie owdowiała (Edward 1859+1911)"}], pewnosc_odczytu: pewna}
+- {id: S07-514, podmiot: grabinski-edward-1859, relacja: urodzenie, data: {tekst: "1859", od: 1859, do: 1859},
+   zrodla: [{segment: S07-p42-s02, cytat: "(Edward 1859+1911)"}], pewnosc_odczytu: pewna}
+- {id: S07-515, podmiot: grabinski-edward-1859, relacja: smierc, data: {tekst: "+1911", od: 1911, do: 1911},
+   zrodla: [{segment: S07-p42-s02, cytat: "(Edward 1859+1911)"}], pewnosc_odczytu: pewna}
+- {id: S07-516, podmiot: grabinski-edward-1859, relacja: fundacja, obiekt: warszawa-aleje-jerozolimskie-37, wartosc: "zbudował 4-piętrową kamienicę z 2 podwórzami",
+   zrodla: [{segment: S07-p42-s02, cytat: "dużą 4 piętrową kamienicą z 2 podwórza-mi wybudowaną przez Edwarda w Al. Jerozolim. 37."}], pewnosc_odczytu: pewna}
+- {id: S07-517, podmiot: brandel-maria-1870, relacja: opis, wartosc: "wcześnie owdowiała, wychowała i wykształciła czworo dzieci; sama zarządzała majątkiem i kamienicą w Al. Jerozolimskich 37 w latach I wojny i później; dom otwarty dla potrzebujących",
+   zrodla: [{segment: S07-p42-s02, cytat: "wychowała i wykształciła czworo dzieci. W trudnych latach I wojny światowej i potem sama zarządzała swym majątkiem"},
+            {segment: S07-p42-s02, cytat: "Dom Prababci był domem otwartym dla wszystkich potrze-bujących."}], pewnosc_odczytu: pewna}
+- {id: S07-518, podmiot: brandel-maria-1870, relacja: rodzic, obiekt: brandel-seweryn,
+   zrodla: [{segment: S07-p42-s02, cytat: "Ojciec Seweryn Brandel był rzeczywistym Radcą Stanu."}], pewnosc_odczytu: pewna}
+- {id: S07-519, podmiot: brandel-seweryn, relacja: opis, wartosc: "rzeczywisty radca stanu; współzałożyciel Filharmonii Warszawskiej (miał w niej fotel) i Towarzystwa Dobroczynności; ładnie grał na fortepianie",
+   zrodla: [{segment: S07-p42-s02, cytat: "Był jednym z założycieli Fil. War. (w której miał fotel) (sam b. ładnie grał na forte-pianie) i Tow. Dobroczynności."}], pewnosc_odczytu: pewna}
+- {id: S07-520, podmiot: brandel-maria-1870, relacja: rodzic, obiekt: dabska-leokadia-1850,
+   zrodla: [{segment: S07-p42-s02, cytat: "Matka Leokadja z Dzbskich wcześnie zmarła."}], pewnosc_odczytu: pewna}
+- {id: S07-521, podmiot: brandel-maria-1870, relacja: slub, obiekt: grabinski-edward-1859, miejsce: lipnica, wartosc: "w Lipnicy u cioci Kotusi z Mierzyńskich hr. Łąckiej, gdzie spędzała dzieciństwo",
+   zrodla: [{segment: S07-p42-s02, cytat: "Prababcia jako dziecko dużo czasu spędzała u swej rodziny w Lipnicy u cioci Kotusi z Mierzyńskich hr. Łąckiej i tam był jej ślub."}], pewnosc_odczytu: pewna}
+- {id: S07-522, podmiot: brandel-maria-1870, relacja: opis, wartosc: "wspomnienie autorki: u Prababci bywali studenci (Jaś Niedźwiedzki, Mira Sikorska); autorka w czasie pensji Plater mieszkała u niej („drugi dom”, „tańcujące wieczorki”, bale, teatr, kino)",
+   zrodla: [{segment: S07-p42-s02, cytat: "podczas studjów na politechnice zawsze przychodził Jaś Niedźwiedzki, Mira Sikorska i t.d. Będąc na pensji Panny Plater mieszkałam"},
+            {segment: S07-p43-s01, cytat: "u Prababci w domu, który był drugim moim domem. Prababcia otaczała mnie czułą opieką. Była pełna życia i werwy, urządzała mi „tańcujące wieczorki”, a potem chodziła ze mną na bale do teatru, kina."}], pewnosc_odczytu: pewna}
+- {id: S07-523, podmiot: przadzynska-anna-1914, relacja: zamieszkanie, miejsce: warszawa-aleje-jerozolimskie-37, wartosc: "w czasie nauki na pensji Plater mieszkała u prababci Marii Grabińskiej",
+   zrodla: [{segment: S07-p42-s02, cytat: "Będąc na pensji Panny Plater mieszkałam"}, {segment: S07-p43-s01, cytat: "u Prababci w domu, który był drugim moim domem."}], pewnosc_odczytu: pewna, uwagi: "Utożsamienie narratorki z Anną z Prządzyńskich — z kontekstu."}
+- {id: S07-524, podmiot: warszawa-aleje-jerozolimskie-37, relacja: opis, wartosc: "w 1939 spalił się front domu z mieszkaniem Marii Grabińskiej; potem mieszkała w oficynie",
+   zrodla: [{segment: S07-p43-s01, cytat: "W 1939 r. spalił się front domu razem z mieszkaniem Prababci. Mieszkała potem w oficynie."}], pewnosc_odczytu: pewna}
+- {id: S07-525, podmiot: brandel-maria-1870, relacja: udzial_w_wydarzeniu, wartosc: "w powstaniu warszawskim rozdzielona z rodziną, wywieziona przez Niemców do Krakowa, gdzie zmarła; po wojnie córki przewiozły ciało do grobu rodzinnego na Powązkach", miejsce: powazki-kw162,
+   zrodla: [{segment: S07-p43-s01, cytat: "Podczas Pow. Warsz. rozdzielona z rodziną została przez Niemców wywieziona do Krakowa, gdzie zmarła. Ciało po wojnie Córki przewiozły do grobu rodzinnego na Powązki"}], pewnosc_odczytu: pewna}
+- {id: S07-526, podmiot: brandel-konstanty, relacja: urodzenie, data: {tekst: "1880", od: 1880, do: 1880},
+   zrodla: [{segment: S07-p43-s02, cytat: "Konstanty Brandel 1880–1970"}], pewnosc_odczytu: pewna}
+- {id: S07-527, podmiot: brandel-konstanty, relacja: smierc, data: {tekst: "1970", od: 1970, do: 1970},
+   zrodla: [{segment: S07-p43-s02, cytat: "Konstanty Brandel 1880–1970"}], pewnosc_odczytu: pewna}
+- {id: S07-528, podmiot: brandel-konstanty, relacja: rodzic, obiekt: brandel-jozef,
+   zrodla: [{segment: S07-p43-s02, cytat: "syn Józefa i Amelii Kurtzkowskiej[?]"}], pewnosc_odczytu: pewna}
+- {id: S07-529, podmiot: brandel-konstanty, relacja: rodzic, obiekt: kurtzkowska-amelia,
+   zrodla: [{segment: S07-p43-s02, cytat: "syn Józefa i Amelii Kurtzkowskiej[?]"}], pewnosc_odczytu: niepewna}
+- {id: S07-530, podmiot: brandel-konstanty, relacja: opis, wartosc: "stryjeczny brat Seweryna Brandla; ASP w Krakowie i „La Paletta” (Académie de la Palette) w Paryżu; brat ojca Konrad — znany fotograf",
+   zrodla: [{segment: S07-p43-s02, cytat: "stryjeczna stryjeczny brat Seweryna. Konstanty kończył Ak. Szt. Pięk. w Krako[wie] a w Paryżu Ak. „La Paletta”."}, {segment: S07-p43-s02, cytat: "Konrad był znanym fotografem."}], pewnosc_odczytu: pewna}
+- {id: S07-531, podmiot: brandel-konrad, relacja: zawod, wartosc: "znany fotograf",
+   zrodla: [{segment: S07-p43-s02, cytat: "Konrad był znanym fotografem."}], pewnosc_odczytu: pewna}
+- {id: S07-532, podmiot: brandel-kazimierz, relacja: rodzenstwo, obiekt: brandel-konstanty,
+   zrodla: [{segment: S07-p43-s02, cytat: "Konstanty miał rodzeństwo Kazimierz"}], pewnosc_odczytu: pewna}
+- {id: S07-533, podmiot: brandel-jozefa, relacja: rodzenstwo, obiekt: brandel-konstanty,
+   zrodla: [{segment: S07-p43-s02, cytat: "Józefa Leitgeber[?]"}], pewnosc_odczytu: niepewna}
+- {id: S07-534, podmiot: brandel-tadeusz, relacja: rodzenstwo, obiekt: brandel-konstanty,
+   zrodla: [{segment: S07-p43-s02, cytat: "Tadeusz przepadł w Rosji podczas rewolucji."}], pewnosc_odczytu: pewna}
+- {id: S07-535, podmiot: brandel-tadeusz, relacja: smierc, wartosc: "przepadł w Rosji podczas rewolucji", data: {tekst: "podczas rewolucji", od: 1917, do: 1922},
+   zrodla: [{segment: S07-p43-s02, cytat: "Tadeusz przepadł w Rosji podczas rewolucji."}], pewnosc_odczytu: pewna}
+- {id: S07-536, podmiot: grabinska-stefania, relacja: rodzenstwo, obiekt: grabinska-stanislawa-1890,
+   zrodla: [{segment: S07-p44-s01, cytat: "Rodzeństwo Babci Stachy."}, {segment: S07-p44-s02, cytat: "Stefanja 27-II–1977 mąż Jan Podkoliński"}], pewnosc_odczytu: pewna}
+- {id: S07-537, podmiot: grabinska-stefania, relacja: smierc, data: {tekst: "27-II–1977", od: 1977-02-27, do: 1977-02-27},
+   zrodla: [{segment: S07-p44-s02, cytat: "Stefanja 27-II–1977"}], pewnosc_odczytu: pewna}
+- {id: S07-538, podmiot: grabinska-stefania, relacja: malzonek, obiekt: podkolinski-jan,
+   zrodla: [{segment: S07-p44-s02, cytat: "mąż Jan Podkoliński"}], pewnosc_odczytu: pewna}
+- {id: S07-539, podmiot: grabinska-stefania, relacja: zamieszkanie, miejsce: jeruzale-zwolen, wartosc: "przed II wojną",
+   zrodla: [{segment: S07-p44-s02, cytat: "mieszkali przed wojną w Jeruzalach[?] k/Zwolenia[?]"}], pewnosc_odczytu: niepewna}
+- {id: S07-540, podmiot: podkolinski-waclaw, relacja: wyksztalcenie, wartosc: "szkoła rolnicza w Cieszynie", miejsce: cieszyn,
+   zrodla: [{segment: S07-p44-s02, cytat: "Wacław kończył szk. rol. w Cieszynie poległ 1939 r."}], pewnosc_odczytu: pewna}
+- {id: S07-541, podmiot: podkolinski-waclaw, relacja: smierc, data: {tekst: "1939 r.", od: 1939, do: 1939}, wartosc: "poległ",
+   zrodla: [{segment: S07-p44-s02, cytat: "poległ 1939 r."}], pewnosc_odczytu: pewna}
+- {id: S07-542, podmiot: podkolinski-adam, relacja: udzial_w_wydarzeniu, wartosc: "w podziemiu i w powstaniu warszawskim; potem wyjechał do Brazylii, ożenił się z Zezé[?], ma 3 córki", miejsce: brazylia,
+   zrodla: [{segment: S07-p44-s02, cytat: "Adam brał czynny udział w podziemiu i Pow. Warsz. Wyjechał do Brazylji tam się ożenił z Zezé[?] ma 3 córki"}], pewnosc_odczytu: pewna}
+- {id: S07-543, podmiot: podkolinski-adam, relacja: malzonek, obiekt: zeze,
+   zrodla: [{segment: S07-p44-s02, cytat: "ożenił z Zezé[?]"}], pewnosc_odczytu: niepewna}
+- {id: S07-544, podmiot: podkolinska-halina, relacja: smierc, data: {tekst: "1986 r.", od: 1986, do: 1986}, wartosc: "zginęła w wypadku samochodowym",
+   zrodla: [{segment: S07-p44-s03, cytat: "Halina mąż Marek Tyminiecki. Zginęła w wypadku samochodowym 1986 r."}], pewnosc_odczytu: pewna}
+- {id: S07-545, podmiot: tymieniecka-maria, relacja: zamieszkanie, miejsce: hiszpania,
+   zrodla: [{segment: S07-p44-s03, cytat: "Marylka mieszka w Hiszpanji"}], pewnosc_odczytu: pewna}
+- {id: S07-546, podmiot: tymieniecki-jacek, relacja: malzonek, obiekt: tymieniecka-anna-zona-jacka, wartosc: "mieszkają na wsi",
+   zrodla: [{segment: S07-p44-s03, cytat: "Jacek żona Anna mieszkają na wsi"}], pewnosc_odczytu: pewna}
+- {id: S07-547, podmiot: grabinski-adam-1944, relacja: smierc, data: {tekst: "10-XII-44 r.", od: 1944-12-10, do: 1944-12-10}, miejsce: flossenburg, wartosc: "zginął za Ojczyznę w obozie niemieckim; wcześniej więzień Pawiaka i Oranienburga",
+   zrodla: [{segment: S07-p44-s04, cytat: "Adam Grabiński adwokat +1944"}, {segment: S07-p44-s04, cytat: "Był wielkim patrjotą, więzień Pawiaka Oranienburga zginął za Ojczyznę 10-XII-44 r. w obozie niemieckim Flossenburgu."}], pewnosc_odczytu: pewna}
+- {id: S07-548, podmiot: grabinski-adam-1944, relacja: malzonek, obiekt: krzyzanowska-renata,
+   zrodla: [{segment: S07-p44-s04, cytat: "żona Renatka Krzyżanowska h. Dębno pianistka"}], pewnosc_odczytu: pewna}
+- {id: S07-549, podmiot: krzyzanowska-renata, relacja: zawod, wartosc: pianistka,
+   zrodla: [{segment: S07-p44-s04, cytat: "pianistka"}], pewnosc_odczytu: pewna}
+- {id: S07-550, podmiot: krzyzanowska-renata, relacja: urodzenie, data: {tekst: "1901", od: 1901, do: 1901},
+   zrodla: [{segment: S07-p44-s04, cytat: "1901+1962"}], pewnosc_odczytu: pewna}
+- {id: S07-551, podmiot: krzyzanowska-renata, relacja: smierc, data: {tekst: "+1962", od: 1962, do: 1962},
+   zrodla: [{segment: S07-p44-s04, cytat: "1901+1962"}], pewnosc_odczytu: pewna}
+- {id: S07-552, podmiot: krzyzanowska-renata, relacja: zamieszkanie, miejsce: antony, wartosc: "domek w Antony pod Paryżem, 24 rue Curie",
+   zrodla: [{segment: S07-p44-s04, cytat: "miała domek pod Paryżem w Antony 24 rue Curie."}], pewnosc_odczytu: pewna}
+- {id: S07-553, podmiot: grabinski-adam-1944, relacja: wyksztalcenie, wartosc: "prawo; „bardzo wykształcony, szlachetny, wielki patriota”",
+   zrodla: [{segment: S07-p44-s04, cytat: "Adam był b. wykształcony, szlachetny kończył prawo."}], pewnosc_odczytu: pewna}
+- {id: S07-554, podmiot: grabinski-mieczyslaw-1902, relacja: urodzenie, data: {tekst: "1902", od: 1902, do: 1902},
+   zrodla: [{segment: S07-p44-s05, cytat: "Mieczysław Grabiński 1902 adwokat"}], pewnosc_odczytu: pewna}
+- {id: S07-555, podmiot: grabinski-mieczyslaw-1902, relacja: udzial_w_wydarzeniu, wartosc: "adwokat, odznaczony[?] (Armia Krajowa), więzień Oświęcimia", miejsce: oswiecim,
+   zrodla: [{segment: S07-p44-s05, cytat: "adwokat odznaczony[?] Armii Krajowej, więzień Oświęcimia."}], pewnosc_odczytu: niepewna}
+- {id: S07-556, podmiot: grabinski-mieczyslaw-1902, relacja: malzonek, obiekt: grabinska-wanda-zona-mieczyslawa, wartosc: "I żona",
+   zrodla: [{segment: S07-p44-s05, cytat: "z I żoną Wandą troje dzieci:"}], pewnosc_odczytu: pewna}
+- {id: S07-557, podmiot: grabinski-jan-1944, relacja: urodzenie, data: {tekst: "1944", od: 1944, do: 1944},
+   zrodla: [{segment: S07-p44-s05, cytat: "Jan 1944+1945"}], pewnosc_odczytu: pewna}
+- {id: S07-558, podmiot: grabinski-jan-1944, relacja: smierc, data: {tekst: "+1945", od: 1945, do: 1945},
+   zrodla: [{segment: S07-p44-s05, cytat: "Jan 1944+1945"}], pewnosc_odczytu: pewna}
+- {id: S07-559, podmiot: grabinska-ewa-1946, relacja: urodzenie, data: {tekst: "1946", od: 1946, do: 1946},
+   zrodla: [{segment: S07-p44-s05, cytat: "Ewa 1946"}], pewnosc_odczytu: pewna}
+- {id: S07-560, podmiot: grabinski-aleksander-1949, relacja: urodzenie, data: {tekst: "1949", od: 1949, do: 1949},
+   zrodla: [{segment: S07-p44-s05, cytat: "Aleksander 1949"}], pewnosc_odczytu: pewna}
+- {id: S07-561, podmiot: grabinska-ewa-1946, relacja: rodzic, obiekt: grabinska-wanda-zona-mieczyslawa,
+   zrodla: [{segment: S07-p44-s05, cytat: "z I żoną Wandą troje dzieci: Jan 1944+1945 Ewa 1946"}], pewnosc_odczytu: pewna}
+- {id: S07-562, podmiot: grabinski-mieczyslaw-1902, relacja: malzonek, obiekt: grabinska-charlotta, wartosc: "II żona — Niemka",
+   zrodla: [{segment: S07-p45-s01, cytat: "II żona Charlotta – niemka"}], pewnosc_odczytu: pewna}
+- {id: S07-563, podmiot: grabinska-wanda-woytowicz, relacja: urodzenie, data: {tekst: "1902", od: 1902, do: 1902},
+   zrodla: [{segment: S07-p45-s02, cytat: "Wanda Grabińska – Woytowicz 1902–1980"}], pewnosc_odczytu: pewna}
+- {id: S07-564, podmiot: grabinska-wanda-woytowicz, relacja: smierc, data: {tekst: "1980", od: 1980, do: 1980}, miejsce: nowy-jork,
+   zrodla: [{segment: S07-p45-s02, cytat: "Wanda Grabińska – Woytowicz 1902–1980"}, {segment: S07-p45-s02, cytat: "Zmarła w N. Jorku."}], pewnosc_odczytu: pewna}
+- {id: S07-565, podmiot: grabinska-wanda-woytowicz, relacja: zawod, wartosc: "pierwsza kobieta sędzia; sędzia dla nieletnich; przedstawicielka Polski w Lidze Narodów w Genewie; pisała i malowała",
+   zrodla: [{segment: S07-p45-s02, cytat: "Pierwsza sędzia kobieta. Była sędzią dla nieletnich, reprezentant Polski w Genewie w Lidze Narodów."}, {segment: S07-p45-s02, cytat: "B. zdolna pisała, malowała."}], pewnosc_odczytu: pewna}
+- {id: S07-566, podmiot: grabinska-wanda-woytowicz, relacja: opis, wartosc: "dalsza krewna, często przyjeżdżała do Kościerzyna (uczyła się tam do egzaminów)", miejsce: koscierzyn,
+   zrodla: [{segment: S07-p45-s02, cytat: "Dalsza krewna ale b. często przyjeżdżała do Kościerzyna. Jako studentka uczyła się do egzaminów w Kościerzynie."}], pewnosc_odczytu: pewna}
+- {id: S07-567, podmiot: grabinska-wanda-woytowicz, relacja: malzonek, obiekt: woytowicz-boleslaw, wartosc: "rozwiedli się podczas II wojny",
+   zrodla: [{segment: S07-p45-s02, cytat: "Z mężem Bolesławem Woytowiczem znanym pianistą rozwiodła się podczas II wojny światowej."}], pewnosc_odczytu: pewna}
+- {id: S07-568, podmiot: woytowicz-boleslaw, relacja: zawod, wartosc: "znany pianista",
+   zrodla: [{segment: S07-p45-s02, cytat: "Bolesławem Woytowiczem znanym pianistą"}], pewnosc_odczytu: pewna}
+
+# s. 46: drzewo Grabińskich
+- {id: S07-569, podmiot: grabinski-jan-1458, relacja: opis, wartosc: "Jan Grabiński z Grabna, h. Pomian — 1458", data: {tekst: "1458", od: 1458, do: 1458}, miejsce: grabno,
+   zrodla: [{segment: S07-p46-s01, cytat: "1) Jan Grabiński z Grabna 1458 h. Pomian"}], pewnosc_odczytu: pewna}
+- {id: S07-570, podmiot: grabinski-jan-1458, relacja: malzonek, obiekt: grabinska-dorota-1458,
+   zrodla: [{segment: S07-p46-s01, cytat: "1) Jan Grabiński z Grabna 1458 h. Pomian Dorota"}], pewnosc_odczytu: pewna}
+- {id: S07-571, podmiot: grabinski-hieronim-2, relacja: rodzic, obiekt: grabinski-jan-1458,
+   zrodla: [{segment: S07-p46-s01, cytat: "2) Hieronim Barbara z Rogozna"}], pewnosc_odczytu: pewna, uwagi: "Z numeracji pokoleń."}
+- {id: S07-572, podmiot: grabinski-hieronim-2, relacja: malzonek, obiekt: barbara-z-rogozna,
+   zrodla: [{segment: S07-p46-s01, cytat: "2) Hieronim Barbara z Rogozna"}], pewnosc_odczytu: pewna}
+- {id: S07-573, podmiot: grabinski-jan-1617, relacja: rodzic, obiekt: grabinski-hieronim-2,
+   zrodla: [{segment: S07-p46-s01, cytat: "3) Jan +1617 Małgorzata Kobierzycka"}], pewnosc_odczytu: pewna}
+- {id: S07-574, podmiot: grabinski-jan-1617, relacja: smierc, data: {tekst: "+1617", od: 1617, do: 1617},
+   zrodla: [{segment: S07-p46-s01, cytat: "3) Jan +1617"}], pewnosc_odczytu: pewna}
+- {id: S07-575, podmiot: grabinski-jan-1617, relacja: malzonek, obiekt: kobierzycka-malgorzata,
+   zrodla: [{segment: S07-p46-s01, cytat: "Jan +1617 Małgorzata Kobierzycka"}], pewnosc_odczytu: pewna}
+- {id: S07-576, podmiot: grabinski-stanislaw-1676, relacja: rodzic, obiekt: grabinski-jan-1617,
+   zrodla: [{segment: S07-p46-s01, cytat: "4) Stanisław +1676 Katarzyna Pogtowska[?]"}], pewnosc_odczytu: pewna}
+- {id: S07-577, podmiot: grabinski-stanislaw-1676, relacja: smierc, data: {tekst: "+1676", od: 1676, do: 1676},
+   zrodla: [{segment: S07-p46-s01, cytat: "4) Stanisław +1676"}], pewnosc_odczytu: pewna}
+- {id: S07-578, podmiot: grabinski-stanislaw-1676, relacja: malzonek, obiekt: pogtowska-katarzyna,
+   zrodla: [{segment: S07-p46-s01, cytat: "Stanisław +1676 Katarzyna Pogtowska[?]"}], pewnosc_odczytu: niepewna}
+- {id: S07-579, podmiot: grabinski-adam-5, relacja: rodzic, obiekt: grabinski-stanislaw-1676,
+   zrodla: [{segment: S07-p46-s02, cytat: "5) Adam Marianna Łątkowska[?]"}], pewnosc_odczytu: pewna, uwagi: "Gałąź boczna (lewa kolumna)."}
+- {id: S07-580, podmiot: grabinski-adam-5, relacja: malzonek, obiekt: latkowska-marianna,
+   zrodla: [{segment: S07-p46-s02, cytat: "5) Adam Marianna Łątkowska[?]"}], pewnosc_odczytu: niepewna}
+- {id: S07-581, podmiot: grabinski-adam-5, relacja: malzonek, obiekt: boguslawska,
+   zrodla: [{segment: S07-p46-s02, cytat: "„ „ Bogusławska"}], pewnosc_odczytu: pewna}
+- {id: S07-582, podmiot: grabinski-stanislaw-ochmistrz, relacja: rodzic, obiekt: grabinski-adam-5,
+   zrodla: [{segment: S07-p46-s02, cytat: "6) Stanisław ochmistrz[?] Rozalja Kuźmińska 1772"}], pewnosc_odczytu: pewna}
+- {id: S07-583, podmiot: grabinski-stanislaw-ochmistrz, relacja: malzonek, obiekt: kuzminska-rozalia, data: {tekst: "1772", od: 1772, do: 1772},
+   zrodla: [{segment: S07-p46-s02, cytat: "Rozalja Kuźmińska 1772"}], pewnosc_odczytu: pewna}
+- {id: S07-584, podmiot: grabinski-stanislaw-1782, relacja: rodzic, obiekt: grabinski-stanislaw-ochmistrz,
+   zrodla: [{segment: S07-p46-s02, cytat: "7) Stanisław +1782 Justyna Zamchowicz[?]"}], pewnosc_odczytu: pewna}
+- {id: S07-585, podmiot: grabinski-stanislaw-1782, relacja: smierc, data: {tekst: "+1782", od: 1782, do: 1782},
+   zrodla: [{segment: S07-p46-s02, cytat: "7) Stanisław +1782"}], pewnosc_odczytu: pewna}
+- {id: S07-586, podmiot: grabinski-stanislaw-1782, relacja: malzonek, obiekt: zamchowicz-justyna,
+   zrodla: [{segment: S07-p46-s02, cytat: "Justyna Zamchowicz[?]"}], pewnosc_odczytu: niepewna}
+- {id: S07-587, podmiot: grabinski-joachim-jozef, relacja: rodzic, obiekt: grabinski-stanislaw-1782,
+   zrodla: [{segment: S07-p46-s02, cytat: "8) Joachim Józef gen. 1767+1843"}], pewnosc_odczytu: pewna}
+- {id: S07-588, podmiot: grabinski-joachim-jozef, relacja: urodzenie, data: {tekst: "1767", od: 1767, do: 1767},
+   zrodla: [{segment: S07-p46-s02, cytat: "Joachim Józef gen. 1767+1843"}], pewnosc_odczytu: pewna}
+- {id: S07-589, podmiot: grabinski-joachim-jozef, relacja: smierc, data: {tekst: "+1843", od: 1843, do: 1843},
+   zrodla: [{segment: S07-p46-s02, cytat: "Joachim Józef gen. 1767+1843"}], pewnosc_odczytu: pewna}
+- {id: S07-590, podmiot: grabinski-joachim-jozef, relacja: malzonek, obiekt: de-broglio-maria,
+   zrodla: [{segment: S07-p46-s02, cytat: "9) hr. Marja de Broglio baronowa D'Amer +1842"}], pewnosc_odczytu: pewna, uwagi: "Numer 9) skreślony — Maria jest żoną Joachima."}
+- {id: S07-591, podmiot: de-broglio-maria, relacja: smierc, data: {tekst: "+1842", od: 1842, do: 1842},
+   zrodla: [{segment: S07-p46-s02, cytat: "baronowa D'Amer +1842"}], pewnosc_odczytu: pewna}
+- {id: S07-592, podmiot: grabinski-henryk-1815, relacja: rodzic, obiekt: grabinski-joachim-jozef,
+   zrodla: [{segment: S07-p46-s02, cytat: "9) hr. Henryk 1815–1870"}], pewnosc_odczytu: pewna}
+- {id: S07-593, podmiot: grabinski-henryk-1815, relacja: urodzenie, data: {tekst: "1815", od: 1815, do: 1815},
+   zrodla: [{segment: S07-p46-s02, cytat: "hr. Henryk 1815–1870"}], pewnosc_odczytu: pewna}
+- {id: S07-594, podmiot: grabinski-henryk-1815, relacja: smierc, data: {tekst: "1870", od: 1870, do: 1870},
+   zrodla: [{segment: S07-p46-s02, cytat: "hr. Henryk 1815–1870"}], pewnosc_odczytu: pewna}
+- {id: S07-595, podmiot: grabinski-henryk-1815, relacja: malzonek, obiekt: potenziani-zofia,
+   zrodla: [{segment: S07-p46-s02, cytat: "Markiza Zofja Potenziani[?] z Rzymu"}], pewnosc_odczytu: niepewna}
+- {id: S07-596, podmiot: grabinski-henryk-1815, relacja: opis, wartosc: "7 dzieci",
+   zrodla: [{segment: S07-p46-s02, cytat: "10) 7 dzieci"}], pewnosc_odczytu: pewna}
+- {id: S07-597, podmiot: grabinski-hieronim-1666, relacja: rodzic, obiekt: grabinski-stanislaw-1676,
+   zrodla: [{segment: S07-p46-s03, cytat: "5) Hieronim 1666 Kasztelan sieradzki"}], pewnosc_odczytu: pewna, uwagi: "Linia prosta (prawa kolumna)."}
+- {id: S07-598, podmiot: grabinski-hieronim-1666, relacja: urzad, wartosc: "kasztelan sieradzki", data: {tekst: "1666", od: 1666, do: 1666},
+   zrodla: [{segment: S07-p46-s03, cytat: "5) Hieronim 1666 Kasztelan sieradzki"}], pewnosc_odczytu: pewna}
+- {id: S07-599, podmiot: grabinski-jan-1710, relacja: rodzic, obiekt: grabinski-hieronim-1666,
+   zrodla: [{segment: S07-p46-s03, cytat: "6) Jan +1710 Katarzyna Rokicka"}], pewnosc_odczytu: pewna}
+- {id: S07-600, podmiot: grabinski-jan-1710, relacja: smierc, data: {tekst: "+1710", od: 1710, do: 1710},
+   zrodla: [{segment: S07-p46-s03, cytat: "6) Jan +1710"}], pewnosc_odczytu: pewna}
+- {id: S07-601, podmiot: grabinski-jan-1710, relacja: malzonek, obiekt: rokicka-katarzyna,
+   zrodla: [{segment: S07-p46-s03, cytat: "Jan +1710 Katarzyna Rokicka"}], pewnosc_odczytu: pewna}
+- {id: S07-602, podmiot: grabinski-stanislaw-7, relacja: rodzic, obiekt: grabinski-jan-1710,
+   zrodla: [{segment: S07-p46-s03, cytat: "7) Stanisław Marjanna Korzyńska[?] Magdalena Turnowska[?]"}], pewnosc_odczytu: pewna}
+- {id: S07-603, podmiot: grabinski-stanislaw-7, relacja: malzonek, obiekt: korzynska-marianna,
+   zrodla: [{segment: S07-p46-s03, cytat: "Marjanna Korzyńska[?]"}], pewnosc_odczytu: niepewna}
+- {id: S07-604, podmiot: grabinski-stanislaw-7, relacja: malzonek, obiekt: turnowska-magdalena,
+   zrodla: [{segment: S07-p46-s03, cytat: "Magdalena Turnowska[?]"}], pewnosc_odczytu: niepewna}
+- {id: S07-605, podmiot: grabinski-jan-tomasz-1719, relacja: rodzic, obiekt: grabinski-stanislaw-7,
+   zrodla: [{segment: S07-p46-s03, cytat: "8) Jan Tomasz 1719+1791 Jadwiga Zamoyska"}], pewnosc_odczytu: pewna}
+- {id: S07-606, podmiot: grabinski-jan-tomasz-1719, relacja: urodzenie, data: {tekst: "1719", od: 1719, do: 1719},
+   zrodla: [{segment: S07-p46-s03, cytat: "Jan Tomasz 1719+1791"}], pewnosc_odczytu: pewna}
+- {id: S07-607, podmiot: grabinski-jan-tomasz-1719, relacja: smierc, data: {tekst: "+1791", od: 1791, do: 1791},
+   zrodla: [{segment: S07-p46-s03, cytat: "Jan Tomasz 1719+1791"}], pewnosc_odczytu: pewna}
+- {id: S07-608, podmiot: grabinski-jan-tomasz-1719, relacja: malzonek, obiekt: zamoyska-jadwiga,
+   zrodla: [{segment: S07-p46-s03, cytat: "Jan Tomasz 1719+1791 Jadwiga Zamoyska"}], pewnosc_odczytu: pewna}
+- {id: S07-609, podmiot: grabinski-piotr-1750, relacja: rodzic, obiekt: grabinski-jan-tomasz-1719,
+   zrodla: [{segment: S07-p46-s03, cytat: "9) Piotr Paweł Bogusław 1750–1831 Katarzyna Domaniewska"}], pewnosc_odczytu: pewna}
+- {id: S07-610, podmiot: grabinski-piotr-1750, relacja: rodzic, obiekt: zamoyska-jadwiga,
+   zrodla: [{segment: S07-p46-s03, cytat: "9) Piotr Paweł Bogusław 1750–1831"}], pewnosc_odczytu: pewna}
+- {id: S07-611, podmiot: grabinski-piotr-1750, relacja: urodzenie, data: {tekst: "1750", od: 1750, do: 1750},
+   zrodla: [{segment: S07-p46-s03, cytat: "Piotr Paweł Bogusław 1750–1831"}], pewnosc_odczytu: pewna}
+- {id: S07-612, podmiot: grabinski-piotr-1750, relacja: smierc, data: {tekst: "1831", od: 1831, do: 1831},
+   zrodla: [{segment: S07-p46-s03, cytat: "Piotr Paweł Bogusław 1750–1831"}], pewnosc_odczytu: pewna}
+- {id: S07-613, podmiot: grabinski-piotr-1750, relacja: malzonek, obiekt: domaniewska-katarzyna,
+   zrodla: [{segment: S07-p46-s03, cytat: "Katarzyna Domaniewska"}], pewnosc_odczytu: pewna}
+- {id: S07-614, podmiot: grabinski-adam-1803, relacja: rodzic, obiekt: grabinski-piotr-1750,
+   zrodla: [{segment: S07-p46-s03, cytat: "10) Adam Stefan Jan 1803+1868 Paulina Madalińska"}], pewnosc_odczytu: pewna}
+- {id: S07-615, podmiot: grabinski-adam-1803, relacja: malzonek, obiekt: madalinska-paulina,
+   zrodla: [{segment: S07-p46-s03, cytat: "Adam Stefan Jan 1803+1868 Paulina Madalińska"}], pewnosc_odczytu: pewna}
+- {id: S07-616, podmiot: grabinski-edward-1859, relacja: rodzic, obiekt: grabinski-adam-1803,
+   zrodla: [{segment: S07-p46-s03, cytat: "11) Edward 1859+1911 Marja Brandel 1870+14-II–1945"}], pewnosc_odczytu: pewna}
+- {id: S07-617, podmiot: brandel-maria-1870, relacja: rodzic, obiekt: brandel-seweryn,
+   zrodla: [{segment: S07-p46-s03, cytat: "córka Leokadji z Dzbskich i Seweryna Brandla"}], pewnosc_odczytu: pewna}
+- {id: S07-618, podmiot: dabska-leokadia-1850, relacja: urodzenie, data: {tekst: "1850", od: 1850, do: 1850},
+   zrodla: [{segment: S07-p46-s03, cytat: "Seweryna Brandla 1850+1892"}], pewnosc_odczytu: pewna, uwagi: "Daty 1850+1892 — Leokadii (por. S03-p10-s08)."}
+- {id: S07-619, podmiot: dabska-leokadia-1850, relacja: smierc, data: {tekst: "+1892", od: 1892, do: 1892},
+   zrodla: [{segment: S07-p46-s03, cytat: "1850+1892"}], pewnosc_odczytu: pewna}
+- {id: S07-620, podmiot: grabinska-stanislawa-1890, relacja: rodzic, obiekt: grabinski-edward-1859,
+   zrodla: [{segment: S07-p46-s04, cytat: "Stanisława — Stanisław Prządzyński"}], pewnosc_odczytu: pewna, uwagi: "Drzewo potomków Edwarda i Marii."}
+- {id: S07-621, podmiot: grabinska-stefania, relacja: rodzic, obiekt: grabinski-edward-1859,
+   zrodla: [{segment: S07-p46-s04, cytat: "Stefanja — Jan Podkoliński"}], pewnosc_odczytu: pewna}
+- {id: S07-622, podmiot: grabinski-adam-1944, relacja: rodzic, obiekt: grabinski-edward-1859,
+   zrodla: [{segment: S07-p46-s04, cytat: "Adam — Renata Krzyżanowska"}], pewnosc_odczytu: pewna}
+- {id: S07-623, podmiot: grabinski-mieczyslaw-1902, relacja: rodzic, obiekt: grabinski-edward-1859,
+   zrodla: [{segment: S07-p46-s04, cytat: "Mieczysław — Wanda, Charlotta"}], pewnosc_odczytu: pewna}
+- {id: S07-624, podmiot: grabinski-jan-1944, relacja: rodzic, obiekt: grabinski-mieczyslaw-1902,
+   zrodla: [{segment: S07-p46-s04, cytat: "├─ Jan 1944–1945"}], pewnosc_odczytu: pewna}
+- {id: S07-625, podmiot: podkolinska-halina, relacja: smierc, data: {tekst: "+1986", od: 1986, do: 1986},
+   zrodla: [{segment: S07-p46-s04, cytat: "└─ Halina +1986 — Marek Tymieniecki"}], pewnosc_odczytu: pewna}
+
+# s. 47: Łączyńscy
+- {id: S07-626, podmiot: laczynski-maciej, relacja: wlasnosc, obiekt: kiernozia, wartosc: "dziedzic Kiernozi",
+   zrodla: [{segment: S07-p47-s01, cytat: "Pokrewieństwo z Łączyńskiemi h. Nałęcz"}, {segment: S07-p47-s02, cytat: "Maciej dziedzic Kiernozi Ewa Zaborowska"}], pewnosc_odczytu: pewna}
+- {id: S07-627, podmiot: laczynski-teodor-1785, relacja: malzonek, obiekt: mikorska-zofia, wartosc: "I żona",
+   zrodla: [{segment: S07-p47-s02, cytat: "│ I Zofja Mikorska +1869"}], pewnosc_odczytu: pewna}
+- {id: S07-628, podmiot: laczynski-teodor-1785, relacja: malzonek, obiekt: karska-bronislawa, wartosc: "II żona",
+   zrodla: [{segment: S07-p47-s02, cytat: "│ II Bronisława Karska"}], pewnosc_odczytu: pewna}
+- {id: S07-629, podmiot: laczynska-waleria, relacja: malzonek, obiekt: skrzynski-aleksander,
+   zrodla: [{segment: S07-p47-s02, cytat: "└─ Walerja │ Aleksander Skrzyński │ z Gostkowa i Nowej Wsi"}], pewnosc_odczytu: pewna}
+- {id: S07-630, podmiot: laczynska-maria-1786, relacja: urodzenie, data: {tekst: "1786", od: 1786, do: 1786},
+   zrodla: [{segment: S07-p47-s02, cytat: "├─ Marja Walewska 1786"}], pewnosc_odczytu: pewna}
+- {id: S07-631, podmiot: laczynska-antonina, relacja: opis, wartosc: "po mężach: I Łasocka[?], II Rychłowska[?], III Radomanowa[?]",
+   zrodla: [{segment: S07-p47-s02, cytat: "└─ Antonina Katarzyna I Łasocka[?] II Rychłowska[?] III Radomanowa[?]"}], pewnosc_odczytu: niepewna}
+- {id: S07-632, podmiot: przadzynska-anna-1914, relacja: opis, wartosc: "„Moja prababka była bratanicą p. Walewskiej” — linia od Teodora Łączyńskiego przez Walerię, Annę, Stanisława do Anny i jej potomków",
+   zrodla: [{segment: S07-p47-s02, cytat: "│ └─ Anna Prządzyńska │ Jerzy Radoszewski z Krempy"}, {segment: S07-p47-s03, cytat: "Moja prababka była bratanicą p. Walewskiej"}], pewnosc_odczytu: pewna}
+
+# s. 48: rodzeństwo autorki (Anny)
+- {id: S07-633, podmiot: przadzynski-andrzej-1917, relacja: rodzenstwo, obiekt: przadzynska-anna-1914,
+   zrodla: [{segment: S07-p48-s01, cytat: "Rodzeństwo moje:"}, {segment: S07-p48-s02, cytat: "Andrzej Prządzyński 1917+1981"}], pewnosc_odczytu: pewna}
+- {id: S07-634, podmiot: przadzynski-andrzej-1917, relacja: wyksztalcenie, wartosc: "Wyższa Szkoła Rolnicza w Cieszynie", miejsce: cieszyn,
+   zrodla: [{segment: S07-p48-s02, cytat: "Wyż. Szk. Rol. w Cieszynie."}], pewnosc_odczytu: pewna}
+- {id: S07-635, podmiot: przadzynski-andrzej-1917, relacja: malzonek, obiekt: madalinska-halina,
+   zrodla: [{segment: S07-p48-s02, cytat: "Żona Halina Madalińska z Dębicy[?] k/Środy."}], pewnosc_odczytu: pewna}
+- {id: S07-636, podmiot: przadzynski-stanislaw-1944, relacja: malzonek, obiekt: wiktor-magdalena,
+   zrodla: [{segment: S07-p48-s02, cytat: "Dwoje dzieci: Stanisław 1944 żona Magdalena Wiktor."}], pewnosc_odczytu: pewna}
+- {id: S07-637, podmiot: przadzynski-stanislaw-1944, relacja: rodzic, obiekt: przadzynski-andrzej-1917,
+   zrodla: [{segment: S07-p48-s02, cytat: "Dwoje dzieci: Stanisław 1944"}], pewnosc_odczytu: pewna}
+- {id: S07-638, podmiot: przadzynska-katarzyna-1949, relacja: rodzic, obiekt: przadzynski-andrzej-1917,
+   zrodla: [{segment: S07-p48-s02, cytat: "Katarzyna 1949 mąż Andrzej Bezdiniaków[?]."}], pewnosc_odczytu: pewna}
+- {id: S07-639, podmiot: przadzynska-katarzyna-1949, relacja: malzonek, obiekt: bezdniakow-andrzej,
+   zrodla: [{segment: S07-p48-s02, cytat: "Katarzyna 1949 mąż Andrzej Bezdiniaków[?]."}], pewnosc_odczytu: niepewna}
+- {id: S07-640, podmiot: przadzynska-maria-1919, relacja: rodzenstwo, obiekt: przadzynska-anna-1914,
+   zrodla: [{segment: S07-p48-s03, cytat: "Marja z Prządzyńskich Szweycerowa 1919 r."}], pewnosc_odczytu: pewna}
+- {id: S07-641, podmiot: przadzynska-maria-1919, relacja: malzonek, obiekt: szweycer-tomasz,
+   zrodla: [{segment: S07-p48-s03, cytat: "mąż Tomasz Szweycer z Hutki[?] i Ostrowa[?]."}], pewnosc_odczytu: pewna}
+- {id: S07-642, podmiot: przadzynska-maria-1919, relacja: opis, wartosc: "4 dzieci",
+   zrodla: [{segment: S07-p48-s03, cytat: "4 dzieci"}], pewnosc_odczytu: pewna}
+- {id: S07-643, podmiot: szweycer-stanislaw-1944, relacja: malzonek, obiekt: konarska-zofia,
+   zrodla: [{segment: S07-p48-s03, cytat: "Stanisław 1944 żona Zofja Konarska"}], pewnosc_odczytu: pewna}
+- {id: S07-644, podmiot: szweycer-andrzej, relacja: rodzic, obiekt: szweycer-stanislaw-1944,
+   zrodla: [{segment: S07-p48-s03, cytat: "ich dzieci Andrzej Elżbieta Michał."}], pewnosc_odczytu: pewna}
+- {id: S07-645, podmiot: szweycer-anna-1946, relacja: malzonek, obiekt: suski-jan,
+   zrodla: [{segment: S07-p48-s04, cytat: "Anna 1946 mąż Jan Suski z Jasek[?] psych."}], pewnosc_odczytu: pewna}
+- {id: S07-646, podmiot: suski-jan, relacja: zawod, wartosc: "psych. (psycholog/psychiatra)",
+   zrodla: [{segment: S07-p48-s04, cytat: "Jan Suski z Jasek[?] psych."}], pewnosc_odczytu: niepewna}
+- {id: S07-647, podmiot: szweycer-anna-1946, relacja: zamieszkanie, miejsce: antony, wartosc: "z mężem i trójką dzieci (Maria, Katarzyna, Barbara)",
+   zrodla: [{segment: S07-p48-s04, cytat: "Troje dzieci Marja Katarzyna Barbara mieszkają w Antony pod Paryżem"}], pewnosc_odczytu: pewna}
+- {id: S07-648, podmiot: szweycer-zofia-1949, relacja: malzonek, obiekt: karasiewicz-piotr,
+   zrodla: [{segment: S07-p48-s05, cytat: "Zofja 1949 mąż Karasiewicz Piotr"}], pewnosc_odczytu: pewna}
+- {id: S07-649, podmiot: karasiewicz-piotr, relacja: zawod, wartosc: "inżynier[?]",
+   zrodla: [{segment: S07-p48-s05, cytat: "inżynier[?]"}], pewnosc_odczytu: niepewna}
+- {id: S07-650, podmiot: szweycer-magdalena-1956, relacja: malzonek, obiekt: krzeptowski-andrzej,
+   zrodla: [{segment: S07-p48-s06, cytat: "Magdalena 1956 mąż Andrzej Krzeptowski. 4 dzieci."}], pewnosc_odczytu: pewna}
+- {id: S07-651, podmiot: krzeptowska-maria, relacja: rodzic, obiekt: krzeptowski-andrzej,
+   zrodla: [{segment: S07-p48-s06, cytat: "4 dzieci. Marja Teresa Marta Andrzej"}], pewnosc_odczytu: pewna}

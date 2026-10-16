@@ -1951,3 +1951,354 @@
   imiona: ["Antoni"]
   nazwisko: "Rudkowski"
   plec: m
+
+- id: wojciech-centralka
+  imiona: ["Wojciech"]
+  nazwisko: null
+  plec: m
+  warianty: ["stary Wojciech"]
+  uwagi: "Emerytowany pracownik Kościerzyna, obsługiwał centralkę telefoniczną; wcześniej nosił teczkę za senatorem."
+
+- id: kotwicka
+  imiona: []
+  nazwisko: "Kotwicka[?]"
+  plec: k
+  warianty: ["p. Kotwicka"]
+  uwagi: "Właścicielka pensji w Warszawie."
+
+- id: cieplinski-ks
+  imiona: []
+  nazwisko: "Cieplinski"
+  plec: m
+  warianty: ["ks. prałat Cieplinski"]
+  uwagi: "Prefekt Stanisławy Grabińskiej."
+
+- id: hilken-ks
+  imiona: []
+  nazwisko: "Hilken"
+  plec: m
+  warianty: ["ks. prałat Hilken"]
+
+- id: krasicki-gabriel
+  imiona: ["Gabriel"]
+  nazwisko: "Krasicki[?]"
+  plec: m
+  warianty: ["Gabryjel Krasicki"]
+
+- id: krasicka-roza
+  imiona: ["Róża"]
+  nazwisko: "Gutowska"
+  nazwisko_rodowe: "Krasicka"
+  plec: k
+
+- id: gutowski
+  imiona: []
+  nazwisko: "Gutowski"
+  plec: m
+
+- id: krasicki-jozef
+  imiona: ["Józef"]
+  nazwisko: "Krasicki"
+  plec: m
+  uwagi: "Bliźniak z Kazimierzem."
+
+- id: lutomska
+  imiona: []
+  nazwisko: null
+  nazwisko_rodowe: "Lutomska"
+  plec: k
+
+- id: krasicki-kazimierz
+  imiona: ["Kazimierz"]
+  nazwisko: "Krasicki"
+  plec: m
+  uwagi: "Dr filozofii Ak. Krak."
+
+- id: kleczkowska-maria
+  imiona: ["Maria"]
+  nazwisko: "Krasicka"
+  nazwisko_rodowe: "Kleczkowska"
+  plec: k
+
+- id: krasicka-anna
+  imiona: ["Anna"]
+  nazwisko: "Ujejska[?]"
+  nazwisko_rodowe: "Krasicka"
+  plec: k
+
+- id: ujejski-gen
+  imiona: []
+  nazwisko: "Ujejski[?]"
+  plec: m
+  warianty: ["gen. lot. Ujejski[?]"]
+
+- id: krasicka-maria
+  imiona: ["Maria"]
+  nazwisko: null
+  nazwisko_rodowe: "Krasicka"
+  plec: k
+  uwagi: "Mąż „Krisi[?]”."
+
+- id: krasicki-jan-rolnik
+  imiona: ["Jan"]
+  nazwisko: "Krasicki"
+  plec: m
+  uwagi: "Rolnik; syn Kazimierza i Marii z Kleczkowskich."
+
+- id: iwanicka
+  imiona: []
+  nazwisko: null
+  nazwisko_rodowe: "Iwanicka"
+  plec: k
+  warianty: ["Iwanicka z Włodkowa[?]"]
+
+- id: krasicki-kazimierz-dyplomata
+  imiona: ["Kazimierz"]
+  nazwisko: "Krasicki"
+  plec: m
+  uwagi: "Dyplomata."
+
+- id: moszczenski-teodor
+  imiona: ["Teodor"]
+  nazwisko: "Moszczeński"
+  plec: m
+  uwagi: "Poległ pod Domanicami (1831)."
+
+- id: moszczenski-jerzy
+  imiona: ["Jerzy"]
+  nazwisko: "Moszczeński"
+  plec: m
+  uwagi: "Towarzyszył gen. Prządzyńskiemu na Helgolandzie."
+
+- id: sikorska-mira
+  imiona: ["Mira"]
+  nazwisko: "Sikorska"
+  plec: k
+
+- id: brandel-jozef
+  imiona: ["Józef"]
+  nazwisko: "Brandel"
+  plec: m
+  uwagi: "Ojciec Konstantego."
+
+- id: kurtzkowska-amelia
+  imiona: ["Amelia"]
+  nazwisko: "Brandel"
+  nazwisko_rodowe: "Kurtzkowska[?]"
+  plec: k
+
+- id: brandel-konrad
+  imiona: ["Konrad"]
+  nazwisko: "Brandel"
+  plec: m
+  uwagi: "Znany fotograf; brat ojca Konstantego."
+
+- id: brandel-kazimierz
+  imiona: ["Kazimierz"]
+  nazwisko: "Brandel"
+  plec: m
+
+- id: brandel-jozefa
+  imiona: ["Józefa"]
+  nazwisko: "Leitgeber[?]"
+  nazwisko_rodowe: "Brandel"
+  plec: k
+
+- id: brandel-tadeusz
+  imiona: ["Tadeusz"]
+  nazwisko: "Brandel"
+  plec: m
+  uwagi: "Przepadł w Rosji podczas rewolucji."
+
+- id: zeze
+  imiona: ["Zezé[?]"]
+  nazwisko: "Podkolińska"
+  plec: k
+  uwagi: "Żona Adama Podkolińskiego (Brazylia)."
+
+- id: tymieniecka-anna-zona-jacka
+  imiona: ["Anna"]
+  nazwisko: "Tymieniecka"
+  plec: k
+
+- id: grabinska-wanda-woytowicz
+  imiona: ["Wanda"]
+  nazwisko: "Grabińska-Woytowicz"
+  nazwisko_rodowe: "Grabińska"
+  plec: k
+  uwagi: "Pierwsza kobieta sędzia; dalsza krewna."
+
+- id: woytowicz-boleslaw
+  imiona: ["Bolesław"]
+  nazwisko: "Woytowicz"
+  plec: m
+  uwagi: "Pianista."
+
+- id: karska-bronislawa
+  imiona: ["Bronisława"]
+  nazwisko: "Łączyńska"
+  nazwisko_rodowe: "Karska"
+  plec: k
+  uwagi: "II żona Teodora Łączyńskiego."
+
+- id: grabinski-jan-1458
+  imiona: ["Jan"]
+  nazwisko: "Grabiński"
+  herb: Pomian
+  plec: m
+  warianty: ["Jan Grabiński z Grabna"]
+
+- id: grabinska-dorota-1458
+  imiona: ["Dorota"]
+  nazwisko: "Grabińska"
+  plec: k
+
+- id: grabinski-hieronim-2
+  imiona: ["Hieronim"]
+  nazwisko: "Grabiński"
+  plec: m
+  uwagi: "Pokolenie 2 drzewa Grabińskich."
+
+- id: barbara-z-rogozna
+  imiona: ["Barbara"]
+  nazwisko: "Grabińska"
+  plec: k
+  warianty: ["Barbara z Rogozna"]
+
+- id: grabinski-jan-1617
+  imiona: ["Jan"]
+  nazwisko: "Grabiński"
+  plec: m
+
+- id: kobierzycka-malgorzata
+  imiona: ["Małgorzata"]
+  nazwisko: "Grabińska"
+  nazwisko_rodowe: "Kobierzycka"
+  plec: k
+
+- id: grabinski-stanislaw-1676
+  imiona: ["Stanisław"]
+  nazwisko: "Grabiński"
+  plec: m
+
+- id: pogtowska-katarzyna
+  imiona: ["Katarzyna"]
+  nazwisko: "Grabińska"
+  nazwisko_rodowe: "Pogtowska[?]"
+  plec: k
+
+- id: grabinski-adam-5
+  imiona: ["Adam"]
+  nazwisko: "Grabiński"
+  plec: m
+  uwagi: "Pokolenie 5 (gałąź boczna)."
+
+- id: latkowska-marianna
+  imiona: ["Marianna"]
+  nazwisko: "Grabińska"
+  nazwisko_rodowe: "Łątkowska[?]"
+  plec: k
+
+- id: boguslawska
+  imiona: []
+  nazwisko: "Grabińska"
+  nazwisko_rodowe: "Bogusławska"
+  plec: k
+  uwagi: "Druga żona Adama (pok. 5)."
+
+- id: grabinski-stanislaw-ochmistrz
+  imiona: ["Stanisław"]
+  nazwisko: "Grabiński"
+  plec: m
+  uwagi: "„ochmistrz[?]”"
+
+- id: kuzminska-rozalia
+  imiona: ["Rozalia"]
+  nazwisko: "Grabińska"
+  nazwisko_rodowe: "Kuźmińska"
+  plec: k
+
+- id: grabinski-stanislaw-1782
+  imiona: ["Stanisław"]
+  nazwisko: "Grabiński"
+  plec: m
+
+- id: zamchowicz-justyna
+  imiona: ["Justyna"]
+  nazwisko: "Grabińska"
+  nazwisko_rodowe: "Zamchowicz[?]"
+  plec: k
+
+- id: grabinski-joachim-jozef
+  imiona: ["Joachim", "Józef"]
+  nazwisko: "Grabiński"
+  herb: Pomian
+  plec: m
+  warianty: ["gen. Józef Grabiński"]
+  uwagi: "Generał; biust na cmentarzu polskim w Bolonii."
+
+- id: de-broglio-maria
+  imiona: ["Maria"]
+  nazwisko: "Grabińska"
+  nazwisko_rodowe: "de Broglio"
+  plec: k
+  warianty: ["hr. Marja de Broglio baronowa D'Amer"]
+
+- id: grabinski-henryk-1815
+  imiona: ["Henryk"]
+  nazwisko: "Grabiński"
+  plec: m
+  warianty: ["hr. Henryk"]
+
+- id: potenziani-zofia
+  imiona: ["Zofia"]
+  nazwisko: "Grabińska"
+  nazwisko_rodowe: "Potenziani[?]"
+  plec: k
+  warianty: ["Markiza Zofja Potenziani[?] z Rzymu"]
+
+- id: grabinski-hieronim-1666
+  imiona: ["Hieronim"]
+  nazwisko: "Grabiński"
+  plec: m
+  warianty: ["Hieronim Kasztelan sieradzki"]
+
+- id: grabinski-jan-1710
+  imiona: ["Jan"]
+  nazwisko: "Grabiński"
+  plec: m
+
+- id: rokicka-katarzyna
+  imiona: ["Katarzyna"]
+  nazwisko: "Grabińska"
+  nazwisko_rodowe: "Rokicka"
+  plec: k
+
+- id: grabinski-stanislaw-7
+  imiona: ["Stanisław"]
+  nazwisko: "Grabiński"
+  plec: m
+  uwagi: "Pokolenie 7 (linia prosta)."
+
+- id: korzynska-marianna
+  imiona: ["Marianna"]
+  nazwisko: "Grabińska"
+  nazwisko_rodowe: "Korzyńska[?]"
+  plec: k
+
+- id: turnowska-magdalena
+  imiona: ["Magdalena"]
+  nazwisko: "Grabińska"
+  nazwisko_rodowe: "Turnowska[?]"
+  plec: k
+
+- id: grabinski-jan-tomasz-1719
+  imiona: ["Jan", "Tomasz"]
+  nazwisko: "Grabiński"
+  plec: m
+
+- id: zamoyska-jadwiga
+  imiona: ["Jadwiga"]
+  nazwisko: "Grabińska"
+  nazwisko_rodowe: "Zamoyska"
+  plec: k
