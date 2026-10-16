@@ -277,3 +277,14 @@
    zrodla: [{segment: S07-p61-d1, cytat: "Ner k/Gostkowa i Wartkowic majątek Jan Radoszewski"}], pewnosc_odczytu: pewna}
 - {id: S07-782, podmiot: radoszewski-pawel-zatuskow, relacja: wlasnosc, obiekt: zatuskow,
    zrodla: [{segment: S07-p61-d1, cytat: "Zatusków – Paweł Radoszewski"}], pewnosc_odczytu: pewna}
+# --- powiązania osób wymienionych dotąd tylko w opisach (uzupełnienie przy raporcie kompletności)
+- {id: S07-783, podmiot: kotwicka, relacja: opis, wartosc: "właścicielka pensji w Warszawie, którą ukończyła Stanisława z Grabińskich", miejsce: warszawa,
+   zrodla: [{segment: S07-p38-s01, cytat: "Po ukończeniu pensji w W-wie p. Kotwickiej[?]"}], pewnosc_odczytu: niepewna}
+- {id: S07-784, podmiot: makowiecki-gen, relacja: opis, wartosc: "grób gen. Makowieckiego[?] na Powązkach — pochowana w nim Zofia z Grotowskich Radoszewska", miejsce: powazki,
+   zrodla: [{segment: S07-p55-s02, cytat: "grób gen. Makowieckiego[?]"}], pewnosc_odczytu: niepewna}
+- {id: S07-785, podmiot: plater-zyberk-cecylia, relacja: opis, wartosc: "pensja hr. Cecylii Plater-Zyberk, Piękna 24 w Warszawie — uczyła się w niej Anna Prządzyńska (dwa lata przed maturą 1933)", miejsce: warszawa,
+   zrodla: [{segment: S07-p14-s01, cytat: "pensja hr. Cecylji Plater-Zyberk. Piękna 24."}], pewnosc_odczytu: pewna}
+- {id: S07-786, podmiot: niedzwiedzki-jan, relacja: opis, wartosc: "w czasie studiów na politechnice stale bywał w domu Marii Brandlowej",
+   zrodla: [{segment: S07-p42-s02, cytat: "podczas studjów na politechnice zawsze przychodził Jaś Niedźwiedzki"}], pewnosc_odczytu: pewna}
+- {id: S07-787, podmiot: sikorska-mira, relacja: opis, wartosc: "bywała w domu Marii Brandlowej (wraz ze studentami)",
+   zrodla: [{segment: S07-p42-s02, cytat: "Jaś Niedźwiedzki, Mira Sikorska i t.d."}], pewnosc_odczytu: pewna}

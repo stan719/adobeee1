@@ -83,3 +83,10 @@
    zrodla: [{segment: S03-p54-s04, cytat: "Ewy Grabińskiej 24 4 Basi Wrzodarskiej 29 Tomka Szweycera"}], pewnosc_odczytu: pewna}
 - {id: S03-626, podmiot: skrzynska-anna-1848, relacja: malzonek, obiekt: przadzynski-wladyslaw-1837,
    zrodla: [{segment: S03-p24-s01, cytat: "+1883 Władysław Prządzyński"}], pewnosc_odczytu: pewna, uwagi: "Wpis na wysokości Anny Skrzyńskiej (rozkładówka)."}
+# --- powiązania osób wymienionych dotąd tylko w opisach (uzupełnienie przy raporcie kompletności)
+- {id: S03-627, podmiot: gorska-aleksandra, relacja: opis, wartosc: "wymieniona przy Aleksandrze Skrzyńskim z Gostkowa: Aleksandra Górska (ze Szendaczyna[?]), dzieci Marytka, Wanda, Hania, Renia, Krysia i Jerzy",
+   zrodla: [{segment: S03-p24-s07, cytat: "Aleksandra Górska (ze Szendaczyna[?]) ich dzieci Marytka, Wanda, Hania, Renia, Krysia i Jerzy"}], pewnosc_odczytu: niepewna}
+- {id: S03-628, podmiot: makowiecki-gen, relacja: opis, wartosc: "właściciel grobu na Powązkach, w którym pochowano Zofię z Grotowskich Radoszewską", miejsce: powazki,
+   zrodla: [{segment: S03-p37-s01, cytat: "gr. gen. Makowieckiego[?]"}], pewnosc_odczytu: niepewna}
+- {id: S03-629, podmiot: niedzwiedzki-jan, relacja: opis, wartosc: "imieniny 24 czerwca w kalendarzu imienin",
+   zrodla: [{segment: S03-p48-s04, cytat: "24 Jasia Niedźwiedzkiego"}], pewnosc_odczytu: pewna}
