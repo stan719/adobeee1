@@ -532,3 +532,161 @@
   typ: ulica/dom
   nadrzedne: warszawa
   pewnosc_identyfikacji: pewna
+
+- id: przemysl
+  nazwa: "Przemyśl"
+  typ: miasto
+  pewnosc_identyfikacji: pewna
+
+- id: przemysl-katedra
+  nazwa: "Katedra w Przemyślu (kaplica Drohojowskich)"
+  typ: kościół
+  nadrzedne: przemysl
+  pewnosc_identyfikacji: pewna
+
+- id: krakow-rakowice
+  nazwa: "Cmentarz Rakowicki w Krakowie"
+  typ: cmentarz
+  nadrzedne: krakow
+  pewnosc_identyfikacji: pewna
+
+- id: lwow
+  nazwa: "Lwów"
+  typ: miasto
+  pewnosc_identyfikacji: pewna
+
+- id: warszawa-zelazna-30
+  nazwa: "Warszawa, Żelazna 30"
+  typ: ulica/dom
+  nadrzedne: warszawa
+  pewnosc_identyfikacji: pewna
+
+- id: jaroslaw
+  nazwa: "Jarosław"
+  typ: miasto
+  pewnosc_identyfikacji: pewna
+
+- id: borowicze
+  nazwa: "Borowicze (Rosja)"
+  typ: miasto
+  pewnosc_identyfikacji: pewna
+
+- id: perehinsk
+  nazwa: "Perehińsk[?]"
+  typ: inny
+  pewnosc_identyfikacji: do_ustalenia
+
+- id: bytom
+  nazwa: "Bytom"
+  typ: miasto
+  pewnosc_identyfikacji: pewna
+
+- id: francja
+  nazwa: "Francja"
+  typ: region
+  pewnosc_identyfikacji: pewna
+
+- id: ameryka
+  nazwa: "Ameryka"
+  typ: region
+  pewnosc_identyfikacji: pewna
+
+- id: krakow-franciszkanie
+  nazwa: "Kościół Franciszkanów w Krakowie"
+  typ: kościół
+  nadrzedne: krakow
+  pewnosc_identyfikacji: pewna
+
+- id: klimontow
+  nazwa: "Klimontów"
+  typ: miasto
+  pewnosc_identyfikacji: pewna
+
+- id: lysa-gora
+  nazwa: "Łysa Góra (Święty Krzyż)"
+  typ: kościół
+  pewnosc_identyfikacji: pewna
+  uwagi: "Klasztor benedyktynów."
+
+- id: kijow
+  nazwa: "Kijów"
+  typ: miasto
+  pewnosc_identyfikacji: pewna
+
+- id: gniezno
+  nazwa: "Gniezno"
+  typ: miasto
+  pewnosc_identyfikacji: pewna
+
+- id: rzym
+  nazwa: "Rzym"
+  typ: miasto
+  pewnosc_identyfikacji: pewna
+
+- id: kuchlin
+  nazwa: "Kuchlin[?] k. Turku"
+  typ: wieś
+  pewnosc_identyfikacji: do_ustalenia
+
+- id: opatowek
+  nazwa: "Opatówek"
+  typ: wieś
+  pewnosc_identyfikacji: pewna
+  uwagi: "Opatówek k. Kalisza."
+
+- id: radogoszcz
+  nazwa: "Radogoszcz (obóz k. Łodzi)"
+  typ: inny
+  pewnosc_identyfikacji: pewna
+
+- id: warszawa-plac-trzech-krzyzy
+  nazwa: "Warszawa, Plac Trzech Krzyży"
+  typ: ulica/dom
+  nadrzedne: warszawa
+  pewnosc_identyfikacji: pewna
+
+- id: malczew
+  nazwa: "Malczew"
+  typ: majątek
+  pewnosc_identyfikacji: do_ustalenia
+
+- id: jarzabkowo
+  nazwa: "Jarząbkowo k. Gniezna"
+  typ: wieś
+  pewnosc_identyfikacji: prawdopodobna
+
+- id: poznan-katedra
+  nazwa: "Katedra w Poznaniu"
+  typ: kościół
+  nadrzedne: poznan
+  pewnosc_identyfikacji: pewna
+
+- id: wiatrowo
+  nazwa: "Wiatrowo"
+  typ: wieś
+  pewnosc_identyfikacji: do_ustalenia
+
+- id: kichanow
+  nazwa: "Kichanów[?]"
+  typ: inny
+  pewnosc_identyfikacji: do_ustalenia
+
+- id: helgoland
+  nazwa: "Helgoland"
+  typ: inny
+  pewnosc_identyfikacji: pewna
+
+- id: kanal-augustowski
+  nazwa: "Kanał Augustowski"
+  typ: inny
+  pewnosc_identyfikacji: pewna
+
+- id: deblin
+  nazwa: "Twierdza w Dęblinie"
+  typ: inny
+  pewnosc_identyfikacji: pewna
+
+- id: miedzechow
+  nazwa: "Miedzechów[?] / Miechocin[?]"
+  typ: inny
+  pewnosc_identyfikacji: do_ustalenia

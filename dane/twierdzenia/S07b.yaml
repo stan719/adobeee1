@@ -1,0 +1,502 @@
+# S07 cz. 2: s. 16–31 (siostry Michała, Drohojowscy, inni Radoszewscy, Opatówek, Ner, Prządzyńscy)
+
+# s. 16
+- {id: S07-178, podmiot: radoszewska-jozefa-1864, relacja: malzonek, obiekt: wierzchleyski-roman, wartosc: "mąż adwokat Wierzchleyski",
+   zrodla: [{segment: S07-p16-s02, cytat: "Józefa mąż adwokat Wierzchleyski."}], pewnosc_odczytu: pewna}
+- {id: S07-179, podmiot: wierzchleyski-roman, relacja: zawod, wartosc: adwokat,
+   zrodla: [{segment: S07-p16-s02, cytat: "mąż adwokat Wierzchleyski."}], pewnosc_odczytu: pewna}
+- {id: S07-180, podmiot: radoszewska-jozefa-1864, relacja: zawod, wartosc: "po śmierci męża kierowniczka filii „Kuriera Warszawskiego” (Marszałkowska 108)", miejsce: warszawa,
+   zrodla: [{segment: S07-p16-s02, cytat: "Po śmierci męża była kierowniczką filii „Kurjera Warszawskiego” na Marszałkowskiej 108."}], pewnosc_odczytu: pewna}
+- {id: S07-181, podmiot: radoszewska-jozefa-1864, relacja: pochowek, miejsce: powazki,
+   zrodla: [{segment: S07-p16-s02, cytat: "Pochowana na Powązkach"}], pewnosc_odczytu: pewna}
+- {id: S07-182, podmiot: radoszewska-maria-1867, relacja: malzonek, obiekt: mierzynski-rafal-1867,
+   zrodla: [{segment: S07-p16-s03, cytat: "Marja 1867+1965 mąż Rafał Mierzyński z Węgrz. h. Jastrzębiec inż. bud."}], pewnosc_odczytu: pewna}
+- {id: S07-183, podmiot: mierzynski-rafal-1867, relacja: zawod, wartosc: "inżynier budowlany; wynalazł stropy, zastosowane m.in. w hotelu „Bristol”",
+   zrodla: [{segment: S07-p16-s03, cytat: "inż. bud. Wynalazł stropy, które między innemi zastosowano w hotelu „Brystol”."}], pewnosc_odczytu: pewna}
+- {id: S07-184, podmiot: mierzynski-rafal-1867, relacja: herb, wartosc: Jastrzębiec,
+   zrodla: [{segment: S07-p16-s03, cytat: "Rafał Mierzyński z Węgrz. h. Jastrzębiec"}], pewnosc_odczytu: pewna}
+- {id: S07-185, podmiot: mierzynska-maria-1897, relacja: rodzic, obiekt: radoszewska-maria-1867,
+   zrodla: [{segment: S07-p16-s03, cytat: "Miała córkę Marję."}], pewnosc_odczytu: pewna}
+- {id: S07-186, podmiot: radoszewska-maria-1867, relacja: zamieszkanie, miejsce: warszawa-nowogrodzka-10, wartosc: "do końca wojny",
+   zrodla: [{segment: S07-p16-s03, cytat: "Mieszkała do końca wojny na Nowogrodzkiej 10"}], pewnosc_odczytu: pewna}
+- {id: S07-187, podmiot: mierzynska-maria-1897, relacja: smierc, data: {tekst: "+1975", od: 1975, do: 1975},
+   zrodla: [{segment: S07-p16-s04, cytat: "Marja +1975"}], pewnosc_odczytu: pewna}
+- {id: S07-188, podmiot: mierzynska-maria-1897, relacja: malzonek, obiekt: mierzynski-wladyslaw-konstanty, wartosc: "I voto",
+   zrodla: [{segment: S07-p16-s04, cytat: "Marja +1975 I voto Mierzyńska Władysław Konstanty"}], pewnosc_odczytu: pewna}
+- {id: S07-189, podmiot: mierzynski-wladyslaw-konstanty, relacja: smierc, wartosc: "zamordowany w Rosji przez NKWD[?]",
+   zrodla: [{segment: S07-p16-s04, cytat: "w Rosji"}, {segment: S07-p16-s04, cytat: "zamordowany przez"}, {segment: S07-p16-s04, cytat: "NKWD[?]"}], pewnosc_odczytu: niepewna}
+- {id: S07-190, podmiot: mierzynska-maria-1897, relacja: malzonek, obiekt: zeromski-tadeusz, wartosc: "II voto Żeromska",
+   zrodla: [{segment: S07-p16-s04, cytat: "Żeromska"}], pewnosc_odczytu: pewna}
+- {id: S07-191, podmiot: mierzynska-maria-1897, relacja: pochowek, miejsce: cmentarz-polnocny, wartosc: "obie Marie pochowane w Warszawie na Powązkach Komunalnych",
+   zrodla: [{segment: S07-p16-s04, cytat: "Marje pochowane W-wie na Powązkach Kom."}], pewnosc_odczytu: pewna}
+- {id: S07-192, podmiot: radoszewska-maria-1867, relacja: pochowek, miejsce: cmentarz-polnocny,
+   zrodla: [{segment: S07-p16-s04, cytat: "Marje pochowane W-wie na Powązkach Kom."}], pewnosc_odczytu: pewna}
+- {id: S07-193, podmiot: radoszewski-henryk-1862, relacja: smierc, data: {tekst: "1870", od: 1870, do: 1870}, wartosc: "zmarł jako dziecko",
+   zrodla: [{segment: S07-p16-s05, cytat: "Henryś zmarł jako dziecko 1870"}], pewnosc_odczytu: pewna}
+- {id: S07-194, podmiot: radoszewski-henryk-1862, relacja: pochowek, miejsce: uniejow,
+   zrodla: [{segment: S07-p16-s05, cytat: "poch. w Uniejo[wie]"}], pewnosc_odczytu: pewna}
+- {id: S07-195, podmiot: radoszewski-henryk-1862, relacja: rodzenstwo, obiekt: radoszewski-michal-1865,
+   zrodla: [{segment: S07-p16-s01, cytat: "Siostry Michała Radoszewskiego."}, {segment: S07-p16-s05, cytat: "Henryś zmarł jako dziecko"}], pewnosc_odczytu: pewna}
+
+# s. 17–21: Drohojowscy
+- {id: S07-196, podmiot: przemysl-katedra, relacja: opis, wartosc: "w 1701 r. Drohojowscy ufundowali kanonię ich imienia przy katedrze w Przemyślu; w katedrze kaplica Drohojowskich", data: {tekst: "1701 r.", od: 1701, do: 1701},
+   zrodla: [{segment: S07-p17-s01, cytat: "Rodzina Ewy z hr. Drohojowskich z Ciszeciny i Piotrkowicz Radoszewskiej."},
+            {segment: S07-p17-s02, cytat: "W 1701 r. Drohojowscy ufundowali w Przemyślu Kanonję im Drohojowskich przy Katedrze. W Katedrze jest Kaplica Drohojowskich"}], pewnosc_odczytu: pewna}
+- {id: S07-197, podmiot: drohojowski-julian-1836, relacja: urodzenie, data: {tekst: "1836", od: 1836, do: 1836},
+   zrodla: [{segment: S07-p17-s03, cytat: "Kanonik Julian Drohojowski 1836+1916"}, {segment: S07-p21-s03, cytat: "Julian 1836+1916"}], pewnosc_odczytu: pewna}
+- {id: S07-198, podmiot: drohojowski-julian-1836, relacja: smierc, data: {tekst: "+1916", od: 1916, do: 1916},
+   zrodla: [{segment: S07-p17-s03, cytat: "Kanonik Julian Drohojowski 1836+1916"}, {segment: S07-p21-s03, cytat: "Julian 1836+1916"}], pewnosc_odczytu: pewna}
+- {id: S07-199, podmiot: drohojowski-julian-1836, relacja: urzad, wartosc: "kanonik krakowski",
+   zrodla: [{segment: S07-p17-s03, cytat: "Stryj Babci Eli Kanonik Julian Drohojowski"}, {segment: S07-p21-s03, cytat: "Kanonik Krakowski"}], pewnosc_odczytu: pewna}
+- {id: S07-200, podmiot: drohojowski-julian-1836, relacja: rodzenstwo, obiekt: drohojowski-boleslaw-1848,
+   zrodla: [{segment: S07-p17-s03, cytat: "Stryj Babci Eli"}, {segment: S07-p21-s03, cytat: "Julian 1836+1916 Bolesław 1848+1916"}], pewnosc_odczytu: pewna}
+- {id: S07-201, podmiot: drohojowski-julian-1836, relacja: rodzic, obiekt: drohojowski-wladyslaw,
+   zrodla: [{segment: S07-p21-s03, cytat: "Julian 1836+1916"}], pewnosc_odczytu: pewna, uwagi: "Z układu drzewa (dzieci Władysława)."}
+- {id: S07-202, podmiot: drohojowski-julian-1836, relacja: opis, wartosc: "mieszkał w Krakowie (miał „morową[?]” pensję); młodo w powstaniu styczniowym, po przygodach wstąpił do seminarium; portret pędzla Wyczółkowskiego był w Ciszecinie, zaginął po II wojnie", miejsce: krakow,
+   zrodla: [{segment: S07-p17-s03, cytat: "mieszkał w Krakowie (miał morową[?] pensję) Jako młody brał udział w Powstaniu Styczniowym i po licznych przygodach wstąpił do seminarjum."},
+            {segment: S07-p17-s03, cytat: "Portret Kanonika malowany przez Wyczółkowskiego był w Ciszecinie i przepadł zaraz po II wojnie."}], pewnosc_odczytu: niepewna}
+- {id: S07-203, podmiot: drohojowski-julian-1836, relacja: pochowek, miejsce: krakow-rakowice,
+   zrodla: [{segment: S07-p17-s03, cytat: "Pochowany na cmentarzu Rakowickim."}, {segment: S07-p58-s01, cytat: "Ks. Kanonik Julian Drohojowski"}], pewnosc_odczytu: pewna}
+- {id: S07-204, podmiot: drohojowska-stanislawa, relacja: rodzic, obiekt: drohojowski-wladyslaw,
+   zrodla: [{segment: S07-p21-s03, cytat: "Stanisława"}], pewnosc_odczytu: pewna, uwagi: "Z układu drzewa."}
+- {id: S07-205, podmiot: drohojowska-stanislawa, relacja: opis, wartosc: "rozwiedziona; synek zmarł w dzieciństwie (portret u Elżbiety Radoszewskiej-Mosek[?]); mieszkała w Piotrkowicach (p. Kowel, gub. wołyńska), po sprzedaży w 1933 r. w Warszawie, Żelazna 30 (w swoim domu, potem sprzedanym); pisała powieści pod pseudonimem „Korczak”",
+   zrodla: [{segment: S07-p17-s04, cytat: "Stanisława z Drohojowskich Pepłowska Rozwiodła się. Miała synka, który zmarł jako dziecko (Portret u Elżbiety Radoszewskiej Mosek[?]) Mieszkała w Piotrkowiczach p. Kowel gubernia Wołyńska. Po ich sprzedaży w 1933 r. zamieszkała w W-wie na ul. Żelaznej 30 w swym domu"},
+            {segment: S07-p18-s01, cytat: "który następnie sprzedała. Pisała powieści pod pseudonimem „Korczak”."}], pewnosc_odczytu: pewna}
+- {id: S07-206, podmiot: drohojowska-stanislawa, relacja: zamieszkanie, miejsce: warszawa-zelazna-30, data: {tekst: "po 1933 r.", od: 1933, do: null},
+   zrodla: [{segment: S07-p17-s04, cytat: "Po ich sprzedaży w 1933 r. zamieszkała w W-wie na ul. Żelaznej 30"}], pewnosc_odczytu: pewna}
+- {id: S07-207, podmiot: bialynicka-jadwiga, relacja: opis, wartosc: "pamiętała, jak u wspólnych krewnych Wysłużów[?] piękna Stanisława Pepłowska deklamowała „Smutno mi Boże”",
+   zrodla: [{segment: S07-p18-s01, cytat: "Ciocia Jadzia Białynicka pamiętała, jak u wspólnych krewnych Wysłużów[?] piękna Stanisława P. deklamowała „Smutno mi Boże”."}], pewnosc_odczytu: niepewna}
+- {id: S07-208, podmiot: drohojowski-boleslaw-1848, relacja: urodzenie, data: {tekst: "1850", od: 1850, do: 1850}, miejsce: piotrkowice-wolyn,
+   zrodla: [{segment: S07-p18-s02, cytat: "Ojciec Ewy Bolesław 1850+24-III-1916 we Lwowie syn Władysława i Emilji Wolskiej ur. na Wołyniu w Piotrkowiczach"}], pewnosc_odczytu: pewna}
+- {id: S07-209, podmiot: drohojowski-boleslaw-1848, relacja: urodzenie, data: {tekst: "1848", od: 1848, do: 1848},
+   zrodla: [{segment: S07-p21-s03, cytat: "Bolesław 1848+1916"}], pewnosc_odczytu: pewna}
+- {id: S07-210, podmiot: drohojowski-boleslaw-1848, relacja: smierc, data: {tekst: "24-III-1916", od: 1916-03-24, do: 1916-03-24}, miejsce: lwow,
+   zrodla: [{segment: S07-p18-s02, cytat: "1850+24-III-1916 we Lwowie"}, {segment: S07-p21-s03, cytat: "Bolesław 1848+1916"}], pewnosc_odczytu: pewna}
+- {id: S07-211, podmiot: drohojowski-boleslaw-1848, relacja: malzonek, obiekt: terlecka-bronislawa-1847,
+   zrodla: [{segment: S07-p18-s02, cytat: "żona Bronisława Terlecka 1847+1941 h. Sas z Ciszeciny"}, {segment: S07-p21-s03, cytat: "Bronisława Terlecka h. Sas"}], pewnosc_odczytu: pewna}
+- {id: S07-212, podmiot: terlecka-bronislawa-1847, relacja: urodzenie, data: {tekst: "1847", od: 1847, do: 1847},
+   zrodla: [{segment: S07-p18-s02, cytat: "Bronisława Terlecka 1847+1941"}, {segment: S07-p21-s03, cytat: "z Ciszeciny 1847+1941"}], pewnosc_odczytu: pewna}
+- {id: S07-213, podmiot: terlecka-bronislawa-1847, relacja: smierc, data: {tekst: "+1941", od: 1941, do: 1941},
+   zrodla: [{segment: S07-p18-s02, cytat: "Bronisława Terlecka 1847+1941"}, {segment: S07-p21-s03, cytat: "z Ciszeciny 1847+1941"}], pewnosc_odczytu: pewna}
+- {id: S07-214, podmiot: terlecka-bronislawa-1847, relacja: zamieszkanie, miejsce: ciszecin-wielki, wartosc: "pochodzenie: z Ciszeciny",
+   zrodla: [{segment: S07-p18-s02, cytat: "h. Sas z Ciszeciny"}], pewnosc_odczytu: pewna}
+- {id: S07-215, podmiot: drohojowski-boleslaw-1848, relacja: opis, wartosc: "surowych zasad, bardzo oszczędny, elegancki (ubierał się w Wiedniu); w Kasynie Narodowym we Lwowie sędzia od spraw „savoir-vivre”; portret pędzla Aleksandra Augustynowicza (ur. 1865) u Andrzeja Radoszewskiego",
+   zrodla: [{segment: S07-p18-s02, cytat: "Był surowych zasad, b. oszczędny, elegancki (ubierał się w Wiedniu). W Kasynie Narodowym we Lwowie był sędzią od spraw „savoir-vivre” Portret malowany przez Aleksandra Augustynowicza ur. 1865 r. jest u Andrzeja Radoszewskiego"}], pewnosc_odczytu: pewna}
+- {id: S07-216, podmiot: drohojowski-jan-1886, relacja: urodzenie, data: {tekst: "1886", od: 1886, do: 1886},
+   zrodla: [{segment: S07-p18-s03, cytat: "Jan Drohojowski 1886+1945"}, {segment: S07-p21-s04, cytat: "Jan 1886+1944"}], pewnosc_odczytu: pewna}
+- {id: S07-217, podmiot: drohojowski-jan-1886, relacja: smierc, data: {tekst: "w kwietniu 1945 r.", od: 1945-04, do: 1945-04}, wartosc: "wywieziony za Moskwę do Borowicz, potem do obozu Jagły[?]; tam pochowany",
+   zrodla: [{segment: S07-p18-s03, cytat: "Jan Drohojowski 1886+1945"}, {segment: S07-p19-s01, cytat: "Wywieziony za Moskwę do Borowicz, a potem do obozu Jagły[?] zmarł w kwietniu 1945 r. i tam był pochowany."}], pewnosc_odczytu: pewna}
+- {id: S07-218, podmiot: drohojowski-jan-1886, relacja: smierc, data: {tekst: "+1944", od: 1944, do: 1944},
+   zrodla: [{segment: S07-p21-s04, cytat: "Jan 1886+1944"}], pewnosc_odczytu: pewna}
+- {id: S07-219, podmiot: drohojowski-jan-1886, relacja: rodzic, obiekt: drohojowski-boleslaw-1848,
+   zrodla: [{segment: S07-p18-s03, cytat: "brat babci Eli"}, {segment: S07-p21-s04, cytat: "Jan 1886+1944"}], pewnosc_odczytu: pewna}
+- {id: S07-220, podmiot: drohojowski-jan-1886, relacja: opis, wartosc: "„zielony ludowiec[?]”, przyjaciel i współpracownik Witosa, związany ze stronnictwem „Piast”; właściciel Piotrkowic (parcelacja 1933) i Ciszecina W., który zapisał Jerzemu Radoszewskiemu; myśliwy; po wojnie w Jarosławiu, Krakowska 7",
+   zrodla: [{segment: S07-p18-s03, cytat: "„zielony ludowiec[?]” przyjaźnił się i działał przy boku Witosa. Związał się ze stronnictwem „Piast”. Właściciel Piotrkowicz (rozparcelował je w 1933 r.)"},
+            {segment: S07-p19-s01, cytat: "i Ciszeciny W., który zapisał Jerzemu Radoszewskiemu Zamiłowany myśliwy. Po zabraniu Ciszeciny W. po II wojnie mieszkał w Jarosławiu Krakowska 7."}], pewnosc_odczytu: niepewna}
+- {id: S07-221, podmiot: drohojowski-jan-1886, relacja: wlasnosc, obiekt: ciszecin-wielki,
+   zrodla: [{segment: S07-p19-s01, cytat: "i Ciszeciny W., który zapisał Jerzemu Radoszewskiemu"}], pewnosc_odczytu: pewna}
+- {id: S07-222, podmiot: drohojowski-jan-1886, relacja: wlasnosc, obiekt: piotrkowice-wolyn, wartosc: "rozparcelował w 1933 r.", data: {tekst: "1933 r.", od: 1933, do: 1933},
+   zrodla: [{segment: S07-p18-s03, cytat: "Właściciel Piotrkowicz (rozparcelował je w 1933 r.)"}, {segment: S07-p21-s02, cytat: "parcelacja 1933 r. przez J. Drohojowskiego"}], pewnosc_odczytu: pewna}
+- {id: S07-223, podmiot: radoszewski-jerzy-1902, relacja: wlasnosc, obiekt: ciszecin-wielki, wartosc: "zapis testamentowy od Jana Drohojowskiego",
+   zrodla: [{segment: S07-p19-s01, cytat: "i Ciszeciny W., który zapisał Jerzemu Radoszewskiemu"}], pewnosc_odczytu: pewna}
+- {id: S07-224, podmiot: drohojowska-maria-1876, relacja: rodzic, obiekt: drohojowski-boleslaw-1848,
+   zrodla: [{segment: S07-p19-s02, cytat: "Marja Madeyska (Marynia) siostra babci Eli 1876+1944"}, {segment: S07-p21-s04, cytat: "Marja Madeyska 1876"}], pewnosc_odczytu: pewna}
+- {id: S07-225, podmiot: drohojowska-maria-1876, relacja: urodzenie, data: {tekst: "1876", od: 1876, do: 1876},
+   zrodla: [{segment: S07-p19-s02, cytat: "siostra babci Eli 1876+1944"}, {segment: S07-p21-s04, cytat: "Marja Madeyska 1876"}], pewnosc_odczytu: pewna}
+- {id: S07-226, podmiot: drohojowska-maria-1876, relacja: smierc, data: {tekst: "+1944", od: 1944, do: 1944},
+   zrodla: [{segment: S07-p19-s02, cytat: "siostra babci Eli 1876+1944"}, {segment: S07-p21-s04, cytat: "+1944"}], pewnosc_odczytu: pewna}
+- {id: S07-227, podmiot: drohojowska-maria-1876, relacja: malzonek, obiekt: madeyski,
+   zrodla: [{segment: S07-p21-s04, cytat: "Madeyski h. Poraj"}], pewnosc_odczytu: pewna}
+- {id: S07-228, podmiot: drohojowska-maria-1876, relacja: zamieszkanie, miejsce: perehinsk, wartosc: "po ślubie w Perehińsku[?], po owdowieniu we Lwowie",
+   zrodla: [{segment: S07-p19-s02, cytat: "po ślubie mieszkała w Perehińsku[?] a po wdowieństwie we Lwowie."}], pewnosc_odczytu: niepewna}
+- {id: S07-229, podmiot: madeyska-maria-1899, relacja: rodzic, obiekt: drohojowska-maria-1876,
+   zrodla: [{segment: S07-p19-s02, cytat: "Miała troje dzieci: Marję Łosiową (Marynę) ur. 1899"}, {segment: S07-p21-s05, cytat: "Marja 1899"}], pewnosc_odczytu: pewna}
+- {id: S07-230, podmiot: madeyska-maria-1899, relacja: urodzenie, data: {tekst: "1899", od: 1899, do: 1899},
+   zrodla: [{segment: S07-p19-s02, cytat: "Marję Łosiową (Marynę) ur. 1899"}], pewnosc_odczytu: pewna}
+- {id: S07-231, podmiot: madeyska-maria-1899, relacja: malzonek, obiekt: los-leszek,
+   zrodla: [{segment: S07-p21-s05, cytat: "Leszek Łoś[?]"}], pewnosc_odczytu: niepewna, uwagi: "Pod imieniem skreślone nieczytelne nazwisko."}
+- {id: S07-232, podmiot: losiowa-julia, relacja: rodzic, obiekt: madeyska-maria-1899,
+   zrodla: [{segment: S07-p19-s02, cytat: "matkę Juli która mieszka w Bytomiu."}], pewnosc_odczytu: pewna}
+- {id: S07-233, podmiot: losiowa-julia, relacja: zamieszkanie, miejsce: bytom,
+   zrodla: [{segment: S07-p19-s02, cytat: "Juli która mieszka w Bytomiu."}], pewnosc_odczytu: pewna}
+- {id: S07-234, podmiot: madeyski-jan-1902, relacja: rodzic, obiekt: drohojowska-maria-1876,
+   zrodla: [{segment: S07-p19-s02, cytat: "Syna Jana 1902–1969 (rolnik)"}, {segment: S07-p21-s05, cytat: "Jan 1902+1969"}], pewnosc_odczytu: pewna}
+- {id: S07-235, podmiot: madeyski-jan-1902, relacja: urodzenie, data: {tekst: "1902", od: 1902, do: 1902},
+   zrodla: [{segment: S07-p19-s02, cytat: "Syna Jana 1902–1969"}], pewnosc_odczytu: pewna}
+- {id: S07-236, podmiot: madeyski-jan-1902, relacja: smierc, data: {tekst: "1969", od: 1969, do: 1969}, miejsce: paryz,
+   zrodla: [{segment: S07-p19-s02, cytat: "Syna Jana 1902–1969"}, {segment: S07-p19-s02, cytat: "Zmarł w Paryżu."}], pewnosc_odczytu: pewna}
+- {id: S07-237, podmiot: madeyski-jan-1902, relacja: opis, wartosc: "rolnik; podczas II wojny we Francji; rozszedł się z żoną Janiną (2 synów), ożenił się z Lulu (Francuzką) — syn i córka",
+   zrodla: [{segment: S07-p19-s02, cytat: "(rolnik) podczas II wojny mieszkał we Francji. Rozszedł się z żoną Janiną z którą miał 2 synów i ożenił się z Lulu (Francuską) miał z nią syna i córkę."}], pewnosc_odczytu: pewna}
+- {id: S07-238, podmiot: madeyski-jan-1902, relacja: malzonek, obiekt: madeyska-janina, wartosc: "I żona",
+   zrodla: [{segment: S07-p19-s02, cytat: "Rozszedł się z żoną Janiną"}, {segment: S07-p21-s05, cytat: "Janina"}], pewnosc_odczytu: pewna}
+- {id: S07-239, podmiot: madeyski-jan-1902, relacja: malzonek, obiekt: reizeux-lucile, wartosc: "II żona", data: {tekst: "1921[?]", od: null, do: null},
+   zrodla: [{segment: S07-p19-s02, cytat: "ożenił się z Lulu (Francuską)"}, {segment: S07-p21-s05, cytat: "Lucile Reizeux[?] 1921"}], pewnosc_odczytu: niepewna, uwagi: "„1921” przy strzałce — znaczenie niejasne."}
+- {id: S07-240, podmiot: madeyski-jerzy, relacja: rodzic, obiekt: madeyski-jan-1902,
+   zrodla: [{segment: S07-p19-s02, cytat: "Jeden syn Jana Jerzy historyk sztuki mieszka w Krakowie."}], pewnosc_odczytu: pewna}
+- {id: S07-241, podmiot: madeyski-jerzy, relacja: zawod, wartosc: "historyk sztuki", miejsce: krakow,
+   zrodla: [{segment: S07-p19-s02, cytat: "Jerzy historyk sztuki mieszka w Krakowie."}], pewnosc_odczytu: pewna}
+- {id: S07-242, podmiot: madeyski-syn-chemik, relacja: rodzic, obiekt: madeyski-jan-1902,
+   zrodla: [{segment: S07-p19-s02, cytat: "Drugi syn chemik rozszedł się z żoną Polką i jest we Francji, gdzie ożenił"}, {segment: S07-p20-s01, cytat: "się po raz drugi."}], pewnosc_odczytu: pewna}
+- {id: S07-243, podmiot: madeyski-andrzej-1906, relacja: rodzic, obiekt: drohojowska-maria-1876,
+   zrodla: [{segment: S07-p20-s01, cytat: "Andrzej syn Marji 1906 jest w Ameryce."}], pewnosc_odczytu: pewna}
+- {id: S07-244, podmiot: madeyski-andrzej-1906, relacja: urodzenie, data: {tekst: "1906", od: 1906, do: 1906},
+   zrodla: [{segment: S07-p20-s01, cytat: "Andrzej syn Marji 1906"}], pewnosc_odczytu: pewna}
+- {id: S07-245, podmiot: madeyski-andrzej-1906, relacja: zamieszkanie, miejsce: ameryka,
+   zrodla: [{segment: S07-p20-s01, cytat: "jest w Ameryce."}], pewnosc_odczytu: pewna}
+- {id: S07-246, podmiot: zarzecze, relacja: opis, wartosc: "grób Drohojowskich w Zarzeczu k. Jarosławia",
+   zrodla: [{segment: S07-p20-s01, cytat: "Grób Drohojowskich jest w Zarzeczu k/Jarosławia"}], pewnosc_odczytu: pewna}
+- {id: S07-247, podmiot: drohojowski-jan-1780, relacja: urodzenie, data: {tekst: "1780", od: 1780, do: 1780},
+   zrodla: [{segment: S07-p21-s01, cytat: "Jan Drohojowski 1780+1819 h. Korczak"}], pewnosc_odczytu: pewna}
+- {id: S07-248, podmiot: drohojowski-jan-1780, relacja: smierc, data: {tekst: "+1819", od: 1819, do: 1819},
+   zrodla: [{segment: S07-p21-s01, cytat: "Jan Drohojowski 1780+1819 h. Korczak"}], pewnosc_odczytu: pewna}
+- {id: S07-249, podmiot: drohojowski-jan-1780, relacja: malzonek, obiekt: niemirowska-roza, wartosc: "I żona",
+   zrodla: [{segment: S07-p21-s01, cytat: "I żona Róża Niemirowska"}], pewnosc_odczytu: pewna}
+- {id: S07-250, podmiot: drohojowski-jan-1780, relacja: malzonek, obiekt: rzeszotarska-brygida, wartosc: "II żona",
+   zrodla: [{segment: S07-p21-s01, cytat: "II „ Brygida Rzeszotarska"}], pewnosc_odczytu: pewna}
+- {id: S07-251, podmiot: drohojowski-wladyslaw, relacja: rodzic, obiekt: drohojowski-jan-1780,
+   zrodla: [{segment: S07-p21-s02, cytat: "Władysław Drohojowski z Piotrkowicz"}], pewnosc_odczytu: pewna, uwagi: "Z układu drzewa (pokolenie 2)."}
+- {id: S07-252, podmiot: drohojowski-wladyslaw, relacja: malzonek, obiekt: wolska-emilia,
+   zrodla: [{segment: S07-p21-s02, cytat: "żona Emilja Wolska z Piotrkowicz (k/Kowla – gub. Wołyń)"}], pewnosc_odczytu: pewna}
+- {id: S07-253, podmiot: drohojowska-ewelina-1880, relacja: urodzenie, data: {tekst: "1880", od: 1880, do: 1880},
+   zrodla: [{segment: S07-p21-s04, cytat: "Ewelina 1880+1955"}], pewnosc_odczytu: pewna}
+- {id: S07-254, podmiot: radoszewski-michal-1865, relacja: urodzenie, data: {tekst: "1866", od: 1866, do: 1866},
+   zrodla: [{segment: S07-p21-s04, cytat: "Michał Radoszewski Madeyski h. Poraj 1866+1942 z Krempy h. Oksza"}], pewnosc_odczytu: pewna}
+- {id: S07-255, podmiot: madeyski-jean-luc, relacja: rodzic, obiekt: madeyski-jan-1902,
+   zrodla: [{segment: S07-p21-s06, cytat: "Jean-Luc Christine"}], pewnosc_odczytu: niepewna, uwagi: "Z układu drzewa (strzałki od Lucile)."}
+- {id: S07-256, podmiot: madeyska-christine, relacja: rodzic, obiekt: madeyski-jan-1902,
+   zrodla: [{segment: S07-p21-s06, cytat: "Jean-Luc Christine"}], pewnosc_odczytu: niepewna, uwagi: "Z układu drzewa."}
+- {id: S07-257, podmiot: madeyski-jean-luc, relacja: malzonek, obiekt: joelle,
+   zrodla: [{segment: S07-p21-s06, cytat: "córka Joëlle"}], pewnosc_odczytu: niepewna}
+- {id: S07-258, podmiot: madeyska-maria-1899, relacja: opis, wartosc: "w pokoleniu 6 pod Marią: Juliusz, Krystyna (dzieci?) [?]; pod Janem: „córka, córka” (dwie córki z Janiną?)",
+   zrodla: [{segment: S07-p21-s06, cytat: "Juljusz córka"}, {segment: S07-p21-s06, cytat: "Krystyna córka"}], pewnosc_odczytu: niepewna}
+- {id: S07-259, podmiot: madeyska-maite, relacja: rodzic, obiekt: madeyski-jean-luc,
+   zrodla: [{segment: S07-p21-s07, cytat: "Maïté 1979"}], pewnosc_odczytu: niepewna}
+- {id: S07-260, podmiot: madeyska-maite, relacja: urodzenie, data: {tekst: "1979", od: 1979, do: 1979},
+   zrodla: [{segment: S07-p21-s07, cytat: "Maïté 1979"}], pewnosc_odczytu: niepewna, uwagi: "Ostatnia cyfra niewyraźna."}
+- {id: S07-261, podmiot: madeyski-mathias, relacja: rodzic, obiekt: madeyski-jean-luc,
+   zrodla: [{segment: S07-p21-s07, cytat: "Mathias 1981"}], pewnosc_odczytu: niepewna}
+- {id: S07-262, podmiot: madeyski-mathias, relacja: urodzenie, data: {tekst: "1981", od: 1981, do: 1981},
+   zrodla: [{segment: S07-p21-s07, cytat: "Mathias 1981"}], pewnosc_odczytu: pewna}
+- {id: S07-263, podmiot: madeyski-andrzej-1906, relacja: zawod, wartosc: "„hist. szt.[?]” przy imieniu w drzewie (wg s. 19 historykiem sztuki był Jerzy, syn Jana)",
+   zrodla: [{segment: S07-p21-s05, cytat: "hist. szt.[?]"}], pewnosc_odczytu: niepewna}
+- {id: S07-264, podmiot: radoszewski-jerzy-1902, relacja: opis, wartosc: "drzewo Drohojowskich (s. 21) w pokoleniu 7 wymienia też „Jan” obok Maïté i Mathiasa oraz potomków Jerzego i Anny (Agnieszka 1968, Anna 1971, Robert Krzysztof 1969, Anna Radoszewska-Zielińska 1974)",
+   zrodla: [{segment: S07-p21-s05, cytat: "Anna Prządzyńska"}, {segment: S07-p21-s06, cytat: "Andrzej Elżbieta Teresa"},
+            {segment: S07-p21-s07, cytat: "Jan Agnieszka 1968 Anna 1971 Robert Krzysztof 1969 Anna Radoszewska-Zielińska 1974"}], pewnosc_odczytu: pewna}
+
+# s. 22–24: inne osoby z rodziny
+- {id: S07-265, podmiot: radoszewski-stogniew-1467, relacja: opis, wartosc: "Stogniew z Siemkowic, 1467 („kamienny tam dom”)", data: {tekst: "1467", od: 1467, do: 1467}, miejsce: siemkowice,
+   zrodla: [{segment: S07-p22-s02, cytat: "1467 Stogniew z Siemkowic (kamienny tam dom)"}], pewnosc_odczytu: pewna}
+- {id: S07-266, podmiot: radoszewski-boguslaw-1441, relacja: smierc, data: {tekst: "+1459", od: 1459, do: 1459},
+   zrodla: [{segment: S07-p22-s03, cytat: "+1459 Bogusław z Radoszewic"}], pewnosc_odczytu: pewna}
+- {id: S07-267, podmiot: radoszewski-marcin-1597, relacja: urzad, wartosc: "wojski wieluński", data: {tekst: "1597", od: 1597, do: 1597},
+   zrodla: [{segment: S07-p22-s04, cytat: "1597 Marcin wojski wieluński"}], pewnosc_odczytu: pewna}
+- {id: S07-268, podmiot: radoszewski-andrzej-1574, relacja: opis, wartosc: "Andrzej — 1574", data: {tekst: "1574", od: 1574, do: 1574},
+   zrodla: [{segment: S07-p22-s05, cytat: "1574 Andrzej"}], pewnosc_odczytu: pewna}
+- {id: S07-269, podmiot: radoszewski-nikodem-1561, relacja: urzad, wartosc: "podkomorzy; na pogrzebie hetmana Tarnowskiego jechał za trumną przebrany za zmarłego", data: {tekst: "1561", od: 1561, do: 1561},
+   zrodla: [{segment: S07-p22-s06, cytat: "1561 Nikodem podkomorzy. Na pogrzebie hetmana Tarnowskiego jechał za trumną przebrany za zmarłego."}], pewnosc_odczytu: niepewna}
+- {id: S07-270, podmiot: radoszewski-jedrzej-1608, relacja: smierc, data: {tekst: "+1608", od: 1608, do: 1608},
+   zrodla: [{segment: S07-p22-s07, cytat: "Andrzej +1608 Jędrzej (brat Marka?)"}], pewnosc_odczytu: pewna}
+- {id: S07-271, podmiot: radoszewski-jedrzej-1608, relacja: malzonek, obiekt: peslawska-barbara,
+   zrodla: [{segment: S07-p22-s07, cytat: "żonie Barbarze +1608 Pęsławskiej[?] h. Zelina[?]"}, {segment: S07-p58-s02, cytat: "Epitafjum Barbary z Popławskich[?] Radoszewskiej zm. 1608 r. późnorenesansowe fundacji męża Andrzeja chorążego ziemi wieluńskiej"}], pewnosc_odczytu: niepewna}
+- {id: S07-272, podmiot: radoszewski-jedrzej-1608, relacja: fundacja, obiekt: krakow-franciszkanie, wartosc: "nagrobek żony z czerwonego marmuru w kościele franciszkanów w Krakowie",
+   zrodla: [{segment: S07-p22-s07, cytat: "XVII wystawił nagrobek z czerwonego marmuru w Kościele Franciszkanów w Krakowie"}], pewnosc_odczytu: pewna}
+- {id: S07-273, podmiot: peslawska-barbara, relacja: smierc, data: {tekst: "+1608", od: 1608, do: 1608},
+   zrodla: [{segment: S07-p22-s07, cytat: "żonie Barbarze +1608"}, {segment: S07-p58-s02, cytat: "zm. 1608 r."}], pewnosc_odczytu: pewna}
+- {id: S07-274, podmiot: radoszewski-andrzej-1630, relacja: opis, wartosc: "„Konstytucja sejmowa na ekspedycję generalną przeciw Turkom chorągiew nosić kazała ziemi wieluńskiej”; jako chorąży wieluński w 1630 r. ofiarował srebrną sukienkę do obrazu MB w Pajęcznie w podzięce za uratowanie z niewoli tureckiej", data: {tekst: "1630 r.", od: 1630, do: 1630}, miejsce: pajeczno,
+   zrodla: [{segment: S07-p22-s08, cytat: "Andrzej „Konstytucja sejmowa na ekspedycję generalną przeciw Turkom chorągiew nosić kazała ziemi wieluńskiej” Chorąży wieluński w 1630 r. ofiarował srebrną sukienkę do obrazu Matki Boskiej w Pajęcznie w podzięce za uratowanie z niewoli tureckiej”."}], pewnosc_odczytu: pewna}
+- {id: S07-275, podmiot: radoszewski-boguslaw-1638, relacja: rodzic, obiekt: radoszewski-jerzy-1614,
+   zrodla: [{segment: S07-p23-s01, cytat: "+1638 Bogusław (syn Jerzego)"}], pewnosc_odczytu: pewna}
+- {id: S07-276, podmiot: radoszewski-boguslaw-1638, relacja: opis, wartosc: "opat świętokrzyski, potem biskup kijowski; rozbudował kościół i klasztor benedyktynów na Łysej Górze (relikwiarz Krzyża Św. z herbem Oksza 1606–1622); Zygmunt III mianował go biskupem łuckim (1634) i kijowskim; sprowadził do Kijowa cudowny obraz MB i relikwie (wg K. Korczyńskiego, Katedra Kijowska s. XVI)", miejsce: lysa-gora,
+   zrodla: [{segment: S07-p23-s01, cytat: "opat świętokrzyski potem biskup kijowski, rozbudował Kościół i Klasztor benedyktynów na Łysej Górze. Znajduje się tam relikwiarz Krzyża Św. z h. Oksza (1606–1622) h. Oksza na trumnie. Potem Zygmunt III obsadził go na biskupstwie Łuckim 1634 i Kijowskim."},
+            {segment: S07-p23-s01, cytat: "Źródło „Katedra Kijowska” przez Kassyjana Korczyńskiego strona XVI."}], pewnosc_odczytu: pewna}
+- {id: S07-277, podmiot: radoszewski-boguslaw-1638, relacja: opis, wartosc: "autorka: „był jeszcze drugi biskup Bogusław Radoszewski, ale nie mam o nim danych”",
+   zrodla: [{segment: S07-p23-s01, cytat: "(Był jeszcze drugi biskup Bogusław Radoszewski ale nie mam o nim danych.)"}], pewnosc_odczytu: pewna}
+- {id: S07-278, podmiot: radoszewski-walenty-1746, relacja: urzad, wartosc: "kanonik kijowski i sandomierski, proboszcz kolegiaty klimontowskiej (epitafium i portret w Klimontowie)", data: {tekst: "1740", od: 1740, do: 1740}, miejsce: klimontow,
+   zrodla: [{segment: S07-p24-s01, cytat: "1740 Walenty Kanonik kijowski i sandomierski proboszcz Kollegiaty Klimontowskiej. W Klimontowie epitafium i portret"}], pewnosc_odczytu: pewna}
+- {id: S07-279, podmiot: radoszewski-wojciech-1758, relacja: urzad, wartosc: "biskup sufragan sandomierski (XVIII w.), deputat na Trybunał Koronny 1758", data: {tekst: "1758", od: 1758, do: 1758},
+   zrodla: [{segment: S07-p24-s02, cytat: "Wojciech biskup sufragan sandomierski XVIII w. deputat na tryb. kor. 1758"}], pewnosc_odczytu: pewna}
+- {id: S07-280, podmiot: radoszewski-stefan-1689, relacja: urzad, wartosc: "kanonik gnieźnieński (XVII w.)", data: {tekst: "1673+1689", od: 1673, do: 1689}, miejsce: gniezno,
+   zrodla: [{segment: S07-p24-s03, cytat: "Stefan Kanonik gnieźnieński XVII 1673+1689 w Gnieźnie."}], pewnosc_odczytu: pewna}
+- {id: S07-281, podmiot: radoszewski-stefan-1689, relacja: smierc, data: {tekst: "+1689", od: 1689, do: 1689}, miejsce: gniezno,
+   zrodla: [{segment: S07-p24-s03, cytat: "1673+1689 w Gnieźnie."}], pewnosc_odczytu: pewna}
+- {id: S07-282, podmiot: radoszewski-pawel-1608, relacja: urzad, wartosc: "jezuita, pierwszy prowincjał prowincji litewskiej", data: {tekst: "1608", od: 1608, do: 1608},
+   zrodla: [{segment: S07-p24-s04, cytat: "Paweł Societatis Jesu pierwszy prowincjał Prowincji Litewskiej 1608"}], pewnosc_odczytu: pewna}
+- {id: S07-283, podmiot: radoszewski-jedrzej-zakonnik, relacja: smierc, miejsce: rzym, wartosc: "zakonnik, zmarł w Rzymie",
+   zrodla: [{segment: S07-p24-s05, cytat: "Jędrzej zakonnik zmarł w Rzymie."}], pewnosc_odczytu: pewna}
+
+# s. 25: Józef (1791–1831) i Ignacy baron
+- {id: S07-284, podmiot: radoszewski-jozef-1791, relacja: urodzenie, data: {tekst: "23-II 1791", od: 1791-02-23, do: 1791-02-23}, miejsce: kuchlin,
+   zrodla: [{segment: S07-p25-s01, cytat: "Radoszewski Boxa Józef 1791–1831"}, {segment: S07-p25-s02, cytat: "ur. 23-II w Kuchlinie[?] k/Turka"}], pewnosc_odczytu: niepewna}
+- {id: S07-285, podmiot: radoszewski-jozef-1791, relacja: smierc, data: {tekst: "1831", od: 1831, do: 1831},
+   zrodla: [{segment: S07-p25-s01, cytat: "Radoszewski Boxa Józef 1791–1831"}], pewnosc_odczytu: pewna}
+- {id: S07-286, podmiot: radoszewski-jozef-1791, relacja: rodzic, obiekt: radoszewski-jan-ojciec-jozefa,
+   zrodla: [{segment: S07-p25-s02, cytat: "syn Jana i Marcjanny z Umińskich (źródło: Wielko-polski Słownik Biograficzny)"}], pewnosc_odczytu: pewna, uwagi: "Wersja wg Wielkopolskiego Słownika Biograficznego."}
+- {id: S07-287, podmiot: radoszewski-jozef-1791, relacja: rodzic, obiekt: uminska-marcjanna,
+   zrodla: [{segment: S07-p25-s02, cytat: "syn Jana i Marcjanny z Umińskich"}], pewnosc_odczytu: pewna}
+- {id: S07-288, podmiot: radoszewski-jozef-1791, relacja: rodzic, obiekt: radoszewski-roch-1820,
+   zrodla: [{segment: S07-p25-s02, cytat: "A według „Genealogji żyjących utytuł. Rodów Polskich” Dunin Borkowskiego „Syn Rocha"}], pewnosc_odczytu: pewna, uwagi: "Wersja wg Dunina Borkowskiego — sprzeczna z S07-286."}
+- {id: S07-289, podmiot: radoszewski-jozef-1791, relacja: urzad, wartosc: "dyrektor generalny Komisji Rządowej Spraw Wewnętrznych",
+   zrodla: [{segment: S07-p25-s02, cytat: "dyrektor gen. Komisji rządu spraw wew."}], pewnosc_odczytu: pewna}
+- {id: S07-290, podmiot: radoszewski-jozef-1791, relacja: malzonek, obiekt: zajaczek-aleksandra,
+   zrodla: [{segment: S07-p25-s02, cytat: "Żona Aleksandra z Zajączków h. Świnka."}], pewnosc_odczytu: pewna}
+- {id: S07-291, podmiot: radoszewski-jozef-1791, relacja: wlasnosc, obiekt: opatowek, wartosc: "dostał od gen. Zajączka dobra Opatówek k. Kalisza",
+   zrodla: [{segment: S07-p25-s02, cytat: "Dostał od Zajączka dobra Opatówek k/Kalisza."}], pewnosc_odczytu: pewna}
+- {id: S07-292, podmiot: radoszewski-ignacy-1816, relacja: rodzic, obiekt: radoszewski-jozef-1791,
+   zrodla: [{segment: S07-p25-s03, cytat: "Syn Ignacy 1816–1886 baron saksko-gotajski"}], pewnosc_odczytu: pewna}
+- {id: S07-293, podmiot: radoszewski-ignacy-1816, relacja: urodzenie, data: {tekst: "1816", od: 1816, do: 1816},
+   zrodla: [{segment: S07-p25-s03, cytat: "Syn Ignacy 1816–1886"}], pewnosc_odczytu: pewna}
+- {id: S07-294, podmiot: radoszewski-ignacy-1816, relacja: smierc, data: {tekst: "1886", od: 1886, do: 1886},
+   zrodla: [{segment: S07-p25-s03, cytat: "Syn Ignacy 1816–1886"}], pewnosc_odczytu: pewna}
+- {id: S07-295, podmiot: radoszewski-ignacy-1816, relacja: opis, wartosc: "baron saksko-gotajski",
+   zrodla: [{segment: S07-p25-s03, cytat: "baron saksko-gotajski"}], pewnosc_odczytu: pewna}
+- {id: S07-296, podmiot: radoszewski-ignacy-1816, relacja: malzonek, obiekt: zalistowska, wartosc: "I żona",
+   zrodla: [{segment: S07-p25-s03, cytat: "I żona Zalistowska[?] h. Pilawa[?]"}], pewnosc_odczytu: niepewna}
+- {id: S07-297, podmiot: radoszewski-ignacy-1816, relacja: malzonek, obiekt: rosdeitscher-amelia, wartosc: "II żona",
+   zrodla: [{segment: S07-p25-s03, cytat: "II „ Amelia Rosdeitscher[?] ur. 1840"}], pewnosc_odczytu: niepewna}
+- {id: S07-298, podmiot: rosdeitscher-amelia, relacja: urodzenie, data: {tekst: "1840", od: 1840, do: 1840},
+   zrodla: [{segment: S07-p25-s03, cytat: "Amelia Rosdeitscher[?] ur. 1840"}], pewnosc_odczytu: pewna}
+- {id: S07-299, podmiot: radoszewski-jozef-1840, relacja: rodzic, obiekt: radoszewski-ignacy-1816,
+   zrodla: [{segment: S07-p25-s03, cytat: "Dzieci I żony Józef ur. 1840 r. żona Tekla Radolińska"}], pewnosc_odczytu: pewna}
+- {id: S07-300, podmiot: radoszewski-jozef-1840, relacja: rodzic, obiekt: zalistowska,
+   zrodla: [{segment: S07-p25-s03, cytat: "Dzieci I żony Józef ur. 1840 r."}], pewnosc_odczytu: pewna}
+- {id: S07-301, podmiot: radoszewski-jozef-1840, relacja: urodzenie, data: {tekst: "1840 r.", od: 1840, do: 1840},
+   zrodla: [{segment: S07-p25-s03, cytat: "Józef ur. 1840 r."}], pewnosc_odczytu: pewna}
+- {id: S07-302, podmiot: radoszewski-jozef-1840, relacja: malzonek, obiekt: radolinska-tekla,
+   zrodla: [{segment: S07-p25-s03, cytat: "żona Tekla Radolińska"}], pewnosc_odczytu: pewna}
+- {id: S07-303, podmiot: radoszewska-aleksandra-1861, relacja: rodzic, obiekt: radoszewski-ignacy-1816,
+   zrodla: [{segment: S07-p25-s03, cytat: "„ II „ Aleksandra 1861 mąż Jagmin[?] Warnicki[?] w 1890 r. wróciła do nazwiska Radoszewska"}], pewnosc_odczytu: pewna}
+- {id: S07-304, podmiot: radoszewska-aleksandra-1861, relacja: rodzic, obiekt: rosdeitscher-amelia,
+   zrodla: [{segment: S07-p25-s03, cytat: "Aleksandra 1861"}], pewnosc_odczytu: pewna}
+- {id: S07-305, podmiot: radoszewska-aleksandra-1861, relacja: urodzenie, data: {tekst: "1861", od: 1861, do: 1861},
+   zrodla: [{segment: S07-p25-s03, cytat: "Aleksandra 1861"}], pewnosc_odczytu: pewna}
+- {id: S07-306, podmiot: radoszewska-aleksandra-1861, relacja: malzonek, obiekt: jagmin-warnicki,
+   zrodla: [{segment: S07-p25-s03, cytat: "mąż Jagmin[?] Warnicki[?] w 1890 r. wróciła do nazwiska Radoszewska"}], pewnosc_odczytu: niepewna, uwagi: "W 1890 r. wróciła do nazwiska Radoszewska."}
+
+# s. 26–27: Radoszewscy z Neru
+- {id: S07-307, podmiot: radoszewski-albin-1811, relacja: rodzic, obiekt: radoszewski-walenty-ner,
+   zrodla: [{segment: S07-p26-s01, cytat: "Albin Radoszewski syn Walentego z Neru"}], pewnosc_odczytu: pewna}
+- {id: S07-308, podmiot: radoszewski-albin-1811, relacja: urodzenie, data: {tekst: "1811", od: 1811, do: 1811},
+   zrodla: [{segment: S07-p26-s01, cytat: "1811–1875"}], pewnosc_odczytu: pewna}
+- {id: S07-309, podmiot: radoszewski-albin-1811, relacja: smierc, data: {tekst: "1875", od: 1875, do: 1875},
+   zrodla: [{segment: S07-p26-s01, cytat: "1811–1875"}], pewnosc_odczytu: pewna}
+- {id: S07-310, podmiot: radoszewski-albin-1811, relacja: malzonek, obiekt: radoszewska-ludwika-1827,
+   zrodla: [{segment: S07-p26-s01, cytat: "ożeniony z Ludwiką Radoszewską siostrą Józefata z Krempy."}], pewnosc_odczytu: pewna}
+- {id: S07-311, podmiot: radoszewski-albin-1811, relacja: urzad, wartosc: "rzeczywisty radca stanu",
+   zrodla: [{segment: S07-p26-s01, cytat: "Był rzeczywistym Radcą stanu."}], pewnosc_odczytu: pewna}
+- {id: S07-312, podmiot: radoszewski-franciszek-ner, relacja: rodzic, obiekt: radoszewski-albin-1811,
+   zrodla: [{segment: S07-p26-s02, cytat: "Syn Franciszek z Neru"}], pewnosc_odczytu: pewna}
+- {id: S07-313, podmiot: radoszewski-franciszek-ner, relacja: malzonek, obiekt: skrzynska-ludmila, wartosc: "I żona (I voto Siemiątkowska z Wygnanowic[?])",
+   zrodla: [{segment: S07-p26-s02, cytat: "żona Ludmiła Skrzyńska h. Zaremba z Nowej Wsi i Gostkowa I voto Siemiątkowska z Wygnanowic[?],"}], pewnosc_odczytu: pewna}
+- {id: S07-314, podmiot: radoszewski-franciszek-ner, relacja: malzonek, obiekt: wessel-jadwiga, wartosc: "II żona (I voto Brzezińska)",
+   zrodla: [{segment: S07-p26-s02, cytat: "II żona Jadwiga Wessel I voto Brzezińska +1929 r."}], pewnosc_odczytu: pewna}
+- {id: S07-315, podmiot: wessel-jadwiga, relacja: smierc, data: {tekst: "+1929 r.", od: 1929, do: 1929},
+   zrodla: [{segment: S07-p26-s02, cytat: "Jadwiga Wessel I voto Brzezińska +1929 r."}], pewnosc_odczytu: pewna}
+- {id: S07-316, podmiot: radoszewski-franciszek-ner, relacja: opis, wartosc: "prezes Komitetu Opiekuńczego Warszawskiej Szkoły Sztuk Pięknych; współfundator Filharmonii Warszawskiej (stały fotel); mieszkał w Nerze i na Placu Trzech Krzyży",
+   zrodla: [{segment: S07-p26-s02, cytat: "Był prezesem Komitetu Opiekuńczego War. Szkoły Sztuk Pięknych. Był jednym z fundatorów Filharmonji War. (miał tam stały fotel) Mieszkał w Nerze, a na Placu Trzech Krzyży miał duże pięknie umeblowane mieszkanie."}], pewnosc_odczytu: pewna}
+- {id: S07-317, podmiot: radoszewski-franciszek-ner, relacja: zamieszkanie, miejsce: ner,
+   zrodla: [{segment: S07-p26-s02, cytat: "Mieszkał w Nerze"}], pewnosc_odczytu: pewna}
+- {id: S07-318, podmiot: radoszewski-franciszek-ner, relacja: fundacja, obiekt: wartkowice-kaplica, wartosc: "po śmierci pierwszej żony, z jej rodzicami",
+   zrodla: [{segment: S07-p26-s02, cytat: "Po śmierci pierwszej żony Skrzyńskiej razem z jej rodzicami wybudował kaplicę na cmentarzu w Wartkowicach."}], pewnosc_odczytu: pewna}
+- {id: S07-319, podmiot: radoszewski-walenty-albinowicz, relacja: rodzic, obiekt: radoszewski-albin-1811,
+   zrodla: [{segment: S07-p26-s03, cytat: "Jeszcze dzieci Albina: Walenty radca Tow. Kred. w Piotrkowie, Kawaler"}], pewnosc_odczytu: pewna}
+- {id: S07-320, podmiot: radoszewski-walenty-albinowicz, relacja: opis, wartosc: "radca Tow. Kredytowego w Piotrkowie, kawaler; zapisał bibliotekę Krempie",
+   zrodla: [{segment: S07-p26-s03, cytat: "Walenty radca Tow. Kred. w Piotrkowie, Kawaler (zapisał my bibliotekę Krempie)"}], pewnosc_odczytu: pewna}
+- {id: S07-321, podmiot: radoszewski-kazimierz, relacja: rodzic, obiekt: radoszewski-albin-1811,
+   zrodla: [{segment: S07-p26-s03, cytat: "Kazimierz żona Łukaszewska Łaszczyńska mieszkali w Rzymie."}], pewnosc_odczytu: pewna}
+- {id: S07-322, podmiot: radoszewski-kazimierz, relacja: malzonek, obiekt: laszczynska-zona-kazimierza,
+   zrodla: [{segment: S07-p26-s03, cytat: "Kazimierz żona Łukaszewska Łaszczyńska"}], pewnosc_odczytu: pewna, uwagi: "„Łukaszewska” skreślone, nad nim „Łaszczyńska”."}
+- {id: S07-323, podmiot: radoszewski-kazimierz, relacja: zamieszkanie, miejsce: rzym,
+   zrodla: [{segment: S07-p26-s03, cytat: "mieszkali w Rzymie."}], pewnosc_odczytu: pewna}
+- {id: S07-324, podmiot: radoszewski-aleksander-1859, relacja: rodzic, obiekt: radoszewski-albin-1811,
+   zrodla: [{segment: S07-p27-s01, cytat: "Aleksander 1859–91 poch. na Powązkach"}], pewnosc_odczytu: pewna, uwagi: "Ciąg dalszy listy „dzieci Albina”."}
+- {id: S07-325, podmiot: radoszewski-aleksander-1859, relacja: urodzenie, data: {tekst: "1859", od: 1859, do: 1859},
+   zrodla: [{segment: S07-p27-s01, cytat: "Aleksander 1859–91"}], pewnosc_odczytu: pewna}
+- {id: S07-326, podmiot: radoszewski-aleksander-1859, relacja: smierc, data: {tekst: "91 (1891)", od: 1891, do: 1891},
+   zrodla: [{segment: S07-p27-s01, cytat: "Aleksander 1859–91"}], pewnosc_odczytu: pewna}
+- {id: S07-327, podmiot: radoszewski-aleksander-1859, relacja: pochowek, miejsce: powazki,
+   zrodla: [{segment: S07-p27-s01, cytat: "poch. na Powązkach"}], pewnosc_odczytu: pewna}
+- {id: S07-328, podmiot: radoszewski-ludwik-ner, relacja: rodzic, obiekt: radoszewski-franciszek-ner,
+   zrodla: [{segment: S07-p27-s02, cytat: "Dzieci Franciszka z Neru"}, {segment: S07-p27-s03, cytat: "Ludwik"}], pewnosc_odczytu: pewna}
+- {id: S07-329, podmiot: radoszewski-pawel-zatuskow, relacja: malzonek, obiekt: grotowska-zofia,
+   zrodla: [{segment: S07-p27-s04, cytat: "Paweł żona Zofja Grotowska z Zatuskowa k/Łowicza."}], pewnosc_odczytu: pewna}
+- {id: S07-330, podmiot: radoszewski-pawel-zatuskow, relacja: smierc, wartosc: "zmarł po wyjściu z obozu w Radogoszczy k. Łodzi", miejsce: radogoszcz,
+   zrodla: [{segment: S07-p27-s04, cytat: "Zmarł po wyjściu z obozu z Radogoszczy k/Łodzi"}], pewnosc_odczytu: pewna}
+- {id: S07-331, podmiot: radoszewski-pawel-zatuskow, relacja: pochowek, miejsce: powazki,
+   zrodla: [{segment: S07-p27-s04, cytat: "poch. na Powązkach"}], pewnosc_odczytu: pewna}
+- {id: S07-332, podmiot: radoszewski-pawel-zatuskow, relacja: rodzic, obiekt: radoszewski-franciszek-ner,
+   zrodla: [{segment: S07-p27-s02, cytat: "Dzieci Franciszka z Neru"}, {segment: S07-p27-s04, cytat: "Paweł żona"}], pewnosc_odczytu: pewna}
+- {id: S07-333, podmiot: radoszewska-ludmila-erbrych, relacja: malzonek, obiekt: erbrych-prof,
+   zrodla: [{segment: S07-p27-s05, cytat: "Ludmiła mąż prof. med. laryngolog Erbrych"}], pewnosc_odczytu: pewna}
+- {id: S07-334, podmiot: erbrych-ludmila, relacja: smierc, wartosc: "zginęła walcząc w powstaniu warszawskim", data: {tekst: "Pow. War.", od: 1944, do: 1944},
+   zrodla: [{segment: S07-p27-s05, cytat: "córka Ludka zginęła walcząc w Pow. War."}], pewnosc_odczytu: pewna}
+- {id: S07-335, podmiot: aulich-anna, relacja: rodzic, obiekt: radoszewska-ludmila-erbrych,
+   zrodla: [{segment: S07-p27-s05, cytat: "druga Anna Aulich miała córkę"}], pewnosc_odczytu: pewna}
+- {id: S07-336, podmiot: aulich-corka, relacja: rodzic, obiekt: aulich-anna,
+   zrodla: [{segment: S07-p27-s05, cytat: "druga Anna Aulich miała córkę która wyszła za mąż za Jerzego Prozora."}], pewnosc_odczytu: pewna}
+- {id: S07-337, podmiot: aulich-corka, relacja: malzonek, obiekt: prozor-jerzy,
+   zrodla: [{segment: S07-p27-s05, cytat: "która wyszła za mąż za Jerzego Prozora."}], pewnosc_odczytu: pewna}
+- {id: S07-338, podmiot: radoszewski-jan-ner, relacja: smierc, data: {tekst: "+1973", od: 1973, do: 1973},
+   zrodla: [{segment: S07-p27-s06, cytat: "Jan z Neru +1973"}], pewnosc_odczytu: pewna}
+- {id: S07-339, podmiot: radoszewski-jan-ner, relacja: opis, wartosc: "kawaler; radca Tow. Kredytowego Ziemskiego",
+   zrodla: [{segment: S07-p27-s06, cytat: "Kawaler radca Tow. Kred. Ziem."}], pewnosc_odczytu: pewna}
+- {id: S07-340, podmiot: radoszewski-jan-ner, relacja: pochowek, miejsce: wartkowice,
+   zrodla: [{segment: S07-p27-s06, cytat: "poch. w Wartkowicach."}], pewnosc_odczytu: pewna}
+
+# s. 28–31: Prządzyńscy
+- {id: S07-341, podmiot: przadzynski-maciej-1577, relacja: urzad, wartosc: "kasztelan przemyski", data: {tekst: "1577", od: 1577, do: 1577},
+   zrodla: [{segment: S07-p28-s01, cytat: "Prządzyńscy h. Grzymała"}, {segment: S07-p28-s02, cytat: "Maciej Kasztelan przemyski 1577"}, {segment: S07-p29-s02, cytat: "Maciej Kasztelan przemyski 1577"}], pewnosc_odczytu: pewna}
+- {id: S07-342, podmiot: przadzynski-jedrzej, relacja: rodzic, obiekt: przadzynski-maciej-1577,
+   zrodla: [{segment: S07-p28-s02, cytat: "Maciej Kasztelan przemyski 1577 | Jędrzej"}], pewnosc_odczytu: pewna, uwagi: "Z osi drzewa."}
+- {id: S07-343, podmiot: przadzynski-hieronim, relacja: rodzic, obiekt: przadzynski-jedrzej,
+   zrodla: [{segment: S07-p28-s02, cytat: "Jędrzej | Hieronim żona Gniazdowska h. Brzoza[?]"}], pewnosc_odczytu: pewna, uwagi: "Z osi drzewa."}
+- {id: S07-344, podmiot: przadzynski-hieronim, relacja: malzonek, obiekt: gniazdowska,
+   zrodla: [{segment: S07-p28-s02, cytat: "Hieronim żona Gniazdowska h. Brzoza[?]"}], pewnosc_odczytu: niepewna}
+- {id: S07-345, podmiot: przadzynski-aleksander, relacja: rodzic, obiekt: przadzynski-hieronim,
+   zrodla: [{segment: S07-p28-s02, cytat: "| Aleksander |"}], pewnosc_odczytu: pewna, uwagi: "Z osi drzewa."}
+- {id: S07-346, podmiot: przadzynski-stanislaw-1650, relacja: rodzic, obiekt: przadzynski-aleksander,
+   zrodla: [{segment: S07-p28-s02, cytat: "Stanisław żona Anna Chłapowska I poł. 17 w."}], pewnosc_odczytu: pewna, uwagi: "Z osi drzewa."}
+- {id: S07-347, podmiot: przadzynski-stanislaw-1650, relacja: malzonek, obiekt: chlapowska-anna, data: {tekst: "I poł. 17 w.", od: 1601, do: 1650},
+   zrodla: [{segment: S07-p28-s02, cytat: "Stanisław żona Anna Chłapowska I poł. 17 w."}, {segment: S07-p29-s02, cytat: "Stanisław żona Anna Chłapowska (poł. 17 wieku)"}], pewnosc_odczytu: pewna}
+- {id: S07-348, podmiot: przadzynski-wladyslaw-1694, relacja: rodzic, obiekt: przadzynski-stanislaw-1650,
+   zrodla: [{segment: S07-p28-s02, cytat: "Władysław 1694"}], pewnosc_odczytu: pewna, uwagi: "Z osi drzewa."}
+- {id: S07-349, podmiot: przadzynski-wladyslaw-1694, relacja: opis, wartosc: "Władysław — 1694", data: {tekst: "1694", od: 1694, do: 1694},
+   zrodla: [{segment: S07-p28-s02, cytat: "Władysław 1694"}], pewnosc_odczytu: pewna}
+- {id: S07-350, podmiot: przadzynski-wladyslaw-1694, relacja: malzonek, obiekt: bronikowska-marianna,
+   zrodla: [{segment: S07-p29-s02, cytat: "Władysław żona Marianna Bronikowska"}], pewnosc_odczytu: niepewna, uwagi: "Prawdopodobnie omyłka (to imię i nazwisko żony Stanisława 1761–1817)."}
+- {id: S07-351, podmiot: przadzynski-antoni-1717, relacja: rodzic, obiekt: przadzynski-wladyslaw-1694,
+   zrodla: [{segment: S07-p28-s02, cytat: "Antoni żona Marianna Bardzka h. Sas"}], pewnosc_odczytu: pewna, uwagi: "Z osi drzewa."}
+- {id: S07-352, podmiot: przadzynski-antoni-1717, relacja: malzonek, obiekt: bardzka-marianna,
+   zrodla: [{segment: S07-p28-s02, cytat: "Antoni żona Marianna Bardzka h. Sas"}, {segment: S07-p29-s02, cytat: "Marianna Bardzka h/Sas II jej mąż Czaplicki"}], pewnosc_odczytu: pewna}
+- {id: S07-353, podmiot: bardzka-marianna, relacja: malzonek, obiekt: czaplicki, wartosc: "po śmierci Antoniego wyszła za Czaplickiego",
+   zrodla: [{segment: S07-p28-s02, cytat: "po śmierci Antoniego wyszła za Czaplickiego"}], pewnosc_odczytu: pewna}
+- {id: S07-354, podmiot: przadzynski-stanislaw-1761, relacja: rodzic, obiekt: przadzynski-antoni-1717,
+   zrodla: [{segment: S07-p28-s02, cytat: "Stanisław 1761 z Malczewa Marianna Bronikowska"}], pewnosc_odczytu: pewna, uwagi: "Z osi drzewa."}
+- {id: S07-355, podmiot: przadzynski-stanislaw-1761, relacja: rodzic, obiekt: bardzka-marianna,
+   zrodla: [{segment: S07-p28-s02, cytat: "Stanisław 1761 z Malczewa"}], pewnosc_odczytu: pewna, uwagi: "Z osi drzewa."}
+- {id: S07-356, podmiot: przadzynski-stanislaw-1761, relacja: urodzenie, data: {tekst: "1761", od: 1761, do: 1761},
+   zrodla: [{segment: S07-p28-s02, cytat: "Stanisław 1761 z Malczewa"}, {segment: S07-p29-s02, cytat: "Stanisław 1761+1817"}], pewnosc_odczytu: pewna}
+- {id: S07-357, podmiot: przadzynski-stanislaw-1761, relacja: smierc, data: {tekst: "1817", od: 1817, do: 1817}, miejsce: wiatrowo,
+   zrodla: [{segment: S07-p29-s02, cytat: "Stanisław 1761+1817"}, {segment: S07-p29-s03, cytat: "Zmarł w 1817 r. w Wiatrowie u Aleksandra Moszczeńskiego"}], pewnosc_odczytu: pewna}
+- {id: S07-358, podmiot: przadzynski-stanislaw-1761, relacja: malzonek, obiekt: bronikowska-marianna,
+   zrodla: [{segment: S07-p28-s02, cytat: "Stanisław 1761 z Malczewa Marianna Bronikowska"}, {segment: S07-p29-s02, cytat: "żona Marianna Bronikowska z Malczewa +1847"}], pewnosc_odczytu: pewna}
+- {id: S07-359, podmiot: bronikowska-marianna, relacja: smierc, data: {tekst: "+1847", od: 1847, do: 1847},
+   zrodla: [{segment: S07-p28-s02, cytat: "+1847 prawnik"}, {segment: S07-p29-s02, cytat: "z Malczewa +1847"}], pewnosc_odczytu: pewna}
+- {id: S07-360, podmiot: bronikowska-marianna, relacja: zamieszkanie, wartosc: "pochodzenie: z Golejewka[?]",
+   zrodla: [{segment: S07-p28-s02, cytat: "z Golejewka"}], pewnosc_odczytu: niepewna}
+- {id: S07-361, podmiot: przadzynski-stanislaw-1761, relacja: wlasnosc, obiekt: malczew,
+   zrodla: [{segment: S07-p28-s02, cytat: "Stanisław 1761 z Malczewa"}, {segment: S07-p29-s03, cytat: "Posiadał dobra Malczew."}], pewnosc_odczytu: pewna}
+- {id: S07-362, podmiot: przadzynski-stanislaw-1761, relacja: zawod, wartosc: "prawnik; palestra poznańska; prokurator przy najwyższym Trybunale w Poznaniu; nadzór nad szkołami w Poznańskiem",
+   zrodla: [{segment: S07-p28-s02, cytat: "prawnik"}, {segment: S07-p29-s03, cytat: "wstąpił do Palestry Poznańskiej."}, {segment: S07-p29-s03, cytat: "Potem był prokuratorem przy najwyższym Trybunale w Poznaniu. Miał nadzór nad szkołami w Poznaniu i poz-nańskim."}], pewnosc_odczytu: pewna}
+- {id: S07-363, podmiot: przadzynski-stanislaw-1761, relacja: udzial_w_wydarzeniu, wartosc: "powstanie kościuszkowskie — pod gen. Lipskim i Dąbrowskim", data: {tekst: "Pow. Kościusz.", od: 1794, do: 1794},
+   zrodla: [{segment: S07-p28-s02, cytat: "walczył w Pow. Kościusz."}, {segment: S07-p29-s03, cytat: "W czasie Powstania Kościuszkowskiego bił się pod gen. Lipskim i Dąbrowskim."}], pewnosc_odczytu: pewna}
+- {id: S07-364, podmiot: przadzynski-stanislaw-1761, relacja: pochowek, miejsce: jarzabkowo,
+   zrodla: [{segment: S07-p28-s02, cytat: "poch. w Jarząbkowie k/Gniezna"}, {segment: S07-p29-s03, cytat: "Pochowany w Jarząbkowie k/Gniezna."}], pewnosc_odczytu: pewna}
+- {id: S07-365, podmiot: przadzynski-ignacy-1792, relacja: rodzic, obiekt: przadzynski-stanislaw-1761,
+   zrodla: [{segment: S07-p28-s03, cytat: "Gen. Ignacy 1792+1850"}], pewnosc_odczytu: pewna, uwagi: "Z układu drzewa (dzieci Stanisława)."}
+- {id: S07-366, podmiot: przadzynski-ignacy-1792, relacja: urodzenie, data: {tekst: "20 lipca 1792", od: 1792-07-20, do: 1792-07-20},
+   zrodla: [{segment: S07-p28-s03, cytat: "Gen. Ignacy 1792+1850"}, {segment: S07-p30-s01, cytat: "Ignacy ur. 20 lipca 1792+1850"}], pewnosc_odczytu: pewna}
+- {id: S07-367, podmiot: przadzynski-ignacy-1792, relacja: smierc, data: {tekst: "24 sierpnia 1850", od: 1850-08-24, do: 1850-08-24}, miejsce: helgoland,
+   zrodla: [{segment: S07-p28-s03, cytat: "Gen. Ignacy 1792+1850"}, {segment: S07-p31-s01, cytat: "W 1850 r. zakończył życie na wyspie Helgoland 24 sierpnia."}], pewnosc_odczytu: pewna}
+- {id: S07-368, podmiot: przadzynski-ignacy-1792, relacja: malzonek, obiekt: rudkowska-emilia,
+   zrodla: [{segment: S07-p28-s03, cytat: "Emilja Rudkowska[?] +1886"}, {segment: S07-p31-s01, cytat: "Ożeniony był z Emilją Rudkowską 1806+1885 z Miedzechowa[?]"}], pewnosc_odczytu: pewna}
+- {id: S07-369, podmiot: rudkowska-emilia, relacja: smierc, data: {tekst: "+1886", od: 1886, do: 1886},
+   zrodla: [{segment: S07-p28-s03, cytat: "Emilja Rudkowska[?] +1886"}], pewnosc_odczytu: pewna}
+- {id: S07-370, podmiot: rudkowska-emilia, relacja: smierc, data: {tekst: "1885", od: 1885, do: 1885},
+   zrodla: [{segment: S07-p31-s01, cytat: "Emilją Rudkowską 1806+1885"}], pewnosc_odczytu: pewna}
+- {id: S07-371, podmiot: rudkowska-emilia, relacja: urodzenie, data: {tekst: "1806", od: 1806, do: 1806},
+   zrodla: [{segment: S07-p31-s01, cytat: "Emilją Rudkowską 1806+1885"}], pewnosc_odczytu: pewna}
+- {id: S07-372, podmiot: rudkowska-emilia, relacja: zamieszkanie, miejsce: miedzechow, wartosc: "pochodzenie: z Miechocina[?] / z Miedzechowa[?]",
+   zrodla: [{segment: S07-p28-s03, cytat: "z Miechocina[?]"}, {segment: S07-p31-s01, cytat: "z Miedzechowa[?]"}], pewnosc_odczytu: niepewna}
+- {id: S07-373, podmiot: przadzynska-sylwia-siostra, relacja: rodzic, obiekt: przadzynski-stanislaw-1761,
+   zrodla: [{segment: S07-p28-s03, cytat: "Sylwja +1862"}, {segment: S07-p29-s04, cytat: "Drugą córkę Sylwję"}], pewnosc_odczytu: pewna}
+- {id: S07-374, podmiot: przadzynska-sylwia-siostra, relacja: smierc, data: {tekst: "+1862", od: 1862, do: 1862},
+   zrodla: [{segment: S07-p28-s03, cytat: "Sylwja +1862"}, {segment: S07-p41-s02, cytat: "Sylwja +1862"}], pewnosc_odczytu: pewna}
+- {id: S07-375, podmiot: przadzynska-sylwia-siostra, relacja: malzonek, obiekt: krasicki-jan,
+   zrodla: [{segment: S07-p28-s03, cytat: "gen. Jan Krasicki h. Rogala"}, {segment: S07-p29-s04, cytat: "Drugą córkę Sylwję poślubił gen Janowi Krasickiemu +1862 r."}], pewnosc_odczytu: pewna}
+- {id: S07-376, podmiot: przadzynska-sylwia-siostra, relacja: opis, wartosc: "portret u An. Radoszewskiej; pochowani w Kichanowie[?]",
+   zrodla: [{segment: S07-p29-s04, cytat: "(portret u An. Radoszewskiej) pochowani w Kichanowie[?]"}], pewnosc_odczytu: niepewna}
+- {id: S07-377, podmiot: przadzynska-nepomucena, relacja: rodzic, obiekt: przadzynski-stanislaw-1761,
+   zrodla: [{segment: S07-p28-s03, cytat: "Nepomucena"}, {segment: S07-p29-s03, cytat: "jego córkę Nepomucenę za żonę."}], pewnosc_odczytu: pewna}
+- {id: S07-378, podmiot: przadzynska-nepomucena, relacja: malzonek, obiekt: moszczenski-antoni,
+   zrodla: [{segment: S07-p28-s03, cytat: "Antoni Moszczeński h. Nałęcz"}, {segment: S07-p29-s03, cytat: "którego syn Antoni miał jego córkę Nepomucenę za żonę."}], pewnosc_odczytu: pewna}
+- {id: S07-379, podmiot: moszczenski-antoni, relacja: rodzic, obiekt: moszczenski-aleksander,
+   zrodla: [{segment: S07-p29-s03, cytat: "u Aleksandra Moszczeńskiego, którego syn Antoni"}], pewnosc_odczytu: pewna}
+- {id: S07-380, podmiot: przadzynski-wincenty-1795, relacja: rodzic, obiekt: przadzynski-stanislaw-1761,
+   zrodla: [{segment: S07-p28-s03, cytat: "Wincenty 1795+1858"}], pewnosc_odczytu: pewna, uwagi: "Z układu drzewa."}
+- {id: S07-381, podmiot: przadzynski-wincenty-1795, relacja: malzonek, obiekt: mierzynska-salomea-1800,
+   zrodla: [{segment: S07-p28-s03, cytat: "Wincenty 1795+1858 Antoni Moszczeński h. Nałęcz Salomea Mierzyńska 1800+1877 h. Jastrzębiec"}], pewnosc_odczytu: pewna}
+- {id: S07-382, podmiot: przadzynski-wladyslaw-1837, relacja: malzonek, obiekt: skrzynska-anna-1848,
+   zrodla: [{segment: S07-p28-s04, cytat: "Władysław z Leźnicy W. Aleksander 1837+1898 Walerja ───── Anna Skrzyńska z Gostkowa"}], pewnosc_odczytu: pewna}
+- {id: S07-383, podmiot: skrzynska-anna-1848, relacja: rodzic, obiekt: skrzynski-aleksander,
+   zrodla: [{segment: S07-p28-s04, cytat: "Jej rodzice Władysław z Leźnicy W. Aleksander"}], pewnosc_odczytu: pewna}
+- {id: S07-384, podmiot: laczynska-waleria, relacja: rodzic, obiekt: laczynski-teodor-1785,
+   zrodla: [{segment: S07-p28-s04, cytat: "córka h. Zaremba 1848+1883 Teodora brata p. Walewskiej"}], pewnosc_odczytu: pewna}
+- {id: S07-385, podmiot: przadzynski-stanislaw-1871, relacja: urodzenie, data: {tekst: "1871", od: 1871, do: 1871},
+   zrodla: [{segment: S07-p28-s05, cytat: "Stanisław z Kościerzyna 1871+1957"}], pewnosc_odczytu: pewna}
+- {id: S07-386, podmiot: przadzynski-stanislaw-1871, relacja: smierc, data: {tekst: "+1957", od: 1957, do: 1957},
+   zrodla: [{segment: S07-p28-s05, cytat: "Stanisław z Kościerzyna 1871+1957"}], pewnosc_odczytu: pewna}
+- {id: S07-387, podmiot: przadzynski-stanislaw-1871, relacja: malzonek, obiekt: grabinska-stanislawa-1890,
+   zrodla: [{segment: S07-p28-s05, cytat: "Stanisława z Grabińskich h. Pomian 1890+1980"}], pewnosc_odczytu: pewna}
+- {id: S07-388, podmiot: przadzynska-maria-1919, relacja: malzonek, obiekt: szweycer-tomasz,
+   zrodla: [{segment: S07-p28-s05, cytat: "├─ Marja 1919 — Tomasz Szweycer"}], pewnosc_odczytu: pewna}
+- {id: S07-389, podmiot: przadzynski-andrzej-1917, relacja: malzonek, obiekt: madalinska-halina,
+   zrodla: [{segment: S07-p28-s05, cytat: "└─ Andrzej 1917+1981 — Halina Madalińska"}], pewnosc_odczytu: pewna}
+- {id: S07-390, podmiot: przadzynski-andrzej-1917, relacja: smierc, data: {tekst: "+1981", od: 1981, do: 1981},
+   zrodla: [{segment: S07-p28-s05, cytat: "Andrzej 1917+1981"}], pewnosc_odczytu: pewna}
+- {id: S07-391, podmiot: radoszewska-anna-1971, relacja: malzonek, obiekt: gawrysz-radoslaw,
+   zrodla: [{segment: S07-p28-d1, cytat: "z a Radosławem Gawryszem"}], pewnosc_odczytu: pewna, uwagi: "Późniejszy dopisek pod „Anna 1971”."}
+- {id: S07-392, podmiot: gawrysz-kuba, relacja: rodzic, obiekt: radoszewska-anna-1971,
+   zrodla: [{segment: S07-p28-d1, cytat: "├─ Kuba 2007"}], pewnosc_odczytu: pewna}
+- {id: S07-393, podmiot: gawrysz-kuba, relacja: urodzenie, data: {tekst: "2007", od: 2007, do: 2007},
+   zrodla: [{segment: S07-p28-d1, cytat: "Kuba 2007"}], pewnosc_odczytu: pewna}
+- {id: S07-394, podmiot: gawrysz-marta, relacja: rodzic, obiekt: radoszewska-anna-1971,
+   zrodla: [{segment: S07-p28-d1, cytat: "└─ Marta Gawrysz 8.06.1999"}], pewnosc_odczytu: pewna}
+- {id: S07-395, podmiot: gawrysz-marta, relacja: urodzenie, data: {tekst: "8.06.1999", od: 1999-06-08, do: 1999-06-08},
+   zrodla: [{segment: S07-p28-d1, cytat: "Marta Gawrysz 8.06.1999"}], pewnosc_odczytu: niepewna, uwagi: "Ostatnia cyfra niewyraźna; imię niepewne."}
+- {id: S07-396, podmiot: przadzynski-jakub-1600, relacja: urzad, wartosc: "kanonik gnieźnieński; nagrobek w katedrze w Poznaniu", miejsce: poznan-katedra,
+   zrodla: [{segment: S07-p29-s01, cytat: "Prządzyńscy h/Grzymała gałąź gen. z Pogdan[?]"}, {segment: S07-p29-s02, cytat: "Jakób Prządzyński Kanonik gnieźnieński +1600 nagrobek w Katedrze w Poznaniu."}], pewnosc_odczytu: pewna}
+- {id: S07-397, podmiot: przadzynski-jakub-1600, relacja: smierc, data: {tekst: "+1600", od: 1600, do: 1600},
+   zrodla: [{segment: S07-p29-s02, cytat: "+1600 nagrobek w Katedrze w Poznaniu."}], pewnosc_odczytu: pewna}
+- {id: S07-398, podmiot: przadzynski-ignacy-1792, relacja: opis, wartosc: "generał dywizji (kampania 1831); nauka w Dreźnie; 1807 pułk piechoty gen. Sierawskiego[?], szkoła aplikacyjna, ppor. Korpusu Inżynierów; kampania 1809 (fortyfikacja Modlina); 1812 wyprawa na Moskwę (kpt. inż., dyw. Dąbrowskiego, Bobrujsk); 1813 pod Lipskiem szef batalionu; 1814 major; komisja demarkacyjna Prusy–Królestwo; 1819–20 wykłady strategii; dzieło o fortyfikacjach polowych; plany i budowa Kanału Augustowskiego; więziony 1826–1829 w dawnym klasztorze Karmelitów (listy od żony przenosił pies „Butor”[?]); twierdza w Dęblinie wg jego projektu; powstanie listopadowe; zesłany do Jarosławia, potem Gatczyny[?], powrót 1833; mieszkał w Przepiórkowie[?], potem w Krakowie",
+   zrodla: [{segment: S07-p30-s01, cytat: "gen. dywizji w czasie Kampanji 1831 r. Uczył się w Dreźnie"},
+            {segment: S07-p30-s01, cytat: "Robi plany Kanału Augustowskiego i buduje Kanał. Więziony od 1826 r. do 1829 w więzieniu w dawnym Klasztorze Karmelitów."},
+            {segment: S07-p30-s01, cytat: "a listy przenosił pies „Butor”"},
+            {segment: S07-p31-s01, cytat: "powstaje według jego projektów. Bierze udział w Pow. Listop. Zesłany do Jarosławia potem do Gatczyna[?] wraca do kraju 1833 r. Mieszka na wsi u siebie w Przepiórkowie[?] potem w Krako[wie]"}], pewnosc_odczytu: niepewna}
+- {id: S07-399, podmiot: przadzynski-ignacy-1792, relacja: fundacja, obiekt: kanal-augustowski, wartosc: "plany i budowa Kanału Augustowskiego",
+   zrodla: [{segment: S07-p30-s01, cytat: "Robi plany Kanału Augustowskiego i buduje Kanał."}], pewnosc_odczytu: pewna}
+- {id: S07-400, podmiot: przadzynski-ignacy-1792, relacja: fundacja, obiekt: deblin, wartosc: "twierdza w Dęblinie powstaje według jego projektów",
+   zrodla: [{segment: S07-p30-s01, cytat: "Twierdza w Dęblinie"}, {segment: S07-p31-s01, cytat: "powstaje według jego projektów."}], pewnosc_odczytu: pewna}
+- {id: S07-401, podmiot: przadzynski-stas-1830, relacja: rodzic, obiekt: przadzynski-ignacy-1792,
+   zrodla: [{segment: S07-p31-s01, cytat: "miał dzieci:"}, {segment: S07-p31-s02, cytat: "Staś 1830+1831"}], pewnosc_odczytu: pewna}
+- {id: S07-402, podmiot: przadzynski-stas-1830, relacja: urodzenie, data: {tekst: "1830", od: 1830, do: 1830},
+   zrodla: [{segment: S07-p31-s02, cytat: "Staś 1830+1831"}], pewnosc_odczytu: pewna}
+- {id: S07-403, podmiot: przadzynski-stas-1830, relacja: smierc, data: {tekst: "+1831", od: 1831, do: 1831},
+   zrodla: [{segment: S07-p31-s02, cytat: "Staś 1830+1831"}], pewnosc_odczytu: pewna}
+- {id: S07-404, podmiot: przadzynska-emilia-1834, relacja: rodzic, obiekt: przadzynski-ignacy-1792,
+   zrodla: [{segment: S07-p31-s02, cytat: "Emilja 1834–1836 zmarła na skutek poparzenia"}], pewnosc_odczytu: pewna}
+- {id: S07-405, podmiot: przadzynska-emilia-1834, relacja: urodzenie, data: {tekst: "1834", od: 1834, do: 1834},
+   zrodla: [{segment: S07-p31-s02, cytat: "Emilja 1834–1836"}], pewnosc_odczytu: pewna}
+- {id: S07-406, podmiot: przadzynska-emilia-1834, relacja: smierc, data: {tekst: "1836", od: 1836, do: 1836}, wartosc: "zmarła na skutek poparzenia",
+   zrodla: [{segment: S07-p31-s02, cytat: "Emilja 1834–1836 zmarła na skutek poparzenia"}], pewnosc_odczytu: pewna}
+- {id: S07-407, podmiot: przadzynska-helena, relacja: rodzic, obiekt: przadzynski-ignacy-1792,
+   zrodla: [{segment: S07-p31-s02, cytat: "Helena za Wacławem Hermieskiem[?] z Potoczy[?] nad Wisłą"}], pewnosc_odczytu: pewna}
+- {id: S07-408, podmiot: przadzynska-helena, relacja: malzonek, obiekt: hermiesek-waclaw,
+   zrodla: [{segment: S07-p31-s02, cytat: "Helena za Wacławem Hermieskiem[?] z Potoczy[?] nad Wisłą"}], pewnosc_odczytu: niepewna}
+- {id: S07-409, podmiot: hermiesek-kazimierz, relacja: rodzic, obiekt: przadzynska-helena,
+   zrodla: [{segment: S07-p31-s02, cytat: "po której został jedyny syn Kazimierz."}], pewnosc_odczytu: pewna}
+- {id: S07-410, podmiot: przadzynska-sylwia-1837, relacja: rodzic, obiekt: przadzynski-ignacy-1792,
+   zrodla: [{segment: S07-p31-s02, cytat: "Sylwja 1837+1861 literatka."}], pewnosc_odczytu: pewna}
+- {id: S07-411, podmiot: przadzynska-sylwia-1837, relacja: rodzic, obiekt: rudkowska-emilia,
+   zrodla: [{segment: S07-p31-s02, cytat: "Pochowana razem z matką na Powązkach."}], pewnosc_odczytu: pewna}
+- {id: S07-412, podmiot: przadzynska-sylwia-1837, relacja: urodzenie, data: {tekst: "1837", od: 1837, do: 1837},
+   zrodla: [{segment: S07-p31-s02, cytat: "Sylwja 1837+1861"}], pewnosc_odczytu: pewna}
+- {id: S07-413, podmiot: przadzynska-sylwia-1837, relacja: smierc, data: {tekst: "+1861", od: 1861, do: 1861},
+   zrodla: [{segment: S07-p31-s02, cytat: "Sylwja 1837+1861"}], pewnosc_odczytu: pewna}
+- {id: S07-414, podmiot: przadzynska-sylwia-1837, relacja: zawod, wartosc: literatka,
+   zrodla: [{segment: S07-p31-s02, cytat: "literatka."}], pewnosc_odczytu: pewna}
+- {id: S07-415, podmiot: przadzynska-sylwia-1837, relacja: pochowek, miejsce: powazki, wartosc: "razem z matką",
+   zrodla: [{segment: S07-p31-s02, cytat: "Pochowana razem z matką na Powązkach."}], pewnosc_odczytu: pewna}
+- {id: S07-416, podmiot: rudkowski-jozef, relacja: rodzenstwo, obiekt: rudkowska-emilia,
+   zrodla: [{segment: S07-p31-s03, cytat: "Bracia Emilji (żony gen.) Józef i Antoni z Jarzenic[?] Rudkowscy"}], pewnosc_odczytu: pewna}
+- {id: S07-417, podmiot: rudkowski-antoni, relacja: rodzenstwo, obiekt: rudkowska-emilia,
+   zrodla: [{segment: S07-p31-s03, cytat: "Józef i Antoni z Jarzenic[?] Rudkowscy"}], pewnosc_odczytu: pewna}

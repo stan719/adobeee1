@@ -1515,3 +1515,439 @@
   plec: k
   warianty: ["p. Rózia"]
   uwagi: "Wychowawczyni dzieci Jerzego i Anny (1939)."
+
+- id: mierzynski-wladyslaw-konstanty
+  imiona: ["Władysław", "Konstanty"]
+  nazwisko: "Mierzyński"
+  plec: m
+  uwagi: "I mąż Marii Mierzyńskiej (córki) wg S07-p16-s04; zamordowany w Rosji przez NKWD[?]. S03-p18-s02: Tadeusz."
+
+- id: drohojowski-julian-1836
+  imiona: ["Julian"]
+  nazwisko: "Drohojowski"
+  herb: Korczak
+  plec: m
+  warianty: ["Kanonik Julian Drohojowski", "stryj Babci Eli"]
+
+- id: drohojowska-stanislawa
+  imiona: ["Stanisława"]
+  nazwisko: "Pepłowska"
+  nazwisko_rodowe: "Drohojowska"
+  plec: k
+  warianty: ["Stanisława z Drohojowskich Pepłowska", "pseud. Korczak"]
+
+- id: bialynicka-jadwiga
+  imiona: ["Jadwiga"]
+  nazwisko: "Białynicka"
+  plec: k
+  warianty: ["Ciocia Jadzia Białynicka", "ciocia Białynicka"]
+
+- id: drohojowski-jan-1886
+  imiona: ["Jan"]
+  nazwisko: "Drohojowski"
+  herb: Korczak
+  plec: m
+  warianty: ["Jan Drohojowski, brat babci Eli"]
+
+- id: drohojowska-maria-1876
+  imiona: ["Maria"]
+  nazwisko: "Madeyska"
+  nazwisko_rodowe: "Drohojowska"
+  plec: k
+  warianty: ["Marja Madeyska (Marynia)"]
+
+- id: madeyski
+  imiona: []
+  nazwisko: "Madeyski"
+  herb: Poraj
+  plec: m
+  warianty: ["Madeyski h. Poraj"]
+  uwagi: "Mąż Marii z Drohojowskich."
+
+- id: madeyska-maria-1899
+  imiona: ["Maria"]
+  nazwisko: "Łosiowa[?]"
+  nazwisko_rodowe: "Madeyska"
+  plec: k
+  warianty: ["Marja Łosiowa (Maryna)"]
+
+- id: los-leszek
+  imiona: ["Leszek"]
+  nazwisko: "Łoś[?]"
+  plec: m
+  uwagi: "Mąż Marii Madeyskiej (ur. 1899)? [?]"
+
+- id: losiowa-julia
+  imiona: ["Julia"]
+  nazwisko: null
+  plec: k
+  warianty: ["Jula"]
+  uwagi: "Córka Marii Łosiowej; mieszka w Bytomiu."
+
+- id: madeyski-jan-1902
+  imiona: ["Jan"]
+  nazwisko: "Madeyski"
+  plec: m
+  warianty: ["Syn Jan (rolnik)"]
+
+- id: madeyska-janina
+  imiona: ["Janina"]
+  nazwisko: "Madeyska"
+  plec: k
+  uwagi: "I żona Jana Madeyskiego."
+
+- id: reizeux-lucile
+  imiona: ["Lucile"]
+  nazwisko: "Madeyska"
+  nazwisko_rodowe: "Reizeux[?]"
+  plec: k
+  warianty: ["Lulu (Francuska)"]
+  uwagi: "II żona Jana Madeyskiego; nazwisko niepewne."
+
+- id: madeyski-jerzy
+  imiona: ["Jerzy"]
+  nazwisko: "Madeyski"
+  plec: m
+  uwagi: "Syn Jana; historyk sztuki w Krakowie."
+
+- id: madeyski-syn-chemik
+  imiona: []
+  nazwisko: "Madeyski"
+  plec: m
+  uwagi: "Drugi syn Jana; chemik we Francji."
+
+- id: madeyski-andrzej-1906
+  imiona: ["Andrzej"]
+  nazwisko: "Madeyski"
+  plec: m
+  uwagi: "Syn Marii Madeyskiej; w Ameryce."
+
+- id: madeyski-jean-luc
+  imiona: ["Jean-Luc"]
+  nazwisko: "Madeyski"
+  plec: m
+
+- id: joelle
+  imiona: ["Joëlle"]
+  nazwisko: null
+  plec: k
+  uwagi: "Żona Jean-Luca (wg układu drzewa)."
+
+- id: madeyska-christine
+  imiona: ["Christine"]
+  nazwisko: "Madeyska"
+  plec: k
+
+- id: madeyska-maite
+  imiona: ["Maïté"]
+  nazwisko: "Madeyska"
+  plec: k
+
+- id: madeyski-mathias
+  imiona: ["Mathias"]
+  nazwisko: "Madeyski"
+  plec: m
+
+- id: radoszewski-stogniew-1467
+  imiona: ["Stogniew"]
+  nazwisko: "Radoszewski"
+  herb: Oksza
+  plec: m
+  warianty: ["Stogniew z Siemkowic"]
+  uwagi: "Z Siemkowic — może protoplasta Siemkowskich (S01, S08)."
+
+- id: radoszewski-marcin-1597
+  imiona: ["Marcin"]
+  nazwisko: "Radoszewski"
+  plec: m
+  warianty: ["Marcin wojski wieluński"]
+
+- id: radoszewski-andrzej-1574
+  imiona: ["Andrzej"]
+  nazwisko: "Radoszewski"
+  plec: m
+
+- id: radoszewski-nikodem-1561
+  imiona: ["Nikodem"]
+  nazwisko: "Radoszewski"
+  plec: m
+  uwagi: "Imię niepewne (Nikodem/Nikolem)."
+
+- id: radoszewski-jedrzej-1608
+  imiona: ["Jędrzej", "Andrzej"]
+  nazwisko: "Radoszewski"
+  plec: m
+  warianty: ["Jędrzej (brat Marka?)"]
+
+- id: peslawska-barbara
+  imiona: ["Barbara"]
+  nazwisko: "Radoszewska"
+  nazwisko_rodowe: "Pęsławska[?]"
+  plec: k
+  warianty: ["Barbara z Popławskich[?] Radoszewska"]
+  uwagi: "Nazwisko niepewne (Pęsławska/Popławska); herb Zelina[?]."
+
+- id: radoszewski-jedrzej-zakonnik
+  imiona: ["Jędrzej"]
+  nazwisko: "Radoszewski"
+  plec: m
+  uwagi: "Zakonnik, zmarł w Rzymie."
+
+- id: radoszewski-jozef-1791
+  imiona: ["Józef"]
+  nazwisko: "Radoszewski"
+  plec: m
+  warianty: ["Radoszewski Boxa Józef"]
+
+- id: radoszewski-jan-ojciec-jozefa
+  imiona: ["Jan"]
+  nazwisko: "Radoszewski"
+  plec: m
+  uwagi: "Ojciec Józefa (1791–1831) wg Wielkopolskiego Słownika Biograficznego."
+
+- id: uminska-marcjanna
+  imiona: ["Marcjanna"]
+  nazwisko: "Radoszewska"
+  nazwisko_rodowe: "Umińska"
+  plec: k
+
+- id: zajaczek-aleksandra
+  imiona: ["Aleksandra"]
+  nazwisko: "Radoszewska"
+  nazwisko_rodowe: "Zajączek"
+  herb: Świnka
+  plec: k
+  warianty: ["Aleksandra z Zajączków"]
+
+- id: zalistowska
+  imiona: []
+  nazwisko: null
+  nazwisko_rodowe: "Zalistowska[?]"
+  herb: Pilawa[?]
+  plec: k
+  uwagi: "I żona Ignacego barona."
+
+- id: radoszewski-jozef-1840
+  imiona: ["Józef"]
+  nazwisko: "Radoszewski"
+  plec: m
+  uwagi: "Syn Ignacego barona z I żony."
+
+- id: radolinska-tekla
+  imiona: ["Tekla"]
+  nazwisko: "Radoszewska"
+  nazwisko_rodowe: "Radolińska"
+  plec: k
+
+- id: radoszewska-aleksandra-1861
+  imiona: ["Aleksandra"]
+  nazwisko: "Radoszewska"
+  plec: k
+  uwagi: "Córka Ignacego barona z II żony; mąż Jagmin[?] Warnicki[?]; w 1890 wróciła do nazwiska."
+
+- id: jagmin-warnicki
+  imiona: []
+  nazwisko: "Jagmin[?] Warnicki[?]"
+  plec: m
+
+- id: radoszewski-walenty-ner
+  imiona: ["Walenty"]
+  nazwisko: "Radoszewski"
+  plec: m
+  warianty: ["Walenty z Neru"]
+  uwagi: "Ojciec Albina."
+
+- id: radoszewski-walenty-albinowicz
+  imiona: ["Walenty"]
+  nazwisko: "Radoszewski"
+  plec: m
+  uwagi: "Syn Albina; radca Tow. Kred. w Piotrkowie, kawaler."
+
+- id: radoszewski-kazimierz
+  imiona: ["Kazimierz"]
+  nazwisko: "Radoszewski"
+  plec: m
+  uwagi: "Syn Albina; mieszkał w Rzymie."
+
+- id: laszczynska-zona-kazimierza
+  imiona: []
+  nazwisko: null
+  nazwisko_rodowe: "Łaszczyńska"
+  plec: k
+  uwagi: "Żona Kazimierza (poprawione z Łukaszewska)."
+
+- id: radoszewski-ludwik-ner
+  imiona: ["Ludwik"]
+  nazwisko: "Radoszewski"
+  plec: m
+  uwagi: "Syn Franciszka z Neru."
+
+- id: aulich-corka
+  imiona: []
+  nazwisko: null
+  plec: k
+  uwagi: "Córka Anny Aulich; żona Jerzego Prozora."
+
+- id: prozor-jerzy
+  imiona: ["Jerzy"]
+  nazwisko: "Prozor"
+  plec: m
+
+- id: przadzynski-maciej-1577
+  imiona: ["Maciej"]
+  nazwisko: "Prządzyński"
+  herb: Grzymała
+  plec: m
+  warianty: ["Maciej Kasztelan przemyski"]
+
+- id: przadzynski-jedrzej
+  imiona: ["Jędrzej"]
+  nazwisko: "Prządzyński"
+  plec: m
+
+- id: przadzynski-jakub-1600
+  imiona: ["Jakub"]
+  nazwisko: "Prządzyński"
+  plec: m
+  warianty: ["Jakób Prządzyński Kanonik gnieźnieński"]
+
+- id: przadzynski-hieronim
+  imiona: ["Hieronim"]
+  nazwisko: "Prządzyński"
+  plec: m
+
+- id: gniazdowska
+  imiona: []
+  nazwisko: null
+  nazwisko_rodowe: "Gniazdowska"
+  herb: Brzoza[?]
+  plec: k
+
+- id: przadzynski-aleksander
+  imiona: ["Aleksander"]
+  nazwisko: "Prządzyński"
+  plec: m
+
+- id: przadzynski-stanislaw-1650
+  imiona: ["Stanisław"]
+  nazwisko: "Prządzyński"
+  plec: m
+  uwagi: "Żył w 1. poł. XVII w."
+
+- id: chlapowska-anna
+  imiona: ["Anna"]
+  nazwisko: "Prządzyńska"
+  nazwisko_rodowe: "Chłapowska"
+  plec: k
+
+- id: przadzynski-wladyslaw-1694
+  imiona: ["Władysław"]
+  nazwisko: "Prządzyński"
+  plec: m
+
+- id: przadzynski-antoni-1717
+  imiona: ["Antoni"]
+  nazwisko: "Prządzyński"
+  plec: m
+
+- id: bardzka-marianna
+  imiona: ["Marianna"]
+  nazwisko: "Czaplicka"
+  nazwisko_rodowe: "Bardzka"
+  herb: Sas
+  plec: k
+  warianty: ["Marianna Bardzka"]
+  uwagi: "2° v. Czaplicka."
+
+- id: czaplicki
+  imiona: []
+  nazwisko: "Czaplicki"
+  plec: m
+
+- id: przadzynska-sylwia-siostra
+  imiona: ["Sylwia"]
+  nazwisko: "Krasicka"
+  nazwisko_rodowe: "Prządzyńska"
+  plec: k
+  warianty: ["Sylwja +1862 (siostra gen.)"]
+  uwagi: "Siostra gen. Ignacego, żona gen. Jana Krasickiego."
+
+- id: krasicki-jan
+  imiona: ["Jan"]
+  nazwisko: "Krasicki"
+  herb: Rogala
+  plec: m
+  warianty: ["gen. Jan Rogala hr. Krasicki"]
+
+- id: przadzynska-nepomucena
+  imiona: ["Nepomucena"]
+  nazwisko: "Moszczeńska"
+  nazwisko_rodowe: "Prządzyńska"
+  plec: k
+
+- id: moszczenski-antoni
+  imiona: ["Antoni"]
+  nazwisko: "Moszczeński"
+  herb: Nałęcz
+  plec: m
+
+- id: moszczenski-aleksander
+  imiona: ["Aleksander"]
+  nazwisko: "Moszczeński"
+  plec: m
+  warianty: ["starosta Aleksander Moszczeński"]
+
+- id: gawrysz-radoslaw
+  imiona: ["Radosław"]
+  nazwisko: "Gawrysz"
+  plec: m
+
+- id: gawrysz-kuba
+  imiona: ["Kuba"]
+  nazwisko: "Gawrysz"
+  plec: m
+
+- id: gawrysz-marta
+  imiona: ["Marta"]
+  nazwisko: "Gawrysz"
+  plec: k
+  uwagi: "Imię niepewne (Maria/Marta)."
+
+- id: przadzynski-stas-1830
+  imiona: ["Stanisław"]
+  nazwisko: "Prządzyński"
+  plec: m
+  warianty: ["Staś"]
+  uwagi: "Syn gen. Ignacego, zm. w dzieciństwie."
+
+- id: przadzynska-emilia-1834
+  imiona: ["Emilia"]
+  nazwisko: "Prządzyńska"
+  plec: k
+
+- id: przadzynska-helena
+  imiona: ["Helena"]
+  nazwisko: "Hermiesek[?]"
+  nazwisko_rodowe: "Prządzyńska"
+  plec: k
+
+- id: hermiesek-waclaw
+  imiona: ["Wacław"]
+  nazwisko: "Hermiesek[?]"
+  plec: m
+  uwagi: "z Potoczy[?] nad Wisłą"
+
+- id: hermiesek-kazimierz
+  imiona: ["Kazimierz"]
+  nazwisko: "Hermiesek[?]"
+  plec: m
+
+- id: rudkowski-jozef
+  imiona: ["Józef"]
+  nazwisko: "Rudkowski"
+  plec: m
+
+- id: rudkowski-antoni
+  imiona: ["Antoni"]
+  nazwisko: "Rudkowski"
+  plec: m
