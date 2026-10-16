@@ -25,7 +25,7 @@ Jadwiga z Wesslów Radoszewska                  1929
 Józefa z Radoszewskich Wierzchleyska           1933
 Ludwika z Radoszewskich Radoszewska            1875
 Aleksander Radoszewski                         1859
-Paweł Radoszewski z Zatuskowa[?]               1940
+Paweł Radoszewski z Zatuskowa               1940
 
 [red.: „Rzecz. Radca Stanu” = rzeczywisty radca stanu; „Albin … +1871” — w innych źródłach Albin 1811–1875 (do porównania w S07); „Aleksander … 1859” — w notatkach z S07 „1859–91” (1859 = rok urodzenia?) — rozbieżności do Etapu 3]
 

@@ -26,11 +26,11 @@ Radoszewscy s. 1109.
 ## S06-p01-s03
 typ: tekst
 
-Katedra Kijowska opr. Ks. Kasjan Korczyński[?]„
+Katedra Kijowska opr. Ks. Kasjan Korczyński„
 „Wołanie z Wołynia”. Biały Dunajec – Ostróg 2005
 s. 7/33[?] (Bogusław Radoszewski s. XIII, s XVI
 
-[red.: po „s. 7/” cyfry przekreślone/nadpisane — nieczytelne; nazwisko opracowującego niepewne (Korczyński / Korczyński); nawias niezamknięty w oryginale]
+[red.: po „s. 7/” cyfry przekreślone/nadpisane — nieczytelne; nazwisko potwierdzone w S07-p23-s01 („Kassyjana Korczyńskiego strona XVI”); nawias niezamknięty w oryginale]
 
 ## S06-p01-s04
 typ: tekst

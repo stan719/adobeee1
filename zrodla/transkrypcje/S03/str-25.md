@@ -30,12 +30,12 @@ typ: tekst
 Ludwika Radoszewska mąż Albin Radoszewski z Neru
     Franciszek z Neru    I żona Skrzyńska I v. Siemiątkowska
     ich dzieci           II  "  Wessel Jadwiga 17-XI-1929
-    ⎧ Paweł żona {nad: Zofia} Grotowska z Zatuskowa[?]
+    ⎧ Paweł żona {nad: Zofia} Grotowska z Zatuskowa
     ⎨ Jan z Neru
     ⎪ Ludmiła mąż prof. Erbrych dzieci Ludmiła
     ⎩ zginęła w Powstaniu i Anna Aulich
 
-[red.: „I v. Siemiątkowska” — wciśnięte drobno przy krawędzi, ucięte; data przy Jadwidze Wessel „17-XI-1929” — końcówka widoczna na zdjęciu następnej strony (IMG_5877); prawdopodobnie data śmierci; „z Neru” zapisane „z Nem”/„z Ners” — por. S03-p17-s03]
+[red.: „I v. Siemiątkowska” — wciśnięte drobno przy krawędzi, ucięte; data przy Jadwidze Wessel „17-XI-1929” — końcówka widoczna na zdjęciu następnej strony (IMG_5877); prawdopodobnie data śmierci; „z Neru” zapisane „z Nem”/„z Ners” — Ner potwierdzony w S07-p26-s02]
 
 ## S03-p25-s04
 typ: tekst

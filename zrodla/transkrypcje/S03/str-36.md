@@ -14,10 +14,10 @@ typ: naglowek
 ## S03-p36-s02
 typ: tekst
 
-Grób Generałowej Emilji z Butkowskich[?] Prządzyńskiej   1886
+Grób Generałowej Emilji z Rudkowskich[?] Prządzyńskiej   1886
                        Sylwji                            1862
 
-[red.: nazwisko panieńskie Emilii zapisane „Butkowskich”/„Rudkowskich” — w notatkach z S07 „Emilia Rudkowska”; tu pierwsza litera wygląda jak „B” [?]; „1886” wpisane nad końcem wiersza; „1862” — ostatnia cyfra niewyraźna (1862/1869)]
+[red.: nazwisko panieńskie Emilii zapisane „Butkowskich”/„Rudkowskich” — w notatkach z S07 „Emilia Rudkowska”; tu pierwsza litera wygląda jak „B”; S07-p31-s01 pisze wyraźnie „Emilją Rudkowską” — przyjmuję „Rudkowskich”, z zastrzeżeniem; „1886” wpisane nad końcem wiersza; „1862” — ostatnia cyfra niewyraźna (1862/1869)]
 
 ## S03-p36-s03
 typ: naglowek

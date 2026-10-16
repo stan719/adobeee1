@@ -53,4 +53,4 @@ Aleksandra Górska (ze Szendaczyna[?])
 ich dzieci Marytka, Wanda, Hania, Renia, Krysia
 i Jerzy
 
-[red.: „Łaszczyńska” — samogłoska ą/a niepewna; „Francuska” — czytam tak (żona-Francuzka?) [?]; „(ze Szendaczyna)” — odczyt bardzo niepewny („Zrendaczyna”/„Grenadyna”?)]
+[red.: „Łaszczyńska” — potwierdzone w S07-p26-s03; „Francuska” — czytam tak (żona-Francuzka?) [?]; „(ze Szendaczyna)” — odczyt bardzo niepewny („Zrendaczyna”/„Grenadyna”?)]

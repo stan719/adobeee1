@@ -27,7 +27,7 @@ Ludmiła I voto Siemiątkowska
             Zygmunt          z Wysokiej Woli
         II voto Radoszewska
             Jan z Neru                          +26-II-19[73]
-            Paweł z Zatuskowa[?]
+            Paweł z Zatuskowa
             Ludmiła
 
 [red.: wcięte imiona = dzieci Ludmiły z każdego małżeństwa; „z Wygnanowa” (zapisane „z Wygnanowie”?) — por. str. 24 „Siemiątkowski z Wygnanowa”; „z Zatuskowa” — zapisane „z Zatuskowa”/„z Zatuskiem” [?]; data „+26-II-19…” ucięta grzbietem, dokończona na str. 24 („+26-II-1973”)]

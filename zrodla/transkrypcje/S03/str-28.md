@@ -10,7 +10,7 @@ przejscia: [1, 2, 3]  # 3 = kontrola krzyżowa w obrębie S03–S06
 typ: tekst
 [red.: chrzest Teresy — chrzestni i kościół]
 
-Zofia Radoszewska z Zatuskowa[?]    Kościół św. Barbary
+Zofia Radoszewska z Zatuskowa    Kościół św. Barbary
 Andrzej Prządzyński z Kościerzyna   na Nowogrodzkiej
 
 ## S03-p28-s02
