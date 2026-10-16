@@ -1,0 +1,279 @@
+# S07 cz. 4: s. 52–61 (groby, kaplice, fundacje, hipoteki i domy)
+
+# s. 52–53
+- {id: S07-652, podmiot: przadzynski-jakub-1600, relacja: pochowek, miejsce: poznan-katedra, wartosc: "tablica na nagrobku w katedrze poznańskiej; kanonik gnieźnieński-poznański, łęczycki[?] i płocki",
+   zrodla: [{segment: S07-p52-s01, cytat: "Poznań w Katedrze tablica na nagrobku Jakuba Prządzyńskiego Kanonika gnieź.-poznań. Łęczyckiego[?] i Płockiego +1600 r."}], pewnosc_odczytu: niepewna}
+- {id: S07-653, podmiot: przadzynski-stanislaw-1761, relacja: pochowek, miejsce: jarzabkowo, wartosc: "z żoną Marianną z Bronikowskich; zmarł w Wiatrowie u starosty Aleksandra Moszczeńskiego; przy grobowcu generał wzniósł pomnik",
+   zrodla: [{segment: S07-p52-s02, cytat: "Jarząbkowo k/Gniezna poch. Stanisław +1817 i Marjanna z Bronikowskich Prządzyńscy z Malczewa. Zmarł St. w Wiatrowie u starosty Aleksandra Moszczeńskiego"},
+            {segment: S07-p58-s04, cytat: "Jarząbkowo k/Gniezna rodzice gen. Prządzyńskiego Stanisław 1761+1817 ⎫ Prządzyńscy"}], pewnosc_odczytu: pewna}
+- {id: S07-654, podmiot: bronikowska-marianna, relacja: pochowek, miejsce: jarzabkowo,
+   zrodla: [{segment: S07-p52-s02, cytat: "i Marjanna z Bronikowskich Prządzyńscy z Malczewa."}, {segment: S07-p58-s04, cytat: "Marjanna z Bronikowskich +1847 ⎭"}], pewnosc_odczytu: pewna}
+- {id: S07-655, podmiot: przadzynski-ignacy-1792, relacja: fundacja, obiekt: jarzabkowo, wartosc: "pomnik przy grobowcu rodziców w Jarząbkowie („synowie wszystkim[?]”)",
+   zrodla: [{segment: S07-p52-s02, cytat: "Przy grobowcu rodziców generał wzniósł pomnik synowie wszystkim[?] (ojcu Dziadka)"}], pewnosc_odczytu: niepewna}
+- {id: S07-656, podmiot: grabinski-aleksander-opat, relacja: fundacja, obiekt: oliwa, wartosc: "ołtarz Zwiastowania MB w nawie (1635), ołtarz św. Józefa, portal do zakrystii (1632), portal w wejściu do dormitorium z herbem Pomian (1636), lavatorium marmurowe (1635); portret w refektarzu", data: {tekst: "1632–1636", od: 1632, do: 1636},
+   zrodla: [{segment: S07-p52-s03, cytat: "Oliwa Ołtarz Zwiastowania M.B. fund. opata Grabińskiego h. Pomian w nawie 1635 r."},
+            {segment: S07-p52-s03, cytat: "Ołtarz Św. Józefa fund. opata Aleksandra Grab. Portal do zakrystji fund. opata Aleksandra Grab. 1632"},
+            {segment: S07-p52-s03, cytat: "w wejściu do dormitarum z h. Pomian 1636 Lavatorium marmurowe „ „ 1635"},
+            {segment: S07-p52-s04, cytat: "W refektarzu portrety Opatów Joannes Grabiński Aleksander „ „"}], pewnosc_odczytu: pewna}
+- {id: S07-657, podmiot: grabinski-jan-opat, relacja: pochowek, miejsce: oliwa, wartosc: "płyta nagrobna w posadzce transeptu (opaci Jan ±1633 i Aleksander zm. 1639?)", data: {tekst: "±1633", od: 1633, do: 1633},
+   zrodla: [{segment: S07-p52-s03, cytat: "Płyta nagrobna w posadzce transeptu Opatów Jana ±1633 r i Aleksandra zm. 1639? Grabińskich."}], pewnosc_odczytu: pewna}
+- {id: S07-658, podmiot: grabinski-aleksander-opat, relacja: smierc, data: {tekst: "zm. 1639?", od: 1639, do: 1639},
+   zrodla: [{segment: S07-p52-s03, cytat: "Aleksandra zm. 1639? Grabińskich."}], pewnosc_odczytu: niepewna}
+- {id: S07-659, podmiot: grabinski-aleksander-opat, relacja: pochowek, miejsce: oliwa,
+   zrodla: [{segment: S07-p52-s03, cytat: "Płyta nagrobna w posadzce transeptu Opatów"}], pewnosc_odczytu: pewna}
+- {id: S07-660, podmiot: grabinski-jan-opat, relacja: fundacja, obiekt: oliwa, wartosc: "dzwon spiżowy w wieży środkowej, czerwona dalmatyka i ornat; portret w refektarzu",
+   zrodla: [{segment: S07-p52-s04, cytat: "Dzwon spiżowy w wieży środkowej fund. opata Jana Grabińskiego. Dalmatyka czerwona fund. J. Grabińskiego"}], pewnosc_odczytu: pewna}
+- {id: S07-661, podmiot: przemysl-katedra, relacja: opis, wartosc: "kaplica Drohojowskich w katedrze w Przemyślu",
+   zrodla: [{segment: S07-p53-s01, cytat: "Przemyśl Katedra – Kaplica Drohojowskich"}], pewnosc_odczytu: pewna}
+
+# s. 54–56: groby
+- {id: S07-662, podmiot: uniejow-kaplica-radoszewskich, relacja: opis, wartosc: "kaplica na cmentarzu budowana przez Józefata w 1880 r.", data: {tekst: "1880 r.", od: 1880, do: 1880},
+   zrodla: [{segment: S07-p54-s01, cytat: "Uniejów Kaplica na cmentarzu budowana przez Józefata 1880 r."}], pewnosc_odczytu: pewna}
+- {id: S07-663, podmiot: radoszewski-roch-1820, relacja: pochowek, miejsce: uniejow-kaplica-radoszewskich, wartosc: "przeniesiony",
+   zrodla: [{segment: S07-p54-s01, cytat: "Pochowani w Krypcie: Roch +1820 (przeniesiony)"}], pewnosc_odczytu: pewna}
+- {id: S07-664, podmiot: radoszewski-jozef-1850, relacja: rodzenstwo, obiekt: radoszewski-franciszek-1790,
+   zrodla: [{segment: S07-p54-s01, cytat: "Józef 1850 (brat Franciszka)"}], pewnosc_odczytu: pewna}
+- {id: S07-665, podmiot: radoszewski-jozef-1850, relacja: pochowek, miejsce: uniejow-kaplica-radoszewskich, data: {tekst: "1850", od: 1850, do: 1850}, wartosc: "przeniesiony",
+   zrodla: [{segment: S07-p54-s01, cytat: "Józef 1850 (brat Franciszka) „ „"}], pewnosc_odczytu: pewna}
+- {id: S07-666, podmiot: radoszewski-henryk-1861, relacja: rodzic, obiekt: skrzynska-jozefa-1807,
+   zrodla: [{segment: S07-p54-s01, cytat: "Henryk 1861 syn „ i Józefy"}], pewnosc_odczytu: pewna, uwagi: "„ \"” = Franciszka."}
+- {id: S07-667, podmiot: radoszewski-henryk-1861, relacja: pochowek, miejsce: uniejow-kaplica-radoszewskich, data: {tekst: "1861", od: 1861, do: 1861},
+   zrodla: [{segment: S07-p54-s01, cytat: "Henryk 1861 syn „ i Józefy"}], pewnosc_odczytu: pewna}
+- {id: S07-668, podmiot: radoszewski-henryk-1862, relacja: pochowek, miejsce: uniejow-kaplica-radoszewskich, data: {tekst: "1870", od: 1870, do: 1870},
+   zrodla: [{segment: S07-p54-s01, cytat: "Henryś 1870 zmarł „jako” dziecko"}], pewnosc_odczytu: pewna}
+- {id: S07-669, podmiot: szumowski-antoni, relacja: smierc, data: {tekst: "+1855", od: 1855, do: 1855},
+   zrodla: [{segment: S07-p54-s01, cytat: "Antoni Szumowski +1855"}], pewnosc_odczytu: pewna}
+- {id: S07-670, podmiot: szumowski-antoni, relacja: pochowek, miejsce: uniejow-kaplica-radoszewskich,
+   zrodla: [{segment: S07-p54-s01, cytat: "Antoni Szumowski +1855"}], pewnosc_odczytu: pewna}
+- {id: S07-671, podmiot: szeliski-michal-1800, relacja: pochowek, miejsce: uniejow-kaplica-radoszewskich,
+   zrodla: [{segment: S07-p54-s01, cytat: "Michał Szeliski h/Szeliga ojciec Teofili"}], pewnosc_odczytu: pewna}
+- {id: S07-672, podmiot: radoszewski-jozefat-1830, relacja: pochowek, miejsce: uniejow-kaplica-radoszewskich,
+   zrodla: [{segment: S07-p54-s01, cytat: "Józefat 1830+1892"}], pewnosc_odczytu: pewna}
+- {id: S07-673, podmiot: szeliska-teofila-1842, relacja: pochowek, miejsce: uniejow-kaplica-radoszewskich,
+   zrodla: [{segment: S07-p54-s01, cytat: "Teofila z Szeliskich Radoszewska 1842+1909"}], pewnosc_odczytu: pewna}
+- {id: S07-674, podmiot: radoszewski-albin-1811, relacja: pochowek, miejsce: powazki-kw157, wartosc: "kw. 157 rząd 6 grób 1",
+   zrodla: [{segment: S07-p54-s02, cytat: "Powązki W-wa Kw. 157 rząd 6 grób 1 Pochowani: Albin Radoszewski +1871"}], pewnosc_odczytu: pewna, uwagi: "S03-p33-s01: grób 12/13."}
+- {id: S07-675, podmiot: radoszewski-albin-1811, relacja: smierc, data: {tekst: "+1871", od: 1871, do: 1871},
+   zrodla: [{segment: S07-p54-s02, cytat: "Albin Radoszewski +1871"}], pewnosc_odczytu: pewna}
+- {id: S07-676, podmiot: radoszewski-franciszek-1790, relacja: pochowek, miejsce: powazki-kw157,
+   zrodla: [{segment: S07-p54-s02, cytat: "Franciszek I +1846"}], pewnosc_odczytu: pewna}
+- {id: S07-677, podmiot: skrzynska-jozefa-1807, relacja: pochowek, miejsce: powazki-kw157,
+   zrodla: [{segment: S07-p54-s02, cytat: "Józefa ze Skrzyńskich Rad. +1856"}], pewnosc_odczytu: pewna}
+- {id: S07-678, podmiot: radoszewski-michal-1865, relacja: pochowek, miejsce: powazki-kw157,
+   zrodla: [{segment: S07-p54-s02, cytat: "Michał +1942"}], pewnosc_odczytu: pewna}
+- {id: S07-679, podmiot: drohojowska-ewelina-1880, relacja: pochowek, miejsce: powazki-kw157,
+   zrodla: [{segment: S07-p54-s02, cytat: "Ewa z Drohojowskich Rad. +1955"}], pewnosc_odczytu: pewna}
+- {id: S07-680, podmiot: radoszewski-jerzy-1902, relacja: pochowek, miejsce: powazki-kw157,
+   zrodla: [{segment: S07-p54-s02, cytat: "Jerzy +1967"}], pewnosc_odczytu: pewna}
+- {id: S07-681, podmiot: wessel-jadwiga, relacja: pochowek, miejsce: powazki-kw157, wartosc: "lewa strona",
+   zrodla: [{segment: S07-p54-s02, cytat: "lewa str. Jadwiga z Wesslów Rad. +1929"}], pewnosc_odczytu: pewna}
+- {id: S07-682, podmiot: radoszewski-pawel-zatuskow, relacja: pochowek, miejsce: powazki-kw157, wartosc: "bez tablicy",
+   zrodla: [{segment: S07-p54-s02, cytat: "(nie ma tablicy) Paweł z Zatuskowa +1940"}], pewnosc_odczytu: pewna}
+- {id: S07-683, podmiot: radoszewski-pawel-zatuskow, relacja: smierc, data: {tekst: "+1940", od: 1940, do: 1940},
+   zrodla: [{segment: S07-p54-s02, cytat: "Paweł z Zatuskowa +1940"}], pewnosc_odczytu: pewna}
+- {id: S07-684, podmiot: radoszewska-jozefa-1864, relacja: pochowek, miejsce: powazki-kw157, wartosc: "prawa strona",
+   zrodla: [{segment: S07-p54-s02, cytat: "prawa str. Józefa z Boxa Radoszewskich Wierzchleyska +1933"}], pewnosc_odczytu: pewna}
+- {id: S07-685, podmiot: radoszewska-ludwika-1827, relacja: pochowek, miejsce: powazki-kw157,
+   zrodla: [{segment: S07-p54-s02, cytat: "Ludwika z Radoszewskich Radoszewska +1875"}], pewnosc_odczytu: pewna}
+- {id: S07-686, podmiot: radoszewski-aleksander-1859, relacja: pochowek, miejsce: powazki-kw157,
+   zrodla: [{segment: S07-p54-s02, cytat: "Aleksander +1891"}], pewnosc_odczytu: pewna}
+- {id: S07-687, podmiot: radoszewski-aleksander-1859, relacja: smierc, data: {tekst: "+1891", od: 1891, do: 1891},
+   zrodla: [{segment: S07-p54-s02, cytat: "Aleksander +1891"}], pewnosc_odczytu: pewna}
+- {id: S07-688, podmiot: miarek-jan-ks, relacja: opis, wartosc: "późniejszy dopisek przy grobie Radoszewskich na Powązkach (z numerem telefonu)",
+   zrodla: [{segment: S07-p54-d1, cytat: "Ks. prałat Jan Miarek"}], pewnosc_odczytu: pewna}
+- {id: S07-689, podmiot: powazki-kw157-r5, relacja: opis, wartosc: "grób Radoszewskich, kw. 157 rząd 5 grób 14 — bez wpisów",
+   zrodla: [{segment: S07-p55-s01, cytat: "Powązki Kwat. 157 rząd 5 grób 14"}], pewnosc_odczytu: pewna}
+- {id: S07-690, podmiot: grotowska-zofia, relacja: pochowek, miejsce: powazki, wartosc: "w grobie gen. Makowieckiego[?]",
+   zrodla: [{segment: S07-p55-s02, cytat: "Powązki: Zofja z Grotowskich Radoszewska z Zatuskowa k/Łowicza grób gen. Makowieckiego[?]"}], pewnosc_odczytu: niepewna}
+- {id: S07-691, podmiot: radoszewska-maria-1867, relacja: pochowek, miejsce: cmentarz-polnocny, wartosc: "Powązki Komunalne 9-2b-1; nr 13845/65",
+   zrodla: [{segment: S07-p55-s03, cytat: "Powązki Komunalne 9-2ᵇ-1 15199/75 13845/65 Marja z Radoszewskich Mierzyńska"}], pewnosc_odczytu: pewna, uwagi: "S03-p37-s02: 13345/65."}
+- {id: S07-692, podmiot: mierzynska-maria-1897, relacja: pochowek, miejsce: cmentarz-polnocny, wartosc: "nr 15199/75",
+   zrodla: [{segment: S07-p55-s03, cytat: "Marja z Mierzyńskich I voto Mierzyńska II „ Żeromska"}], pewnosc_odczytu: pewna}
+- {id: S07-693, podmiot: grabinski-edward-1859, relacja: pochowek, miejsce: powazki-kw162,
+   zrodla: [{segment: S07-p55-s04, cytat: "Powązki Grób Grabińskich Kw. 162 rząd 4 grób 29/30 Edward Grabiński +1911 (ojciec Babci Stachy)"}], pewnosc_odczytu: pewna}
+- {id: S07-694, podmiot: brandel-maria-1870, relacja: pochowek, miejsce: powazki-kw162,
+   zrodla: [{segment: S07-p55-s04, cytat: "Marja z Brandlów Grabińska +1945 mama „ „"}], pewnosc_odczytu: pewna}
+- {id: S07-695, podmiot: grabinski-adam-1944, relacja: pochowek, miejsce: powazki-kw162, wartosc: "grób symboliczny",
+   zrodla: [{segment: S07-p55-s04, cytat: "Adam Grabiński +1944 gr. symboliczny"}], pewnosc_odczytu: pewna}
+- {id: S07-696, podmiot: grabinski-wladyslaw-1904, relacja: pochowek, miejsce: powazki-kw162,
+   zrodla: [{segment: S07-p55-s04, cytat: "Władysław „ +1904"}], pewnosc_odczytu: pewna}
+- {id: S07-697, podmiot: grabinski-wladyslaw-1904, relacja: smierc, data: {tekst: "+1904", od: 1904, do: 1904},
+   zrodla: [{segment: S07-p55-s04, cytat: "Władysław „ +1904"}], pewnosc_odczytu: pewna}
+- {id: S07-698, podmiot: dabska-leokadia-1850, relacja: pochowek, miejsce: powazki-kw162,
+   zrodla: [{segment: S07-p55-s04, cytat: "Leokadja z Dąbskich[?] Brandel +1892"}], pewnosc_odczytu: pewna}
+- {id: S07-699, podmiot: grabinska-zofia-1874, relacja: pochowek, miejsce: powazki-kw162,
+   zrodla: [{segment: S07-p55-s04, cytat: "Zofja Grabińska +1874"}], pewnosc_odczytu: pewna}
+- {id: S07-700, podmiot: przadzynski-stanislaw-1871, relacja: pochowek, miejsce: powazki-kw162,
+   zrodla: [{segment: S07-p55-s04, cytat: "Stanisław Prządzyński +1957"}], pewnosc_odczytu: pewna}
+- {id: S07-701, podmiot: grabinska-stanislawa-1890, relacja: pochowek, miejsce: powazki-kw162,
+   zrodla: [{segment: S07-p55-s04, cytat: "Stanisława Prządzyńska +1980"}], pewnosc_odczytu: pewna}
+- {id: S07-702, podmiot: rudkowska-emilia, relacja: pochowek, miejsce: powazki-kw178,
+   zrodla: [{segment: S07-p56-s01, cytat: "Powązki Kw. 178 rząd 5 grób № 27 Gen. Emilja z Rutkowskich[?] +1886 Prządzyńska"}], pewnosc_odczytu: pewna}
+- {id: S07-703, podmiot: rudkowska-emilia, relacja: smierc, data: {tekst: "+1886", od: 1886, do: 1886},
+   zrodla: [{segment: S07-p56-s01, cytat: "Gen. Emilja z Rutkowskich[?] +1886"}], pewnosc_odczytu: pewna}
+- {id: S07-704, podmiot: przadzynska-sylwia-1837, relacja: pochowek, miejsce: powazki-kw178,
+   zrodla: [{segment: S07-p56-s01, cytat: "córka Sylwja Prządzyńska +1862"}], pewnosc_odczytu: pewna}
+- {id: S07-705, podmiot: przadzynska-sylwia-1837, relacja: smierc, data: {tekst: "+1862", od: 1862, do: 1862},
+   zrodla: [{segment: S07-p56-s01, cytat: "córka Sylwja Prządzyńska +1862"}], pewnosc_odczytu: pewna}
+- {id: S07-706, podmiot: przadzynski-jozef, relacja: pochowek, miejsce: powazki-kw6,
+   zrodla: [{segment: S07-p56-s02, cytat: "Powązki Kw. 6 rząd 6 grób 12 Józef Prządzyński"}], pewnosc_odczytu: pewna}
+- {id: S07-707, podmiot: przadzynski-andrzej-1917, relacja: pochowek, miejsce: powazki-kw6,
+   zrodla: [{segment: S07-p56-s02, cytat: "Andrzej Prządzyński +1981"}], pewnosc_odczytu: pewna}
+- {id: S07-708, podmiot: grabinska-stefania, relacja: pochowek, miejsce: powazki-239, wartosc: "kw. 239 rząd I nr 10; 11, IV brama",
+   zrodla: [{segment: S07-p56-s03, cytat: "Powązki 239 rząd I № 10; 11 IV brama Stefanja z Grabińskich Podkolińska (siostra Babci Stachy Prządzyńskiej)"}], pewnosc_odczytu: pewna}
+- {id: S07-709, podmiot: brandel-konstanty, relacja: pochowek, miejsce: powazki-kw174,
+   zrodla: [{segment: S07-p56-s04, cytat: "Brandel Konstanty Kw. 174 rząd 4 № 29"}], pewnosc_odczytu: pewna}
+- {id: S07-710, podmiot: radoszewski-ignacy-1816, relacja: pochowek, miejsce: cmentarz-ewangelicki-mlynarska,
+   zrodla: [{segment: S07-p56-s05, cytat: "Cmentarz ewangelicko-augsburski ul. Młynarska Al. 1 grób 75 Ignacy Baron Radoszewski 1816+1886"}], pewnosc_odczytu: pewna}
+- {id: S07-711, podmiot: radoszewska-maria-1864, relacja: pochowek, miejsce: cmentarz-ewangelicki-mlynarska,
+   zrodla: [{segment: S07-p56-s05, cytat: "Marja 1864+1885"}], pewnosc_odczytu: pewna}
+- {id: S07-712, podmiot: radoszewska-maria-1864, relacja: urodzenie, data: {tekst: "1864", od: 1864, do: 1864},
+   zrodla: [{segment: S07-p56-s05, cytat: "Marja 1864+1885"}], pewnosc_odczytu: pewna}
+- {id: S07-713, podmiot: radoszewska-maria-1864, relacja: smierc, data: {tekst: "+1885", od: 1885, do: 1885},
+   zrodla: [{segment: S07-p56-s05, cytat: "Marja 1864+1885"}], pewnosc_odczytu: pewna}
+- {id: S07-714, podmiot: rosdeitscher-amelia, relacja: pochowek, miejsce: cmentarz-ewangelicki-mlynarska,
+   zrodla: [{segment: S07-p56-s05, cytat: "Amelja 1841+1926"}], pewnosc_odczytu: pewna}
+- {id: S07-715, podmiot: rosdeitscher-amelia, relacja: urodzenie, data: {tekst: "1841", od: 1841, do: 1841},
+   zrodla: [{segment: S07-p56-s05, cytat: "Amelja 1841+1926"}], pewnosc_odczytu: pewna}
+- {id: S07-716, podmiot: rosdeitscher-amelia, relacja: smierc, data: {tekst: "+1926", od: 1926, do: 1926},
+   zrodla: [{segment: S07-p56-s05, cytat: "Amelja 1841+1926"}], pewnosc_odczytu: pewna}
+
+# s. 57: Wartkowice, Leźnica
+- {id: S07-717, podmiot: wartkowice-kaplica, relacja: opis, wartosc: "kaplica Radoszewskich z Neru budowana przez Franciszka Radoszewskiego i Skrzyńskich z Gostkowa i Nowej Wsi dla I żony Franciszka, Ludomiry Skrzyńskiej I v. Siemiątkowskiej",
+   zrodla: [{segment: S07-p57-s01, cytat: "Wartkowice Kaplica Radoszewskich z Neru budowana przez Franciszka Rad. i Skrzyńskich z Gostkowa i Nowej Wsi dla I żony Fran. Ludomiry Skrzyńskiej I voto Siemiątkowskiej"}], pewnosc_odczytu: pewna}
+- {id: S07-718, podmiot: radoszewski-franciszek-ner, relacja: pochowek, miejsce: wartkowice-kaplica,
+   zrodla: [{segment: S07-p57-s01, cytat: "Franciszek Radoszewski"}], pewnosc_odczytu: pewna}
+- {id: S07-719, podmiot: skrzynska-ludmila, relacja: pochowek, miejsce: wartkowice-kaplica, wartosc: "zapisana jako „Ludomira”",
+   zrodla: [{segment: S07-p57-s01, cytat: "Ludomira"}], pewnosc_odczytu: pewna}
+- {id: S07-720, podmiot: radoszewski-jan-ner, relacja: pochowek, miejsce: wartkowice-kaplica,
+   zrodla: [{segment: S07-p57-s01, cytat: "Ludomira Jan"}], pewnosc_odczytu: pewna}
+- {id: S07-721, podmiot: tonia, relacja: pochowek, miejsce: wartkowice-kaplica,
+   zrodla: [{segment: S07-p57-s01, cytat: "p. Tonia[?]"}], pewnosc_odczytu: niepewna}
+- {id: S07-722, podmiot: skrzynski-aleksander-gostkow, relacja: smierc, wartosc: "umarł „z przejściami[?]” z obozu",
+   zrodla: [{segment: S07-p57-s01, cytat: "Aleksander Skrzyński umarł z przejściami[?] z obozu"}], pewnosc_odczytu: niepewna}
+- {id: S07-723, podmiot: skrzynski-aleksander-gostkow, relacja: pochowek, miejsce: wartkowice-kaplica,
+   zrodla: [{segment: S07-p57-s01, cytat: "Aleksander Skrzyński umarł"}], pewnosc_odczytu: pewna}
+- {id: S07-724, podmiot: leznica-kaplica, relacja: opis, wartosc: "kaplica Prządzyńskich h. Grzymała w Leźnicy k. Łęczycy",
+   zrodla: [{segment: S07-p57-s02, cytat: "Leźnica k/Łęczycy Kaplica Prządzyńskich h. Grzymała"}], pewnosc_odczytu: pewna}
+- {id: S07-725, podmiot: przadzynski-wincenty-1795, relacja: smierc, data: {tekst: "+1868", od: 1868, do: 1868},
+   zrodla: [{segment: S07-p57-s02, cytat: "Wincenty senator brat gen. +1868"}], pewnosc_odczytu: pewna, uwagi: "Inne źródła: 1858."}
+- {id: S07-726, podmiot: przadzynski-wincenty-1795, relacja: pochowek, miejsce: leznica-kaplica,
+   zrodla: [{segment: S07-p57-s02, cytat: "Wincenty senator brat gen. +1868"}], pewnosc_odczytu: pewna}
+- {id: S07-727, podmiot: mierzynska-salomea-1800, relacja: pochowek, miejsce: leznica-kaplica, wartosc: "zapisana „żona gen.” (w rzeczywistości żona senatora)",
+   zrodla: [{segment: S07-p57-s02, cytat: "Salomea z Mierzyńskich żona gen. +1877"}], pewnosc_odczytu: pewna}
+- {id: S07-728, podmiot: przadzynska-michalina-1826, relacja: smierc, data: {tekst: "+1826", od: 1826, do: 1826},
+   zrodla: [{segment: S07-p57-s02, cytat: "Michalina córka +1826"}], pewnosc_odczytu: pewna, uwagi: "S03-p32-s02: ur. 1826, zm. 1846 — prawdopodobnie pomylone daty."}
+- {id: S07-729, podmiot: przadzynska-michalina-1826, relacja: pochowek, miejsce: leznica-kaplica,
+   zrodla: [{segment: S07-p57-s02, cytat: "Michalina córka +1826"}], pewnosc_odczytu: pewna}
+- {id: S07-730, podmiot: przadzynska-pelagia-1833, relacja: smierc, data: {tekst: "+1837", od: 1837, do: 1837},
+   zrodla: [{segment: S07-p57-s02, cytat: "Pelagja +1837"}], pewnosc_odczytu: pewna}
+- {id: S07-731, podmiot: przadzynska-pelagia-1833, relacja: pochowek, miejsce: leznica-kaplica,
+   zrodla: [{segment: S07-p57-s02, cytat: "Pelagja +1837"}], pewnosc_odczytu: pewna}
+- {id: S07-732, podmiot: przadzynski-boleslaw-1842, relacja: smierc, data: {tekst: "+1855", od: 1855, do: 1855},
+   zrodla: [{segment: S07-p57-s02, cytat: "Bolesław +1855"}], pewnosc_odczytu: pewna}
+- {id: S07-733, podmiot: przadzynski-boleslaw-1842, relacja: pochowek, miejsce: leznica-kaplica,
+   zrodla: [{segment: S07-p57-s02, cytat: "Bolesław +1855"}], pewnosc_odczytu: pewna}
+- {id: S07-734, podmiot: przadzynski-stanislaw-1828, relacja: smierc, data: {tekst: "+1856", od: 1856, do: 1856},
+   zrodla: [{segment: S07-p57-s02, cytat: "Stanisław +1856"}], pewnosc_odczytu: pewna}
+- {id: S07-735, podmiot: przadzynski-stanislaw-1828, relacja: pochowek, miejsce: leznica-kaplica,
+   zrodla: [{segment: S07-p57-s02, cytat: "Stanisław +1856"}], pewnosc_odczytu: pewna}
+- {id: S07-736, podmiot: przadzynski-wladyslaw-1837, relacja: pochowek, miejsce: leznica-kaplica,
+   zrodla: [{segment: S07-p57-s02, cytat: "Władysław (ojciec Dziadzi St.) +1898"}], pewnosc_odczytu: pewna}
+- {id: S07-737, podmiot: skrzynska-anna-1848, relacja: pochowek, miejsce: leznica-kaplica,
+   zrodla: [{segment: S07-p57-s02, cytat: "Anna ze Skrzyńskich Prządzyńska +1883 (matka Dziadzi)"}], pewnosc_odczytu: pewna}
+- {id: S07-738, podmiot: przadzynski-wincenty-1839, relacja: pochowek, miejsce: leznica-kaplica,
+   zrodla: [{segment: S07-p57-s02, cytat: "Wincenty właściciel Kobierzycka i Kościerz. +1895"}], pewnosc_odczytu: pewna}
+- {id: S07-739, podmiot: przadzynski-ignacy-1872, relacja: pochowek, miejsce: leznica-kaplica,
+   zrodla: [{segment: S07-p57-s02, cytat: "Ignacy brat Dziadzi +1890"}], pewnosc_odczytu: pewna}
+- {id: S07-740, podmiot: przadzynski-zdzislaw-1874, relacja: pochowek, miejsce: leznica-kaplica,
+   zrodla: [{segment: S07-p57-s02, cytat: "Zdzisław „"}], pewnosc_odczytu: pewna}
+- {id: S07-741, podmiot: przadzynska-wladyslawa-1879, relacja: pochowek, miejsce: leznica-kaplica,
+   zrodla: [{segment: S07-p57-s02, cytat: "Władysława Wilska siostra Dziadzi +1933"}], pewnosc_odczytu: pewna}
+- {id: S07-742, podmiot: wilski-stefan, relacja: pochowek, miejsce: leznica-kaplica,
+   zrodla: [{segment: S07-p57-s02, cytat: "Stefan Wilski"}], pewnosc_odczytu: pewna}
+- {id: S07-743, podmiot: liskowska-teresa, relacja: pochowek, miejsce: leznica-kaplica,
+   zrodla: [{segment: S07-p57-s02, cytat: "Teresa „"}], pewnosc_odczytu: pewna}
+- {id: S07-744, podmiot: wilski-jan, relacja: pochowek, miejsce: leznica-kaplica,
+   zrodla: [{segment: S07-p57-s02, cytat: "Jan „"}], pewnosc_odczytu: pewna}
+
+# s. 58–59
+- {id: S07-745, podmiot: peslawska-barbara, relacja: pochowek, miejsce: krakow-franciszkanie, wartosc: "epitafium późnorenesansowe z czarnego marmuru w kaplicy MB Bolesnej, fundacji męża Andrzeja, chorążego ziemi wieluńskiej",
+   zrodla: [{segment: S07-p58-s02, cytat: "Kościół św. Franciszka w Kaplicy M.B. Bolesnej Epitafjum Barbary z Popławskich[?] Radoszewskiej zm. 1608 r. późnorenesansowe fundacji męża Andrzeja chorążego ziemi wieluńskiej z czarnego marmuru."}], pewnosc_odczytu: niepewna,
+   uwagi: "S07-p22-s07: nagrobek z czerwonego marmuru, fundator Jędrzej (brat Marka?) — rozbieżność koloru i osoby."}
+- {id: S07-746, podmiot: drohojowski-boleslaw-1848, relacja: pochowek, miejsce: zarzecze,
+   zrodla: [{segment: S07-p58-s03, cytat: "Zarzecze parafja Ciszecina W. k/Jarosławia[?] grób hr. Drohojowskich rodziców Babci Eli Radoszewskiej Bolesław Drohojowski"}], pewnosc_odczytu: pewna}
+- {id: S07-747, podmiot: drohojowska-maria-1876, relacja: pochowek, miejsce: zarzecze,
+   zrodla: [{segment: S07-p58-s03, cytat: "Marja z Drohojowskich Madeyska"}], pewnosc_odczytu: pewna}
+- {id: S07-748, podmiot: terlecka-bronislawa-1847, relacja: pochowek, miejsce: zarzecze,
+   zrodla: [{segment: S07-p58-s03, cytat: "Bronisława z Terleckich Drohojowska"}], pewnosc_odczytu: pewna}
+- {id: S07-749, podmiot: wielun-kolegiata-kaplica, relacja: opis, wartosc: "kaplica w kolegiacie w Wieluniu zniszczona w 1939 r.; sarkofagi Jerzego (+1614) i Andrzeja Radoszewskich, tablica „jego żony Anny z Biskupskich”", data: {tekst: "1939 r.", od: 1939, do: 1939},
+   zrodla: [{segment: S07-p58-s05, cytat: "Wieluń Kaplica w Kolegjacie w Wieluniu zniszczona podczas wojny 1939 r. Sarkofagi Jerzego Radoszewskiego +1614 „ „ Andrzeja „ tablice jego żony Anny z Biskupskich"}], pewnosc_odczytu: pewna}
+- {id: S07-750, podmiot: radoszewski-jerzy-1614, relacja: smierc, data: {tekst: "+1614", od: 1614, do: 1614},
+   zrodla: [{segment: S07-p58-s05, cytat: "Sarkofagi Jerzego Radoszewskiego +1614"}], pewnosc_odczytu: pewna}
+- {id: S07-751, podmiot: biskupska-anna, relacja: pochowek, miejsce: wielun-kolegiata-kaplica, wartosc: "tablica (zapisana jako żona Andrzeja)",
+   zrodla: [{segment: S07-p58-s05, cytat: "tablice jego żony Anny z Biskupskich"}], pewnosc_odczytu: pewna}
+- {id: S07-752, podmiot: opatowek-kosciol, relacja: opis, wartosc: "4 srebrne tabliczki trumienne gen. Zajączka i Radoszewskich",
+   zrodla: [{segment: S07-p58-s06, cytat: "Opatówek k/Kalisza. W kościele parafjalnym Naj. Ser. J. 4 trumienne srebrne tabliczki gen. Zajączka i Radoszewskich"}], pewnosc_odczytu: pewna}
+- {id: S07-753, podmiot: krzyzanowska-renata, relacja: pochowek, miejsce: montmorency,
+   zrodla: [{segment: S07-p59-s01, cytat: "Paryż cmentarz w Montmorency № koncesji 752 sekcja C rząd 1 Renata z Krzyżanowskich h/Dębno Grabińska 1901+1962 pianistka"}], pewnosc_odczytu: pewna}
+- {id: S07-754, podmiot: krzyzanowska-renata, relacja: herb, wartosc: Dębno,
+   zrodla: [{segment: S07-p59-s01, cytat: "Renata z Krzyżanowskich h/Dębno Grabińska"}], pewnosc_odczytu: pewna}
+- {id: S07-755, podmiot: grabinski-adam-1944, relacja: pochowek, miejsce: montmorency, wartosc: "inskrypcja memoratywna",
+   zrodla: [{segment: S07-p59-s01, cytat: "Adam Grabiński h/Pomian (inskrypcja memoratywna) adwokat 1944"}], pewnosc_odczytu: pewna}
+- {id: S07-756, podmiot: mierzynska-konstancja, relacja: pochowek, miejsce: obrzycko, wartosc: "właścicielka Lipnicy, którą zapisała Urszulankom",
+   zrodla: [{segment: S07-p59-s02, cytat: "Obrzycko k/Szamotuł pochowani: Ciocia Konstancja (Kotusia) z Mierzyńskich Łącka właścicielka Lipnicy którą zapisała SS. Urszulankom."}], pewnosc_odczytu: pewna}
+- {id: S07-757, podmiot: mierzynska-konstancja, relacja: wlasnosc, obiekt: lipnica, wartosc: "zapisała Lipnicę Urszulankom",
+   zrodla: [{segment: S07-p59-s02, cytat: "właścicielka Lipnicy którą zapisała SS. Urszulankom."}], pewnosc_odczytu: pewna}
+- {id: S07-758, podmiot: mierzynski-jan-1801, relacja: pochowek, miejsce: obrzycko,
+   zrodla: [{segment: S07-p59-s02, cytat: "Jan Mierzyński 1801+1880 z Węgrz"}], pewnosc_odczytu: pewna}
+- {id: S07-759, podmiot: mierzynski-jan-1801, relacja: urodzenie, data: {tekst: "1801", od: 1801, do: 1801},
+   zrodla: [{segment: S07-p59-s02, cytat: "Jan Mierzyński 1801+1880"}], pewnosc_odczytu: pewna}
+- {id: S07-760, podmiot: mierzynski-jan-1801, relacja: smierc, data: {tekst: "+1880", od: 1880, do: 1880},
+   zrodla: [{segment: S07-p59-s02, cytat: "Jan Mierzyński 1801+1880"}], pewnosc_odczytu: pewna}
+- {id: S07-761, podmiot: mierzynski-jan-1801, relacja: malzonek, obiekt: turzewska,
+   zrodla: [{segment: S07-p59-s02, cytat: "jego żona z Turzewskich[?] 1837+1881"}], pewnosc_odczytu: niepewna}
+- {id: S07-762, podmiot: turzewska, relacja: urodzenie, data: {tekst: "1837", od: 1837, do: 1837},
+   zrodla: [{segment: S07-p59-s02, cytat: "z Turzewskich[?] 1837+1881"}], pewnosc_odczytu: pewna}
+- {id: S07-763, podmiot: turzewska, relacja: smierc, data: {tekst: "+1881", od: 1881, do: 1881},
+   zrodla: [{segment: S07-p59-s02, cytat: "z Turzewskich[?] 1837+1881"}], pewnosc_odczytu: pewna}
+- {id: S07-764, podmiot: turzewska, relacja: pochowek, miejsce: obrzycko,
+   zrodla: [{segment: S07-p59-s02, cytat: "jego żona z Turzewskich[?]"}], pewnosc_odczytu: pewna}
+- {id: S07-765, podmiot: mierzynski-rafal-starszy, relacja: pochowek, miejsce: obrzycko, wartosc: "rodzice senatorowej",
+   zrodla: [{segment: S07-p59-s02, cytat: "Rafał Mierzyński Marcjanna z Zagajewskich Mierzyńska (rodzice senatorowej)"}], pewnosc_odczytu: pewna}
+- {id: S07-766, podmiot: zagajewska-marcjanna, relacja: pochowek, miejsce: obrzycko,
+   zrodla: [{segment: S07-p59-s02, cytat: "Marcjanna z Zagajewskich Mierzyńska (rodzice senatorowej)"}], pewnosc_odczytu: pewna}
+- {id: S07-767, podmiot: przadzynska-anna-1879, relacja: pochowek, miejsce: pniewy-cmentarz,
+   zrodla: [{segment: S07-p59-s03, cytat: "Pniewy na cmentarzu SS. Urszulanek Anna Prządzyńska (Babcia Netka)"}], pewnosc_odczytu: pewna}
+- {id: S07-768, podmiot: grabinski-joachim-jozef, relacja: pochowek, miejsce: bolonia-cmentarz, wartosc: "biust marmurowy",
+   zrodla: [{segment: S07-p59-s04, cytat: "Cmentarz polski w Bolonii S. Lazzaro di Savena biust marmurowy gen. Józefa Grabińskiego"}], pewnosc_odczytu: pewna}
+
+# s. 60–61: hipoteki i domy
+- {id: S07-769, podmiot: radoszewski-jerzy-1902, relacja: wlasnosc, obiekt: krempa, wartosc: "hipoteka majątku Śmiechów–Krempa w Kaliszu (dawniej pow. turecki, teraz sieradzki), 1101 morgów 17 prętów kw.",
+   zrodla: [{segment: S07-p60-s01, cytat: "Hipoteka maj. Śmiechów–Krempa w Kaliszu dawniej powiat Turecki teraz „ Sieradzki Przestrzeń 1101 morgów 17 prętów Kwadr. na Jerzego Radoszewskiego"}], pewnosc_odczytu: pewna}
+- {id: S07-770, podmiot: radoszewski-jerzy-1902, relacja: wlasnosc, obiekt: warszawa-narbutta-60, wartosc: "plac kupiony 21 X 1947 za pieniądze ze sprzedaży domu w Wawrze (ul. Błękitna); Rep. Hip. nr 1045", data: {tekst: "21 paźdz. 1947", od: 1947-10-21, do: 1947-10-21},
+   zrodla: [{segment: S07-p60-s02, cytat: "Plac na Narbutta 60 Ks. hip. Kolonja Mokotów 1, 2, 3 w W-wie Rep. Hip. № 1045 Jerzy Radosze[wski] kupiony 21 paźdz. 1947 r za pieniądze z sprzed. domu w Wawrze na ul. Błękitnej"}], pewnosc_odczytu: pewna}
+- {id: S07-771, podmiot: radoszewski-jerzy-1902, relacja: wlasnosc, obiekt: wawer-blekitna, wartosc: "dom w Wawrze sprzedany przed 1947",
+   zrodla: [{segment: S07-p60-s02, cytat: "domu w Wawrze na ul. Błękitnej"}], pewnosc_odczytu: pewna}
+- {id: S07-772, podmiot: radoszewski-jerzy-1902, relacja: wlasnosc, obiekt: ciszecin-wielki, wartosc: "Ciszecin Wielki (wyk. hip. 106, Księga Tabularna przy Sądzie w Przemyślu) — zapisany testamentem przez Jana Drohojowskiego; także Piotrkowice na Wołyniu",
+   zrodla: [{segment: S07-p60-s03, cytat: "Ciszecin Wielki wyk. hip. liczba 106 Księga Tabularna przy Sądzie w Przemyślu. Zapisany testamentem Jerzemu Radoszewskiemu przez Jana Drohojowskiego."},
+            {segment: S07-p60-d1, cytat: "+ Piotrkowice na Wołyniu k/Kowla"}], pewnosc_odczytu: pewna}
+- {id: S07-773, podmiot: radoszewski-jerzy-1902, relacja: wlasnosc, obiekt: warszawa-marszalkowska-59, wartosc: "kamienica na rogu Koszykowej, hip. 5023",
+   zrodla: [{segment: S07-p60-s04, cytat: "Marszałkowska 59 hip. 5023 kamienica na rogu Koszykowej (Jerzy Radoszewski)"}], pewnosc_odczytu: pewna}
+- {id: S07-774, podmiot: przadzynska-anna-1914, relacja: wlasnosc, obiekt: warszawa-wilcza-65, wartosc: "hip. 5305, powierzchnia 543 9½ łokci kw.",
+   zrodla: [{segment: S07-p60-s05, cytat: "Wilcza 65 № hip. 5305 powierzchnia 543 9½ łokci ² (Anna Radoszewska)"}], pewnosc_odczytu: pewna}
+- {id: S07-775, podmiot: przadzynski-stanislaw-1871, relacja: wlasnosc, obiekt: warszawa-nowogrodzka-42, wartosc: "hip. 6374 (Stanisława i Stanisław Prządzyńscy)",
+   zrodla: [{segment: S07-p60-s06, cytat: "Nowogrodzka 42 róg Poznańskiej (Stanisława i Stanisław Prządzyńscy) № hip. 6374"}], pewnosc_odczytu: pewna}
+- {id: S07-776, podmiot: grabinska-stanislawa-1890, relacja: wlasnosc, obiekt: warszawa-aleje-jerozolimskie-37, wartosc: "dom prababci Marii Grabińskiej (koło hotelu Polonia), w większej części własność Stanisławy Prządzyńskiej",
+   zrodla: [{segment: S07-p61-s01, cytat: "Al. Jerozolimskie 37 koło hotelu Polonia, dom Bab Prababci Marii Grabińskiej, w większej części własność Babci Stachy Prządzyńskiej"}], pewnosc_odczytu: pewna}
+- {id: S07-777, podmiot: brandel-maria-1870, relacja: wlasnosc, obiekt: warszawa-aleje-jerozolimskie-37,
+   zrodla: [{segment: S07-p61-s01, cytat: "dom Bab Prababci Marii Grabińskiej"}], pewnosc_odczytu: pewna}
+- {id: S07-778, podmiot: koscierzyn, relacja: opis, wartosc: "między Sieradzem a miasteczkiem Wartą; własność Stanisławy i Stanisława Prządzyńskich; 22 włóki bardzo dobrej ziemi; parafia Charłupia Mała (cudowny obraz MB)",
+   zrodla: [{segment: S07-p61-s02, cytat: "Kościerzyn między Sieradzem a miasteczkiem Wartą własność Babci i Dziadzi Prządzyńskich 22 włóki b. dobrej ziemi. Parafja Charłupia Mała (cudowny obraz M.B.)"}], pewnosc_odczytu: pewna}
+- {id: S07-779, podmiot: poznan-kamienica, relacja: opis, wartosc: "kamienica w Śródmieściu Poznania zburzona w II wojnie, plac sprzedany; własność „SS.[?]” Prządzyńskich",
+   zrodla: [{segment: S07-p61-s03, cytat: "Poznań Kamienica w Śródmieściu zburzona podczas II wojny. Plac sprzedany. Własność SS. Prządzyńskich"}], pewnosc_odczytu: niepewna}
+- {id: S07-780, podmiot: kosiki-dzialy, relacja: opis, wartosc: "Działy[?] Królewskie we wsi Kosiki[?] Nowy, gromada Malinów[?], pow. otwocki, nr hip. 1621, przy szosie do Siedlec",
+   zrodla: [{segment: S07-p61-s04, cytat: "Działy Królewskie we wsi Kosiki[?] Nowy gromada Malinów[?] pow. Otwock. № hip. 1621 Przy szosie do Siedlec."}], pewnosc_odczytu: niepewna}
+- {id: S07-781, podmiot: radoszewski-jan-ner, relacja: wlasnosc, obiekt: ner, wartosc: "majątek Ner k. Gostkowa i Wartkowic",
+   zrodla: [{segment: S07-p61-d1, cytat: "Ner k/Gostkowa i Wartkowic majątek Jan Radoszewski"}], pewnosc_odczytu: pewna}
+- {id: S07-782, podmiot: radoszewski-pawel-zatuskow, relacja: wlasnosc, obiekt: zatuskow,
+   zrodla: [{segment: S07-p61-d1, cytat: "Zatusków – Paweł Radoszewski"}], pewnosc_odczytu: pewna}

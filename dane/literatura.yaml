@@ -31,3 +31,40 @@
 - id: rocznik-kaliski-28
   opis: "Rocznik Kaliski, t. XXVIII (PTH Oddział w Kaliszu): Francuskie listy z Berlina stryjecznych wnuków gen. Zajączka"
   segmenty: [S06-p01-s07]
+
+# S07 s. 49–51: „Źródła” spisane przez autorkę zeszytu
+- id: s07-zrodla-herbarze
+  opis: "Bartosz Paprocki, Herby Rycerstwa Polskiego (1584); Kacper Niesiecki, Herby i familie rycerskie; Herbarz Szlachty Polskiej ze zbiorów hr. Seweryna Uruskiego; hr. Dunin Borkowski, Genealogie żyjących rodów polskich"
+  dotyczy: "Radoszewscy"
+  segmenty: [S07-p49-s01, S07-p49-s02]
+- id: s07-zrodla-2
+  opis: "Polska encyklopedia szlachecka t. III; W. Szczygielski, Dzieje Ziemi Wieluńskiej; J. Nadzieja[?], Gen. Józef Zajączek; M. Dematowicz[?], Portret Familii; J. Zasiński[?], Grobowe kaplice kopułowe w Polsce; Rocznik Muzeów i Ochrony Zabytków Ziem Polski Środkowej"
+  dotyczy: "Radoszewscy (adnotacja na marginesie)"
+  segmenty: [S07-p49-s03]
+- id: s07-zrodla-3
+  opis: "Szkice Dziejów Sieradzkiego (Łódź 1977, PWN)"
+  dotyczy: "Wincenty Prządzyński — fabryka mączki, narzędzia rolnicze (adnotacja na marginesie)"
+  segmenty: [S07-p49-s04]
+- id: s07-zrodla-4
+  opis: "Katalog Zabytków Sztuki w Polsce, woj. kieleckie, t. III z. 9"
+  dotyczy: "Radom[?] (adnotacja na marginesie)"
+  segmenty: [S07-p49-s05]
+- id: s07-zrodla-5
+  opis: "Ostrowski, Herbarz Rodzin Polskich; Katalog Zabytków Sztuki w Polsce t. V, powiat kaliski z. 6; Słownik Staropolskich Nazw Osobowych t. IV z. 3 s. 423 (Ossolineum 1976); T. Łepkowski, Warszawa w Powstaniu Listopadowym"
+  segmenty: [S07-p49-s06]
+- id: s07-zrodla-6
+  opis: "M. Brandys, Koniec świata szwoleżerów III; Cz. Bloch i M. Rutczyc[?], Gen. Ignacy Prządzyński; Augustów i okolice (informator); St. Kunic[?], Gen. Józef Chłopicki; El. Kozłowski[?], Bem; J. Górewicz[?], Kanał Augustowski i Opowieść o Kanale Augustowskim; Wody Technik 1970; Studia i Materiały do Historii Wojskowości; J. Załuski, Wspomnienia"
+  dotyczy: "gen. Ignacy Prządzyński, Kanał Augustowski"
+  segmenty: [S07-p50-s01]
+- id: s07-zrodla-7
+  opis: "H. Murzyńska[?] / Hoffmanowa, „Ochotka z Panny…”[?]; Henrieta z Działyńskich, Pamiątka Przeszłości; Beylin, Piętnaście lat Warszawy"
+  dotyczy: "p. Walewska (adnotacja na marginesie)"
+  segmenty: [S07-p50-s02]
+- id: s07-zrodla-8
+  opis: "Jan Pachoński, Józef Grabiński generał; Wspomnienia więźniów Pawiaka; W. Żdżarski, Historia fotografii warszawskiej; Konstanty Brandel (Muzeum Narodowe w Warszawie, Galeria Sztuki Współczesnej); Moraczewicz[?] / Krzepkowska[?], Z lat Ptaka; Witold Leitgeber, Rozmowy z Brandlem"
+  dotyczy: "Adam i Mieczysław Grabińscy; Brandel; Władysław Brandel (adnotacje na marginesie)"
+  segmenty: [S07-p50-s03]
+- id: s07-zrodla-9
+  opis: "Jerzy Skowronek, Cmentarz Polski w Montmorency; Zofia Szymańska, Byłam tylko lekarzem; F. Mamuszka i J. Stankiewicz, Oliwa. Dzieje i zabytki; Krasowski[?], Bajbura; Pamiętniki Paska"
+  dotyczy: "Adam i Renata Grabińscy; Wanda Grabińska (adnotacje na marginesie)"
+  segmenty: [S07-p51-s01]

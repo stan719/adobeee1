@@ -809,3 +809,52 @@
   nazwa: "Grabno"
   typ: wieś
   pewnosc_identyfikacji: do_ustalenia
+
+- id: oliwa
+  nazwa: "Oliwa (katedra, dawny klasztor cystersów)"
+  typ: kościół
+  pewnosc_identyfikacji: pewna
+
+- id: montmorency
+  nazwa: "Cmentarz polski w Montmorency (Paryż), koncesja 752, sekcja C, rząd 1"
+  typ: cmentarz
+  pewnosc_identyfikacji: pewna
+
+- id: obrzycko
+  nazwa: "Obrzycko[?] k. Szamotuł"
+  typ: miasto
+  pewnosc_identyfikacji: prawdopodobna
+
+- id: pniewy-cmentarz
+  nazwa: "Cmentarz SS. Urszulanek w Pniewach"
+  typ: cmentarz
+  nadrzedne: pniewy
+  pewnosc_identyfikacji: pewna
+
+- id: bolonia-cmentarz
+  nazwa: "Cmentarz polski w Bolonii (S. Lazzaro di Savena)"
+  typ: cmentarz
+  pewnosc_identyfikacji: pewna
+
+- id: opatowek-kosciol
+  nazwa: "Kościół parafialny NSJ w Opatówku"
+  typ: kościół
+  nadrzedne: opatowek
+  pewnosc_identyfikacji: pewna
+
+- id: warszawa-narbutta-60
+  nazwa: "Warszawa, Narbutta 60 (Kolonia Mokotów)"
+  typ: ulica/dom
+  nadrzedne: warszawa
+  pewnosc_identyfikacji: pewna
+
+- id: kosiki-dzialy
+  nazwa: "Działy Królewskie, wieś Kosiki[?] Nowy, gromada Malinów[?], pow. otwocki"
+  typ: inny
+  pewnosc_identyfikacji: do_ustalenia
+
+- id: poznan-kamienica
+  nazwa: "Kamienica w Śródmieściu Poznania"
+  typ: ulica/dom
+  nadrzedne: poznan
+  pewnosc_identyfikacji: prawdopodobna

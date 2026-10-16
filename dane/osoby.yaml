@@ -2302,3 +2302,52 @@
   nazwisko: "Grabińska"
   nazwisko_rodowe: "Zamoyska"
   plec: k
+
+- id: grabinski-jan-opat
+  imiona: ["Jan"]
+  nazwisko: "Grabiński"
+  herb: Pomian
+  plec: m
+  warianty: ["Joannes Grabiński", "opat Jan Grabiński"]
+  uwagi: "Opat oliwski (±1633)."
+
+- id: grabinski-aleksander-opat
+  imiona: ["Aleksander"]
+  nazwisko: "Grabiński"
+  herb: Pomian
+  plec: m
+  warianty: ["opat Aleksander Grabiński"]
+  uwagi: "Opat oliwski (zm. 1639?)."
+
+- id: miarek-jan-ks
+  imiona: ["Jan"]
+  nazwisko: "Miarek"
+  plec: m
+  warianty: ["Ks. prałat Jan Miarek"]
+  uwagi: "Późniejszy dopisek przy grobie na Powązkach."
+
+- id: tonia
+  imiona: ["Tonia[?]"]
+  nazwisko: null
+  plec: k
+  warianty: ["p. Tonia[?]"]
+  uwagi: "Pochowana w kaplicy w Wartkowicach; por. S03 „p. Teresa Kilis[?]”."
+
+- id: mierzynski-jan-1801
+  imiona: ["Jan"]
+  nazwisko: "Mierzyński"
+  plec: m
+  warianty: ["Jan Mierzyński z Węgrz"]
+
+- id: turzewska
+  imiona: []
+  nazwisko: "Mierzyńska"
+  nazwisko_rodowe: "Turzewska[?]"
+  plec: k
+  uwagi: "Żona Jana Mierzyńskiego (1801–1880)."
+
+- id: przadzynski-jozef
+  imiona: ["Józef"]
+  nazwisko: "Prządzyński"
+  plec: m
+  uwagi: "Pochowany w grobie kw. 6 rząd 6 grób 12 na Powązkach."
