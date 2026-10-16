@@ -1,0 +1,1082 @@
+ameryka:
+  odrzucone: true
+  osm: node/3009687914
+  sprawdzone: false
+  wsp:
+  - 50.83691
+  - 18.37964
+  zakres: region
+  zapytanie: Ameryka
+  znaleziono: Ameryka, Leśna, gmina Olesno, powiat oleski, województwo opolskie, 46-300, Polska
+  zrodlo: OpenStreetMap Nominatim
+antony:
+  osm: relation/57750
+  poprawka: Antony, Hauts-de-Seine
+  sprawdzone: true
+  wsp:
+  - 48.75361
+  - 2.2958
+  zapytanie: Antony, Hauts-de-Seine
+  znaleziono: Antony, Hauts-de-Seine, Île-de-France, Francja metropolitalna, 92160, Francja
+  zrodlo: OpenStreetMap Nominatim
+berlin:
+  osm: relation/62422
+  poprawka: Berlin, Deutschland
+  sprawdzone: true
+  wsp:
+  - 52.51739
+  - 13.39513
+  zapytanie: Berlin, Deutschland
+  znaleziono: Berlin, Niemcy
+  zrodlo: OpenStreetMap Nominatim
+bialystok:
+  osm: relation/1429268
+  sprawdzone: true
+  wsp:
+  - 53.1324
+  - 23.15917
+  zakres: Polska
+  zapytanie: Białystok
+  znaleziono: Białystok, województwo podlaskie, Polska
+  zrodlo: OpenStreetMap Nominatim
+bleszno:
+  osm: relation/2800124
+  poprawka: Błeszno, Częstochowa
+  sprawdzone: true
+  wsp:
+  - 50.76673
+  - 19.15001
+  zapytanie: Błeszno, Częstochowa
+  znaleziono: Błeszno, Częstochowa, województwo śląskie, 42-208, Polska
+  zrodlo: OpenStreetMap Nominatim
+bochnia:
+  osm: relation/2755994
+  sprawdzone: true
+  wsp:
+  - 49.96936
+  - 20.43054
+  zakres: Polska
+  zapytanie: Bochnia
+  znaleziono: Bochnia, powiat bocheński, województwo małopolskie, 32-700, Polska
+  zrodlo: OpenStreetMap Nominatim
+bolonia-cmentarz:
+  osm: relation/43173
+  poprawka: San Lazzaro di Savena
+  sprawdzone: true
+  wsp:
+  - 44.47157
+  - 11.40486
+  zapytanie: San Lazzaro di Savena
+  znaleziono: San Lazzaro di Savena, Bolonia, Emilia-Romania, 40068, Włochy
+  zrodlo: OpenStreetMap Nominatim
+borowicze:
+  osm: relation/3436505
+  sprawdzone: true
+  wsp:
+  - 58.38901
+  - 33.90683
+  zakres: świat
+  zapytanie: Borowicze
+  znaleziono: Borowicze, Боровичский муниципальный округ, Obwód nowogrodzki, Północno-Zachodni Okręg Federalny, Rosja
+  zrodlo: OpenStreetMap Nominatim
+brazylia:
+  odrzucone: true
+  osm: node/3009672053
+  sprawdzone: false
+  wsp:
+  - 52.85215
+  - 16.02026
+  zakres: Polska
+  zapytanie: Brazylia
+  znaleziono: Brazylia, Drawsko, gmina Drawsko, powiat czarnkowsko-trzcianecki, województwo wielkopolskie, 64-760, Polska
+  zrodlo: OpenStreetMap Nominatim
+brwinow:
+  osm: relation/2997061
+  sprawdzone: true
+  wsp:
+  - 52.14256
+  - 20.71707
+  zakres: Polska
+  zapytanie: Brwinów
+  znaleziono: Brwinów, gmina Brwinów, powiat pruszkowski, województwo mazowieckie, 05-840, Polska
+  zrodlo: OpenStreetMap Nominatim
+bugaj-radoszewicki:
+  osm: node/31809967
+  poprawka: Bugaj, gmina Siemkowice
+  sprawdzone: true
+  wsp:
+  - 51.21633
+  - 18.79455
+  zapytanie: Bugaj, gmina Siemkowice
+  znaleziono: Bugaj Radoszewicki, Pieńki Laskowskie, gmina Siemkowice, powiat pajęczański, województwo łódzkie, 98-354, Polska
+  zrodlo: OpenStreetMap Nominatim
+bytom:
+  osm: relation/334927
+  poprawka: Bytom, województwo śląskie
+  sprawdzone: true
+  wsp:
+  - 50.34704
+  - 18.92319
+  zapytanie: Bytom, województwo śląskie
+  znaleziono: Bytom, Górnośląsko-Zagłębiowska Metropolia, województwo śląskie, Polska
+  zrodlo: OpenStreetMap Nominatim
+charlupia-mala:
+  osm: node/31809292
+  sprawdzone: true
+  wsp:
+  - 51.61983
+  - 18.67947
+  zakres: region
+  zapytanie: Charłupia Mała
+  znaleziono: Charłupia Mała, gmina Sieradz, powiat sieradzki, województwo łódzkie, 98-200, Polska
+  zrodlo: OpenStreetMap Nominatim
+chorzew:
+  osm: relation/19321784
+  sprawdzone: true
+  wsp:
+  - 51.2059
+  - 18.95356
+  zakres: region
+  zapytanie: Chorzew
+  znaleziono: Chorzew, gmina Kiełczygłów, powiat pajęczański, województwo łódzkie, 98-358, Polska
+  zrodlo: OpenStreetMap Nominatim
+cieszyn:
+  osm: relation/2413313
+  poprawka: Cieszyn, powiat cieszyński
+  sprawdzone: true
+  wsp:
+  - 49.74886
+  - 18.63343
+  zapytanie: Cieszyn, powiat cieszyński
+  znaleziono: Cieszyn, powiat cieszyński, województwo śląskie, 43-400, Polska
+  zrodlo: OpenStreetMap Nominatim
+czarna:
+  osm: relation/7473351
+  poprawka: Czarna, gmina Wołomin
+  sprawdzone: true
+  wsp:
+  - 52.36827
+  - 21.22587
+  zapytanie: Czarna, gmina Wołomin
+  znaleziono: Czarna, gmina Wołomin, powiat wołomiński, województwo mazowieckie, Polska
+  zrodlo: OpenStreetMap Nominatim
+czestochowa-jasna-gora:
+  osm: relation/13236692
+  sprawdzone: true
+  wsp:
+  - 50.81276
+  - 19.09712
+  zakres: region
+  zapytanie: Jasna Góra
+  znaleziono: Jasna Góra, Pasaż Biskupa Stefana Bareły, Jasna Góra, Podjasnogórska, Częstochowa, województwo śląskie, 42-200, Polska
+  zrodlo: OpenStreetMap Nominatim
+deby-laskarzew:
+  poprawka: Dęby, gmina Łaskarzew
+  wsp: null
+  zapytanie: Dęby, gmina Łaskarzew
+  znaleziono: null
+dolina-folwark:
+  poprawka: Dolina, gmina Kiełczygłów
+  wsp: null
+  zapytanie: Dolina, gmina Kiełczygłów
+  znaleziono: null
+domanice:
+  osm: node/2105388181
+  poprawka: Domanice, powiat siedlecki
+  sprawdzone: true
+  wsp:
+  - 52.03678
+  - 22.17628
+  zapytanie: Domanice, powiat siedlecki
+  znaleziono: Domanice, gmina Domanice, powiat siedlecki, województwo mazowieckie, 08-113, Polska
+  zrodlo: OpenStreetMap Nominatim
+drezno:
+  osm: relation/191645
+  poprawka: Dresden, Deutschland
+  sprawdzone: true
+  wsp:
+  - 51.04933
+  - 13.73814
+  zapytanie: Dresden, Deutschland
+  znaleziono: Drezno, Saksonia, Niemcy
+  zrodlo: OpenStreetMap Nominatim
+francja:
+  odrzucone: true
+  osm: relation/2202162
+  sprawdzone: false
+  wsp:
+  - 46.60335
+  - 1.88833
+  zakres: region
+  zapytanie: Francja
+  znaleziono: Francja
+  zrodlo: OpenStreetMap Nominatim
+gabryelow:
+  osm: node/2833970876
+  poprawka: Gabrielów, powiat pajęczański
+  sprawdzone: true
+  wsp:
+  - 51.26092
+  - 18.81031
+  zapytanie: Gabrielów, powiat pajęczański
+  znaleziono: Gabrielów, Osjakowska, Młyńska Kolonia, Radoszewice, gmina Siemkowice, powiat pajęczański, województwo łódzkie, 98-354, Polska
+  zrodlo: OpenStreetMap Nominatim
+genewa:
+  osm: relation/1685488
+  poprawka: Genève, Suisse
+  sprawdzone: true
+  wsp:
+  - 46.20176
+  - 6.1466
+  zapytanie: Genève, Suisse
+  znaleziono: Genewa, Szwajcaria
+  zrodlo: OpenStreetMap Nominatim
+gliwice:
+  osm: relation/2103532
+  sprawdzone: true
+  wsp:
+  - 50.29411
+  - 18.66573
+  zakres: Polska
+  zapytanie: Gliwice
+  znaleziono: Gliwice, Górnośląsko-Zagłębiowska Metropolia, województwo śląskie, Polska
+  zrodlo: OpenStreetMap Nominatim
+gniezno:
+  osm: relation/2859016
+  sprawdzone: true
+  wsp:
+  - 52.53597
+  - 17.59589
+  zakres: region
+  zapytanie: Gniezno
+  znaleziono: Gniezno, powiat gnieźnieński, województwo wielkopolskie, Polska
+  zrodlo: OpenStreetMap Nominatim
+grodno:
+  osm: relation/130921
+  sprawdzone: true
+  wsp:
+  - 53.68346
+  - 23.83426
+  zakres: świat
+  zapytanie: Grodno, Białoruś
+  znaleziono: Grodno, Obwód grodzieński, Białoruś
+  zrodlo: OpenStreetMap Nominatim
+grodzisk-mazowiecki:
+  osm: relation/336618
+  poprawka: Grodzisk Mazowiecki
+  sprawdzone: true
+  wsp:
+  - 52.10662
+  - 20.63134
+  zapytanie: Grodzisk Mazowiecki
+  znaleziono: Grodzisk Mazowiecki, gmina Grodzisk Mazowiecki, powiat grodziski, województwo mazowieckie, 05-827, Polska
+  zrodlo: OpenStreetMap Nominatim
+gubernia-jenisejska:
+  odrzucone: true
+  wsp: null
+  zapytanie: gubernia jenisejska
+  znaleziono: null
+guzow:
+  osm: relation/13510489
+  sprawdzone: true
+  wsp:
+  - 52.11709
+  - 20.33749
+  zakres: region
+  zapytanie: Guzów
+  znaleziono: Guzów, gmina Wiskitki, powiat żyrardowski, województwo mazowieckie, 96-317, Polska
+  zrodlo: OpenStreetMap Nominatim
+hiszpania:
+  odrzucone: true
+  osm: node/31623232
+  sprawdzone: false
+  wsp:
+  - 52.12494
+  - 18.32683
+  zakres: region
+  zapytanie: Hiszpania
+  znaleziono: Hiszpania, gmina Krzymów, powiat koniński, województwo wielkopolskie, 62-513, Polska
+  zrodlo: OpenStreetMap Nominatim
+imbramowice:
+  osm: relation/5654065
+  sprawdzone: true
+  wsp:
+  - 50.30168
+  - 19.84963
+  zakres: Polska
+  zapytanie: Imbramowice
+  znaleziono: Imbramowice, gmina Trzyciąż, powiat olkuski, województwo małopolskie, 32-042, Polska
+  zrodlo: OpenStreetMap Nominatim
+janowiec:
+  osm: relation/3642106
+  poprawka: Janowiec, powiat puławski
+  sprawdzone: true
+  wsp:
+  - 51.32329
+  - 21.89062
+  zapytanie: Janowiec, powiat puławski
+  znaleziono: Janowiec, gmina Janowiec, powiat puławski, województwo lubelskie, Polska
+  zrodlo: OpenStreetMap Nominatim
+jaroslaw:
+  osm: relation/2647732
+  poprawka: Jarosław, powiat jarosławski
+  sprawdzone: true
+  wsp:
+  - 50.0159
+  - 22.67966
+  zapytanie: Jarosław, powiat jarosławski
+  znaleziono: Jarosław, powiat jarosławski, województwo podkarpackie, 37-500, Polska
+  zrodlo: OpenStreetMap Nominatim
+jarzabkowo:
+  osm: node/31622663
+  poprawka: Jarząbkowo
+  sprawdzone: true
+  wsp:
+  - 52.40684
+  - 17.6196
+  zapytanie: Jarząbkowo
+  znaleziono: Jarząbkowo, gmina Niechanowo, powiat gnieźnieński, województwo wielkopolskie, 62-242, Polska
+  zrodlo: OpenStreetMap Nominatim
+jedrzejow:
+  osm: relation/1739992
+  sprawdzone: true
+  wsp:
+  - 50.63944
+  - 20.30461
+  zakres: region
+  zapytanie: Jędrzejów
+  znaleziono: Jędrzejów, gmina Jędrzejów, powiat jędrzejowski, województwo świętokrzyskie, Polska
+  zrodlo: OpenStreetMap Nominatim
+kalisz:
+  osm: relation/2456288
+  sprawdzone: true
+  wsp:
+  - 51.74729
+  - 18.07953
+  zakres: region
+  zapytanie: Kalisz
+  znaleziono: Kalisz, województwo wielkopolskie, 62-800, Polska
+  zrodlo: OpenStreetMap Nominatim
+karlsbad:
+  osm: relation/439482
+  sprawdzone: true
+  wsp:
+  - 50.23062
+  - 12.87014
+  zakres: świat
+  zapytanie: Karlsbad
+  znaleziono: Karlowe Wary, okres Karlovy Vary, Kraj karlowarski, Czechy
+  zrodlo: OpenStreetMap Nominatim
+katarzynopol:
+  poprawka: Katarzynopol
+  wsp: null
+  zapytanie: Katarzynopol
+  znaleziono: null
+kielce:
+  osm: relation/1627497
+  poprawka: Kielce
+  sprawdzone: true
+  wsp:
+  - 50.87199
+  - 20.63105
+  zapytanie: Kielce
+  znaleziono: Kielce, województwo świętokrzyskie, Polska
+  zrodlo: OpenStreetMap Nominatim
+kielczyglow:
+  osm: relation/19210984
+  sprawdzone: true
+  wsp:
+  - 51.23875
+  - 18.98737
+  zakres: region
+  zapytanie: Kiełczygłów
+  znaleziono: Kiełczygłów, gmina Kiełczygłów, powiat pajęczański, województwo łódzkie, Polska
+  zrodlo: OpenStreetMap Nominatim
+kiernozia:
+  osm: relation/16887880
+  sprawdzone: true
+  wsp:
+  - 52.26877
+  - 19.8711
+  zakres: region
+  zapytanie: Kiernozia
+  znaleziono: Kiernozia, gmina Kiernozia, powiat łowicki, województwo łódzkie, 99-412, Polska
+  zrodlo: OpenStreetMap Nominatim
+kije:
+  osm: relation/19317424
+  poprawka: Kije, powiat pajęczański
+  sprawdzone: true
+  wsp:
+  - 51.26889
+  - 18.85194
+  zapytanie: Kije, powiat pajęczański
+  znaleziono: Kije, gmina Siemkowice, powiat pajęczański, województwo łódzkie, 98-354, Polska
+  zrodlo: OpenStreetMap Nominatim
+kijow:
+  osm: relation/421866
+  poprawka: Kyiv, Ukraine
+  sprawdzone: true
+  wsp:
+  - 50.45003
+  - 30.52414
+  zapytanie: Kyiv, Ukraine
+  znaleziono: Kijów, Ukraina
+  zrodlo: OpenStreetMap Nominatim
+klimontow:
+  osm: relation/5633782
+  sprawdzone: true
+  wsp:
+  - 50.65639
+  - 21.45062
+  zakres: Polska
+  zapytanie: Klimontów
+  znaleziono: Klimontów, gmina Klimontów, powiat sandomierski, województwo świętokrzyskie, 27-640, Polska
+  zrodlo: OpenStreetMap Nominatim
+kolo:
+  osm: relation/2859100
+  sprawdzone: true
+  wsp:
+  - 52.20199
+  - 18.63599
+  zakres: region
+  zapytanie: Koło
+  znaleziono: Koło, powiat kolski, województwo wielkopolskie, Polska
+  zrodlo: OpenStreetMap Nominatim
+konopnica-widawa:
+  osm: relation/3744740
+  poprawka: Konopnica, powiat wieluński
+  sprawdzone: true
+  wsp:
+  - 51.35414
+  - 18.82251
+  zapytanie: Konopnica, powiat wieluński
+  znaleziono: Konopnica, gmina Konopnica, powiat wieluński, województwo łódzkie, 98-313, Polska
+  zrodlo: OpenStreetMap Nominatim
+konopnice:
+  osm: relation/3744740
+  poprawka: Konopnica, powiat wieluński
+  sprawdzone: true
+  wsp:
+  - 51.35414
+  - 18.82251
+  zapytanie: Konopnica, powiat wieluński
+  znaleziono: Konopnica, gmina Konopnica, powiat wieluński, województwo łódzkie, 98-313, Polska
+  zrodlo: OpenStreetMap Nominatim
+koscierzyn:
+  osm: node/529115928
+  poprawka: Kościerzyn, gmina Wróblew
+  sprawdzone: true
+  wsp:
+  - 51.62266
+  - 18.63897
+  zapytanie: Kościerzyn, gmina Wróblew
+  znaleziono: Kościerzyn, gmina Wróblew, powiat sieradzki, województwo łódzkie, 98-285, Polska
+  zrodlo: OpenStreetMap Nominatim
+krajkowice:
+  poprawka: Krajkowice, gmina Poddębice
+  wsp: null
+  zapytanie: Krajkowice, gmina Poddębice
+  znaleziono: null
+krakow:
+  osm: relation/449696
+  poprawka: Kraków
+  sprawdzone: true
+  wsp:
+  - 50.06195
+  - 19.93686
+  zapytanie: Kraków
+  znaleziono: Kraków, województwo małopolskie, Polska
+  zrodlo: OpenStreetMap Nominatim
+krempa:
+  osm: node/1861867940
+  poprawka: Krępa, gmina Poddębice
+  sprawdzone: true
+  wsp:
+  - 51.88725
+  - 18.83977
+  zapytanie: Krępa, gmina Poddębice
+  znaleziono: Krępa, gmina Poddębice, powiat poddębicki, województwo łódzkie, 99-200, Polska
+  zrodlo: OpenStreetMap Nominatim
+kuszyna:
+  osm: relation/19318387
+  sprawdzone: true
+  wsp:
+  - 51.2762
+  - 18.88851
+  zakres: region
+  zapytanie: Kuszyna
+  znaleziono: Kuszyna, gmina Kiełczygłów, powiat pajęczański, województwo łódzkie, 98-358, Polska
+  zrodlo: OpenStreetMap Nominatim
+lancut:
+  osm: relation/2975475
+  sprawdzone: true
+  wsp:
+  - 50.06907
+  - 22.23209
+  zakres: Polska
+  zapytanie: Łańcut
+  znaleziono: Łańcut, powiat łańcucki, województwo podkarpackie, 37-100, Polska
+  zrodlo: OpenStreetMap Nominatim
+leczyca:
+  osm: relation/2929589
+  sprawdzone: true
+  wsp:
+  - 52.05939
+  - 19.20164
+  zakres: region
+  zapytanie: Łęczyca
+  znaleziono: Łęczyca, powiat łęczycki, województwo łódzkie, Polska
+  zrodlo: OpenStreetMap Nominatim
+leznica-wielka:
+  osm: node/692608370
+  sprawdzone: true
+  wsp:
+  - 51.9952
+  - 19.14676
+  zakres: region
+  zapytanie: Leźnica Wielka
+  znaleziono: Leźnica Wielka, Opole, gmina Parzęczew, powiat zgierski, województwo łódzkie, 95-043, Polska
+  zrodlo: OpenStreetMap Nominatim
+libia:
+  odrzucone: true
+  osm: way/380471068
+  sprawdzone: false
+  wsp:
+  - 52.13769
+  - 21.02833
+  zakres: Polska
+  zapytanie: Libia
+  znaleziono: Ambasada Libii, 26/26B, Żołny, Zielony Ursynów, Pyry, Ursynów, Warszawa, województwo mazowieckie, 02-815, Polska
+  zrodlo: OpenStreetMap Nominatim
+lida:
+  osm: relation/400507
+  sprawdzone: true
+  wsp:
+  - 53.89164
+  - 25.30229
+  zakres: świat
+  zapytanie: Lida, Białoruś
+  znaleziono: Lida, rejon lidzki, Obwód grodzieński, Białoruś
+  zrodlo: OpenStreetMap Nominatim
+londyn:
+  osm: relation/175342
+  poprawka: London, United Kingdom
+  sprawdzone: true
+  wsp:
+  - 51.50745
+  - -0.12777
+  zapytanie: London, United Kingdom
+  znaleziono: Londyn, Anglia, Wielka Brytania
+  zrodlo: OpenStreetMap Nominatim
+lublin:
+  osm: relation/2904797
+  sprawdzone: true
+  wsp:
+  - 51.21819
+  - 22.55468
+  zakres: Polska
+  zapytanie: Lublin
+  znaleziono: Lublin, województwo lubelskie, Polska
+  zrodlo: OpenStreetMap Nominatim
+lwow:
+  osm: relation/2032280
+  poprawka: Lviv, Ukraine
+  sprawdzone: true
+  wsp:
+  - 49.84195
+  - 24.03159
+  zapytanie: Lviv, Ukraine
+  znaleziono: Lwów, Львівська міська громада, Rejon lwowski, Obwód lwowski, Ukraina
+  zrodlo: OpenStreetMap Nominatim
+lysa-gora:
+  osm: node/2575206183
+  poprawka: Święty Krzyż, Nowa Słupia
+  sprawdzone: true
+  wsp:
+  - 50.86039
+  - 21.04754
+  zapytanie: Święty Krzyż, Nowa Słupia
+  znaleziono: Łysa Góra, Nowa Słupia, gmina Nowa Słupia, powiat kielecki, województwo świętokrzyskie, 26-006, Polska
+  zrodlo: OpenStreetMap Nominatim
+marchwacz:
+  osm: node/31795894
+  poprawka: Marchwacz
+  sprawdzone: true
+  wsp:
+  - 51.72541
+  - 18.28985
+  zapytanie: Marchwacz
+  znaleziono: Marchwacz, gmina Szczytniki, powiat kaliski, województwo wielkopolskie, 62-865, Polska
+  zrodlo: OpenStreetMap Nominatim
+marienbad:
+  osm: relation/439458
+  sprawdzone: true
+  wsp:
+  - 49.97395
+  - 12.70332
+  zakres: świat
+  zapytanie: Marienbad
+  znaleziono: Mariańskie Łaźnie, okres Cheb, Kraj karlowarski, Czechy
+  zrodlo: OpenStreetMap Nominatim
+mierzanow:
+  osm: node/3009725540
+  poprawka: Mierzanów
+  sprawdzone: true
+  wsp:
+  - 51.23111
+  - 18.81472
+  zapytanie: Mierzanów
+  znaleziono: Mierzanów, Zmyślona, gmina Siemkowice, powiat pajęczański, województwo łódzkie, 98-354, Polska
+  zrodlo: OpenStreetMap Nominatim
+milanowek:
+  osm: relation/336619
+  sprawdzone: true
+  wsp:
+  - 52.12377
+  - 20.66933
+  zakres: Polska
+  zapytanie: Milanówek
+  znaleziono: Milanówek, powiat grodziski, województwo mazowieckie, 05-822, Polska
+  zrodlo: OpenStreetMap Nominatim
+montmorency:
+  osm: relation/115244
+  poprawka: Montmorency, Val-d'Oise
+  sprawdzone: true
+  wsp:
+  - 48.98917
+  - 2.31971
+  zapytanie: Montmorency, Val-d'Oise
+  znaleziono: Montmorency, Sarcelles, Val-d'Oise, Île-de-France, Francja metropolitalna, 95160, Francja
+  zrodlo: OpenStreetMap Nominatim
+nowy-jork:
+  osm: relation/175905
+  poprawka: New York City
+  sprawdzone: true
+  wsp:
+  - 40.71273
+  - -74.00602
+  zapytanie: New York City
+  znaleziono: Nowy Jork, Stany Zjednoczone
+  zrodlo: OpenStreetMap Nominatim
+obrzycko:
+  osm: relation/2860514
+  poprawka: Obrzycko
+  sprawdzone: true
+  wsp:
+  - 52.70644
+  - 16.52524
+  zapytanie: Obrzycko
+  znaleziono: Obrzycko, powiat szamotulski, województwo wielkopolskie, 64-520, Polska
+  zrodlo: OpenStreetMap Nominatim
+oleszno:
+  osm: relation/6175853
+  sprawdzone: false
+  wsp:
+  - 50.9412
+  - 20.04456
+  zakres: region
+  zapytanie: Oleszno
+  znaleziono: Oleszno, gmina Krasocin, powiat włoszczowski, województwo świętokrzyskie, Polska
+  zrodlo: OpenStreetMap Nominatim
+oliwa:
+  osm: relation/2642950
+  poprawka: Oliwa, Gdańsk
+  sprawdzone: true
+  wsp:
+  - 54.40879
+  - 18.55685
+  zapytanie: Oliwa, Gdańsk
+  znaleziono: Oliwa, Gdańsk, województwo pomorskie, Polska
+  zrodlo: OpenStreetMap Nominatim
+opatowek:
+  osm: relation/6838007
+  sprawdzone: true
+  wsp:
+  - 51.73944
+  - 18.21373
+  zakres: region
+  zapytanie: Opatówek
+  znaleziono: Opatówek, gmina Opatówek, powiat kaliski, województwo wielkopolskie, 62-860, Polska
+  zrodlo: OpenStreetMap Nominatim
+osjakow:
+  osm: relation/3710883
+  sprawdzone: true
+  wsp:
+  - 51.28898
+  - 18.7911
+  zakres: region
+  zapytanie: Osjaków
+  znaleziono: Osjaków, gmina Osjaków, powiat wieluński, województwo łódzkie, 98-320, Polska
+  zrodlo: OpenStreetMap Nominatim
+ozegow:
+  osm: relation/19314337
+  sprawdzone: true
+  wsp:
+  - 51.17397
+  - 18.88852
+  zakres: region
+  zapytanie: Ożegów
+  znaleziono: Ożegów, gmina Siemkowice, powiat pajęczański, województwo łódzkie, 98-354, Polska
+  zrodlo: OpenStreetMap Nominatim
+pajeczno:
+  osm: relation/2911374
+  sprawdzone: true
+  wsp:
+  - 51.14688
+  - 18.9957
+  zakres: region
+  zapytanie: Pajęczno
+  znaleziono: Pajęczno, gmina Pajęczno, powiat pajęczański, województwo łódzkie, 98-330, Polska
+  zrodlo: OpenStreetMap Nominatim
+paryz:
+  osm: relation/7444
+  poprawka: Paris, France
+  sprawdzone: true
+  wsp:
+  - 48.85889
+  - 2.32004
+  zapytanie: Paris, France
+  znaleziono: Paryż, Île-de-France, Francja metropolitalna, Francja
+  zrodlo: OpenStreetMap Nominatim
+piotrkow:
+  osm: relation/2920129
+  sprawdzone: true
+  wsp:
+  - 51.41285
+  - 19.68868
+  zakres: region
+  zapytanie: Piotrków
+  znaleziono: Piotrków Trybunalski, województwo łódzkie, 97-300, Polska
+  zrodlo: OpenStreetMap Nominatim
+pniewy:
+  osm: relation/2103042
+  sprawdzone: true
+  wsp:
+  - 52.50896
+  - 16.25664
+  zakres: Polska
+  zapytanie: Pniewy
+  znaleziono: Pniewy, gmina Pniewy, powiat szamotulski, województwo wielkopolskie, Polska
+  zrodlo: OpenStreetMap Nominatim
+poddebice:
+  osm: relation/2066673
+  sprawdzone: true
+  wsp:
+  - 51.89266
+  - 18.95189
+  zakres: region
+  zapytanie: Poddębice
+  znaleziono: Poddębice, gmina Poddębice, powiat poddębicki, województwo łódzkie, 91-200, Polska
+  zrodlo: OpenStreetMap Nominatim
+podkowa-lesna:
+  osm: relation/336620
+  poprawka: Podkowa Leśna, powiat grodziski
+  sprawdzone: true
+  wsp:
+  - 52.12178
+  - 20.72955
+  zapytanie: Podkowa Leśna, powiat grodziski
+  znaleziono: Podkowa Leśna, powiat grodziski, województwo mazowieckie, 05-807, Polska
+  zrodlo: OpenStreetMap Nominatim
+poznan:
+  osm: relation/2989158
+  poprawka: Poznań
+  sprawdzone: true
+  wsp:
+  - 52.40066
+  - 16.91973
+  zapytanie: Poznań
+  znaleziono: Poznań, powiat poznański, województwo wielkopolskie, Polska
+  zrodlo: OpenStreetMap Nominatim
+praga-czeska:
+  osm: relation/435514
+  poprawka: Praha, Česko
+  sprawdzone: true
+  wsp:
+  - 50.08747
+  - 14.42125
+  zapytanie: Praha, Česko
+  znaleziono: Praga, Czechy
+  zrodlo: OpenStreetMap Nominatim
+praszka:
+  osm: relation/2709668
+  sprawdzone: true
+  wsp:
+  - 51.05536
+  - 18.44852
+  zakres: region
+  zapytanie: Praszka
+  znaleziono: Praszka, gmina Praszka, powiat oleski, województwo opolskie, 46-320, Polska
+  zrodlo: OpenStreetMap Nominatim
+prusiecko:
+  poprawka: Prusiecko
+  wsp: null
+  zapytanie: Prusiecko
+  znaleziono: null
+przemysl:
+  osm: relation/1748161
+  poprawka: Przemyśl, powiat przemyski
+  sprawdzone: false
+  wsp:
+  - 49.73353
+  - 22.77948
+  zapytanie: Przemyśl, powiat przemyski
+  znaleziono: gmina Przemyśl, powiat przemyski, województwo podkarpackie, Polska
+  zrodlo: OpenStreetMap Nominatim
+radoszewice:
+  osm: relation/19317426
+  poprawka: Radoszewice, gmina Siemkowice
+  sprawdzone: true
+  wsp:
+  - 51.24913
+  - 18.83342
+  zapytanie: Radoszewice, gmina Siemkowice
+  znaleziono: Radoszewice, gmina Siemkowice, powiat pajęczański, województwo łódzkie, 98-354, Polska
+  zrodlo: OpenStreetMap Nominatim
+raduczyce:
+  osm: relation/3706117
+  sprawdzone: true
+  wsp:
+  - 51.26001
+  - 18.781
+  zakres: region
+  zapytanie: Raduczyce
+  znaleziono: Raduczyce, gmina Osjaków, powiat wieluński, województwo łódzkie, Polska
+  zrodlo: OpenStreetMap Nominatim
+rychlocice:
+  osm: relation/3745231
+  sprawdzone: true
+  wsp:
+  - 51.38784
+  - 18.81671
+  zakres: region
+  zapytanie: Rychłocice
+  znaleziono: Rychłocice, gmina Konopnica, powiat wieluński, województwo łódzkie, Polska
+  zrodlo: OpenStreetMap Nominatim
+rzeszow:
+  osm: relation/2904809
+  poprawka: Rzeszów
+  sprawdzone: true
+  wsp:
+  - 50.01332
+  - 22.01617
+  zapytanie: Rzeszów
+  znaleziono: Rzeszów, województwo podkarpackie, Polska
+  zrodlo: OpenStreetMap Nominatim
+rzym:
+  osm: relation/41485
+  poprawka: Roma, Italia
+  sprawdzone: true
+  wsp:
+  - 41.89332
+  - 12.48293
+  zapytanie: Roma, Italia
+  znaleziono: Rzym, Roma Capitale, Lacjum, Włochy
+  zrodlo: OpenStreetMap Nominatim
+sandomierz:
+  osm: relation/2966766
+  sprawdzone: true
+  wsp:
+  - 50.67931
+  - 21.74951
+  zakres: Polska
+  zapytanie: Sandomierz
+  znaleziono: Sandomierz, powiat sandomierski, województwo świętokrzyskie, Polska
+  zrodlo: OpenStreetMap Nominatim
+sedziejowice:
+  osm: node/31879499
+  sprawdzone: true
+  wsp:
+  - 51.51158
+  - 19.02738
+  zakres: region
+  zapytanie: Sędziejowice
+  znaleziono: Sędziejowice, gmina Sędziejowice, powiat łaski, województwo łódzkie, 98-160, Polska
+  zrodlo: OpenStreetMap Nominatim
+siemkowice:
+  osm: relation/19277954
+  poprawka: Siemkowice, powiat pajęczański
+  sprawdzone: true
+  wsp:
+  - 51.20326
+  - 18.90125
+  zapytanie: Siemkowice, powiat pajęczański
+  znaleziono: Siemkowice, gmina Siemkowice, powiat pajęczański, województwo łódzkie, 98-354, Polska
+  zrodlo: OpenStreetMap Nominatim
+sieradz:
+  osm: relation/2911959
+  sprawdzone: true
+  wsp:
+  - 51.59425
+  - 18.73788
+  zakres: region
+  zapytanie: Sieradz
+  znaleziono: Sieradz, powiat sieradzki, województwo łódzkie, Polska
+  zrodlo: OpenStreetMap Nominatim
+slupia-kepno:
+  osm: node/529115701
+  poprawka: Słupia pod Kępnem
+  sprawdzone: true
+  wsp:
+  - 51.24018
+  - 18.03763
+  zapytanie: Słupia pod Kępnem
+  znaleziono: Słupia pod Kępnem, gmina Baranów, powiat kępiński, województwo wielkopolskie, 63-648, Polska
+  zrodlo: OpenStreetMap Nominatim
+sokolka:
+  osm: relation/3089415
+  poprawka: Sokółka, powiat sokólski
+  sprawdzone: true
+  wsp:
+  - 53.40492
+  - 23.49956
+  zapytanie: Sokółka, powiat sokólski
+  znaleziono: Sokółka, gmina Sokółka, powiat sokólski, województwo podlaskie, 16-100, Polska
+  zrodlo: OpenStreetMap Nominatim
+sroda-wlkp:
+  osm: relation/2548899
+  sprawdzone: true
+  wsp:
+  - 52.22843
+  - 17.27783
+  zakres: region
+  zapytanie: Środa
+  znaleziono: Środa Wielkopolska, gmina Środa Wielkopolska, powiat średzki, województwo wielkopolskie, 63-000, Polska
+  zrodlo: OpenStreetMap Nominatim
+stezyca:
+  osm: relation/4226971
+  sprawdzone: true
+  wsp:
+  - 51.5826
+  - 21.77208
+  zakres: Polska
+  zapytanie: Stężyca
+  znaleziono: Stężyca, gmina Stężyca, powiat rycki, województwo lubelskie, 08-540, Polska
+  zrodlo: OpenStreetMap Nominatim
+strykow:
+  osm: relation/2925966
+  sprawdzone: true
+  wsp:
+  - 51.90094
+  - 19.6037
+  zakres: region
+  zapytanie: Stryków
+  znaleziono: Stryków, gmina Stryków, powiat zgierski, województwo łódzkie, Polska
+  zrodlo: OpenStreetMap Nominatim
+syberia-wschodnia:
+  odrzucone: true
+  wsp: null
+  zapytanie: Syberia Wschodnia
+  znaleziono: null
+szwajcaria:
+  odrzucone: true
+  osm: node/31608589
+  sprawdzone: false
+  wsp:
+  - 52.13423
+  - 18.31165
+  zakres: region
+  zapytanie: Szwajcaria
+  znaleziono: Szwajcaria, Izabelin, gmina Krzymów, powiat koniński, województwo wielkopolskie, 62-513, Polska
+  zrodlo: OpenStreetMap Nominatim
+turek:
+  osm: relation/2705484
+  sprawdzone: true
+  wsp:
+  - 52.0162
+  - 18.51145
+  zakres: region
+  zapytanie: Turek
+  znaleziono: Turek, powiat turecki, województwo wielkopolskie, 62-700, Polska
+  zrodlo: OpenStreetMap Nominatim
+uniejow:
+  osm: relation/2618456
+  sprawdzone: true
+  wsp:
+  - 51.97413
+  - 18.79324
+  zakres: region
+  zapytanie: Uniejów
+  znaleziono: Uniejów, gmina Uniejów, powiat poddębicki, województwo łódzkie, Polska
+  zrodlo: OpenStreetMap Nominatim
+warna:
+  osm: relation/13477567
+  sprawdzone: true
+  wsp:
+  - 43.20739
+  - 27.91667
+  zakres: świat
+  zapytanie: Warna
+  znaleziono: Warna, Одесос, Варна, Bułgaria
+  zrodlo: OpenStreetMap Nominatim
+warszawa:
+  osm: relation/336075
+  poprawka: Warszawa
+  sprawdzone: true
+  wsp:
+  - 52.23196
+  - 21.00672
+  zapytanie: Warszawa
+  znaleziono: Warszawa, województwo mazowieckie, Polska
+  zrodlo: OpenStreetMap Nominatim
+wartkowice:
+  osm: node/31879147
+  sprawdzone: true
+  wsp:
+  - 51.97557
+  - 19.00225
+  zakres: region
+  zapytanie: Wartkowice
+  znaleziono: Wartkowice, gmina Wartkowice, powiat poddębicki, województwo łódzkie, 99-220, Polska
+  zrodlo: OpenStreetMap Nominatim
+wielun:
+  osm: relation/1903950
+  sprawdzone: true
+  wsp:
+  - 51.22045
+  - 18.5701
+  zakres: region
+  zapytanie: Wieluń
+  znaleziono: Wieluń, gmina Wieluń, powiat wieluński, województwo łódzkie, 98-300, Polska
+  zrodlo: OpenStreetMap Nominatim
+wislica:
+  osm: relation/6476531
+  sprawdzone: true
+  wsp:
+  - 50.34848
+  - 20.67454
+  zakres: Polska
+  zapytanie: Wiślica
+  znaleziono: Wiślica, gmina Wiślica, powiat buski, województwo świętokrzyskie, Polska
+  zrodlo: OpenStreetMap Nominatim
+wlodzimierz:
+  odrzucone: true
+  osm: way/616291784
+  poprawka: Volodymyr, Volyn Oblast
+  sprawdzone: false
+  wsp:
+  - 50.7665
+  - 24.99875
+  zapytanie: Volodymyr, Volyn Oblast
+  znaleziono: Церква св. Стефана, ulica Niezależnośći, Torczyn, Торчинська селищна громада, Rejon łucki, 45612, Ukraina
+  zrodlo: OpenStreetMap Nominatim
+zakopane:
+  osm: relation/2838555
+  poprawka: Zakopane, powiat tatrzański
+  sprawdzone: true
+  wsp:
+  - 49.27579
+  - 19.96928
+  zapytanie: Zakopane, powiat tatrzański
+  znaleziono: Zakopane, powiat tatrzański, województwo małopolskie, Polska
+  zrodlo: OpenStreetMap Nominatim
+zmyslona:
+  osm: relation/19317422
+  sprawdzone: true
+  wsp:
+  - 51.23199
+  - 18.8047
+  zakres: region
+  zapytanie: Zmyślona
+  znaleziono: Zmyślona, gmina Siemkowice, powiat pajęczański, województwo łódzkie, 98-354, Polska
+  zrodlo: OpenStreetMap Nominatim
