@@ -1,0 +1,33 @@
+# Pozycje bibliograficzne wymieniane w źródłach (zob. SCHEMAT.md)
+
+- id: kosinski-przewodnik-2-1880
+  opis: "A. M. Kosiński, Przewodnik heraldyczny, t. II, Warszawa 1880"
+  dotyczy: "s. 467 (Rey herbu Oksza), s. 470"
+  segmenty: [S06-p01-s01]
+
+- id: dunin-borkowski-almanach-1908
+  opis: "Jerzy hr. Dunin Borkowski, Almanach Błękitny. Genealogia żyjących rodów polskich, 1908"
+  dotyczy: "Drohojowscy s. 321; Radoszewscy s. 1109"
+  segmenty: [S06-p01-s02]
+
+- id: korczynski-katedra-kijowska-2005
+  opis: "Ks. Kasjan Korczyński (oprac.), Katedra Kijowska, „Wołanie z Wołynia”, Biały Dunajec – Ostróg 2005"
+  dotyczy: "Bogusław Radoszewski, s. XIII, XVI; s. 7/33[?]"
+  segmenty: [S06-p01-s03]
+
+- id: nitecki-biskupi-2000
+  opis: "Ks. Piotr Nitecki, Biskupi Kościoła w Polsce w latach 965–1999. Słownik biograficzny, Instytut Wydawniczy PAX, Warszawa 2000"
+  segmenty: [S06-p01-s04]
+
+- id: prokop-biskupi-kijowscy-2003
+  opis: "Krzysztof Rafał Prokop, Biskupi kijowscy obrządku łacińskiego XIV–XVIII w. Szkice biograficzne, „Wołanie z Wołynia”, Biały Dunajec – Ostróg 2003"
+  dotyczy: "s. 62"
+  segmenty: [S06-p01-s05]
+
+- id: kuna-akademia-widawska
+  opis: "„Akademia Widawska”, oprac. Michał Kuna — reprodukcja pierwodruku (egz. BN i BUW)"
+  segmenty: [S06-p01-s06]
+
+- id: rocznik-kaliski-28
+  opis: "Rocznik Kaliski, t. XXVIII (PTH Oddział w Kaliszu): Francuskie listy z Berlina stryjecznych wnuków gen. Zajączka"
+  segmenty: [S06-p01-s07]

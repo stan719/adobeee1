@@ -117,3 +117,115 @@
   nazwisko: Radoszewska-Zielińska
   plec: k
   warianty: ["Anna Radoszewska Zielińska", "Anna Maria Boxa Radoszewska Zielińska", "Anulka"]
+
+- id: radoszewski-roch-1820
+  imiona: [Roch]
+  nazwisko: Radoszewski
+  plec: m
+  warianty: ["Roch Radoszewski (Kasztelanic)", "Roch Kasztelanic"]
+  uwagi: "Rok w id = rok śmierci (urodzenie nieznane)."
+
+- id: wierzchleyska-kunegunda-1828
+  imiona: [Kunegunda]
+  nazwisko: Radoszewska
+  nazwisko_rodowe: Wierzchleyska
+  herb: Bernstein
+  plec: k
+  warianty: ["Kunegunda z Wierzchleyskich Radoszewska", "Kunegunda Wierzchleyska"]
+  uwagi: "Rok w id = rok śmierci."
+
+- id: radoszewski-jozef-1850
+  imiona: [Józef]
+  nazwisko: Radoszewski
+  plec: m
+  warianty: ["Józef Radoszewski z Dominikowic", "Józef 1850 (brat Franciszka)"]
+  uwagi: "Rok w id = rok śmierci. Według S07-p54-s01 brat Franciszka (1790–1846)."
+
+- id: radoszewski-henryk-1861
+  imiona: [Henryk]
+  nazwisko: Radoszewski
+  plec: m
+  warianty: ["Henryk (33 lata)", "Henryk +1861 Kawaler", "Henryk 1861 syn Franciszka i Józefy"]
+  uwagi: "Rok w id = rok śmierci wg S05/S07; S03-p30-s02 podaje „Henryk 1850 (syn Franciszka)” — zob. twierdzenia."
+
+- id: szeliski-michal-1800
+  imiona: [Michał]
+  nazwisko: Szeliski
+  herb: Szeliga
+  plec: m
+  warianty: ["Michał Szeliski h. Szeliga z Marzenina"]
+
+- id: radoszewski-henryk-1862
+  imiona: [Henryk]
+  nazwisko: Radoszewski
+  plec: m
+  warianty: ["Henryś", "Henryś Radoszewski (8 lat)"]
+  uwagi: "Syn Józefata i Teofili, zmarł jako dziecko; rok w id orientacyjny (1870 − 8 lat)."
+
+- id: szumowski-antoni
+  imiona: [Antoni]
+  nazwisko: Szumowski
+  plec: m
+  uwagi: "Pochowany w kaplicy Radoszewskich w Uniejowie; pokrewieństwo nieznane."
+
+- id: szeliska-teofila-1842
+  imiona: [Teofila]
+  nazwisko: Radoszewska
+  nazwisko_rodowe: Szeliska
+  plec: k
+  warianty: ["Teofila z Szeliskich Radoszewska", "Teofila Szeliska"]
+
+- id: radoszewski-pawel-1608
+  imiona: [Paweł]
+  nazwisko: Radoszewski
+  plec: m
+  warianty: ["Paweł Radoszewski prowincjał OO. jezuitów"]
+  uwagi: "Rok w id = rok wzmianki."
+
+- id: radoszewski-stefan-1689
+  imiona: [Stefan]
+  nazwisko: Radoszewski
+  plec: m
+  warianty: ["Stefan Radoszewski, kanonik gnieźnieński"]
+  uwagi: "Rok w id = rok śmierci."
+
+- id: radoszewski-walenty-1746
+  imiona: [Walenty]
+  nazwisko: Radoszewski
+  plec: m
+  warianty: ["Walenty, kanonik kijowski i sandomierski"]
+  uwagi: "Duchowny (XVIII w.); różny od Walentego z Neru, ojca Albina."
+
+- id: radoszewski-wojciech-1758
+  imiona: [Wojciech]
+  nazwisko: Radoszewski
+  plec: m
+  warianty: ["Wojciech, biskup sufragan sandomierski"]
+
+- id: radoszewski-boguslaw-1638
+  imiona: [Bogusław]
+  nazwisko: Radoszewski
+  plec: m
+  warianty: ["Bogusław Radoszewski, biskup kijowski i łucki", "Bogusław (syn Jerzego)"]
+  uwagi: "Rok w id = rok śmierci wg S07 (S05: 1635)."
+
+- id: przadzynska-anna-1879
+  imiona: [Anna]
+  nazwisko: Prządzyńska
+  plec: k
+  warianty: ["Babcia Netka", "Anna Prządzyńska SS. przełożona"]
+  uwagi: "Urszulanka szara, przełożona w Pniewach; siostra Stanisława Prządzyńskiego (ojca Anny Radoszewskiej)."
+
+- id: zawinski-stanislaw
+  imiona: [Stanisław]
+  nazwisko: Zawiński
+  plec: m
+  warianty: ["ks. Stanisław Zawiński"]
+  uwagi: "Proboszcz w Niemysłowie; pierwsza litera nazwiska niepewna (Z/Ł)."
+
+- id: radoszewska-jozefa-1864
+  imiona: [Józefa]
+  nazwisko: Wierzchleyska
+  nazwisko_rodowe: Radoszewska
+  plec: k
+  warianty: ["Józefa z Radoszewskich Wierzchleyska", "Józefa z Boxa Radoszewskich Wierzchleyska", "ciotka Józefa"]

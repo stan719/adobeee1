@@ -59,8 +59,12 @@ def main():
     seg = segmenty()
     osoby = {o['id']: o for o in wczytaj('osoby.yaml')}
     miejsca = {m['id']: m for m in wczytaj('miejsca.yaml')}
-    tw = wczytaj('twierdzenia.yaml')
+    tw = [t for p in sorted(glob.glob(os.path.join(DANE, 'twierdzenia', '*.yaml')))
+          for t in (yaml.safe_load(open(p, encoding='utf-8')) or [])]
     bez = {b['segment']: b['powod'] for b in wczytaj('bez_faktow.yaml')}
+    for poz in wczytaj('literatura.yaml'):          # pozycje bibliograficzne cytowane w źródłach
+        for s in poz.get('segmenty', []):
+            bez.setdefault(s, 'bibliografia: ' + poz['id'])
     bledy, uzyte = [], set()
 
     ids = [t['id'] for t in tw]

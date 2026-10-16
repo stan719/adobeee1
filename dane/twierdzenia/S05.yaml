@@ -1,0 +1,131 @@
+# Twierdzenia ze źródła S05 (kartka o kaplicy w Uniejowie i Krempie; zob. dane/SCHEMAT.md)
+
+- {id: S05-001, podmiot: uniejow-kaplica-radoszewskich, relacja: opis, wartosc: "kaplica Boksa Radoszewskich h. Oksza na cmentarzu w Uniejowie, budowana w 1880 r.", data: {tekst: "1880", od: 1880, do: 1880},
+   zrodla: [{segment: S05-p01-s01, cytat: "Kaplica Boxa Radoszewskich herbu Oksza na cmentarzu w Uniejowie budowana była w 1880 r."}], pewnosc_odczytu: pewna}
+- {id: S05-002, podmiot: radoszewski-jozefat-1830, relacja: fundacja, obiekt: uniejow-kaplica-radoszewskich, data: {tekst: "1880", od: 1880, do: 1880},
+   zrodla: [{segment: S05-p01-s01, cytat: "budowana była w 1880 r. przez Józefata i Teofilę Radoszewskich z Dominikowic, Śmiechowa i Krempy."}], pewnosc_odczytu: pewna}
+- {id: S05-003, podmiot: szeliska-teofila-1842, relacja: fundacja, obiekt: uniejow-kaplica-radoszewskich, data: {tekst: "1880", od: 1880, do: 1880},
+   zrodla: [{segment: S05-p01-s01, cytat: "przez Józefata i Teofilę Radoszewskich z Dominikowic, Śmiechowa i Krempy."}], pewnosc_odczytu: pewna}
+- {id: S05-004, podmiot: radoszewski-jozefat-1830, relacja: malzonek, obiekt: szeliska-teofila-1842,
+   zrodla: [{segment: S05-p01-s01, cytat: "Józefata i Teofilę Radoszewskich"}], pewnosc_odczytu: pewna}
+- {id: S05-005, podmiot: radoszewski-jozefat-1830, relacja: wlasnosc, obiekt: dominikowice, wartosc: "Dominikowice, Śmiechów i Krempa",
+   zrodla: [{segment: S05-p01-s01, cytat: "Józefata i Teofilę Radoszewskich z Dominikowic, Śmiechowa i Krempy."}], pewnosc_odczytu: pewna}
+- {id: S05-006, podmiot: radoszewski-jozefat-1830, relacja: wlasnosc, obiekt: smiechow,
+   zrodla: [{segment: S05-p01-s01, cytat: "z Dominikowic, Śmiechowa i Krempy."}], pewnosc_odczytu: pewna}
+- {id: S05-007, podmiot: radoszewski-jozefat-1830, relacja: wlasnosc, obiekt: krempa,
+   zrodla: [{segment: S05-p01-s01, cytat: "z Dominikowic, Śmiechowa i Krempy."}], pewnosc_odczytu: pewna}
+
+- {id: S05-008, podmiot: radoszewski-roch-1820, relacja: smierc, data: {tekst: "1820", od: 1820, do: 1820},
+   zrodla: [{segment: S05-p01-s02, cytat: "Roch Radoszewski (Kasztelanic) zm. 1820 r."}], pewnosc_odczytu: pewna}
+- {id: S05-009, podmiot: radoszewski-roch-1820, relacja: pochowek, miejsce: uniejow-kaplica-radoszewskich, wartosc: "przeniesiony do krypty",
+   zrodla: [{segment: S05-p01-s02, cytat: "Pochowani w Krypcie członkowie rodziny Boxa Radoszewskich. S. P. Roch Radoszewski (Kasztelanic) zm. 1820 r. przeniesiony do Krypty"}], pewnosc_odczytu: pewna}
+- {id: S05-010, podmiot: wierzchleyska-kunegunda-1828, relacja: smierc, data: {tekst: "+1828", od: 1828, do: 1828},
+   zrodla: [{segment: S05-p01-s02, cytat: "Kunegunda z Wierzchleyskich Radoszewska +1828"}], pewnosc_odczytu: pewna}
+- {id: S05-011, podmiot: wierzchleyska-kunegunda-1828, relacja: pochowek, miejsce: uniejow-kaplica-radoszewskich, wartosc: "przeniesiona do krypty",
+   zrodla: [{segment: S05-p01-s02, cytat: "Kunegunda z Wierzchleyskich Radoszewska +1828"}], pewnosc_odczytu: pewna}
+- {id: S05-012, podmiot: radoszewski-jozef-1850, relacja: smierc, data: {tekst: "1850", od: 1850, do: 1850},
+   zrodla: [{segment: S05-p01-s02, cytat: "Józef Radoszewski z Dominikowic 1850"}], pewnosc_odczytu: pewna,
+   uwagi: "Liczba bez znaku † — rok śmierci lub przeniesienia do krypty (lista zmarłych)."}
+- {id: S05-013, podmiot: radoszewski-jozef-1850, relacja: pochowek, miejsce: uniejow-kaplica-radoszewskich,
+   zrodla: [{segment: S05-p01-s02, cytat: "Józef Radoszewski z Dominikowic 1850"}], pewnosc_odczytu: pewna}
+- {id: S05-014, podmiot: radoszewski-jozef-1850, relacja: zamieszkanie, miejsce: dominikowice,
+   zrodla: [{segment: S05-p01-s02, cytat: "Józef Radoszewski z Dominikowic"}], pewnosc_odczytu: pewna}
+- {id: S05-015, podmiot: radoszewski-henryk-1861, relacja: smierc, data: {tekst: "1861 (33 lata)", od: 1861, do: 1861},
+   zrodla: [{segment: S05-p01-s02, cytat: 'Henryk " " (33 lata) 1861'}], pewnosc_odczytu: pewna,
+   uwagi: "„ \" \" ” = Radoszewski z Dominikowic (znak powtórzenia)."}
+- {id: S05-016, podmiot: radoszewski-henryk-1861, relacja: urodzenie, data: {tekst: "ok. 1828 (wyliczone: 1861 − 33 lata)", od: 1827, do: 1828},
+   zrodla: [{segment: S05-p01-s02, cytat: 'Henryk " " (33 lata) 1861'}], pewnosc_odczytu: pewna,
+   uwagi: "Data wyliczona z wieku przy śmierci."}
+- {id: S05-017, podmiot: radoszewski-henryk-1861, relacja: pochowek, miejsce: uniejow-kaplica-radoszewskich,
+   zrodla: [{segment: S05-p01-s02, cytat: 'Henryk " " (33 lata) 1861'}], pewnosc_odczytu: pewna}
+- {id: S05-018, podmiot: szeliski-michal-1800, relacja: urodzenie, data: {tekst: "1800", od: 1800, do: 1800},
+   zrodla: [{segment: S05-p01-s02, cytat: "Michał Szeliski h. Szeliga z Marzenina ojciec Teofili 1800+1866"}], pewnosc_odczytu: pewna}
+- {id: S05-019, podmiot: szeliski-michal-1800, relacja: smierc, data: {tekst: "1866", od: 1866, do: 1866},
+   zrodla: [{segment: S05-p01-s02, cytat: "ojciec Teofili 1800+1866"}], pewnosc_odczytu: pewna}
+- {id: S05-020, podmiot: szeliska-teofila-1842, relacja: rodzic, obiekt: szeliski-michal-1800,
+   zrodla: [{segment: S05-p01-s02, cytat: "Michał Szeliski h. Szeliga z Marzenina ojciec Teofili"}], pewnosc_odczytu: pewna}
+- {id: S05-021, podmiot: szeliski-michal-1800, relacja: herb, wartosc: Szeliga,
+   zrodla: [{segment: S05-p01-s02, cytat: "Michał Szeliski h. Szeliga z Marzenina"}], pewnosc_odczytu: pewna}
+- {id: S05-022, podmiot: szeliski-michal-1800, relacja: wlasnosc, obiekt: marzenin,
+   zrodla: [{segment: S05-p01-s02, cytat: "Michał Szeliski h. Szeliga z Marzenina"}], pewnosc_odczytu: pewna}
+- {id: S05-023, podmiot: szeliski-michal-1800, relacja: pochowek, miejsce: uniejow-kaplica-radoszewskich,
+   zrodla: [{segment: S05-p01-s02, cytat: "ojciec Teofili 1800+1866"}], pewnosc_odczytu: pewna}
+- {id: S05-024, podmiot: radoszewski-henryk-1862, relacja: smierc, data: {tekst: "1870 (8 lat)", od: 1870, do: 1870},
+   zrodla: [{segment: S05-p01-s02, cytat: "Henryś Radoszewski (8 lat) 1870"}], pewnosc_odczytu: pewna}
+- {id: S05-025, podmiot: radoszewski-henryk-1862, relacja: urodzenie, data: {tekst: "ok. 1862 (wyliczone: 1870 − 8 lat)", od: 1861, do: 1862},
+   zrodla: [{segment: S05-p01-s02, cytat: "Henryś Radoszewski (8 lat) 1870"}], pewnosc_odczytu: pewna, uwagi: "Data wyliczona z wieku przy śmierci."}
+- {id: S05-026, podmiot: radoszewski-henryk-1862, relacja: pochowek, miejsce: uniejow-kaplica-radoszewskich,
+   zrodla: [{segment: S05-p01-s02, cytat: "Henryś Radoszewski (8 lat) 1870"}], pewnosc_odczytu: pewna}
+- {id: S05-027, podmiot: szumowski-antoni, relacja: smierc, data: {tekst: "1885", od: 1885, do: 1885},
+   zrodla: [{segment: S05-p01-s02, cytat: "Antoni Szumowski 1885"}], pewnosc_odczytu: pewna}
+- {id: S05-028, podmiot: szumowski-antoni, relacja: pochowek, miejsce: uniejow-kaplica-radoszewskich,
+   zrodla: [{segment: S05-p01-s02, cytat: "Antoni Szumowski 1885"}], pewnosc_odczytu: pewna}
+- {id: S05-029, podmiot: radoszewski-jozefat-1830, relacja: urodzenie, data: {tekst: "1830", od: 1830, do: 1830},
+   zrodla: [{segment: S05-p01-s02, cytat: "Józefat Boxa Radoszewski 1830+1893"}], pewnosc_odczytu: pewna}
+- {id: S05-030, podmiot: radoszewski-jozefat-1830, relacja: smierc, data: {tekst: "1893", od: 1893, do: 1893},
+   zrodla: [{segment: S05-p01-s02, cytat: "Józefat Boxa Radoszewski 1830+1893"}], pewnosc_odczytu: pewna}
+- {id: S05-031, podmiot: radoszewski-jozefat-1830, relacja: pochowek, miejsce: uniejow-kaplica-radoszewskich,
+   zrodla: [{segment: S05-p01-s02, cytat: "Józefat Boxa Radoszewski 1830+1893"}], pewnosc_odczytu: pewna}
+- {id: S05-032, podmiot: szeliska-teofila-1842, relacja: urodzenie, data: {tekst: "1842", od: 1842, do: 1842},
+   zrodla: [{segment: S05-p01-s02, cytat: "Teofila z Szeliskich Radoszewska 1842+1909"}], pewnosc_odczytu: pewna}
+- {id: S05-033, podmiot: szeliska-teofila-1842, relacja: smierc, data: {tekst: "1909", od: 1909, do: 1909},
+   zrodla: [{segment: S05-p01-s02, cytat: "Teofila z Szeliskich Radoszewska 1842+1909"}], pewnosc_odczytu: pewna}
+- {id: S05-034, podmiot: szeliska-teofila-1842, relacja: pochowek, miejsce: uniejow-kaplica-radoszewskich,
+   zrodla: [{segment: S05-p01-s02, cytat: "Teofila z Szeliskich Radoszewska 1842+1909"}], pewnosc_odczytu: pewna}
+
+- {id: S05-035, podmiot: radoszewski-pawel-1608, relacja: urzad, wartosc: "prowincjał jezuitów prowincji litewskiej", data: {tekst: "1608", od: 1608, do: 1608},
+   zrodla: [{segment: S05-p01-s03, cytat: "Paweł Radoszewski prowincjał OO. jezuitów prow. lit. 1608"}], pewnosc_odczytu: pewna}
+- {id: S05-036, podmiot: radoszewski-stefan-1689, relacja: urzad, wartosc: "kanonik gnieźnieński",
+   zrodla: [{segment: S05-p01-s03, cytat: 'Stefan " " Kanonik gnieźnieński +1689'}], pewnosc_odczytu: pewna}
+- {id: S05-037, podmiot: radoszewski-stefan-1689, relacja: smierc, data: {tekst: "+1689", od: 1689, do: 1689},
+   zrodla: [{segment: S05-p01-s03, cytat: 'Stefan " " Kanonik gnieźnieński +1689'}], pewnosc_odczytu: pewna}
+- {id: S05-038, podmiot: radoszewski-walenty-1746, relacja: urzad, wartosc: "kanonik kijowski i sandomierski", data: {tekst: "1746", od: 1746, do: 1746},
+   zrodla: [{segment: S05-p01-s03, cytat: 'Walenty " " " " kijowski i sandomierski 1746'}], pewnosc_odczytu: pewna}
+- {id: S05-039, podmiot: radoszewski-wojciech-1758, relacja: urzad, wartosc: "biskup tytularny kireneński[?] in partibus infidelium, biskup sufragan sandomierski",
+   zrodla: [{segment: S05-p01-s03, cytat: 'Wojciech " " biskup kireneński[?] in part. inf. biskup sufragan sandomierski'}], pewnosc_odczytu: niepewna}
+- {id: S05-040, podmiot: radoszewski-boguslaw-1638, relacja: urzad, wartosc: "biskup kijowski i czernichowski", data: {tekst: "1618", od: 1618, do: 1618},
+   zrodla: [{segment: S05-p01-s03, cytat: 'Bogusław " " biskup kijowski i czernichowski 1618'}], pewnosc_odczytu: pewna}
+- {id: S05-041, podmiot: radoszewski-boguslaw-1638, relacja: urzad, wartosc: "opat świętokrzyski", data: {tekst: "1632", od: 1632, do: 1632},
+   zrodla: [{segment: S05-p01-s03, cytat: "opat świętokrzyski 1632"}], pewnosc_odczytu: pewna}
+- {id: S05-042, podmiot: radoszewski-boguslaw-1638, relacja: urzad, wartosc: "biskup łucki",
+   zrodla: [{segment: S05-p01-s03, cytat: "biskup łucki +1635"}], pewnosc_odczytu: pewna}
+- {id: S05-043, podmiot: radoszewski-boguslaw-1638, relacja: smierc, data: {tekst: "+1635", od: 1635, do: 1635},
+   zrodla: [{segment: S05-p01-s03, cytat: "biskup łucki +1635"}], pewnosc_odczytu: pewna}
+- {id: S05-044, podmiot: przadzynska-anna-1879, relacja: urzad, wartosc: "długoletnia przełożona Urszulanek Szarych w Pniewach", miejsce: pniewy,
+   zrodla: [{segment: S05-p01-s03, cytat: "Anna Prządzyńska SS. przełożona długoletnia w Pniewach Szarych Urszulanek"}], pewnosc_odczytu: pewna}
+- {id: S05-045, podmiot: przadzynska-anna-1879, relacja: rodzenstwo, obiekt: przadzynski-stanislaw-1871,
+   zrodla: [{segment: S05-p01-s03, cytat: "(siostra Ojca Anny Radoszewskiej)"}], pewnosc_odczytu: pewna,
+   uwagi: "Ojciec Anny Radoszewskiej = Stanisław Prządzyński (S04-028)."}
+
+- {id: S05-046, podmiot: radoszewice, relacja: opis, wartosc: "Radoszewscy Boxa h. Oksza stracili po I rozbiorze (1772) dobra Radoszewice i Siemkowice, otrzymane od Bolesława Krzywoustego, i przenieśli się do Śmiechowa, Krempy i Dominikowic", data: {tekst: "po I rozbiorze Polski 1772 r.", od: 1772, do: 1780},
+   zrodla: [{segment: S05-p02-s01, cytat: "Radoszewscy Boxa h. Oksza stracili po I rozbiorze Polski 1772 r. dobra otrzymane od Bolesława Krzywoustego Radoszewice i Siemkowice w Wieluńskiem i przenieśli się do Śmiechowa, Krempy i Dominikowic."}], pewnosc_odczytu: pewna}
+- {id: S05-047, podmiot: siemkowice, relacja: opis, wartosc: "dobra utracone przez Radoszewskich po I rozbiorze (1772)", data: {tekst: "po I rozbiorze Polski 1772 r.", od: 1772, do: 1780},
+   zrodla: [{segment: S05-p02-s01, cytat: "stracili po I rozbiorze Polski 1772 r. dobra otrzymane od Bolesława Krzywoustego Radoszewice i Siemkowice"}], pewnosc_odczytu: pewna}
+- {id: S05-048, podmiot: smiechow, relacja: opis, wartosc: "początkowo dwór Radoszewskich był w Śmiechowie",
+   zrodla: [{segment: S05-p02-s01, cytat: "Początkowo dwór był w Śmiechowie,"}], pewnosc_odczytu: pewna}
+- {id: S05-049, podmiot: radoszewski-jozefat-1830, relacja: fundacja, obiekt: krempa, wartosc: "zbudował dwór w Krempie w II połowie XIX w.", data: {tekst: "w II połowie XIX w.", od: 1851, do: 1900},
+   zrodla: [{segment: S05-p02-s01, cytat: "dopiero Józefat w II połowie XIX w. wybudował dwór w Krempie."}], pewnosc_odczytu: pewna}
+- {id: S05-050, podmiot: krempa, relacja: opis, wartosc: "dwór przetrwał wojnę, rozebrany w 1980 r.", data: {tekst: "1980", od: 1980, do: 1980},
+   zrodla: [{segment: S05-p02-s01, cytat: "Dwór ten przetrwał wojnę i dopiero w 1980 r zostały rozebrany."}], pewnosc_odczytu: pewna,
+   uwagi: "S04-p02-s02 podaje 1981 r. — rozbieżność."}
+- {id: S05-051, podmiot: radoszewski-jozefat-1830, relacja: urzad, wartosc: "naczelnik powiatu w powstaniu styczniowym", data: {tekst: "podczas powstania styczniowego", od: 1863, do: 1864},
+   zrodla: [{segment: S05-p02-s01, cytat: "Józefat podczas powstania styczniowego był naczelnikiem powiatu"}], pewnosc_odczytu: pewna}
+- {id: S05-052, podmiot: krempa, relacja: opis, wartosc: "we dworze ukrywano powstańców m.in. po bitwie pod Niemysłowem 23 maja 1863 r.", data: {tekst: "23 maja 1863", od: 1863-05-23, do: 1863-05-23},
+   zrodla: [{segment: S05-p02-s01, cytat: "a we dworze przechowywani byli powstańcy m. in. po bitwie pod Niemysłowem 23 maja 1863 r."}], pewnosc_odczytu: pewna}
+
+- {id: S05-053, podmiot: radoszewski-jerzy-1902, relacja: udzial_w_wydarzeniu, wartosc: "w wieku 18 lat ochotnik w wojnie 1920 r.: bitwa pod Grodnem i szlak Białystok–Lida, bateria 1 pułku artylerii zenitowej użytej jako zwykła", data: {tekst: "1920", od: 1920, do: 1920}, miejsce: grodno,
+   zrodla: [{segment: S05-p02-s02, cytat: "Ostatni właściciel Krempy Jerzy w wieku 18 lat jako ochotnik brał udział w wojnie 1920 r. Był w bitwie pod Grodnem i na szlaku Białystok–Lida w baterii 1 pułku artylerii zenitowej użytej wówczas jako baterja zwykła."}], pewnosc_odczytu: pewna}
+- {id: S05-054, podmiot: radoszewski-jerzy-1902, relacja: wlasnosc, obiekt: krempa, wartosc: "ostatni właściciel Krempy",
+   zrodla: [{segment: S05-p02-s02, cytat: "Ostatni właściciel Krempy Jerzy"}], pewnosc_odczytu: pewna}
+
+- {id: S05-055, podmiot: krempa, relacja: opis, wartosc: "parafia Krempy — Niemysłów",
+   zrodla: [{segment: S05-p02-s03, cytat: "Parafią Krempy jest Niemysłów,"}], pewnosc_odczytu: pewna}
+- {id: S05-056, podmiot: zawinski-stanislaw, relacja: urzad, wartosc: "proboszcz w Niemysłowie przez 50 lat; społecznik, przyjaciel Radoszewskich", miejsce: niemyslow,
+   zrodla: [{segment: S05-p02-s03, cytat: "gdzie przez 50 lat proboszczem był wielki społecznik i przyjaciel Radoszewskich ks. Stanisław Zawiński."}], pewnosc_odczytu: niepewna,
+   uwagi: "Pierwsza litera nazwiska niepewna."}
+- {id: S05-057, podmiot: niemyslow, relacja: opis, wartosc: "w kościele ławka kolatorska z herbami Oksza i Korczak",
+   zrodla: [{segment: S05-p02-s03, cytat: "Do tej pory w kościele jest Ławka Kolatorska z herbem Oksza i Korczak."}], pewnosc_odczytu: pewna}
+- {id: S05-058, podmiot: radoszewska-jozefa-1864, relacja: fundacja, wartosc: "figura Matki Boskiej (do 1939 r. w dziupli dębu w parku w Krempie, obecnie w kościele w Niemysłowie)", miejsce: niemyslow,
+   zrodla: [{segment: S05-p02-s04, cytat: "W kościele znajduje się też figura Matki Boskiej ufundowana przez Józefę z Radoszewskich Wierzchleyską. Figura ta była do wojny 1939 r. w Krempie w parku w ogromnej dziupli starego dębu."}], pewnosc_odczytu: pewna}
+- {id: S05-059, podmiot: drohojowska-ewelina-1880, relacja: fundacja, wartosc: "ornat z jej sukni ślubnej w kościele w Niemysłowie", miejsce: niemyslow,
+   zrodla: [{segment: S05-p02-s04, cytat: "W kościele jest też ornat z sukni ślubnej Eweliny Radoszewskiej"}], pewnosc_odczytu: pewna}

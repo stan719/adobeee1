@@ -66,3 +66,53 @@
   nazwa: Sieradz
   typ: miasto
   pewnosc_identyfikacji: pewna
+
+- id: uniejow
+  nazwa: Uniejów
+  typ: miasto
+  pewnosc_identyfikacji: pewna
+
+- id: uniejow-kaplica-radoszewskich
+  nazwa: Kaplica Boksa Radoszewskich na cmentarzu w Uniejowie
+  typ: kaplica
+  nadrzedne: uniejow
+  pewnosc_identyfikacji: pewna
+
+- id: dominikowice
+  nazwa: Dominikowice
+  typ: wieś
+  pewnosc_identyfikacji: do_ustalenia
+  uwagi: "Według S03-p39-s02 między Poddębicami a Uniejowem; parafia Uniejów (S03-p29-s03)."
+
+- id: marzenin
+  nazwa: Marzenin
+  typ: wieś
+  pewnosc_identyfikacji: do_ustalenia
+  uwagi: "Majątek Szeliskich; S07 „k/Warty[?]”."
+
+- id: radoszewice
+  nazwa: Radoszewice
+  typ: wieś
+  dzis: "Radoszewice, gm. Siemkowice (pow. pajęczański, woj. łódzkie)"
+  pewnosc_identyfikacji: pewna
+  uwagi: "S08-p123-s03."
+
+- id: siemkowice
+  nazwa: Siemkowice
+  warianty: [Siemkowce]
+  typ: wieś
+  dzis: "Siemkowice, siedziba gminy (pow. pajęczański, woj. łódzkie)"
+  pewnosc_identyfikacji: pewna
+  uwagi: "S08-p139-s03."
+
+- id: niemyslow
+  nazwa: Niemysłów
+  typ: wieś
+  pewnosc_identyfikacji: do_ustalenia
+  uwagi: "Parafia Krempy."
+
+- id: pniewy
+  nazwa: Pniewy
+  typ: miasto
+  pewnosc_identyfikacji: prawdopodobna
+  uwagi: "Klasztor Urszulanek Szarych (Pniewy k. Szamotuł)."

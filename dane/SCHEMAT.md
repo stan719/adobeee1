@@ -34,9 +34,9 @@ Wszystkie dane w YAML (UTF-8), wersjonowane w git. Sprawdza je `python narzedzia
   uwagi: null
 ```
 
-### `twierdzenia.yaml`
+### `twierdzenia/<źródło>.yaml` (np. `twierdzenia/S04.yaml`)
 ```yaml
-- id: T000123
+- id: S04-017                       # <źródło>-<nr>; źródło = to, z którego pochodzi pierwszy cytat
   podmiot: radoszewski-jerzy-1902     # id osoby lub miejsca
   relacja: urodzenie                  # słownik niżej
   obiekt: null                        # id osoby/miejsca, gdy relacja łączy dwa byty
@@ -51,6 +51,15 @@ Wszystkie dane w YAML (UTF-8), wersjonowane w git. Sprawdza je `python narzedzia
 ```
 
 **Słownik relacji:** `urodzenie`, `smierc`, `pochowek`, `chrzest`, `slub` (obiekt = małżonek), `malzonek`, `rodzic` (podmiot = dziecko, obiekt = rodzic), `rodzenstwo`, `urzad` (wartosc), `zawod`, `wyksztalcenie`, `odznaczenie`, `wlasnosc` (obiekt = miejsce/majątek), `zamieszkanie`, `udzial_w_wydarzeniu`, `fundacja`, `herb`, `opis` (dowolna inna informacja — wartosc = streszczenie).
+
+### `literatura.yaml`
+Pozycje bibliograficzne wymieniane w źródłach (spisy lektur, przypisy bibliograficzne). Fragment źródła, który zawiera tylko bibliografię, jest pokryty przez wpis tutaj.
+```yaml
+- id: dunin-borkowski-almanach-1908
+  opis: "Jerzy hr. Dunin Borkowski, Almanach Błękitny. Genealogia żyjących rodów polskich, 1908"
+  dotyczy: "Drohojowscy s. 321; Radoszewscy s. 1109"
+  segmenty: [S06-p01-s02]
+```
 
 ### `bez_faktow.yaml`
 Segmenty jawnie oznaczone jako niezawierające faktów (np. pagina, ozdobnik, sam nagłówek strony), z powodem:
