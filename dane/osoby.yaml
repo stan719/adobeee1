@@ -229,3 +229,997 @@
   nazwisko_rodowe: Radoszewska
   plec: k
   warianty: ["Józefa z Radoszewskich Wierzchleyska", "Józefa z Boxa Radoszewskich Wierzchleyska", "ciotka Józefa"]
+
+- id: przadzynski-andrzej-1917
+  imiona: [Andrzej]
+  nazwisko: Prządzyński
+  herb: Grzymała
+  plec: m
+  warianty: ["Andrzej Prządzyński z Kościerzyna", "wujek Jędrek Prządzyński"]
+
+- id: przadzynska-maria-1919
+  imiona: [Maria, Teresa]
+  nazwisko: Szweycer
+  nazwisko_rodowe: "Prządzyńska"
+  plec: k
+  warianty: ["Maria Teresa", "Maria z Prządzyńskich Szweycerowa", "ciocia Marychna Szweycerowa"]
+
+- id: drohojowski-boleslaw-1848
+  imiona: [Bolesław]
+  nazwisko: Drohojowski
+  herb: Korczak
+  plec: m
+  warianty: ["Bolesław hr. Drohojowski"]
+
+- id: terlecka-bronislawa-1847
+  imiona: [Bronisława]
+  nazwisko: Drohojowska
+  nazwisko_rodowe: "Terlecka"
+  herb: Sas
+  plec: k
+  warianty: ["Bronisława Terlecka", "Bronisława z Terleckich Drohojowska"]
+
+- id: przadzynski-wladyslaw-1837
+  imiona: [Władysław]
+  nazwisko: Prządzyński
+  herb: Grzymała
+  plec: m
+  warianty: ["Władysław z Leźnicy W."]
+
+- id: skrzynska-anna-1848
+  imiona: [Anna]
+  nazwisko: Prządzyńska
+  nazwisko_rodowe: "Skrzyńska"
+  herb: Zaremba
+  plec: k
+  warianty: ["Anna Skrzyńska z Gostkowa", "Anna ze Skrzyńskich Prządzyńska"]
+
+- id: grabinski-edward-1859
+  imiona: [Edward]
+  nazwisko: Grabiński
+  herb: Pomian
+  plec: m
+  warianty: ["Edward Grabiński przemysłowiec"]
+
+- id: brandel-maria-1870
+  imiona: [Maria]
+  nazwisko: Grabińska
+  nazwisko_rodowe: "Brandel"
+  plec: k
+  warianty: ["Maria Brandel", "Maria z Brandlów Grabińska", "Prababcia Maria Grabińska"]
+
+- id: radoszewski-franciszek-1790
+  imiona: [Franciszek]
+  nazwisko: Radoszewski
+  herb: Oksza
+  plec: m
+  warianty: ["Franciszek 1790+1846", "Franciszek I"]
+
+- id: skrzynska-jozefa-1807
+  imiona: [Józefa]
+  nazwisko: Radoszewska
+  nazwisko_rodowe: "Skrzyńska"
+  herb: Zaremba
+  plec: k
+  warianty: ["Józefa Skrzyńska", "Józefa ze Skrzyńskich Radoszewska"]
+
+- id: rozrazewska-antonina
+  imiona: [Antonina]
+  nazwisko: Szeliska
+  nazwisko_rodowe: "Rozrażewska"
+  plec: k
+  warianty: ["Antonina Rozrażewska[?]"]
+  uwagi: "Nazwisko niepewne."
+
+- id: szeliski-teodor
+  imiona: [Teodor]
+  nazwisko: Szeliski
+  plec: m
+  warianty: ["Teodor Szeliski"]
+
+- id: zazarska-tekla
+  imiona: [Tekla]
+  nazwisko: Szeliska
+  nazwisko_rodowe: "Zazarska"
+  plec: k
+  warianty: ["Tekla Zazarska[?]"]
+  uwagi: "Nazwisko niepewne."
+
+- id: drohojowski-wladyslaw
+  imiona: [Władysław]
+  nazwisko: Drohojowski
+  herb: Korczak
+  plec: m
+  warianty: ["Władysław z Piotrkowicz"]
+
+- id: wolska-emilia
+  imiona: [Emilia]
+  nazwisko: Drohojowska
+  nazwisko_rodowe: "Wolska"
+  plec: k
+  warianty: ["Emilja Wolska z Piotrkowicz"]
+
+- id: drohojowski-jan-1780
+  imiona: [Jan]
+  nazwisko: Drohojowski
+  herb: Korczak
+  plec: m
+  warianty: ["Jan hr. Drohojowski"]
+
+- id: niemirowska-roza
+  imiona: [Róża]
+  nazwisko: Drohojowska
+  nazwisko_rodowe: "Niemirowska"
+  plec: k
+  warianty: ["Róża Niemirowska"]
+
+- id: rzeszotarska-brygida
+  imiona: [Brygida]
+  nazwisko: Drohojowska
+  nazwisko_rodowe: "Rzeszotarska"
+  plec: k
+  warianty: ["Brygida Rzeszotarska"]
+
+- id: przadzynski-wincenty-1795
+  imiona: [Wincenty]
+  nazwisko: Prządzyński
+  herb: Grzymała
+  plec: m
+  warianty: ["Wincenty Prządzyński (senator)", "senator"]
+
+- id: mierzynska-salomea-1800
+  imiona: [Salomea]
+  nazwisko: Prządzyńska
+  nazwisko_rodowe: "Mierzyńska"
+  herb: Jastrzębiec
+  plec: k
+  warianty: ["Salomea z Mierzyńskich", "senatorowa"]
+
+- id: przadzynski-stanislaw-1761
+  imiona: [Stanisław]
+  nazwisko: Prządzyński
+  herb: Grzymała
+  plec: m
+  warianty: ["Stanisław 1761+1817 z Malczewa"]
+
+- id: bronikowska-marianna
+  imiona: [Marianna]
+  nazwisko: Prządzyńska
+  nazwisko_rodowe: "Bronikowska"
+  plec: k
+  warianty: ["Marcjanna Bronikowska", "Marianna z Bronikowskich"]
+
+- id: mierzynski-rafal-starszy
+  imiona: [Rafał]
+  nazwisko: Mierzyński
+  herb: Jastrzębiec
+  plec: m
+  warianty: ["Rafał Mierzyński z Węgrzy"]
+  uwagi: "Ojciec Salomei Prządzyńskiej; różny od Rafała Mierzyńskiego, męża Marii z Radoszewskich."
+
+- id: zagajewska-marcjanna
+  imiona: [Marcjanna]
+  nazwisko: Mierzyńska
+  nazwisko_rodowe: "Zagajewska"
+  herb: Pomian
+  plec: k
+  warianty: ["Marcjanna z Zagajewskich"]
+
+- id: laczynska-waleria
+  imiona: [Waleria]
+  nazwisko: Skrzyńska
+  nazwisko_rodowe: "Łączyńska"
+  herb: Nałęcz
+  plec: k
+  warianty: ["Walerja Łączyńska", "bratanica p. Walewskiej"]
+
+- id: skrzynski-aleksander
+  imiona: [Aleksander]
+  nazwisko: Skrzyński
+  herb: Zaremba
+  plec: m
+  warianty: ["Aleksander Skrzyński z Gostkowa i Nowej Wsi"]
+
+- id: laczynski-teodor-1785
+  imiona: [Teodor]
+  nazwisko: Łączyński
+  herb: Nałęcz
+  plec: m
+  warianty: ["Teodor Łączyński"]
+
+- id: mikorska-zofia
+  imiona: [Zofia]
+  nazwisko: Łączyńska
+  nazwisko_rodowe: "Mikorska"
+  plec: k
+  warianty: ["Mikorska", "Zofia Mikorska"]
+
+- id: grabinski-adam-1803
+  imiona: [Adam, Stefan, Jan]
+  nazwisko: Grabiński
+  herb: Pomian
+  plec: m
+  warianty: ["Adam Stefan Jan"]
+
+- id: madalinska-paulina
+  imiona: [Paulina]
+  nazwisko: Grabińska
+  nazwisko_rodowe: "Madalińska"
+  plec: k
+
+- id: grabinski-piotr-1750
+  imiona: [Piotr, Paweł, Bogusław]
+  nazwisko: Grabiński
+  herb: Pomian
+  plec: m
+  warianty: ["Piotr Paweł Bogusław"]
+
+- id: domaniewska-katarzyna
+  imiona: [Katarzyna]
+  nazwisko: Grabińska
+  nazwisko_rodowe: "Domaniewska"
+  plec: k
+
+- id: brandel-seweryn
+  imiona: [Seweryn]
+  nazwisko: Brandel
+  plec: m
+  warianty: ["Seweryn Brandel rzeczywisty Radca stanu"]
+
+- id: dabska-leokadia-1850
+  imiona: [Leokadia]
+  nazwisko: Brandel
+  nazwisko_rodowe: "Dąbska[?]"
+  plec: k
+  warianty: ["Leokadia Dąbska[?]", "Leokadia z Dzbskich", "Leokadia z Dąbskich"]
+  uwagi: "Nazwisko zapisywane „Dzbska” — odczyt Dąbska/Dębska niepewny."
+
+- id: radoszewska-maria-1867
+  imiona: [Maria]
+  nazwisko: Mierzyńska
+  nazwisko_rodowe: "Radoszewska"
+  plec: k
+  warianty: ["Maria z Radoszewskich Mierzyńska", "Babcia Mania Mierzyńska"]
+
+- id: mierzynski-rafal-1867
+  imiona: [Rafał]
+  nazwisko: Mierzyński
+  herb: Jastrzębiec
+  plec: m
+  warianty: ["Rafał Mierzyński z Węgrz. h. Jastrzębiec inż. bud."]
+  uwagi: "Mąż Marii z Radoszewskich."
+
+- id: mierzynska-maria-1897
+  imiona: [Maria]
+  nazwisko: Żeromska
+  nazwisko_rodowe: "Mierzyńska"
+  plec: k
+  warianty: ["córka Maria", "Marja z Mierzyńskich I voto Mierzyńska II voto Żeromska", "ciocia Marylka Żeromska"]
+
+- id: wierzchleyski-roman
+  imiona: [Roman]
+  nazwisko: Wierzchleyski
+  plec: m
+  warianty: ["adwokat Wierzchleyski"]
+  uwagi: "Mąż Józefy z Radoszewskich."
+
+- id: terlecki-marceli
+  imiona: [Marceli]
+  nazwisko: Terlecki
+  plec: m
+
+- id: paprocka-ludwika
+  imiona: [Ludwika]
+  nazwisko: Terlecka
+  nazwisko_rodowe: "Paprocka"
+  plec: k
+  warianty: ["Ludwika z Paprockich"]
+
+- id: skrzynski-ludwik-starszy
+  imiona: [Ludwik]
+  nazwisko: Skrzyński
+  herb: Zaremba
+  plec: m
+  uwagi: "Ojciec Józefy Radoszewskiej (S03-p10-s01)."
+
+- id: dabrowska-domicela
+  imiona: [Domicela]
+  nazwisko: Skrzyńska
+  nazwisko_rodowe: "Dąbrowska"
+  plec: k
+  warianty: ["Domicella Dąbrowska"]
+
+- id: przadzynski-ignacy-1872
+  imiona: [Ignacy]
+  nazwisko: Prządzyński
+  herb: Grzymała
+  plec: m
+
+- id: przadzynski-zdzislaw-1874
+  imiona: [Zdzisław]
+  nazwisko: Prządzyński
+  herb: Grzymała
+  plec: m
+
+- id: przadzynska-wladyslawa-1879
+  imiona: [Władysława]
+  nazwisko: Wilska
+  nazwisko_rodowe: "Prządzyńska"
+  plec: k
+  warianty: ["Władysława z Prządzyńskich Wilska"]
+
+- id: wilski-stefan
+  imiona: [Stefan]
+  nazwisko: Wilski
+  plec: m
+
+- id: wilska-anna
+  imiona: [Anna]
+  nazwisko: Tuchałka
+  nazwisko_rodowe: "Wilska"
+  plec: k
+  warianty: ["Hania z Wilskich Tuchałkowa", "ciocia Hania"]
+
+- id: tuchalka-zbyszek
+  imiona: ["Zbyszek[?]"]
+  nazwisko: Tuchałka
+  plec: m
+  uwagi: "Imię niepewne."
+
+- id: tuchalka-danuta
+  imiona: [Danuta]
+  nazwisko: Tuchałka
+  plec: k
+
+- id: tuchalka-jacek
+  imiona: [Jacek]
+  nazwisko: Tuchałka
+  plec: m
+  uwagi: "Nazwisko przyjęte z kontekstu (dzieci Anny Tuchałkowej) — zob. S03-p16."
+
+- id: karwowska-magda
+  imiona: [Magda]
+  nazwisko: null
+  nazwisko_rodowe: "Karwowska"
+  plec: k
+
+- id: tuchalka-anna-zakonnica
+  imiona: [Anna]
+  nazwisko: null
+  plec: k
+  warianty: ["Anna Zakonnica SS Urszulanek"]
+  uwagi: "Córka Jacka i Magdy Karwowskiej."
+
+- id: tuchalka-stanislaw
+  imiona: [Stanisław]
+  nazwisko: null
+  plec: m
+  uwagi: "Syn Jacka i Magdy Karwowskiej."
+
+- id: tuchalka-barbara
+  imiona: [Barbara]
+  nazwisko: Wrzodarska
+  plec: k
+  warianty: ["Basia Wrzodarska"]
+
+- id: wrzodarski
+  imiona: []
+  nazwisko: Wrzodarski
+  plec: m
+  uwagi: "Mąż Barbary."
+
+- id: wrzodarska-maria
+  imiona: [Maria]
+  nazwisko: Wrzodarska
+  plec: k
+
+- id: wrzodarski-wojciech
+  imiona: [Wojciech]
+  nazwisko: Wrzodarski
+  plec: m
+
+- id: tuchalka-piotr
+  imiona: [Piotr]
+  nazwisko: null
+  plec: m
+
+- id: aulaitner-anna
+  imiona: [Anna]
+  nazwisko: null
+  nazwisko_rodowe: "Aulaitner[?]"
+  plec: k
+  uwagi: "Nazwisko niepewne."
+
+- id: przadzynski-stanislaw-1944
+  imiona: [Stanisław]
+  nazwisko: Prządzyński
+  plec: m
+  uwagi: "Syn Andrzeja."
+
+- id: przadzynska-katarzyna-1949
+  imiona: [Katarzyna]
+  nazwisko: null
+  nazwisko_rodowe: "Prządzyńska"
+  plec: k
+
+- id: madalinska-halina
+  imiona: [Halina]
+  nazwisko: Prządzyńska
+  nazwisko_rodowe: "Madalińska"
+  plec: k
+
+- id: wiktor-magdalena
+  imiona: [Magdalena]
+  nazwisko: Prządzyńska
+  nazwisko_rodowe: "Wiktor"
+  plec: k
+
+- id: bezdniakow-andrzej
+  imiona: [Andrzej]
+  nazwisko: Bezdniaków[?]
+  plec: m
+  uwagi: "Nazwisko niepewne."
+
+- id: szweycer-tomasz
+  imiona: [Tomasz]
+  nazwisko: Szweycer
+  plec: m
+  warianty: ["Tomek Szweycer"]
+
+- id: szweycer-stanislaw-1944
+  imiona: [Stanisław]
+  nazwisko: Szweycer
+  plec: m
+  warianty: ["Staś Szweycer"]
+
+- id: konarska-zofia
+  imiona: [Zofia]
+  nazwisko: Szweycer
+  nazwisko_rodowe: "Konarska"
+  plec: k
+  warianty: ["Zosia Szweycerowa"]
+
+- id: szweycer-andrzej
+  imiona: [Andrzej]
+  nazwisko: Szweycer
+  plec: m
+
+- id: szweycer-elzbieta
+  imiona: [Elżbieta]
+  nazwisko: Szweycer
+  plec: k
+
+- id: szweycer-michal
+  imiona: [Michał]
+  nazwisko: Szweycer
+  plec: m
+
+- id: szweycer-anna-1946
+  imiona: [Anna]
+  nazwisko: Suska
+  nazwisko_rodowe: "Szweycer"
+  plec: k
+  warianty: ["Haneczka Szweycerówna", "Haneczka Suska"]
+
+- id: suski-jan
+  imiona: [Jan]
+  nazwisko: Suski
+  plec: m
+  warianty: ["Jaś Suski"]
+
+- id: suska-maria
+  imiona: [Maria]
+  nazwisko: Suska
+  plec: k
+  warianty: ["Maja Suska"]
+
+- id: suska-katarzyna
+  imiona: [Katarzyna]
+  nazwisko: Suska
+  plec: k
+
+- id: suska-barbara
+  imiona: [Barbara]
+  nazwisko: Suska
+  plec: k
+
+- id: szweycer-zofia-1949
+  imiona: [Zofia]
+  nazwisko: Karasiewicz
+  nazwisko_rodowe: "Szweycer"
+  plec: k
+  warianty: ["Zosia Szweycer", "Zosia Szweycerówna", "Karasiewiczowa"]
+
+- id: karasiewicz-piotr
+  imiona: [Piotr]
+  nazwisko: Karasiewicz
+  plec: m
+
+- id: szweycer-magdalena-1956
+  imiona: [Magdalena]
+  nazwisko: Krzeptowska
+  nazwisko_rodowe: "Szweycer"
+  plec: k
+  warianty: ["Magda Szweycer", "Magda Krzeptowska"]
+
+- id: krzeptowski-andrzej
+  imiona: [Andrzej]
+  nazwisko: Krzeptowski
+  plec: m
+
+- id: krzeptowska-maria
+  imiona: [Maria]
+  nazwisko: Krzeptowska
+  plec: k
+
+- id: krzeptowska-teresa
+  imiona: [Teresa]
+  nazwisko: Krzeptowska
+  plec: k
+
+- id: krzeptowska-marta
+  imiona: [Marta]
+  nazwisko: Krzeptowska
+  plec: k
+
+- id: krzeptowski-andrzej-mlodszy
+  imiona: [Andrzej]
+  nazwisko: Krzeptowski
+  plec: m
+
+- id: grabinska-stefania
+  imiona: [Stefania]
+  nazwisko: Podkolińska
+  nazwisko_rodowe: "Grabińska"
+  plec: k
+  warianty: ["Stefania z Grabińskich Podkolińska", "ciocia Stefa"]
+
+- id: podkolinski-jan
+  imiona: [Jan]
+  nazwisko: Podkoliński
+  plec: m
+  uwagi: "Litera „k” w nazwisku niepewna."
+
+- id: podkolinski-waclaw
+  imiona: [Wacław]
+  nazwisko: Podkoliński
+  plec: m
+
+- id: podkolinski-adam
+  imiona: [Adam]
+  nazwisko: Podkoliński
+  plec: m
+
+- id: podkolinska-halina
+  imiona: [Halina]
+  nazwisko: Tymieniecka
+  nazwisko_rodowe: "Podkolińska"
+  plec: k
+  warianty: ["ciocia Hala Tymieniecka"]
+
+- id: tymieniecki-marek
+  imiona: [Marek]
+  nazwisko: Tymieniecki
+  plec: m
+  warianty: ["Marek Tyminiecki"]
+
+- id: tymieniecka-maria
+  imiona: [Maria]
+  nazwisko: Tymieniecka
+  plec: k
+  warianty: ["Marylka Tymieniecka"]
+
+- id: tymieniecki-jacek
+  imiona: [Jacek]
+  nazwisko: Tymieniecki
+  plec: m
+
+- id: grabinski-adam-1944
+  imiona: [Adam]
+  nazwisko: Grabiński
+  herb: Pomian
+  plec: m
+  warianty: ["Adam Grabiński adwokat"]
+
+- id: krzyzanowska-renata
+  imiona: [Renata]
+  nazwisko: Grabińska
+  nazwisko_rodowe: "Krzyżanowska"
+  herb: Dębno
+  plec: k
+  warianty: ["Renatka Krzyżanowska"]
+
+- id: grabinski-mieczyslaw-1902
+  imiona: [Mieczysław]
+  nazwisko: Grabiński
+  herb: Pomian
+  plec: m
+
+- id: grabinska-wanda-zona-mieczyslawa
+  imiona: [Wanda]
+  nazwisko: Grabińska
+  plec: k
+  uwagi: "I żona Mieczysława."
+
+- id: grabinska-charlotta
+  imiona: [Charlotta]
+  nazwisko: Grabińska
+  plec: k
+  uwagi: "II żona Mieczysława, Niemka."
+
+- id: grabinski-jan-1944
+  imiona: [Jan]
+  nazwisko: Grabiński
+  plec: m
+
+- id: grabinska-ewa-1946
+  imiona: [Ewa]
+  nazwisko: Grabińska
+  plec: k
+  warianty: ["Ewa Grabińska"]
+
+- id: grabinski-aleksander-1949
+  imiona: [Aleksander]
+  nazwisko: Grabiński
+  plec: m
+
+- id: mierzynski-tadeusz
+  imiona: ["Tadeusz"]
+  nazwisko: "Mierzyński"
+  plec: m
+  uwagi: "I mąż Marii Mierzyńskiej wg S03-p18-s02 (S07-p16-s04: Władysław Konstanty)."
+
+- id: zeromski-tadeusz
+  imiona: ["Tadeusz"]
+  nazwisko: "Żeromski"
+  plec: m
+  uwagi: "II mąż Marii Mierzyńskiej."
+
+- id: radoszewska-ludwika-1827
+  imiona: ["Ludwika"]
+  nazwisko: "Radoszewska"
+  nazwisko_rodowe: "Radoszewska"
+  plec: k
+  warianty: ["Ludwika z Radoszewskich Radoszewska"]
+  uwagi: "Córka Franciszka (1790–1846), żona Albina Radoszewskiego z Neru."
+
+- id: radoszewski-albin-1811
+  imiona: ["Albin"]
+  nazwisko: "Radoszewski"
+  herb: Oksza
+  plec: m
+  warianty: ["Albin Boxa Radoszewski Rzecz. Radca Stanu", "Albin Radoszewski z Neru"]
+
+- id: radoszewski-franciszek-ner
+  imiona: ["Franciszek"]
+  nazwisko: "Radoszewski"
+  plec: m
+  warianty: ["Franciszek z Neru", "Franciszek Radoszewski z Neru"]
+
+- id: skrzynska-ludmila
+  imiona: ["Ludmiła"]
+  nazwisko: "Radoszewska"
+  nazwisko_rodowe: "Skrzyńska"
+  herb: Zaremba
+  plec: k
+  warianty: ["Ludmiła Skrzyńska Radoszewska", "Ludmiła I voto Siemiątkowska II voto Radoszewska", "Ludomira"]
+
+- id: wessel-jadwiga
+  imiona: ["Jadwiga"]
+  nazwisko: "Radoszewska"
+  nazwisko_rodowe: "Wessel"
+  plec: k
+  warianty: ["Jadwiga z Wesslów Radoszewska", "Wessel Jadwiga"]
+
+- id: radoszewski-pawel-zatuskow
+  imiona: ["Paweł"]
+  nazwisko: "Radoszewski"
+  plec: m
+  warianty: ["Paweł z Zatuskowa", "Paweł Radoszewski z Zatuskowa"]
+
+- id: radoszewski-jan-ner
+  imiona: ["Jan"]
+  nazwisko: "Radoszewski"
+  plec: m
+  warianty: ["Jan z Neru", "Wujek Janek Radoszewski"]
+
+- id: radoszewska-ludmila-erbrych
+  imiona: ["Ludmiła"]
+  nazwisko: "Erbrych"
+  nazwisko_rodowe: "Radoszewska"
+  plec: k
+  uwagi: "Córka Franciszka z Neru."
+
+- id: erbrych-prof
+  imiona: []
+  nazwisko: "Erbrych"
+  plec: m
+  warianty: ["prof Erbrych laryngolog"]
+
+- id: erbrych-ludmila
+  imiona: ["Ludmiła"]
+  nazwisko: "Erbrych"
+  plec: k
+  warianty: ["Ludka"]
+
+- id: aulich-anna
+  imiona: ["Anna"]
+  nazwisko: "Aulich"
+  plec: k
+  uwagi: "Córka Ludmiły Erbrych."
+
+- id: radoszewska-julia
+  imiona: ["Julia"]
+  nazwisko: "Otocka"
+  nazwisko_rodowe: "Radoszewska"
+  plec: k
+  warianty: ["Julja Otocka"]
+  uwagi: "Córka Franciszka (1790–1846)."
+
+- id: otocki-nikodem
+  imiona: ["Nikodem"]
+  nazwisko: "Otocki"
+  plec: m
+
+- id: otocka-ludmila
+  imiona: ["Ludmiła"]
+  nazwisko: "Leżnowska[?]"
+  nazwisko_rodowe: "Otocka"
+  plec: k
+
+- id: lezniowski-st
+  imiona: ["St."]
+  nazwisko: "Leżnowski[?]"
+  plec: m
+  uwagi: "Nazwisko niepewne."
+
+- id: lezniowski-jan
+  imiona: ["Jan"]
+  nazwisko: "Leżnowski[?]"
+  plec: m
+  uwagi: "Syn Ludmiły z Otockich."
+
+- id: roczynska
+  imiona: []
+  nazwisko: null
+  nazwisko_rodowe: "Roczyńska[?]"
+  plec: k
+  uwagi: "Żona Jana, syna Ludmiły z Otockich."
+
+- id: lezniowska-krystyna
+  imiona: ["Krystyna"]
+  nazwisko: null
+  plec: k
+
+- id: karasinski
+  imiona: []
+  nazwisko: "Karasiński[?]"
+  plec: m
+
+- id: celina-wylezynska
+  imiona: ["Celina"]
+  nazwisko: "Wyleżyńska[?]"
+  plec: k
+  uwagi: "Krewna Otockich — przyporządkowanie niepewne."
+
+- id: wylezynski
+  imiona: []
+  nazwisko: "Wyleżyński[?]"
+  plec: m
+
+- id: wylezynski-ludomir
+  imiona: ["Ludomir"]
+  nazwisko: "Wyleżyński[?]"
+  plec: m
+
+- id: wylezynska-janina
+  imiona: ["Janina"]
+  nazwisko: "Wyleżyńska[?]"
+  plec: k
+
+- id: wylezynski-stanislaw
+  imiona: ["Stanisław"]
+  nazwisko: "Wyleżyński[?]"
+  plec: m
+
+- id: hagmajer-teresa
+  imiona: ["Teresa"]
+  nazwisko: "Hagmajer"
+  plec: k
+
+- id: przadzynski-stanislaw-1828
+  imiona: ["Stanisław"]
+  nazwisko: "Prządzyński"
+  plec: m
+  uwagi: "Syn Wincentego i Salomei."
+
+- id: przadzynski-boleslaw-1842
+  imiona: ["Bolesław"]
+  nazwisko: "Prządzyński"
+  plec: m
+
+- id: przadzynski-edward-1838
+  imiona: ["Edward"]
+  nazwisko: "Prządzyński"
+  plec: m
+
+- id: przadzynski-wincenty-1839
+  imiona: ["Wincenty"]
+  nazwisko: "Prządzyński"
+  plec: m
+  warianty: ["Wincenty właściciel Kobierzycka i Kościerzyna"]
+
+- id: przadzynska-pelagia-1833
+  imiona: ["Pelagia"]
+  nazwisko: "Prządzyńska"
+  plec: k
+
+- id: przadzynska-michalina-1826
+  imiona: ["Michalina"]
+  nazwisko: "Prządzyńska"
+  plec: k
+
+- id: skorzewska-maria
+  imiona: ["Maria"]
+  nazwisko: "Prządzyńska"
+  nazwisko_rodowe: "Skórzewska"
+  plec: k
+  warianty: ["Maria Drogosław[?] Skórzewska"]
+
+- id: przadzynski-jan-1880
+  imiona: ["Jan"]
+  nazwisko: "Prządzyński"
+  plec: m
+
+- id: skorzewska-jadwiga
+  imiona: ["Jadwiga"]
+  nazwisko: "Prządzyńska"
+  nazwisko_rodowe: "Skórzewska"
+  plec: k
+
+- id: przadzynska-salomea-1877
+  imiona: ["Salomea"]
+  nazwisko: "Dzbacka[?]"
+  nazwisko_rodowe: "Prządzyńska"
+  plec: k
+
+- id: dzbacki-jerzy
+  imiona: ["Jerzy"]
+  nazwisko: "Dzbacki[?]"
+  plec: m
+  uwagi: "Nazwisko niepewne."
+
+- id: przadzynski-ignacy-syn-jana
+  imiona: ["Ignacy"]
+  nazwisko: "Prządzyński"
+  plec: m
+
+- id: przadzynski-janusz
+  imiona: ["Janusz"]
+  nazwisko: "Prządzyński"
+  plec: m
+  uwagi: "Dziennikarz, w czasie wojny przerzucany z Londynu do Polski."
+
+- id: przadzynska-janina
+  imiona: ["Janina"]
+  nazwisko: "Prządzyńska"
+  plec: k
+
+- id: laczynski-maciej
+  imiona: ["Maciej"]
+  nazwisko: "Łączyński"
+  herb: Nałęcz
+  plec: m
+  warianty: ["Maciej dziedzic Kiernozi"]
+
+- id: zaborowska-ewa
+  imiona: ["Ewa"]
+  nazwisko: "Łączyńska"
+  nazwisko_rodowe: "Zaborowska"
+  plec: k
+
+- id: laczynski-benedykt
+  imiona: ["Benedykt"]
+  nazwisko: "Łączyński"
+  plec: m
+
+- id: laczynska-maria-1786
+  imiona: ["Maria"]
+  nazwisko: "Walewska"
+  nazwisko_rodowe: "Łączyńska"
+  herb: Nałęcz
+  plec: k
+  warianty: ["Maria Walewska", "p. Walewska"]
+
+- id: laczynska-antonina
+  imiona: ["Antonina", "Katarzyna"]
+  nazwisko: null
+  nazwisko_rodowe: "Łączyńska"
+  plec: k
+  warianty: ["Antonina Katarzyna"]
+  uwagi: "Po mężach: I Łasocka[?], II Rychłowska[?], III Radomanowa[?]."
+
+- id: skrzynska-jozefa-ii
+  imiona: ["Józefa"]
+  nazwisko: null
+  nazwisko_rodowe: "Skrzyńska"
+  plec: k
+  uwagi: "Wpisana pod Ludmiłą w S03-p23 — siostra Anny i Ludmiły? [?]"
+
+- id: skrzynski-gabriel
+  imiona: ["Gabriel"]
+  nazwisko: "Skrzyński"
+  plec: m
+  warianty: ["Gabryjel"]
+
+- id: skrzynski-ludwik-nowa-wies
+  imiona: ["Ludwik"]
+  nazwisko: "Skrzyński"
+  plec: m
+  warianty: ["Ludwik z Nowej Wsi"]
+
+- id: skrzynski-aleksander-gostkow
+  imiona: ["Aleksander"]
+  nazwisko: "Skrzyński"
+  plec: m
+  warianty: ["Aleksander z Gostkowa"]
+  uwagi: "Młodszy (syn Gabriela?)."
+
+- id: skrzynska-zofia-urszulanka
+  imiona: ["Zofia"]
+  nazwisko: "Skrzyńska"
+  plec: k
+
+- id: skrzynska-gabriela
+  imiona: ["Gabriela"]
+  nazwisko: "Skrzyńska"
+  plec: k
+  warianty: ["Gabryjela"]
+
+- id: siemiatkowski-n
+  imiona: []
+  nazwisko: "Siemiątkowski"
+  plec: m
+  warianty: ["Siemiątkowski z Wygnanowa[?]"]
+  uwagi: "I mąż Ludmiły Skrzyńskiej."
+
+- id: siemiatkowski-antoni
+  imiona: ["Antoni"]
+  nazwisko: "Siemiątkowski"
+  herb: Jastrzębiec
+  plec: m
+  warianty: ["Antoni h. Jastrzębiec z Wygnanowa[?]"]
+
+- id: siemiatkowski-zygmunt
+  imiona: ["Zygmunt"]
+  nazwisko: "Siemiątkowski"
+  plec: m
+  warianty: ["Zygmunt z Wysokiej Woli"]
+
+- id: walewska-helena
+  imiona: ["Helena"]
+  nazwisko: null
+  nazwisko_rodowe: "Walewska"
+  plec: k
+  uwagi: "Wpisana na wysokości Antoniego i Zygmunta Siemiątkowskich — żona jednego z nich? [?]"
+
+- id: grotowska-zofia
+  imiona: ["Zofia"]
+  nazwisko: "Radoszewska"
+  nazwisko_rodowe: "Grotowska"
+  plec: k
+  warianty: ["Zofia z Grotowskich Radoszewska", "Zofia Radoszewska z Zatuskowa"]
+
+- id: laszczynska
+  imiona: []
+  nazwisko: null
+  nazwisko_rodowe: "Łaszczyńska"
+  plec: k
+  uwagi: "Wpisana na wysokości Ludwika z Nowej Wsi — jego żona? (S03-p24-s07)."
+
+- id: gorska-aleksandra
+  imiona: ["Aleksandra"]
+  nazwisko: null
+  nazwisko_rodowe: "Górska"
+  plec: k
+  warianty: ["Aleksandra Górska (ze Szendaczyna[?])"]

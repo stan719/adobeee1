@@ -116,3 +116,178 @@
   typ: miasto
   pewnosc_identyfikacji: prawdopodobna
   uwagi: "Klasztor Urszulanek Szarych (Pniewy k. Szamotuł)."
+
+- id: charlupia-mala
+  nazwa: Charłupia Mała
+  typ: wieś
+  pewnosc_identyfikacji: prawdopodobna
+  uwagi: "Parafia Kościerzyna, cudowny obraz Matki Boskiej (S03-p29-s03)."
+
+- id: krakow
+  nazwa: Kraków
+  typ: miasto
+  pewnosc_identyfikacji: pewna
+
+- id: krakow-kosciol-sw-barbary
+  nazwa: Kościół św. Barbary w Krakowie
+  typ: kościół
+  nadrzedne: krakow
+  pewnosc_identyfikacji: pewna
+
+- id: piotrkowice-wolyn
+  nazwa: Piotrkowice
+  warianty: [Piotrkowicze]
+  typ: majątek
+  pewnosc_identyfikacji: do_ustalenia
+  uwagi: "Majątek Drohojowskich na Wołyniu, k. Kowla (S03-p10-s03, S07-p21-s02)."
+
+- id: leznica-wielka
+  nazwa: Leźnica Wielka
+  warianty: ["Leźnica W."]
+  typ: wieś
+  pewnosc_identyfikacji: prawdopodobna
+  uwagi: "Majątek Prządzyńskich w Łęczyckiem; kaplica grobowa."
+
+- id: zarzecze
+  nazwa: Zarzecze
+  typ: wieś
+  pewnosc_identyfikacji: do_ustalenia
+  uwagi: "Parafia Ciszecina Wielkiego; grób Drohojowskich."
+
+- id: gostkow
+  nazwa: Gostków
+  typ: wieś
+  pewnosc_identyfikacji: do_ustalenia
+  uwagi: "Majątek Skrzyńskich."
+
+- id: powazki
+  nazwa: Cmentarz Powązkowski w Warszawie
+  warianty: [Powązki]
+  typ: cmentarz
+  nadrzedne: warszawa
+  pewnosc_identyfikacji: pewna
+
+- id: mroke
+  nazwa: "Mroke[?]"
+  typ: inny
+  pewnosc_identyfikacji: do_ustalenia
+  uwagi: "Miejsce ur. Edwarda Grabińskiego — odczyt niepewny."
+
+- id: brazylia
+  nazwa: Brazylia
+  typ: region
+  pewnosc_identyfikacji: pewna
+
+- id: hiszpania
+  nazwa: Hiszpania
+  typ: region
+  pewnosc_identyfikacji: pewna
+
+- id: flossenburg
+  nazwa: Flossenbürg (obóz koncentracyjny)
+  warianty: [Flossenburg]
+  typ: inny
+  pewnosc_identyfikacji: pewna
+
+- id: milanowek
+  nazwa: Milanówek
+  typ: miasto
+  pewnosc_identyfikacji: pewna
+
+- id: ner
+  nazwa: "Ner"
+  typ: majątek
+  pewnosc_identyfikacji: do_ustalenia
+  uwagi: "Majątek Radoszewskich nad rzeką Ner, k. Gostkowa i Wartkowic (S07-p61-d1)."
+
+- id: zatuskow
+  nazwa: "Zatusków"
+  typ: majątek
+  pewnosc_identyfikacji: do_ustalenia
+  uwagi: "Majątek Pawła Radoszewskiego, „k/Łowicza” (S07-p27-s04)."
+
+- id: wola-wiazowa
+  nazwa: "Wola Wiązowa"
+  typ: wieś
+  pewnosc_identyfikacji: do_ustalenia
+
+- id: gubernia-jenisejska
+  nazwa: "gubernia jenisejska (Syberia)"
+  typ: region
+  pewnosc_identyfikacji: pewna
+
+- id: paryz
+  nazwa: "Paryż"
+  typ: miasto
+  pewnosc_identyfikacji: pewna
+
+- id: szwajcaria
+  nazwa: "Szwajcaria"
+  typ: region
+  pewnosc_identyfikacji: pewna
+
+- id: londyn
+  nazwa: "Londyn"
+  typ: miasto
+  pewnosc_identyfikacji: pewna
+
+- id: kobierzycko
+  nazwa: "Kobierzycko"
+  typ: wieś
+  pewnosc_identyfikacji: do_ustalenia
+  uwagi: "Majątek Wincentego Prządzyńskiego; fabryka mączki kostnej."
+
+- id: kiernozia
+  nazwa: "Kiernozia"
+  typ: wieś
+  pewnosc_identyfikacji: prawdopodobna
+
+- id: nowa-wies-skrzynskich
+  nazwa: "Nowa Wieś"
+  typ: majątek
+  pewnosc_identyfikacji: do_ustalenia
+  uwagi: "Majątek Skrzyńskich (z Gostkowa i Nowej Wsi)."
+
+- id: wygnanow
+  nazwa: "Wygnanów[?]"
+  typ: majątek
+  pewnosc_identyfikacji: do_ustalenia
+
+- id: wysoka-wola
+  nazwa: "Wysoka Wola"
+  typ: majątek
+  pewnosc_identyfikacji: do_ustalenia
+
+- id: lipnica
+  nazwa: "Lipnica"
+  typ: majątek
+  pewnosc_identyfikacji: do_ustalenia
+  uwagi: "Majątek cioci Kotusi z Mierzyńskich Łąckiej k. Szamotuł, zapisany Urszulankom."
+
+- id: podkowa-lesna
+  nazwa: "Podkowa Leśna"
+  typ: miasto
+  pewnosc_identyfikacji: pewna
+
+- id: brwinow
+  nazwa: "Brwinów"
+  typ: miasto
+  pewnosc_identyfikacji: pewna
+
+- id: warszawa-kosciol-sw-barbary
+  nazwa: "Kościół św. Barbary na Nowogrodzkiej w Warszawie"
+  typ: kościół
+  nadrzedne: warszawa
+  pewnosc_identyfikacji: pewna
+
+- id: podkowa-lesna-kosciol-sw-krzysztofa
+  nazwa: "Kościół św. Krzysztofa w Podkowie Leśnej"
+  typ: kościół
+  nadrzedne: podkowa-lesna
+  pewnosc_identyfikacji: pewna
+
+- id: brwinow-kosciol-sw-floriana
+  nazwa: "Kościół św. Floriana w Brwinowie"
+  typ: kościół
+  nadrzedne: brwinow
+  pewnosc_identyfikacji: pewna

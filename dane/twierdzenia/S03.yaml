@@ -1,0 +1,271 @@
+# Twierdzenia ze źródła S03 (księga „The History of Our Family”; zob. dane/SCHEMAT.md)
+# Powtórzenia tej samej informacji w obrębie S03 są zebrane w jednym twierdzeniu (kilka źródeł).
+# Relacje wynikające z układu drzewa (klamry, kolumny) mają uwagę „z układu drzewa”.
+
+# --- s. 1–4: dedykacja, autorka, mąż, córka
+- {id: S03-001, podmiot: radoszewska-teresa-1942, relacja: opis, wartosc: "założycielka księgi rodzinnej (z mężem Jerzym i córką Anną), dedykowanej rodzinie Boxa Radoszewskich h. Oksza z Krempy; wzór z książki przywiezionej z Londynu przez Andrzeja Radoszewskiego",
+   zrodla: [{segment: S03-p01-s01, cytat: "Ta Książka dedykowana jest: Rodzinie Boxa Radoszewskich h. Oksza z Krempy"},
+            {segment: S03-p01-s03, cytat: "Teresa Radoszewska Zielińska Jerzy Zieliński"},
+            {segment: S03-p01-s04, cytat: "Wzór z Książki przywiezionej z Londynu przez Andrzeja Radoszewskiego"},
+            {segment: S03-p02-s02, cytat: "Rodzina Boxa Radoszewskich herbu Oksza z Krempy"}], pewnosc_odczytu: pewna}
+- {id: S03-002, podmiot: radoszewska-teresa-1942, relacja: slub, obiekt: zielinski-jerzy-1937, data: {tekst: "20-VII-1972", od: 1972-07-20, do: 1972-07-20},
+   zrodla: [{segment: S03-p01-s03, cytat: "Teresa Radoszewska Zielińska Jerzy Zieliński ślub 20-VII-1972"},
+            {segment: S03-p05-s02, cytat: "Teresa Radoszewska Jerzy Zieliński 20-VII-1972"},
+            {segment: S03-p49-s02, cytat: "20-VII 1972 ślub Tereski i Jurka"}], pewnosc_odczytu: pewna}
+- {id: S03-003, podmiot: radoszewski-andrzej-1938, relacja: opis, wartosc: "przywiózł z Londynu książkę, która posłużyła za wzór księgi rodzinnej",
+   zrodla: [{segment: S03-p01-s04, cytat: "Wzór z Książki przywiezionej z Londynu przez Andrzeja Radoszewskiego"}], pewnosc_odczytu: pewna,
+   uwagi: "Utożsamienie z Andrzejem (ur. 1938), bratem autorki — prawdopodobne."}
+- {id: S03-004, podmiot: radoszewski-jerzy-1902, relacja: opis, wartosc: "dewiza rodu: Noli me tangere",
+   zrodla: [{segment: S03-p02-s01, cytat: "Noli me tangere"}], pewnosc_odczytu: pewna}
+- {id: S03-005, podmiot: radoszewska-teresa-1942, relacja: urodzenie, data: {tekst: "30-IV-1942", od: 1942-04-30, do: 1942-04-30}, miejsce: warszawa,
+   zrodla: [{segment: S03-p02-s03, cytat: "Teresa Boxa Radoszewska Zielińska 30-IV-1942 w Warszawie"},
+            {segment: S03-p08-s01, cytat: "Teresa Ewa Radoszewska Zielińska 30-IV-1942"},
+            {segment: S03-p46-s02, cytat: "30-IV 1942 ur. Tereski"}], pewnosc_odczytu: pewna}
+- {id: S03-006, podmiot: radoszewska-teresa-1942, relacja: rodzic, obiekt: radoszewski-jerzy-1902,
+   zrodla: [{segment: S03-p02-s03, cytat: "Rodzice Jerzy Boxa Radoszewski"}], pewnosc_odczytu: pewna}
+- {id: S03-007, podmiot: radoszewska-teresa-1942, relacja: rodzic, obiekt: przadzynska-anna-1914,
+   zrodla: [{segment: S03-p02-s03, cytat: "Anna z Prządzyńskich h. Grzymała Radoszewska"}], pewnosc_odczytu: pewna}
+- {id: S03-008, podmiot: radoszewska-teresa-1942, relacja: rodzenstwo, obiekt: radoszewska-elzbieta-1938,
+   zrodla: [{segment: S03-p02-s03, cytat: "Rodzeństwo Elżbieta Stanisława Radoszewska Mosek"}], pewnosc_odczytu: pewna}
+- {id: S03-009, podmiot: radoszewska-teresa-1942, relacja: rodzenstwo, obiekt: radoszewski-andrzej-1938,
+   zrodla: [{segment: S03-p02-s03, cytat: "Andrzej Michał Radoszewski"}], pewnosc_odczytu: pewna}
+- {id: S03-010, podmiot: radoszewska-teresa-1942, relacja: malzonek, obiekt: zielinski-jerzy-1937,
+   zrodla: [{segment: S03-p02-s03, cytat: "Mąż Jerzy Zieliński"}], pewnosc_odczytu: pewna}
+- {id: S03-011, podmiot: zielinski-jerzy-1937, relacja: urodzenie, data: {tekst: "17-VII-1937", od: 1937-07-17, do: 1937-07-17}, miejsce: warszawa,
+   zrodla: [{segment: S03-p03-s02, cytat: "Jerzy Zieliński ur. 17-VII-1937 r. w Warszawie"},
+            {segment: S03-p49-s02, cytat: "17-VII-1937 \" \" Jurka Zielińskiego"}], pewnosc_odczytu: pewna}
+- {id: S03-012, podmiot: radoszewska-zielinska-anna-1974, relacja: urodzenie, data: {tekst: "6 sierpnia 1974, wtorek, 4 rano", od: 1974-08-06, do: 1974-08-06}, miejsce: warszawa, wartosc: "2,850 kg, 52 cm",
+   zrodla: [{segment: S03-p04-s02, cytat: "Anna Maria Boxa Radoszewska Zielińska ur. 6 sierpnia 1974 w Warszawie wtorek 4 rano 2,850 kg 52 cm."},
+            {segment: S03-p05-s02, cytat: "Anna 6 sierpień 1974 wtorek"},
+            {segment: S03-p50-s02, cytat: "6-VIII-1974 urodziny Anulki wtorek 4 rano"}], pewnosc_odczytu: pewna}
+- {id: S03-013, podmiot: radoszewska-zielinska-anna-1974, relacja: opis, wartosc: "znak zodiaku: Lew (dopisek)",
+   zrodla: [{segment: S03-p04-d1, cytat: "Lew"}], pewnosc_odczytu: pewna}
+- {id: S03-014, podmiot: radoszewska-zielinska-anna-1974, relacja: rodzic, obiekt: radoszewska-teresa-1942,
+   zrodla: [{segment: S03-p04-s01, cytat: "Nasze Dzieci"}, {segment: S03-p05-s02, cytat: "Teresa Radoszewska Jerzy Zieliński 20-VII-1972 Anna"}], pewnosc_odczytu: pewna}
+- {id: S03-015, podmiot: radoszewska-zielinska-anna-1974, relacja: rodzic, obiekt: zielinski-jerzy-1937,
+   zrodla: [{segment: S03-p04-s01, cytat: "Nasze Dzieci"}, {segment: S03-p05-s02, cytat: "Teresa Radoszewska Jerzy Zieliński 20-VII-1972 Anna"}], pewnosc_odczytu: pewna}
+
+# --- s. 5–8: drzewo genealogiczne
+- {id: S03-016, podmiot: radoszewski-jerzy-1902, relacja: slub, obiekt: przadzynska-anna-1914, data: {tekst: "28 kwiecień 1937", od: 1937-04-28, do: 1937-04-28}, miejsce: charlupia-mala,
+   zrodla: [{segment: S03-p05-s03, cytat: "Jerzy Józefat Anna Prządzyńska 28 kwiecień 1937 Charłupia Mała"},
+            {segment: S03-p08-s02, cytat: "28 kwiecień 1937 Charłupia Mała"},
+            {segment: S03-p08-s03, cytat: "28 kwiecień 1937 Charłupia Mała"},
+            {segment: S03-p46-s02, cytat: "28-IV-1937 ślub Jerzego i Anny z Prządzyńskich Radoszewskich"}], pewnosc_odczytu: pewna}
+- {id: S03-017, podmiot: radoszewski-andrzej-1938, relacja: rodzic, obiekt: radoszewski-jerzy-1902,
+   zrodla: [{segment: S03-p05-s03, cytat: "dzieci Andrzej Michał"}], pewnosc_odczytu: pewna}
+- {id: S03-018, podmiot: radoszewski-andrzej-1938, relacja: rodzic, obiekt: przadzynska-anna-1914,
+   zrodla: [{segment: S03-p05-s03, cytat: "dzieci Andrzej Michał"}], pewnosc_odczytu: pewna}
+- {id: S03-019, podmiot: radoszewska-elzbieta-1938, relacja: rodzic, obiekt: radoszewski-jerzy-1902,
+   zrodla: [{segment: S03-p05-s03, cytat: "Elżbieta Stanisława"}], pewnosc_odczytu: pewna}
+- {id: S03-020, podmiot: radoszewska-elzbieta-1938, relacja: rodzic, obiekt: przadzynska-anna-1914,
+   zrodla: [{segment: S03-p05-s03, cytat: "Elżbieta Stanisława"}], pewnosc_odczytu: pewna}
+- {id: S03-021, podmiot: radoszewski-michal-1865, relacja: slub, obiekt: drohojowska-ewelina-1880, miejsce: krakow-kosciol-sw-barbary,
+   zrodla: [{segment: S03-p06-s02, cytat: "Michał Ewa Drohojowska h. Korczak Kraków Kościół Św. Barbary"},
+            {segment: S03-p09-s01, cytat: "Kraków Kościół Św. Barbary"}], pewnosc_odczytu: pewna}
+- {id: S03-022, podmiot: radoszewski-jerzy-1902, relacja: rodzic, obiekt: radoszewski-michal-1865,
+   zrodla: [{segment: S03-p06-s02, cytat: "Dzieci: Jerzy"}], pewnosc_odczytu: pewna}
+- {id: S03-023, podmiot: radoszewski-jerzy-1902, relacja: rodzic, obiekt: drohojowska-ewelina-1880,
+   zrodla: [{segment: S03-p06-s02, cytat: "Dzieci: Jerzy"}], pewnosc_odczytu: pewna}
+- {id: S03-024, podmiot: przadzynski-stanislaw-1871, relacja: slub, obiekt: grabinska-stanislawa-1890, data: {tekst: "19-XII-1912", od: 1912-12-19, do: 1912-12-19}, miejsce: warszawa,
+   zrodla: [{segment: S03-p06-s03, cytat: "Stanisław Prządzyński h. Grzymała Stanisława Grabińska h. Pomian 19-XII-1912 Warszawa"},
+            {segment: S03-p09-s03, cytat: "19-XII-1912 Warszawa"},
+            {segment: S03-p09-s04, cytat: "19-XII-1912 Warszawa"},
+            {segment: S03-p54-s02, cytat: "19-XII-1912 ślub Babci Stachy Prządzyńskiej"}], pewnosc_odczytu: pewna}
+- {id: S03-025, podmiot: przadzynska-anna-1914, relacja: rodzic, obiekt: przadzynski-stanislaw-1871,
+   zrodla: [{segment: S03-p06-s03, cytat: "Dzieci: Anna Maria,"}], pewnosc_odczytu: pewna}
+- {id: S03-026, podmiot: przadzynska-anna-1914, relacja: rodzic, obiekt: grabinska-stanislawa-1890,
+   zrodla: [{segment: S03-p06-s03, cytat: "Dzieci: Anna Maria,"}], pewnosc_odczytu: pewna}
+- {id: S03-027, podmiot: przadzynski-andrzej-1917, relacja: rodzic, obiekt: przadzynski-stanislaw-1871,
+   zrodla: [{segment: S03-p06-s03, cytat: "Dzieci: Anna Maria, Andrzej"}], pewnosc_odczytu: pewna}
+- {id: S03-028, podmiot: przadzynski-andrzej-1917, relacja: rodzic, obiekt: grabinska-stanislawa-1890,
+   zrodla: [{segment: S03-p06-s03, cytat: "Dzieci: Anna Maria, Andrzej"}], pewnosc_odczytu: pewna}
+- {id: S03-029, podmiot: przadzynska-maria-1919, relacja: rodzic, obiekt: przadzynski-stanislaw-1871,
+   zrodla: [{segment: S03-p06-s03, cytat: "Andrzej Maria Teresa"}], pewnosc_odczytu: pewna}
+- {id: S03-030, podmiot: przadzynska-maria-1919, relacja: rodzic, obiekt: grabinska-stanislawa-1890,
+   zrodla: [{segment: S03-p06-s03, cytat: "Andrzej Maria Teresa"}], pewnosc_odczytu: pewna}
+- {id: S03-031, podmiot: radoszewski-jozefat-1830, relacja: malzonek, obiekt: szeliska-teofila-1842,
+   zrodla: [{segment: S03-p06-s04, cytat: "Józefat 1830+1892 Teofila Szeliska 1842+1909"}], pewnosc_odczytu: pewna}
+- {id: S03-032, podmiot: radoszewski-jozefat-1830, relacja: urodzenie, data: {tekst: "1830", od: 1830, do: 1830},
+   zrodla: [{segment: S03-p06-s04, cytat: "Józefat 1830+1892"}, {segment: S03-p09-s05, cytat: "Józefat Radoszewski h. Oksza 1830+1892 Krempa"},
+            {segment: S03-p17-s02, cytat: "Józefat 1830 +1892"}, {segment: S03-p25-s02, cytat: "Józefat 1830 1892"},
+            {segment: S03-p30-s02, cytat: "Józefat 1830+1892"}], pewnosc_odczytu: pewna}
+- {id: S03-033, podmiot: radoszewski-jozefat-1830, relacja: smierc, data: {tekst: "+1892", od: 1892, do: 1892},
+   zrodla: [{segment: S03-p06-s04, cytat: "Józefat 1830+1892"}, {segment: S03-p09-s05, cytat: "Józefat Radoszewski h. Oksza 1830+1892 Krempa"},
+            {segment: S03-p17-s02, cytat: "Józefat 1830 +1892"}, {segment: S03-p25-s02, cytat: "Józefat 1830 1892"},
+            {segment: S03-p30-s02, cytat: "Józefat 1830+1892"}], pewnosc_odczytu: pewna}
+- {id: S03-034, podmiot: szeliska-teofila-1842, relacja: urodzenie, data: {tekst: "1842", od: 1842, do: 1842},
+   zrodla: [{segment: S03-p06-s04, cytat: "Teofila Szeliska 1842+1909"}, {segment: S03-p09-s05, cytat: "Teofila Szeliska 1842+1909"},
+            {segment: S03-p18-s02, cytat: "Teofila Szeliska 1842+1909"}, {segment: S03-p30-s02, cytat: "Teofila z Szeliskich 1842+1909"}], pewnosc_odczytu: pewna}
+- {id: S03-035, podmiot: szeliska-teofila-1842, relacja: smierc, data: {tekst: "+1909", od: 1909, do: 1909},
+   zrodla: [{segment: S03-p06-s04, cytat: "Teofila Szeliska 1842+1909"}, {segment: S03-p09-s05, cytat: "Teofila Szeliska 1842+1909"},
+            {segment: S03-p18-s02, cytat: "Teofila Szeliska 1842+1909"}, {segment: S03-p30-s02, cytat: "Teofila z Szeliskich 1842+1909"}], pewnosc_odczytu: pewna}
+- {id: S03-036, podmiot: szeliska-teofila-1842, relacja: herb, wartosc: Szeliga,
+   zrodla: [{segment: S03-p06-s04, cytat: "Teofila Szeliska 1842+1909 h. Szeliga"}], pewnosc_odczytu: pewna}
+- {id: S03-037, podmiot: drohojowski-boleslaw-1848, relacja: malzonek, obiekt: terlecka-bronislawa-1847,
+   zrodla: [{segment: S03-p06-s04, cytat: "Bolesław hr. Drohojowski h. Korczak 1847+1941 Bronisława Terlecka h. Sas"},
+            {segment: S03-p09-s06, cytat: "Bolesław hr. Drohojowski h. Korczak 1848+1916 Bronisława Terlecka h. Sas"}], pewnosc_odczytu: pewna}
+- {id: S03-038, podmiot: drohojowski-boleslaw-1848, relacja: urodzenie, data: {tekst: "1848", od: 1848, do: 1848},
+   zrodla: [{segment: S03-p09-s06, cytat: "Bolesław hr. Drohojowski h. Korczak 1848+1916"}], pewnosc_odczytu: pewna}
+- {id: S03-039, podmiot: drohojowski-boleslaw-1848, relacja: smierc, data: {tekst: "+1916", od: 1916, do: 1916},
+   zrodla: [{segment: S03-p09-s06, cytat: "Bolesław hr. Drohojowski h. Korczak 1848+1916"}], pewnosc_odczytu: pewna}
+- {id: S03-040, podmiot: drohojowski-boleslaw-1848, relacja: urodzenie, data: {tekst: "1847 (daty w wierszu Bolesława)", od: 1847, do: 1847},
+   zrodla: [{segment: S03-p06-s04, cytat: "Bolesław hr. Drohojowski h. Korczak 1847+1941"}], pewnosc_odczytu: niepewna,
+   uwagi: "Zapis niejednoznaczny: daty 1847+1941 stoją przy Bolesławie, ale na s. 9 to daty Bronisławy (S03-046, S03-047). Twierdzenie zapisane, aby nie pominąć wersji."}
+- {id: S03-041, podmiot: drohojowski-boleslaw-1848, relacja: herb, wartosc: Korczak,
+   zrodla: [{segment: S03-p06-s04, cytat: "Bolesław hr. Drohojowski h. Korczak"}], pewnosc_odczytu: pewna}
+- {id: S03-042, podmiot: terlecka-bronislawa-1847, relacja: herb, wartosc: Sas,
+   zrodla: [{segment: S03-p06-s04, cytat: "Bronisława Terlecka h. Sas"}], pewnosc_odczytu: pewna}
+- {id: S03-043, podmiot: przadzynski-wladyslaw-1837, relacja: malzonek, obiekt: skrzynska-anna-1848,
+   zrodla: [{segment: S03-p06-s05, cytat: "Władysław Prządzyński 1837+1898 Anna Skrzyńska 1848+1883 h. Zaremba"}], pewnosc_odczytu: pewna}
+- {id: S03-044, podmiot: skrzynska-anna-1848, relacja: herb, wartosc: Zaremba,
+   zrodla: [{segment: S03-p06-s05, cytat: "Anna Skrzyńska 1848+1883 h. Zaremba"}], pewnosc_odczytu: pewna}
+- {id: S03-045, podmiot: grabinski-edward-1859, relacja: malzonek, obiekt: brandel-maria-1870,
+   zrodla: [{segment: S03-p06-s06, cytat: "Edward Grabiński 1859+1911 h. Pomian Maria Brandel 1870+14-II-1945"}], pewnosc_odczytu: pewna}
+- {id: S03-046, podmiot: terlecka-bronislawa-1847, relacja: urodzenie, data: {tekst: "1847", od: 1847, do: 1847},
+   zrodla: [{segment: S03-p09-s06, cytat: "Bronisława Terlecka h. Sas 1847+24-III-1941"}], pewnosc_odczytu: pewna}
+- {id: S03-047, podmiot: terlecka-bronislawa-1847, relacja: smierc, data: {tekst: "24-III-1941", od: 1941-03-24, do: 1941-03-24},
+   zrodla: [{segment: S03-p09-s06, cytat: "1847+24-III-1941 poch. w Zarzeczu"}], pewnosc_odczytu: pewna}
+
+- {id: S03-048, podmiot: radoszewski-franciszek-1790, relacja: malzonek, obiekt: skrzynska-jozefa-1807,
+   zrodla: [{segment: S03-p07-s01, cytat: "Franciszek 1790+1846 Józefa Skrzyńska 1867+1856 h. Zaremba"},
+            {segment: S03-p10-s01, cytat: "Franciszek 1790+1846 Józefa Skrzyńska 1807+1856"}], pewnosc_odczytu: pewna}
+- {id: S03-049, podmiot: skrzynska-jozefa-1807, relacja: urodzenie, data: {tekst: "1807", od: 1807, do: 1807},
+   zrodla: [{segment: S03-p10-s01, cytat: "Józefa Skrzyńska 1807+1856"}, {segment: S03-p26-s01, cytat: "Józefa Skrzyńska 1807+1856"}], pewnosc_odczytu: pewna}
+- {id: S03-050, podmiot: skrzynska-jozefa-1807, relacja: urodzenie, data: {tekst: "1867 (zapis)", od: 1867, do: 1867},
+   zrodla: [{segment: S03-p07-s01, cytat: "Józefa Skrzyńska 1867+1856"}], pewnosc_odczytu: niepewna,
+   uwagi: "Zapewne omyłka zapisu (1807); zostawione jako wersja źródła."}
+- {id: S03-051, podmiot: skrzynska-jozefa-1807, relacja: smierc, data: {tekst: "+1856", od: 1856, do: 1856},
+   zrodla: [{segment: S03-p07-s01, cytat: "Józefa Skrzyńska 1867+1856"}, {segment: S03-p10-s01, cytat: "Józefa Skrzyńska 1807+1856"},
+            {segment: S03-p26-s01, cytat: "Józefa Skrzyńska 1807+1856"}, {segment: S03-p33-s02, cytat: "Józefa ze Skrzyńskich Radoszewska 1856"}], pewnosc_odczytu: pewna}
+- {id: S03-052, podmiot: skrzynska-jozefa-1807, relacja: herb, wartosc: Zaremba,
+   zrodla: [{segment: S03-p07-s01, cytat: "Józefa Skrzyńska 1867+1856 h. Zaremba"}], pewnosc_odczytu: pewna}
+- {id: S03-053, podmiot: radoszewski-franciszek-1790, relacja: urodzenie, data: {tekst: "1790", od: 1790, do: 1790},
+   zrodla: [{segment: S03-p07-s01, cytat: "Franciszek 1790+1846"}, {segment: S03-p10-s01, cytat: "Franciszek 1790+1846"},
+            {segment: S03-p25-s02, cytat: "Franciszek 1790 15-XII-1846"}], pewnosc_odczytu: pewna}
+- {id: S03-054, podmiot: radoszewski-franciszek-1790, relacja: smierc, data: {tekst: "15-XII-1846", od: 1846-12-15, do: 1846-12-15},
+   zrodla: [{segment: S03-p25-s02, cytat: "Franciszek 1790 15-XII-1846"}, {segment: S03-p07-s01, cytat: "Franciszek 1790+1846"},
+            {segment: S03-p10-s01, cytat: "Franciszek 1790+1846"}, {segment: S03-p33-s02, cytat: "Franciszek Radoszewski 1846"}], pewnosc_odczytu: pewna}
+- {id: S03-055, podmiot: radoszewski-franciszek-1790, relacja: rodzic, obiekt: radoszewski-roch-1820,
+   zrodla: [{segment: S03-p07-s01, cytat: "Roch +1820 Kunegunda Wierzchleyska"}, {segment: S03-p10-s01, cytat: "Roch +1820 Kunegunda Wierzchleyska 1828"}], pewnosc_odczytu: pewna, uwagi: "Z układu drzewa (klamra)."}
+- {id: S03-056, podmiot: radoszewski-franciszek-1790, relacja: rodzic, obiekt: wierzchleyska-kunegunda-1828,
+   zrodla: [{segment: S03-p07-s01, cytat: "Roch +1820 Kunegunda Wierzchleyska"}, {segment: S03-p10-s01, cytat: "Roch +1820 Kunegunda Wierzchleyska 1828"}], pewnosc_odczytu: pewna, uwagi: "Z układu drzewa (klamra)."}
+- {id: S03-057, podmiot: radoszewski-roch-1820, relacja: smierc, data: {tekst: "+1820", od: 1820, do: 1820},
+   zrodla: [{segment: S03-p07-s01, cytat: "Roch +1820"}, {segment: S03-p10-s01, cytat: "Roch +1820"}, {segment: S03-p30-s02, cytat: "pochowani: Roch 1820"}], pewnosc_odczytu: pewna}
+- {id: S03-058, podmiot: radoszewski-roch-1820, relacja: malzonek, obiekt: wierzchleyska-kunegunda-1828,
+   zrodla: [{segment: S03-p07-s01, cytat: "Roch +1820 Kunegunda Wierzchleyska"}], pewnosc_odczytu: pewna}
+- {id: S03-059, podmiot: wierzchleyska-kunegunda-1828, relacja: smierc, data: {tekst: "1828", od: 1828, do: 1828},
+   zrodla: [{segment: S03-p10-s01, cytat: "Kunegunda Wierzchleyska 1828"}], pewnosc_odczytu: pewna}
+- {id: S03-060, podmiot: szeliska-teofila-1842, relacja: rodzic, obiekt: szeliski-michal-1800,
+   zrodla: [{segment: S03-p07-s02, cytat: "Michał Szeliski h. Szeliga Antonina Rozrażewska[?]"}], pewnosc_odczytu: pewna, uwagi: "Z układu drzewa (kolumna pradziadków przy Teofili)."}
+- {id: S03-061, podmiot: szeliska-teofila-1842, relacja: rodzic, obiekt: rozrazewska-antonina,
+   zrodla: [{segment: S03-p07-s02, cytat: "Michał Szeliski h. Szeliga Antonina Rozrażewska[?]"}], pewnosc_odczytu: niepewna, uwagi: "Z układu drzewa; nazwisko niepewne."}
+- {id: S03-062, podmiot: szeliski-michal-1800, relacja: malzonek, obiekt: rozrazewska-antonina,
+   zrodla: [{segment: S03-p07-s02, cytat: "Michał Szeliski h. Szeliga Antonina Rozrażewska[?]"}, {segment: S03-p10-s02, cytat: "Antonina Rozrażewska[?]"}], pewnosc_odczytu: niepewna}
+- {id: S03-063, podmiot: szeliski-michal-1800, relacja: rodzic, obiekt: szeliski-teodor,
+   zrodla: [{segment: S03-p07-s02, cytat: "Teodor Tekla Zazarska[?]"}, {segment: S03-p10-s02, cytat: "Teodor Szeliski Tekla Zazarska[?] 1808[?]+1848"}], pewnosc_odczytu: pewna, uwagi: "Z układu drzewa (klamra)."}
+- {id: S03-064, podmiot: szeliski-michal-1800, relacja: rodzic, obiekt: zazarska-tekla,
+   zrodla: [{segment: S03-p10-s02, cytat: "Teodor Szeliski Tekla Zazarska[?] 1808[?]+1848"}], pewnosc_odczytu: niepewna, uwagi: "Z układu drzewa; nazwisko niepewne."}
+- {id: S03-065, podmiot: szeliski-teodor, relacja: malzonek, obiekt: zazarska-tekla,
+   zrodla: [{segment: S03-p10-s02, cytat: "Teodor Szeliski Tekla Zazarska[?]"}], pewnosc_odczytu: niepewna}
+- {id: S03-066, podmiot: zazarska-tekla, relacja: urodzenie, data: {tekst: "1808[?]", od: 1808, do: 1808},
+   zrodla: [{segment: S03-p10-s02, cytat: "Tekla Zazarska[?] 1808[?]+1848"}], pewnosc_odczytu: niepewna,
+   uwagi: "Data niewyraźna (1808 / 1768?); 1808 byłoby zbyt późno dla matki Michała ur. 1800."}
+- {id: S03-067, podmiot: zazarska-tekla, relacja: smierc, data: {tekst: "+1848", od: 1848, do: 1848},
+   zrodla: [{segment: S03-p10-s02, cytat: "Tekla Zazarska[?] 1808[?]+1848"}], pewnosc_odczytu: niepewna}
+- {id: S03-068, podmiot: szeliski-michal-1800, relacja: pochowek, miejsce: uniejow,
+   zrodla: [{segment: S03-p10-s02, cytat: "Michał Szeliski poch. Uniejów"}, {segment: S03-p30-s02, cytat: "Michał Szeliski"}], pewnosc_odczytu: pewna}
+- {id: S03-069, podmiot: drohojowska-ewelina-1880, relacja: rodzic, obiekt: drohojowski-boleslaw-1848,
+   zrodla: [{segment: S03-p06-s04, cytat: "Bolesław hr. Drohojowski"}], pewnosc_odczytu: pewna, uwagi: "Z układu drzewa (pradziadkowie autorki ze strony babki Ewy)."}
+- {id: S03-070, podmiot: drohojowska-ewelina-1880, relacja: rodzic, obiekt: terlecka-bronislawa-1847,
+   zrodla: [{segment: S03-p06-s04, cytat: "Bronisława Terlecka h. Sas"}], pewnosc_odczytu: pewna, uwagi: "Z układu drzewa."}
+- {id: S03-071, podmiot: drohojowski-boleslaw-1848, relacja: rodzic, obiekt: drohojowski-wladyslaw,
+   zrodla: [{segment: S03-p07-s03, cytat: "Drohojowski Władysław z Piotrkowicz Emilja Wolska"}], pewnosc_odczytu: pewna, uwagi: "Z układu drzewa."}
+- {id: S03-072, podmiot: drohojowski-boleslaw-1848, relacja: rodzic, obiekt: wolska-emilia,
+   zrodla: [{segment: S03-p07-s03, cytat: "Emilja Wolska"}], pewnosc_odczytu: pewna, uwagi: "Z układu drzewa."}
+- {id: S03-073, podmiot: drohojowski-wladyslaw, relacja: malzonek, obiekt: wolska-emilia,
+   zrodla: [{segment: S03-p07-s03, cytat: "Władysław z Piotrkowicz Emilja Wolska"}, {segment: S03-p10-s03, cytat: "Władysław Drohojowski Emilja Wolska z Piotrkowicz pow. Kowel"}], pewnosc_odczytu: pewna}
+- {id: S03-074, podmiot: drohojowski-wladyslaw, relacja: wlasnosc, obiekt: piotrkowice-wolyn,
+   zrodla: [{segment: S03-p07-s03, cytat: "Władysław z Piotrkowicz"}, {segment: S03-p10-s03, cytat: "z Piotrkowicz pow. Kowel"}], pewnosc_odczytu: pewna}
+- {id: S03-075, podmiot: drohojowski-wladyslaw, relacja: rodzic, obiekt: drohojowski-jan-1780,
+   zrodla: [{segment: S03-p07-s03, cytat: "Jan 1780+1819[?]"}, {segment: S03-p10-s03, cytat: "Jan hr. Drohojowski I Róża Niemirowska II Brygida Rzeszotarska"}], pewnosc_odczytu: pewna, uwagi: "Z układu drzewa (klamra)."}
+- {id: S03-076, podmiot: drohojowski-jan-1780, relacja: urodzenie, data: {tekst: "1780", od: 1780, do: 1780},
+   zrodla: [{segment: S03-p07-s03, cytat: "Jan 1780+1819[?]"}], pewnosc_odczytu: pewna}
+- {id: S03-077, podmiot: drohojowski-jan-1780, relacja: smierc, data: {tekst: "+1819[?]", od: 1819, do: 1849},
+   zrodla: [{segment: S03-p07-s03, cytat: "Jan 1780+1819[?]"}], pewnosc_odczytu: niepewna, uwagi: "Ostatnia cyfra niepewna (1819 / 1849)."}
+- {id: S03-078, podmiot: drohojowski-jan-1780, relacja: malzonek, obiekt: niemirowska-roza, wartosc: "I żona",
+   zrodla: [{segment: S03-p07-s03, cytat: "I Niemirowska Róża[?]"}, {segment: S03-p10-s03, cytat: "I Róża Niemirowska"}], pewnosc_odczytu: pewna}
+- {id: S03-079, podmiot: drohojowski-jan-1780, relacja: malzonek, obiekt: rzeszotarska-brygida, wartosc: "II żona",
+   zrodla: [{segment: S03-p07-s03, cytat: "II Rzeszotarska[?] Brygida"}, {segment: S03-p10-s03, cytat: "II Brygida Rzeszotarska"}], pewnosc_odczytu: pewna}
+- {id: S03-080, podmiot: przadzynski-wincenty-1795, relacja: malzonek, obiekt: mierzynska-salomea-1800,
+   zrodla: [{segment: S03-p07-s04, cytat: "Wincenty Prządzyński 1795+1858 (senator) Salomea Mierzyńska h. Jastrzębiec 1800+1877"},
+            {segment: S03-p10-s05, cytat: "Salomea Mierzyńska 1800+1877 h. Jastrzębiec poch. w Leźnicy"}], pewnosc_odczytu: pewna}
+- {id: S03-081, podmiot: przadzynski-wincenty-1795, relacja: urodzenie, data: {tekst: "1795", od: 1795, do: 1795},
+   zrodla: [{segment: S03-p07-s04, cytat: "Wincenty Prządzyński 1795+1858"}], pewnosc_odczytu: pewna}
+- {id: S03-082, podmiot: przadzynski-wincenty-1795, relacja: urodzenie, data: {tekst: "4-IV 1735 (zapis)", od: 1735, do: 1735},
+   zrodla: [{segment: S03-p10-s05, cytat: "Wincenty senator brat Generała 4-IV 1735 +1858 poch. w Leźnicy"}], pewnosc_odczytu: niepewna,
+   uwagi: "Rok zapewne omyłkowo 1735 zam. 1795 (cyfra 3/9); dzień 4-IV — S03-p32 podaje 5-IV-1795."}
+- {id: S03-083, podmiot: przadzynski-wincenty-1795, relacja: smierc, data: {tekst: "+1858", od: 1858, do: 1858},
+   zrodla: [{segment: S03-p07-s04, cytat: "Wincenty Prządzyński 1795+1858"}, {segment: S03-p10-s05, cytat: "4-IV 1735 +1858"}], pewnosc_odczytu: pewna}
+- {id: S03-084, podmiot: przadzynski-wincenty-1795, relacja: urzad, wartosc: senator,
+   zrodla: [{segment: S03-p07-s04, cytat: "1795+1858 (senator)"}, {segment: S03-p10-s05, cytat: "Wincenty senator brat Generała"}], pewnosc_odczytu: pewna}
+- {id: S03-085, podmiot: mierzynska-salomea-1800, relacja: urodzenie, data: {tekst: "1800", od: 1800, do: 1800},
+   zrodla: [{segment: S03-p07-s04, cytat: "Salomea Mierzyńska h. Jastrzębiec 1800+1877"}, {segment: S03-p10-s05, cytat: "Salomea Mierzyńska 1800+1877"}], pewnosc_odczytu: pewna}
+- {id: S03-086, podmiot: mierzynska-salomea-1800, relacja: smierc, data: {tekst: "+1877", od: 1877, do: 1877},
+   zrodla: [{segment: S03-p07-s04, cytat: "Salomea Mierzyńska h. Jastrzębiec 1800+1877"}, {segment: S03-p10-s05, cytat: "Salomea Mierzyńska 1800+1877"}], pewnosc_odczytu: pewna}
+- {id: S03-087, podmiot: mierzynska-salomea-1800, relacja: herb, wartosc: Jastrzębiec,
+   zrodla: [{segment: S03-p07-s04, cytat: "Salomea Mierzyńska h. Jastrzębiec"}], pewnosc_odczytu: pewna}
+- {id: S03-088, podmiot: przadzynski-wincenty-1795, relacja: rodzic, obiekt: przadzynski-stanislaw-1761,
+   zrodla: [{segment: S03-p07-s04, cytat: "Stanisław 1761+1817 Marcjanna +1847 Bronikowska"}, {segment: S03-p10-s05, cytat: "Stanisław 1761+1817 Prządzyński Marjanna Bronikowska"}], pewnosc_odczytu: pewna, uwagi: "Z układu drzewa (klamra)."}
+- {id: S03-089, podmiot: przadzynski-wincenty-1795, relacja: rodzic, obiekt: bronikowska-marianna,
+   zrodla: [{segment: S03-p07-s04, cytat: "Marcjanna +1847 Bronikowska"}, {segment: S03-p10-s05, cytat: "Marjanna Bronikowska"}], pewnosc_odczytu: pewna, uwagi: "Z układu drzewa."}
+- {id: S03-090, podmiot: przadzynski-stanislaw-1761, relacja: urodzenie, data: {tekst: "1761", od: 1761, do: 1761},
+   zrodla: [{segment: S03-p07-s04, cytat: "Stanisław 1761+1817"}, {segment: S03-p10-s05, cytat: "Stanisław 1761+1817 Prządzyński"}], pewnosc_odczytu: pewna}
+- {id: S03-091, podmiot: przadzynski-stanislaw-1761, relacja: smierc, data: {tekst: "+1817", od: 1817, do: 1817},
+   zrodla: [{segment: S03-p07-s04, cytat: "Stanisław 1761+1817"}, {segment: S03-p10-s05, cytat: "Stanisław 1761+1817 Prządzyński"}], pewnosc_odczytu: pewna}
+- {id: S03-092, podmiot: przadzynski-stanislaw-1761, relacja: malzonek, obiekt: bronikowska-marianna,
+   zrodla: [{segment: S03-p07-s04, cytat: "Stanisław 1761+1817 Marcjanna +1847 Bronikowska"}], pewnosc_odczytu: pewna}
+- {id: S03-093, podmiot: bronikowska-marianna, relacja: smierc, data: {tekst: "+1847", od: 1847, do: 1847},
+   zrodla: [{segment: S03-p07-s04, cytat: "Marcjanna +1847 Bronikowska"}], pewnosc_odczytu: pewna}
+- {id: S03-094, podmiot: mierzynska-salomea-1800, relacja: rodzic, obiekt: mierzynski-rafal-starszy,
+   zrodla: [{segment: S03-p07-s04, cytat: "Rafał Mierzyński; Marcjanna Zagajewska"}, {segment: S03-p10-s05, cytat: "Rafał Mierzyński h. Jastrzębiec z Węgier[?] Marjanna Zagajewska h. Pomian"}], pewnosc_odczytu: pewna, uwagi: "Z układu drzewa."}
+- {id: S03-095, podmiot: mierzynska-salomea-1800, relacja: rodzic, obiekt: zagajewska-marcjanna,
+   zrodla: [{segment: S03-p07-s04, cytat: "Marcjanna Zagajewska"}, {segment: S03-p10-s05, cytat: "Marjanna Zagajewska h. Pomian"}], pewnosc_odczytu: pewna, uwagi: "Z układu drzewa."}
+- {id: S03-096, podmiot: mierzynski-rafal-starszy, relacja: malzonek, obiekt: zagajewska-marcjanna,
+   zrodla: [{segment: S03-p07-s04, cytat: "Rafał Mierzyński; Marcjanna Zagajewska"}], pewnosc_odczytu: pewna}
+- {id: S03-097, podmiot: skrzynski-aleksander, relacja: malzonek, obiekt: laczynska-waleria,
+   zrodla: [{segment: S03-p07-s05, cytat: "Walerja Łączyńska h. Nałęcz Aleksander Skrzyński"}, {segment: S03-p10-s06, cytat: "Aleksander Skrzyński Walerja Łączyńska h. Nałęcz"}], pewnosc_odczytu: pewna}
+- {id: S03-098, podmiot: laczynska-waleria, relacja: herb, wartosc: Nałęcz,
+   zrodla: [{segment: S03-p07-s05, cytat: "Walerja Łączyńska h. Nałęcz"}], pewnosc_odczytu: pewna}
+- {id: S03-099, podmiot: laczynska-waleria, relacja: rodzic, obiekt: laczynski-teodor-1785,
+   zrodla: [{segment: S03-p07-s05, cytat: "Teodor Mikorska"}, {segment: S03-p10-s06, cytat: "Teodor Łączyński h. Nałęcz Mikorska"}], pewnosc_odczytu: pewna, uwagi: "Z układu drzewa."}
+- {id: S03-100, podmiot: laczynska-waleria, relacja: rodzic, obiekt: mikorska-zofia,
+   zrodla: [{segment: S03-p07-s05, cytat: "Teodor Mikorska"}, {segment: S03-p10-s06, cytat: "Teodor Łączyński h. Nałęcz Mikorska"}], pewnosc_odczytu: pewna, uwagi: "Z układu drzewa; imię Zofia z S03-p22-s01."}
+- {id: S03-101, podmiot: grabinski-adam-1803, relacja: malzonek, obiekt: madalinska-paulina,
+   zrodla: [{segment: S03-p07-s06, cytat: "Adam Grabiński 1803+1868 Paulina Madalińska"}, {segment: S03-p10-s07, cytat: "Adam Grabiński 1803+1868 Paulina Madalińska"}], pewnosc_odczytu: pewna}
+- {id: S03-102, podmiot: grabinski-adam-1803, relacja: urodzenie, data: {tekst: "1803", od: 1803, do: 1803},
+   zrodla: [{segment: S03-p07-s06, cytat: "Adam Grabiński 1803+1868"}, {segment: S03-p10-s07, cytat: "Adam Grabiński 1803+1868"}], pewnosc_odczytu: pewna}
+- {id: S03-103, podmiot: grabinski-adam-1803, relacja: smierc, data: {tekst: "+1868", od: 1868, do: 1868},
+   zrodla: [{segment: S03-p07-s06, cytat: "Adam Grabiński 1803+1868"}, {segment: S03-p10-s07, cytat: "Adam Grabiński 1803+1868"}], pewnosc_odczytu: pewna}
+- {id: S03-104, podmiot: grabinski-adam-1803, relacja: rodzic, obiekt: grabinski-piotr-1750,
+   zrodla: [{segment: S03-p07-s06, cytat: "Piotr 1750+1831 Katarzyna Domaniewska"}, {segment: S03-p10-s07, cytat: "Piotr Grabiński 1740+1831 Katarzyna Domaniewska"}], pewnosc_odczytu: pewna, uwagi: "Z układu drzewa."}
+- {id: S03-105, podmiot: grabinski-adam-1803, relacja: rodzic, obiekt: domaniewska-katarzyna,
+   zrodla: [{segment: S03-p07-s06, cytat: "Katarzyna Domaniewska"}, {segment: S03-p10-s07, cytat: "Katarzyna Domaniewska"}], pewnosc_odczytu: pewna, uwagi: "Z układu drzewa."}
+- {id: S03-106, podmiot: grabinski-piotr-1750, relacja: malzonek, obiekt: domaniewska-katarzyna,
+   zrodla: [{segment: S03-p07-s06, cytat: "Piotr 1750+1831 Katarzyna Domaniewska"}], pewnosc_odczytu: pewna}
+- {id: S03-107, podmiot: grabinski-piotr-1750, relacja: urodzenie, data: {tekst: "1750", od: 1750, do: 1750},
+   zrodla: [{segment: S03-p07-s06, cytat: "Piotr 1750+1831"}], pewnosc_odczytu: pewna}
+- {id: S03-108, podmiot: grabinski-piotr-1750, relacja: urodzenie, data: {tekst: "1740", od: 1740, do: 1740},
+   zrodla: [{segment: S03-p10-s07, cytat: "Piotr Grabiński 1740+1831"}], pewnosc_odczytu: pewna}
+- {id: S03-109, podmiot: grabinski-piotr-1750, relacja: smierc, data: {tekst: "+1831", od: 1831, do: 1831},
+   zrodla: [{segment: S03-p07-s06, cytat: "Piotr 1750+1831"}, {segment: S03-p10-s07, cytat: "Piotr Grabiński 1740+1831"}], pewnosc_odczytu: pewna}
+- {id: S03-110, podmiot: brandel-seweryn, relacja: malzonek, obiekt: dabska-leokadia-1850,
+   zrodla: [{segment: S03-p07-s07, cytat: "Seweryn Brandel Leokadia Dąbska[?]"}, {segment: S03-p10-s08, cytat: "Seweryn Brandel +1919 rzeczywisty Radca stanu Leokadia z Dąbskich[?]"}], pewnosc_odczytu: niepewna, uwagi: "Nazwisko Leokadii niepewne."}
+- {id: S03-111, podmiot: radoszewska-teresa-1942, relacja: urodzenie, data: {tekst: "30-IV-1942", od: 1942-04-30, do: 1942-04-30},
+   zrodla: [{segment: S03-p08-s01, cytat: "30-IV-1942"}], pewnosc_odczytu: pewna, uwagi: "Imiona: Teresa Ewa."}
+- {id: S03-112, podmiot: radoszewski-jerzy-1902, relacja: urodzenie, data: {tekst: "24 wrzesień 1902", od: 1902-09-24, do: 1902-09-24}, miejsce: krempa,
+   zrodla: [{segment: S03-p08-s02, cytat: "Jerzy Józefat 24 wrzesień 1902 Krempa"}, {segment: S03-p51-s02, cytat: "24-IX-1902 ur. Tatusia"}], pewnosc_odczytu: pewna}
+- {id: S03-113, podmiot: radoszewski-jerzy-1902, relacja: zawod, wartosc: "właściciel ziemski",
+   zrodla: [{segment: S03-p08-s02, cytat: "właściciel ziemski"}], pewnosc_odczytu: pewna}
+- {id: S03-114, podmiot: przadzynska-anna-1914, relacja: urodzenie, data: {tekst: "22 marzec 1914", od: 1914-03-22, do: 1914-03-22}, miejsce: warszawa,
+   zrodla: [{segment: S03-p08-s03, cytat: "Anna Maria Prządzyńska 22 marzec 1914 Warszawa"}, {segment: S03-p13-s02, cytat: "Anna Prządzyńska 22-III-1914"},
+            {segment: S03-p45-s02, cytat: "22-III-1914 ur. Anny Radoszewskiej"}], pewnosc_odczytu: pewna}

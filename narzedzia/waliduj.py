@@ -120,12 +120,18 @@ def main():
             wg[(t['podmiot'], t['relacja'])].append(t)
     for (o, r), lista in sorted(wg.items()):
         teksty = {str(t['data'].get('tekst')) for t in lista}
+        daty = {(str(t['data'].get('od')), str(t['data'].get('do'))) for t in lista}
         lata = {(rok(t['data'], 'od'), rok(t['data'], 'do')) for t in lista}
-        if len(lata) > 1:
+        # te same lata, ale różne dni — też wersje, jeśli obie daty są dzienne
+        dzienne = {d for d in daty if len(d[0]) > 4}
+        if len(lata) > 1 or len(dzienne) > 1:
             print(f'{o} — {r}: ' + '; '.join(f'{t["data"].get("tekst")} ({", ".join(z["segment"] for z in t["zrodla"])})' for t in lista))
 
     print('\n== Spójność dat (do sprawdzenia, nie błędy) ==')
-    ur = {o: min(rok(t['data'], 'od') for t in l if rok(t['data'], 'od')) for (o, r), l in wg.items() if r == 'urodzenie' and any(rok(t['data'], 'od') for t in l)}
+    def pewne(l):
+        p = [t for t in l if t.get('pewnosc_odczytu') == 'pewna' and rok(t['data'], 'od')]
+        return p or [t for t in l if rok(t['data'], 'od')]
+    ur = {o: sorted(rok(t['data'], 'od') for t in pewne(l))[0] for (o, r), l in wg.items() if r == 'urodzenie' and pewne(l)}
     zm = {o: max(rok(t['data'], 'do') for t in l if rok(t['data'], 'do')) for (o, r), l in wg.items() if r == 'smierc' and any(rok(t['data'], 'do') for t in l)}
     for o in ur:
         if o in zm and zm[o] < ur[o]:
@@ -134,7 +140,7 @@ def main():
         if t.get('relacja') == 'rodzic' and t['podmiot'] in ur and t.get('obiekt') in ur:
             roznica = ur[t['podmiot']] - ur[t['obiekt']]
             if roznica < 14 or roznica > 65:
-                print(f'{t["podmiot"]}: rodzic {t["obiekt"]} starszy o {roznica} lat ({t["id"]})')
+                print(f'{t["podmiot"]} (ur. {ur[t["podmiot"]]}): rodzic {t["obiekt"]} (ur. {ur[t["obiekt"]]}) — różnica {roznica} lat ({t["id"]})')
 
     print(f'\n== Podsumowanie: {len(osoby)} osób, {len(miejsca)} miejsc, {len(tw)} twierdzeń; '
           f'{len(bledy)} błędów; {brak_ogolem} segmentów bez pokrycia ==')
