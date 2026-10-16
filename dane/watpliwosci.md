@@ -179,3 +179,47 @@ Narratorka pisze w 1. osobie o pensji Plater, o „Dziadziu Stasiu” i o życiu
 | 5 | „**Zimogrodzkiego**” — odczyt prawdopodobny | |
 
 Ten sam autor przepisał w S02 i S10 te same cytaty (Słownik geograficzny t. 9 s. 437; ks. W. Prygodzki, „Z przeszłości Wielunia” s. 19). Oba teksty są zgodne co do dat: Jerzy zm. 23 X 1614, Andrzej zm. 1621, Marek zm. 28 XI 1641 w wieku 64 lat. Prygodzki potwierdza też odczyt „Prygodzki” w miejsce „Prygielski?” z inwentaryzacji.
+
+### S02 — rozstrzygnięte przez S08 (Kajzer, „Radoszewice — dwory”)
+- s. 3 „Jana **Hieronima**[?] i Mikołaja” → S08-p128-s04: „Jana, Hieronima i Mikołaja Radoszewskich” (to samo źródło: Pawiński II s. 289) — **potwierdzone**.
+- s. 4 „**Mieczanów**[?]”, „**Szmury**[?]” → S08-p128-s03 (ten sam opis z SGKP t. IX s. 437): „**Mierzanów**”, „**Sznury**”, „Wymysłówek”; S08-p129-s03: folwark „w Mierzanowie”. Łakomy pisze „Mieczanów”/„Szmury” — zapis S02 zostawiam, ale nazwa poprawna to zapewne Mierzanów, Sznury.
+- s. 5 „wś. **Łaski**[?]” → S08-p127-f16 i S08-p133-s04: „Laski”/„Lasków” — **Laski**.
+- s. 23 „**Lipniku**[?]” → S08-p126-s02, S08-p129-s02: „Lipnik” — **potwierdzone**.
+- s. 7 „Kuźnica Ługowska” → S08-p129-s03: „Kuźnica zwana Ługowską” — zgodne.
+
+## S08 — „Pałace i dwory w dawnym województwie sieradzkim”, t. 2 (L. Kajzer)
+
+Druk, dobrze czytelny; trudności tylko z wygięciem stron (wiersze przesunięte na zdjęciach — kolejność odtworzona z sensu). Autorstwo hasła Radoszewice potwierdza wtrącenie „przyp. LK” (S08-p130-s02) i odsyłacz do własnej pracy z 1984 r. (S08-p128-s04).
+
+### Niepewne odczytania
+| Strona | Wątpliwość |
+|---|---|
+| 129 | liczby „sześć” (jałowice) / „siedem” (wolce) — przypisanie przy wygiętych wierszach |
+| 137 | „Lipska” w wyliczeniu wsi (Lipnik?) |
+| 135 | pierwsze „(f. 276 v)” — w druku dwa razy; pierwsze zapewne f. 276 |
+
+### Rozbieżności (nie poprawiane)
+- **Grosz czynszowy**: sprowadził go Marek (S08-p073-s01) — według S02-p20 (Szczygielski) Jerzy.
+- **Michał Radoszewski (1865–1942)** (S08-p075) — a „po śmierci Michała … przejął w 1934 r. Jerzy” (S08-p076). W S07 s. 21 Michał ur. 1866.
+- **Radoszewice po Niemojowskich**: S08-p128 — Wodzińscy, Molińscy, po I wojnie T. Durzyński, potem Maks i Henryk Piekarscy, znów Durzyński do 1939; S10-p6 — Duryński do 1913, w 1913 bracia Maks i Bernard Piekarscy, w 1937 znów Duryński. S08-p133: park przekształcony przez Durzyńskiego ok. 1905–1910.
+- **Michał kasztelan brzeziński †1775** — sprzedał Radoszewice Niemojowskim ok. 1775 (S08-p073, S08-p126); zgodne z dopiskiem S02-p21-d1 i S07 s. 5.
+- **Józefat (1830–1892)** — S08-p074; S05 podaje 1893.
+- **Franciszek Radoszewski zm. 15 XII 1846** w Warszawie, żona Józefa ze Skrzyńskich; dzieci: Ludwika, Henryk, Józefat, Józefa-Julia (S08-p074) — do zestawienia z S03/S07.
+- **Krochmalnia** (S08-p074: „dawnej krochmalni, potem gorzelni dworskiej”) — zapewne rozwiązuje niejasne „kuchmal(nia)” z S07 s. 7–8.
+- **Bitwa pod Niemysłowem** (S08-p074) — jak S05; S07 s. 7 „Niewierszem[?]”.
+- **Karśniccy**: tradycja, że weszli w Siemkowice ok. 1639 r. przez małżeństwo z Radoszewską (S08-p145-f23); niespójność, czyim synem był Antoni (S08-p145-f23 vs S08-p152-s02).
+- **Kościół w Radoszewicach**: nowy „z XIX w.” (S08-p123) — S02-p04: „na początku obecnego stulecia”.
+- **Terr. Sirad. 93**: f. 992–993 (S08-p059-f15) i f. 933–936 v (S08-p070-s04).
+- **Tablica z elewacjami** dworu w Radoszewicach (IMG_6002): portyk z kolumnami i ryzalit z balkonem przypisane odwrotnie niż w opisie S08-p132 — możliwa zamiana podpisów.
+
+## S09 — szkic mapy „szlak przodków Boxa-Radoszewskich” (8.07.2017)
+
+| Miejsce na kartce | Niepewny odczyt |
+|---|---|
+| lewy górny róg | „Anulka”[?] |
+| przy Opatówku | „mauzoleum”[?] / „muzeum”[?] |
+| obok Opatówka | „Byszewo”[?] — „maj. J.[?] A.[?] Radoszew…” |
+| przy Biernacicach | „(Dzierżbickim[?] / Dziewulskich[?]) piękny pałac w ruinie” |
+| przy Krempie | „Uniejów[?] zamek przebudowany[?]” |
+| dół kartki | „b. cichy”[?], „Wiązów”[?], „Łańcut”[?], „Ciszecin W.”[?], „f lw”[?] |
+| data | „8.07.2017” — miesiąc poprawiany (07/08?) |
