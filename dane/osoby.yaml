@@ -1223,3 +1223,156 @@
   nazwisko_rodowe: "Górska"
   plec: k
   warianty: ["Aleksandra Górska (ze Szendaczyna[?])"]
+
+- id: radoszewski-marcin-1625
+  imiona: ["Marcin"]
+  nazwisko: "Radoszewski"
+  herb: Oksza
+  plec: m
+  warianty: ["Marcin Boxa Radoszewski"]
+  uwagi: "Fundator kościoła w Radoszewicach (pocz. XVII w.)."
+
+- id: radoszewski-andrzej-1630
+  imiona: ["Andrzej"]
+  nazwisko: "Radoszewski"
+  herb: Oksza
+  plec: m
+  warianty: ["Andrzej Radoszewski chorąży wieluński"]
+  uwagi: "Fundator sukienki obrazu MB w Pajęcznie (1630); utożsamienie z Andrzejem chorążym †1621 (S02) niepewne."
+
+- id: wilski-jan
+  imiona: ["Jan"]
+  nazwisko: "Wilski"
+  plec: m
+  warianty: ["Janek Wilski"]
+
+- id: liskowska-teresa
+  imiona: ["Teresa"]
+  nazwisko: "Wilska"
+  nazwisko_rodowe: "Liskowska[?]"
+  plec: k
+  warianty: ["Teresa z Liskowskich[?] Wilska"]
+
+- id: kilis-teresa
+  imiona: ["Teresa"]
+  nazwisko: "Kilis[?]"
+  plec: k
+  warianty: ["p. Teresa Kilis[?]"]
+  uwagi: "Pochowana w kaplicy w Wartkowicach; nazwisko niepewne."
+
+- id: radoszewski-aleksander-1859
+  imiona: ["Aleksander"]
+  nazwisko: "Radoszewski"
+  plec: m
+  uwagi: "Syn Albina (wg S07)."
+
+- id: radoszewski-ignacy-1816
+  imiona: ["Ignacy"]
+  nazwisko: "Radoszewski"
+  plec: m
+  warianty: ["Ignacy baron Radoszewski"]
+
+- id: rosdeitscher-amelia
+  imiona: ["Amelia"]
+  nazwisko: "Radoszewska"
+  nazwisko_rodowe: "Rosdeitscher[?]"
+  plec: k
+  warianty: ["Amelja"]
+
+- id: radoszewska-maria-1864
+  imiona: ["Maria"]
+  nazwisko: "Radoszewska"
+  plec: k
+  uwagi: "Córka Ignacego barona (wg S07-p25-s03)."
+
+- id: rudkowska-emilia
+  imiona: ["Emilia"]
+  nazwisko: "Prządzyńska"
+  nazwisko_rodowe: "Rudkowska[?]"
+  plec: k
+  warianty: ["Generałowa Emilia z Rudkowskich[?] Prządzyńska", "Emilja z Rutkowskich[?]"]
+  uwagi: "Nazwisko panieńskie: Rudkowska / Rutkowska / Butkowska — do ustalenia."
+
+- id: przadzynski-ignacy-1792
+  imiona: ["Ignacy"]
+  nazwisko: "Prządzyński"
+  herb: Grzymała
+  plec: m
+  warianty: ["gen. Ignacy Prządzyński", "Generał"]
+
+- id: przadzynska-sylwia-1837
+  imiona: ["Sylwia"]
+  nazwisko: "Prządzyńska"
+  plec: k
+  warianty: ["Sylwja"]
+  uwagi: "Córka gen. Ignacego; literatka."
+
+- id: grabinski-wladyslaw-1904
+  imiona: ["Władysław"]
+  nazwisko: "Grabiński"
+  plec: m
+  uwagi: "Pochowany w grobie Grabińskich (†1904)."
+
+- id: grabinska-zofia-1874
+  imiona: ["Zofia"]
+  nazwisko: "Grabińska"
+  plec: k
+  uwagi: "Pochowana w grobie Grabińskich (†1874)."
+
+- id: brandel-konstanty
+  imiona: ["Konstanty"]
+  nazwisko: "Brandel"
+  plec: m
+  warianty: ["Konstanty Brandel"]
+  uwagi: "Malarz (1880–1970)."
+
+- id: przadzynska-wiktoria
+  imiona: ["Wiktoria[?]"]
+  nazwisko: null
+  plec: k
+  uwagi: "„(Wiktorji[?])” przy grobie Andrzeja Prządzyńskiego."
+
+- id: makowiecki-gen
+  imiona: []
+  nazwisko: "Makowiecki[?]"
+  plec: m
+  warianty: ["gen. Makowiecki[?]"]
+  uwagi: "Generał — właściciel grobu, w którym leży Zofia z Grotowskich Radoszewska."
+
+- id: mierzynska-konstancja
+  imiona: ["Konstancja"]
+  nazwisko: "Łącka"
+  nazwisko_rodowe: "Mierzyńska"
+  plec: k
+  warianty: ["ciocia Kotusia z Mierzyńskich Łącka", "Kotusia"]
+
+- id: niedzwiedzki-jan
+  imiona: ["Jan"]
+  nazwisko: "Niedźwiedzki"
+  plec: m
+  warianty: ["Jaś Niedźwiedzki"]
+
+- id: grabinska-malgorzata
+  imiona: ["Małgorzata"]
+  nazwisko: "Grabińska"
+  plec: k
+  warianty: ["Małgosia Grabińska"]
+
+- id: jurkowicz-siostra
+  imiona: []
+  nazwisko: "Jurkowicz[?]"
+  plec: k
+  warianty: ["Siostra Jurkowicz[?]"]
+
+- id: wyzlkina
+  imiona: []
+  nazwisko: "Wyżłkina[?]"
+  plec: k
+  warianty: ["ciocia Wyżłkina[?]"]
+
+- id: przadzynski-stanislaw-1976
+  imiona: ["Stanisław"]
+  nazwisko: "Prządzyński[?]"
+  plec: m
+  warianty: ["Wujek Stanisław Prządzyński[?]"]
+  uwagi: "Zm. 17-III-1976; tożsamość do ustalenia (nazwisko niepewne)."

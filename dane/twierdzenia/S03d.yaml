@@ -1,0 +1,282 @@
+# S03 cz. 4: s. 29–42 (miejsca kultu, cmentarze, domy, szkoły, wakacje, wydarzenia 1939–1945)
+
+# s. 29: miejsca kultu
+- {id: S03-453, podmiot: siemkowice, relacja: opis, wartosc: "ok. XIII w. Radoszewscy zbudowali w Siemkowicach kościół",
+   zrodla: [{segment: S03-p29-s02, cytat: "w Siemkowicach około XIII w Radoszewscy wybudowali kościół"}], pewnosc_odczytu: pewna}
+- {id: S03-454, podmiot: radoszewski-marcin-1625, relacja: fundacja, obiekt: radoszewice, wartosc: "kościół w Radoszewicach, konsekrowany w 1625 r.", data: {tekst: "na początku XVII w.; konsekracja 1625 r.", od: 1601, do: 1625},
+   zrodla: [{segment: S03-p29-s02, cytat: "Na początku XVII w Marcin Boxa Radoszewski wystawił w Radoszewicach kościół konsekrowany w 1625 r."}], pewnosc_odczytu: pewna}
+- {id: S03-455, podmiot: dominikowice, relacja: opis, wartosc: "parafia Dominikowic — Uniejów",
+   zrodla: [{segment: S03-p29-s03, cytat: "Parafja Dominikowice – Uniejów"}], pewnosc_odczytu: pewna}
+- {id: S03-456, podmiot: krempa, relacja: opis, wartosc: "parafia Śmiechowa i Krempy — Niemysłów",
+   zrodla: [{segment: S03-p29-s03, cytat: "Śmiechowa i Krempy – Niemysłów"}], pewnosc_odczytu: pewna}
+- {id: S03-457, podmiot: koscierzyn, relacja: opis, wartosc: "parafia Kościerzyna — Charłupia Mała (cudowny obraz Matki Boskiej)",
+   zrodla: [{segment: S03-p29-s03, cytat: "Kościerzyna Charłupia Mała"}, {segment: S03-p29-s03, cytat: "cudowny obraz Mat. Bos."}], pewnosc_odczytu: pewna}
+- {id: S03-458, podmiot: ciszecin-wielki, relacja: opis, wartosc: "parafia Ciszecina Wielkiego — Zarzecze",
+   zrodla: [{segment: S03-p29-s03, cytat: "Ciszecina W. Zarzecze"}], pewnosc_odczytu: pewna}
+- {id: S03-459, podmiot: radoszewski-andrzej-1630, relacja: fundacja, wartosc: "srebrna sukienka do obrazu Matki Boskiej w Pajęcznie", data: {tekst: "1630 r.", od: 1630, do: 1630}, miejsce: pajeczno,
+   zrodla: [{segment: S03-p29-s04, cytat: "W Pajęcznie srebrna sukienka do obrazu Matki Boskiej ofiarowana przez Andrzeja Radoszewskiego chorążego wieluńskiego 1630 r."}], pewnosc_odczytu: pewna}
+- {id: S03-460, podmiot: radoszewski-andrzej-1630, relacja: urzad, wartosc: "chorąży wieluński", data: {tekst: "1630 r.", od: 1630, do: 1630},
+   zrodla: [{segment: S03-p29-s04, cytat: "Andrzeja Radoszewskiego chorążego wieluńskiego 1630 r."}], pewnosc_odczytu: pewna}
+
+# s. 30–37: cmentarze
+- {id: S03-461, podmiot: uniejow-kaplica-radoszewskich, relacja: opis, wartosc: "kaplica na cmentarzu w Uniejowie zbudowana przez Józefata i Teofilę Radoszewskich",
+   zrodla: [{segment: S03-p30-s02, cytat: "Kaplica na cmentarzu w Uniejowie zbudowana przez Józefata i Teofilę Radoszewskich"}], pewnosc_odczytu: pewna}
+- {id: S03-462, podmiot: radoszewski-jozefat-1830, relacja: fundacja, obiekt: uniejow-kaplica-radoszewskich,
+   zrodla: [{segment: S03-p30-s02, cytat: "zbudowana przez Józefata i Teofilę Radoszewskich"}], pewnosc_odczytu: pewna}
+- {id: S03-463, podmiot: szeliska-teofila-1842, relacja: fundacja, obiekt: uniejow-kaplica-radoszewskich,
+   zrodla: [{segment: S03-p30-s02, cytat: "zbudowana przez Józefata i Teofilę Radoszewskich"}], pewnosc_odczytu: pewna}
+- {id: S03-464, podmiot: radoszewski-roch-1820, relacja: pochowek, miejsce: uniejow-kaplica-radoszewskich,
+   zrodla: [{segment: S03-p30-s02, cytat: "pochowani: Roch 1820"}], pewnosc_odczytu: pewna}
+- {id: S03-465, podmiot: wierzchleyska-kunegunda-1828, relacja: pochowek, miejsce: uniejow-kaplica-radoszewskich,
+   zrodla: [{segment: S03-p30-s02, cytat: "Kunegunda z Wierzchleyskich"}], pewnosc_odczytu: pewna}
+- {id: S03-466, podmiot: szeliski-michal-1800, relacja: pochowek, miejsce: uniejow-kaplica-radoszewskich,
+   zrodla: [{segment: S03-p30-s02, cytat: "Michał Szeliski"}], pewnosc_odczytu: pewna}
+- {id: S03-467, podmiot: radoszewski-jozefat-1830, relacja: pochowek, miejsce: uniejow-kaplica-radoszewskich,
+   zrodla: [{segment: S03-p30-s02, cytat: "Józefat 1830+1892"}], pewnosc_odczytu: pewna}
+- {id: S03-468, podmiot: szeliska-teofila-1842, relacja: pochowek, miejsce: uniejow-kaplica-radoszewskich,
+   zrodla: [{segment: S03-p30-s02, cytat: "Teofila z Szeliskich 1842+1909"}], pewnosc_odczytu: pewna}
+- {id: S03-469, podmiot: szumowski-antoni, relacja: smierc, data: {tekst: "1884", od: 1884, do: 1884},
+   zrodla: [{segment: S03-p30-s02, cytat: "Antoni Szumowski 1884"}], pewnosc_odczytu: pewna}
+- {id: S03-470, podmiot: szumowski-antoni, relacja: pochowek, miejsce: uniejow-kaplica-radoszewskich,
+   zrodla: [{segment: S03-p30-s02, cytat: "Antoni Szumowski 1884"}], pewnosc_odczytu: pewna}
+- {id: S03-471, podmiot: radoszewski-henryk-1862, relacja: pochowek, miejsce: uniejow-kaplica-radoszewskich,
+   zrodla: [{segment: S03-p30-s02, cytat: "Henryś 1870"}], pewnosc_odczytu: pewna}
+- {id: S03-472, podmiot: radoszewski-henryk-1861, relacja: smierc, data: {tekst: "1850", od: 1850, do: 1850},
+   zrodla: [{segment: S03-p30-s02, cytat: "Henryk 1850 (syn Franciszka)"}], pewnosc_odczytu: pewna,
+   uwagi: "S05 i S07: Henryk zm. 1861 (33 lata), a „1850” — Józef z Dominikowic, brat Franciszka. Zapis S03 zostawiony jako wersja."}
+- {id: S03-473, podmiot: radoszewski-henryk-1861, relacja: pochowek, miejsce: uniejow-kaplica-radoszewskich,
+   zrodla: [{segment: S03-p30-s02, cytat: "Henryk 1850 (syn Franciszka)"}], pewnosc_odczytu: pewna}
+- {id: S03-474, podmiot: wartkowice-kaplica, relacja: opis, wartosc: "kaplica zbudowana przez Franciszka z Neru oraz Aleksandra i Walerię Skrzyńskich",
+   zrodla: [{segment: S03-p31-s02, cytat: "zbudowana przez Franciszka z Neru i Aleksandra i Walerję Skrzyńskich."}], pewnosc_odczytu: pewna}
+- {id: S03-475, podmiot: radoszewski-franciszek-ner, relacja: fundacja, obiekt: wartkowice-kaplica,
+   zrodla: [{segment: S03-p31-s02, cytat: "zbudowana przez Franciszka z Neru"}], pewnosc_odczytu: pewna}
+- {id: S03-476, podmiot: skrzynski-aleksander, relacja: fundacja, obiekt: wartkowice-kaplica,
+   zrodla: [{segment: S03-p31-s02, cytat: "i Aleksandra i Walerję Skrzyńskich."}], pewnosc_odczytu: pewna}
+- {id: S03-477, podmiot: laczynska-waleria, relacja: fundacja, obiekt: wartkowice-kaplica,
+   zrodla: [{segment: S03-p31-s02, cytat: "i Aleksandra i Walerję Skrzyńskich."}], pewnosc_odczytu: pewna}
+- {id: S03-478, podmiot: skrzynska-ludmila, relacja: pochowek, miejsce: wartkowice-kaplica,
+   zrodla: [{segment: S03-p31-s02, cytat: "Ludmiła Skrzyńska Radoszewska"}], pewnosc_odczytu: pewna}
+- {id: S03-479, podmiot: radoszewski-franciszek-ner, relacja: pochowek, miejsce: wartkowice-kaplica,
+   zrodla: [{segment: S03-p31-s02, cytat: "Franciszek Radoszewski z Neru"}], pewnosc_odczytu: pewna}
+- {id: S03-480, podmiot: skrzynski-aleksander, relacja: pochowek, miejsce: wartkowice-kaplica,
+   zrodla: [{segment: S03-p31-s02, cytat: "Aleksander i Walerja z Łączyńskich Skrzyńscy"}], pewnosc_odczytu: pewna}
+- {id: S03-481, podmiot: laczynska-waleria, relacja: pochowek, miejsce: wartkowice-kaplica,
+   zrodla: [{segment: S03-p31-s02, cytat: "Aleksander i Walerja z Łączyńskich Skrzyńscy"}], pewnosc_odczytu: pewna}
+- {id: S03-482, podmiot: skrzynski-aleksander-gostkow, relacja: smierc, wartosc: "zmarł[?] przybywszy[?] z obozu niemieckiego",
+   zrodla: [{segment: S03-p31-s02, cytat: "Aleksander Skrzyński zmarł[?] przybywszy[?] z obozu niemieckiego"}], pewnosc_odczytu: niepewna,
+   uwagi: "Utożsamienie z Aleksandrem z Gostkowa (młodszym) — prawdopodobne, bo starszy Aleksander żył w XIX w."}
+- {id: S03-483, podmiot: skrzynski-aleksander-gostkow, relacja: pochowek, miejsce: wartkowice-kaplica,
+   zrodla: [{segment: S03-p31-s02, cytat: "Aleksander Skrzyński zmarł[?]"}], pewnosc_odczytu: niepewna}
+- {id: S03-484, podmiot: radoszewski-jan-ner, relacja: pochowek, miejsce: wartkowice-kaplica,
+   zrodla: [{segment: S03-p31-s02, cytat: "Jan Radoszewski z Neru"}], pewnosc_odczytu: pewna}
+- {id: S03-485, podmiot: kilis-teresa, relacja: pochowek, miejsce: wartkowice-kaplica,
+   zrodla: [{segment: S03-p31-s02, cytat: "p. Teresa Kilis[?]"}], pewnosc_odczytu: niepewna}
+- {id: S03-486, podmiot: skrzynska-anna-1848, relacja: pochowek, miejsce: leznica-kaplica,
+   zrodla: [{segment: S03-p32-s02, cytat: "Anna ze Skrzyńskich Prządzyńska 25/7 1848 +1883"}], pewnosc_odczytu: pewna}
+- {id: S03-487, podmiot: przadzynski-wladyslaw-1837, relacja: pochowek, miejsce: leznica-kaplica,
+   zrodla: [{segment: S03-p32-s02, cytat: "Władysław Prządzyński h. Grzymała 3 czerw. 1837 +1898"}], pewnosc_odczytu: pewna}
+- {id: S03-488, podmiot: mierzynska-salomea-1800, relacja: smierc, data: {tekst: "12-III +1877", od: 1877-03-12, do: 1877-03-12},
+   zrodla: [{segment: S03-p32-s02, cytat: "12-III Salomea z Mierzyńskich z Węgrzy h. Jastrzębiec Prządzyńska 1800 +1877"}], pewnosc_odczytu: pewna}
+- {id: S03-489, podmiot: mierzynska-salomea-1800, relacja: pochowek, miejsce: leznica-kaplica,
+   zrodla: [{segment: S03-p32-s02, cytat: "Salomea z Mierzyńskich z Węgrzy h. Jastrzębiec Prządzyńska 1800 +1877"}], pewnosc_odczytu: pewna}
+- {id: S03-490, podmiot: przadzynski-wincenty-1795, relacja: urodzenie, data: {tekst: "5-IV-1795", od: 1795-04-05, do: 1795-04-05},
+   zrodla: [{segment: S03-p32-s02, cytat: "Wincenty Prządzyński (senator) 5-IV-1795 +1858 19 listopad"}], pewnosc_odczytu: pewna}
+- {id: S03-491, podmiot: przadzynski-wincenty-1795, relacja: smierc, data: {tekst: "+1858 19 listopad", od: 1858-11-19, do: 1858-11-19},
+   zrodla: [{segment: S03-p32-s02, cytat: "5-IV-1795 +1858 19 listopad"}], pewnosc_odczytu: pewna}
+- {id: S03-492, podmiot: przadzynski-wincenty-1795, relacja: pochowek, miejsce: leznica-kaplica,
+   zrodla: [{segment: S03-p32-s02, cytat: "Wincenty Prządzyński (senator)"}], pewnosc_odczytu: pewna}
+- {id: S03-493, podmiot: przadzynski-boleslaw-1842, relacja: urodzenie, data: {tekst: "21-VII-1842", od: 1842-07-21, do: 1842-07-21},
+   zrodla: [{segment: S03-p32-s02, cytat: "Bolesław \" \" 21-VII-1842 +1853"}], pewnosc_odczytu: pewna}
+- {id: S03-494, podmiot: przadzynski-boleslaw-1842, relacja: pochowek, miejsce: leznica-kaplica,
+   zrodla: [{segment: S03-p32-s02, cytat: "21-VII-1842 +1853"}], pewnosc_odczytu: pewna}
+- {id: S03-495, podmiot: przadzynski-stanislaw-1828, relacja: urodzenie, data: {tekst: "17-X-1828", od: 1828-10-17, do: 1828-10-17},
+   zrodla: [{segment: S03-p32-s02, cytat: "Stanisław \" \" 17-X-1828 +1855"}], pewnosc_odczytu: pewna}
+- {id: S03-496, podmiot: przadzynski-stanislaw-1828, relacja: smierc, data: {tekst: "+1855", od: 1855, do: 1855},
+   zrodla: [{segment: S03-p32-s02, cytat: "17-X-1828 +1855"}], pewnosc_odczytu: pewna}
+- {id: S03-497, podmiot: przadzynski-stanislaw-1828, relacja: pochowek, miejsce: leznica-kaplica,
+   zrodla: [{segment: S03-p32-s02, cytat: "17-X-1828 +1855"}], pewnosc_odczytu: pewna}
+- {id: S03-498, podmiot: przadzynska-michalina-1826, relacja: urodzenie, data: {tekst: "23-VI-1826", od: 1826-06-23, do: 1826-06-23},
+   zrodla: [{segment: S03-p32-s02, cytat: "Michalina \" \" 23-VI-1826 +1846"}], pewnosc_odczytu: pewna}
+- {id: S03-499, podmiot: przadzynska-michalina-1826, relacja: smierc, data: {tekst: "+1846", od: 1846, do: 1846},
+   zrodla: [{segment: S03-p32-s02, cytat: "23-VI-1826 +1846"}], pewnosc_odczytu: pewna}
+- {id: S03-500, podmiot: przadzynska-michalina-1826, relacja: pochowek, miejsce: leznica-kaplica,
+   zrodla: [{segment: S03-p32-s02, cytat: "23-VI-1826 +1846"}], pewnosc_odczytu: pewna}
+- {id: S03-501, podmiot: przadzynski-edward-1838, relacja: pochowek, miejsce: leznica-kaplica,
+   zrodla: [{segment: S03-p32-s02, cytat: "Edward \" \" 13 paźdz. 1838+1895"}], pewnosc_odczytu: pewna,
+   uwagi: "S03-p20-s04: Edward pochowany w Woli Wiązowej — rozbieżność (lub tablica w Leźnicy)."}
+- {id: S03-502, podmiot: przadzynski-wincenty-1839, relacja: pochowek, miejsce: leznica-kaplica,
+   zrodla: [{segment: S03-p32-s02, cytat: "Wincenty \" \" 15 wrzesień 1839 +1895"}], pewnosc_odczytu: pewna}
+- {id: S03-503, podmiot: przadzynski-zdzislaw-1874, relacja: pochowek, miejsce: leznica-kaplica,
+   zrodla: [{segment: S03-p32-s02, cytat: "Zdzisław \" \" 6-III 1874"}], pewnosc_odczytu: pewna}
+- {id: S03-504, podmiot: przadzynski-ignacy-1872, relacja: pochowek, miejsce: leznica-kaplica,
+   zrodla: [{segment: S03-p32-s02, cytat: "Ignacy \" \" 28/7 1872 +1890"}], pewnosc_odczytu: pewna}
+- {id: S03-505, podmiot: przadzynska-pelagia-1833, relacja: urodzenie, data: {tekst: "22-III-1833", od: 1833-03-22, do: 1833-03-22},
+   zrodla: [{segment: S03-p32-s02, cytat: "Pelagja \" \" 22-III-1833. +18-III-1832"}], pewnosc_odczytu: pewna}
+- {id: S03-506, podmiot: przadzynska-pelagia-1833, relacja: smierc, data: {tekst: "+18-III-1832 (sic)", od: 1832-03-18, do: 1832-03-18},
+   zrodla: [{segment: S03-p32-s02, cytat: "22-III-1833. +18-III-1832"}], pewnosc_odczytu: niepewna,
+   uwagi: "Data śmierci wcześniejsza niż urodzenia — tak w źródle; ostatnia cyfra niewyraźna."}
+- {id: S03-507, podmiot: przadzynska-pelagia-1833, relacja: pochowek, miejsce: leznica-kaplica,
+   zrodla: [{segment: S03-p32-s02, cytat: "Pelagja \" \" 22-III-1833."}], pewnosc_odczytu: pewna}
+- {id: S03-508, podmiot: przadzynska-wladyslawa-1879, relacja: pochowek, miejsce: leznica-kaplica,
+   zrodla: [{segment: S03-p32-s03, cytat: "Władysława z Prządzyńskich Wilska 1879 +1933"}], pewnosc_odczytu: pewna}
+- {id: S03-509, podmiot: wilski-stefan, relacja: pochowek, miejsce: leznica-kaplica,
+   zrodla: [{segment: S03-p32-s03, cytat: "Stefan Wilski"}], pewnosc_odczytu: pewna}
+- {id: S03-510, podmiot: wilski-jan, relacja: pochowek, miejsce: leznica-kaplica,
+   zrodla: [{segment: S03-p32-s03, cytat: "Jan Wilski"}], pewnosc_odczytu: pewna}
+- {id: S03-511, podmiot: liskowska-teresa, relacja: pochowek, miejsce: leznica-kaplica,
+   zrodla: [{segment: S03-p32-s03, cytat: "Teresa z Liskowskich[?] Wilska"}], pewnosc_odczytu: niepewna}
+- {id: S03-512, podmiot: radoszewski-albin-1811, relacja: smierc, data: {tekst: "+1871", od: 1871, do: 1871},
+   zrodla: [{segment: S03-p33-s02, cytat: "Albin Boxa Radoszewski Rzecz. Radca Stanu +1871"}], pewnosc_odczytu: pewna}
+- {id: S03-513, podmiot: radoszewski-albin-1811, relacja: pochowek, miejsce: powazki-kw157,
+   zrodla: [{segment: S03-p33-s01, cytat: "Grób Radoszewskich Powązki Kwatera 157 rząd 6 grób 12/13"}, {segment: S03-p33-s02, cytat: "Albin Boxa Radoszewski"}], pewnosc_odczytu: pewna}
+- {id: S03-514, podmiot: radoszewski-franciszek-1790, relacja: pochowek, miejsce: powazki-kw157,
+   zrodla: [{segment: S03-p33-s02, cytat: "Franciszek Radoszewski 1846"}], pewnosc_odczytu: pewna}
+- {id: S03-515, podmiot: skrzynska-jozefa-1807, relacja: pochowek, miejsce: powazki-kw157,
+   zrodla: [{segment: S03-p33-s02, cytat: "Józefa ze Skrzyńskich Radoszewska 1856"}], pewnosc_odczytu: pewna}
+- {id: S03-516, podmiot: radoszewski-michal-1865, relacja: pochowek, miejsce: powazki-kw157,
+   zrodla: [{segment: S03-p33-s02, cytat: "Michał Boxa Radoszewski 1942"}], pewnosc_odczytu: pewna}
+- {id: S03-517, podmiot: drohojowska-ewelina-1880, relacja: pochowek, miejsce: powazki-kw157,
+   zrodla: [{segment: S03-p33-s02, cytat: "Ewa z hr. Drohojowskich Radoszewska 1955"}], pewnosc_odczytu: pewna}
+- {id: S03-518, podmiot: radoszewski-jerzy-1902, relacja: pochowek, miejsce: powazki-kw157,
+   zrodla: [{segment: S03-p33-s02, cytat: "Jerzy Radoszewski 1967"}], pewnosc_odczytu: pewna}
+- {id: S03-519, podmiot: wessel-jadwiga, relacja: pochowek, miejsce: powazki-kw157,
+   zrodla: [{segment: S03-p33-s02, cytat: "Jadwiga z Wesslów Radoszewska 1929"}], pewnosc_odczytu: pewna}
+- {id: S03-520, podmiot: radoszewska-jozefa-1864, relacja: pochowek, miejsce: powazki-kw157,
+   zrodla: [{segment: S03-p33-s02, cytat: "Józefa z Radoszewskich Wierzchleyska 1933"}], pewnosc_odczytu: pewna}
+- {id: S03-521, podmiot: radoszewska-ludwika-1827, relacja: pochowek, miejsce: powazki-kw157,
+   zrodla: [{segment: S03-p33-s02, cytat: "Ludwika z Radoszewskich Radoszewska 1875"}], pewnosc_odczytu: pewna}
+- {id: S03-522, podmiot: radoszewski-aleksander-1859, relacja: pochowek, miejsce: powazki-kw157,
+   zrodla: [{segment: S03-p33-s02, cytat: "Aleksander Radoszewski 1859"}], pewnosc_odczytu: pewna}
+- {id: S03-523, podmiot: radoszewski-aleksander-1859, relacja: opis, wartosc: "przy imieniu na grobie liczba 1859 (wg S07: rok urodzenia)", data: {tekst: "1859", od: 1859, do: 1859},
+   zrodla: [{segment: S03-p33-s02, cytat: "Aleksander Radoszewski 1859"}], pewnosc_odczytu: pewna}
+- {id: S03-524, podmiot: radoszewski-pawel-zatuskow, relacja: smierc, data: {tekst: "1940", od: 1940, do: 1940},
+   zrodla: [{segment: S03-p33-s02, cytat: "Paweł Radoszewski z Zatuskowa 1940"}], pewnosc_odczytu: pewna}
+- {id: S03-525, podmiot: radoszewski-pawel-zatuskow, relacja: pochowek, miejsce: powazki-kw157,
+   zrodla: [{segment: S03-p33-s02, cytat: "Paweł Radoszewski z Zatuskowa 1940"}], pewnosc_odczytu: pewna}
+- {id: S03-526, podmiot: radoszewska-teresa-1942, relacja: smierc, data: {tekst: "6.12.1996", od: 1996-12-06, do: 1996-12-06},
+   zrodla: [{segment: S03-p33-d1, cytat: "Teresa Radoszewska-Zielińska 6.12.1996"}, {segment: S03-p54-d2, cytat: "6-XII-1996 śmierć Teresy Radoszewskiej-Zielińskiej"}], pewnosc_odczytu: pewna}
+- {id: S03-527, podmiot: radoszewska-teresa-1942, relacja: pochowek, miejsce: powazki-kw157,
+   zrodla: [{segment: S03-p33-d1, cytat: "Teresa Radoszewska-Zielińska 6.12.1996"}], pewnosc_odczytu: pewna, uwagi: "Późniejszy dopisek na stronie grobu kw. 157."}
+- {id: S03-528, podmiot: przadzynska-anna-1914, relacja: smierc, data: {tekst: "10.07.1999", od: 1999-07-10, do: 1999-07-10},
+   zrodla: [{segment: S03-p33-d1, cytat: "Anna z Prządzyńskich Boxa-Radoszewska 10.07.1999"}, {segment: S03-p49-d1, cytat: "10-VII-1999 śmierć Anny z Prządzyńskich Boxa Radoszewskiej"}], pewnosc_odczytu: pewna}
+- {id: S03-529, podmiot: przadzynska-anna-1914, relacja: pochowek, miejsce: powazki-kw157,
+   zrodla: [{segment: S03-p33-d1, cytat: "Anna z Prządzyńskich Boxa-Radoszewska 10.07.1999"}], pewnosc_odczytu: pewna, uwagi: "Późniejszy dopisek na stronie grobu kw. 157."}
+- {id: S03-530, podmiot: powazki-kw157-r5, relacja: opis, wartosc: "grób Radoszewskich — strona bez wpisów",
+   zrodla: [{segment: S03-p34-s01, cytat: "Grób Radoszewskich Powązki Kwatera 157 rząd 5 № 14"}], pewnosc_odczytu: pewna}
+- {id: S03-531, podmiot: radoszewski-ignacy-1816, relacja: urodzenie, data: {tekst: "1816", od: 1816, do: 1816},
+   zrodla: [{segment: S03-p35-s02, cytat: "Ignacy baron Radoszewski 1816 +1886"}], pewnosc_odczytu: pewna}
+- {id: S03-532, podmiot: radoszewski-ignacy-1816, relacja: smierc, data: {tekst: "+1886", od: 1886, do: 1886},
+   zrodla: [{segment: S03-p35-s02, cytat: "Ignacy baron Radoszewski 1816 +1886"}], pewnosc_odczytu: pewna}
+- {id: S03-533, podmiot: radoszewski-ignacy-1816, relacja: pochowek, miejsce: cmentarz-ewangelicki-mlynarska,
+   zrodla: [{segment: S03-p35-s01, cytat: "Cmentarz Ewangelicko-Augsburski ul. Młynarska Al 1 grób 75"}, {segment: S03-p35-s02, cytat: "Ignacy baron Radoszewski"}], pewnosc_odczytu: pewna}
+- {id: S03-534, podmiot: radoszewski-ignacy-1816, relacja: opis, wartosc: "baron",
+   zrodla: [{segment: S03-p35-s02, cytat: "Ignacy baron Radoszewski"}], pewnosc_odczytu: pewna}
+- {id: S03-535, podmiot: rosdeitscher-amelia, relacja: urodzenie, data: {tekst: "1841", od: 1841, do: 1841},
+   zrodla: [{segment: S03-p35-s02, cytat: "Amelia 1841 +1926"}], pewnosc_odczytu: niepewna, uwagi: "Trzecia cyfra niewyraźna (1841/1811)."}
+- {id: S03-536, podmiot: rosdeitscher-amelia, relacja: smierc, data: {tekst: "+1926", od: 1926, do: 1926},
+   zrodla: [{segment: S03-p35-s02, cytat: "Amelia 1841 +1926"}], pewnosc_odczytu: pewna}
+- {id: S03-537, podmiot: rosdeitscher-amelia, relacja: pochowek, miejsce: cmentarz-ewangelicki-mlynarska,
+   zrodla: [{segment: S03-p35-s02, cytat: "Amelia 1841 +1926"}], pewnosc_odczytu: pewna}
+- {id: S03-538, podmiot: radoszewska-maria-1864, relacja: urodzenie, data: {tekst: "1864", od: 1864, do: 1864},
+   zrodla: [{segment: S03-p35-s02, cytat: "Maria 1864 +1885"}], pewnosc_odczytu: pewna}
+- {id: S03-539, podmiot: radoszewska-maria-1864, relacja: smierc, data: {tekst: "+1885", od: 1885, do: 1885},
+   zrodla: [{segment: S03-p35-s02, cytat: "Maria 1864 +1885"}], pewnosc_odczytu: pewna}
+- {id: S03-540, podmiot: radoszewska-maria-1864, relacja: pochowek, miejsce: cmentarz-ewangelicki-mlynarska,
+   zrodla: [{segment: S03-p35-s02, cytat: "Maria 1864 +1885"}], pewnosc_odczytu: pewna}
+- {id: S03-541, podmiot: rudkowska-emilia, relacja: smierc, data: {tekst: "1886", od: 1886, do: 1886},
+   zrodla: [{segment: S03-p36-s02, cytat: "Grób Generałowej Emilji z Rudkowskich[?] Prządzyńskiej 1886"}], pewnosc_odczytu: pewna}
+- {id: S03-542, podmiot: rudkowska-emilia, relacja: pochowek, miejsce: powazki-kw178,
+   zrodla: [{segment: S03-p36-s01, cytat: "Powązki Kwatera 178 rząd 5 № 27"}, {segment: S03-p36-s02, cytat: "Grób Generałowej Emilji z Rudkowskich[?] Prządzyńskiej"}], pewnosc_odczytu: pewna}
+- {id: S03-543, podmiot: rudkowska-emilia, relacja: malzonek, obiekt: przadzynski-ignacy-1792,
+   zrodla: [{segment: S03-p36-s02, cytat: "Grób Generałowej Emilji z Rudkowskich[?] Prządzyńskiej"}], pewnosc_odczytu: pewna, uwagi: "„Generałowa” — żona generała (Ignacego Prządzyńskiego, wg S07)."}
+- {id: S03-544, podmiot: przadzynska-sylwia-1837, relacja: smierc, data: {tekst: "1862", od: 1862, do: 1862},
+   zrodla: [{segment: S03-p36-s02, cytat: "Sylwji 1862"}], pewnosc_odczytu: niepewna, uwagi: "Ostatnia cyfra niewyraźna (1862/1869)."}
+- {id: S03-545, podmiot: przadzynska-sylwia-1837, relacja: pochowek, miejsce: powazki-kw178,
+   zrodla: [{segment: S03-p36-s02, cytat: "Sylwji 1862"}], pewnosc_odczytu: pewna}
+- {id: S03-546, podmiot: grabinski-edward-1859, relacja: pochowek, miejsce: powazki-kw162,
+   zrodla: [{segment: S03-p36-s03, cytat: "Grób Grabińskich Powązki Kw. 162 rząd 4 grób 29/30"}, {segment: S03-p36-s04, cytat: "Edward Grabiński przemysłowiec +1911"}], pewnosc_odczytu: pewna}
+- {id: S03-547, podmiot: brandel-maria-1870, relacja: pochowek, miejsce: powazki-kw162,
+   zrodla: [{segment: S03-p36-s04, cytat: "Marja z Brandlów Grabińska +1945"}], pewnosc_odczytu: pewna}
+- {id: S03-548, podmiot: grabinski-wladyslaw-1904, relacja: smierc, data: {tekst: "+1904", od: 1904, do: 1904},
+   zrodla: [{segment: S03-p36-s04, cytat: "Władysław Grabiński +1904"}], pewnosc_odczytu: pewna}
+- {id: S03-549, podmiot: grabinski-wladyslaw-1904, relacja: pochowek, miejsce: powazki-kw162,
+   zrodla: [{segment: S03-p36-s04, cytat: "Władysław Grabiński +1904"}], pewnosc_odczytu: pewna}
+- {id: S03-550, podmiot: dabska-leokadia-1850, relacja: pochowek, miejsce: powazki-kw162,
+   zrodla: [{segment: S03-p36-s04, cytat: "Leokadja z Dąbskich[?] Brandel +1892"}], pewnosc_odczytu: pewna}
+- {id: S03-551, podmiot: grabinska-zofia-1874, relacja: smierc, data: {tekst: "+1874", od: 1874, do: 1874},
+   zrodla: [{segment: S03-p36-s04, cytat: "Zofja Grabińska +1874"}], pewnosc_odczytu: niepewna, uwagi: "Ostatnia cyfra niewyraźna."}
+- {id: S03-552, podmiot: grabinska-zofia-1874, relacja: pochowek, miejsce: powazki-kw162,
+   zrodla: [{segment: S03-p36-s04, cytat: "Zofja Grabińska +1874"}], pewnosc_odczytu: pewna}
+- {id: S03-553, podmiot: grabinska-stanislawa-1890, relacja: pochowek, miejsce: powazki-kw162,
+   zrodla: [{segment: S03-p36-s04, cytat: "Stanisława z Grabińskich Prządzyńska +1980"}], pewnosc_odczytu: pewna}
+- {id: S03-554, podmiot: przadzynski-stanislaw-1871, relacja: pochowek, miejsce: powazki-kw162,
+   zrodla: [{segment: S03-p36-s04, cytat: "Stanisław Prządzyński z Kościerzyna +1957"}], pewnosc_odczytu: pewna}
+- {id: S03-555, podmiot: grabinska-stefania, relacja: pochowek, miejsce: powazki-239,
+   zrodla: [{segment: S03-p37-s01, cytat: "Grób Cioci Stefy z Grabińskich Podkolińskiej Pow. IV Wr.[?] rząd I"}], pewnosc_odczytu: niepewna}
+- {id: S03-556, podmiot: grotowska-zofia, relacja: pochowek, wartosc: "grób gen. Makowieckiego[?]", miejsce: powazki,
+   zrodla: [{segment: S03-p37-s01, cytat: "Zofji z Grotowskich Radoszewskiej gr. gen. Makowieckiego[?]"}], pewnosc_odczytu: niepewna}
+- {id: S03-557, podmiot: brandel-konstanty, relacja: pochowek, miejsce: powazki-kw174,
+   zrodla: [{segment: S03-p37-s01, cytat: "Brandel Konstanty Kw. 174 rząd 4 № grobu 29"}], pewnosc_odczytu: pewna}
+- {id: S03-558, podmiot: przadzynski-andrzej-1917, relacja: pochowek, miejsce: powazki-kw6,
+   zrodla: [{segment: S03-p37-s01, cytat: "Andrzeja Prządzyńskiego (Wiktorji[?]) Kw. 6 rząd 6 gr. 12"}], pewnosc_odczytu: pewna}
+- {id: S03-559, podmiot: przadzynska-wiktoria, relacja: pochowek, miejsce: powazki-kw6,
+   zrodla: [{segment: S03-p37-s01, cytat: "(Wiktorji[?])"}], pewnosc_odczytu: niepewna}
+- {id: S03-560, podmiot: radoszewska-maria-1867, relacja: pochowek, miejsce: cmentarz-polnocny, wartosc: "nr 13345/65",
+   zrodla: [{segment: S03-p37-s02, cytat: "Grób Marji z Radoszewskich Mierzyńskiej ⎫ Powązki dalsze"}, {segment: S03-p37-s02, cytat: "K 9-2ᵇ-1 15199/75 13345/65"}], pewnosc_odczytu: pewna}
+- {id: S03-561, podmiot: mierzynska-maria-1897, relacja: pochowek, miejsce: cmentarz-polnocny, wartosc: "nr 15199/75",
+   zrodla: [{segment: S03-p37-s02, cytat: "z Mierzyńskich Żeromskiej ⎭ K 9-2ᵇ-1"}], pewnosc_odczytu: pewna}
+
+# s. 38–42: domy, przodkowie, szkoły, wakacje, wydarzenia
+- {id: S03-562, podmiot: radoszewice, relacja: opis, wartosc: "„nasze domy”: Radoszewice i Siemkowice od XII w. do rozbiorów",
+   zrodla: [{segment: S03-p38-s02, cytat: "Radoszewice Siemkowice od XII do Rozbiorów"}, {segment: S03-p39-s02, cytat: "Radoszewice i Siemkowice k/Wielunia od XII w"}], pewnosc_odczytu: pewna}
+- {id: S03-563, podmiot: dominikowice, relacja: opis, wartosc: "dom rodziny do 1914 r.", data: {tekst: "do 1914 r.", od: null, do: 1914},
+   zrodla: [{segment: S03-p38-s02, cytat: "Dominikowice do 1914 r."}], pewnosc_odczytu: pewna}
+- {id: S03-564, podmiot: krempa, relacja: opis, wartosc: "Krempa i Śmiechów — dom rodziny do II wojny światowej", data: {tekst: "do II wojny światowej", od: null, do: 1939},
+   zrodla: [{segment: S03-p38-s02, cytat: "Krempa Śmiechów do II wojny światowej"}], pewnosc_odczytu: pewna}
+- {id: S03-565, podmiot: koscierzyn, relacja: opis, wartosc: "dom rodziny (Prządzyńskich) do II wojny światowej", data: {tekst: "do II wojny światowej", od: null, do: 1939},
+   zrodla: [{segment: S03-p38-s02, cytat: "Kościerzyn \" \""}], pewnosc_odczytu: pewna}
+- {id: S03-566, podmiot: piotrkowice-wolyn, relacja: opis, wartosc: "dom rodziny (Drohojowskich) do 1933 r. — rozparcelowane", data: {tekst: "do 1933", od: null, do: 1933},
+   zrodla: [{segment: S03-p38-s02, cytat: "Piotrkowice do 1933 (rozparcelowane)"}], pewnosc_odczytu: pewna}
+- {id: S03-567, podmiot: ciszecin-wielki, relacja: opis, wartosc: "dom rodziny (Drohojowskich) do II wojny światowej", data: {tekst: "do II wojny światowej", od: null, do: 1939},
+   zrodla: [{segment: S03-p38-s02, cytat: "Ciszecin W do II wojny światowej"}], pewnosc_odczytu: pewna}
+- {id: S03-568, podmiot: warszawa-marszalkowska-59, relacja: opis, wartosc: "dom rodziny",
+   zrodla: [{segment: S03-p38-s02, cytat: "Warszawa Marszałkowska róg Koszykowej"}], pewnosc_odczytu: pewna}
+- {id: S03-569, podmiot: warszawa-wilcza-65, relacja: opis, wartosc: "dom rodziny",
+   zrodla: [{segment: S03-p38-s02, cytat: "Wilcza 65"}, {segment: S03-p39-s02, cytat: "Potem W-wa Wilcza 65 Nowogrodzka 42"}], pewnosc_odczytu: pewna}
+- {id: S03-570, podmiot: warszawa-nowogrodzka-42, relacja: opis, wartosc: "dom rodziny",
+   zrodla: [{segment: S03-p38-s02, cytat: "Nowogrodzka 42"}, {segment: S03-p39-s02, cytat: "Nowogrodzka 42"}], pewnosc_odczytu: pewna}
+- {id: S03-571, podmiot: warszawa-aleje-jerozolimskie-37, relacja: opis, wartosc: "dom rodziny",
+   zrodla: [{segment: S03-p38-s02, cytat: "Al. Jerozolimskie 37"}], pewnosc_odczytu: pewna}
+- {id: S03-572, podmiot: poznan, relacja: opis, wartosc: "wymieniony wśród „naszych domów”",
+   zrodla: [{segment: S03-p38-s02, cytat: "Poznań"}], pewnosc_odczytu: pewna}
+- {id: S03-573, podmiot: dominikowice, relacja: opis, wartosc: "po rozbiorach przodkowie mieszkali w Śmiechowie, Krempie i Dominikowicach (między Poddębicami a Uniejowem) do II wojny światowej; potem Warszawa, Milanówek i Brwinów",
+   zrodla: [{segment: S03-p39-s02, cytat: "Po rozbiorach Polski Śmiechów Krempa Dominikowice między Poddębicami a Uniejowem do II wojny światowej."},
+            {segment: S03-p39-s02, cytat: "Milanówek i Brwinów."}], pewnosc_odczytu: pewna}
+- {id: S03-574, podmiot: drohojowski-boleslaw-1848, relacja: zamieszkanie, miejsce: ciszecin-wielki, wartosc: "Drohojowscy w Ciszecinie W. k. Jarosławia i w Piotrkowicach k. Kowla",
+   zrodla: [{segment: S03-p39-s03, cytat: "W Ciszecinie W. k/Jarosławia ⎫ Drohojowscy w Piotrkowicach k/Kowla ⎭"}], pewnosc_odczytu: pewna}
+- {id: S03-575, podmiot: przadzynski-stanislaw-1871, relacja: zamieszkanie, miejsce: koscierzyn, wartosc: "Prządzyńscy w Leźnicy Wielkiej i w Kościerzynie",
+   zrodla: [{segment: S03-p39-s03, cytat: "w Leźnicy Wielkiej ⎫ Prządzyńscy w Kościerzynie ⎭"}], pewnosc_odczytu: pewna}
+- {id: S03-576, podmiot: radoszewska-teresa-1942, relacja: wyksztalcenie, wartosc: "szkoła podstawowa i gimnazjum w Milanówku (matura 1959); Akademia Medyczna w Warszawie (dyplom 12-V-1966)", miejsce: milanowek,
+   zrodla: [{segment: S03-p40-s02, cytat: "Teresa Szkoła Podstawowa Milanówek Gimnazjum matura 1959 Milanówek Akademja Med. W-wa dyplom 12-V- 1966"},
+            {segment: S03-p47-s02, cytat: "12-V-1966 dyplom Tereski"}, {segment: S03-p48-s02, cytat: "1959 \" \" Tereski"}], pewnosc_odczytu: pewna}
+- {id: S03-577, podmiot: radoszewska-teresa-1942, relacja: wyksztalcenie, wartosc: "specjalizacje: I st. fizykoterapia 23-IV-1970, I st. rehabilitacja 13-IV-1973, II st. fizykoterapia 28-IV-1975, II st. rehabilitacja 22-IV-1977",
+   zrodla: [{segment: S03-p40-s02, cytat: "specjalizacja I st. fizyk. 23-IV-70 r. I st. rehab. 13-IV-73 r. \" \" II st. fizyk. 28-IV-75 r. \" \" II st. rehab. 22-IV 77 r."},
+            {segment: S03-p46-s02, cytat: "23-IV 1970 spec. I st. fiz. Tereski"}], pewnosc_odczytu: pewna}
+- {id: S03-578, podmiot: radoszewska-zielinska-anna-1974, relacja: wyksztalcenie, wartosc: "przedszkole i szkoła podstawowa w Brwinowie, liceum ogólnokształcące w Milanówku", miejsce: brwinow,
+   zrodla: [{segment: S03-p40-s03, cytat: "Anna Przedszkole Brwinów Szkoła Podstawowa \" \" Liceum Ogólnokształcące Milanówek"}], pewnosc_odczytu: pewna}
+- {id: S03-579, podmiot: radoszewska-teresa-1942, relacja: opis, wartosc: "rodzinne wakacje od 1943 r. w Pniewach u Urszulanek, potem w Lipnicy k. Szamotuł (majątek cioci Kotusi z Mierzyńskich Łąckiej, ofiarowany Urszulankom szarym)", data: {tekst: "od 1943 r.", od: 1943, do: null}, miejsce: pniewy,
+   zrodla: [{segment: S03-p41-s02, cytat: "Od 1943 r do w Pniewach u SS. Urszulanek potem w Lipnicy do[?] k/Szamotuł w majątku Cioci Kotusi z Mierzyńskich Łąckiej, która ofiarowała swój majątek SS. Urszulankom szarym."}], pewnosc_odczytu: niepewna}
+- {id: S03-580, podmiot: mierzynska-konstancja, relacja: wlasnosc, obiekt: lipnica, wartosc: "ofiarowała majątek Urszulankom szarym",
+   zrodla: [{segment: S03-p41-s02, cytat: "w majątku Cioci Kotusi z Mierzyńskich Łąckiej, która ofiarowała swój majątek SS. Urszulankom szarym."}], pewnosc_odczytu: pewna}
+- {id: S03-581, podmiot: przadzynska-anna-1879, relacja: urzad, wartosc: "długie lata przełożona w Pniewach", miejsce: pniewy,
+   zrodla: [{segment: S03-p41-s02, cytat: "W Pniewach długie lata była przełożoną siostra Dziadka Stasia Prządzyńskiego Babcia Netka"}], pewnosc_odczytu: pewna}
+- {id: S03-582, podmiot: radoszewski-jerzy-1902, relacja: udzial_w_wydarzeniu, wartosc: "wyjazd rodziny z Krempy (I linia frontu) do Zatuskowa[?] i Warszawy", data: {tekst: "2 września 1939", od: 1939-09-02, do: 1939-09-02}, miejsce: krempa,
+   zrodla: [{segment: S03-p42-s02, cytat: "2 września 1939 r. wyjazd z Krempy do Zatusk[owa][?] i W-wy. (W Krempie I linja frontu.)"}], pewnosc_odczytu: niepewna}
+- {id: S03-583, podmiot: warszawa-koszykowa-11, relacja: opis, wartosc: "dom spalony w czasie oblężenia Warszawy (1939); mieszkali tam Babcia i Dziadzio Radoszewscy (Michał i Ewa), u nich rodzina po wyjeździe z Krempy", data: {tekst: "oblężenie W-wy", od: 1939-09, do: 1939-09},
+   zrodla: [{segment: S03-p42-s02, cytat: "Oblężenie W-wy spalenie domu na Koszy-kowej 11 m 3 gdzie mieszkali Babcia i Dziadzio Radoszewscy i u nich po wyjeździe z Krempy byliśmy"}], pewnosc_odczytu: pewna}
+- {id: S03-584, podmiot: radoszewski-jerzy-1902, relacja: udzial_w_wydarzeniu, wartosc: "wysiedlenie z Krempy przez Niemców, przez Turek i Koło do obozu dla przesiedleńców w Bochni", data: {tekst: "8-XII-1939", od: 1939-12-08, do: 1939-12-08}, miejsce: bochnia,
+   zrodla: [{segment: S03-p42-s02, cytat: "8-XII-1939 r. wysiedlenie z Krempy przez Turek, Koło do obozu dla przesiedleńców w Bochni"}], pewnosc_odczytu: pewna}
+- {id: S03-585, podmiot: radoszewski-jerzy-1902, relacja: zamieszkanie, miejsce: warszawa, wartosc: "okupacja w Warszawie", data: {tekst: "Okupacja", od: 1939, do: 1944},
+   zrodla: [{segment: S03-p42-s02, cytat: "Okupacja w W-wie."}], pewnosc_odczytu: pewna}
+- {id: S03-586, podmiot: radoszewski-jerzy-1902, relacja: udzial_w_wydarzeniu, wartosc: "rodzina na I linii frontu w Czarnej (między Radzyminem a Wołominem), w piwnicach; potem do Dębów k. Łaskarzewa", data: {tekst: "1944", od: 1944, do: 1944}, miejsce: czarna,
+   zrodla: [{segment: S03-p42-s02, cytat: "W 1944 r. na I linji frontu w Czarnej między Radzyminem a Wołominem w piwnicach. Potem wydostaliśmy się[?] do Dębów k/Łaskarzew."}], pewnosc_odczytu: pewna}

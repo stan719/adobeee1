@@ -291,3 +291,152 @@
   typ: kościół
   nadrzedne: brwinow
   pewnosc_identyfikacji: pewna
+
+- id: pajeczno
+  nazwa: "Pajęczno"
+  typ: miasto
+  pewnosc_identyfikacji: pewna
+
+- id: dominikowice-parafia-uniejow
+  nazwa: "Parafia Uniejów (dla Dominikowic)"
+  typ: inny
+  nadrzedne: uniejow
+  pewnosc_identyfikacji: pewna
+
+- id: wartkowice
+  nazwa: "Wartkowice"
+  typ: wieś
+  pewnosc_identyfikacji: prawdopodobna
+  uwagi: "Kaplica grobowa Radoszewskich z Neru."
+
+- id: wartkowice-kaplica
+  nazwa: "Kaplica Radoszewskich z Neru na cmentarzu w Wartkowicach"
+  typ: kaplica
+  nadrzedne: wartkowice
+  pewnosc_identyfikacji: pewna
+
+- id: leznica-kaplica
+  nazwa: "Kaplica Prządzyńskich na cmentarzu w Leźnicy"
+  typ: kaplica
+  nadrzedne: leznica-wielka
+  pewnosc_identyfikacji: pewna
+
+- id: powazki-kw157
+  nazwa: "Powązki, kw. 157 rząd 6 grób 12/13 (grób Radoszewskich)"
+  typ: cmentarz
+  nadrzedne: powazki
+  pewnosc_identyfikacji: pewna
+
+- id: powazki-kw157-r5
+  nazwa: "Powązki, kw. 157 rząd 5 nr 14 (grób Radoszewskich)"
+  typ: cmentarz
+  nadrzedne: powazki
+  pewnosc_identyfikacji: pewna
+
+- id: cmentarz-ewangelicki-mlynarska
+  nazwa: "Cmentarz Ewangelicko-Augsburski, ul. Młynarska, Warszawa — al. 1 grób 75"
+  typ: cmentarz
+  nadrzedne: warszawa
+  pewnosc_identyfikacji: pewna
+
+- id: powazki-kw178
+  nazwa: "Powązki, kw. 178 rząd 5 nr 27 (grób gen. Prządzyńskiej)"
+  typ: cmentarz
+  nadrzedne: powazki
+  pewnosc_identyfikacji: pewna
+
+- id: powazki-kw162
+  nazwa: "Powązki, kw. 162 rząd 4 grób 29/30 (grób Grabińskich)"
+  typ: cmentarz
+  nadrzedne: powazki
+  pewnosc_identyfikacji: pewna
+
+- id: powazki-239
+  nazwa: "Powązki, kw. 239 (IV brama), rząd I nr 10/11"
+  typ: cmentarz
+  nadrzedne: powazki
+  pewnosc_identyfikacji: prawdopodobna
+
+- id: powazki-kw174
+  nazwa: "Powązki, kw. 174 rząd 4 nr 29 (grób K. Brandla)"
+  typ: cmentarz
+  nadrzedne: powazki
+  pewnosc_identyfikacji: pewna
+
+- id: powazki-kw6
+  nazwa: "Powązki, kw. 6 rząd 6 grób 12"
+  typ: cmentarz
+  nadrzedne: powazki
+  pewnosc_identyfikacji: pewna
+
+- id: cmentarz-polnocny
+  nazwa: "Cmentarz Północny („Powązki dalsze”), kw. 9-2b-1"
+  typ: cmentarz
+  nadrzedne: warszawa
+  pewnosc_identyfikacji: prawdopodobna
+
+- id: warszawa-marszalkowska-59
+  nazwa: "Warszawa, Marszałkowska 59 róg Koszykowej"
+  typ: ulica/dom
+  nadrzedne: warszawa
+  pewnosc_identyfikacji: pewna
+
+- id: warszawa-wilcza-65
+  nazwa: "Warszawa, Wilcza 65"
+  typ: ulica/dom
+  nadrzedne: warszawa
+  pewnosc_identyfikacji: pewna
+
+- id: warszawa-nowogrodzka-42
+  nazwa: "Warszawa, Nowogrodzka 42 (róg Poznańskiej)"
+  typ: ulica/dom
+  nadrzedne: warszawa
+  pewnosc_identyfikacji: pewna
+
+- id: warszawa-aleje-jerozolimskie-37
+  nazwa: "Warszawa, Al. Jerozolimskie 37"
+  typ: ulica/dom
+  nadrzedne: warszawa
+  pewnosc_identyfikacji: pewna
+
+- id: poznan
+  nazwa: "Poznań"
+  typ: miasto
+  pewnosc_identyfikacji: pewna
+
+- id: warszawa-koszykowa-11
+  nazwa: "Warszawa, Koszykowa 11 m 3"
+  typ: ulica/dom
+  nadrzedne: warszawa
+  pewnosc_identyfikacji: pewna
+
+- id: turek
+  nazwa: "Turek"
+  typ: miasto
+  pewnosc_identyfikacji: pewna
+
+- id: kolo
+  nazwa: "Koło"
+  typ: miasto
+  pewnosc_identyfikacji: pewna
+
+- id: czarna
+  nazwa: "Czarna (między Radzyminem a Wołominem)"
+  typ: wieś
+  pewnosc_identyfikacji: prawdopodobna
+
+- id: deby-laskarzew
+  nazwa: "Dęby k. Łaskarzewa"
+  typ: wieś
+  pewnosc_identyfikacji: prawdopodobna
+
+- id: akademia-medyczna-warszawa
+  nazwa: "Akademia Medyczna w Warszawie"
+  typ: inny
+  nadrzedne: warszawa
+  pewnosc_identyfikacji: pewna
+
+- id: libia
+  nazwa: "Libia"
+  typ: region
+  pewnosc_identyfikacji: pewna

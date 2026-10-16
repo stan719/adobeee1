@@ -1,0 +1,85 @@
+# S03 cz. 5: s. 43–54 (kalendarz rocznic i imienin) — wydarzenia nieujęte wcześniej
+
+- {id: S03-587, podmiot: szweycer-stanislaw-1944, relacja: slub, obiekt: konarska-zofia, data: {tekst: "10 [I] 1976", od: 1976-01-10, do: 1976-01-10},
+   zrodla: [{segment: S03-p43-s02, cytat: "10-1976 ślub Stasia Szweycera"}], pewnosc_odczytu: pewna, uwagi: "Strona „Styczeń” — dzień 10, rok 1976; żona wg S03-p14-s01."}
+- {id: S03-588, podmiot: szweycer-magdalena-1956, relacja: urodzenie, data: {tekst: "23 [I] 1956", od: 1956-01-23, do: 1956-01-23},
+   zrodla: [{segment: S03-p43-s02, cytat: "23 ur. Magdy \" \" 1956"}], pewnosc_odczytu: pewna}
+- {id: S03-589, podmiot: szweycer-zofia-1949, relacja: slub, obiekt: karasiewicz-piotr, data: {tekst: "27 [I] 79", od: 1979-01-27, do: 1979-01-27},
+   zrodla: [{segment: S03-p43-s02, cytat: "27-79 \" Zosi Szweycerówny"}], pewnosc_odczytu: pewna, uwagi: "„ \" ” = ślub; mąż wg S03-p14-s01."}
+- {id: S03-590, podmiot: suska-maria, relacja: urodzenie, data: {tekst: "1-II-1968", od: 1968-02-01, do: 1968-02-01},
+   zrodla: [{segment: S03-p44-s02, cytat: "\" \" Mai Suskiej"}], pewnosc_odczytu: niepewna,
+   uwagi: "Wpis na tle korektora pod „1-II-1968 urodziny Agusi” — znak powtórzenia odnosi się do daty i „urodziny”; data mogła być zatarta."}
+- {id: S03-591, podmiot: radoszewska-agnieszka-1968, relacja: chrzest, data: {tekst: "10-III-1968", od: 1968-03-10, do: 1968-03-10},
+   zrodla: [{segment: S03-p45-s02, cytat: "10-III-1968 Chrzest Agusi Radoszewskiej"}], pewnosc_odczytu: pewna}
+- {id: S03-592, podmiot: przadzynski-stanislaw-1976, relacja: smierc, data: {tekst: "17-III-1976", od: 1976-03-17, do: 1976-03-17},
+   zrodla: [{segment: S03-p45-s02, cytat: "17-III-1976 śmierć Wujka Stanisława Prządzyńskiego[?]"}], pewnosc_odczytu: niepewna}
+- {id: S03-593, podmiot: radoszewski-andrzej-1938, relacja: slub, obiekt: lewandowska-halina-1940, data: {tekst: "8-IV 1967", od: 1967-04-08, do: 1967-04-08},
+   zrodla: [{segment: S03-p46-s02, cytat: "8-IV 1967 ślub Jędrka i Haliny Radoszewskich"}], pewnosc_odczytu: pewna}
+- {id: S03-594, podmiot: radoszewski-andrzej-1938, relacja: zamieszkanie, miejsce: libia, wartosc: "wyjazd do Libii 18-IV-1978, powrót 14-VI-1986", data: {tekst: "18-IV 1978 – 14-VI-1986", od: 1978-04-18, do: 1986-06-14},
+   zrodla: [{segment: S03-p46-s02, cytat: "18-IV 1978 Wyjazd Jędrka do Libji"}, {segment: S03-p48-s02, cytat: "14-VI-1986 Powrót Jędrków z Libji"}], pewnosc_odczytu: pewna}
+- {id: S03-595, podmiot: radoszewska-elzbieta-1938, relacja: wyksztalcenie, wartosc: "egzamin specjalizacyjny I st. 5-X-1971, II st. 11-IV-1979",
+   zrodla: [{segment: S03-p52-s02, cytat: "5-X 1971 egzamin I st. Halszki"}, {segment: S03-p46-s02, cytat: "11-IV-1979 Egzamin II st. Halszki"}], pewnosc_odczytu: pewna}
+- {id: S03-596, podmiot: wyzlkina, relacja: smierc, data: {tekst: "24-IV-1983", od: 1983-04-24, do: 1983-04-24},
+   zrodla: [{segment: S03-p46-s02, cytat: "24-IV-1983 Śmierć Cioci Wyżłkiny[?]"}], pewnosc_odczytu: niepewna}
+- {id: S03-597, podmiot: mosek-robert-1969, relacja: chrzest, data: {tekst: "17-V-1970", od: 1970-05-17, do: 1970-05-17},
+   zrodla: [{segment: S03-p47-s02, cytat: "17-V-1970 Chrzest Roberta Krzysztofa Moska"}], pewnosc_odczytu: pewna}
+- {id: S03-598, podmiot: radoszewska-agnieszka-1968, relacja: udzial_w_wydarzeniu, wartosc: "I Komunia św.", data: {tekst: "30-V-1976", od: 1976-05-30, do: 1976-05-30},
+   zrodla: [{segment: S03-p47-s02, cytat: "30-V-1976 r. I Komunja św. Agusi"}], pewnosc_odczytu: pewna}
+- {id: S03-599, podmiot: mosek-robert-1969, relacja: udzial_w_wydarzeniu, wartosc: "I Komunia św.", data: {tekst: "7-V-1978", od: 1978-05-07, do: 1978-05-07},
+   zrodla: [{segment: S03-p47-s02, cytat: "7-V-1978 \" \" Krzysia"}], pewnosc_odczytu: pewna}
+- {id: S03-600, podmiot: grabinska-malgorzata, relacja: smierc, data: {tekst: "9-V-1985", od: 1985-05-09, do: 1985-05-09},
+   zrodla: [{segment: S03-p47-s02, cytat: "9-V-1985 śmierć Małgosi Grabińskiej"}], pewnosc_odczytu: pewna}
+- {id: S03-601, podmiot: szweycer-zofia-1949, relacja: urodzenie, data: {tekst: "3-VI-1949", od: 1949-06-03, do: 1949-06-03},
+   zrodla: [{segment: S03-p48-s02, cytat: "3-VI-1949 ur. Zosi Szweycer"}], pewnosc_odczytu: pewna}
+- {id: S03-602, podmiot: radoszewski-andrzej-1938, relacja: wyksztalcenie, wartosc: "matura 1954 (razem z siostrą Elżbietą)", data: {tekst: "1954", od: 1954, do: 1954},
+   zrodla: [{segment: S03-p48-s02, cytat: "1954 matura Halszki i Jędrka"}], pewnosc_odczytu: pewna}
+- {id: S03-603, podmiot: radoszewska-elzbieta-1938, relacja: wyksztalcenie, wartosc: "matura 1954", data: {tekst: "1954", od: 1954, do: 1954},
+   zrodla: [{segment: S03-p48-s02, cytat: "1954 matura Halszki i Jędrka"}], pewnosc_odczytu: pewna}
+- {id: S03-604, podmiot: radoszewska-maria-1867, relacja: smierc, data: {tekst: "18-VI-1965", od: 1965-06-18, do: 1965-06-18},
+   zrodla: [{segment: S03-p48-s02, cytat: "18-VI-1965 śmierć Babci Mani Mierzyńskiej"}], pewnosc_odczytu: pewna}
+- {id: S03-605, podmiot: radoszewska-elzbieta-1938, relacja: slub, obiekt: mosek-krzysztof-1932, data: {tekst: "31-VIII-1968", od: 1968-08-31, do: 1968-08-31},
+   zrodla: [{segment: S03-p50-s02, cytat: "31-VIII-1968 ślub Halszki"}], pewnosc_odczytu: pewna}
+- {id: S03-606, podmiot: szweycer-anna-1946, relacja: slub, obiekt: suski-jan, data: {tekst: "14-IX-1969", od: 1969-09-14, do: 1969-09-14},
+   zrodla: [{segment: S03-p51-s02, cytat: "14-IX-1969 Ślub Haneczki Szweycerówny"}], pewnosc_odczytu: pewna}
+- {id: S03-607, podmiot: przadzynska-anna-1914, relacja: zamieszkanie, miejsce: brwinow, wartosc: "przeprowadzka z Milanówka do Brwinowa", data: {tekst: "12-X-1962", od: 1962-10-12, do: 1962-10-12},
+   zrodla: [{segment: S03-p52-s02, cytat: "12-X-1962 Przeprowadzka z Milanówka do Brwinowa"}], pewnosc_odczytu: pewna}
+- {id: S03-608, podmiot: radoszewski-jerzy-1902, relacja: smierc, data: {tekst: "13-X-1967 (piątek)", od: 1967-10-13, do: 1967-10-13},
+   zrodla: [{segment: S03-p52-s02, cytat: "13-X-1967 śmierć Tatusia (piątek)"}], pewnosc_odczytu: pewna}
+- {id: S03-609, podmiot: radoszewski-jerzy-1902, relacja: pochowek, data: {tekst: "17-X-1967", od: 1967-10-17, do: 1967-10-17}, wartosc: "pogrzeb",
+   zrodla: [{segment: S03-p52-s02, cytat: "17-X-1967 pogrzeb \" \""}], pewnosc_odczytu: pewna}
+- {id: S03-610, podmiot: jurkowicz-siostra, relacja: pochowek, data: {tekst: "29-XI-1967", od: 1967-11-29, do: 1967-11-29}, wartosc: "pogrzeb",
+   zrodla: [{segment: S03-p53-s02, cytat: "29-XI-1967 Pogrzeb Siostry Jurkowicz[?]"}], pewnosc_odczytu: niepewna}
+- {id: S03-611, podmiot: radoszewska-anna-1971, relacja: chrzest, data: {tekst: "7-XI-1971", od: 1971-11-07, do: 1971-11-07},
+   zrodla: [{segment: S03-p53-s02, cytat: "7-XI-1971 Chrzest Ani Radoszewskiej"}], pewnosc_odczytu: pewna}
+- {id: S03-612, podmiot: wilski-jan, relacja: smierc, data: {tekst: "8-XII 1975", od: 1975-12-08, do: 1975-12-08},
+   zrodla: [{segment: S03-p54-s02, cytat: "8-XII 1975 śmierć Janka Wilskiego"}], pewnosc_odczytu: pewna}
+- {id: S03-613, podmiot: mierzynska-maria-1897, relacja: smierc, data: {tekst: "16-XII-1975", od: 1975-12-16, do: 1975-12-16},
+   zrodla: [{segment: S03-p54-s02, cytat: "16-XII-1975 \" Cioci Marylki Żeromskiej"}], pewnosc_odczytu: pewna}
+- {id: S03-614, podmiot: grabinska-stanislawa-1890, relacja: opis, wartosc: "dopisek „z Grabińskich” przy dacie śmierci (fioletowy długopis)",
+   zrodla: [{segment: S03-p54-d1, cytat: "z Grabińskich"}], pewnosc_odczytu: pewna}
+
+# imieniny — po jednym twierdzeniu na stronę (osoby bez innych danych nie są tworzone osobno)
+- {id: S03-615, podmiot: radoszewska-teresa-1942, relacja: opis, wartosc: "kalendarz imienin (luty): 2 II Mai Suskiej, 11 II Gintyłło[?]",
+   zrodla: [{segment: S03-p44-s04, cytat: "2-II Mai Suskiej 11-II Gintyłło[?] 1-II ur. Agusi"}], pewnosc_odczytu: niepewna}
+- {id: S03-616, podmiot: radoszewska-teresa-1942, relacja: opis, wartosc: "kalendarz imienin (marzec): 4 III Kuleszy",
+   zrodla: [{segment: S03-p45-s04, cytat: "4-III Kuleszy 1-III ur. Halszki i Jędrka"}], pewnosc_odczytu: pewna}
+- {id: S03-617, podmiot: radoszewska-teresa-1942, relacja: opis, wartosc: "kalendarz imienin (kwiecień): 23 Jurka, 24 Marka Tymienieckiego, 20 Agnieszki, 17 Krzysia",
+   zrodla: [{segment: S03-p46-s04, cytat: "23 Jurka 24 Marka Tymienieckiego 20 im. Agnieszki 17 \" Krzysia 14 ur. Haliny 30 ur. Tereski"}], pewnosc_odczytu: pewna}
+- {id: S03-618, podmiot: radoszewska-teresa-1942, relacja: opis, wartosc: "kalendarz imienin (maj): 8 ks. prałata Kumrzyka[?], 15 Zosi Szweycerowej i Karasiewiczowej, 16 Jędrka, 29 Magdy Krzeptowskiej",
+   zrodla: [{segment: S03-p47-s04, cytat: "8 Księdza prał. Kumrzyka[?] 15 Zosi Szweycerowej \" Karasiewiczowej 16 im. Jędrka 29 \" Magdy Krzeptowskiej"}], pewnosc_odczytu: niepewna}
+- {id: S03-619, podmiot: radoszewska-teresa-1942, relacja: opis, wartosc: "kalendarz imienin (czerwiec): 24 Iwki[?] Podczaskiej[?], Jasia Niedźwiedzkiego, Jasia Suskiego",
+   zrodla: [{segment: S03-p48-s04, cytat: "Iwki[?] Podczaskiej[?] 24 Jasia Niedźwiedzkiego 24 Jasia Suskiego"}], pewnosc_odczytu: niepewna}
+- {id: S03-620, podmiot: radoszewska-teresa-1942, relacja: opis, wartosc: "kalendarz imienin (lipiec): 1 Haliny Radoszewskiej, 8 Halszki, 16 Aty[?] Kajzer, 25 Krzysztofa Moska, 26 Haneczki Suskiej, Mikke[?], Anulki, Ani; 1 Gołubiewowej[?]; 22 Marii Kulerzyny[?]",
+   zrodla: [{segment: S03-p49-s04, cytat: "1 Haliny Radoszewskiej 17 urodziny Jurka 8 im. Halszki 16 Aty[?] Kajzer 25 Krzysztofa Moska 26 Haneczki Suskiej \" Mikke[?] Anulki Ani 1-Gołubiewowej[?] 22 Marii Kulerzyny[?]"}], pewnosc_odczytu: niepewna}
+- {id: S03-621, podmiot: radoszewska-teresa-1942, relacja: opis, wartosc: "kalendarz imienin (sierpień): 15 Cioci Marychny Szweycerowej i Marylki Tymienieckiej",
+   zrodla: [{segment: S03-p50-s04, cytat: "15 Cioci Marychny Szweycerowej Marylki Tymienieckiej 6 ur. Anulki"}], pewnosc_odczytu: pewna}
+- {id: S03-622, podmiot: radoszewska-teresa-1942, relacja: opis, wartosc: "kalendarz imienin (wrzesień): 8 Grażynki Białynickiej, 2 Stefanii Lipczyńskiej[?], 28 Jolikowskiego[?]",
+   zrodla: [{segment: S03-p51-s04, cytat: "8-IX Grażynki Białynickiej 2-IX Stefanii Lipczyńskiej[?] 28-IX Jolikowskiego[?] 24 ur. Ani 25 ur. Krzysia"}], pewnosc_odczytu: niepewna}
+- {id: S03-623, podmiot: radoszewska-teresa-1942, relacja: opis, wartosc: "kalendarz imienin (październik): 3 Tereski, 15 cioci Białynickiej i Gintyłło[?], 20 Gorczyńskiej[?] i Wituńskiej[?]; 14 X Dzień Nauczyciela",
+   zrodla: [{segment: S03-p52-s04, cytat: "3 Tereski 15 cioci Białynickiej Gintyłło[?] 20 Gorczyńskiej[?] Wituńskiej[?] 14 dzień nauczyciela"}], pewnosc_odczytu: niepewna}
+- {id: S03-624, podmiot: radoszewska-teresa-1942, relacja: opis, wartosc: "kalendarz imienin (listopad): Stasia Szweycera",
+   zrodla: [{segment: S03-p53-s04, cytat: "Stasia Szweycera"}], pewnosc_odczytu: pewna}
+- {id: S03-625, podmiot: radoszewska-teresa-1942, relacja: opis, wartosc: "kalendarz imienin (grudzień): 24 Ewy Grabińskiej, 4 Basi Wrzodarskiej, 29 Tomka Szweycera",
+   zrodla: [{segment: S03-p54-s04, cytat: "Ewy Grabińskiej 24 4 Basi Wrzodarskiej 29 Tomka Szweycera"}], pewnosc_odczytu: pewna}
+- {id: S03-626, podmiot: skrzynska-anna-1848, relacja: malzonek, obiekt: przadzynski-wladyslaw-1837,
+   zrodla: [{segment: S03-p24-s01, cytat: "+1883 Władysław Prządzyński"}], pewnosc_odczytu: pewna, uwagi: "Wpis na wysokości Anny Skrzyńskiej (rozkładówka)."}
