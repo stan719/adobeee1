@@ -1192,3 +1192,29 @@
   nazwa: "Prusiecko u Warty"
   typ: wieś
   pewnosc_identyfikacji: prawdopodobna
+
+- id: koscierzyn-kopiec-laki
+  nazwa: "Kościerzyn — nasyp (kopiec) w łąkach, stanowisko 1"
+  typ: inny
+  nadrzedne: koscierzyn
+  pewnosc_identyfikacji: pewna
+  uwagi: "Ok. 800 m na NW od dworu."
+
+- id: koscierzyn-kopiec-park
+  nazwa: "Kościerzyn — kopiec w parku dworskim, stanowisko 2"
+  typ: inny
+  nadrzedne: koscierzyn
+  pewnosc_identyfikacji: pewna
+  uwagi: "Ok. 50 m od dworu."
+
+- id: koscierzyn-dwor
+  nazwa: "Dwór Prządzyńskich w Kościerzynie (murowany, ok. 1915)"
+  typ: majątek
+  nadrzedne: koscierzyn
+  pewnosc_identyfikacji: pewna
+
+- id: koscierzyn-park
+  nazwa: "Park dworski w Kościerzynie"
+  typ: inny
+  nadrzedne: koscierzyn
+  pewnosc_identyfikacji: pewna

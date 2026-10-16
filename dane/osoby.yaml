@@ -2868,3 +2868,46 @@
   plec: k
   warianty: ["Jachna z Świerczowa"]
   uwagi: "Żona Jana Wilka (S01)."
+
+- id: kajzer-leszek
+  imiona: ["Leszek"]
+  nazwisko: "Kajzer"
+  plec: m
+  warianty: ["L. Kajzer"]
+  uwagi: "Autor S08 (rozdziały o Kościerzynie i Radoszewicach)."
+
+- id: pstrokonski-antoni
+  imiona: ["Antoni"]
+  nazwisko: "Pstrokoński"
+  plec: m
+  warianty: ["A. Pstrokoński"]
+  uwagi: "Właściciel Kościerzyna (1807), zapewne historyk, notariusz i archiwista sieradzki; autor rękopisów tzw. Tek Pstrokońskiego (S08)."
+
+- id: pstrokonski-aleksander-1765
+  imiona: ["Aleksander"]
+  nazwisko: "Pstrokoński"
+  plec: m
+  uwagi: "Właściciel Kościerzyna w 1765 r. (S08)."
+
+- id: tymieniecki-zygmunt-1723
+  imiona: ["Zygmunt"]
+  nazwisko: "Tymieniecki"
+  herb: Zaremba
+  plec: m
+  warianty: ["Zygmunt Zaremba Tymieniecki"]
+  uwagi: "Dzierżawca części Kościerzyna 1723 (S08)."
+
+- id: zeromski-aleksander-jaxa
+  imiona: ["Aleksander"]
+  nazwisko: "Żeromski"
+  herb: Jaxa
+  plec: m
+  warianty: ["Aleksander Jaxa Żeromski"]
+  uwagi: "Dzierżawca części Kościerzyna 1782–1783 (S08)."
+
+- id: wezyk-wladyslaw-karol
+  imiona: ["Władysław", "Karol"]
+  nazwisko: "Wężyk"
+  plec: m
+  warianty: ["Władysław Karol de Widawa Wężyk"]
+  uwagi: "Notariusz i burgrabia zamku ostrzeszowskiego; spisał inwentarz Kościerzyna 1723 (S08)."
