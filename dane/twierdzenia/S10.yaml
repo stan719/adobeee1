@@ -1,0 +1,192 @@
+# Twierdzenia ze źródła S10 (Stefan Łakomy, praca PTTK „Dwór i założenia parkowe w Radoszewicach k. Wielunia”, 20.03.1978)
+# Cytaty z cudzych dzieł (SGKP, ks. Prygodzki, Zimogrodzki, Bruchnalska) — w uwagach podano, za kim autor je przytacza.
+
+# --- s. 1: nagłówek pracy
+- {id: S10-001, podmiot: lakomy-stefan, relacja: zamieszkanie, miejsce: radoszewice, data: {tekst: "Dn. 20.03.1978 r.", od: 1978-03-20, do: 1978-03-20},
+   zrodla: [{segment: S10-p1-s01, cytat: "Łakomy Stefan Dn. 20.03.1978 r. 97-625 Radoszewice woj. sieradzkie."}], pewnosc_odczytu: pewna}
+- {id: S10-002, podmiot: lakomy-stefan, relacja: opis, wartosc: "praca złożona do PTTK, Wojewódzka Komisja Opieki nad Zabytkami w Sieradzu", miejsce: sieradz, data: {tekst: "20.03.1978", od: 1978-03-20, do: 1978-03-20},
+   zrodla: [{segment: S10-p1-s02, cytat: "Polskie Towarzystwo Turystyczno-Krajoznawcze Wojewódzka Komisja Opieki nad Zabytkami 98-200 w Sieradzu."}], pewnosc_odczytu: pewna}
+- {id: S10-003, podmiot: lakomy-stefan, relacja: opis, wartosc: "autor pracy programowej PTTK „Polska naszych dni”, temat: Dwór i założenia parkowe w Radoszewicach k. Wielunia",
+   zrodla: [{segment: S10-p1-s03, cytat: "Praca programowa PTTK pod nazwą"}, {segment: S10-p1-s03, cytat: "Dwór i założenia parkowe w Rado-szewicach k. Wielunia"}, {segment: S10-p9-s02, cytat: "Stefan Łakomy"}], pewnosc_odczytu: pewna}
+
+# --- s. 1–2: Radoszewice — położenie, Słownik geograficzny
+- {id: S10-004, podmiot: radoszewice, relacja: opis, wartosc: "wieś na wschód od Wielunia, na trasie PKS Wieluń – Pajęczno; 25 km od Wielunia, 15 km od Pajęczna", data: {tekst: "1978", od: 1978, do: 1978},
+   zrodla: [{segment: S10-p1-s04, cytat: "Radoszewice są wioską leżącą w kierunku wschodnim od Wielunia"}, {segment: S10-p1-s04, cytat: "Odległość od Wielunia wynosi 25 km, a do Pajęczna z Radoszewic 15 km."}], pewnosc_odczytu: pewna}
+- {id: S10-005, podmiot: radoszewice, relacja: opis, wartosc: "wraz z „koloniami” ok. 1200 mieszkańców (poprawione z 1000)", data: {tekst: "1978", od: 1978, do: 1978},
+   zrodla: [{segment: S10-p1-s04, cytat: "1200 około 1000 mieszkańców"}], pewnosc_odczytu: pewna, uwagi: "„1000” przekreślone, nad nim „1200”."}
+- {id: S10-006, podmiot: radoszewice, relacja: opis, wartosc: "wieś „wiekowo dość stara”; powstanie sięga, zdaniem autora, zamierzchłych czasów historycznych państwa",
+   zrodla: [{segment: S10-p1-s04, cytat: "Jest to wioska wiekowo dość stara."}], pewnosc_odczytu: pewna}
+- {id: S10-007, podmiot: radoszewice, relacja: opis, wartosc: "wg SGKP: wieś i folwark nad Wartą, pow. wieluński, gm. Radoszewice, par. Osjaków (Osyaków), 21 wiorst od Wielunia; kościół murowany filialny i szkoła początkowa; dwie części, razem 56 domów, 625 mieszkańców", data: {tekst: "SGKP t. 9, 1888", od: 1888, do: 1888},
+   zrodla: [{segment: S10-p1-s05, cytat: "Radoszewice wś i fol. nad rz. Wartą, pow. wieluń-ski, gm. Radoszewice, par. Osyaków, odl. 21 w. od Wielunia, posiada kościół murowany filialny"}, {segment: S10-p2-s01, cytat: "początkową. Wieś składa się z dwóch części, mających razem 56 dm., 625 mk."}], pewnosc_odczytu: pewna,
+   uwagi: "Za: Słownik geograficzny Królestwa Polskiego t. 9, Warszawa 1888, s. 437."}
+- {id: S10-008, podmiot: osjakow, relacja: opis, wartosc: "parafia, do której należały Radoszewice (wg SGKP 1888)",
+   zrodla: [{segment: S10-p1-s05, cytat: "par. Osyaków"}], pewnosc_odczytu: pewna}
+- {id: S10-009, podmiot: radoszewice, relacja: opis, wartosc: "gmina Radoszewice wg SGKP: 12 wsi włościańskich, 17 osad włościańskich odrębnych, 9 folwarków, 23 osady młynarskie, leśne, rozkolonizowane folwarki; 684 domy (16 murowanych), 5739 mieszkańców (2756 mężczyzn, 2983 kobiety)", data: {tekst: "SGKP t. 9, 1888", od: 1888, do: 1888},
+   zrodla: [{segment: S10-p2-s01, cytat: "W skład gm. wchodzi 12 wsi włośc., 17 osad włośc. odrębnych, 9 fol., 23 os. młyn., leśn., rozkoloni-zowanych folwarków. Osady te posiadają 684 dm. (16 mur.), 5739 mk. (2756 męż., 2983 kob.)."}], pewnosc_odczytu: pewna}
+- {id: S10-010, podmiot: wrszowiec-jan, relacja: wlasnosc, obiekt: radoszewice, wartosc: "wg tradycji z herbarzy Okolskiego i Niesieckiego Radoszewice nadał Bolesław Krzywousty wychodźcy czeskiemu Janowi (Geskowi) Wrszowcowi, zabójcy ks. Świętopełka",
+   zrodla: [{segment: S10-p2-s01, cytat: "Radoszewice zostały, wedle tradycji zapisanej w herbarzach Okolskiego i Niesiec-kiego, nadane przez Bolesława Krzywoustego wycho-dźcy czeskiemu Janowi (Geskowi) Wrszowcowi, za-bójcy ks. Świętopełka."}], pewnosc_odczytu: pewna, uwagi: "Za SGKP t. 9 s. 437."}
+- {id: S10-011, podmiot: wrszowiec-jan, relacja: opis, wartosc: "dał w Radoszewicach początek Okszycom, którzy od wsi przybrali nazwisko Radoszewskich i Siemkowskich",
+   zrodla: [{segment: S10-p2-s01, cytat: "Dał on tu początek Okszycom, który od wsi przybrali nazwisko Radoszewskich i Siem-kowskich."}], pewnosc_odczytu: pewna, uwagi: "„który” — tak w rękopisie (zam. „którzy”). Za SGKP."}
+- {id: S10-012, podmiot: radoszewice, relacja: opis, wartosc: "wyróżniały się wielkością i dominującą rolą wśród okolicznych wsi (wniosek autora)",
+   zrodla: [{segment: S10-p2-s02, cytat: "Radoszewice wyróżniały się swą wielkością i dominującą rolą spośród przyległych wiosek."}], pewnosc_odczytu: pewna}
+
+# --- s. 2–3: Box-Radoszewscy, kaplica w kolegiacie wieluńskiej (za ks. W. Prygodzkim)
+- {id: S10-013, podmiot: radoszewice, relacja: opis, wartosc: "przez ok. 4 wieki (poprawione z 3) należały do Radoszewskich z przydomkiem Boksa (Box-Radoszewskich)",
+   zrodla: [{segment: S10-p2-s03, cytat: "4 Przez ok. 3 wieki Radoszewice należały do Rado-szewskich z przydomkiem Boksa (Box-Radoszewscy)."}], pewnosc_odczytu: pewna,
+   uwagi: "Cyfra „3” poprawiona na „4”. Por. S02: „przez przeszło VI wieków” (dane/watpliwosci.md)."}
+- {id: S10-014, podmiot: radoszewice, relacja: opis, wartosc: "Box-Radoszewscy — rodzina bogata, zajmująca wysokie stanowiska; świadczy o tym ich kaplica w kolegiacie wieluńskiej",
+   zrodla: [{segment: S10-p2-s03, cytat: "Box-Radoszewscy byli rodziną bogatą i zajmującą wysokie stanowiska."}, {segment: S10-p2-s04, cytat: "Jak Radoszewscy byli bogaci, to świadczy ich prze-piękna kaplica nazwana ich imieniem w kole-giacie wieluńskiej"}], pewnosc_odczytu: pewna}
+- {id: S10-015, podmiot: wielun-kolegiata-kaplica, relacja: opis, wartosc: "kaplica Radoszewskich pod wezwaniem Matki Boskiej Bolesnej, pierwotnie św. Jerzego, w stylu wczesnego baroku, ze sklepieniem zdobionym stiukami; dwa nagrobki",
+   zrodla: [{segment: S10-p2-s04, cytat: "Kaplica Radoszewskich pod wezwaniem Matki Boskiej Bolesnej, pierwotnie św. Jerzego w stylu wczesnego baroku, ze sklepieniem stiukami ozdob-nym, ma dwa piękne nagrobki"}], pewnosc_odczytu: pewna,
+   uwagi: "Za: ks. Wincenty Prygodzki, „Z przeszłości Wielunia”, s. 19."}
+- {id: S10-016, podmiot: radoszewski-jerzy-1614, relacja: pochowek, miejsce: wielun-kolegiata-kaplica, wartosc: "nagrobek z epitafium w kaplicy Radoszewskich",
+   zrodla: [{segment: S10-p2-s04, cytat: "ma dwa piękne nagrobki Jerzego Boxa-Radoszewskiego, podkomorzego wieluńskiego"}, {segment: S10-p3-s01, cytat: "jak głosi epitafium jego pośmier-tne."}], pewnosc_odczytu: pewna, uwagi: "Za ks. Prygodzkim."}
+- {id: S10-017, podmiot: radoszewski-jerzy-1614, relacja: urzad, wartosc: "podkomorzy wieluński",
+   zrodla: [{segment: S10-p2-s04, cytat: "Jerzego Boxa-Radoszewskiego, podkomorzego wieluńskiego, męża zasłużonego Ojczyźnie"}], pewnosc_odczytu: pewna, uwagi: "Za ks. Prygodzkim."}
+- {id: S10-018, podmiot: radoszewski-jerzy-1614, relacja: urzad, wartosc: "dwukrotnie poseł do arcyksięcia Maksymiliana i króla Zygmunta III (wg epitafium)",
+   zrodla: [{segment: S10-p2-s04, cytat: "dwakroć spełniającego zaszczytną"}, {segment: S10-p3-s01, cytat: "misję poselską do Arcyksięcia Maksymiliana i króla Zygmunta III"}], pewnosc_odczytu: pewna, uwagi: "Za ks. Prygodzkim."}
+- {id: S10-019, podmiot: radoszewski-jerzy-1614, relacja: smierc, data: {tekst: "23 października 1614 roku", od: 1614-10-23, do: 1614-10-23}, wartosc: "w wieku 80 lat",
+   zrodla: [{segment: S10-p3-s01, cytat: "Zmarł on w sędziwym wieku, mając 80 lat życia, dnia 23 października 1614 roku."}], pewnosc_odczytu: pewna,
+   uwagi: "Za ks. Prygodzkim. S07 podaje +1613."}
+- {id: S10-020, podmiot: radoszewski-andrzej-1621, relacja: pochowek, miejsce: wielun-kolegiata-kaplica, wartosc: "drugi nagrobek („mauzoleum”) w kaplicy, z postacią rycerską i pochwałą czynów i cnót obywatelskich; złożony w podziemiach kaplicy",
+   zrodla: [{segment: S10-p3-s01, cytat: "Drugie mauzoleum, poświęcone pamięci Andrzeja Radoszewskiego"}, {segment: S10-p3-s01, cytat: "pod posta-cią rycerską, głosi pochwałę jego czynów i cnót oby-watelskich"}, {segment: S10-p3-s01, cytat: "i w podziemiach kaplicy złożonym został."}], pewnosc_odczytu: pewna, uwagi: "Za ks. Prygodzkim."}
+- {id: S10-021, podmiot: radoszewski-andrzej-1621, relacja: urzad, wartosc: "chorąży ziemi wieluńskiej",
+   zrodla: [{segment: S10-p3-s01, cytat: "Radoszewskiego, chorążego ziemi wieluńskiej"}], pewnosc_odczytu: pewna, uwagi: "Za ks. Prygodzkim."}
+- {id: S10-022, podmiot: radoszewski-andrzej-1621, relacja: smierc, data: {tekst: "1621 r.", od: 1621, do: 1621},
+   zrodla: [{segment: S10-p3-s01, cytat: "Zmarł w 1621 r."}], pewnosc_odczytu: pewna, uwagi: "Za ks. Prygodzkim."}
+- {id: S10-023, podmiot: radoszewski-marek-1641, relacja: urzad, wartosc: "podkomorzy i kasztelan wieluński",
+   zrodla: [{segment: S10-p3-s01, cytat: "Trzeciego członka tej rodziny Marka Radoszewskiego, podkomorzego i kasztelana wieluńskiego"}], pewnosc_odczytu: pewna, uwagi: "Za ks. Prygodzkim."}
+- {id: S10-024, podmiot: radoszewski-marek-1641, relacja: opis, wartosc: "„umiłowany przez szlachtę okoliczną”",
+   zrodla: [{segment: S10-p3-s01, cytat: "umiłowa-nego przez szlachtę okoliczną"}], pewnosc_odczytu: pewna, uwagi: "Za ks. Prygodzkim."}
+- {id: S10-025, podmiot: radoszewski-marek-1641, relacja: pochowek, miejsce: wielun-kolegiata-kaplica, wartosc: "upamiętniony marmurową tablicą i portretem malowanym na miedzi w kaplicy",
+   zrodla: [{segment: S10-p3-s01, cytat: "upamiętnia marmu-rowa tablica i piękny portret na miedzi malo-wany w tejże kaplicy i tu umieszczony."}], pewnosc_odczytu: pewna, uwagi: "Za ks. Prygodzkim."}
+- {id: S10-026, podmiot: radoszewski-marek-1641, relacja: smierc, data: {tekst: "28 listopada 1641 roku", od: 1641-11-28, do: 1641-11-28}, wartosc: "w wieku 64 lat",
+   zrodla: [{segment: S10-p3-s01, cytat: "Zmarł on 28 listopada 1641 roku w wieku 64 lat."}], pewnosc_odczytu: pewna, uwagi: "Za ks. Prygodzkim."}
+- {id: S10-027, podmiot: radoszewski-marek-1641, relacja: malzonek, obiekt: biskupska-anna,
+   zrodla: [{segment: S10-p3-s01, cytat: "jego małżonki Anny z Rudnik Biskupskiej, podkomorzanki łęczyckiej."}], pewnosc_odczytu: pewna, uwagi: "Za ks. Prygodzkim."}
+- {id: S10-028, podmiot: biskupska-anna, relacja: pochowek, miejsce: wielun-kolegiata-kaplica, wartosc: "obok męża Marka",
+   zrodla: [{segment: S10-p3-s01, cytat: "Obok niego spoczęły zwłoki jego małżonki Anny z Rudnik Biskupskiej"}], pewnosc_odczytu: pewna, uwagi: "Za ks. Prygodzkim."}
+- {id: S10-029, podmiot: biskupska-anna, relacja: opis, wartosc: "podkomorzanka łęczycka (córka podkomorzego łęczyckiego)",
+   zrodla: [{segment: S10-p3-s01, cytat: "podkomorzanki łęczyckiej"}], pewnosc_odczytu: pewna}
+- {id: S10-030, podmiot: wielun-kolegiata, relacja: opis, wartosc: "do pracy dołączono zdjęcie nr 1 — kolegiata wieluńska (zdjęć nie sfotografowano)",
+   zrodla: [{segment: S10-p3-s02, cytat: "Zdjęcie nr 1. Kolegiata wieluńska."}], pewnosc_odczytu: pewna}
+
+# --- s. 3–6: Niemojowscy
+- {id: S10-031, podmiot: radoszewice, relacja: opis, wartosc: "autor nie umie określić, jak długo Radoszewice były w rękach Radoszewskich; ostatnim właścicielem (prawdopodobnie po Radoszewskich) była rodzina Niemojowskich, znana z działalności politycznej i patriotycznej",
+   zrodla: [{segment: S10-p3-s03, cytat: "Jak długo Radoszewice były w posiadaniu Radoszew-skich, trudno jest mi określić."}, {segment: S10-p3-s03, cytat: "Ostatnim właścicielem Radoszewic (prawdopodobnie po Radoszewskich) była rodzina Niemojowskich, która znana była ze swej działalności politycznej i patriotycznej."}], pewnosc_odczytu: pewna}
+- {id: S10-032, podmiot: niemojowski-ludwik-1823, relacja: wlasnosc, obiekt: radoszewice, wartosc: "ostatni właściciel Radoszewic z rodziny Niemojowskich",
+   zrodla: [{segment: S10-p3-s04, cytat: "ostatni właściciel Radoszewic z rodziny Niemojowskich – Ludwik Niemojowski."}], pewnosc_odczytu: pewna}
+- {id: S10-033, podmiot: niemojowski-ludwik-1823, relacja: urodzenie, miejsce: radoszewice, data: {tekst: "1823 roku", od: 1823, do: 1823},
+   zrodla: [{segment: S10-p3-s04, cytat: "Urodził się on w tutejszej miejscowości w 1823 roku."}], pewnosc_odczytu: pewna}
+- {id: S10-034, podmiot: niemojowski-ludwik-1823, relacja: wyksztalcenie, wartosc: "staranne wychowanie domowe i średnie wykształcenie",
+   zrodla: [{segment: S10-p3-s04, cytat: "Otrzymał staranne wychowanie domowe i średnie wykształcenie."}], pewnosc_odczytu: pewna}
+- {id: S10-035, podmiot: niemojowski-ludwik-1823, relacja: zamieszkanie, miejsce: radoszewice, wartosc: "po edukacji wrócił do rodzinnych Radoszewic, osiadł w swojej posiadłości i gospodarował na roli",
+   zrodla: [{segment: S10-p3-s04, cytat: "Po ukończeniu edukacji powrócił do"}, {segment: S10-p4-s01, cytat: "rodzinnych Radoszewic, osiadł w swojej posiadłości i gospodarował na roli."}], pewnosc_odczytu: pewna}
+- {id: S10-036, podmiot: niemojowski-ludwik-1823, relacja: zawod, wartosc: "pisarz (komediopisarz, poeta, prozaik); „nie posiadał wybitniejszego talentu”, ale z pasją oddawał się piśmiennictwu",
+   zrodla: [{segment: S10-p4-s01, cytat: "Mimo, że nie posiadał wy-bitniejszego talentu, oddawał się z pasją piśmiennictwu."}], pewnosc_odczytu: pewna}
+- {id: S10-037, podmiot: niemojowski-ludwik-1823, relacja: opis, wartosc: "pierwsza praca drukowana: 4-aktowa komedia „Dwa towarzystwa” (w rękopisie „1951”, zapewne 1851)", data: {tekst: "roku 1951", od: 1851, do: 1851},
+   zrodla: [{segment: S10-p4-s01, cytat: "Pierwsza jego praca drukowana sięga roku 1951, wtedy ogłosił 4-aktową komedię „Dwa towarzystwa”."}], pewnosc_odczytu: pewna,
+   uwagi: "„1951” — oczywista omyłka autora zamiast 1851; data do sortowania 1851."}
+- {id: S10-038, podmiot: niemojowski-ludwik-1823, relacja: opis, wartosc: "1856: tom „Komedii” i poemat religijny „Obrazy z Pisma św.”", data: {tekst: "W roku 1856", od: 1856, do: 1856},
+   zrodla: [{segment: S10-p4-s01, cytat: "W roku 1856 wyszedł tom jego „Komedii” oraz poemat religijny pod nazwą „Obrazy z Pisma św.”"}], pewnosc_odczytu: pewna}
+- {id: S10-039, podmiot: niemojowski-ludwik-1823, relacja: udzial_w_wydarzeniu, wartosc: "aktywny udział w powstaniu styczniowym i pomoc powstańcom w bitwie pod Radoszewicami 27 marca 1863 r.", data: {tekst: "27 marca 1863 r.", od: 1863-03-27, do: 1863-03-27}, miejsce: radoszewice,
+   zrodla: [{segment: S10-p4-s01, cytat: "za aktywny udział w powstaniu styczniowym 1863 roku i pomoc powstańcom w bitwie pod Radoszewicami 27 marca 1863 r."}], pewnosc_odczytu: pewna}
+- {id: S10-040, podmiot: niemojowski-ludwik-1823, relacja: zamieszkanie, miejsce: syberia-wschodnia, wartosc: "zesłanie za udział w powstaniu; pogłębiał tam wiedzę z geografii i etnografii", data: {tekst: "Od roku 1863 do 1874", od: 1863, do: 1874},
+   zrodla: [{segment: S10-p4-s01, cytat: "Od roku 1863 do 1874 przebywał na zesłaniu we Wschodniej Syberii"}, {segment: S10-p4-s01, cytat: "Pobyt na wy-gnaniu wykorzystał na pogłębienie wiedzy z zakresu geografii i etnografii"}], pewnosc_odczytu: pewna}
+- {id: S10-041, podmiot: niemojowski-ludwik-1823, relacja: opis, wartosc: "po powrocie drukował w „Wędrowcu” i „Bibliotece Warszawskiej” wspomnienia i wiadomości o Syberii, wiersze, opowiadania, powiastki",
+   zrodla: [{segment: S10-p4-s01, cytat: "dru-kował w czasopismach „Wędrowiec” i „Biblioteka Warszawska”. Zamieszczał w nich różne wiersze, opo-wiadania, powiastki."}], pewnosc_odczytu: pewna}
+- {id: S10-042, podmiot: niemojowski-ludwik-1823, relacja: opis, wartosc: "„Obrazki Syberii” — zbiór opowiadań, ilustrowany przez Michała Elwira Andriollego",
+   zrodla: [{segment: S10-p4-s01, cytat: "Jego „Obrazki syberii” ilustro-wane przez znakomitego rysownika Michała Elwira Andriolli'ego"}], pewnosc_odczytu: pewna}
+- {id: S10-043, podmiot: andriolli-michal-elwiro, relacja: zawod, wartosc: "rysownik, ilustrator „Pana Tadeusza” i „Marii” Malczewskiego",
+   zrodla: [{segment: S10-p4-s01, cytat: "rysownika Michała Elwira Andriolli'ego ilustratora „Pana Tadeusza” i „Marii” Malczewskiego"}], pewnosc_odczytu: pewna, uwagi: "„Elwira” — w rękopisie może „Elwina”."}
+- {id: S10-044, podmiot: niemojowski-ludwik-1823, relacja: zamieszkanie, miejsce: warszawa, wartosc: "osiedlił się na stałe w Warszawie po powrocie z Syberii",
+   zrodla: [{segment: S10-p4-s01, cytat: "w Warszawie, gdzie osiedlił się na stałe po powrocie z Syberii"}], pewnosc_odczytu: pewna}
+- {id: S10-045, podmiot: niemojowski-ludwik-1823, relacja: opis, wartosc: "1881: „Powieści i szkice obyczajowe” w 3 tomach (Warszawa); utwór sceniczny dla młodzieży „Marysia Ochocianka”; współpracownik „Przyjaciela dzieci”", data: {tekst: "W 1881 roku", od: 1881, do: 1881},
+   zrodla: [{segment: S10-p4-s01, cytat: "W 1881 roku L. Niemojowski wydał w Warszawie"}, {segment: S10-p4-s01, cytat: "Marysia Ochocianka"}, {segment: S10-p4-s01, cytat: "Był współ-pracownikiem czasopisma „Przyjaciel dzieci”."}], pewnosc_odczytu: pewna}
+- {id: S10-046, podmiot: niemojowski-ludwik-1823, relacja: opis, wartosc: "ostatni utwór: „Dworka” (1892), opowiadanie z życia ludzi folwarcznych", data: {tekst: "1892 r.", od: 1892, do: 1892},
+   zrodla: [{segment: S10-p4-s01, cytat: "Ostatnim jego utworem była „Dworka” (1892 r.), opowiadanie"}, {segment: S10-p5-s01, cytat: "z życia ludzi folwarcznych."}], pewnosc_odczytu: pewna}
+- {id: S10-047, podmiot: niemojowski-ludwik-1823, relacja: opis, wartosc: "głęboki patriotyzm; w twórczości nurty postępu społecznego, dostrzegał różnicę między dworem a wsią",
+   zrodla: [{segment: S10-p5-s01, cytat: "którego cechował głęboki patriotyzm, a w jego twórczości przebi-jały nurty postępu społecznego, dostrzegał różnicę między dworem, a wsią."}], pewnosc_odczytu: pewna}
+- {id: S10-048, podmiot: niemojowski-ludwik-1823, relacja: smierc, miejsce: warszawa, data: {tekst: "18 grudnia 1892 roku", od: 1892-12-18, do: 1892-12-18},
+   zrodla: [{segment: S10-p5-s01, cytat: "Zmarł 18 grudnia 1892 roku w Warszawie."}], pewnosc_odczytu: pewna}
+- {id: S10-049, podmiot: niemojowska-powstanka, relacja: rodzenstwo, obiekt: niemojowski-ludwik-1823,
+   zrodla: [{segment: S10-p5-s02, cytat: "Jego siostra, również Niemojowska"}], pewnosc_odczytu: pewna}
+- {id: S10-050, podmiot: niemojowska-powstanka, relacja: udzial_w_wydarzeniu, wartosc: "w powstaniu styczniowym adiutant Edmunda Taczanowskiego, dowódcy kawalerii w Sieradzkiem", data: {tekst: "1863", od: 1863, do: 1863},
+   zrodla: [{segment: S10-p5-s02, cytat: "uczestniczyła w powstaniu styczniowym. Była adiutantem Edmunda Taczanowskiego, dowódcy kawalerii w Sieradzkiem."}], pewnosc_odczytu: pewna}
+- {id: S10-051, podmiot: taczanowski-edmund, relacja: urzad, wartosc: "dowódca kawalerii w Sieradzkiem (powstanie styczniowe)", data: {tekst: "1863", od: 1863, do: 1863},
+   zrodla: [{segment: S10-p5-s02, cytat: "Edmunda Taczanowskiego, dowódcy kawalerii w Sieradzkiem"}], pewnosc_odczytu: pewna}
+- {id: S10-052, podmiot: niemojowska-powstanka, relacja: udzial_w_wydarzeniu, wartosc: "w bitwie pod Radoszewicami uratowała sztandar powstańców z rąk rannego kosyniera", data: {tekst: "27 marca 1863 r.", od: 1863-03-27, do: 1863-03-27}, miejsce: radoszewice,
+   zrodla: [{segment: S10-p5-s02, cytat: "Wsławiła się ona w bitwie pod Radoszewicami w dniu 27 marca 1863 r., w której uratowała sztandar powstańców z rąk rannego kosyniera."}], pewnosc_odczytu: pewna}
+- {id: S10-053, podmiot: cieszkowski-1863, relacja: udzial_w_wydarzeniu, wartosc: "zaatakowany pod Radoszewicami przez wielokrotnie silniejszego nieprzyjaciela cofał się 11 km w zwartym szyku, pod Kiełczygłowem przeszedł do przeciwnatarcia i zmusił Rosjan do odwrotu", miejsce: radoszewice, data: {tekst: "27.III.1863", od: 1863-03-27, do: 1863-03-27},
+   zrodla: [{segment: S10-p5-s03, cytat: "pod wsią Radoszewicami (w pobliżu Wielu-nia), Cieszkowski cofał się zwolna w zwartym szyku na przestrzeni 11 km, wreszcie pod wsią Kiełczygłowem, sformował się do przeciwataku"}], pewnosc_odczytu: pewna,
+   uwagi: "Za: J. Zimogrodzki, „Województwo Kaliskie w walce w roku 1863 i 1864”, s. 10; data z S10-p5-s04."}
+- {id: S10-054, podmiot: kielczyglow, relacja: opis, wartosc: "miejsce kontrataku oddziału Cieszkowskiego po bitwie pod Radoszewicami (1863)",
+   zrodla: [{segment: S10-p5-s03, cytat: "pod wsią Kiełczygłowem, sformował się do przeciwataku i tak silnie uderzył na nieprzyjaciela, że spędził go z pola walki i zmu-sił do odwrotu."}], pewnosc_odczytu: pewna, uwagi: "Za Zimogrodzkim."}
+- {id: S10-055, podmiot: niemojowska-powstanka, relacja: udzial_w_wydarzeniu, wartosc: "wg Zimogrodzkiego: kobieta walcząca w polskich szeregach, ocaliła sztandar, wyrwawszy go z rąk śmiertelnie rannego kosyniera", miejsce: radoszewice, data: {tekst: "1863", od: 1863, do: 1863},
+   zrodla: [{segment: S10-p5-s03, cytat: "Pod Radoszewicami kobieta, walcząca w polskich szeregach, Niemojowska, ocaliła sztandar powstańczy, wyrwawszy go z rąk śmiertelnie ranio-nego kosyniera."}], pewnosc_odczytu: pewna, uwagi: "„Zimogrodzkiego” — odczyt prawdopodobny."}
+- {id: S10-056, podmiot: niemojowska-powstanka, relacja: udzial_w_wydarzeniu, wartosc: "wg Bruchnalskiej: odznaczyła się w bitwie Cieszkowskiego z Rosjanami pod Radoszewicami; udała się do obozu z prowiantem, opatrunkami, może bronią złożoną w jej dworze; w ogniu uratowała sztandar z rąk śmiertelnie rannego kosyniera", miejsce: radoszewice, data: {tekst: "27.III. 1863 r.", od: 1863-03-27, do: 1863-03-27},
+   zrodla: [{segment: S10-p5-s04, cytat: "W bitwie stoczonej przez Cieszkowskiego z Rosjana-mi w ziemi Kaliskiej, pod Radoszewicami (27.III. 1863 r.) odznaczyła się pani Niemojowska."}, {segment: S10-p6-s01, cytat: "Musiała udać się do obozu dla dostarczenia prowiantów, opatrunków, a może i broni, poprzednio w jej dworze złożonej."}, {segment: S10-p6-s01, cytat: "ratując z rąk śmiertelnie ranionego kosyniera, sztandar polski, który moskal chciał unieść."}], pewnosc_odczytu: pewna,
+   uwagi: "Za: Maria Bruchnalska, „Miejsce Piastowe” 1934, s. 221."}
+- {id: S10-057, podmiot: niemojowska-powstanka, relacja: wlasnosc, obiekt: radoszewice, wartosc: "bitwa „odbywała się w jej majątku” (wg Bruchnalskiej)",
+   zrodla: [{segment: S10-p6-s01, cytat: "Bitwa, wśród której się znalazła w obozie, odby-wała się w jej majątku."}], pewnosc_odczytu: pewna,
+   uwagi: "Por. S10-032: właścicielem wg Łakomego był jej brat Ludwik."}
+- {id: S10-058, podmiot: niemojowska-powstanka, relacja: opis, wartosc: "jej sława dotarła za granicę: w 1864 r. Polki w Dreźnie nosiły paski z jej wizerunkiem na klamrze i błędnym napisem Mme „Niemojewska”", miejsce: drezno, data: {tekst: "W 1864 r.", od: 1864, do: 1864},
+   zrodla: [{segment: S10-p6-s01, cytat: "Sława jej działalności pobiegła daleko za granicę. W 1864 r. nosiły Polki w Dreźnie paski, na których klamrze był wizerunek bohaterskiej kobiety z błęd-nym napisem Mme „Niemojewska”."}], pewnosc_odczytu: pewna, uwagi: "Za Bruchnalską."}
+- {id: S10-059, podmiot: jelska-helena, relacja: opis, wartosc: "relacja (wraz z Konstancją Skirmunt) o paskach z wizerunkiem Niemojowskiej; same nosiły taki pasek w Dreźnie w 1864 r.", miejsce: drezno, data: {tekst: "1864 r.", od: 1864, do: 1864},
+   zrodla: [{segment: S10-p6-s01, cytat: "(Relacja p. Hel. hr. Jelskiej z Korsaków i Konstancji Skirmunt, które nosiły takiż pasek w Dreźnie w 1864 r."}], pewnosc_odczytu: pewna, uwagi: "Za Bruchnalską."}
+- {id: S10-060, podmiot: skirmunt-konstancja, relacja: opis, wartosc: "relacja (wraz z Heleną Jelską) o paskach z wizerunkiem Niemojowskiej; nosiła taki pasek w Dreźnie w 1864 r.", miejsce: drezno, data: {tekst: "1864 r.", od: 1864, do: 1864},
+   zrodla: [{segment: S10-p6-s01, cytat: "Konstancji Skirmunt, które nosiły takiż pasek w Dreźnie w 1864 r."}], pewnosc_odczytu: pewna, uwagi: "Za Bruchnalską."}
+- {id: S10-061, podmiot: niemojowska-powstanka, relacja: opis, wartosc: "do pracy dołączono zdjęcie nr 2 — p. Niemojowska (zdjęć nie sfotografowano)",
+   zrodla: [{segment: S10-p6-s02, cytat: "Zdjęcie nr 2 – p. Niemojowska."}], pewnosc_odczytu: pewna}
+
+# --- s. 6: właściciele po Niemojowskich (z wywiadów)
+- {id: S10-062, podmiot: radoszewice-dwor, relacja: opis, wartosc: "trudno ustalić, kto kupił majątek od Niemojowskich — wiele dokumentów zniszczono w czasie I i II wojny; dalsze dane autor zebrał w wywiadach z dawnymi pracownikami majątku (m.in. Józefem Krysiakiem)",
+   zrodla: [{segment: S10-p6-s03, cytat: "Trudno ustalić, kto kupił majątek od Niemojowskich, ponieważ wiele dokumentów zostało zniszczone pod-czas I i II wojny światowej."}], pewnosc_odczytu: pewna}
+- {id: S10-063, podmiot: krysiak-jozef, relacja: opis, wartosc: "w podeszłym wieku, dawniej pracował w majątku dworskim; udzielił autorowi wywiadu",
+   zrodla: [{segment: S10-p6-s03, cytat: "Podczas przeprowadzonego wywiadu z ludźmi w podeszłym wieku, którzy pra-cowali w majątku dworskim, jak p. Józef Krysiak i inni, dowiedziałem się"}], pewnosc_odczytu: pewna, data: {tekst: "1978", od: 1978, do: 1978}}
+- {id: S10-064, podmiot: durynski-teodor, relacja: wlasnosc, obiekt: radoszewice-dwor, wartosc: "właściciel majątku po Niemojowskich, do 1913 r.", data: {tekst: "do roku 1913", do: 1913},
+   zrodla: [{segment: S10-p6-s03, cytat: "po rodzinie Niemojows-kich właścicielem majątku dworskiego był Teodor Duryński do roku 1913."}], pewnosc_odczytu: pewna,
+   uwagi: "Z wywiadów. S08-p128 podaje innych właścicieli po Niemojowskich (Wodzińscy, Molińscy) i Durzyńskiego dopiero po I wojnie."}
+- {id: S10-065, podmiot: piekarski-maks, relacja: wlasnosc, obiekt: radoszewice-dwor, wartosc: "kupił majątek z bratem Bernardem w 1913 r., posiadał do 1937 r.", data: {tekst: "W roku 1913", od: 1913, do: 1937},
+   zrodla: [{segment: S10-p6-s03, cytat: "W roku 1913 majątek dwors-ki kupili dwaj bracia Żydzi – Maks i Bernard Piekarscy."}], pewnosc_odczytu: pewna, uwagi: "S08 podaje braci Maksa i Henryka Piekarskich."}
+- {id: S10-066, podmiot: piekarski-bernard, relacja: wlasnosc, obiekt: radoszewice-dwor, wartosc: "kupił majątek z bratem Maksem w 1913 r., posiadał do 1937 r.", data: {tekst: "W roku 1913", od: 1913, do: 1937},
+   zrodla: [{segment: S10-p6-s03, cytat: "W roku 1913 majątek dwors-ki kupili dwaj bracia Żydzi – Maks i Bernard Piekarscy."}], pewnosc_odczytu: pewna}
+- {id: S10-067, podmiot: piekarski-bernard, relacja: rodzenstwo, obiekt: piekarski-maks,
+   zrodla: [{segment: S10-p6-s03, cytat: "dwaj bracia Żydzi – Maks i Bernard Piekarscy"}], pewnosc_odczytu: pewna}
+- {id: S10-068, podmiot: durynski-teodor, relacja: wlasnosc, obiekt: radoszewice-dwor, wartosc: "w 1937 r. ponownie kupił majątek od Piekarskich i posiadał go do wybuchu II wojny (1 IX 1939)", data: {tekst: "W roku 1937 … do 1 września 1939 r.", od: 1937, do: 1939-09-01},
+   zrodla: [{segment: S10-p6-s03, cytat: "W roku 1937 powtórnie od Piekarskich kupił majątek Teodor Duryński i był w posia-daniu go do chwili wybuchu II wojny światowej t.j. do 1 września 1939 r."}], pewnosc_odczytu: pewna}
+- {id: S10-069, podmiot: radoszewice-dwor, relacja: opis, wartosc: "w czasie okupacji majątkiem zarządzali Niemcy: Gebel, Sznajder, Winter", data: {tekst: "okupacja", od: 1939, do: 1945},
+   zrodla: [{segment: S10-p6-s03, cytat: "W czasie okupacji majątkiem zarządzali Niemcy (Gebel, Sznajder, Winter)."}], pewnosc_odczytu: pewna}
+
+# --- s. 7–8: dwór (pałacyk)
+- {id: S10-070, podmiot: radoszewice-dwor, relacja: opis, wartosc: "po wyzwoleniu w 1945 r. parcelacja majątku; pałac zamieniono na szkołę podstawową, która mieści się w nim nadal (1978)", data: {tekst: "w 1945 r.", od: 1945, do: 1978},
+   zrodla: [{segment: S10-p7-s01, cytat: "Po wyzwoleniu w 1945 r. nastąpiła parcelacja majątku. Pałac podworski zamieniono na szkołę podstawową. W budynku tym mieści się szkoła do chwili obecnej."}], pewnosc_odczytu: pewna}
+- {id: S10-071, podmiot: radoszewice-dwor, relacja: opis, wartosc: "budynek z XVIII w., styl klasycystyczny",
+   zrodla: [{segment: S10-p7-s01, cytat: "Budynek pochodzi z XVIII w., styl klasycyzmu."}], pewnosc_odczytu: pewna,
+   uwagi: "Na s. 8 autor pisze, że pałacyk wybudowali Niemojowscy (S10-075) — nie łączy obu informacji."}
+- {id: S10-072, podmiot: radoszewice-dwor, relacja: opis, wartosc: "od północy podpiwniczony; w środku ogromna wędzarnia; grube ściany z czerwonej cegły dużego formatu, od wewnątrz wykładane belkami; dach z gontu (obecnie pokryty papą); ściany wewnętrzne wielokrotnie przerabiane na potrzeby szkoły; bez większych zmian zachowała się główna sala środkowa",
+   zrodla: [{segment: S10-p7-s01, cytat: "Od strony północnej jest podpiwniczony. W środku budynku znajduje się ogromna wędzarnia."}, {segment: S10-p7-s01, cytat: "są mu-rowane z czerwonej cegły dużego formatu, od stro-ny wewnętrznej wykładane belkami drewnianymi. Dach kryty gontami (obecnie na gonty nałożono papę)."}, {segment: S10-p7-s01, cytat: "Zachowała się bez większych zmian główna sala środkowa."}], pewnosc_odczytu: pewna}
+- {id: S10-073, podmiot: radoszewice-dwor, relacja: opis, wartosc: "stan w 1978 r.: szybko się pogarsza z powodu ciasnoty (ponad 240 uczniów) i braku remontu — odpadają tynki, zachodni balkon żelazny w opłakanym stanie, duże schody od zachodu się rozsypują, słabe podłogi na piętrze", data: {tekst: "1978", od: 1978, do: 1978},
+   zrodla: [{segment: S10-p7-s01, cytat: "szkoła posiada ponad 240 uczniów a nikt nie zabrał się do tej pory solidnie do remontu."}, {segment: S10-p7-s01, cytat: "balkon żelazny od strony zachod-niej w opłakanym stanie, duże schody od strony zachodniej rozsypują się, na piętrze bardzo słabe podłogi."}], pewnosc_odczytu: pewna}
+- {id: S10-074, podmiot: radoszewice-dwor, relacja: opis, wartosc: "postulat autora: zbudować nową szkołę, a pałacyk po remoncie oddać społeczeństwu lub szkole do innych celów",
+   zrodla: [{segment: S10-p7-s01, cytat: "aby wła-dze szkolne wybudowały budynek szkolny nowy, a pałacyk po wyremontowaniu oddać społeczeństwu czy szkole do innych celów."}], pewnosc_odczytu: pewna}
+- {id: S10-075, podmiot: radoszewice-dwor, relacja: opis, wartosc: "pałacyk wybudowany przez Niemojowskich; zdjęcie nr 3 — pałacyk (szkoła) od frontu",
+   zrodla: [{segment: S10-p8-s01, cytat: "Zdjęcie nr 3 – Pałacyk, obecnie szkoła, od strony frontowej Pałacyk jest wybudowany przez Niemojowskich."}], pewnosc_odczytu: pewna, uwagi: "Por. S10-071 (XVIII w.)."}
+
+# --- s. 8–9: park
+- {id: S10-076, podmiot: radoszewice-park, relacja: opis, wartosc: "duży park wokół pałacyku z dwóch części: starej i młodej; stara część (od północy i zachodu) była otoczona murem jeszcze po wyzwoleniu; zaraz po wyzwoleniu rozebrano stodoły, obory, inne zabudowania i mur",
+   zrodla: [{segment: S10-p8-s02, cytat: "Wokół pałacyku rozprzestrzeniał się duży park składający się z dwu części: starego parku i młodego parku."}, {segment: S10-p8-s02, cytat: "Ale zaraz po wyzwoleniu rozebrano stodoły, obory i inne zabudowania oraz mur otaczający park."}], pewnosc_odczytu: pewna}
+- {id: S10-077, podmiot: radoszewice-park, relacja: opis, wartosc: "w latach 50. XX w. zaczęły usychać stare drzewa (głównie wiązy); usunięto drzewa starego parku od szkoły aż do kościoła i plebanii (tak daleko sięgał park); przez park przeprowadzono szosę; część gruntu oddano księdzu w zamian za pole wzięte pod budowę „kuchty[?] sprzętowej”; ze starego parku został fragment", data: {tekst: "W latach 50-tych", od: 1950, do: 1959},
+   zrodla: [{segment: S10-p8-s02, cytat: "W latach 50-tych bieżącego stulecia zaczęły wysychać niektóre gatunki starych drzew; głównie wiąz."}, {segment: S10-p8-s02, cytat: "aż do kościoła i plebanii (park tak daleko sięgał)"}, {segment: S10-p8-s02, cytat: "wybudowania kuchty[?] sprzętowej. Po latach 50-tych został tylko fragment starego parku."}], pewnosc_odczytu: niepewna,
+   uwagi: "„kuchty” — wyraz niejasny (może „bazy sprzętowej”/„kuźni”)."}
+- {id: S10-078, podmiot: radoszewice-park, relacja: opis, wartosc: "fotografia nr 4 — fragment starego parku; fotografia nr 5 — kwitnące zawilce (zdjęć nie sfotografowano)",
+   zrodla: [{segment: S10-p8-s03, cytat: "Fotografia nr 4 – Fragment starego parku."}, {segment: S10-p8-s05, cytat: "Fotografia nr 5 – Kwitnące zawilce."}], pewnosc_odczytu: pewna}
+- {id: S10-079, podmiot: radoszewice-park, relacja: opis, wartosc: "młodsza część parku na południe od budynku, ok. 0,70 ha; grab, wiąz, świerk, osika, lipa, kasztanowiec, kilka starych tui; ok. 60% drzewostanu to leszczyna, wiosną kwitną zawilce; winniczki, kilka okazałych lip",
+   zrodla: [{segment: S10-p8-s04, cytat: "Powierzchnia wynosi ok. 0,70 ha. Do głównych gatun-ków drzew należą: grab, wiąz, świerk, osika, lipa, kasztanowiec; jest kilka okazów starej tui (żywotnik). W ok. 60% drzewostanu stanowi leszczyna."}, {segment: S10-p8-s04, cytat: "zwarcie łączący się"}, {segment: S10-p8-s06, cytat: "W parku spotyka się ślimaka winniczka. Znajdujemy kilka okazów wspaniałych lip."}], pewnosc_odczytu: niepewna,
+   uwagi: "„zwarcie łączący się” — odczyt niepewny."}
+- {id: S10-080, podmiot: radoszewice-park, relacja: opis, wartosc: "ślady altany szlacheckiej; park niszczony przez wycinkę drzew i łamanie gałęzi; zagospodarowanie planowane na 1975 r. nie doszło do skutku przez reorganizację administracji", data: {tekst: "W roku 1975", od: 1975, do: 1975},
+   zrodla: [{segment: S10-p9-s01, cytat: "Na uwagę w parku zasługują również ślady altany szlacheckiej."}, {segment: S10-p9-s01, cytat: "W roku 1975 park miał być zagospodarowany, lecz w związku z reorganizacją administracji, pracy tej nie dokoniane."}], pewnosc_odczytu: pewna}
+- {id: S10-081, podmiot: pajeczno, relacja: opis, wartosc: "dawne miasto powiatowe, po reformie 1975 r. w województwie częstochowskim", data: {tekst: "1975", od: 1975, do: 1978},
+   zrodla: [{segment: S10-p9-s01, cytat: "Pajęczno, które było miastem powiatowym znalazło się obecnie w województwie częstochowskim."}], pewnosc_odczytu: pewna}
+- {id: S10-082, podmiot: radoszewice-dwor, relacja: opis, wartosc: "podsumowanie autora: krótki zarys historii Radoszewic oraz obecny stan pałacyku „po zacnej rodzinie Niemojowskich” i parku",
+   zrodla: [{segment: S10-p9-s02, cytat: "przedstawiłem stan aktualny pałacyku po zacnej rodzinie Niemojowskich oraz obecny parku."}], pewnosc_odczytu: pewna}

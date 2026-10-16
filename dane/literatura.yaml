@@ -68,3 +68,23 @@
   opis: "Jerzy Skowronek, Cmentarz Polski w Montmorency; Zofia Szymańska, Byłam tylko lekarzem; F. Mamuszka i J. Stankiewicz, Oliwa. Dzieje i zabytki; Krasowski[?], Bajbura; Pamiętniki Paska"
   dotyczy: "Adam i Renata Grabińscy; Wanda Grabińska (adnotacje na marginesie)"
   segmenty: [S07-p51-s01]
+- id: sgkp-t9-1888
+  opis: "Słownik geograficzny Królestwa Polskiego i innych krajów słowiańskich, t. 9, Warszawa 1888"
+  dotyczy: "Radoszewice s. 437"
+  segmenty: [S10-p1-s05, S10-p2-s01]
+- id: okolski-niesiecki-herbarze
+  opis: "Herbarze Szymona Okolskiego i Kaspra Niesieckiego (tradycja o nadaniu Radoszewic Janowi Wrszowcowi)"
+  dotyczy: "Okszyce, Radoszewice"
+  segmenty: [S10-p2-s01]
+- id: prygodzki-z-przeszlosci-wielunia
+  opis: "ks. Wincenty Prygodzki, Z przeszłości Wielunia"
+  dotyczy: "kaplica Radoszewskich w kolegiacie wieluńskiej s. 19"
+  segmenty: [S10-p2-s04, S10-p3-s01]
+- id: zimogrodzki-wojewodztwo-kaliskie-1863
+  opis: "J. Zimogrodzki[?], Województwo Kaliskie w walce w roku 1863 i 1864"
+  dotyczy: "bitwa pod Radoszewicami, Niemojowska s. 10"
+  segmenty: [S10-p5-s03]
+- id: bruchnalska-miejsce-piastowe-1934
+  opis: "Maria Bruchnalska, Miejsce Piastowe, 1934"
+  dotyczy: "p. Niemojowska w bitwie pod Radoszewicami s. 221"
+  segmenty: [S10-p5-s04, S10-p6-s01]

@@ -932,3 +932,41 @@
   nazwa: "Łańcut[?]"
   typ: miasto
   pewnosc_identyfikacji: prawdopodobna
+
+- id: radoszewice-dwor
+  nazwa: "Dwór (pałacyk) w Radoszewicach, po 1945 szkoła podstawowa"
+  typ: majątek
+  nadrzedne: radoszewice
+  pewnosc_identyfikacji: pewna
+
+- id: radoszewice-park
+  nazwa: "Park dworski w Radoszewicach"
+  typ: inny
+  nadrzedne: radoszewice
+  pewnosc_identyfikacji: pewna
+
+- id: wielun-kolegiata
+  nazwa: "Kolegiata wieluńska"
+  typ: kościół
+  nadrzedne: wielun
+  pewnosc_identyfikacji: pewna
+
+- id: osjakow
+  nazwa: "Osjaków (parafia; w SGKP „Osyaków”)"
+  typ: wieś
+  pewnosc_identyfikacji: pewna
+
+- id: kielczyglow
+  nazwa: "Kiełczygłów"
+  typ: wieś
+  pewnosc_identyfikacji: pewna
+
+- id: drezno
+  nazwa: "Drezno"
+  typ: miasto
+  pewnosc_identyfikacji: pewna
+
+- id: syberia-wschodnia
+  nazwa: "Syberia Wschodnia"
+  typ: region
+  pewnosc_identyfikacji: pewna

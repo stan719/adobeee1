@@ -2351,3 +2351,98 @@
   nazwisko: "Prządzyński"
   plec: m
   uwagi: "Pochowany w grobie kw. 6 rząd 6 grób 12 na Powązkach."
+
+- id: lakomy-stefan
+  imiona: ["Stefan"]
+  nazwisko: "Łakomy"
+  plec: m
+  warianty: ["Łakomy Stefan", "Stefan Łakomy"]
+  uwagi: "Autor S02 i S10; mieszkaniec Radoszewic."
+
+- id: radoszewski-andrzej-1621
+  imiona: ["Andrzej"]
+  nazwisko: "Radoszewski"
+  herb: Oksza
+  plec: m
+  warianty: ["Andrzej Radoszewski, chorąży ziemi wieluńskiej"]
+  uwagi: "Chorąży ziemi wieluńskiej, zm. 1621 (S10, za ks. Prygodzkim). Możliwe, że to ten sam co radoszewski-andrzej-1630 (chorąży wieluński, fundacja 1630) — daty się wykluczają, nie scalam."
+
+- id: wrszowiec-jan
+  imiona: ["Jan"]
+  nazwisko: "Wrszowiec"
+  plec: m
+  warianty: ["Jan (Gesko) Wrszowiec"]
+  uwagi: "Według tradycji z herbarzy Okolskiego i Niesieckiego: wychodźca czeski, zabójca ks. Świętopełka, protoplasta Okszyców (S10)."
+
+- id: niemojowski-ludwik-1823
+  imiona: ["Ludwik"]
+  nazwisko: "Niemojowski"
+  plec: m
+  warianty: ["L. Niemojowski"]
+  uwagi: "Pisarz, zesłaniec (1823–1892); ostatni właściciel Radoszewic z rodziny Niemojowskich (S10)."
+
+- id: niemojowska-powstanka
+  imiona: []
+  nazwisko: "Niemojowska"
+  plec: k
+  warianty: ["p. Niemojowska", "pani Niemojowska", "Mme „Niemojewska”"]
+  uwagi: "Siostra Ludwika (S10); bohaterka bitwy pod Radoszewicami 27.03.1863."
+
+- id: taczanowski-edmund
+  imiona: ["Edmund"]
+  nazwisko: "Taczanowski"
+  plec: m
+  uwagi: "Dowódca kawalerii w Sieradzkiem w 1863 r. (S10)."
+
+- id: cieszkowski-1863
+  imiona: []
+  nazwisko: "Cieszkowski"
+  plec: m
+  uwagi: "Dowódca powstańczy w bitwie pod Radoszewicami 1863 (S10, za Zimogrodzkim i Bruchnalską)."
+
+- id: durynski-teodor
+  imiona: ["Teodor"]
+  nazwisko: "Duryński"
+  plec: m
+  warianty: ["T. Durzyński"]
+  uwagi: "Właściciel Radoszewic do 1913 i 1937–1939 (S10); w S08 „T. Durzyński”."
+
+- id: piekarski-maks
+  imiona: ["Maks"]
+  nazwisko: "Piekarski"
+  plec: m
+  uwagi: "Współwłaściciel Radoszewic 1913–1937 z bratem Bernardem (S10); S08 podaje braci Maksa i Henryka."
+
+- id: piekarski-bernard
+  imiona: ["Bernard"]
+  nazwisko: "Piekarski"
+  plec: m
+  uwagi: "Współwłaściciel Radoszewic 1913–1937 z bratem Maksem (S10)."
+
+- id: krysiak-jozef
+  imiona: ["Józef"]
+  nazwisko: "Krysiak"
+  plec: m
+  warianty: ["p. Józef Krysiak"]
+  uwagi: "Dawny pracownik majątku w Radoszewicach, rozmówca S. Łakomego (S10)."
+
+- id: andriolli-michal-elwiro
+  imiona: ["Michał", "Elwiro"]
+  nazwisko: "Andriolli"
+  plec: m
+  warianty: ["Michał Elwir Andriolli"]
+  uwagi: "Rysownik, ilustrator „Obrazków Syberii” L. Niemojowskiego (S10)."
+
+- id: jelska-helena
+  imiona: ["Helena"]
+  nazwisko: "Jelska"
+  nazwisko_rodowe: "Korsak"
+  plec: k
+  warianty: ["Hel. hr. Jelska z Korsaków"]
+  uwagi: "Relacja o paskach z wizerunkiem Niemojowskiej, Drezno 1864 (S10, za Bruchnalską)."
+
+- id: skirmunt-konstancja
+  imiona: ["Konstancja"]
+  nazwisko: "Skirmunt"
+  plec: k
+  uwagi: "Jak wyżej (S10)."
