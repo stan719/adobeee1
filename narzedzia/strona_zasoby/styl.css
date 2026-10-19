@@ -1,173 +1,230 @@
+/* Radoszewscy h. Oksza — styl strony. Prosty, czytelny układ w duchu serwisów genealogicznych (GeneWeb / Wielcy.pl). */
 :root{
-  --tlo:#f7f3ea; --karta:#fffdf8; --tekst:#2a2420; --slaby:#6f655b; --linia:#ddd3c2;
-  --akcent:#7a2e2a; --akcent2:#9c6b1f; --link:#5a2a8a; --mj:#2f5d4e; --znacz:#fff1b8; --red:#6b6f80;
-  --cien:0 1px 3px rgba(60,40,20,.12);
+  --tlo:#ffffff; --tlo2:#f6f3ec; --tekst:#1f1b17; --slaby:#6b6258; --linia:#e2dccf; --linia2:#cfc6b4;
+  --akcent:#7a1f1f; --akcent2:#9a6a1c; --link:#1d4f91; --link-od:#5b2f8a; --mj:#2f6150; --znacz:#fff0a8;
+  --m:#3f6aa8; --k:#b0466c; --m-tlo:#eef3fb; --k-tlo:#fbeef3;
   --szeryf:Georgia,"Iowan Old Style","Palatino Linotype",Palatino,"Times New Roman",serif;
-  --bez:system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+  --bez:"Segoe UI",system-ui,-apple-system,Roboto,"Helvetica Neue",Arial,sans-serif;
 }
-@media (prefers-color-scheme: dark){:root{
-  --tlo:#1c1916; --karta:#25211d; --tekst:#ece4d8; --slaby:#a99d8f; --linia:#3d362f;
-  --akcent:#e08a7e; --akcent2:#d8b06a; --link:#c3a6ec; --mj:#86c3ad; --znacz:#5a4a14; --red:#9da2b6;
-  --cien:0 1px 3px rgba(0,0,0,.5);
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --tlo:#17191c; --tlo2:#202328; --tekst:#e9e5de; --slaby:#a8a097; --linia:#353a41; --linia2:#4a5059;
+  --akcent:#e7948a; --akcent2:#dcb66e; --link:#8db8f2; --link-od:#c2a4ea; --mj:#86c3ad; --znacz:#5d4e12;
+  --m:#7ea6e0; --k:#e48aac; --m-tlo:#1e2836; --k-tlo:#35202b;
 }}
+:root[data-theme="dark"]{
+  --tlo:#17191c; --tlo2:#202328; --tekst:#e9e5de; --slaby:#a8a097; --linia:#353a41; --linia2:#4a5059;
+  --akcent:#e7948a; --akcent2:#dcb66e; --link:#8db8f2; --link-od:#c2a4ea; --mj:#86c3ad; --znacz:#5d4e12;
+  --m:#7ea6e0; --k:#e48aac; --m-tlo:#1e2836; --k-tlo:#35202b;
+}
 *{box-sizing:border-box}
-body{margin:0;background:var(--tlo);color:var(--tekst);font:16px/1.55 var(--bez)}
-a{color:var(--link);text-decoration-thickness:1px;text-underline-offset:2px}
+body{margin:0;background:var(--tlo);color:var(--tekst);font:17px/1.6 var(--bez)}
+a{color:var(--link);text-decoration:none} a:hover{text-decoration:underline}
 a.mj{color:var(--mj)}
-h1,h2,h3{font-family:var(--szeryf);font-weight:600;line-height:1.2;color:var(--akcent)}
-h1{font-size:2rem;margin:.4em 0 .3em} h2{font-size:1.35rem;margin:1.4em 0 .5em;border-bottom:1px solid var(--linia);padding-bottom:.2em}
-h3{font-size:1.1rem}
-main{max-width:1180px;margin:0 auto;padding:12px 16px 40px}
-footer{max-width:1180px;margin:0 auto;padding:16px;color:var(--slaby);font-size:.85rem;border-top:1px solid var(--linia)}
-.gora{background:var(--karta);border-bottom:2px solid var(--akcent);box-shadow:var(--cien);padding:10px 16px;
-  display:flex;flex-wrap:wrap;align-items:center;gap:8px 18px;position:sticky;top:0;z-index:1000}
-.marka{font-family:var(--szeryf);font-size:1.3rem;color:var(--akcent);text-decoration:none;font-weight:700}
-.marka span{font-weight:400;color:var(--akcent2);font-size:1rem}
-.gora nav{display:flex;flex-wrap:wrap;gap:2px 4px;width:100%;order:3}
-.gora nav a{padding:3px 9px;border-radius:4px;text-decoration:none;color:var(--tekst);font-size:.93rem}
-.gora nav a:hover{background:var(--tlo)} .gora nav a.on{background:var(--akcent);color:var(--karta)}
-.szybkie{margin-left:auto} .szybkie input{width:min(280px,60vw)}
-input[type=search],select,.filtr{font:inherit;padding:6px 10px;border:1px solid var(--linia);border-radius:6px;background:var(--karta);color:var(--tekst)}
-.filtr{width:min(420px,100%)} .filtr.duzy{font-size:1.15rem;width:100%}
-.sciezka{margin:.2em 0;font-size:.9rem;color:var(--slaby)}
-.lata{color:var(--slaby);font-weight:400;font-size:.85em;white-space:nowrap}
-h1 .lata{font-family:var(--bez)}
-.meta{color:var(--akcent2);margin:.2em 0}
-.warianty,.utoz,.uwagi-os{background:var(--karta);border-left:3px solid var(--linia);padding:6px 10px;margin:.5em 0;font-size:.95rem}
-.utoz{border-color:var(--akcent2)}
-.drobne{font-size:.85rem;color:var(--slaby)}
-.uwaga{background:var(--karta);border:1px dashed var(--akcent2);padding:8px 12px;border-radius:6px}
-.przycisk{display:inline-block;padding:5px 12px;border:1px solid var(--akcent);border-radius:6px;text-decoration:none;color:var(--akcent);font-size:.92rem}
-.przycisk:hover{background:var(--akcent);color:var(--karta)}
-/* fakty */
-ul.fakty{list-style:none;padding:0;margin:0}
-.fakt{background:var(--karta);border:1px solid var(--linia);border-radius:6px;padding:8px 12px;margin:6px 0;box-shadow:var(--cien)}
-.fakt .et{display:inline-block;min-width:7.5em;font-size:.78rem;text-transform:uppercase;letter-spacing:.04em;color:var(--akcent2);font-weight:600}
-.fakt .data{color:var(--akcent);font-weight:600;white-space:nowrap}
-.fakt .uw{font-size:.85rem;color:var(--slaby);margin-top:3px;font-style:italic}
-.zrodla{margin-left:6px}
-a.zr{display:inline-block;font-size:.75rem;padding:0 6px;border-radius:10px;background:var(--tlo);border:1px solid var(--linia);
-  text-decoration:none;color:var(--slaby);white-space:nowrap;line-height:1.6}
-a.zr:hover{border-color:var(--akcent);color:var(--akcent)}
-details.cyt{display:inline;font-size:.8rem;color:var(--slaby)}
-details.cyt summary{display:inline;cursor:pointer;margin-left:4px;text-decoration:underline dotted}
-details.cyt[open]{display:block;margin-top:4px;background:var(--tlo);padding:4px 8px;border-radius:4px}
-details.cyt ul{margin:2px 0;padding-left:18px} .twid{font-size:.72rem}
-.znak-niep{display:inline-block;width:1.2em;height:1.2em;line-height:1.2em;text-align:center;border-radius:50%;
-  background:var(--znacz);color:var(--tekst);font-size:.75rem;font-weight:700;cursor:help}
+h1,h2,h3{font-family:var(--szeryf);font-weight:700;line-height:1.25;color:var(--akcent)}
+h1{font-size:2.1rem;margin:.3em 0 .25em} h2{font-size:1.3rem;margin:1.5em 0 .5em;padding-bottom:.2em;border-bottom:1px solid var(--linia)}
+h3{font-size:1.1rem;margin:1.2em 0 .4em}
+main{max-width:1240px;margin:0 auto;padding:10px 20px 48px}
+body.szeroka main{max-width:none}
+footer{max-width:1240px;margin:0 auto;padding:16px 20px;color:var(--slaby);font-size:.85rem;border-top:1px solid var(--linia)}
+code{font-size:.9em;background:var(--tlo2);padding:0 4px;border-radius:3px}
+/* nagłówek */
+.gora{background:var(--tlo2);border-bottom:3px solid var(--akcent);padding:8px 20px 0;display:flex;flex-wrap:wrap;align-items:center;gap:6px 18px}
+.marka{font-family:var(--szeryf);font-size:1.45rem;color:var(--akcent);font-weight:700;text-decoration:none!important}
+.marka span{font-weight:400;color:var(--akcent2);font-size:1.05rem} .marka .topor{font-size:1.1rem}
+.gora nav{display:flex;flex-wrap:wrap;gap:0 2px;width:100%;order:3;margin-top:2px}
+.gora nav a{padding:7px 12px 8px;color:var(--tekst);font-size:.97rem;border-radius:6px 6px 0 0}
+.gora nav a:hover{background:var(--tlo);text-decoration:none}
+.gora nav a.on{background:var(--akcent);color:#fff}
+.szybkie{margin-left:auto} .szybkie input{width:min(300px,60vw)}
+input[type=search],input:not([type]),select,.filtr{font:inherit;font-size:.97rem;padding:7px 11px;border:1px solid var(--linia2);border-radius:6px;background:var(--tlo);color:var(--tekst)}
+.filtr{width:min(420px,100%)} .filtr.duzy{font-size:1.1rem;width:100%;max-width:720px;padding:10px 14px}
+.lead{font-size:1.1rem;max-width:75ch;color:var(--tekst)}
+.drobne{font-size:.86rem;color:var(--slaby)}
+.sciezka{margin:.5em 0 0;font-size:.9rem;color:var(--slaby)}
+.lata{color:var(--slaby);font-weight:400;white-space:nowrap}
+.uwaga{background:var(--tlo2);border-left:4px solid var(--akcent2);padding:8px 14px;border-radius:0 6px 6px 0}
+.przycisk{display:inline-block;padding:6px 14px;border:1px solid var(--akcent);border-radius:6px;color:var(--akcent);font-size:.93rem;background:var(--tlo);cursor:pointer;font-family:inherit;margin:0 6px 6px 0}
+.przycisk:hover{background:var(--akcent);color:#fff;text-decoration:none}
+.przycisk.maly{font-size:.82rem;padding:3px 10px}
+.spor{display:inline-block;font-size:.75rem;background:var(--znacz);color:var(--tekst);border-radius:4px;padding:0 6px;margin-left:4px;font-weight:600}
+.znak-niep{display:inline-block;width:1.25em;height:1.25em;line-height:1.25em;text-align:center;border-radius:50%;background:var(--znacz);color:var(--tekst);font-size:.72rem;font-weight:700;cursor:help;margin-left:3px}
 mark.niep{background:var(--znacz);color:inherit;padding:0 2px;border-radius:2px}
-/* listy */
-.grupa h2,.grupa h3{margin-top:1em}
-ul.osoby{columns:3 260px;padding-left:18px;margin:0} ul.osoby li{break-inside:avoid;margin:2px 0}
-.licz{font-size:.75rem;color:var(--slaby)}
-ul.kafle{list-style:none;padding:0;display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:10px}
-ul.kafle li{background:var(--karta);border:1px solid var(--linia);border-radius:8px;padding:12px;box-shadow:var(--cien)}
-ul.kafle li a{font-family:var(--szeryf);font-size:1.1rem;font-weight:600}
-ul.kafle li span{display:block;font-size:.85rem;color:var(--slaby)}
-nav.spis{background:var(--karta);border:1px solid var(--linia);border-radius:6px;padding:8px 12px;font-size:.9rem;line-height:1.9}
+/* przypisy źródłowe */
+sup.pp{font-size:.7em;line-height:0;margin-left:1px;white-space:nowrap}
+sup.pp a{color:var(--akcent2);font-weight:600;padding:0 1px}
+ol.przypisy{font-size:.88rem;color:var(--slaby);padding-left:2.2em;margin:0}
+ol.przypisy li{margin:0 0 .55em} ol.przypisy li:target{background:var(--znacz);color:var(--tekst)}
+ol.przypisy .zr-tyt{color:var(--slaby)} ol.przypisy .cytat{font-family:var(--szeryf);color:var(--tekst);font-size:.95rem}
+ol.przypisy a.foto{font-size:.8rem}
+.przypisy-sek h2{font-size:1.1rem}
+/* karta osoby */
+h1.os-m{border-left:6px solid var(--m);padding-left:12px} h1.os-k{border-left:6px solid var(--k);padding-left:12px}
+h1 .herb{font-family:var(--bez);font-size:1rem;font-weight:400;color:var(--akcent2)}
+p.zycie{font-size:1.05rem;margin:.4em 0;line-height:1.75} p.zycie .zd b{color:var(--slaby);font-weight:600;margin-right:2px}
+p.tytuly{font-style:italic;color:var(--tekst);margin:.3em 0 .6em;font-family:var(--szeryf);font-size:1.05rem}
+p.narz{margin:.8em 0 0}
+.uklad{display:grid;grid-template-columns:minmax(0,1fr) 400px;gap:34px;align-items:start}
+.uklad .boczna{position:sticky;top:12px}
+ul.rodzina,ul.rodz-lista{list-style:none;padding:0;margin:0}
+ul.rodzina li{padding:3px 0} ul.rodzina li.alt{color:var(--slaby)}
+.et{display:inline-block;min-width:4.6em;color:var(--slaby);font-size:.9rem}
+.malz{margin:0 0 14px} .malz>p{margin:.2em 0} .malz .inf{color:var(--akcent);font-weight:700;margin-right:4px}
+.malz .uw{font-size:.88rem;color:var(--slaby);margin-left:1.4em}
+ol.dzieci{margin:.25em 0 0;padding-left:2.6em} ol.dzieci li{padding:1px 0}
+ul.rodz-lista{columns:2 260px} ul.rodz-lista li{padding:2px 0;break-inside:avoid}
+ul.zyciorys{list-style:none;padding:0;margin:0}
+ul.zyciorys li{display:flex;gap:12px;padding:5px 0;border-bottom:1px dotted var(--linia)}
+ul.zyciorys .rok{flex:none;width:3.2em;font-family:var(--szeryf);font-weight:700;color:var(--akcent);text-align:right}
+ul.zyciorys .tr{flex:1;min-width:0} ul.zyciorys .et{min-width:0;margin-right:2px}
+ul.zyciorys .uw,ul.zyciorys .tr>.uw{display:block;font-size:.85rem;color:var(--slaby);font-style:italic}
+.data{font-weight:600;white-space:nowrap}
+section.badawcze ul{padding-left:1.2em;font-size:.93rem} section.badawcze li{margin:.2em 0}
+/* tabela przodków (mini) */
+.mini h2{margin-top:.3em}
+.mini-przodkowie{display:grid;grid-template-columns:1fr 1fr 1fr 1fr;grid-template-rows:repeat(8,minmax(34px,auto));gap:3px;font-size:.74rem;line-height:1.25}
+.mp{display:flex;flex-direction:column;justify-content:center;padding:3px 6px;border-radius:5px;background:var(--tlo2);border-left:3px solid var(--linia2);overflow:hidden}
+.mp.m{border-left-color:var(--m);background:var(--m-tlo)} .mp.k{border-left-color:var(--k);background:var(--k-tlo)}
+.mp.pusta{background:none;border:1px dashed var(--linia)}
+.mp a{font-weight:600} .mp .lata{font-size:.7rem}
+/* indeks nazwisk */
+nav.alfabet{display:flex;flex-wrap:wrap;gap:4px;margin:10px 0}
+nav.alfabet a{display:inline-block;min-width:2em;text-align:center;padding:3px 6px;border:1px solid var(--linia2);border-radius:5px;font-weight:700}
+.chmura{line-height:2.1} .chmura a{margin-right:12px;white-space:nowrap} .chmura a span{font-size:.75rem;color:var(--slaby)}
+.chmura .w1{font-size:.9rem} .chmura .w2{font-size:1.05rem} .chmura .w3{font-size:1.25rem;font-weight:600} .chmura .w4{font-size:1.5rem;font-weight:700}
+h2.litera{font-size:1.8rem;border-bottom:2px solid var(--akcent);margin-top:1.2em}
+.grupa h3{margin:1em 0 .2em} .licz{font-size:.8rem;color:var(--slaby);font-family:var(--bez);font-weight:400}
+ul.indeks{list-style:none;padding:0 0 0 .4em;margin:0;columns:2 460px} ul.indeks li{padding:2px 0;break-inside:avoid}
+ul.kolumny{columns:3 240px}
 /* start */
-.wstep{padding:10px 0} .lead{font-size:1.12rem;max-width:62ch}
-ul.liczby{list-style:none;padding:0;display:flex;flex-wrap:wrap;gap:10px}
-ul.liczby li{background:var(--karta);border:1px solid var(--linia);border-radius:8px;padding:8px 16px;font-size:.95rem}
-ul.liczby b{font-family:var(--szeryf);font-size:1.4rem;color:var(--akcent);margin-right:4px}
-ol.linia{padding-left:22px} ol.linia li{margin:3px 0}
+.wstep h1{font-size:2.6rem;margin-bottom:.1em}
+.start-szukaj{margin:14px 0}
+ul.liczby{list-style:none;padding:0;display:flex;flex-wrap:wrap;gap:8px 22px;color:var(--slaby)}
+ul.liczby b{font-family:var(--szeryf);font-size:1.5rem;color:var(--akcent);margin-right:4px}
+.wejscia{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:12px;margin:18px 0}
+.wejscie{display:block;border:1px solid var(--linia2);border-radius:10px;padding:14px 16px;background:var(--tlo2);color:var(--tekst)}
+.wejscie:hover{border-color:var(--akcent);text-decoration:none}
+.wejscie b{display:block;font-family:var(--szeryf);font-size:1.2rem;color:var(--akcent)} .wejscie span{font-size:.9rem;color:var(--slaby)}
+.wejscie.duze{grid-column:span 2;background:var(--akcent);border-color:var(--akcent)} .wejscie.duze b,.wejscie.duze span{color:#fff}
+.dwie-kol{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:36px}
+ol.linia{padding-left:1.8em} ol.linia li{margin:4px 0}
+ul.rody{list-style:none;padding:0} ul.rody li{padding:3px 0}
+ul.kafle{list-style:none;padding:0;display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:10px}
+ul.kafle li{border:1px solid var(--linia2);border-radius:8px;padding:12px;background:var(--tlo2)}
+nav.spis{background:var(--tlo2);border:1px solid var(--linia);border-radius:6px;padding:8px 14px;font-size:.92rem;line-height:1.9}
+/* drzewo */
+.drzewo-gora h1{margin-bottom:.1em}
+.pasek{display:flex;flex-wrap:wrap;gap:8px 14px;align-items:center}
+.pasek select{max-width:min(560px,100%)} .pasek label{max-width:100%}
+.tryby{display:inline-flex;border:1px solid var(--linia2);border-radius:7px;overflow:hidden}
+.tryby button{font:inherit;font-size:.92rem;padding:6px 12px;border:0;background:var(--tlo);color:var(--tekst);cursor:pointer;border-right:1px solid var(--linia2)}
+.tryby button:last-child{border-right:0} .tryby button.on{background:var(--akcent);color:#fff}
+#opis-drzewa{margin:6px 0}
+.wykres{position:relative;overflow:hidden;height:calc(100vh - 250px);min-height:420px;border:1px solid var(--linia2);border-radius:10px;
+  background:var(--tlo2);cursor:grab;touch-action:none;user-select:none}
+.wykres.ciagne{cursor:grabbing}
+#swiat{position:absolute;left:0;top:0;transform-origin:0 0}
+svg.linie{position:absolute;left:0;top:0;overflow:visible;pointer-events:none}
+svg.linie path{fill:none;stroke:var(--slaby);stroke-width:1.4} svg.linie path.alt{stroke-dasharray:5 4}
+.kt{position:absolute;width:184px;background:var(--tlo);border:1px solid var(--linia2);border-top:4px solid #999;border-radius:7px;
+  padding:3px 8px;font-size:12.5px;line-height:15px;cursor:pointer;box-shadow:0 1px 2px rgba(0,0,0,.08)}
+.kt.m{border-top-color:var(--m)} .kt.k{border-top-color:var(--k)}
+.kt:hover{box-shadow:0 0 0 2px var(--akcent2)}
+.kt.stub,.kt.alt{border-style:dashed;opacity:.85}
+.kt.cel{box-shadow:0 0 0 4px var(--akcent2);z-index:3}
+.kt .i{font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.kt .n{font-weight:700;color:var(--akcent);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.kt .l{color:var(--slaby)}
+.kt .mz{border-top:1px solid var(--linia);margin-top:4px;padding-top:1px;color:var(--tekst)}
+.kt .mz div{white-space:nowrap;overflow:hidden;text-overflow:ellipsis;font-size:11.5px} .kt .mz span{color:var(--slaby)}
+.kt .uw{font-size:11px;font-style:italic;color:var(--akcent2);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.kt .zw{position:absolute;left:50%;bottom:-11px;transform:translateX(-50%);font:600 11px/16px var(--bez);min-width:20px;height:18px;padding:0 4px;
+  border:1px solid var(--linia2);border-radius:9px;background:var(--tlo);color:var(--slaby);cursor:pointer;z-index:2}
+.kt .zw.gora{bottom:auto;top:-11px}
+.kt .zw:hover{color:var(--akcent);border-color:var(--akcent)}
+.pok-et{position:absolute;left:8px;width:56px;display:flex;align-items:center;font:700 12px var(--szeryf);color:var(--akcent2);letter-spacing:.02em}
+.zoom{position:absolute;left:10px;bottom:10px;display:flex;gap:4px;z-index:5}
+.zoom button{font:inherit;font-size:.88rem;min-width:2.3em;padding:5px 9px;border:1px solid var(--linia2);background:var(--tlo);color:var(--tekst);border-radius:6px;cursor:pointer}
+.zoom button:hover{border-color:var(--akcent)}
+#mini{position:absolute;right:10px;bottom:10px;border:1px solid var(--linia2);border-radius:6px;background:var(--tlo);opacity:.95;cursor:crosshair;z-index:5}
+.panel{position:absolute;right:10px;top:10px;width:300px;background:var(--tlo);border:1px solid var(--linia2);border-radius:10px;padding:12px 14px;
+  box-shadow:0 4px 18px rgba(0,0,0,.18);z-index:6;font-size:.92rem;cursor:auto}
+.panel p{margin:.5em 0} .panel .zamknij{position:absolute;right:6px;top:4px;border:0;background:none;font-size:1.3rem;cursor:pointer;color:var(--slaby)}
+.lista-drzewa ul{list-style:none;padding-left:1.4em;margin:0} .lista-drzewa>ul{padding-left:0}
+.lista-drzewa li{padding:2px 0} .lista-drzewa .nr{display:inline-block;min-width:3.5em;color:var(--akcent2);font-size:.82rem;font-weight:700}
+.lista-drzewa .mz{color:var(--slaby);font-size:.9rem}
+ul.potomkowie ul{border-left:1px solid var(--linia);margin-left:.4em}
+details.pomoc{margin:12px 0;background:var(--tlo2);border-radius:8px;padding:8px 14px} details.pomoc summary{cursor:pointer;font-weight:600}
+details.pomoc li{margin:.3em 0}
+/* pokrewieństwo */
+.pokr-wybor{display:flex;flex-wrap:wrap;gap:12px;align-items:end;margin:12px 0}
+.pokr-wybor label{display:flex;flex-direction:column;font-size:.9rem;color:var(--slaby);min-width:min(380px,100%)}
+.werdykt{font-size:1.15rem} .dwie-linie{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+.dwie-linie ol,.jedna-linia,.lancuch{background:var(--tlo2);border-radius:8px;padding:10px 10px 10px 2.4em;margin:0}
+.lancuch li{padding:2px 0} .lancuch .rel{color:var(--akcent2);font-size:.9rem}
 /* źródła */
-ul.zrodla-lista{list-style:none;padding:0;display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:12px}
-ul.zrodla-lista li{background:var(--karta);border:1px solid var(--linia);border-radius:8px;padding:10px;box-shadow:var(--cien)}
-ul.zrodla-lista a{display:flex;gap:10px;text-decoration:none;color:var(--tekst)}
-ul.zrodla-lista img{width:80px;height:100px;object-fit:cover;border-radius:4px;flex:none}
-dl.opis{display:grid;grid-template-columns:max-content 1fr;gap:4px 14px;font-size:.93rem}
-dl.opis dt{color:var(--slaby)} dl.opis dd{margin:0}
+ul.zrodla-lista{list-style:none;padding:0;display:grid;grid-template-columns:repeat(auto-fill,minmax(330px,1fr));gap:12px}
+ul.zrodla-lista li{border:1px solid var(--linia2);border-radius:8px;padding:10px;background:var(--tlo2)}
+ul.zrodla-lista a{display:flex;gap:12px;color:var(--tekst)}
+ul.zrodla-lista img{width:80px;height:104px;object-fit:cover;border-radius:4px;flex:none}
+a.zr{display:inline-block;font-size:.75rem;padding:0 6px;border-radius:10px;background:var(--tlo2);border:1px solid var(--linia);color:var(--slaby);white-space:nowrap;line-height:1.6}
+a.zr:hover{border-color:var(--akcent);color:var(--akcent);text-decoration:none}
+dl.opis{display:grid;grid-template-columns:max-content 1fr;gap:4px 14px;font-size:.93rem} dl.opis dt{color:var(--slaby)} dl.opis dd{margin:0}
 section.str{border-top:2px solid var(--linia);margin-top:24px}
-.dwie{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:20px;align-items:start}
-.lewa{position:sticky;top:110px} .lewa img{width:100%;border-radius:4px;box-shadow:var(--cien);background:#fff}
-.seg{background:var(--karta);border:1px solid var(--linia);border-radius:6px;padding:8px 12px 8px;margin:0 0 8px;position:relative}
-.seg .tt{font-family:var(--szeryf);font-size:1.02rem;line-height:1.6}
+.dwie{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:22px;align-items:start}
+.lewa{position:sticky;top:10px} .lewa img{width:100%;border-radius:4px;box-shadow:0 1px 4px rgba(0,0,0,.2);background:#fff}
+.seg{background:var(--tlo2);border:1px solid var(--linia);border-radius:6px;padding:8px 12px;margin:0 0 8px}
+.seg .tt{font-family:var(--szeryf);font-size:1.03rem;line-height:1.6}
 .seg:target{outline:3px solid var(--akcent2);background:var(--znacz)}
-.segid{font-size:.7rem;color:var(--slaby);text-decoration:none;float:right;margin-left:8px}
-.typ-naglowek .tt{font-weight:700} .typ-przypis .tt{font-size:.9rem}
-.typ-dopisek{border-style:dashed} .typ-pagina{opacity:.6}
-.typ-ilustracja{border-style:dotted}
-.red{font-family:var(--bez);font-size:.82rem;color:var(--red);font-style:italic}
-.rozstrz{letter-spacing:.18em}
-.pow{font-size:.8rem;color:var(--slaby);border-top:1px dotted var(--linia);margin-top:6px;padding-top:4px}
+.segid{font-size:.7rem;color:var(--slaby);float:right;margin-left:8px}
+.typ-naglowek .tt{font-weight:700} .typ-przypis .tt{font-size:.9rem} .typ-dopisek{border-style:dashed} .typ-pagina{opacity:.6} .typ-ilustracja{border-style:dotted}
+.red{font-family:var(--bez);font-size:.82rem;color:var(--slaby);font-style:italic} .rozstrz{letter-spacing:.18em}
+.pow{font-size:.82rem;color:var(--slaby);border-top:1px dotted var(--linia);margin-top:6px;padding-top:4px}
 .kafle-zdj{display:grid;grid-template-columns:repeat(auto-fill,minmax(170px,1fr));gap:10px}
-.kafle-zdj figure{margin:0;background:var(--karta);border:1px solid var(--linia);border-radius:6px;padding:6px}
-.kafle-zdj figure:target{outline:3px solid var(--akcent2)}
-.kafle-zdj img{width:100%;height:200px;object-fit:cover;border-radius:4px}
-.kafle-zdj figcaption{font-size:.8rem;color:var(--slaby)}
-/* teksty */
-article.tekst{max-width:78ch;font-family:var(--szeryf);font-size:1.05rem}
+.kafle-zdj figure{margin:0;border:1px solid var(--linia);border-radius:6px;padding:6px} .kafle-zdj figure:target{outline:3px solid var(--akcent2)}
+.kafle-zdj img{width:100%;height:200px;object-fit:cover;border-radius:4px} .kafle-zdj figcaption{font-size:.8rem;color:var(--slaby)}
+/* teksty, historia */
+article.tekst{max-width:76ch;font-family:var(--szeryf);font-size:1.08rem;line-height:1.7}
+article.tekst h1{font-size:2rem} article.tekst h2{font-size:1.45rem} article.tekst h3{font-size:1.15rem}
 article.tekst table{font-family:var(--bez);font-size:.88rem;border-collapse:collapse;display:block;overflow-x:auto}
 article.tekst td,article.tekst th{border:1px solid var(--linia);padding:4px 8px;vertical-align:top}
 article.tekst blockquote{border-left:3px solid var(--akcent2);margin-left:0;padding-left:14px;color:var(--slaby)}
-.odsyl{font-family:var(--bez);white-space:normal} .kotwica{scroll-margin-top:120px}
-.kotwica:target + .odsyl{background:var(--znacz)}
-:target{scroll-margin-top:120px}
-/* oś czasu */
-ul.czas .rok{display:inline-block;min-width:3.4em;font-family:var(--szeryf);font-weight:700;color:var(--akcent)}
+article.tekst .footnote{font-family:var(--bez);font-size:.86rem;color:var(--slaby);border-top:1px solid var(--linia);margin-top:2em}
+article.tekst .footnote li{margin:.3em 0} article.tekst sup a{color:var(--akcent2);font-weight:600}
+.hist{display:grid;grid-template-columns:270px minmax(0,1fr);gap:34px;align-items:start}
+nav.spis-tresci{position:sticky;top:12px;font-size:.9rem;background:var(--tlo2);border-radius:8px;padding:10px 14px;max-height:92vh;overflow:auto}
+nav.spis-tresci ol{padding-left:1.4em;margin:.4em 0} nav.spis-tresci li{margin:.25em 0}
+.odsyl{font-family:var(--bez);white-space:normal} .kotwica{scroll-margin-top:20px}
+:target{scroll-margin-top:20px}
+/* oś czasu, filtry */
 .filtry{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
 /* mapa */
-.mapa{height:460px;border:1px solid var(--linia);border-radius:8px;margin:10px 0}
-.mapa.mala{height:260px;max-width:520px}
-/* drzewo */
-#drzewo{overflow-x:auto;padding:8px 0}
-.pok{display:flex;justify-content:center;gap:10px;flex-wrap:wrap;margin:6px 0}
-.pok-et{text-align:center;font-size:.75rem;text-transform:uppercase;letter-spacing:.06em;color:var(--slaby);margin-top:10px}
-.os-k{background:var(--karta);border:1px solid var(--linia);border-radius:8px;padding:6px 10px;min-width:150px;max-width:220px;
-  text-align:center;cursor:pointer;box-shadow:var(--cien);font-size:.9rem}
-.os-k.m{border-top:3px solid #4a6fa5} .os-k.k{border-top:3px solid #b5577a}
-.os-k.srodek{outline:3px solid var(--akcent2);font-size:1rem}
-.os-k.spor{border-style:dashed}
-.os-k a{font-weight:600;text-decoration:none} .os-k .lata{display:block}
-.rodz{display:flex;gap:18px;justify-content:center;flex-wrap:wrap}
-.para{border:1px dashed var(--linia);border-radius:10px;padding:8px}
-.para>.pok{margin:4px 0}
-/* wyniki */
-#wyniki .w{padding:6px 0;border-bottom:1px solid var(--linia)}
-#wyniki .typ{font-size:.72rem;text-transform:uppercase;color:var(--akcent2);margin-right:6px}
-#wyniki mark{background:var(--znacz);color:inherit}
-@media (max-width:760px){
-  .dwie{grid-template-columns:1fr} .lewa{position:static}
-  h1{font-size:1.6rem} .gora{position:static} .szybkie{margin-left:0;width:100%} .szybkie input{width:100%}
-  .fakt .et{display:block}
-}
+.mapa{height:480px;border:1px solid var(--linia2);border-radius:8px;margin:10px 0}
+.mapa.mala{height:300px}
 .mapa-przycisk{font:inherit;font-size:.85rem;padding:5px 10px;border:1px solid #888;border-radius:4px;background:#fff;color:#222;cursor:pointer}
-/* miejsca — karty według kategorii */
-.legenda{display:flex;flex-wrap:wrap;gap:6px 16px;font-size:.88rem;margin:4px 0}
+.legenda{display:flex;flex-wrap:wrap;gap:6px 16px;font-size:.9rem;margin:4px 0}
 .legenda label{display:flex;align-items:center;gap:5px;cursor:pointer}
-.kropka{display:inline-block;width:12px;height:12px;border-radius:50%;flex:none}
-.kropka.duza{width:14px;height:14px;margin-right:8px;vertical-align:middle}
-.karty-mj{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:12px}
-.karta-mj{background:var(--karta);border:1px solid var(--linia);border-top:4px solid;border-radius:8px;padding:10px 14px;box-shadow:var(--cien)}
-.karta-mj h3{margin:.1em 0 .2em;font-size:1.2rem}
-.karta-mj p{margin:.25em 0;font-size:.9rem}
-.karta-mj .dzis{color:var(--slaby);font-size:.82rem}
-.karta-mj .liczby-mj b{color:var(--akcent)}
-.karta-mj .pod{font-size:.82rem;color:var(--slaby)}
-.przycisk.maly,.na-mapie{font:inherit;font-size:.8rem;padding:2px 9px;border:1px solid var(--akcent);border-radius:5px;background:none;color:var(--akcent);cursor:pointer;text-decoration:none}
-.na-mapie:hover,.przycisk.maly:hover{background:var(--akcent);color:var(--karta)}
-details.rzadkie{margin:10px 0;background:var(--karta);border:1px solid var(--linia);border-radius:6px;padding:6px 12px}
-details.rzadkie summary{cursor:pointer;color:var(--slaby)}
-/* całe drzewo */
-.zakladki{display:flex;gap:4px;border-bottom:2px solid var(--linia);margin:4px 0 10px}
-.zakladki a{padding:6px 14px;text-decoration:none;color:var(--tekst);border:1px solid var(--linia);border-bottom:none;border-radius:6px 6px 0 0;background:var(--karta)}
-.zakladki a.on{background:var(--akcent);color:var(--karta);border-color:var(--akcent)}
-.zoom button{font:inherit;min-width:2.2em;padding:4px 8px;border:1px solid var(--linia);background:var(--karta);color:var(--tekst);border-radius:5px;cursor:pointer}
-.cale{position:relative;overflow:auto;height:75vh;border:1px solid var(--linia);border-radius:8px;background:var(--tlo)}
-.cale::after{content:"";display:block;width:var(--w);height:var(--h)}
-#plotno{position:absolute;left:12px;top:12px;transform-origin:0 0}
-svg.linie{position:absolute;left:0;top:0;overflow:visible}
-svg.linie path{fill:none;stroke:var(--slaby);stroke-width:1.2;opacity:.7}
-.wz{position:absolute;width:230px;box-sizing:border-box;background:var(--karta);border:1px solid var(--linia);border-left:4px solid #999;
-  border-radius:6px;padding:3px 8px;font-size:.8rem;line-height:1.35;overflow:hidden;box-shadow:var(--cien)}
-.wz.m{border-left-color:#4a6fa5} .wz.k{border-left-color:#b5577a}
-.wz.cel{outline:3px solid var(--akcent2);z-index:2}
-.wz .im{font-weight:700;text-decoration:none;display:inline-block;max-width:180px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;vertical-align:bottom}
-.wz .rodz{float:right;text-decoration:none;color:var(--slaby)}
-.wz .lata{display:block;font-size:.75rem}
-.wz .mz{white-space:nowrap;overflow:hidden;text-overflow:ellipsis;color:var(--slaby)}
-.wz .mz .lata{display:inline}
-.wz .mz a{color:var(--link)} .wz .skok{text-decoration:none;font-weight:700}
-.wz .alt{font-style:italic;color:var(--akcent);font-size:.72rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.rod-tytul{position:absolute;left:0;font-family:var(--szeryf);font-size:1.1rem;color:var(--akcent);font-weight:700}
+.kropka{display:inline-block;width:12px;height:12px;border-radius:50%;flex:none} .kropka.duza{width:14px;height:14px;margin-right:8px;vertical-align:middle}
+.karty-mj{display:grid;grid-template-columns:repeat(auto-fill,minmax(270px,1fr));gap:12px}
+.karta-mj{border:1px solid var(--linia2);border-top:4px solid;border-radius:8px;padding:10px 14px;background:var(--tlo)}
+.karta-mj h3{margin:.1em 0 .2em;font-size:1.2rem} .karta-mj p{margin:.25em 0;font-size:.9rem}
+.karta-mj .dzis,.karta-mj .pod{color:var(--slaby);font-size:.84rem} .karta-mj .liczby-mj b{color:var(--akcent)}
+.na-mapie{font:inherit;font-size:.8rem;padding:2px 9px;border:1px solid var(--akcent);border-radius:5px;background:none;color:var(--akcent);cursor:pointer}
+details.rzadkie{margin:10px 0;border:1px solid var(--linia);border-radius:6px;padding:6px 12px} details.rzadkie summary{cursor:pointer;color:var(--slaby)}
+/* wyszukiwarka */
+#wyniki .w{padding:7px 0;border-bottom:1px solid var(--linia)}
+#wyniki .typ{font-size:.72rem;text-transform:uppercase;color:var(--akcent2);margin-right:8px;font-weight:700}
+#wyniki mark{background:var(--znacz);color:inherit}
+/* małe ekrany */
+@media (max-width:980px){ .uklad,.hist,.dwie-kol{grid-template-columns:1fr} .uklad .boczna,nav.spis-tresci{position:static} .wejscie.duze{grid-column:auto} }
+@media (max-width:760px){
+  body{font-size:16px} main{padding:8px 14px 36px} .dwie,.dwie-linie{grid-template-columns:1fr} .lewa{position:static}
+  h1{font-size:1.6rem} .szybkie{margin-left:0;width:100%} .szybkie input{width:100%}
+  .gora nav a{padding:6px 8px} #mini{display:none} .panel{left:10px;width:auto}
+}
+/* druk */
+@media print{
+  .gora,footer,.zoom,#mini,.panel,.pasek,details.pomoc,.narz,.szybkie{display:none!important}
+  body{font-size:11pt;background:#fff;color:#000} main{max-width:none;padding:0}
+  .wykres{height:180mm;border:0;background:#fff;overflow:hidden} .uklad{grid-template-columns:1fr 70mm}
+  a{color:#000}
+}
