@@ -2,6 +2,10 @@
 # Pola oznaczone "?" lub w `do_ustalenia` wymagają potwierdzenia przez użytkownika.
 
 S01:
+  nazwa: "Kosiński, Przewodnik heraldyczny (1885)"
+  skrot: "Kosiński, *Przewodnik*"
+  kategoria: druk
+  opis_bibliograficzny: "Kosiński A. A., *Przewodnik heraldyczny. Monografie, genealogie i spis rodzin senatorskich i tytuły honorów posiadających*, t. V, Warszawa: Druk Braci Jeżyńskich (dawniej J. Ungra), 1885, s. 132–145 [dodatek do hasła „Grabowscy”: drzewo genealogiczne Radoszewskich h. Oksza]. Egzemplarz z odręcznymi znakami czytelnika, zbiory rodzinne."
   typ: druk
   tytul: "Przewodnik heraldyczny. Monografie, genealogje i spis rodzin senatorskich i tytuły honorowe posiadających. [T.] V"
   autor: "Ad. Am. Kosiński (ułożył)"
@@ -16,6 +20,10 @@ S01:
     - "Na żywej paginie widnieje „GRABOWSKI” — tekst o Radoszewskich jest częścią hasła Grabowskich (dodatek). Do odnotowania w opisie, nie błąd."
 
 S02:
+  nazwa: "Łakomy, Z dziejów Radoszewic (1981)"
+  skrot: "Łakomy, *Z dziejów Radoszewic*"
+  kategoria: rękopis
+  opis_bibliograficzny: "Łakomy S., *Z dziejów Radoszewic*, cz. I, Radoszewice 1981, rkps, okładka + 23 s., zbiory rodzinne."
   typ: rękopis
   tytul: "Z dziejów Radoszewic, cz. I"
   autor: "Stefan Łakomy"
@@ -29,6 +37,10 @@ S02:
     - "Część treści pokrywa się dosłownie z S10 (ten sam autor, wcześniejsza praca)."
 
 S03:
+  nazwa: "Księga rodzinna „The History of Our Family”"
+  skrot: "*Księga rodzinna*"
+  kategoria: rękopis
+  opis_bibliograficzny: "Radoszewska-Zielińska T. Boxa, *The History of Our Family* [księga rodzinna Boxa Radoszewskich z Krempy], rkps, ok. 1974–1996 (dopiski do 1999), 54 s., zbiory rodzinne."
   typ: rękopis
   tytul: "„The History of Our Family” — księga rodzinna (zeszyt w linie w brązowej skórzanej okładce „…PRESIT”)"
   autor: "Teresa Boxa Radoszewska-Zielińska (ur. 30 IV 1942, zm. 6 XII 1996)"
@@ -40,6 +52,10 @@ S03:
     - "Wiele stron w większości pustych (tylko nagłówki lub kilka wpisów)."
 
 S04:
+  nazwa: "Biogram Jerzego Radoszewskiego"
+  skrot: "*Biogram Jerzego R.*"
+  kategoria: rękopis
+  opis_bibliograficzny: "[Biogram Jerzego Boxy Radoszewskiego (1902–1967)], rkps, [b.r.], 2 s., zbiory rodzinne."
   typ: rękopis (luźna kartka)
   tytul: "„Jerzy Radoszewski Boxa h. Oksza 1902+1967 ur. w Krępie pow. Sieradzki” — biogram"
   autor: "nieznany (prawdopodobnie Anna z Prządzyńskich Radoszewska lub Teresa — do ustalenia)"
@@ -49,6 +65,10 @@ S04:
     - "Biała kartka bez linii, włożona do księgi S03 (?)."
 
 S05:
+  nazwa: "Notatka o kaplicy w Uniejowie"
+  skrot: "*Notatka o kaplicy*"
+  kategoria: rękopis
+  opis_bibliograficzny: "[Notatka o kaplicy Boxa Radoszewskich na cmentarzu w Uniejowie, o duchownych z rodu i o Krempie], rkps, [b.r.], 2 s., zbiory rodzinne."
   typ: rękopis (luźna kartka)
   tytul: "Kaplica Boxa Radoszewskich na cmentarzu w Uniejowie; Radoszewscy po I rozbiorze, Krępa, Niemysłów"
   autor: "nieznany"
@@ -58,6 +78,10 @@ S05:
     - "Kartka w kratkę, zginana; dwie strony (lub dwie kartki — do potwierdzenia)."
 
 S06:
+  nazwa: "Spis lektur o rodzinie"
+  skrot: "*Spis lektur*"
+  kategoria: rękopis
+  opis_bibliograficzny: "[Spis lektur o rodzinie Radoszewskich], rkps, [b.r.], 1 k., zbiory rodzinne."
   typ: rękopis (luźna kartka)
   tytul: "Bibliografia (spis lektur o rodzinie)"
   autor: "nieznany"
@@ -67,6 +91,10 @@ S06:
     - "Kartka w linie z czerwonym marginesem. Odnotowuje m.in. „Przewodnik heraldyczny II … Warszawa 1880, s. 467–470” — inny tom niż S01 (t. V, 1885)."
 
 S07:
+  nazwa: "Zeszyt wspomnień Anny z Prządzyńskich Radoszewskiej"
+  skrot: "*Zeszyt wspomnień*"
+  kategoria: rękopis
+  opis_bibliograficzny: "[Radoszewska A. z Prządzyńskich?], [Wspomnienia i genealogia rodzin Radoszewskich, Prządzyńskich, Drohojowskich i Grabińskich], rkps, [po 2005], 61 s., zbiory rodzinne."
   typ: rękopis
   tytul: "[Wspomnienia i genealogia rodzin Radoszewskich, Prządzyńskich, Drohojowskich, Grabińskich — zeszyt w kratkę] (tytuł roboczy)"
   autor: "Anna z Prządzyńskich Boxa-Radoszewska (ur. 22 III 1914, zm. 10 VII 1999)? — narracja w 1. osobie („Rodzeństwo moje”, „u nas w Milanówku”, „moja prababka”)"
@@ -78,6 +106,10 @@ S07:
     - "IMG_5931: drzewo Drohojowskich zapisane w poprzek strony."
 
 S08:
+  nazwa: "Kajzer, Pałace i dwory w dawnym województwie sieradzkim, t. 2"
+  skrot: "Kajzer, *Pałace i dwory*"
+  kategoria: druk
+  opis_bibliograficzny: "Kajzer L., [hasła:] *Kościerzyn — dwory* (s. 57–70), *Krempa — dwór* (s. 71–78), *Radoszewice — dwory* (s. 123–137), *Siemkowice — dwory* (s. 139–152), [w:] *Pałace i dwory w dawnym województwie sieradzkim*, t. 2, [b.m.], [po 1991]. Odbitka kserograficzna, zbiory rodzinne."
   typ: druk
   tytul: "„Pałace i dwory w dawnym województwie sieradzkim”, t. 2 (z okładki, S08-p000-s02); sygnatury arkuszy: „Materiały do dziejów…” — wydawca i rok bez karty tytułowej"
   autor: "Leszek Kajzer (hasło Radoszewice: wtrącenia „przyp. LK”, S08-p130-s02; „W pracy opublikowanej w roku 1984 sugerowałem…”, S08-p128-s04 + przyp. 24). Autorstwo pozostałych haseł — prawdopodobnie ten sam autor (1. osoba, odwołania do jego badań)"
@@ -89,6 +121,10 @@ S08:
     - "Brak IMG_6000 — strony 127 (IMG_5999) i 128 (IMG_6001) następują bezpośrednio po sobie, więc nic nie zginęło."
 
 S09:
+  nazwa: "Szkic „szlaku przodków” (2017)"
+  skrot: "*Szlak przodków*"
+  kategoria: rękopis
+  opis_bibliograficzny: "[Szlak przodków Boxa-Radoszewskich — szkic trasy], rkps, 8 VII 2017, 1 k., zbiory rodzinne."
   typ: rękopis (luźna kartka)
   tytul: "„szlak przodków Boxa-Radoszewskich” — odręczny szkic trasy (tytuł z kartki)"
   autor: "nieznany"
@@ -99,6 +135,10 @@ S09:
     - "Kartka A4 sfotografowana bokiem; zaznaczenia zakreślaczem. Materiał pomocniczy do mapy na stronie."
 
 S10:
+  nazwa: "Łakomy, Dwór i założenia parkowe w Radoszewicach (1978)"
+  skrot: "Łakomy, *Dwór i założenia parkowe*"
+  kategoria: rękopis
+  opis_bibliograficzny: "Łakomy S., *Dwór i założenia parkowe w Radoszewicach k. Wielunia*. Praca programowa PTTK „Polska naszych dni”, Radoszewice, 20 III 1978, rkps, 9 s., zbiory rodzinne."
   typ: rękopis
   tytul: "Dwór i założenia parkowe w Radoszewicach k. Wielunia"
   autor: "Stefan Łakomy, 97-625 Radoszewice, woj. sieradzkie"

@@ -59,25 +59,25 @@ W czasie **powstania styczniowego** Józefat był **naczelnikiem powiatu**. Pote
 
 Kartka o kaplicy w Uniejowie umieszcza to zdarzenie „po bitwie pod Niemysłowem 23 maja 1863 r.”[^j11] Kajzer, za opracowaniem Anny Radoszewskiej, podaje inną wersję zakończenia. Według niego żona Józefata, „znajdująca się w zaawansowanej ciąży”, „zdołała upić Kozaków, którzy nie splądrowali domu”.[^j12] Niejasny wyraz „kuchmale” z zeszytu to najpewniej **krochmalnia**, budynek, który później przebudowano na gorzelnię.[^j13]
 
-![Krempa — rzut parteru dworu z funkcjami pomieszczeń (Kajzer, S08, s. 76)](skany/IMG_5992-1.jpg)
+![Krempa — rzut parteru dworu z funkcjami pomieszczeń (Kajzer, *Pałace i dwory*, s. 76)](skany/IMG_5992-1.jpg)
 
 ### Kaplica w Uniejowie
 
-W **1880 roku** Józefat i Teofila zbudowali na cmentarzu w **Uniejowie** murowaną **kaplicę grobową Boxa Radoszewskich**. Przetrwała do dziś. Kajzer pisze, że dwie takie kaplice, w Uniejowie i w Wartkowicach, świadczą o „niezłej pozycji finansowej” rodu.[^j14] Do krypty przeniesiono zmarłych wcześniej członków rodziny. Spoczywają w niej według kartki S05 i zeszytu S07:[^j15]
+W **1880 roku** Józefat i Teofila zbudowali na cmentarzu w **Uniejowie** murowaną **kaplicę grobową Boxa Radoszewskich**. Przetrwała do dziś. Kajzer pisze, że dwie takie kaplice, w Uniejowie i w Wartkowicach, świadczą o „niezłej pozycji finansowej” rodu.[^j14] Do krypty przeniesiono zmarłych wcześniej członków rodziny. Spoczywają w niej według *Notatki o kaplicy* i *Zeszytu wspomnień*:[^j15]
 
 | Pochowany | Daty | Uwagi |
 |---|---|---|
 | Roch Radoszewski, kasztelanic | zm. 1820 | przeniesiony |
-| Kunegunda z Wierzchleyskich Radoszewska | zm. 1828 | przeniesiona (wymieniona w S03 i S05, brak jej w S07) |
+| Kunegunda z Wierzchleyskich Radoszewska | zm. 1828 | przeniesiona (wymieniona w *Księdze rodzinnej* i *Notatce o kaplicy*, brak jej w *Zeszycie wspomnień*) |
 | Józef Radoszewski z Dominikowic | zm. 1850 | brat Franciszka |
 | Henryk Radoszewski | zm. 1861, w wieku 33 lat | syn Franciszka i Józefy |
 | Michał Szeliski h. Szeliga z Marzenina | 1800–1866 | ojciec Teofili |
 | Henryś Radoszewski | zm. 1870, w wieku 8 lat | syn Józefata i Teofili |
-| Antoni Szumowski | zm. 1855 (S07) / 1884 (S03) / 1885 (S05) | związek z rodziną nieznany |
-| Józefat Boxa Radoszewski | 1830–1892 (S05: 1893) | fundator |
+| Antoni Szumowski | zm. 1855 (*Zeszyt*) / 1884 (*Księga*) / 1885 (*Notatka*) | związek z rodziną nieznany |
+| Józefat Boxa Radoszewski | 1830–1892 (*Notatka*: 1893) | fundator |
 | Teofila z Szeliskich Radoszewska | 1842–1909 | fundatorka |
 
-![Kartka „Kaplica Boxa Radoszewskich herbu Oksza na cmentarzu w Uniejowie” z listą pochowanych w krypcie (S05, s. 1)](skany/IMG_5908-1.jpg)
+![Kartka „Kaplica Boxa Radoszewskich herbu Oksza na cmentarzu w Uniejowie” z listą pochowanych w krypcie (*Notatka o kaplicy*, s. 1)](skany/IMG_5908-1.jpg)
 
 ### Dzieci Józefata i Teofili
 
@@ -88,7 +88,7 @@ Józefat i Teofila mieli czworo dzieci:[^j16]
 - **Maria** (1867–1965) wyszła za **Rafała Mierzyńskiego** z Węgrzy herbu Jastrzębiec, inżyniera budowlanego. Według zeszytu Mierzyński „wynalazł stropy, które między innymi zastosowano w hotelu Bristol”. Maria mieszkała do końca wojny przy Nowogrodzkiej 10. Jej córka, również **Maria** (1897–1975), wyszła po raz pierwszy za Mierzyńskiego. Zeszyt podaje imiona Władysław Konstanty i dopisek, że został zamordowany w Rosji przez NKWD[?]. Księga rodzinna podaje imię Tadeusz. Po raz drugi Maria wyszła za Żeromskiego.[^j18]
 - **Henryk (Henryś)** zmarł jako dziecko. Według większości źródeł w 1870 roku w wieku 8 lat, według drzewa w zeszycie w 1867 roku.[^j19]
 
-Józefat zmarł w **1892 roku** (kartka S05 podaje 1893), a Teofila w 1909 roku. Oboje spoczywają w krypcie w Uniejowie. Ich portrety przechowywał Andrzej Radoszewski.[^j20]
+Józefat zmarł w **1892 roku** (*Notatka o kaplicy* podaje 1893), a Teofila w 1909 roku. Oboje spoczywają w krypcie w Uniejowie. Ich portrety przechowywał Andrzej Radoszewski.[^j20]
 
 ---
 

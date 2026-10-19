@@ -9,6 +9,8 @@ Ilustracje: ![podpis](skany/plik.jpg) — pliki z strona/skany/ (narzedzia/zdjec
 """
 import datetime, glob, html, os, re, sys
 
+import yaml
+
 from docx import Document
 from docx.enum.section import WD_SECTION
 from docx.enum.style import WD_STYLE_TYPE
@@ -330,6 +332,10 @@ def tabela(doc, wiersze, P):
                 sh.set(qn('w:val'), 'clear')
                 sh.set(qn('w:fill'), 'EFE8DC')
                 tcpr.append(sh)
+    if wiersze[0][0].startswith('Skrót') and kol == 3:          # wykaz skrótów: wąska kolumna skrótu i symbolu
+        for row in t.rows:
+            for c, sz in zip(row.cells, (Cm(4.2), Cm(10.4), Cm(1.6))):
+                c.width = sz
     # nagłówek powtarzany na kolejnych stronach
     trpr = t.rows[0]._tr.get_or_add_trPr()
     th = OxmlElement('w:tblHeader')
@@ -346,14 +352,15 @@ def word(blk, przyp):
     P = Przypisy(przyp)
     # okładka zastępuje tytuł, podtytuł i pierwszy akapit z kursywą
     start = next(i for i, b in enumerate(blk) if b[0] == 'h2')
-    pierwszy_h1 = True
+    pierwszy_h1, w_bibliografii = True, False
     for b in blk[start:]:
         typ = b[0]
         if typ == 'h1':
             h = doc.add_paragraph(style='Heading 1')
             dodaj_tekst(h, b[1], P)
-            h.paragraph_format.page_break_before = not pierwszy_h1
+            h.paragraph_format.page_break_before = True
             pierwszy_h1 = False
+            w_bibliografii = b[1].startswith('Bibliografia')
         elif typ in ('h2', 'h3'):
             h = doc.add_paragraph(style='Heading 2' if typ == 'h2' else 'Heading 3')
             dodaj_tekst(h, b[1], P)
@@ -361,6 +368,12 @@ def word(blk, przyp):
             dodaj_tekst(doc.add_paragraph(), b[1], P)
         elif typ == 'cyt':
             dodaj_tekst(doc.add_paragraph(style='Quote'), b[1], P)
+        elif typ == 'li' and w_bibliografii:
+            p = doc.add_paragraph()          # opis bibliograficzny: wcięcie wiszące, bez punktora
+            p.paragraph_format.left_indent = Cm(1)
+            p.paragraph_format.first_line_indent = Cm(-1)
+            p.paragraph_format.space_after = Pt(3)
+            dodaj_tekst(p, b[3], P, Pt(10))
         elif typ == 'li':
             _, poz, num, tx = b
             st = ('List Number' if num else 'List Bullet') + (' 2' if poz else '')
@@ -405,12 +418,67 @@ def word(blk, przyp):
     return len(P.lista)
 
 
+# ============================================================ źródła: nazwy, skróty, bibliografia
+
+KOD = re.compile(r'\bS(?:0[1-9]|10)\b(?!-)')
+
+
+def zrodla():
+    return yaml.safe_load(open(os.path.join(KORZEN, 'zrodla', 'zrodla.yaml'), encoding='utf-8'))
+
+
+def klucz_alfa(t):
+    t = re.sub(r'[\[\]*„”"]', '', t).lower()
+    for a, b in (('ą', 'a~'), ('ć', 'c~'), ('ę', 'e~'), ('ł', 'l~'), ('ń', 'n~'), ('ó', 'o~'), ('ś', 's~'), ('ź', 'z~'), ('ż', 'z~~')):
+        t = t.replace(a, b)
+    return t
+
+
+def wstaw_wykazy(tekst, zr):
+    """Znaczniki w tekście → wykaz skrótów i bibliografia źródeł (z zrodla/zrodla.yaml)."""
+    wiersze = sorted(zr.items(), key=lambda kv: klucz_alfa(kv[1]['skrot']))
+    tab = '| Skrót w przypisach | Źródło (opis bibliograficzny) | Symbol |\n|---|---|---|\n' + ''.join(
+        f"| {v['skrot']} | {v['opis_bibliograficzny']} | {k} |\n" for k, v in wiersze)
+    tekst = tekst.replace('<!-- WYKAZ-ZRODEL -->', tab.strip())
+    for znacznik, kat in (('<!-- BIBLIOGRAFIA-RKPS -->', 'rękopis'), ('<!-- BIBLIOGRAFIA-DRUKI -->', 'druk')):
+        poz = sorted((v['opis_bibliograficzny'] for v in zr.values() if v['kategoria'] == kat), key=klucz_alfa)
+        tekst = tekst.replace(znacznik, '\n'.join(f'- {x}' for x in poz))
+    return tekst
+
+
+def przypisy_skroty(tekst, zr):
+    """Symbole S01–S10 w przypisach → skróty; „Tamże” przy powtórzeniu tego samego (jedynego) źródła."""
+    defs = {m.group(1): m.group(2) for m in re.finditer(r'^\[\^([^\]]+)\]:\s*(.*)$', tekst, re.M)}
+    cialo = re.sub(r'^\[\^[^\]]+\]:.*$', '', tekst, flags=re.M)
+    nowe, poprz = {}, None
+    for et in re.findall(r'\[\^([^\]]+)\]', cialo):       # kolejność odwołań = kolejność numerów przypisów
+        t = defs.get(et)
+        if t is None or et in nowe:
+            continue
+        t = re.sub(r'\b(S(?:0[1-9]|10))\b(?!-)\s*\([^)]*\)(?=,)', r'\1', t)      # „S01 (Kosiński), s. …” → „S01, s. …”
+        kody = set(KOD.findall(t))
+        m = KOD.match(t)
+        jedno = m.group(0) if m and len(kody) == 1 else None
+        if jedno and jedno == poprz:
+            t = 'Tamże' + t[m.end():]
+        poprz = jedno
+        nowe[et] = KOD.sub(lambda k: zr[k.group(0)]['skrot'], t)
+    return re.sub(r'^\[\^([^\]]+)\]:\s*(.*)$', lambda m: f'[^{m.group(1)}]: {nowe.get(m.group(1), m.group(2))}',
+                  tekst, flags=re.M)
+
+
 def main():
     czesci = sorted(glob.glob(os.path.join(CZESCI, '*.md')))
     tekst = '\n\n'.join(open(p, encoding='utf-8').read().strip() for p in czesci) + '\n'
+    zr = zrodla()
+    tekst = przypisy_skroty(wstaw_wykazy(tekst, zr), zr)
+    zostaly = [w for w in tekst.split('\n') if KOD.search(re.sub(r'⟨[^⟩]*⟩', '', w)) and not w.startswith('|')]
+    if zostaly:
+        print('Uwaga — symbole źródeł poza przypisami:', *[w[:120] for w in zostaly[:8]], sep='\n  ')
     open(WYJ_MD, 'w', encoding='utf-8').write(
         '<!-- Plik złożony automatycznie z teksty/historia/*.md przez narzedzia/historia.py — nie edytować ręcznie. -->\n\n' + tekst)
     blk, przyp = bloki(tekst)
+    przyp = {k: re.sub(r'\s*⟨[^⟩]*⟩', '', v) for k, v in przyp.items()}     # w druku bez identyfikatorów fragmentów
     uzyte = set(re.findall(r'\[\^([^\]]+)\](?!:)', re.sub(r'^\[\^[^\]]+\]:.*$', '', tekst, flags=re.M)))
     brak = sorted(uzyte - set(przyp))
     nieuz = sorted(set(przyp) - uzyte)

@@ -120,7 +120,7 @@ Kajzer, opierając się na liście Anny z Prządzyńskich Radoszewskiej, pisze t
 
 Nowymi właścicielami Radoszewic, od połowy lub końca lat 70. XVIII wieku, zostali **Andrzej, a potem Feliks Wierusz Niemojowscy**. Według Kajzera była to „najbogatsza familia Wieluńskiego”.[^x16] To oni zbudowali zachowany do dziś dwór w Radoszewicach, w latach 70. lub 80. XVIII wieku. Od 1945 roku mieściła się w nim szkoła podstawowa.[^x17] Ostatnim Niemojowskim w Radoszewicach był **Ludwik** (1823–1892), pisarz i zesłaniec na Sybir za pomoc powstańcom w 1863 roku. Jego siostra w bitwie pod Radoszewicami 27 marca 1863 roku „ocaliła sztandar powstańczy, wyrwawszy go z rąk śmiertelnie ranionego kosyniera”.[^x18] To już jednak dzieje innego rodu.
 
-![Radoszewice — plan sytuacyjny zespołu dworskiego (Kajzer, S08, s. 124)](skany/IMG_5996.jpg)
+![Radoszewice — plan sytuacyjny zespołu dworskiego (Kajzer, *Pałace i dwory*, s. 124)](skany/IMG_5996.jpg)
 
 Siemkowice Radoszewscy opuścili wcześniej. Według Kajzera Siemkowscy wyprowadzili się z nich w końcu XVII wieku, a dobra przeszły na Święcickich, a potem Karśnickich. *Ciekawostka:* w tradycji Karśnickich zachowała się wersja, że weszli oni w posiadanie Siemkowic „już około 1639 r., poprzez małżeństwo z Radoszewską”. Źródła nie mówią, o którą Radoszewską chodzi.[^x19]
 
@@ -130,7 +130,7 @@ Siemkowice Radoszewscy opuścili wcześniej. Według Kajzera Siemkowscy wyprowad
 [^m4]: S01, s. 144 ⟨S01-p144-s02⟩. Data bitwy pod Mohaczem — uwaga opracowującego.
 [^m5]: S07, s. 1 i 4 ⟨S07-p01-s01, S07-p04-s03⟩.
 [^m6]: S07, s. 4 ⟨S07-p04-s03⟩ (odczyt nazwiska niepewny).
-[^m7]: Dopisek odręczny w egzemplarzu S01, s. 139 ⟨S01-p139-s04⟩; zob. `dane/watpliwosci.md`.
+[^m7]: S01, s. 139, dopisek odręczny w egzemplarzu rodzinnym ⟨S01-p139-s04⟩; zob. też `dane/watpliwosci.md`.
 [^m8]: S02, s. 3 ⟨S02-p03-s01⟩ (za: A. Pawiński, *Wielkopolska* t. II, s. 289); S08, s. 128 ⟨S08-p128-s04⟩.
 [^m9]: S08, s. 128–129 ⟨S08-p128-s04, S08-p129-s01⟩.
 [^m10]: S02, s. 23 ⟨S02-p23-s01⟩ (za: W. Szczygielski, *Produkcja rolnicza gospodarstwa folwarcznego w Wieluńskim*, 1963, s. 141).

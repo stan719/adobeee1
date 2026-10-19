@@ -8,15 +8,39 @@
 
 ### Od opracowującego
 
-To opracowanie zbiera w jedną opowieść wszystko, co zawiera rodzinny zbiór materiałów o Radoszewskich herbu Oksza i o rodzinach z nimi spokrewnionych. Powstało z dziesięciu źródeł (oznaczonych w przypisach symbolami S01–S10). Najstarsze z nich to wydrukowane w 1885 roku drzewo genealogiczne z *Przewodnika heraldycznego* Kosińskiego, sięgające według jego autora początku XVII wieku. Najmłodsze to szkic trasy „szlakiem przodków” z 2017 roku. Pośrodku leżą: dwa rękopisy Stefana Łakomego z Radoszewic (1978 i 1981), monografia dworów ziemi sieradzkiej Leszka Kajzera (ok. 1991) oraz rodzinne zapiski z XX wieku. Wśród nich są przede wszystkim księga rodzinna *The History of Our Family*, prowadzona przez Teresę Radoszewską-Zielińską, i zeszyt wspomnień oraz genealogii spisany najpewniej przez Annę z Prządzyńskich Radoszewską. Pełny opis źródeł zawiera Aneks B.
+To opracowanie zbiera w jedną opowieść wszystko, co zawiera rodzinny zbiór materiałów o Radoszewskich herbu Oksza i o rodzinach z nimi spokrewnionych. Powstało z dziesięciu źródeł, którym nadałem krótkie nazwy (np. *Zeszyt wspomnień*, Kajzer, *Pałace i dwory*). Wyjaśnia je rozdział „Objaśnienie źródeł i skrótów”. Najstarsze z nich to wydrukowane w 1885 roku drzewo genealogiczne z *Przewodnika heraldycznego* Kosińskiego, sięgające według jego autora początku XVII wieku. Najmłodsze to szkic trasy „szlakiem przodków” z 2017 roku. Pośrodku leżą: dwa rękopisy Stefana Łakomego z Radoszewic (1978 i 1981), monografia dworów ziemi sieradzkiej Leszka Kajzera (ok. 1991) oraz rodzinne zapiski z XX wieku. Wśród nich są przede wszystkim księga rodzinna *The History of Our Family*, prowadzona przez Teresę Radoszewską-Zielińską, i zeszyt wspomnień oraz genealogii spisany najpewniej przez Annę z Prządzyńskich Radoszewską. Pełne opisy bibliograficzne są w objaśnieniu źródeł i w bibliografii na końcu.
 
 Kilka zasad, którymi się kierowałem:
 
-- **Każda informacja ma przypis do źródła.** Przypis podaje źródło i stronę, a w nawiasie identyfikator fragmentu transkrypcji (np. ⟨S01-p141-s04⟩ — strona 141 przewodnika Kosińskiego, akapit o Imbramie). Po tym identyfikatorze w bazie danych i na stronie internetowej rodziny można odnaleźć zdjęcie oryginalnej strony i dosłowny cytat.
+- **Każda informacja ma przypis do źródła.** Przypis podaje skrót źródła i stronę, np. Kosiński, *Przewodnik*, s. 141. W wersji internetowej przy każdym przypisie jest też odnośnik do zdjęcia oryginalnej strony i jej odczytu.
 - **Rozbieżności nie są rozstrzygane na siłę.** Gdy źródła podają różne daty, imiona lub fakty, opisuję wszystkie wersje i wskazuję, skąd pochodzi każda z nich. Własne przypuszczenia oznaczam wyraźnie jako uwagi opracowującego.
 - **Odczyty niepewne** zachowują znak [?]. Dotyczy to zwłaszcza nazwisk w rękopisach, których nie udało się odczytać z całą pewnością. Lista wszystkich wątpliwości jest w pliku `dane/watpliwosci.md`. Wiele z nich może rozstrzygnąć pamięć rodziny.
 - **Tło historyczne** (daty bitew, panowania królów itp.) dodaję tylko tam, gdzie pomaga zrozumieć źródło. Pochodzi ono z ogólnej wiedzy historycznej, nie z rodzinnych materiałów, i jest oznaczone jako uwaga.
 - Imiona i nazwiska podaję w pisowni współczesnej (Maria zamiast Marja, Krempa zgodnie ze źródłami rodzinnymi, choć urzędowo wieś nazywa się dziś Krępa).
+
+### Objaśnienie źródeł i skrótów
+
+Podstawą opracowania jest dziesięć materiałów z rodzinnego zbioru. Osiem to rękopisy: zapiski, notatki i dwie prace miejscowego regionalisty. Dwa to druki, a raczej ich fragmenty zachowane w zbiorze. Rękopisy bez własnego tytułu otrzymały tytuły nadane, podane zgodnie z przyjętym zwyczajem w nawiasie kwadratowym. W przypisach źródła są cytowane skrótami z poniższej tabeli. Symbol z ostatniej kolumny oznacza to samo źródło w bazie danych i na stronie internetowej rodziny.
+
+| Skrót w przypisach | Źródło (opis bibliograficzny) | Symbol |
+|---|---|---|
+| *Biogram Jerzego R.* | [Biogram Jerzego Boxy Radoszewskiego (1902–1967)], rkps, [b.r.], 2 s., zbiory rodzinne. | S04 |
+| Kajzer, *Pałace i dwory* | Kajzer L., [hasła:] *Kościerzyn — dwory* (s. 57–70), *Krempa — dwór* (s. 71–78), *Radoszewice — dwory* (s. 123–137), *Siemkowice — dwory* (s. 139–152), [w:] *Pałace i dwory w dawnym województwie sieradzkim*, t. 2, [b.m.], [po 1991]. Odbitka kserograficzna, zbiory rodzinne. | S08 |
+| Kosiński, *Przewodnik* | Kosiński A. A., *Przewodnik heraldyczny. Monografie, genealogie i spis rodzin senatorskich i tytuły honorów posiadających*, t. V, Warszawa: Druk Braci Jeżyńskich (dawniej J. Ungra), 1885, s. 132–145 [dodatek do hasła „Grabowscy”: drzewo genealogiczne Radoszewskich h. Oksza]. Egzemplarz z odręcznymi znakami czytelnika, zbiory rodzinne. | S01 |
+| *Księga rodzinna* | Radoszewska-Zielińska T. Boxa, *The History of Our Family* [księga rodzinna Boxa Radoszewskich z Krempy], rkps, ok. 1974–1996 (dopiski do 1999), 54 s., zbiory rodzinne. | S03 |
+| Łakomy, *Dwór i założenia parkowe* | Łakomy S., *Dwór i założenia parkowe w Radoszewicach k. Wielunia*. Praca programowa PTTK „Polska naszych dni”, Radoszewice, 20 III 1978, rkps, 9 s., zbiory rodzinne. | S10 |
+| Łakomy, *Z dziejów Radoszewic* | Łakomy S., *Z dziejów Radoszewic*, cz. I, Radoszewice 1981, rkps, okładka + 23 s., zbiory rodzinne. | S02 |
+| *Notatka o kaplicy* | [Notatka o kaplicy Boxa Radoszewskich na cmentarzu w Uniejowie, o duchownych z rodu i o Krempie], rkps, [b.r.], 2 s., zbiory rodzinne. | S05 |
+| *Spis lektur* | [Spis lektur o rodzinie Radoszewskich], rkps, [b.r.], 1 k., zbiory rodzinne. | S06 |
+| *Szlak przodków* | [Szlak przodków Boxa-Radoszewskich — szkic trasy], rkps, 8 VII 2017, 1 k., zbiory rodzinne. | S09 |
+| *Zeszyt wspomnień* | [Radoszewska A. z Prządzyńskich?], [Wspomnienia i genealogia rodzin Radoszewskich, Prządzyńskich, Drohojowskich i Grabińskich], rkps, [po 2005], 61 s., zbiory rodzinne. | S07 |
+
+Zasady cytowania:
+
+- Przy rękopisach „s.” oznacza kolejną stronę rękopisu według numeracji przyjętej przy inwentaryzacji zbioru. Przy drukach jest to strona druku.
+- „Tamże” oznacza to samo źródło co w przypisie bezpośrednio poprzedzającym.
+- Przy przekazach pośrednich podaję obie warstwy, np. „Łakomy, *Z dziejów Radoszewic*, s. 9 (za: W. Prygodzki, *Z przeszłości Wielunia*)”. Pełne opisy prac cytowanych w ten sposób są w bibliografii.
+- Wtrącenia w nawiasach kwadratowych [ ] w cytatach pochodzą od opracowującego. Znak [?] oznacza odczyt niepewny.
 
 ---
 
@@ -55,7 +79,7 @@ Jak ocenić tę legendę? Kosiński, publikując drzewo, ostrzegał, że pierwsz
 
 W 1885 roku Adam Amilkar Kosiński wydawał w Warszawie V tom *Przewodnika heraldycznego*. Już po oddaniu tomu do druku otrzymał „dawne — bo niezaprzeczenie z pierwszych lat XVII wieku pochodzące — drzewo genealogiczne rodziny Radoszewskich herbu Oksza”. Zamieścił je „prawie dosłownie” jako dodatek do hasła o Grabowskich, bo uważał ich za gałąź Okszyców. Oryginał był ułożony „w kółkach”, a Kosiński podzielił go na pokolenia.[^d1] Drzewo nosiło łaciński tytuł. W przekładzie brzmi on: tablica genealogiczna „wielce zacnego i wielce możnego domu Panów Boksów z Siemkowic na Radoszewicach, Brzoszencinie, Stróży etc. etc. Radoszewskich”, zebrana „z kronik, przywilejów, transakcji, zapisów kościelnych i klasztornych”. Spisano ją „Panu Bogu Najwyższemu na chwałę, Rzeczypospolitej na wiadomość, a familii na zaszczyt i pożytek”.[^d2]
 
-![Kosiński, *Przewodnik heraldyczny* t. V (1885), s. 132–133: wstęp Kosińskiego i początek drzewa Radoszewskich (egzemplarz rodzinny, S01)](skany/IMG_5811-1.jpg)
+![Kosiński, *Przewodnik heraldyczny* t. V (1885), s. 132–133: wstęp Kosińskiego i początek drzewa Radoszewskich (egzemplarz rodzinny)](skany/IMG_5811-1.jpg)
 
 Autor drzewa pisze w pierwszej osobie: „jako my wszyscy” Radoszewscy, „wszystko, co mamy”, „widziałem z nich [ksiąg] dużo w Częstochowie”. Był więc członkiem rodziny, najpewniej z pokolenia synów Mikołaja V lub ich dzieci. Egzemplarz *Przewodnika* w zbiorze rodzinnym ma odręczne podkreślenia i gwiazdki niebieskim długopisem (s. 136–143) oraz dopisek „85 lat” przy jednym z Mikołajów.[^d3]
 
@@ -131,52 +155,52 @@ Najstarszą siedzibą rodu był drewniany dwór obronny na kopcu w łąkach, oko
 
 Same **Radoszewice** pojawiają się w źródłach pisanych w **1456 roku**. Ośrodkiem wielowioskowego majątku stały się „nieco przed połową XV w.”[^i17] Stefan Łakomy, za herbarzami, przesuwa początki wsi do XII wieku i do nadania Krzywoustego.[^i18] Kajzer uważa za bardzo prawdopodobne, że w Radoszewicach stał późnośredniowieczny dwór obronny na kopcu, być może fundacji Bogusława, syna Imbrama.[^i19]
 
-[^h1]: S07 (zeszyt wspomnień), s. 3 ⟨S07-p03-s03⟩. Zdanie o hetmanie i „halabardzie ostrzem w lewo” jest w zeszycie niejasne i odczytane niepewnie.
-[^h2]: S07, s. 3 ⟨S07-p03-s02⟩; S03 (księga rodzinna), s. 2 ⟨S03-p02-s01⟩.
-[^h3]: S08 (Kajzer), s. 75 i 77 ⟨S08-p075-s01, S08-p077-s01, S08-p077-s02⟩; S05, s. 2 ⟨S05-p02-s03⟩.
-[^h4]: S01 (Kosiński), s. 136, przypis 5 ⟨S01-p136-s04, S01-p136-f5⟩.
-[^h5]: S02 (Łakomy 1981), s. 3 i 10 ⟨S02-p03-s01, S02-p10-s02⟩.
-[^h6]: S08, s. 126 ⟨S08-p126-s02⟩.
-[^h7]: S01, s. 133 ⟨S01-p133-s03, S01-p133-s04⟩.
-[^h8]: S01, s. 133, przypis 1 ⟨S01-p133-f1⟩.
-[^h9]: S02, s. 2 ⟨S02-p02-s01⟩; S10 (Łakomy 1978), s. 1–2 ⟨S10-p1-s05, S10-p2-s01⟩.
-[^h10]: S07, s. 3 ⟨S07-p03-s04, S07-p03-s05⟩.
-[^h11]: S08, s. 125 ⟨S08-p125-s03⟩; także s. 143 ⟨S08-p143-s03⟩.
-[^h12]: S08, s. 146 ⟨S08-p146-s03⟩.
-[^h13]: S01, s. 132 ⟨S01-p132-s03⟩.
-[^h14]: S08, s. 126 i 144 ⟨S08-p126-s01, S08-p144-s01⟩.
-[^d1]: S01, s. 132 ⟨S01-p132-s03, S01-p132-s04⟩.
-[^d2]: S01, s. 133 ⟨S01-p133-s02⟩ (tytuł łaciński w przekładzie wydania uwspółcześnionego).
-[^d3]: S01, s. 142–144 ⟨S01-p142-s03, S01-p143-s04, S01-p144-s02⟩; uwagi o egzemplarzu: `dane/watpliwosci.md`, rozdz. S01.
-[^d4]: S01, s. 135 i 137 ⟨S01-p135-s02, S01-p136-s04, S01-p137-s01⟩. Uwaga opracowującego: Bolesław Wstydliwy panował w latach 1243–1279, Leszek Czarny w latach 1279–1288.
-[^d5]: S01, s. 133 ⟨S01-p133-s03⟩.
-[^d6]: S01, s. 133–134 ⟨S01-p133-s06, S01-p134-s01, S01-p134-s02, S01-p134-s03⟩.
-[^d7]: S01, s. 134–135 ⟨S01-p134-s05, S01-p135-s01, S01-p135-s02⟩.
-[^d8]: S01, s. 135–136 ⟨S01-p135-s04, S01-p135-s05, S01-p135-s06, S01-p136-s01, S01-p136-s02⟩.
-[^d9]: S01, s. 136–137 ⟨S01-p136-s04, S01-p137-s01⟩.
-[^d10]: S08, s. 146 ⟨S08-p146-s02⟩.
-[^d11]: S01, s. 137–139 ⟨S01-p137-s03, S01-p137-s04, S01-p137-s05, S01-p138-s01, S01-p138-s02, S01-p138-s03, S01-p138-s04, S01-p139-s01⟩.
-[^d12]: S01, s. 139–140 ⟨S01-p139-s03, S01-p139-s04, S01-p139-s05, S01-p140-s01, S01-p140-s02, S01-p140-s03, S01-p140-s04⟩.
-[^d13]: S01, s. 132 ⟨S01-p132-s03⟩.
-[^i1]: S08, s. 126 ⟨S08-p126-s02⟩; s. 144 ⟨S08-p144-s01⟩.
-[^i2]: S07, s. 1 i 4 ⟨S07-p01-s01, S07-p04-s01⟩.
-[^i3]: S01, s. 141 ⟨S01-p141-s04⟩.
-[^i4]: S01, s. 141 ⟨S01-p141-s02, S01-p141-s03⟩. Data bitwy pod Warną — uwaga opracowującego.
-[^i5]: S08, s. 144 ⟨S08-p144-s01⟩.
-[^i6]: S08, s. 144 ⟨S08-p144-s01⟩.
-[^i7]: S08, s. 126 ⟨S08-p126-s02⟩.
-[^i8]: S01, s. 142 ⟨S01-p142-s03⟩.
-[^i9]: S07, s. 1 i 22 ⟨S07-p01-s01, S07-p22-s03⟩.
-[^i10]: S01, s. 142 ⟨S01-p142-s02⟩.
-[^i11]: S01, s. 142 ⟨S01-p142-s04⟩.
-[^i12]: S07, s. 22 ⟨S07-p22-s02⟩.
-[^i13]: S08, s. 146 ⟨S08-p146-s02⟩.
-[^i14]: S01, s. 142–143 ⟨S01-p142-s05, S01-p143-s01⟩.
-[^i15]: S08, s. 145–146 ⟨S08-p145-s04, S08-p146-s01⟩.
-[^i16]: S07, s. 4 ⟨S07-p04-s02⟩.
-[^i17]: S08, s. 123 i 126 ⟨S08-p123-s04, S08-p126-s02⟩.
-[^i18]: S02, s. 1 ⟨S02-p01-s05⟩.
-[^i19]: S08, s. 128–129 ⟨S08-p128-s04, S08-p129-s01⟩.
+[^h1]: *Zeszyt wspomnień*, s. 3 ⟨S07-p03-s03⟩. Zdanie o hetmanie i „halabardzie ostrzem w lewo” jest w zeszycie niejasne i odczytane niepewnie.
+[^h2]: *Zeszyt wspomnień*, s. 3 ⟨S07-p03-s02⟩; *Księga rodzinna*, s. 2 ⟨S03-p02-s01⟩.
+[^h3]: Kajzer, *Pałace i dwory*, s. 75 i 77 ⟨S08-p075-s01, S08-p077-s01, S08-p077-s02⟩; *Notatka o kaplicy*, s. 2 ⟨S05-p02-s03⟩.
+[^h4]: Kosiński, *Przewodnik*, s. 136, przypis 5 ⟨S01-p136-s04, S01-p136-f5⟩.
+[^h5]: Łakomy, *Z dziejów Radoszewic*, s. 3 i 10 ⟨S02-p03-s01, S02-p10-s02⟩.
+[^h6]: Kajzer, *Pałace i dwory*, s. 126 ⟨S08-p126-s02⟩.
+[^h7]: Kosiński, *Przewodnik*, s. 133 ⟨S01-p133-s03, S01-p133-s04⟩.
+[^h8]: Tamże, s. 133, przypis 1 ⟨S01-p133-f1⟩.
+[^h9]: Łakomy, *Z dziejów Radoszewic*, s. 2 ⟨S02-p02-s01⟩; Łakomy, *Dwór i założenia parkowe*, s. 1–2 ⟨S10-p1-s05, S10-p2-s01⟩.
+[^h10]: *Zeszyt wspomnień*, s. 3 ⟨S07-p03-s04, S07-p03-s05⟩.
+[^h11]: Kajzer, *Pałace i dwory*, s. 125 ⟨S08-p125-s03⟩; także s. 143 ⟨S08-p143-s03⟩.
+[^h12]: Tamże, s. 146 ⟨S08-p146-s03⟩.
+[^h13]: Kosiński, *Przewodnik*, s. 132 ⟨S01-p132-s03⟩.
+[^h14]: Kajzer, *Pałace i dwory*, s. 126 i 144 ⟨S08-p126-s01, S08-p144-s01⟩.
+[^d1]: Kosiński, *Przewodnik*, s. 132 ⟨S01-p132-s03, S01-p132-s04⟩.
+[^d2]: Tamże, s. 133 ⟨S01-p133-s02⟩ (tytuł łaciński w przekładzie wydania uwspółcześnionego).
+[^d3]: Tamże, s. 142–144 ⟨S01-p142-s03, S01-p143-s04, S01-p144-s02⟩; uwagi o egzemplarzu: `dane/watpliwosci.md`, rozdz. Kosiński, *Przewodnik*.
+[^d4]: Tamże, s. 135 i 137 ⟨S01-p135-s02, S01-p136-s04, S01-p137-s01⟩. Uwaga opracowującego: Bolesław Wstydliwy panował w latach 1243–1279, Leszek Czarny w latach 1279–1288.
+[^d5]: Tamże, s. 133 ⟨S01-p133-s03⟩.
+[^d6]: Tamże, s. 133–134 ⟨S01-p133-s06, S01-p134-s01, S01-p134-s02, S01-p134-s03⟩.
+[^d7]: Tamże, s. 134–135 ⟨S01-p134-s05, S01-p135-s01, S01-p135-s02⟩.
+[^d8]: Tamże, s. 135–136 ⟨S01-p135-s04, S01-p135-s05, S01-p135-s06, S01-p136-s01, S01-p136-s02⟩.
+[^d9]: Tamże, s. 136–137 ⟨S01-p136-s04, S01-p137-s01⟩.
+[^d10]: Kajzer, *Pałace i dwory*, s. 146 ⟨S08-p146-s02⟩.
+[^d11]: Kosiński, *Przewodnik*, s. 137–139 ⟨S01-p137-s03, S01-p137-s04, S01-p137-s05, S01-p138-s01, S01-p138-s02, S01-p138-s03, S01-p138-s04, S01-p139-s01⟩.
+[^d12]: Tamże, s. 139–140 ⟨S01-p139-s03, S01-p139-s04, S01-p139-s05, S01-p140-s01, S01-p140-s02, S01-p140-s03, S01-p140-s04⟩.
+[^d13]: Tamże, s. 132 ⟨S01-p132-s03⟩.
+[^i1]: Kajzer, *Pałace i dwory*, s. 126 ⟨S08-p126-s02⟩; s. 144 ⟨S08-p144-s01⟩.
+[^i2]: *Zeszyt wspomnień*, s. 1 i 4 ⟨S07-p01-s01, S07-p04-s01⟩.
+[^i3]: Kosiński, *Przewodnik*, s. 141 ⟨S01-p141-s04⟩.
+[^i4]: Tamże, s. 141 ⟨S01-p141-s02, S01-p141-s03⟩. Data bitwy pod Warną — uwaga opracowującego.
+[^i5]: Kajzer, *Pałace i dwory*, s. 144 ⟨S08-p144-s01⟩.
+[^i6]: Tamże, s. 144 ⟨S08-p144-s01⟩.
+[^i7]: Tamże, s. 126 ⟨S08-p126-s02⟩.
+[^i8]: Kosiński, *Przewodnik*, s. 142 ⟨S01-p142-s03⟩.
+[^i9]: *Zeszyt wspomnień*, s. 1 i 22 ⟨S07-p01-s01, S07-p22-s03⟩.
+[^i10]: Kosiński, *Przewodnik*, s. 142 ⟨S01-p142-s02⟩.
+[^i11]: Tamże, s. 142 ⟨S01-p142-s04⟩.
+[^i12]: *Zeszyt wspomnień*, s. 22 ⟨S07-p22-s02⟩.
+[^i13]: Kajzer, *Pałace i dwory*, s. 146 ⟨S08-p146-s02⟩.
+[^i14]: Kosiński, *Przewodnik*, s. 142–143 ⟨S01-p142-s05, S01-p143-s01⟩.
+[^i15]: Kajzer, *Pałace i dwory*, s. 145–146 ⟨S08-p145-s04, S08-p146-s01⟩.
+[^i16]: *Zeszyt wspomnień*, s. 4 ⟨S07-p04-s02⟩.
+[^i17]: Kajzer, *Pałace i dwory*, s. 123 i 126 ⟨S08-p123-s04, S08-p126-s02⟩.
+[^i18]: Łakomy, *Z dziejów Radoszewic*, s. 1 ⟨S02-p01-s05⟩.
+[^i19]: Kajzer, *Pałace i dwory*, s. 128–129 ⟨S08-p128-s04, S08-p129-s01⟩.
 
 ## 4. Wiek XVI: Mikołaj Boksa i jego bracia
 
@@ -300,76 +324,76 @@ Kajzer, opierając się na liście Anny z Prządzyńskich Radoszewskiej, pisze t
 
 Nowymi właścicielami Radoszewic, od połowy lub końca lat 70. XVIII wieku, zostali **Andrzej, a potem Feliks Wierusz Niemojowscy**. Według Kajzera była to „najbogatsza familia Wieluńskiego”.[^x16] To oni zbudowali zachowany do dziś dwór w Radoszewicach, w latach 70. lub 80. XVIII wieku. Od 1945 roku mieściła się w nim szkoła podstawowa.[^x17] Ostatnim Niemojowskim w Radoszewicach był **Ludwik** (1823–1892), pisarz i zesłaniec na Sybir za pomoc powstańcom w 1863 roku. Jego siostra w bitwie pod Radoszewicami 27 marca 1863 roku „ocaliła sztandar powstańczy, wyrwawszy go z rąk śmiertelnie ranionego kosyniera”.[^x18] To już jednak dzieje innego rodu.
 
-![Radoszewice — plan sytuacyjny zespołu dworskiego (Kajzer, S08, s. 124)](skany/IMG_5996.jpg)
+![Radoszewice — plan sytuacyjny zespołu dworskiego (Kajzer, *Pałace i dwory*, s. 124)](skany/IMG_5996.jpg)
 
 Siemkowice Radoszewscy opuścili wcześniej. Według Kajzera Siemkowscy wyprowadzili się z nich w końcu XVII wieku, a dobra przeszły na Święcickich, a potem Karśnickich. *Ciekawostka:* w tradycji Karśnickich zachowała się wersja, że weszli oni w posiadanie Siemkowic „już około 1639 r., poprzez małżeństwo z Radoszewską”. Źródła nie mówią, o którą Radoszewską chodzi.[^x19]
 
-[^m1]: S01, s. 143 ⟨S01-p143-s03⟩.
-[^m2]: S01, s. 143 ⟨S01-p143-s04⟩.
-[^m3]: S01, s. 143–144 ⟨S01-p143-s05, S01-p144-s01⟩.
-[^m4]: S01, s. 144 ⟨S01-p144-s02⟩. Data bitwy pod Mohaczem — uwaga opracowującego.
-[^m5]: S07, s. 1 i 4 ⟨S07-p01-s01, S07-p04-s03⟩.
-[^m6]: S07, s. 4 ⟨S07-p04-s03⟩ (odczyt nazwiska niepewny).
-[^m7]: Dopisek odręczny w egzemplarzu S01, s. 139 ⟨S01-p139-s04⟩; zob. `dane/watpliwosci.md`.
-[^m8]: S02, s. 3 ⟨S02-p03-s01⟩ (za: A. Pawiński, *Wielkopolska* t. II, s. 289); S08, s. 128 ⟨S08-p128-s04⟩.
-[^m9]: S08, s. 128–129 ⟨S08-p128-s04, S08-p129-s01⟩.
-[^m10]: S02, s. 23 ⟨S02-p23-s01⟩ (za: W. Szczygielski, *Produkcja rolnicza gospodarstwa folwarcznego w Wieluńskim*, 1963, s. 141).
-[^m11]: S02, s. 19 ⟨S02-p19-s03⟩.
-[^m12]: S07, s. 22 ⟨S07-p22-s04, S07-p22-s05, S07-p22-s06⟩.
-[^m13]: S08, s. 144, 146–147 ⟨S08-p144-s01, S08-p146-s03, S08-p147-s01⟩.
-[^z1]: S08, s. 73 ⟨S08-p073-s01⟩.
-[^z2]: S02, s. 10–11 ⟨S02-p10-s03, S02-p11-s01⟩ (cytat z W. Szczygielskiego, *Dzieje Ziemi Wieluńskiej*, 1969).
-[^z3]: S01, s. 144–145 ⟨S01-p144-s04, S01-p145-s01, S01-p145-s02⟩.
-[^z4]: S02, s. 11 ⟨S02-p11-s01⟩.
-[^z5]: S07, s. 1 i 4 ⟨S07-p01-s01, S07-p04-s04⟩.
-[^z6]: S02, s. 8–9 ⟨S02-p08-s02, S02-p09-s01⟩; S10, s. 2–3 ⟨S10-p2-s04, S10-p3-s01⟩.
-[^z7]: S07, s. 5 ⟨S07-p05-s01⟩.
-[^z8]: S02, s. 17–19 ⟨S02-p17-s01, S02-p18-s01, S02-p19-s01⟩. Uwaga opracowującego (za S02): w 1607 r. Jerzy, ur. ok. 1534, miałby ok. 73 lata.
-[^z9]: S02, s. 19–20 ⟨S02-p19-s03, S02-p20-s01⟩; S07, s. 4 ⟨S07-p04-s04⟩.
-[^z10]: S08, s. 73 ⟨S08-p073-s01⟩.
-[^z11]: S02, s. 9 ⟨S02-p09-s01⟩; S10, s. 3 ⟨S10-p3-s01⟩.
-[^z12]: S07, s. 1 i 58 ⟨S07-p01-s01, S07-p58-s05⟩.
-[^z13]: S07, s. 4 ⟨S07-p04-s04⟩.
-[^z14]: S08, s. 73 ⟨S08-p073-s01⟩.
-[^z15]: S01, s. 145 i przypis 12 na s. 144 ⟨S01-p145-s01, S01-p144-f12⟩.
-[^z16]: S02, s. 11–12 ⟨S02-p11-s01, S02-p12-s01⟩.
-[^z17]: S02, s. 12 ⟨S02-p12-s01⟩.
-[^z18]: S02, s. 15–16 ⟨S02-p15-s01, S02-p16-s01⟩.
-[^z19]: S07, s. 1 i 5 ⟨S07-p01-s01, S07-p05-s02⟩.
-[^z20]: S02, s. 9–10 ⟨S02-p09-s01, S02-p10-s01⟩; S10, s. 3 ⟨S10-p3-s01⟩.
-[^z21]: S07, s. 5 ⟨S07-p05-s02⟩.
-[^z22]: S07, s. 2 ⟨S07-p02-s01, S07-p02-s02⟩. Rozważanie o wieku — uwaga opracowującego.
-[^z23]: S02, s. 9 ⟨S02-p09-s01⟩; S10, s. 3 ⟨S10-p3-s01⟩.
-[^z24]: S07, s. 22 ⟨S07-p22-s08⟩; także S03, s. 29 ⟨S03-p29-s04⟩.
-[^z25]: S02, s. 20 ⟨S02-p20-s02, S02-p20-f9⟩.
-[^z26]: S07, s. 22 i 58 ⟨S07-p22-s07, S07-p58-s02⟩ (nazwisko Barbary odczytane niepewnie).
-[^z27]: S10, s. 2–3 ⟨S10-p2-s04, S10-p3-s01⟩; S02, s. 8–10 ⟨S02-p08-s02, S02-p09-s01, S02-p10-s01⟩.
-[^z28]: S08, s. 73 ⟨S08-p073-s01⟩.
-[^z29]: S08, s. 73, przypis 11 ⟨S08-p073-f11⟩.
-[^z30]: S07, s. 58 ⟨S07-p58-s05⟩.
-[^z31]: S02, s. 4 ⟨S02-p04-s01, S02-p04-s02⟩; S08, s. 123 ⟨S08-p123-s04⟩; S03, s. 29 ⟨S03-p29-s02⟩.
-[^z32]: S08, s. 123 ⟨S08-p123-s04⟩; S02, s. 4 ⟨S02-p04-s02⟩.
-[^z33]: S07, s. 2, 22–24 ⟨S07-p02-s02, S07-p23-s01, S07-p24-s01, S07-p24-s02, S07-p24-s03, S07-p24-s04, S07-p24-s05⟩; S05, s. 1 ⟨S05-p01-s03⟩.
-[^z34]: S07, s. 2 ⟨S07-p02-s01, S07-p02-s02⟩.
-[^x1]: S07, s. 1 i 5 ⟨S07-p01-s01, S07-p05-s03⟩.
-[^x2]: S08, s. 129 ⟨S08-p129-s02⟩.
-[^x3]: S08, s. 129 ⟨S08-p129-s03⟩.
-[^x4]: S08, s. 129–130 ⟨S08-p129-s03, S08-p130-s01⟩.
-[^x5]: S08, s. 130 ⟨S08-p130-s02⟩.
-[^x6]: S08, s. 130 ⟨S08-p130-s01⟩.
-[^x7]: S08, s. 130 ⟨S08-p130-s03⟩.
-[^x8]: S07, s. 1 i 5 ⟨S07-p01-s01, S07-p05-s04⟩.
-[^x9]: S07, s. 1, 2 i 5 ⟨S07-p01-s01, S07-p02-s02, S07-p05-s05⟩.
-[^x10]: S07, s. 1 ⟨S07-p01-s01⟩; S03, s. 11 ⟨S03-p11-s01⟩.
-[^x11]: S07, s. 5–6 ⟨S07-p05-s05, S07-p06-s01⟩ (nazwa „Matyń” odczytana niepewnie).
-[^x12]: S08, s. 126 i 73 ⟨S08-p126-s02, S08-p073-s01⟩.
-[^x13]: S05, s. 2 ⟨S05-p02-s01⟩.
-[^x14]: S02, s. 21, dopisek na marginesie ⟨S02-p21-d1⟩.
-[^x15]: S02, s. 8 ⟨S02-p08-s02⟩; S10, s. 2 ⟨S10-p2-s03⟩; S08, s. 126 ⟨S08-p126-s02⟩.
-[^x16]: S08, s. 126–127 ⟨S08-p126-s03, S08-p127-s01⟩.
-[^x17]: S08, s. 131 i 128 ⟨S08-p131-s02, S08-p128-s02⟩; S10, s. 7–8 ⟨S10-p7-s01, S10-p8-s01⟩.
-[^x18]: S10, s. 3–6 ⟨S10-p3-s04, S10-p4-s01, S10-p5-s02, S10-p5-s03⟩; S08, s. 127–128 ⟨S08-p127-s02, S08-p128-s01⟩.
-[^x19]: S08, s. 144–145 i przypis 23 ⟨S08-p144-s01, S08-p145-s01, S08-p145-f23⟩.
+[^m1]: Kosiński, *Przewodnik*, s. 143 ⟨S01-p143-s03⟩.
+[^m2]: Tamże, s. 143 ⟨S01-p143-s04⟩.
+[^m3]: Tamże, s. 143–144 ⟨S01-p143-s05, S01-p144-s01⟩.
+[^m4]: Tamże, s. 144 ⟨S01-p144-s02⟩. Data bitwy pod Mohaczem — uwaga opracowującego.
+[^m5]: *Zeszyt wspomnień*, s. 1 i 4 ⟨S07-p01-s01, S07-p04-s03⟩.
+[^m6]: Tamże, s. 4 ⟨S07-p04-s03⟩ (odczyt nazwiska niepewny).
+[^m7]: Kosiński, *Przewodnik*, s. 139, dopisek odręczny w egzemplarzu rodzinnym ⟨S01-p139-s04⟩; zob. też `dane/watpliwosci.md`.
+[^m8]: Łakomy, *Z dziejów Radoszewic*, s. 3 ⟨S02-p03-s01⟩ (za: A. Pawiński, *Wielkopolska* t. II, s. 289); Kajzer, *Pałace i dwory*, s. 128 ⟨S08-p128-s04⟩.
+[^m9]: Kajzer, *Pałace i dwory*, s. 128–129 ⟨S08-p128-s04, S08-p129-s01⟩.
+[^m10]: Łakomy, *Z dziejów Radoszewic*, s. 23 ⟨S02-p23-s01⟩ (za: W. Szczygielski, *Produkcja rolnicza gospodarstwa folwarcznego w Wieluńskim*, 1963, s. 141).
+[^m11]: Tamże, s. 19 ⟨S02-p19-s03⟩.
+[^m12]: *Zeszyt wspomnień*, s. 22 ⟨S07-p22-s04, S07-p22-s05, S07-p22-s06⟩.
+[^m13]: Kajzer, *Pałace i dwory*, s. 144, 146–147 ⟨S08-p144-s01, S08-p146-s03, S08-p147-s01⟩.
+[^z1]: Tamże, s. 73 ⟨S08-p073-s01⟩.
+[^z2]: Łakomy, *Z dziejów Radoszewic*, s. 10–11 ⟨S02-p10-s03, S02-p11-s01⟩ (cytat z W. Szczygielskiego, *Dzieje Ziemi Wieluńskiej*, 1969).
+[^z3]: Kosiński, *Przewodnik*, s. 144–145 ⟨S01-p144-s04, S01-p145-s01, S01-p145-s02⟩.
+[^z4]: Łakomy, *Z dziejów Radoszewic*, s. 11 ⟨S02-p11-s01⟩.
+[^z5]: *Zeszyt wspomnień*, s. 1 i 4 ⟨S07-p01-s01, S07-p04-s04⟩.
+[^z6]: Łakomy, *Z dziejów Radoszewic*, s. 8–9 ⟨S02-p08-s02, S02-p09-s01⟩; Łakomy, *Dwór i założenia parkowe*, s. 2–3 ⟨S10-p2-s04, S10-p3-s01⟩.
+[^z7]: *Zeszyt wspomnień*, s. 5 ⟨S07-p05-s01⟩.
+[^z8]: Łakomy, *Z dziejów Radoszewic*, s. 17–19 ⟨S02-p17-s01, S02-p18-s01, S02-p19-s01⟩. Uwaga opracowującego (za Łakomy, *Z dziejów Radoszewic*): w 1607 r. Jerzy, ur. ok. 1534, miałby ok. 73 lata.
+[^z9]: Łakomy, *Z dziejów Radoszewic*, s. 19–20 ⟨S02-p19-s03, S02-p20-s01⟩; *Zeszyt wspomnień*, s. 4 ⟨S07-p04-s04⟩.
+[^z10]: Kajzer, *Pałace i dwory*, s. 73 ⟨S08-p073-s01⟩.
+[^z11]: Łakomy, *Z dziejów Radoszewic*, s. 9 ⟨S02-p09-s01⟩; Łakomy, *Dwór i założenia parkowe*, s. 3 ⟨S10-p3-s01⟩.
+[^z12]: *Zeszyt wspomnień*, s. 1 i 58 ⟨S07-p01-s01, S07-p58-s05⟩.
+[^z13]: Tamże, s. 4 ⟨S07-p04-s04⟩.
+[^z14]: Kajzer, *Pałace i dwory*, s. 73 ⟨S08-p073-s01⟩.
+[^z15]: Kosiński, *Przewodnik*, s. 145 i przypis 12 na s. 144 ⟨S01-p145-s01, S01-p144-f12⟩.
+[^z16]: Łakomy, *Z dziejów Radoszewic*, s. 11–12 ⟨S02-p11-s01, S02-p12-s01⟩.
+[^z17]: Tamże, s. 12 ⟨S02-p12-s01⟩.
+[^z18]: Tamże, s. 15–16 ⟨S02-p15-s01, S02-p16-s01⟩.
+[^z19]: *Zeszyt wspomnień*, s. 1 i 5 ⟨S07-p01-s01, S07-p05-s02⟩.
+[^z20]: Łakomy, *Z dziejów Radoszewic*, s. 9–10 ⟨S02-p09-s01, S02-p10-s01⟩; Łakomy, *Dwór i założenia parkowe*, s. 3 ⟨S10-p3-s01⟩.
+[^z21]: *Zeszyt wspomnień*, s. 5 ⟨S07-p05-s02⟩.
+[^z22]: Tamże, s. 2 ⟨S07-p02-s01, S07-p02-s02⟩. Rozważanie o wieku — uwaga opracowującego.
+[^z23]: Łakomy, *Z dziejów Radoszewic*, s. 9 ⟨S02-p09-s01⟩; Łakomy, *Dwór i założenia parkowe*, s. 3 ⟨S10-p3-s01⟩.
+[^z24]: *Zeszyt wspomnień*, s. 22 ⟨S07-p22-s08⟩; także *Księga rodzinna*, s. 29 ⟨S03-p29-s04⟩.
+[^z25]: Łakomy, *Z dziejów Radoszewic*, s. 20 ⟨S02-p20-s02, S02-p20-f9⟩.
+[^z26]: *Zeszyt wspomnień*, s. 22 i 58 ⟨S07-p22-s07, S07-p58-s02⟩ (nazwisko Barbary odczytane niepewnie).
+[^z27]: Łakomy, *Dwór i założenia parkowe*, s. 2–3 ⟨S10-p2-s04, S10-p3-s01⟩; Łakomy, *Z dziejów Radoszewic*, s. 8–10 ⟨S02-p08-s02, S02-p09-s01, S02-p10-s01⟩.
+[^z28]: Kajzer, *Pałace i dwory*, s. 73 ⟨S08-p073-s01⟩.
+[^z29]: Tamże, s. 73, przypis 11 ⟨S08-p073-f11⟩.
+[^z30]: *Zeszyt wspomnień*, s. 58 ⟨S07-p58-s05⟩.
+[^z31]: Łakomy, *Z dziejów Radoszewic*, s. 4 ⟨S02-p04-s01, S02-p04-s02⟩; Kajzer, *Pałace i dwory*, s. 123 ⟨S08-p123-s04⟩; *Księga rodzinna*, s. 29 ⟨S03-p29-s02⟩.
+[^z32]: Kajzer, *Pałace i dwory*, s. 123 ⟨S08-p123-s04⟩; Łakomy, *Z dziejów Radoszewic*, s. 4 ⟨S02-p04-s02⟩.
+[^z33]: *Zeszyt wspomnień*, s. 2, 22–24 ⟨S07-p02-s02, S07-p23-s01, S07-p24-s01, S07-p24-s02, S07-p24-s03, S07-p24-s04, S07-p24-s05⟩; *Notatka o kaplicy*, s. 1 ⟨S05-p01-s03⟩.
+[^z34]: *Zeszyt wspomnień*, s. 2 ⟨S07-p02-s01, S07-p02-s02⟩.
+[^x1]: Tamże, s. 1 i 5 ⟨S07-p01-s01, S07-p05-s03⟩.
+[^x2]: Kajzer, *Pałace i dwory*, s. 129 ⟨S08-p129-s02⟩.
+[^x3]: Tamże, s. 129 ⟨S08-p129-s03⟩.
+[^x4]: Tamże, s. 129–130 ⟨S08-p129-s03, S08-p130-s01⟩.
+[^x5]: Tamże, s. 130 ⟨S08-p130-s02⟩.
+[^x6]: Tamże, s. 130 ⟨S08-p130-s01⟩.
+[^x7]: Tamże, s. 130 ⟨S08-p130-s03⟩.
+[^x8]: *Zeszyt wspomnień*, s. 1 i 5 ⟨S07-p01-s01, S07-p05-s04⟩.
+[^x9]: Tamże, s. 1, 2 i 5 ⟨S07-p01-s01, S07-p02-s02, S07-p05-s05⟩.
+[^x10]: *Zeszyt wspomnień*, s. 1 ⟨S07-p01-s01⟩; *Księga rodzinna*, s. 11 ⟨S03-p11-s01⟩.
+[^x11]: *Zeszyt wspomnień*, s. 5–6 ⟨S07-p05-s05, S07-p06-s01⟩ (nazwa „Matyń” odczytana niepewnie).
+[^x12]: Kajzer, *Pałace i dwory*, s. 126 i 73 ⟨S08-p126-s02, S08-p073-s01⟩.
+[^x13]: *Notatka o kaplicy*, s. 2 ⟨S05-p02-s01⟩.
+[^x14]: Łakomy, *Z dziejów Radoszewic*, s. 21, dopisek na marginesie ⟨S02-p21-d1⟩.
+[^x15]: Łakomy, *Z dziejów Radoszewic*, s. 8 ⟨S02-p08-s02⟩; Łakomy, *Dwór i założenia parkowe*, s. 2 ⟨S10-p2-s03⟩; Kajzer, *Pałace i dwory*, s. 126 ⟨S08-p126-s02⟩.
+[^x16]: Kajzer, *Pałace i dwory*, s. 126–127 ⟨S08-p126-s03, S08-p127-s01⟩.
+[^x17]: Kajzer, *Pałace i dwory*, s. 131 i 128 ⟨S08-p131-s02, S08-p128-s02⟩; Łakomy, *Dwór i założenia parkowe*, s. 7–8 ⟨S10-p7-s01, S10-p8-s01⟩.
+[^x18]: Łakomy, *Dwór i założenia parkowe*, s. 3–6 ⟨S10-p3-s04, S10-p4-s01, S10-p5-s02, S10-p5-s03⟩; Kajzer, *Pałace i dwory*, s. 127–128 ⟨S08-p127-s02, S08-p128-s01⟩.
+[^x19]: Kajzer, *Pałace i dwory*, s. 144–145 i przypis 23 ⟨S08-p144-s01, S08-p145-s01, S08-p145-f23⟩.
 
 ## 7. Na nowym miejscu: Krempa, Śmiechów i Dominikowice (koniec XVIII – połowa XIX wieku)
 
@@ -432,25 +456,25 @@ W czasie **powstania styczniowego** Józefat był **naczelnikiem powiatu**. Pote
 
 Kartka o kaplicy w Uniejowie umieszcza to zdarzenie „po bitwie pod Niemysłowem 23 maja 1863 r.”[^j11] Kajzer, za opracowaniem Anny Radoszewskiej, podaje inną wersję zakończenia. Według niego żona Józefata, „znajdująca się w zaawansowanej ciąży”, „zdołała upić Kozaków, którzy nie splądrowali domu”.[^j12] Niejasny wyraz „kuchmale” z zeszytu to najpewniej **krochmalnia**, budynek, który później przebudowano na gorzelnię.[^j13]
 
-![Krempa — rzut parteru dworu z funkcjami pomieszczeń (Kajzer, S08, s. 76)](skany/IMG_5992-1.jpg)
+![Krempa — rzut parteru dworu z funkcjami pomieszczeń (Kajzer, *Pałace i dwory*, s. 76)](skany/IMG_5992-1.jpg)
 
 ### Kaplica w Uniejowie
 
-W **1880 roku** Józefat i Teofila zbudowali na cmentarzu w **Uniejowie** murowaną **kaplicę grobową Boxa Radoszewskich**. Przetrwała do dziś. Kajzer pisze, że dwie takie kaplice, w Uniejowie i w Wartkowicach, świadczą o „niezłej pozycji finansowej” rodu.[^j14] Do krypty przeniesiono zmarłych wcześniej członków rodziny. Spoczywają w niej według kartki S05 i zeszytu S07:[^j15]
+W **1880 roku** Józefat i Teofila zbudowali na cmentarzu w **Uniejowie** murowaną **kaplicę grobową Boxa Radoszewskich**. Przetrwała do dziś. Kajzer pisze, że dwie takie kaplice, w Uniejowie i w Wartkowicach, świadczą o „niezłej pozycji finansowej” rodu.[^j14] Do krypty przeniesiono zmarłych wcześniej członków rodziny. Spoczywają w niej według *Notatki o kaplicy* i *Zeszytu wspomnień*:[^j15]
 
 | Pochowany | Daty | Uwagi |
 |---|---|---|
 | Roch Radoszewski, kasztelanic | zm. 1820 | przeniesiony |
-| Kunegunda z Wierzchleyskich Radoszewska | zm. 1828 | przeniesiona (wymieniona w S03 i S05, brak jej w S07) |
+| Kunegunda z Wierzchleyskich Radoszewska | zm. 1828 | przeniesiona (wymieniona w *Księdze rodzinnej* i *Notatce o kaplicy*, brak jej w *Zeszycie wspomnień*) |
 | Józef Radoszewski z Dominikowic | zm. 1850 | brat Franciszka |
 | Henryk Radoszewski | zm. 1861, w wieku 33 lat | syn Franciszka i Józefy |
 | Michał Szeliski h. Szeliga z Marzenina | 1800–1866 | ojciec Teofili |
 | Henryś Radoszewski | zm. 1870, w wieku 8 lat | syn Józefata i Teofili |
-| Antoni Szumowski | zm. 1855 (S07) / 1884 (S03) / 1885 (S05) | związek z rodziną nieznany |
-| Józefat Boxa Radoszewski | 1830–1892 (S05: 1893) | fundator |
+| Antoni Szumowski | zm. 1855 (*Zeszyt*) / 1884 (*Księga*) / 1885 (*Notatka*) | związek z rodziną nieznany |
+| Józefat Boxa Radoszewski | 1830–1892 (*Notatka*: 1893) | fundator |
 | Teofila z Szeliskich Radoszewska | 1842–1909 | fundatorka |
 
-![Kartka „Kaplica Boxa Radoszewskich herbu Oksza na cmentarzu w Uniejowie” z listą pochowanych w krypcie (S05, s. 1)](skany/IMG_5908-1.jpg)
+![Kartka „Kaplica Boxa Radoszewskich herbu Oksza na cmentarzu w Uniejowie” z listą pochowanych w krypcie (*Notatka o kaplicy*, s. 1)](skany/IMG_5908-1.jpg)
 
 ### Dzieci Józefata i Teofili
 
@@ -461,7 +485,7 @@ Józefat i Teofila mieli czworo dzieci:[^j16]
 - **Maria** (1867–1965) wyszła za **Rafała Mierzyńskiego** z Węgrzy herbu Jastrzębiec, inżyniera budowlanego. Według zeszytu Mierzyński „wynalazł stropy, które między innymi zastosowano w hotelu Bristol”. Maria mieszkała do końca wojny przy Nowogrodzkiej 10. Jej córka, również **Maria** (1897–1975), wyszła po raz pierwszy za Mierzyńskiego. Zeszyt podaje imiona Władysław Konstanty i dopisek, że został zamordowany w Rosji przez NKWD[?]. Księga rodzinna podaje imię Tadeusz. Po raz drugi Maria wyszła za Żeromskiego.[^j18]
 - **Henryk (Henryś)** zmarł jako dziecko. Według większości źródeł w 1870 roku w wieku 8 lat, według drzewa w zeszycie w 1867 roku.[^j19]
 
-Józefat zmarł w **1892 roku** (kartka S05 podaje 1893), a Teofila w 1909 roku. Oboje spoczywają w krypcie w Uniejowie. Ich portrety przechowywał Andrzej Radoszewski.[^j20]
+Józefat zmarł w **1892 roku** (*Notatka o kaplicy* podaje 1893), a Teofila w 1909 roku. Oboje spoczywają w krypcie w Uniejowie. Ich portrety przechowywał Andrzej Radoszewski.[^j20]
 
 ---
 
@@ -485,55 +509,55 @@ Dzieci Franciszka z Neru i Ludmiły:[^n4]
 
 W **kaplicy w Wartkowicach** spoczywają: Ludmiła (Ludomira) ze Skrzyńskich Radoszewska, Franciszek z Neru, Jan z Neru, rodzice Ludmiły, Aleksander i Waleria Skrzyńscy, oraz Aleksander Skrzyński młodszy, który zmarł po powrocie z niemieckiego obozu.[^n5] Według dopisku w zeszycie Ner był majątkiem Jana Radoszewskiego, a Zatusków Pawła Radoszewskiego.[^n6]
 
-[^k1]: S08, s. 71 ⟨S08-p071-s03, S08-p071-s04⟩; S03, s. 29 ⟨S03-p29-s03⟩.
-[^k2]: S08, s. 71–73 ⟨S08-p071-s04, S08-p072-s02, S08-p073-s01⟩.
-[^k3]: S08, s. 73 ⟨S08-p073-s01⟩.
-[^k4]: S04, s. 2 ⟨S04-p02-s02⟩.
-[^k5]: S03, s. 38 ⟨S03-p38-s02⟩.
-[^k6]: S07, s. 1 i 6 ⟨S07-p01-s01, S07-p06-s02⟩; S03, s. 7, 10, 11 ⟨S03-p07-s01, S03-p10-s01, S03-p11-s01⟩.
-[^k7]: S07, s. 1 ⟨S07-p01-s01⟩; S02, s. 21, dopisek ⟨S02-p21-d1⟩.
-[^k8]: S07, s. 6 ⟨S07-p06-s02⟩; S05, s. 1 ⟨S05-p01-s02⟩.
-[^k9]: S07, s. 25 ⟨S07-p25-s01, S07-p25-s02⟩ (nazwa „Kuchlin” odczytana niepewnie).
-[^k10]: S07, s. 25 ⟨S07-p25-s02⟩.
-[^k11]: S08, s. 73–74 ⟨S08-p073-s02, S08-p074-s01⟩.
-[^k12]: S07, s. 58 ⟨S07-p58-s06⟩.
-[^k13]: S07, s. 25 i 56 ⟨S07-p25-s03, S07-p56-s05⟩; S03, s. 35 ⟨S03-p35-s01, S03-p35-s02⟩.
-[^k14]: S03, s. 25 ⟨S03-p25-s02⟩; S08, s. 74 ⟨S08-p074-s02⟩.
-[^k15]: S07, s. 6 ⟨S07-p06-s03⟩; S03, s. 10 ⟨S03-p10-s01⟩. Księga rodzinna podaje w jednym miejscu rok urodzenia Józefy „1867” (S03, s. 7 ⟨S03-p07-s01⟩) — to oczywista omyłka zapisu.
-[^k16]: S07, s. 6 i 54 ⟨S07-p06-s03, S07-p54-s02⟩; S03, s. 33 ⟨S03-p33-s02⟩.
-[^k17]: S08, s. 74 ⟨S08-p074-s02, S08-p074-f14⟩.
-[^k18]: S08, s. 74 ⟨S08-p074-s02⟩.
-[^k19]: S05, s. 1 ⟨S05-p01-s02⟩; S07, s. 54 ⟨S07-p54-s01⟩; S08, s. 74 ⟨S08-p074-s02⟩.
-[^k20]: S08, s. 74 ⟨S08-p074-s02⟩.
-[^k21]: S07, s. 1 i 54 ⟨S07-p01-s02, S07-p54-s02⟩; S03, s. 17, 25 ⟨S03-p17-s03, S03-p25-s02, S03-p25-s03⟩.
-[^k22]: S07, s. 1 ⟨S07-p01-s02⟩; S05, s. 1 ⟨S05-p01-s02⟩; S03, s. 30 ⟨S03-p30-s02⟩.
-[^k23]: S07, s. 1 ⟨S07-p01-s02⟩; S03, s. 17–18, 25–26 ⟨S03-p17-s04, S03-p18-s04, S03-p25-s04, S03-p26-s02, S03-p26-s03⟩ (nazwiska po mężach odczytane niepewnie).
-[^j1]: S08, s. 73–74 ⟨S08-p073-s02, S08-p074-s03⟩; S07, s. 6 ⟨S07-p06-s04⟩; S05, s. 2 ⟨S05-p02-s01⟩.
-[^j2]: S08, s. 74–75 ⟨S08-p074-s04, S08-p075-s01⟩.
-[^j3]: S08, s. 74 ⟨S08-p074-s03⟩.
-[^j4]: S07, s. 6 ⟨S07-p06-s04⟩ (słowo przy „serwitutach” odczytane niepewnie: „uniósł” albo „zniósł”).
-[^j5]: S07, s. 6–7 ⟨S07-p06-s04, S07-p07-s02⟩; S03, s. 7 ⟨S03-p07-s02⟩.
-[^j6]: S07, s. 6 ⟨S07-p06-s04⟩; S05, s. 1 ⟨S05-p01-s02⟩.
-[^j7]: S08, s. 77 ⟨S08-p077-s02⟩.
-[^j8]: S07, s. 7 ⟨S07-p07-s02⟩.
-[^j9]: S07, s. 6 ⟨S07-p06-s04⟩; S05, s. 2 ⟨S05-p02-s01⟩; S08, s. 74 ⟨S08-p074-s03⟩.
-[^j10]: S07, s. 7 ⟨S07-p07-s02⟩.
-[^j11]: S05, s. 2 ⟨S05-p02-s01⟩.
-[^j12]: S08, s. 74 ⟨S08-p074-s03⟩.
-[^j13]: S08, s. 74 ⟨S08-p074-s03⟩; S07, s. 7–8 ⟨S07-p07-s02, S07-p08-s01⟩. Identyfikacja wyrazu — uwaga opracowującego.
-[^j14]: S05, s. 1 ⟨S05-p01-s01⟩; S07, s. 54 ⟨S07-p54-s01⟩; S08, s. 74 ⟨S08-p074-s01⟩.
-[^j15]: S05, s. 1 ⟨S05-p01-s02⟩; S07, s. 54 ⟨S07-p54-s01⟩; S03, s. 30 ⟨S03-p30-s02⟩.
-[^j16]: S07, s. 1 i 16 ⟨S07-p01-s03, S07-p16-s01⟩; S03, s. 17 ⟨S03-p17-s02⟩.
-[^j17]: S07, s. 13 i 16 ⟨S07-p13-s01, S07-p16-s02⟩; S05, s. 2 ⟨S05-p02-s04⟩; S08, s. 77 ⟨S08-p077-s02⟩.
-[^j18]: S07, s. 16 ⟨S07-p16-s03, S07-p16-s04⟩; S03, s. 18 ⟨S03-p18-s02⟩.
-[^j19]: S07, s. 1 i 16 ⟨S07-p01-s03, S07-p16-s05⟩; S05, s. 1 ⟨S05-p01-s02⟩.
-[^j20]: S07, s. 6–7 ⟨S07-p06-s04, S07-p07-s01⟩; S05, s. 1 ⟨S05-p01-s02⟩.
-[^n1]: S07, s. 61, dopisek ⟨S07-p61-d1⟩.
-[^n2]: S07, s. 26 ⟨S07-p26-s01⟩; S03, s. 33 ⟨S03-p33-s02⟩.
-[^n3]: S07, s. 26–27 ⟨S07-p26-s02, S07-p26-s03, S07-p27-s01⟩; S03, s. 23, 25, 31, 33 ⟨S03-p23-s03, S03-p25-s03, S03-p31-s02, S03-p33-s02⟩; S07, s. 57 ⟨S07-p57-s01⟩.
-[^n4]: S07, s. 27 ⟨S07-p27-s02, S07-p27-s03, S07-p27-s04, S07-p27-s05, S07-p27-s06⟩; S07, s. 54–55 ⟨S07-p54-s02, S07-p55-s02⟩; S03, s. 44 ⟨S03-p44-s02⟩.
-[^n5]: S03, s. 31 ⟨S03-p31-s02⟩; S07, s. 57 ⟨S07-p57-s01⟩.
-[^n6]: S07, s. 61, dopisek ⟨S07-p61-d1⟩.
+[^k1]: Kajzer, *Pałace i dwory*, s. 71 ⟨S08-p071-s03, S08-p071-s04⟩; *Księga rodzinna*, s. 29 ⟨S03-p29-s03⟩.
+[^k2]: Kajzer, *Pałace i dwory*, s. 71–73 ⟨S08-p071-s04, S08-p072-s02, S08-p073-s01⟩.
+[^k3]: Tamże, s. 73 ⟨S08-p073-s01⟩.
+[^k4]: *Biogram Jerzego R.*, s. 2 ⟨S04-p02-s02⟩.
+[^k5]: *Księga rodzinna*, s. 38 ⟨S03-p38-s02⟩.
+[^k6]: *Zeszyt wspomnień*, s. 1 i 6 ⟨S07-p01-s01, S07-p06-s02⟩; *Księga rodzinna*, s. 7, 10, 11 ⟨S03-p07-s01, S03-p10-s01, S03-p11-s01⟩.
+[^k7]: *Zeszyt wspomnień*, s. 1 ⟨S07-p01-s01⟩; Łakomy, *Z dziejów Radoszewic*, s. 21, dopisek ⟨S02-p21-d1⟩.
+[^k8]: *Zeszyt wspomnień*, s. 6 ⟨S07-p06-s02⟩; *Notatka o kaplicy*, s. 1 ⟨S05-p01-s02⟩.
+[^k9]: *Zeszyt wspomnień*, s. 25 ⟨S07-p25-s01, S07-p25-s02⟩ (nazwa „Kuchlin” odczytana niepewnie).
+[^k10]: Tamże, s. 25 ⟨S07-p25-s02⟩.
+[^k11]: Kajzer, *Pałace i dwory*, s. 73–74 ⟨S08-p073-s02, S08-p074-s01⟩.
+[^k12]: *Zeszyt wspomnień*, s. 58 ⟨S07-p58-s06⟩.
+[^k13]: *Zeszyt wspomnień*, s. 25 i 56 ⟨S07-p25-s03, S07-p56-s05⟩; *Księga rodzinna*, s. 35 ⟨S03-p35-s01, S03-p35-s02⟩.
+[^k14]: *Księga rodzinna*, s. 25 ⟨S03-p25-s02⟩; Kajzer, *Pałace i dwory*, s. 74 ⟨S08-p074-s02⟩.
+[^k15]: *Zeszyt wspomnień*, s. 6 ⟨S07-p06-s03⟩; *Księga rodzinna*, s. 10 ⟨S03-p10-s01⟩. Księga rodzinna podaje w jednym miejscu rok urodzenia Józefy „1867” (*Księga rodzinna*, s. 7 ⟨S03-p07-s01⟩) — to oczywista omyłka zapisu.
+[^k16]: *Zeszyt wspomnień*, s. 6 i 54 ⟨S07-p06-s03, S07-p54-s02⟩; *Księga rodzinna*, s. 33 ⟨S03-p33-s02⟩.
+[^k17]: Kajzer, *Pałace i dwory*, s. 74 ⟨S08-p074-s02, S08-p074-f14⟩.
+[^k18]: Tamże, s. 74 ⟨S08-p074-s02⟩.
+[^k19]: *Notatka o kaplicy*, s. 1 ⟨S05-p01-s02⟩; *Zeszyt wspomnień*, s. 54 ⟨S07-p54-s01⟩; Kajzer, *Pałace i dwory*, s. 74 ⟨S08-p074-s02⟩.
+[^k20]: Kajzer, *Pałace i dwory*, s. 74 ⟨S08-p074-s02⟩.
+[^k21]: *Zeszyt wspomnień*, s. 1 i 54 ⟨S07-p01-s02, S07-p54-s02⟩; *Księga rodzinna*, s. 17, 25 ⟨S03-p17-s03, S03-p25-s02, S03-p25-s03⟩.
+[^k22]: *Zeszyt wspomnień*, s. 1 ⟨S07-p01-s02⟩; *Notatka o kaplicy*, s. 1 ⟨S05-p01-s02⟩; *Księga rodzinna*, s. 30 ⟨S03-p30-s02⟩.
+[^k23]: *Zeszyt wspomnień*, s. 1 ⟨S07-p01-s02⟩; *Księga rodzinna*, s. 17–18, 25–26 ⟨S03-p17-s04, S03-p18-s04, S03-p25-s04, S03-p26-s02, S03-p26-s03⟩ (nazwiska po mężach odczytane niepewnie).
+[^j1]: Kajzer, *Pałace i dwory*, s. 73–74 ⟨S08-p073-s02, S08-p074-s03⟩; *Zeszyt wspomnień*, s. 6 ⟨S07-p06-s04⟩; *Notatka o kaplicy*, s. 2 ⟨S05-p02-s01⟩.
+[^j2]: Kajzer, *Pałace i dwory*, s. 74–75 ⟨S08-p074-s04, S08-p075-s01⟩.
+[^j3]: Tamże, s. 74 ⟨S08-p074-s03⟩.
+[^j4]: *Zeszyt wspomnień*, s. 6 ⟨S07-p06-s04⟩ (słowo przy „serwitutach” odczytane niepewnie: „uniósł” albo „zniósł”).
+[^j5]: *Zeszyt wspomnień*, s. 6–7 ⟨S07-p06-s04, S07-p07-s02⟩; *Księga rodzinna*, s. 7 ⟨S03-p07-s02⟩.
+[^j6]: *Zeszyt wspomnień*, s. 6 ⟨S07-p06-s04⟩; *Notatka o kaplicy*, s. 1 ⟨S05-p01-s02⟩.
+[^j7]: Kajzer, *Pałace i dwory*, s. 77 ⟨S08-p077-s02⟩.
+[^j8]: *Zeszyt wspomnień*, s. 7 ⟨S07-p07-s02⟩.
+[^j9]: *Zeszyt wspomnień*, s. 6 ⟨S07-p06-s04⟩; *Notatka o kaplicy*, s. 2 ⟨S05-p02-s01⟩; Kajzer, *Pałace i dwory*, s. 74 ⟨S08-p074-s03⟩.
+[^j10]: *Zeszyt wspomnień*, s. 7 ⟨S07-p07-s02⟩.
+[^j11]: *Notatka o kaplicy*, s. 2 ⟨S05-p02-s01⟩.
+[^j12]: Kajzer, *Pałace i dwory*, s. 74 ⟨S08-p074-s03⟩.
+[^j13]: Kajzer, *Pałace i dwory*, s. 74 ⟨S08-p074-s03⟩; *Zeszyt wspomnień*, s. 7–8 ⟨S07-p07-s02, S07-p08-s01⟩. Identyfikacja wyrazu — uwaga opracowującego.
+[^j14]: *Notatka o kaplicy*, s. 1 ⟨S05-p01-s01⟩; *Zeszyt wspomnień*, s. 54 ⟨S07-p54-s01⟩; Kajzer, *Pałace i dwory*, s. 74 ⟨S08-p074-s01⟩.
+[^j15]: *Notatka o kaplicy*, s. 1 ⟨S05-p01-s02⟩; *Zeszyt wspomnień*, s. 54 ⟨S07-p54-s01⟩; *Księga rodzinna*, s. 30 ⟨S03-p30-s02⟩.
+[^j16]: *Zeszyt wspomnień*, s. 1 i 16 ⟨S07-p01-s03, S07-p16-s01⟩; *Księga rodzinna*, s. 17 ⟨S03-p17-s02⟩.
+[^j17]: *Zeszyt wspomnień*, s. 13 i 16 ⟨S07-p13-s01, S07-p16-s02⟩; *Notatka o kaplicy*, s. 2 ⟨S05-p02-s04⟩; Kajzer, *Pałace i dwory*, s. 77 ⟨S08-p077-s02⟩.
+[^j18]: *Zeszyt wspomnień*, s. 16 ⟨S07-p16-s03, S07-p16-s04⟩; *Księga rodzinna*, s. 18 ⟨S03-p18-s02⟩.
+[^j19]: *Zeszyt wspomnień*, s. 1 i 16 ⟨S07-p01-s03, S07-p16-s05⟩; *Notatka o kaplicy*, s. 1 ⟨S05-p01-s02⟩.
+[^j20]: *Zeszyt wspomnień*, s. 6–7 ⟨S07-p06-s04, S07-p07-s01⟩; *Notatka o kaplicy*, s. 1 ⟨S05-p01-s02⟩.
+[^n1]: *Zeszyt wspomnień*, s. 61, dopisek ⟨S07-p61-d1⟩.
+[^n2]: *Zeszyt wspomnień*, s. 26 ⟨S07-p26-s01⟩; *Księga rodzinna*, s. 33 ⟨S03-p33-s02⟩.
+[^n3]: *Zeszyt wspomnień*, s. 26–27 ⟨S07-p26-s02, S07-p26-s03, S07-p27-s01⟩; *Księga rodzinna*, s. 23, 25, 31, 33 ⟨S03-p23-s03, S03-p25-s03, S03-p31-s02, S03-p33-s02⟩; *Zeszyt wspomnień*, s. 57 ⟨S07-p57-s01⟩.
+[^n4]: *Zeszyt wspomnień*, s. 27 ⟨S07-p27-s02, S07-p27-s03, S07-p27-s04, S07-p27-s05, S07-p27-s06⟩; *Zeszyt wspomnień*, s. 54–55 ⟨S07-p54-s02, S07-p55-s02⟩; *Księga rodzinna*, s. 44 ⟨S03-p44-s02⟩.
+[^n5]: *Księga rodzinna*, s. 31 ⟨S03-p31-s02⟩; *Zeszyt wspomnień*, s. 57 ⟨S07-p57-s01⟩.
+[^n6]: *Zeszyt wspomnień*, s. 61, dopisek ⟨S07-p61-d1⟩.
 
 ## 10. Michał Edmund (1865–1942) i Ewelina z Drohojowskich (1880–1955)
 
@@ -588,7 +612,7 @@ Krempy rodzina już nie odzyskała. Po wojnie dwór był budynkiem mieszkalnym g
 
 Po wojnie Jerzy pracował w Spółdzielni Poligraficznej im. Hanki Sawickiej[?] w Grodzisku Mazowieckim.[^r21] Za pieniądze ze sprzedaży domu w Wawrze kupił 21 października 1947 roku plac przy Narbutta 60 w Warszawie.[^r22] Testamentem zapisał mu Ciszecin Wielki jego wuj, Jan Drohojowski, ale majątek przepadł po wojnie.[^r23] Jerzy zmarł **13 października 1967 roku** w szpitalu Przemienienia Pańskiego na Pradze. Pogrzeb odbył się 17 października, a spoczął na Powązkach w grobie rodzinnym.[^r24]
 
-Anna przeżyła męża o ponad trzydzieści lat. W 1991 roku przygotowała dla Leszka Kajzera dwa opracowania, *Dwór w Krempie* i *Opis dworu w Kościerzynie*, napisała do niego list i udostępniła mu stare fotografie. Kajzer zaznacza, że „przekazy te są bowiem jedynymi źródłami do rekonstrukcji domostwa w okresie międzywojennym”.[^r25] Opracowania te nie zachowały się w zbiorze rodzinnym, który był podstawą tego tekstu. Warto ich poszukać. Najpewniej to Anna jest też autorką zeszytu wspomnień S07. Narratorka pisze o pensji Plater, o „Prababci” Grabińskiej, u której mieszkała, o „moim rodzeństwie” Andrzeju i Marii Prządzyńskich i o domu „u nas w Milanówku”.[^r26] Anna zmarła **10 lipca 1999 roku** i spoczęła obok męża na Powązkach.[^r27]
+Anna przeżyła męża o ponad trzydzieści lat. W 1991 roku przygotowała dla Leszka Kajzera dwa opracowania, *Dwór w Krempie* i *Opis dworu w Kościerzynie*, napisała do niego list i udostępniła mu stare fotografie. Kajzer zaznacza, że „przekazy te są bowiem jedynymi źródłami do rekonstrukcji domostwa w okresie międzywojennym”.[^r25] Opracowania te nie zachowały się w zbiorze rodzinnym, który był podstawą tego tekstu. Warto ich poszukać. Najpewniej to Anna jest też autorką *Zeszytu wspomnień*. Narratorka pisze o pensji Plater, o „Prababci” Grabińskiej, u której mieszkała, o „moim rodzeństwie” Andrzeju i Marii Prządzyńskich i o domu „u nas w Milanówku”.[^r26] Anna zmarła **10 lipca 1999 roku** i spoczęła obok męża na Powązkach.[^r27]
 
 ---
 
@@ -602,50 +626,50 @@ Dzieci Jerzego i Anny oraz ich rodziny według zapisków:[^y1]
 
 Księga rodzinna zawiera też kalendarz urodzin, ślubów, chrztów, komunii, egzaminów i zgonów od 1871 do 1999 roku, prowadzony przez dwa pokolenia. Pełne zestawienie zawiera opracowanie zapisek rodzinnych (rozdz. 12 pliku `teksty/zapiski-rodzinne-uporzadkowane.md`).[^y2]
 
-[^e1]: S07, s. 7 i 21 ⟨S07-p07-s03, S07-p21-s04⟩; S03, s. 9 ⟨S03-p09-s01⟩.
-[^e2]: S03, s. 9 ⟨S03-p09-s01⟩; S07, s. 9 ⟨S07-p09-s01⟩.
-[^e3]: S07, s. 8 ⟨S07-p08-s01⟩. Objaśnienie „ojca Marii” — uwaga opracowującego.
-[^e4]: S03, s. 9 ⟨S03-p09-s01⟩.
-[^e5]: S08, s. 75 ⟨S08-p075-s01⟩.
-[^e6]: S07, s. 8 ⟨S07-p08-s01⟩.
-[^e7]: S07, s. 8 ⟨S07-p08-s01⟩; S03, s. 38 ⟨S03-p38-s02⟩.
-[^e8]: S07, s. 8 i 13 ⟨S07-p08-s01, S07-p13-s01⟩.
-[^e9]: S03, s. 9 ⟨S03-p09-s02⟩; S07, s. 8–9 ⟨S07-p08-s02, S07-p09-s01⟩.
-[^e10]: S07, s. 8 ⟨S07-p08-s01⟩; S03, s. 6 i 9 ⟨S03-p06-s02, S03-p09-s01⟩.
-[^e11]: S07, s. 9 ⟨S07-p09-s01⟩.
-[^e12]: S05, s. 2 ⟨S05-p02-s03, S05-p02-s04⟩.
-[^e13]: S07, s. 9 ⟨S07-p09-s01⟩; S03, s. 9 i 48 ⟨S03-p09-s02, S03-p48-s02⟩.
-[^e14]: S07, s. 54 ⟨S07-p54-s02⟩; S03, s. 33 ⟨S03-p33-s02⟩.
-[^e15]: S03, s. 6 ⟨S03-p06-s02⟩; S04, s. 1 ⟨S04-p01-s02⟩.
-[^r1]: S03, s. 8 ⟨S03-p08-s02⟩; S07, s. 10 ⟨S07-p10-s01⟩; S05, s. 2 ⟨S05-p02-s03⟩ (pierwsza litera nazwiska niepewna).
-[^r2]: S07, s. 10 ⟨S07-p10-s01⟩; S04, s. 1 ⟨S04-p01-s03, S04-p01-s05⟩.
-[^r3]: S07, s. 10–12 ⟨S07-p10-s01, S07-p11-s01, S07-p12-s01⟩; S04, s. 1 ⟨S04-p01-s05⟩; S05, s. 2 ⟨S05-p02-s02⟩.
-[^r4]: S07, s. 12 ⟨S07-p12-s01⟩; S04, s. 1 ⟨S04-p01-s03⟩.
-[^r5]: S07, s. 12–13 ⟨S07-p12-s01, S07-p13-s01⟩; S08, s. 75–76 ⟨S08-p075-s01, S08-p076-s02⟩.
-[^r6]: S07, s. 13 ⟨S07-p13-s01⟩.
-[^r7]: S04, s. 1 ⟨S04-p01-s04⟩; S07, s. 60 ⟨S07-p60-s01⟩; S08, s. 76 ⟨S08-p076-s02⟩.
-[^r8]: S08, s. 76–77 ⟨S08-p076-s02, S08-p077-s01⟩.
-[^r9]: S07, s. 13 ⟨S07-p13-s01⟩.
-[^r10]: S03, s. 8 i 46 ⟨S03-p08-s02, S03-p08-s03, S03-p46-s02⟩; S07, s. 13–14 ⟨S07-p13-s02, S07-p14-s01⟩.
-[^r11]: S03, s. 8 ⟨S03-p08-s03⟩; S07, s. 14 i 42–43 ⟨S07-p14-s01, S07-p42-s02, S07-p43-s01⟩.
-[^r12]: S07, s. 14 ⟨S07-p14-s01⟩; S03, s. 12 i 45 ⟨S03-p12-s02, S03-p12-s03, S03-p45-s02⟩.
-[^r13]: S03, s. 42 ⟨S03-p42-s02⟩; S07, s. 14–15 ⟨S07-p14-s01, S07-p15-s01⟩; S04, s. 1 ⟨S04-p01-s06⟩; S08, s. 73 ⟨S08-p073-s01⟩.
-[^r14]: S04, s. 2 ⟨S04-p02-s01⟩.
-[^r15]: S03, s. 2 i 46 ⟨S03-p02-s03, S03-p46-s02⟩; S07, s. 15 ⟨S07-p15-s01⟩.
-[^r16]: S07, s. 15 ⟨S07-p15-s01⟩; S03, s. 52 ⟨S03-p52-s02⟩.
-[^r17]: S08, s. 73 i 77–78 ⟨S08-p073-s01, S08-p077-s03, S08-p078-s01⟩.
-[^r18]: S05, s. 2 ⟨S05-p02-s01⟩; S04, s. 2 ⟨S04-p02-s02⟩; S08, s. 73 ⟨S08-p073-s01⟩.
-[^r19]: S08, s. 71 i 77 ⟨S08-p071-s03, S08-p077-s01⟩.
-[^r20]: S07, s. 13 ⟨S07-p13-s01⟩; S08, s. 77 ⟨S08-p077-s02⟩.
-[^r21]: S04, s. 2 ⟨S04-p02-s01⟩.
-[^r22]: S07, s. 60 ⟨S07-p60-s02⟩.
-[^r23]: S07, s. 19 i 60 ⟨S07-p19-s01, S07-p60-s03⟩; S03, s. 38 ⟨S03-p38-s02⟩.
-[^r24]: S07, s. 10 ⟨S07-p10-s01⟩; S03, s. 52 ⟨S03-p52-s02⟩; S07, s. 54 ⟨S07-p54-s02⟩.
-[^r25]: S08, s. 64, przypisy 25–26; s. 73, przypis 13 ⟨S08-p064-f25, S08-p064-f26, S08-p073-f13⟩.
-[^r26]: S07, s. 9, 42, 48 ⟨S07-p09-s01, S07-p42-s02, S07-p48-s01⟩.
-[^r27]: S03, s. 49, dopisek ⟨S03-p49-d1⟩; S03, s. 33 ⟨S03-p33-d1⟩.
-[^y1]: S03, s. 2–4, 12, 40, 43–54 ⟨S03-p02-s03, S03-p03-s02, S03-p04-s02, S03-p12-s02, S03-p12-s03, S03-p40-s02, S03-p45-s02, S03-p46-s02, S03-p47-s02, S03-p50-s02, S03-p54-d2⟩; S04, s. 2 ⟨S04-p02-s04, S04-p02-s05, S04-p02-s06⟩; S07, s. 1 i 28 ⟨S07-p01-s04, S07-p28-d1⟩; S03, s. 1 ⟨S03-p01-s01, S03-p01-s04⟩; S07, s. 7 ⟨S07-p07-s01⟩.
-[^y2]: S03, s. 43–54 ⟨S03-p43-s02, S03-p44-s02, S03-p48-s02, S03-p51-s02, S03-p52-s02, S03-p53-s02⟩.
+[^e1]: *Zeszyt wspomnień*, s. 7 i 21 ⟨S07-p07-s03, S07-p21-s04⟩; *Księga rodzinna*, s. 9 ⟨S03-p09-s01⟩.
+[^e2]: *Księga rodzinna*, s. 9 ⟨S03-p09-s01⟩; *Zeszyt wspomnień*, s. 9 ⟨S07-p09-s01⟩.
+[^e3]: *Zeszyt wspomnień*, s. 8 ⟨S07-p08-s01⟩. Objaśnienie „ojca Marii” — uwaga opracowującego.
+[^e4]: *Księga rodzinna*, s. 9 ⟨S03-p09-s01⟩.
+[^e5]: Kajzer, *Pałace i dwory*, s. 75 ⟨S08-p075-s01⟩.
+[^e6]: *Zeszyt wspomnień*, s. 8 ⟨S07-p08-s01⟩.
+[^e7]: *Zeszyt wspomnień*, s. 8 ⟨S07-p08-s01⟩; *Księga rodzinna*, s. 38 ⟨S03-p38-s02⟩.
+[^e8]: *Zeszyt wspomnień*, s. 8 i 13 ⟨S07-p08-s01, S07-p13-s01⟩.
+[^e9]: *Księga rodzinna*, s. 9 ⟨S03-p09-s02⟩; *Zeszyt wspomnień*, s. 8–9 ⟨S07-p08-s02, S07-p09-s01⟩.
+[^e10]: *Zeszyt wspomnień*, s. 8 ⟨S07-p08-s01⟩; *Księga rodzinna*, s. 6 i 9 ⟨S03-p06-s02, S03-p09-s01⟩.
+[^e11]: *Zeszyt wspomnień*, s. 9 ⟨S07-p09-s01⟩.
+[^e12]: *Notatka o kaplicy*, s. 2 ⟨S05-p02-s03, S05-p02-s04⟩.
+[^e13]: *Zeszyt wspomnień*, s. 9 ⟨S07-p09-s01⟩; *Księga rodzinna*, s. 9 i 48 ⟨S03-p09-s02, S03-p48-s02⟩.
+[^e14]: *Zeszyt wspomnień*, s. 54 ⟨S07-p54-s02⟩; *Księga rodzinna*, s. 33 ⟨S03-p33-s02⟩.
+[^e15]: *Księga rodzinna*, s. 6 ⟨S03-p06-s02⟩; *Biogram Jerzego R.*, s. 1 ⟨S04-p01-s02⟩.
+[^r1]: *Księga rodzinna*, s. 8 ⟨S03-p08-s02⟩; *Zeszyt wspomnień*, s. 10 ⟨S07-p10-s01⟩; *Notatka o kaplicy*, s. 2 ⟨S05-p02-s03⟩ (pierwsza litera nazwiska niepewna).
+[^r2]: *Zeszyt wspomnień*, s. 10 ⟨S07-p10-s01⟩; *Biogram Jerzego R.*, s. 1 ⟨S04-p01-s03, S04-p01-s05⟩.
+[^r3]: *Zeszyt wspomnień*, s. 10–12 ⟨S07-p10-s01, S07-p11-s01, S07-p12-s01⟩; *Biogram Jerzego R.*, s. 1 ⟨S04-p01-s05⟩; *Notatka o kaplicy*, s. 2 ⟨S05-p02-s02⟩.
+[^r4]: *Zeszyt wspomnień*, s. 12 ⟨S07-p12-s01⟩; *Biogram Jerzego R.*, s. 1 ⟨S04-p01-s03⟩.
+[^r5]: *Zeszyt wspomnień*, s. 12–13 ⟨S07-p12-s01, S07-p13-s01⟩; Kajzer, *Pałace i dwory*, s. 75–76 ⟨S08-p075-s01, S08-p076-s02⟩.
+[^r6]: *Zeszyt wspomnień*, s. 13 ⟨S07-p13-s01⟩.
+[^r7]: *Biogram Jerzego R.*, s. 1 ⟨S04-p01-s04⟩; *Zeszyt wspomnień*, s. 60 ⟨S07-p60-s01⟩; Kajzer, *Pałace i dwory*, s. 76 ⟨S08-p076-s02⟩.
+[^r8]: Kajzer, *Pałace i dwory*, s. 76–77 ⟨S08-p076-s02, S08-p077-s01⟩.
+[^r9]: *Zeszyt wspomnień*, s. 13 ⟨S07-p13-s01⟩.
+[^r10]: *Księga rodzinna*, s. 8 i 46 ⟨S03-p08-s02, S03-p08-s03, S03-p46-s02⟩; *Zeszyt wspomnień*, s. 13–14 ⟨S07-p13-s02, S07-p14-s01⟩.
+[^r11]: *Księga rodzinna*, s. 8 ⟨S03-p08-s03⟩; *Zeszyt wspomnień*, s. 14 i 42–43 ⟨S07-p14-s01, S07-p42-s02, S07-p43-s01⟩.
+[^r12]: *Zeszyt wspomnień*, s. 14 ⟨S07-p14-s01⟩; *Księga rodzinna*, s. 12 i 45 ⟨S03-p12-s02, S03-p12-s03, S03-p45-s02⟩.
+[^r13]: *Księga rodzinna*, s. 42 ⟨S03-p42-s02⟩; *Zeszyt wspomnień*, s. 14–15 ⟨S07-p14-s01, S07-p15-s01⟩; *Biogram Jerzego R.*, s. 1 ⟨S04-p01-s06⟩; Kajzer, *Pałace i dwory*, s. 73 ⟨S08-p073-s01⟩.
+[^r14]: *Biogram Jerzego R.*, s. 2 ⟨S04-p02-s01⟩.
+[^r15]: *Księga rodzinna*, s. 2 i 46 ⟨S03-p02-s03, S03-p46-s02⟩; *Zeszyt wspomnień*, s. 15 ⟨S07-p15-s01⟩.
+[^r16]: *Zeszyt wspomnień*, s. 15 ⟨S07-p15-s01⟩; *Księga rodzinna*, s. 52 ⟨S03-p52-s02⟩.
+[^r17]: Kajzer, *Pałace i dwory*, s. 73 i 77–78 ⟨S08-p073-s01, S08-p077-s03, S08-p078-s01⟩.
+[^r18]: *Notatka o kaplicy*, s. 2 ⟨S05-p02-s01⟩; *Biogram Jerzego R.*, s. 2 ⟨S04-p02-s02⟩; Kajzer, *Pałace i dwory*, s. 73 ⟨S08-p073-s01⟩.
+[^r19]: Kajzer, *Pałace i dwory*, s. 71 i 77 ⟨S08-p071-s03, S08-p077-s01⟩.
+[^r20]: *Zeszyt wspomnień*, s. 13 ⟨S07-p13-s01⟩; Kajzer, *Pałace i dwory*, s. 77 ⟨S08-p077-s02⟩.
+[^r21]: *Biogram Jerzego R.*, s. 2 ⟨S04-p02-s01⟩.
+[^r22]: *Zeszyt wspomnień*, s. 60 ⟨S07-p60-s02⟩.
+[^r23]: *Zeszyt wspomnień*, s. 19 i 60 ⟨S07-p19-s01, S07-p60-s03⟩; *Księga rodzinna*, s. 38 ⟨S03-p38-s02⟩.
+[^r24]: *Zeszyt wspomnień*, s. 10 ⟨S07-p10-s01⟩; *Księga rodzinna*, s. 52 ⟨S03-p52-s02⟩; *Zeszyt wspomnień*, s. 54 ⟨S07-p54-s02⟩.
+[^r25]: Kajzer, *Pałace i dwory*, s. 64, przypisy 25–26; s. 73, przypis 13 ⟨S08-p064-f25, S08-p064-f26, S08-p073-f13⟩.
+[^r26]: *Zeszyt wspomnień*, s. 9, 42, 48 ⟨S07-p09-s01, S07-p42-s02, S07-p48-s01⟩.
+[^r27]: *Księga rodzinna*, s. 49, dopisek ⟨S03-p49-d1⟩; *Księga rodzinna*, s. 33 ⟨S03-p33-d1⟩.
+[^y1]: *Księga rodzinna*, s. 2–4, 12, 40, 43–54 ⟨S03-p02-s03, S03-p03-s02, S03-p04-s02, S03-p12-s02, S03-p12-s03, S03-p40-s02, S03-p45-s02, S03-p46-s02, S03-p47-s02, S03-p50-s02, S03-p54-d2⟩; *Biogram Jerzego R.*, s. 2 ⟨S04-p02-s04, S04-p02-s05, S04-p02-s06⟩; *Zeszyt wspomnień*, s. 1 i 28 ⟨S07-p01-s04, S07-p28-d1⟩; *Księga rodzinna*, s. 1 ⟨S03-p01-s01, S03-p01-s04⟩; *Zeszyt wspomnień*, s. 7 ⟨S07-p07-s01⟩.
+[^y2]: *Księga rodzinna*, s. 43–54 ⟨S03-p43-s02, S03-p44-s02, S03-p48-s02, S03-p51-s02, S03-p52-s02, S03-p53-s02⟩.
 
 ## 13. Rodziny spokrewnione
 
@@ -759,41 +783,41 @@ Zapiski rodzinne odnotowują wiele ofiar i strat wojennych:[^w1]
   - Jan Drohojowski, zmarły w Borowiczach w 1945 roku.
 - **Kaplica Radoszewskich w Wieluniu** została zbombardowana we wrześniu 1939 roku i rozebrana przez Niemców.[^w2]
 
-[^f1]: S07, s. 17 i 53 ⟨S07-p17-s02, S07-p53-s01⟩.
-[^f2]: S07, s. 21 ⟨S07-p21-s01, S07-p21-s02⟩; S03, s. 7 i 10 ⟨S03-p07-s03, S03-p10-s03⟩.
-[^f3]: S07, s. 17–18 i 21 ⟨S07-p17-s03, S07-p17-s04, S07-p18-s01, S07-p18-s02, S07-p21-s03⟩; S07, s. 9 ⟨S07-p09-s01⟩; S03, s. 9 ⟨S03-p09-s06⟩; S07, s. 58 ⟨S07-p58-s01⟩.
-[^f4]: S07, s. 18–21 ⟨S07-p18-s03, S07-p19-s01, S07-p19-s02, S07-p20-s01, S07-p21-s04, S07-p21-s05, S07-p21-s06, S07-p21-s07⟩.
-[^f5]: S07, s. 20 i 58 ⟨S07-p20-s01, S07-p58-s03⟩; S03, s. 29 ⟨S03-p29-s03⟩.
-[^p1]: S07, s. 28–29 i 52 ⟨S07-p28-s02, S07-p29-s02, S07-p29-s03, S07-p52-s01, S07-p52-s02⟩; S03, s. 7 i 11 ⟨S03-p07-s04, S03-p11-s03⟩.
-[^p2]: S07, s. 30–31 ⟨S07-p30-s01, S07-p31-s01, S07-p31-s02⟩; S07, s. 56 ⟨S07-p56-s01⟩; S03, s. 36 ⟨S03-p36-s02⟩.
-[^p3]: S07, s. 29 i 41 ⟨S07-p29-s04, S07-p41-s02, S07-p41-s03⟩.
-[^p4]: S07, s. 32–33 i 57 ⟨S07-p32-s01, S07-p33-s01, S07-p57-s02⟩; S03, s. 19 i 32 ⟨S03-p19-s02, S03-p32-s02⟩.
-[^p5]: S07, s. 33–35 ⟨S07-p33-s02, S07-p33-s03, S07-p34-s02, S07-p35-s01⟩; S03, s. 20–21 ⟨S03-p20-s03, S03-p20-s06, S03-p21-s03⟩; S08, s. 64 ⟨S08-p064-s03⟩.
-[^p6]: S07, s. 34 ⟨S07-p34-s01⟩; S03, s. 9, 21, 53 ⟨S03-p09-s03, S03-p21-s02, S03-p53-s02⟩; S05, s. 1 ⟨S05-p01-s03⟩; S07, s. 59 ⟨S07-p59-s03⟩.
-[^p7]: S07, s. 35 i 61 ⟨S07-p35-s01, S07-p61-s02⟩; S08, s. 64 ⟨S08-p064-s03⟩.
-[^p8]: S07, s. 35–36 ⟨S07-p35-s01, S07-p36-s01⟩.
-[^p9]: S07, s. 35–37 ⟨S07-p35-s01, S07-p36-s01, S07-p37-s01⟩; S08, s. 64 i 67 ⟨S08-p064-s04, S08-p064-s05, S08-p067-s03⟩.
-[^p10]: S08, s. 68 ⟨S08-p068-s02⟩.
-[^p11]: S08, s. 67 ⟨S08-p067-s02, S08-p067-s03⟩.
-[^p12]: S07, s. 38–39 ⟨S07-p38-s01, S07-p39-s01⟩; S03, s. 9 ⟨S03-p09-s04⟩.
-[^p13]: S07, s. 39–40 ⟨S07-p39-s02, S07-p40-s01⟩.
-[^p14]: S07, s. 48 ⟨S07-p48-s02, S07-p48-s03, S07-p48-s04⟩; S03, s. 13 ⟨S03-p13-s03, S03-p13-s04⟩.
-[^g1]: S07, s. 46 ⟨S07-p46-s01, S07-p46-s03⟩; S03, s. 7, 9, 10 ⟨S03-p07-s06, S03-p09-s08, S03-p10-s07⟩.
-[^g2]: S07, s. 46 i 59 ⟨S07-p46-s02, S07-p59-s04⟩.
-[^g3]: S07, s. 52 ⟨S07-p52-s03, S07-p52-s04⟩.
-[^g4]: S07, s. 42–43 ⟨S07-p42-s02, S07-p43-s01⟩; S07, s. 61 ⟨S07-p61-s01⟩.
-[^g5]: S07, s. 42 i 55 ⟨S07-p42-s02, S07-p55-s04⟩; S03, s. 10 ⟨S03-p10-s08⟩.
-[^g6]: S07, s. 43 ⟨S07-p43-s02⟩.
-[^g7]: S07, s. 44–45 ⟨S07-p44-s02, S07-p44-s03, S07-p44-s04, S07-p44-s05, S07-p45-s01⟩; S07, s. 59 ⟨S07-p59-s01⟩; S03, s. 15 ⟨S03-p15-s04⟩.
-[^g8]: S07, s. 45 ⟨S07-p45-s02⟩.
-[^s1]: S07, s. 6, 26, 33 ⟨S07-p06-s03, S07-p26-s02, S07-p33-s03⟩; S03, s. 10 ⟨S03-p10-s01⟩.
-[^s2]: S03, s. 22–23 i 31 ⟨S03-p22-s01, S03-p23-s02, S03-p31-s02⟩; S07, s. 28 i 47 ⟨S07-p28-s04, S07-p47-s02⟩.
-[^s3]: S07, s. 47 ⟨S07-p47-s02, S07-p47-s03⟩; S03, s. 10 ⟨S03-p10-s06⟩.
-[^o1]: S07, s. 16, 32, 42, 59 ⟨S07-p16-s03, S07-p32-s01, S07-p42-s02, S07-p59-s02⟩; S03, s. 41 ⟨S03-p41-s02⟩.
-[^o2]: S03, s. 7 i 10 ⟨S03-p07-s02, S03-p10-s02⟩.
-[^o3]: S07, s. 6 i 16 ⟨S07-p06-s02, S07-p16-s02⟩.
-[^w1]: S03, s. 15, 26, 31, 42 ⟨S03-p15-s03, S03-p26-s03, S03-p31-s02, S03-p42-s02⟩; S07, s. 8, 14, 19, 27, 39–44, 61 ⟨S07-p08-s01, S07-p14-s01, S07-p19-s01, S07-p27-s04, S07-p27-s05, S07-p39-s02, S07-p40-s01, S07-p43-s01, S07-p44-s04, S07-p61-s03⟩; S04, s. 1 ⟨S04-p01-s06⟩; S08, s. 67 ⟨S08-p067-s03⟩.
-[^w2]: S08, s. 73, przypis 11 ⟨S08-p073-f11⟩.
+[^f1]: *Zeszyt wspomnień*, s. 17 i 53 ⟨S07-p17-s02, S07-p53-s01⟩.
+[^f2]: *Zeszyt wspomnień*, s. 21 ⟨S07-p21-s01, S07-p21-s02⟩; *Księga rodzinna*, s. 7 i 10 ⟨S03-p07-s03, S03-p10-s03⟩.
+[^f3]: *Zeszyt wspomnień*, s. 17–18 i 21 ⟨S07-p17-s03, S07-p17-s04, S07-p18-s01, S07-p18-s02, S07-p21-s03⟩; *Zeszyt wspomnień*, s. 9 ⟨S07-p09-s01⟩; *Księga rodzinna*, s. 9 ⟨S03-p09-s06⟩; *Zeszyt wspomnień*, s. 58 ⟨S07-p58-s01⟩.
+[^f4]: *Zeszyt wspomnień*, s. 18–21 ⟨S07-p18-s03, S07-p19-s01, S07-p19-s02, S07-p20-s01, S07-p21-s04, S07-p21-s05, S07-p21-s06, S07-p21-s07⟩.
+[^f5]: *Zeszyt wspomnień*, s. 20 i 58 ⟨S07-p20-s01, S07-p58-s03⟩; *Księga rodzinna*, s. 29 ⟨S03-p29-s03⟩.
+[^p1]: *Zeszyt wspomnień*, s. 28–29 i 52 ⟨S07-p28-s02, S07-p29-s02, S07-p29-s03, S07-p52-s01, S07-p52-s02⟩; *Księga rodzinna*, s. 7 i 11 ⟨S03-p07-s04, S03-p11-s03⟩.
+[^p2]: *Zeszyt wspomnień*, s. 30–31 ⟨S07-p30-s01, S07-p31-s01, S07-p31-s02⟩; *Zeszyt wspomnień*, s. 56 ⟨S07-p56-s01⟩; *Księga rodzinna*, s. 36 ⟨S03-p36-s02⟩.
+[^p3]: *Zeszyt wspomnień*, s. 29 i 41 ⟨S07-p29-s04, S07-p41-s02, S07-p41-s03⟩.
+[^p4]: *Zeszyt wspomnień*, s. 32–33 i 57 ⟨S07-p32-s01, S07-p33-s01, S07-p57-s02⟩; *Księga rodzinna*, s. 19 i 32 ⟨S03-p19-s02, S03-p32-s02⟩.
+[^p5]: *Zeszyt wspomnień*, s. 33–35 ⟨S07-p33-s02, S07-p33-s03, S07-p34-s02, S07-p35-s01⟩; *Księga rodzinna*, s. 20–21 ⟨S03-p20-s03, S03-p20-s06, S03-p21-s03⟩; Kajzer, *Pałace i dwory*, s. 64 ⟨S08-p064-s03⟩.
+[^p6]: *Zeszyt wspomnień*, s. 34 ⟨S07-p34-s01⟩; *Księga rodzinna*, s. 9, 21, 53 ⟨S03-p09-s03, S03-p21-s02, S03-p53-s02⟩; *Notatka o kaplicy*, s. 1 ⟨S05-p01-s03⟩; *Zeszyt wspomnień*, s. 59 ⟨S07-p59-s03⟩.
+[^p7]: *Zeszyt wspomnień*, s. 35 i 61 ⟨S07-p35-s01, S07-p61-s02⟩; Kajzer, *Pałace i dwory*, s. 64 ⟨S08-p064-s03⟩.
+[^p8]: *Zeszyt wspomnień*, s. 35–36 ⟨S07-p35-s01, S07-p36-s01⟩.
+[^p9]: *Zeszyt wspomnień*, s. 35–37 ⟨S07-p35-s01, S07-p36-s01, S07-p37-s01⟩; Kajzer, *Pałace i dwory*, s. 64 i 67 ⟨S08-p064-s04, S08-p064-s05, S08-p067-s03⟩.
+[^p10]: Kajzer, *Pałace i dwory*, s. 68 ⟨S08-p068-s02⟩.
+[^p11]: Tamże, s. 67 ⟨S08-p067-s02, S08-p067-s03⟩.
+[^p12]: *Zeszyt wspomnień*, s. 38–39 ⟨S07-p38-s01, S07-p39-s01⟩; *Księga rodzinna*, s. 9 ⟨S03-p09-s04⟩.
+[^p13]: *Zeszyt wspomnień*, s. 39–40 ⟨S07-p39-s02, S07-p40-s01⟩.
+[^p14]: *Zeszyt wspomnień*, s. 48 ⟨S07-p48-s02, S07-p48-s03, S07-p48-s04⟩; *Księga rodzinna*, s. 13 ⟨S03-p13-s03, S03-p13-s04⟩.
+[^g1]: *Zeszyt wspomnień*, s. 46 ⟨S07-p46-s01, S07-p46-s03⟩; *Księga rodzinna*, s. 7, 9, 10 ⟨S03-p07-s06, S03-p09-s08, S03-p10-s07⟩.
+[^g2]: *Zeszyt wspomnień*, s. 46 i 59 ⟨S07-p46-s02, S07-p59-s04⟩.
+[^g3]: Tamże, s. 52 ⟨S07-p52-s03, S07-p52-s04⟩.
+[^g4]: Tamże, s. 42–43 ⟨S07-p42-s02, S07-p43-s01⟩; *Zeszyt wspomnień*, s. 61 ⟨S07-p61-s01⟩.
+[^g5]: *Zeszyt wspomnień*, s. 42 i 55 ⟨S07-p42-s02, S07-p55-s04⟩; *Księga rodzinna*, s. 10 ⟨S03-p10-s08⟩.
+[^g6]: *Zeszyt wspomnień*, s. 43 ⟨S07-p43-s02⟩.
+[^g7]: *Zeszyt wspomnień*, s. 44–45 ⟨S07-p44-s02, S07-p44-s03, S07-p44-s04, S07-p44-s05, S07-p45-s01⟩; *Zeszyt wspomnień*, s. 59 ⟨S07-p59-s01⟩; *Księga rodzinna*, s. 15 ⟨S03-p15-s04⟩.
+[^g8]: *Zeszyt wspomnień*, s. 45 ⟨S07-p45-s02⟩.
+[^s1]: *Zeszyt wspomnień*, s. 6, 26, 33 ⟨S07-p06-s03, S07-p26-s02, S07-p33-s03⟩; *Księga rodzinna*, s. 10 ⟨S03-p10-s01⟩.
+[^s2]: *Księga rodzinna*, s. 22–23 i 31 ⟨S03-p22-s01, S03-p23-s02, S03-p31-s02⟩; *Zeszyt wspomnień*, s. 28 i 47 ⟨S07-p28-s04, S07-p47-s02⟩.
+[^s3]: *Zeszyt wspomnień*, s. 47 ⟨S07-p47-s02, S07-p47-s03⟩; *Księga rodzinna*, s. 10 ⟨S03-p10-s06⟩.
+[^o1]: *Zeszyt wspomnień*, s. 16, 32, 42, 59 ⟨S07-p16-s03, S07-p32-s01, S07-p42-s02, S07-p59-s02⟩; *Księga rodzinna*, s. 41 ⟨S03-p41-s02⟩.
+[^o2]: *Księga rodzinna*, s. 7 i 10 ⟨S03-p07-s02, S03-p10-s02⟩.
+[^o3]: *Zeszyt wspomnień*, s. 6 i 16 ⟨S07-p06-s02, S07-p16-s02⟩.
+[^w1]: *Księga rodzinna*, s. 15, 26, 31, 42 ⟨S03-p15-s03, S03-p26-s03, S03-p31-s02, S03-p42-s02⟩; *Zeszyt wspomnień*, s. 8, 14, 19, 27, 39–44, 61 ⟨S07-p08-s01, S07-p14-s01, S07-p19-s01, S07-p27-s04, S07-p27-s05, S07-p39-s02, S07-p40-s01, S07-p43-s01, S07-p44-s04, S07-p61-s03⟩; *Biogram Jerzego R.*, s. 1 ⟨S04-p01-s06⟩; Kajzer, *Pałace i dwory*, s. 67 ⟨S08-p067-s03⟩.
+[^w2]: Kajzer, *Pałace i dwory*, s. 73, przypis 11 ⟨S08-p073-f11⟩.
 
 ## 15. Domy, majątki i miejsca pamięci
 
@@ -889,7 +913,7 @@ Do tego dochodzą ocalałe portrety rodzinne (osiem obrazów) i portrety przecho
 
 Linia z ojca na syna według drzewa Kosińskiego (pokolenia I–XI, do początku XVII wieku), monografii Kajzera i zapisków rodzinnych. Pokolenia I–VII to tradycja rodowa (zob. rozdz. 2).
 
-![Drzewo „linii prostej” Radoszewskich od Imbrama z Siemkowic (1412) do Jerzego i Anny — zeszyt wspomnień, s. 1 (S07)](skany/IMG_5911-1.jpg)
+![Drzewo „linii prostej” Radoszewskich od Imbrama z Siemkowic (1412) do Jerzego i Anny — *Zeszyt wspomnień*, s. 1](skany/IMG_5911-1.jpg)
 
 | Pok. | Osoba | Żona | Uwagi |
 |---|---|---|---|
@@ -901,7 +925,7 @@ Linia z ojca na syna według drzewa Kosińskiego (pokolenia I–XI, do początku
 | VI | Stogniew V Boksic | — | sędzia lelowski |
 | VII | Mikołaj III Boksic | — | pochowany w Pajęcznie |
 | VIII | **Imbram (Imram) Boksa** | Jachna z Osjakowa (Larysówna) | w aktach 1412–1413 |
-| IX | **Bogusław Boksa z Radoszewic** | trzy żony | dział ok. 1430–1440; †1459 (S07) |
+| IX | **Bogusław Boksa z Radoszewic** | trzy żony | dział ok. 1430–1440; †1459 (*Zeszyt wspomnień*) |
 | X | **Mikołaj V (Miklasz) Boksa** | Zofia Konopnicka / Kurzepnicka[?] | Węgry; †1574 w wieku 85 lat |
 | XI | **Jerzy**, podkomorzy wieluński | Mogilnicka h. Korczak | †23 X 1614 |
 | XII | **Marek**, kasztelan wieluński | Anna z Rudnik Biskupska | †28 XI 1641 (syn Jerzego albo Mikołaja — zob. rozdz. 16) |
@@ -918,53 +942,7 @@ Linia z ojca na syna według drzewa Kosińskiego (pokolenia I–XI, do początku
 
 Między pokoleniami XII a XVI zapiski rodzinne podają jedno ogniwo na pokolenie. Odstęp czasu (1641 → 1775) jest duży jak na trzy pokolenia, więc w tej części drzewa mogło zabraknąć któregoś ogniwa. To uwaga opracowującego, wymaga sprawdzenia w herbarzach (Niesiecki, Uruski, Dunin-Borkowski).
 
-## Aneks B. Źródła
-
-| Symbol | Źródło | Opis |
-|---|---|---|
-| **S01** | Ad. Am. Kosiński, *Przewodnik heraldyczny. Monografie, genealogie i spis rodzin senatorskich i tytuły honorowe posiadających*, t. V, Warszawa 1885, s. 132–145 | druk; dodatek o Radoszewskich do hasła Grabowskich: drzewo z pocz. XVII w. z przypisami Kosińskiego; egzemplarz rodzinny z odręcznymi znakami; 8 zdjęć |
-| **S02** | Stefan Łakomy, *Z dziejów Radoszewic*, cz. I, Radoszewice 1981 | rękopis, 23 strony; dzieje wsi, Radoszewscy, rokosz Zebrzydowskiego, Niemojowscy; 24 zdjęcia |
-| **S03** | *The History of Our Family* — księga rodzinna Teresy Boxa Radoszewskiej-Zielińskiej | rękopis, ok. 1974–1996, z późniejszymi dopiskami; drzewa, krewni, groby, domy, kalendarz rodzinny; 54 zdjęcia |
-| **S04** | „Jerzy Radoszewski Boxa h. Oksza 1902+1967” | luźna kartka, autor nieznany; biogram Jerzego; 2 zdjęcia |
-| **S05** | „Kaplica Boxa Radoszewskich na cmentarzu w Uniejowie…” | luźna kartka, autor nieznany; pochowani w krypcie, duchowni, dzieje Krempy; 2 zdjęcia |
-| **S06** | Bibliografia (spis lektur o rodzinie) | luźna kartka, autor nieznany; 1 zdjęcie |
-| **S07** | Zeszyt wspomnień i genealogii rodzin Radoszewskich, Prządzyńskich, Drohojowskich, Grabińskich | rękopis, najpewniej Anny z Prządzyńskich Radoszewskiej (po 2005 r.?); najobszerniejsze źródło rodzinne; 61 zdjęć |
-| **S08** | Leszek Kajzer, *Pałace i dwory w dawnym województwie sieradzkim*, t. 2, ok. 1991 | druk; hasła Kościerzyn (s. 57–70), Krempa (s. 71–78), Radoszewice (s. 123–137), Siemkowice (s. 139–152); 53 zdjęcia |
-| **S09** | „szlak przodków Boxa-Radoszewskich” | odręczny szkic trasy z 8 VII 2017; 1 zdjęcie |
-| **S10** | Stefan Łakomy, *Dwór i założenia parkowe w Radoszewicach k. Wielunia*, Radoszewice 1978 | rękopis, praca PTTK „Polska naszych dni”, 9 stron; 9 zdjęć |
-
-Wszystkie źródła sfotografowano (215 zdjęć) i przepisano wiernie, strona po stronie (`zrodla/transkrypcje/`). Na stronie internetowej rodziny każde zdjęcie strony wyświetla się obok odczytu.
-
-## Aneks C. Literatura przywoływana w źródłach
-
-Autorzy zapisek i opracowań powołują się m.in. na następujące prace:[^b1]
-
-- B. Paprocki, *Herby rycerstwa polskiego* (1584);
-- K. Niesiecki, *Herbarz polski*;
-- S. Okolski (herbarz);
-- S. Uruski, *Rodzina. Herbarz szlachty polskiej*;
-- J. Dunin-Borkowski, *Genealogie żyjących utytułowanych rodów polskich* i *Almanach Błękitny* (1908; Drohojowscy s. 321, Radoszewscy s. 1109);
-- *Polska encyklopedia szlachecka*, t. III;
-- *Słownik geograficzny Królestwa Polskiego* (t. IV i IX);
-- W. Szczygielski, *Dzieje Ziemi Wieluńskiej* (Łódź 1969) i *Produkcja rolnicza gospodarstwa folwarcznego w Wieluńskim* (1963);
-- R. Rosin, *Ziemia wieluńska w XII–XVI w.* (Łódź 1961);
-- ks. W. Prygodzki, *Z przeszłości Wielunia* (Częstochowa 1928);
-- ks. S. Nejman, *Cudowny obraz Matki B. Pajęczańskiej*;
-- ks. K. Korczyński, *Katedra kijowska*;
-- ks. P. Nitecki, *Biskupi Kościoła w Polsce*;
-- K. R. Prokop, *Biskupi kijowscy*;
-- J. Nadzieja[?], *Gen. Józef Zajączek*;
-- Cz. Bloch, *Gen. Ignacy Prządzyński*;
-- J. Pachoński, *Józef Grabiński generał*;
-- J. Skowronek, *Cmentarz polski w Montmorency*;
-- *Katalog zabytków sztuki w Polsce*;
-- *Wspomnienia więźniów Pawiaka*;
-- J. Zimogrodzki, *Województwo kaliskie w walce 1863–1864*;
-- M. Bruchnalska, *Miejsce Piastowe* (1934).
-
-Pełna lista z odsyłaczami jest w bazie (`dane/literatura.yaml`).
-
-## Aneks D. Słowniczek
+## Aneks B. Słowniczek
 
 | Wyraz | Znaczenie |
 |---|---|
@@ -981,13 +959,83 @@ Pełna lista z odsyłaczami jest w bazie (`dane/literatura.yaml`).
 | starosta | urzędnik królewski zarządzający dobrami królewskimi (starostwem) |
 | wojski | urzędnik ziemski, opiekun rodzin szlachty w czasie wojny |
 
-[^l1]: S03, s. 39 ⟨S03-p39-s02, S03-p39-s03⟩.
-[^l2]: S03, s. 38 ⟨S03-p38-s02⟩; S07, s. 60–61 ⟨S07-p60-s01, S07-p60-s02, S07-p60-s03, S07-p60-s04, S07-p60-s05, S07-p60-s06, S07-p61-s01, S07-p61-s02, S07-p61-s03, S07-p61-s04⟩.
-[^l3]: S08, s. 71, 78 i 68 ⟨S08-p071-s03, S08-p078-s01, S08-p068-s02⟩.
-[^l4]: S08, s. 128 i 132 ⟨S08-p128-s02, S08-p132-s02⟩; S10, s. 7 ⟨S10-p7-s01⟩.
-[^l5]: S08, s. 145 i 152 ⟨S08-p145-s02, S08-p152-s02⟩.
-[^l6]: S03, s. 30–37 ⟨S03-p30-s02, S03-p31-s02, S03-p32-s02, S03-p33-s02, S03-p35-s02, S03-p36-s02, S03-p36-s03, S03-p37-s01, S03-p37-s02⟩; S07, s. 52–59 ⟨S07-p52-s02, S07-p54-s01, S07-p54-s02, S07-p55-s02, S07-p55-s03, S07-p55-s04, S07-p56-s01, S07-p56-s02, S07-p56-s03, S07-p56-s04, S07-p56-s05, S07-p57-s01, S07-p57-s02, S07-p58-s01, S07-p58-s02, S07-p58-s03, S07-p58-s04, S07-p58-s05, S07-p58-s06, S07-p59-s01, S07-p59-s03, S07-p59-s04⟩; S05, s. 1 ⟨S05-p01-s02⟩.
-[^l7]: S09 ⟨S09-p1-s01⟩.
-[^q1]: S08, przypisy: s. 64 ⟨S08-p064-f25, S08-p064-f26⟩, s. 73 ⟨S08-p073-f13⟩, s. 128 ⟨S08-p128-f20⟩, s. 145 ⟨S08-p145-f23⟩.
-[^q2]: S08, s. 77 ⟨S08-p077-s01⟩; S07, s. 6, 7, 17, 18 ⟨S07-p06-s03, S07-p07-s01, S07-p17-s04, S07-p18-s02⟩.
-[^b1]: S07, s. 49–51 ⟨S07-p49-s02, S07-p49-s03, S07-p50-s01, S07-p50-s03, S07-p51-s01⟩; S06 ⟨S06-p01-s01, S06-p01-s02, S06-p01-s03, S06-p01-s05⟩; S02, przypisy ⟨S02-p02-f1, S02-p06-f2, S02-p10-f4, S02-p10-f6, S02-p20-f9, S02-p23-f32⟩; S10, s. 5 ⟨S10-p5-s03, S10-p5-s04⟩.
+## Bibliografia
+
+Opisy według ogólnie przyjętych zasad: nazwisko i inicjał imienia, tytuł kursywą, miejsce i rok wydania. Rękopisy opisano z podaniem formy (rkps), daty, objętości i miejsca przechowywania. Tytuły nadane przez opracowującego oraz dane ustalone poza źródłem podano w nawiasach kwadratowych. Skróty: [b.m.] — bez miejsca wydania, [b.r.] — bez roku, mpis — maszynopis.
+
+### I. Źródła rękopiśmienne (zbiory rodzinne)
+
+- [Biogram Jerzego Boxy Radoszewskiego (1902–1967)], rkps, [b.r.], 2 s., zbiory rodzinne.
+- Łakomy S., *Dwór i założenia parkowe w Radoszewicach k. Wielunia*. Praca programowa PTTK „Polska naszych dni”, Radoszewice, 20 III 1978, rkps, 9 s., zbiory rodzinne.
+- Łakomy S., *Z dziejów Radoszewic*, cz. I, Radoszewice 1981, rkps, okładka + 23 s., zbiory rodzinne.
+- [Notatka o kaplicy Boxa Radoszewskich na cmentarzu w Uniejowie, o duchownych z rodu i o Krempie], rkps, [b.r.], 2 s., zbiory rodzinne.
+- [Radoszewska A. z Prządzyńskich?], [Wspomnienia i genealogia rodzin Radoszewskich, Prządzyńskich, Drohojowskich i Grabińskich], rkps, [po 2005], 61 s., zbiory rodzinne.
+- Radoszewska-Zielińska T. Boxa, *The History of Our Family* [księga rodzinna Boxa Radoszewskich z Krempy], rkps, ok. 1974–1996 (dopiski do 1999), 54 s., zbiory rodzinne.
+- [Spis lektur o rodzinie Radoszewskich], rkps, [b.r.], 1 k., zbiory rodzinne.
+- [Szlak przodków Boxa-Radoszewskich — szkic trasy], rkps, 8 VII 2017, 1 k., zbiory rodzinne.
+
+### II. Źródła drukowane i opracowania wykorzystane bezpośrednio
+
+- Kajzer L., [hasła:] *Kościerzyn — dwory* (s. 57–70), *Krempa — dwór* (s. 71–78), *Radoszewice — dwory* (s. 123–137), *Siemkowice — dwory* (s. 139–152), [w:] *Pałace i dwory w dawnym województwie sieradzkim*, t. 2, [b.m.], [po 1991]. Odbitka kserograficzna, zbiory rodzinne.
+- Kosiński A. A., *Przewodnik heraldyczny. Monografie, genealogie i spis rodzin senatorskich i tytuły honorów posiadających*, t. V, Warszawa: Druk Braci Jeżyńskich (dawniej J. Ungra), 1885, s. 132–145 [dodatek do hasła „Grabowscy”: drzewo genealogiczne Radoszewskich h. Oksza]. Egzemplarz z odręcznymi znakami czytelnika, zbiory rodzinne.
+
+### III. Materiały znane z przypisów, nieobecne w zbiorze
+
+- Karśnicka-Kozłowska T., *Opis dworu (dworu obronnego-zamku) w Siemkowicach*, Gdańsk 1991, mpis w posiadaniu L. Kajzera.
+- Łakomy S., *Opis dworku w Radoszewicach*, Radoszewice 1991, mpis w posiadaniu L. Kajzera.
+- Radoszewska A., *Dwór w Krempie*, Brwinów 1991, mpis w posiadaniu L. Kajzera.
+- Radoszewska A., *Opis dworu w Kościerzynie*, Brwinów 1991, mpis w posiadaniu L. Kajzera.
+- [Radoszewska A. z Prządzyńskich], [List do L. Kajzera z 18 III 1991], w posiadaniu L. Kajzera.[^q1]
+
+### IV. Literatura przywoływana w źródłach
+
+Prace wymienione przez autorów materiałów rodzinnych i przez L. Kajzera, których opracowujący nie miał w ręku. Dane bibliograficzne podano tak, jak występują w źródłach; braki uzupełniono tylko w nawiasach kwadratowych. Pełny wykaz z odsyłaczami do miejsc wzmianek zawiera baza (`dane/literatura.yaml`).[^b1]
+
+- Bloch Cz., *Generał Ignacy Prządzyński*, [b.m.], [b.r.].
+- Brandys M., *Koniec świata szwoleżerów*, t. III, [b.m.], [b.r.].
+- Bruchnalska M., *Miejsce Piastowe*, [b.m.] 1934.
+- Dunin-Borkowski J., *Almanach błękitny. Genealogia żyjących rodów polskich*, [b.m.] 1908.
+- Dunin-Borkowski J., *Genealogie żyjących utytułowanych rodów polskich*, [b.m.], [b.r.].
+- Głosek M., Kajzer L., *Renesansowy dwór obronny w Siemkowicach. (Przyczynek do poznania przemian wiejskiej siedziby obronnej)*, „Kwartalnik Architektury i Urbanistyki”, t. XXI, 1976, z. 2, s. 153–167.
+- Kajzer L., *Dwory obronne Wieluńskiego w XIII–XVII wieku*, „Zeszyty Naukowe Uniwersytetu Łódzkiego. Folia Archaeologica”, 6, [1984].
+- Kajzer L., Augustyniak J., *Wstęp do studiów nad świeckim budownictwem obronnym Sieradzkiego w XIII–XVII/XVIII wieku*, Łódź 1986.
+- *Katalog zabytków sztuki w Polsce*, t. II: *Województwo łódzkie*, red. J. Z. Łoziński, Warszawa 1954.
+- Korczyński K. (oprac.), *Katedra kijowska*, Biały Dunajec – Ostróg 2005.
+- Kosiński A. A., *Przewodnik heraldyczny*, t. II, Warszawa 1880.
+- Kosmas, *Kronika Czechów*, Warszawa 1968.
+- Kozierowski S., *Badania nazw topograficznych na terenie dawnej wschodniej Wielkopolski*, Poznań 1928.
+- *Kronika polska Marcina Bielskiego*, wyd. K. J. Turowski, t. I, Sanok 1856.
+- Nadzieja J.[?], *Generał Józef Zajączek*, [b.m.], [b.r.].
+- Nejman S., *Cudowny obraz Matki B. Pajęczańskiej*, [b.m.], [b.r.].
+- Niesiecki K., *Herbarz polski*, t. VIII, Lipsk 1841.
+- Nitecki P., *Biskupi Kościoła w Polsce w latach 965–1999. Słownik biograficzny*, Warszawa 2000.
+- Okolski S., [herbarz], cyt. za: *Słownik geograficzny Królestwa Polskiego*, t. IX.
+- Pachoński J., *Józef Grabiński generał*, [b.m.], [b.r.].
+- Paprocki B., *Herby rycerstwa polskiego*, [Kraków] 1584; wyd. K. J. Turowski (jako *Herby królestwa polskiego*), Kraków 1858.
+- Pawiński A. (wyd.), *Polska XVI wieku…*, t. II: *Wielkopolska* (*Źródła dziejowe*, t. XIII), Warszawa 1883.
+- *Polska encyklopedia szlachecka*, t. III, [b.m.], [b.r.].
+- Prokop K. R., *Biskupi kijowscy obrządku łacińskiego XIV–XVIII w. Szkice biograficzne*, Biały Dunajec – Ostróg 2003.
+- Prygodzki W., *Z przeszłości Wielunia*, Częstochowa 1928.
+- Rosin R., *Słownik historyczno-geograficzny ziemi wieluńskiej w średniowieczu*, Łódź 1963.
+- Rosin R., *Ziemia wieluńska w XII–XVI w.*, Łódź 1961.
+- Skowronek J., *Cmentarz polski w Montmorency*, [b.m.], [b.r.].
+- *Słownik geograficzny Królestwa Polskiego i innych krajów słowiańskich*, t. IV, Warszawa 1883; t. IX, Warszawa 1888; t. X, Warszawa 1889.
+- Szczygielski W., *Dzieje ziemi wieluńskiej*, Łódź 1969.
+- Szczygielski W., *Produkcja rolnicza gospodarstwa folwarcznego w Wieluńskim od XVI do XVIII wieku*, Łódź 1963.
+- Ulanowski B. (ed.), *Inscriptiones clenodiales ex libris iudicialibus palatinatus Cracoviensis*, [w:] *Starodawne prawa polskiego pomniki*, t. VII, Kraków 1885.
+- Uruski S., *Rodzina. Herbarz szlachty polskiej*, t. XV, [b.m.], [b.r.].
+- *Wielkopolski słownik biograficzny*, [b.m.], [b.r.].
+- *Wspomnienia więźniów Pawiaka*, [b.m.], [b.r.].
+- Zajączkowski S. M., *Wielowioskowa własność szlachecka w województwie sieradzkim (XV i pierwsza połowa XVI w.)*, „Rocznik Łódzki”, t. XVIII (XXI), 1973.
+- Zimogrodzki J.[?], *Województwo kaliskie w walce w roku 1863 i 1864*, [b.m.], [b.r.].
+
+[^l1]: *Księga rodzinna*, s. 39 ⟨S03-p39-s02, S03-p39-s03⟩.
+[^l2]: *Księga rodzinna*, s. 38 ⟨S03-p38-s02⟩; *Zeszyt wspomnień*, s. 60–61 ⟨S07-p60-s01, S07-p60-s02, S07-p60-s03, S07-p60-s04, S07-p60-s05, S07-p60-s06, S07-p61-s01, S07-p61-s02, S07-p61-s03, S07-p61-s04⟩.
+[^l3]: Kajzer, *Pałace i dwory*, s. 71, 78 i 68 ⟨S08-p071-s03, S08-p078-s01, S08-p068-s02⟩.
+[^l4]: Kajzer, *Pałace i dwory*, s. 128 i 132 ⟨S08-p128-s02, S08-p132-s02⟩; Łakomy, *Dwór i założenia parkowe*, s. 7 ⟨S10-p7-s01⟩.
+[^l5]: Kajzer, *Pałace i dwory*, s. 145 i 152 ⟨S08-p145-s02, S08-p152-s02⟩.
+[^l6]: *Księga rodzinna*, s. 30–37 ⟨S03-p30-s02, S03-p31-s02, S03-p32-s02, S03-p33-s02, S03-p35-s02, S03-p36-s02, S03-p36-s03, S03-p37-s01, S03-p37-s02⟩; *Zeszyt wspomnień*, s. 52–59 ⟨S07-p52-s02, S07-p54-s01, S07-p54-s02, S07-p55-s02, S07-p55-s03, S07-p55-s04, S07-p56-s01, S07-p56-s02, S07-p56-s03, S07-p56-s04, S07-p56-s05, S07-p57-s01, S07-p57-s02, S07-p58-s01, S07-p58-s02, S07-p58-s03, S07-p58-s04, S07-p58-s05, S07-p58-s06, S07-p59-s01, S07-p59-s03, S07-p59-s04⟩; *Notatka o kaplicy*, s. 1 ⟨S05-p01-s02⟩.
+[^l7]: *Szlak przodków* ⟨S09-p1-s01⟩.
+[^q1]: Kajzer, *Pałace i dwory*, przypisy: s. 64 ⟨S08-p064-f25, S08-p064-f26⟩, s. 73 ⟨S08-p073-f13⟩, s. 128 ⟨S08-p128-f20⟩, s. 145 ⟨S08-p145-f23⟩.
+[^q2]: Kajzer, *Pałace i dwory*, s. 77 ⟨S08-p077-s01⟩; *Zeszyt wspomnień*, s. 6, 7, 17, 18 ⟨S07-p06-s03, S07-p07-s01, S07-p17-s04, S07-p18-s02⟩.
+[^b1]: *Zeszyt wspomnień*, s. 49–51 ⟨S07-p49-s02, S07-p49-s03, S07-p50-s01, S07-p50-s03, S07-p51-s01⟩; *Spis lektur* ⟨S06-p01-s01, S06-p01-s02, S06-p01-s03, S06-p01-s05⟩; Łakomy, *Z dziejów Radoszewic*, przypisy ⟨S02-p02-f1, S02-p06-f2, S02-p10-f4, S02-p10-f6, S02-p20-f9, S02-p23-f32⟩; Łakomy, *Dwór i założenia parkowe*, s. 5 ⟨S10-p5-s03, S10-p5-s04⟩.

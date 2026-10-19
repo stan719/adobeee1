@@ -92,7 +92,7 @@ Do tego dochodzą ocalałe portrety rodzinne (osiem obrazów) i portrety przecho
 
 Linia z ojca na syna według drzewa Kosińskiego (pokolenia I–XI, do początku XVII wieku), monografii Kajzera i zapisków rodzinnych. Pokolenia I–VII to tradycja rodowa (zob. rozdz. 2).
 
-![Drzewo „linii prostej” Radoszewskich od Imbrama z Siemkowic (1412) do Jerzego i Anny — zeszyt wspomnień, s. 1 (S07)](skany/IMG_5911-1.jpg)
+![Drzewo „linii prostej” Radoszewskich od Imbrama z Siemkowic (1412) do Jerzego i Anny — *Zeszyt wspomnień*, s. 1](skany/IMG_5911-1.jpg)
 
 | Pok. | Osoba | Żona | Uwagi |
 |---|---|---|---|
@@ -104,7 +104,7 @@ Linia z ojca na syna według drzewa Kosińskiego (pokolenia I–XI, do początku
 | VI | Stogniew V Boksic | — | sędzia lelowski |
 | VII | Mikołaj III Boksic | — | pochowany w Pajęcznie |
 | VIII | **Imbram (Imram) Boksa** | Jachna z Osjakowa (Larysówna) | w aktach 1412–1413 |
-| IX | **Bogusław Boksa z Radoszewic** | trzy żony | dział ok. 1430–1440; †1459 (S07) |
+| IX | **Bogusław Boksa z Radoszewic** | trzy żony | dział ok. 1430–1440; †1459 (*Zeszyt wspomnień*) |
 | X | **Mikołaj V (Miklasz) Boksa** | Zofia Konopnicka / Kurzepnicka[?] | Węgry; †1574 w wieku 85 lat |
 | XI | **Jerzy**, podkomorzy wieluński | Mogilnicka h. Korczak | †23 X 1614 |
 | XII | **Marek**, kasztelan wieluński | Anna z Rudnik Biskupska | †28 XI 1641 (syn Jerzego albo Mikołaja — zob. rozdz. 16) |
@@ -121,53 +121,7 @@ Linia z ojca na syna według drzewa Kosińskiego (pokolenia I–XI, do początku
 
 Między pokoleniami XII a XVI zapiski rodzinne podają jedno ogniwo na pokolenie. Odstęp czasu (1641 → 1775) jest duży jak na trzy pokolenia, więc w tej części drzewa mogło zabraknąć któregoś ogniwa. To uwaga opracowującego, wymaga sprawdzenia w herbarzach (Niesiecki, Uruski, Dunin-Borkowski).
 
-## Aneks B. Źródła
-
-| Symbol | Źródło | Opis |
-|---|---|---|
-| **S01** | Ad. Am. Kosiński, *Przewodnik heraldyczny. Monografie, genealogie i spis rodzin senatorskich i tytuły honorowe posiadających*, t. V, Warszawa 1885, s. 132–145 | druk; dodatek o Radoszewskich do hasła Grabowskich: drzewo z pocz. XVII w. z przypisami Kosińskiego; egzemplarz rodzinny z odręcznymi znakami; 8 zdjęć |
-| **S02** | Stefan Łakomy, *Z dziejów Radoszewic*, cz. I, Radoszewice 1981 | rękopis, 23 strony; dzieje wsi, Radoszewscy, rokosz Zebrzydowskiego, Niemojowscy; 24 zdjęcia |
-| **S03** | *The History of Our Family* — księga rodzinna Teresy Boxa Radoszewskiej-Zielińskiej | rękopis, ok. 1974–1996, z późniejszymi dopiskami; drzewa, krewni, groby, domy, kalendarz rodzinny; 54 zdjęcia |
-| **S04** | „Jerzy Radoszewski Boxa h. Oksza 1902+1967” | luźna kartka, autor nieznany; biogram Jerzego; 2 zdjęcia |
-| **S05** | „Kaplica Boxa Radoszewskich na cmentarzu w Uniejowie…” | luźna kartka, autor nieznany; pochowani w krypcie, duchowni, dzieje Krempy; 2 zdjęcia |
-| **S06** | Bibliografia (spis lektur o rodzinie) | luźna kartka, autor nieznany; 1 zdjęcie |
-| **S07** | Zeszyt wspomnień i genealogii rodzin Radoszewskich, Prządzyńskich, Drohojowskich, Grabińskich | rękopis, najpewniej Anny z Prządzyńskich Radoszewskiej (po 2005 r.?); najobszerniejsze źródło rodzinne; 61 zdjęć |
-| **S08** | Leszek Kajzer, *Pałace i dwory w dawnym województwie sieradzkim*, t. 2, ok. 1991 | druk; hasła Kościerzyn (s. 57–70), Krempa (s. 71–78), Radoszewice (s. 123–137), Siemkowice (s. 139–152); 53 zdjęcia |
-| **S09** | „szlak przodków Boxa-Radoszewskich” | odręczny szkic trasy z 8 VII 2017; 1 zdjęcie |
-| **S10** | Stefan Łakomy, *Dwór i założenia parkowe w Radoszewicach k. Wielunia*, Radoszewice 1978 | rękopis, praca PTTK „Polska naszych dni”, 9 stron; 9 zdjęć |
-
-Wszystkie źródła sfotografowano (215 zdjęć) i przepisano wiernie, strona po stronie (`zrodla/transkrypcje/`). Na stronie internetowej rodziny każde zdjęcie strony wyświetla się obok odczytu.
-
-## Aneks C. Literatura przywoływana w źródłach
-
-Autorzy zapisek i opracowań powołują się m.in. na następujące prace:[^b1]
-
-- B. Paprocki, *Herby rycerstwa polskiego* (1584);
-- K. Niesiecki, *Herbarz polski*;
-- S. Okolski (herbarz);
-- S. Uruski, *Rodzina. Herbarz szlachty polskiej*;
-- J. Dunin-Borkowski, *Genealogie żyjących utytułowanych rodów polskich* i *Almanach Błękitny* (1908; Drohojowscy s. 321, Radoszewscy s. 1109);
-- *Polska encyklopedia szlachecka*, t. III;
-- *Słownik geograficzny Królestwa Polskiego* (t. IV i IX);
-- W. Szczygielski, *Dzieje Ziemi Wieluńskiej* (Łódź 1969) i *Produkcja rolnicza gospodarstwa folwarcznego w Wieluńskim* (1963);
-- R. Rosin, *Ziemia wieluńska w XII–XVI w.* (Łódź 1961);
-- ks. W. Prygodzki, *Z przeszłości Wielunia* (Częstochowa 1928);
-- ks. S. Nejman, *Cudowny obraz Matki B. Pajęczańskiej*;
-- ks. K. Korczyński, *Katedra kijowska*;
-- ks. P. Nitecki, *Biskupi Kościoła w Polsce*;
-- K. R. Prokop, *Biskupi kijowscy*;
-- J. Nadzieja[?], *Gen. Józef Zajączek*;
-- Cz. Bloch, *Gen. Ignacy Prządzyński*;
-- J. Pachoński, *Józef Grabiński generał*;
-- J. Skowronek, *Cmentarz polski w Montmorency*;
-- *Katalog zabytków sztuki w Polsce*;
-- *Wspomnienia więźniów Pawiaka*;
-- J. Zimogrodzki, *Województwo kaliskie w walce 1863–1864*;
-- M. Bruchnalska, *Miejsce Piastowe* (1934).
-
-Pełna lista z odsyłaczami jest w bazie (`dane/literatura.yaml`).
-
-## Aneks D. Słowniczek
+## Aneks B. Słowniczek
 
 | Wyraz | Znaczenie |
 |---|---|
@@ -183,6 +137,68 @@ Pełna lista z odsyłaczami jest w bazie (`dane/literatura.yaml`).
 | serwituty | prawa chłopów do korzystania z lasów i pastwisk dworskich; „uregulowanie serwitutów” — ich wykup lub zamiana na ziemię |
 | starosta | urzędnik królewski zarządzający dobrami królewskimi (starostwem) |
 | wojski | urzędnik ziemski, opiekun rodzin szlachty w czasie wojny |
+
+## Bibliografia
+
+Opisy według ogólnie przyjętych zasad: nazwisko i inicjał imienia, tytuł kursywą, miejsce i rok wydania. Rękopisy opisano z podaniem formy (rkps), daty, objętości i miejsca przechowywania. Tytuły nadane przez opracowującego oraz dane ustalone poza źródłem podano w nawiasach kwadratowych. Skróty: [b.m.] — bez miejsca wydania, [b.r.] — bez roku, mpis — maszynopis.
+
+### I. Źródła rękopiśmienne (zbiory rodzinne)
+
+<!-- BIBLIOGRAFIA-RKPS -->
+
+### II. Źródła drukowane i opracowania wykorzystane bezpośrednio
+
+<!-- BIBLIOGRAFIA-DRUKI -->
+
+### III. Materiały znane z przypisów, nieobecne w zbiorze
+
+- Karśnicka-Kozłowska T., *Opis dworu (dworu obronnego-zamku) w Siemkowicach*, Gdańsk 1991, mpis w posiadaniu L. Kajzera.
+- Łakomy S., *Opis dworku w Radoszewicach*, Radoszewice 1991, mpis w posiadaniu L. Kajzera.
+- Radoszewska A., *Dwór w Krempie*, Brwinów 1991, mpis w posiadaniu L. Kajzera.
+- Radoszewska A., *Opis dworu w Kościerzynie*, Brwinów 1991, mpis w posiadaniu L. Kajzera.
+- [Radoszewska A. z Prządzyńskich], [List do L. Kajzera z 18 III 1991], w posiadaniu L. Kajzera.[^q1]
+
+### IV. Literatura przywoływana w źródłach
+
+Prace wymienione przez autorów materiałów rodzinnych i przez L. Kajzera, których opracowujący nie miał w ręku. Dane bibliograficzne podano tak, jak występują w źródłach; braki uzupełniono tylko w nawiasach kwadratowych. Pełny wykaz z odsyłaczami do miejsc wzmianek zawiera baza (`dane/literatura.yaml`).[^b1]
+
+- Bloch Cz., *Generał Ignacy Prządzyński*, [b.m.], [b.r.].
+- Brandys M., *Koniec świata szwoleżerów*, t. III, [b.m.], [b.r.].
+- Bruchnalska M., *Miejsce Piastowe*, [b.m.] 1934.
+- Dunin-Borkowski J., *Almanach błękitny. Genealogia żyjących rodów polskich*, [b.m.] 1908.
+- Dunin-Borkowski J., *Genealogie żyjących utytułowanych rodów polskich*, [b.m.], [b.r.].
+- Głosek M., Kajzer L., *Renesansowy dwór obronny w Siemkowicach. (Przyczynek do poznania przemian wiejskiej siedziby obronnej)*, „Kwartalnik Architektury i Urbanistyki”, t. XXI, 1976, z. 2, s. 153–167.
+- Kajzer L., *Dwory obronne Wieluńskiego w XIII–XVII wieku*, „Zeszyty Naukowe Uniwersytetu Łódzkiego. Folia Archaeologica”, 6, [1984].
+- Kajzer L., Augustyniak J., *Wstęp do studiów nad świeckim budownictwem obronnym Sieradzkiego w XIII–XVII/XVIII wieku*, Łódź 1986.
+- *Katalog zabytków sztuki w Polsce*, t. II: *Województwo łódzkie*, red. J. Z. Łoziński, Warszawa 1954.
+- Korczyński K. (oprac.), *Katedra kijowska*, Biały Dunajec – Ostróg 2005.
+- Kosiński A. A., *Przewodnik heraldyczny*, t. II, Warszawa 1880.
+- Kosmas, *Kronika Czechów*, Warszawa 1968.
+- Kozierowski S., *Badania nazw topograficznych na terenie dawnej wschodniej Wielkopolski*, Poznań 1928.
+- *Kronika polska Marcina Bielskiego*, wyd. K. J. Turowski, t. I, Sanok 1856.
+- Nadzieja J.[?], *Generał Józef Zajączek*, [b.m.], [b.r.].
+- Nejman S., *Cudowny obraz Matki B. Pajęczańskiej*, [b.m.], [b.r.].
+- Niesiecki K., *Herbarz polski*, t. VIII, Lipsk 1841.
+- Nitecki P., *Biskupi Kościoła w Polsce w latach 965–1999. Słownik biograficzny*, Warszawa 2000.
+- Okolski S., [herbarz], cyt. za: *Słownik geograficzny Królestwa Polskiego*, t. IX.
+- Pachoński J., *Józef Grabiński generał*, [b.m.], [b.r.].
+- Paprocki B., *Herby rycerstwa polskiego*, [Kraków] 1584; wyd. K. J. Turowski (jako *Herby królestwa polskiego*), Kraków 1858.
+- Pawiński A. (wyd.), *Polska XVI wieku…*, t. II: *Wielkopolska* (*Źródła dziejowe*, t. XIII), Warszawa 1883.
+- *Polska encyklopedia szlachecka*, t. III, [b.m.], [b.r.].
+- Prokop K. R., *Biskupi kijowscy obrządku łacińskiego XIV–XVIII w. Szkice biograficzne*, Biały Dunajec – Ostróg 2003.
+- Prygodzki W., *Z przeszłości Wielunia*, Częstochowa 1928.
+- Rosin R., *Słownik historyczno-geograficzny ziemi wieluńskiej w średniowieczu*, Łódź 1963.
+- Rosin R., *Ziemia wieluńska w XII–XVI w.*, Łódź 1961.
+- Skowronek J., *Cmentarz polski w Montmorency*, [b.m.], [b.r.].
+- *Słownik geograficzny Królestwa Polskiego i innych krajów słowiańskich*, t. IV, Warszawa 1883; t. IX, Warszawa 1888; t. X, Warszawa 1889.
+- Szczygielski W., *Dzieje ziemi wieluńskiej*, Łódź 1969.
+- Szczygielski W., *Produkcja rolnicza gospodarstwa folwarcznego w Wieluńskim od XVI do XVIII wieku*, Łódź 1963.
+- Ulanowski B. (ed.), *Inscriptiones clenodiales ex libris iudicialibus palatinatus Cracoviensis*, [w:] *Starodawne prawa polskiego pomniki*, t. VII, Kraków 1885.
+- Uruski S., *Rodzina. Herbarz szlachty polskiej*, t. XV, [b.m.], [b.r.].
+- *Wielkopolski słownik biograficzny*, [b.m.], [b.r.].
+- *Wspomnienia więźniów Pawiaka*, [b.m.], [b.r.].
+- Zajączkowski S. M., *Wielowioskowa własność szlachecka w województwie sieradzkim (XV i pierwsza połowa XVI w.)*, „Rocznik Łódzki”, t. XVIII (XXI), 1973.
+- Zimogrodzki J.[?], *Województwo kaliskie w walce w roku 1863 i 1864*, [b.m.], [b.r.].
 
 [^l1]: S03, s. 39 ⟨S03-p39-s02, S03-p39-s03⟩.
 [^l2]: S03, s. 38 ⟨S03-p38-s02⟩; S07, s. 60–61 ⟨S07-p60-s01, S07-p60-s02, S07-p60-s03, S07-p60-s04, S07-p60-s05, S07-p60-s06, S07-p61-s01, S07-p61-s02, S07-p61-s03, S07-p61-s04⟩.

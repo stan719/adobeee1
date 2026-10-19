@@ -107,6 +107,7 @@ def rzym(n):
 class Baza:
     def __init__(self):
         self.zr = yaml.safe_load(open(os.path.join(KORZEN, 'zrodla', 'zrodla.yaml'), encoding='utf-8'))
+        SKROT.update({k: v['nazwa'] for k, v in self.zr.items() if v.get('nazwa')})    # nazwy nadane źródłom
         self.osoby = {o['id']: o for o in wczytaj(os.path.join(DANE, 'osoby.yaml'))}
         self.miejsca = {m['id']: m for m in wczytaj(os.path.join(DANE, 'miejsca.yaml'))}
         pw = os.path.join(DANE, 'wspolrzedne.yaml')
@@ -1124,13 +1125,15 @@ def zrodla_lista(b):
 
 def opis_zrodla(b, k):
     v = b.zr[k]
-    pola = [('Autor', v.get('autor')), ('Datowanie', v.get('datowanie') or v.get('miejsce_rok')),
+    pola = [('Nazwa', v.get('nazwa')), ('Skrót w przypisach', re.sub(r'\*', '', v.get('skrot') or '')),
+            ('Opis bibliograficzny', re.sub(r'\*', '', v.get('opis_bibliograficzny') or '')),
+            ('Autor', v.get('autor')), ('Datowanie', v.get('datowanie') or v.get('miejsce_rok')),
             ('Wydawca', v.get('wydawca')), ('Zakres', v.get('zakres')), ('Zdjęcia', v.get('zdjecia'))]
     dl = ''.join(f'<dt>{n}</dt><dd>{esc(str(w))}</dd>' for n, w in pola if w)
     uw = v.get('uwagi') or []
     if isinstance(uw, str):
         uw = [uw]
-    return (f'<p class="sciezka"><a href="zrodla.html">Źródła</a></p><h1>{k}: {esc(v.get("tytul") or "")}</h1>'
+    return (f'<p class="sciezka"><a href="zrodla.html">Źródła</a></p><h1>{esc(v.get("nazwa") or v.get("tytul") or "")} <span class="lata">({k})</span></h1>'
             f'<dl class="opis">{dl}</dl>' + (('<ul class="drobne">' + ''.join(f'<li>{esc(str(x))}</li>' for x in uw) + '</ul>') if uw else ''))
 
 
@@ -1229,7 +1232,7 @@ def historia(b, pozycje):
                    lambda m: f'<figure class="ilustracja"><a href="{m.group(2)}" target="_blank"><img src="{m.group(2)}" alt="" loading="lazy"></a>'
                              f'<figcaption>{markdown.markdown(html.unescape(m.group(1)))[3:-4]}</figcaption></figure>', html_)
     spis = re.findall(r'<h2 id="([^"]+)">(.*?)</h2>', html_)
-    spis = [x for x in spis if re.match(r'^(\d+\.|Aneks)', x[1])]
+    spis = [x for x in spis if re.match(r'^(\d+\.|Aneks|Bibliografia)', x[1])]
     nav = '<nav class="spis-tresci"><b>Spis treści</b><ul>' + ''.join(f'<li><a href="#{i}">{t}</a></li>' for i, t in spis) + '</ul>' \
           '<p class="drobne">Ten sam tekst w wersji do druku: plik Word w folderze <code>Opracowanie/</code>.</p></nav>'
     zapisz('historia.html', strona('Historia rodu', f'<div class="hist">{nav}<article class="tekst">{html_}</article></div>' + inne,

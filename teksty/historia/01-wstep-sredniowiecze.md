@@ -6,15 +6,28 @@
 
 ### Od opracowującego
 
-To opracowanie zbiera w jedną opowieść wszystko, co zawiera rodzinny zbiór materiałów o Radoszewskich herbu Oksza i o rodzinach z nimi spokrewnionych. Powstało z dziesięciu źródeł (oznaczonych w przypisach symbolami S01–S10). Najstarsze z nich to wydrukowane w 1885 roku drzewo genealogiczne z *Przewodnika heraldycznego* Kosińskiego, sięgające według jego autora początku XVII wieku. Najmłodsze to szkic trasy „szlakiem przodków” z 2017 roku. Pośrodku leżą: dwa rękopisy Stefana Łakomego z Radoszewic (1978 i 1981), monografia dworów ziemi sieradzkiej Leszka Kajzera (ok. 1991) oraz rodzinne zapiski z XX wieku. Wśród nich są przede wszystkim księga rodzinna *The History of Our Family*, prowadzona przez Teresę Radoszewską-Zielińską, i zeszyt wspomnień oraz genealogii spisany najpewniej przez Annę z Prządzyńskich Radoszewską. Pełny opis źródeł zawiera Aneks B.
+To opracowanie zbiera w jedną opowieść wszystko, co zawiera rodzinny zbiór materiałów o Radoszewskich herbu Oksza i o rodzinach z nimi spokrewnionych. Powstało z dziesięciu źródeł, którym nadałem krótkie nazwy (np. *Zeszyt wspomnień*, Kajzer, *Pałace i dwory*). Wyjaśnia je rozdział „Objaśnienie źródeł i skrótów”. Najstarsze z nich to wydrukowane w 1885 roku drzewo genealogiczne z *Przewodnika heraldycznego* Kosińskiego, sięgające według jego autora początku XVII wieku. Najmłodsze to szkic trasy „szlakiem przodków” z 2017 roku. Pośrodku leżą: dwa rękopisy Stefana Łakomego z Radoszewic (1978 i 1981), monografia dworów ziemi sieradzkiej Leszka Kajzera (ok. 1991) oraz rodzinne zapiski z XX wieku. Wśród nich są przede wszystkim księga rodzinna *The History of Our Family*, prowadzona przez Teresę Radoszewską-Zielińską, i zeszyt wspomnień oraz genealogii spisany najpewniej przez Annę z Prządzyńskich Radoszewską. Pełne opisy bibliograficzne są w objaśnieniu źródeł i w bibliografii na końcu.
 
 Kilka zasad, którymi się kierowałem:
 
-- **Każda informacja ma przypis do źródła.** Przypis podaje źródło i stronę, a w nawiasie identyfikator fragmentu transkrypcji (np. ⟨S01-p141-s04⟩ — strona 141 przewodnika Kosińskiego, akapit o Imbramie). Po tym identyfikatorze w bazie danych i na stronie internetowej rodziny można odnaleźć zdjęcie oryginalnej strony i dosłowny cytat.
+- **Każda informacja ma przypis do źródła.** Przypis podaje skrót źródła i stronę, np. Kosiński, *Przewodnik*, s. 141. W wersji internetowej przy każdym przypisie jest też odnośnik do zdjęcia oryginalnej strony i jej odczytu.
 - **Rozbieżności nie są rozstrzygane na siłę.** Gdy źródła podają różne daty, imiona lub fakty, opisuję wszystkie wersje i wskazuję, skąd pochodzi każda z nich. Własne przypuszczenia oznaczam wyraźnie jako uwagi opracowującego.
 - **Odczyty niepewne** zachowują znak [?]. Dotyczy to zwłaszcza nazwisk w rękopisach, których nie udało się odczytać z całą pewnością. Lista wszystkich wątpliwości jest w pliku `dane/watpliwosci.md`. Wiele z nich może rozstrzygnąć pamięć rodziny.
 - **Tło historyczne** (daty bitew, panowania królów itp.) dodaję tylko tam, gdzie pomaga zrozumieć źródło. Pochodzi ono z ogólnej wiedzy historycznej, nie z rodzinnych materiałów, i jest oznaczone jako uwaga.
 - Imiona i nazwiska podaję w pisowni współczesnej (Maria zamiast Marja, Krempa zgodnie ze źródłami rodzinnymi, choć urzędowo wieś nazywa się dziś Krępa).
+
+### Objaśnienie źródeł i skrótów
+
+Podstawą opracowania jest dziesięć materiałów z rodzinnego zbioru. Osiem to rękopisy: zapiski, notatki i dwie prace miejscowego regionalisty. Dwa to druki, a raczej ich fragmenty zachowane w zbiorze. Rękopisy bez własnego tytułu otrzymały tytuły nadane, podane zgodnie z przyjętym zwyczajem w nawiasie kwadratowym. W przypisach źródła są cytowane skrótami z poniższej tabeli. Symbol z ostatniej kolumny oznacza to samo źródło w bazie danych i na stronie internetowej rodziny.
+
+<!-- WYKAZ-ZRODEL -->
+
+Zasady cytowania:
+
+- Przy rękopisach „s.” oznacza kolejną stronę rękopisu według numeracji przyjętej przy inwentaryzacji zbioru. Przy drukach jest to strona druku.
+- „Tamże” oznacza to samo źródło co w przypisie bezpośrednio poprzedzającym.
+- Przy przekazach pośrednich podaję obie warstwy, np. „Łakomy, *Z dziejów Radoszewic*, s. 9 (za: W. Prygodzki, *Z przeszłości Wielunia*)”. Pełne opisy prac cytowanych w ten sposób są w bibliografii.
+- Wtrącenia w nawiasach kwadratowych [ ] w cytatach pochodzą od opracowującego. Znak [?] oznacza odczyt niepewny.
 
 ---
 
@@ -53,7 +66,7 @@ Jak ocenić tę legendę? Kosiński, publikując drzewo, ostrzegał, że pierwsz
 
 W 1885 roku Adam Amilkar Kosiński wydawał w Warszawie V tom *Przewodnika heraldycznego*. Już po oddaniu tomu do druku otrzymał „dawne — bo niezaprzeczenie z pierwszych lat XVII wieku pochodzące — drzewo genealogiczne rodziny Radoszewskich herbu Oksza”. Zamieścił je „prawie dosłownie” jako dodatek do hasła o Grabowskich, bo uważał ich za gałąź Okszyców. Oryginał był ułożony „w kółkach”, a Kosiński podzielił go na pokolenia.[^d1] Drzewo nosiło łaciński tytuł. W przekładzie brzmi on: tablica genealogiczna „wielce zacnego i wielce możnego domu Panów Boksów z Siemkowic na Radoszewicach, Brzoszencinie, Stróży etc. etc. Radoszewskich”, zebrana „z kronik, przywilejów, transakcji, zapisów kościelnych i klasztornych”. Spisano ją „Panu Bogu Najwyższemu na chwałę, Rzeczypospolitej na wiadomość, a familii na zaszczyt i pożytek”.[^d2]
 
-![Kosiński, *Przewodnik heraldyczny* t. V (1885), s. 132–133: wstęp Kosińskiego i początek drzewa Radoszewskich (egzemplarz rodzinny, S01)](skany/IMG_5811-1.jpg)
+![Kosiński, *Przewodnik heraldyczny* t. V (1885), s. 132–133: wstęp Kosińskiego i początek drzewa Radoszewskich (egzemplarz rodzinny)](skany/IMG_5811-1.jpg)
 
 Autor drzewa pisze w pierwszej osobie: „jako my wszyscy” Radoszewscy, „wszystko, co mamy”, „widziałem z nich [ksiąg] dużo w Częstochowie”. Był więc członkiem rodziny, najpewniej z pokolenia synów Mikołaja V lub ich dzieci. Egzemplarz *Przewodnika* w zbiorze rodzinnym ma odręczne podkreślenia i gwiazdki niebieskim długopisem (s. 136–143) oraz dopisek „85 lat” przy jednym z Mikołajów.[^d3]
 
