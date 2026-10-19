@@ -2,7 +2,7 @@
 
 Użycie: python narzedzia/buduj.py
 Wynik: katalog strona/ — statyczny HTML + czysty JS (działa z pliku, bez serwera).
-Zdjęcia: najpierw python narzedzia/zdjecia_www.py (kopie w strona/zdjecia/).
+Zdjęcia: najpierw python narzedzia/zdjecia_www.py (kopie w strona/skany/).
 
 Układ (zob. PROJEKT-STRONY.md) wzorowany na serwisach genealogicznych typu GeneWeb (Wielcy.pl):
 karta osoby = rodzice, małżeństwa z dziećmi, rodzeństwo, życiorys; źródła jako numerowane przypisy;
@@ -425,7 +425,7 @@ class Przypisy:
             sg = self.b.seg.get(s, {})
             zr = sg.get('zrodlo', s[:3])
             zdj = sg.get('zdjecie')
-            foto = (f' · <a class="foto" href="zdjecia/{nazwa_www(zdj)}" target="_blank" title="zdjęcie strony oryginału">zdjęcie</a>'
+            foto = (f' · <a class="foto" href="skany/{nazwa_www(zdj)}" target="_blank" title="zdjęcie strony oryginału">zdjęcie</a>'
                     if zdj else '')
             cyt = ' · '.join(f'„{trans_html_inline(c)}”' for c in self.cyt[s])
             h.append(f'<li id="p{n}"><a href="{self.b.seg_url(s)}">{esc(self.b.seg_etykieta(s))}</a> '
@@ -1108,7 +1108,7 @@ def zrodla_lista(b):
     for k, v in b.zr.items():
         st = b.strony.get(k, [])
         mini = next((p['zdjecie'] for p in st if p['zdjecie']), None)
-        img = f'<img src="zdjecia/m/{nazwa_www(mini)}" alt="" loading="lazy">' if mini else ''
+        img = f'<img src="skany/m/{nazwa_www(mini)}" alt="" loading="lazy">' if mini else ''
         nf = sum(1 for t in b.tw if any(z['segment'].startswith(k + '-') for z in t['zrodla']))
         h.append(f'<li><a href="zrodlo-{k}.html">{img}<span><b>{k}</b> {esc(SKROT.get(k, ""))}<br>'
                  f'<span class="drobne">{esc(v.get("tytul") or "")}</span></span></a>'
@@ -1141,8 +1141,8 @@ def galeria(b, k):
         z = p['zdjecie']
         if not z:
             continue
-        h.append(f'<figure id="str-{esc(p["strona"])}"><a href="zdjecia/{nazwa_www(z)}" target="_blank">'
-                 f'<img src="zdjecia/m/{nazwa_www(z)}" alt="s. {esc(p["strona"])}" loading="lazy"></a>'
+        h.append(f'<figure id="str-{esc(p["strona"])}"><a href="skany/{nazwa_www(z)}" target="_blank">'
+                 f'<img src="skany/m/{nazwa_www(z)}" alt="s. {esc(p["strona"])}" loading="lazy"></a>'
                  f'<figcaption>s. {esc(p["strona"])}{" · " + esc(z) if z not in widziane else ""}</figcaption></figure>')
         widziane.add(z)
     return ''.join(h) + '</div></section>'
@@ -1169,7 +1169,7 @@ def zrodlo_strona(b, k):
     h.append('<nav class="spis">Strony: ' + ' '.join(f'<a href="#str-{esc(p["strona"])}">{esc(p["strona"])}</a>' for p in st) + '</nav>')
     for p in st:
         z = p['zdjecie']
-        img = (f'<a href="zdjecia/{nazwa_www(z)}" target="_blank" class="zdj"><img src="zdjecia/{nazwa_www(z)}" '
+        img = (f'<a href="skany/{nazwa_www(z)}" target="_blank" class="zdj"><img src="skany/{nazwa_www(z)}" '
                f'alt="zdjęcie strony {esc(p["strona"])}" loading="lazy"></a><p class="drobne">{esc(z)} — kliknij, aby powiększyć</p>') if z else ''
         h.append(f'<section class="str" id="str-{esc(p["strona"])}"><h2>s. {esc(p["strona"])}</h2>'
                  + (f'<p class="drobne">{esc(p["polozenie"])}</p>' if p.get('polozenie') else '') +
@@ -1346,7 +1346,7 @@ def main():
     szukaj(b)
     start(b)
     n = len(glob.glob(os.path.join(WYJ, '*.html')))
-    brak = [z for st in b.strony.values() for p in st for z in [p['zdjecie']] if z and not os.path.exists(os.path.join(WYJ, 'zdjecia', nazwa_www(z)))]
+    brak = [z for st in b.strony.values() for p in st for z in [p['zdjecie']] if z and not os.path.exists(os.path.join(WYJ, 'skany', nazwa_www(z)))]
     print(f'Zbudowano {n} stron w strona/.' + (f' Brak {len(set(brak))} zdjęć — uruchom narzedzia/zdjecia_www.py.' if brak else ''))
 
 

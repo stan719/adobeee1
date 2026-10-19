@@ -1,4 +1,4 @@
-"""Kopie zdjęć źródeł do strony: strona/zdjecia/<nazwa>.jpg (do 2000 px) i strona/zdjecia/m/<nazwa>.jpg (miniatura).
+"""Kopie zdjęć źródeł do strony: strona/skany/<nazwa>.jpg (do 2000 px) i strona/skany/m/<nazwa>.jpg (miniatura).
 
 Użycie: python narzedzia/zdjecia_www.py   (pomija pliki już wygenerowane)
 Oryginały w Zdjęcia/ pozostają bez zmian. Obrót ustalony na podglądach (katalog.yaml: „zdjęcie obrócone”).
@@ -8,7 +8,7 @@ from PIL import Image, ImageOps
 
 KORZEN = os.path.normpath(os.path.join(os.path.dirname(__file__), '..'))
 ZRODLO = os.path.join(KORZEN, 'Zdjęcia')
-WYJ = os.path.join(KORZEN, 'strona', 'zdjecia')
+WYJ = os.path.join(KORZEN, 'strona', 'skany')   # strona/zdjecia uszkodzony na dysku (WinError 1392)
 
 # stopnie dla Image.rotate (dodatnie = przeciwnie do ruchu wskazówek zegara)
 OBROT = {**{f'IMG_{n}': 90 for n in range(5810, 5818)},     # S01 — rozkładówki fotografowane bokiem
