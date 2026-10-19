@@ -2,222 +2,280 @@
 <meta name="claude:viewport-fit-sides" content="cover">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Semi+Condensed:wght@500;600;700&family=Barlow:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@400;500;600&display=swap">
 <style>
-/* Layout: formularz po lewej (jak arkusz Dane), wynik przyklejony po prawej; na telefonie jedna kolumna + pasek ceny u dołu. */
+/* Layout: przyklejony pasek aplikacji; formularz w kartach po lewej, panel wyniku po prawej (cena wariantu na górze, szczegóły w zakładkach). Telefon: jedna kolumna + pasek ceny. */
 :root {
-  --bg: #eef1f4; --surface: #ffffff; --sunken: #f6f8fa; --ink: #16202b; --muted: #5a6774;
-  --line: #d6dce2; --accent: #d99a00; --accent-soft: #fff4d6; --steel: #1f4f7a; --steel-soft: #e3edf6;
-  --good: #1d7a46; --good-soft: #e1f3e8; --bad: #b3261e; --bad-soft: #fbe5e3; --warn: #8a5a00; --warn-soft: #fdf0d2;
-  --f-display: "Barlow Semi Condensed", "Arial Narrow", system-ui, sans-serif;
-  --f-body: "Barlow", system-ui, -apple-system, "Segoe UI", sans-serif;
-  --f-num: "IBM Plex Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
-  --r: 6px;
+  --bg: #f3f5f6; --surface: #ffffff; --sunken: #f7f8f9; --ink: #0e171c; --ink-2: #34424b; --muted: #6a7780;
+  --line: #e3e7ea; --line-2: #d3d9dd;
+  --accent: #0a6b74; --accent-ink: #ffffff; --accent-soft: #e3f2f2;
+  --cheap: #00909c; --dear: #c2662d;
+  --good: #13794a; --good-soft: #e3f4ea; --bad: #b42318; --bad-soft: #fdecea; --warn: #8a5300; --warn-soft: #fdf3dd;
+  --shadow: 0 1px 2px rgba(14, 23, 28, .05), 0 4px 16px rgba(14, 23, 28, .05);
+  --f-ui: "Geist", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --f-num: "Geist Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
+  --r: 12px; --r-s: 8px;
 }
 @media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) {
-  --bg: #0e141a; --surface: #161f28; --sunken: #121a22; --ink: #e5eaef; --muted: #93a1ae;
-  --line: #2a3643; --accent: #f0b72f; --accent-soft: #3a2f12; --steel: #7fb2e0; --steel-soft: #1b2b3b;
-  --good: #5fc68b; --good-soft: #16301f; --bad: #ff8a80; --bad-soft: #3a1c1a; --warn: #f0c060; --warn-soft: #33290f;
+  --bg: #0b1013; --surface: #121a1f; --sunken: #0f161a; --ink: #e8eef1; --ink-2: #c3ccd2; --muted: #8b989f;
+  --line: #222d33; --line-2: #2d3a41;
+  --accent: #4fc0c4; --accent-ink: #06272a; --accent-soft: #11292c;
+  --cheap: #2aa3a8; --dear: #d4733a;
+  --good: #5cc98d; --good-soft: #12291c; --bad: #ff8b80; --bad-soft: #351816; --warn: #f2c066; --warn-soft: #2e2510;
+  --shadow: 0 1px 2px rgba(0, 0, 0, .4), 0 6px 20px rgba(0, 0, 0, .25);
   color-scheme: dark } }
 :root[data-theme="dark"] {
-  --bg: #0e141a; --surface: #161f28; --sunken: #121a22; --ink: #e5eaef; --muted: #93a1ae;
-  --line: #2a3643; --accent: #f0b72f; --accent-soft: #3a2f12; --steel: #7fb2e0; --steel-soft: #1b2b3b;
-  --good: #5fc68b; --good-soft: #16301f; --bad: #ff8a80; --bad-soft: #3a1c1a; --warn: #f0c060; --warn-soft: #33290f;
+  --bg: #0b1013; --surface: #121a1f; --sunken: #0f161a; --ink: #e8eef1; --ink-2: #c3ccd2; --muted: #8b989f;
+  --line: #222d33; --line-2: #2d3a41;
+  --accent: #4fc0c4; --accent-ink: #06272a; --accent-soft: #11292c;
+  --cheap: #2aa3a8; --dear: #d4733a;
+  --good: #5cc98d; --good-soft: #12291c; --bad: #ff8b80; --bad-soft: #351816; --warn: #f2c066; --warn-soft: #2e2510;
+  --shadow: 0 1px 2px rgba(0, 0, 0, .4), 0 6px 20px rgba(0, 0, 0, .25);
   color-scheme: dark }
 
 * { box-sizing: border-box; }
-body { background: var(--bg); color: var(--ink); font-family: var(--f-body); font-size: 15px; line-height: 1.45; }
-.wrap { max-width: 1320px; margin: 0 auto; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); padding-block: 18px 96px; }
-h1, h2, h3 { font-family: var(--f-display); text-wrap: balance; margin: 0; letter-spacing: .01em; }
-.num, input[type=number], .tab-num { font-family: var(--f-num); font-variant-numeric: tabular-nums; }
-button { font: inherit; cursor: pointer; }
-:focus-visible { outline: 2px solid var(--steel); outline-offset: 2px; }
+body { background: var(--bg); color: var(--ink); font-family: var(--f-ui); font-size: 14.5px; line-height: 1.45; -webkit-font-smoothing: antialiased; }
+body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); z-index: 10; background: var(--surface); }
+h1, h2, h3 { margin: 0; text-wrap: balance; }
+button { font: inherit; cursor: pointer; color: inherit; }
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+.mono, input[type=number] { font-family: var(--f-num); font-variant-numeric: tabular-nums; }
 
-/* nagłówek */
-.top { display: flex; flex-wrap: wrap; align-items: end; justify-content: space-between; gap: 12px 24px; padding-bottom: 14px; border-bottom: 2px solid var(--ink); margin-bottom: 18px; }
-.brand h1 { font-size: 30px; font-weight: 700; line-height: 1; }
-.brand h1 span { color: var(--accent); }
-.brand p { margin: 4px 0 0; color: var(--muted); font-size: 13px; }
-.actions { display: flex; flex-wrap: wrap; gap: 8px; }
-.btn { border: 1px solid var(--line); background: var(--surface); color: var(--ink); padding: 7px 12px; border-radius: var(--r); font-size: 14px; font-weight: 500; }
-.btn:hover { border-color: var(--steel); color: var(--steel); }
-.btn.primary { background: var(--steel); border-color: var(--steel); color: var(--surface); }
-.btn.primary:hover { filter: brightness(1.08); color: var(--surface); }
-.btn.small { padding: 4px 9px; font-size: 13px; }
-.btn.danger:hover { border-color: var(--bad); color: var(--bad); }
+/* pasek aplikacji */
+.appbar { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 15; background: color-mix(in srgb, var(--surface) 88%, transparent); backdrop-filter: blur(10px); border-bottom: 1px solid var(--line); }
+.appbar-in { max-width: 1360px; margin: 0 auto; display: flex; align-items: center; gap: 12px 20px; flex-wrap: wrap; justify-content: space-between;
+  padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); padding-block: 10px; }
+.brand { display: flex; align-items: center; gap: 12px; min-width: 0; }
+.logo { width: 34px; height: 34px; border-radius: 9px; background: var(--accent); color: var(--accent-ink); display: grid; place-items: center; font-weight: 700; font-size: 13px; letter-spacing: -.02em; flex: none; }
+.brand h1 { font-size: 16px; font-weight: 600; letter-spacing: -.01em; }
+.brand p { margin: 1px 0 0; font-size: 12.5px; color: var(--muted); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 52ch; }
+.actions { display: flex; flex-wrap: wrap; gap: 6px; align-items: center; }
+.btn { border: 1px solid var(--line-2); background: var(--surface); padding: 7px 12px; border-radius: var(--r-s); font-size: 13.5px; font-weight: 500; line-height: 1.2; transition: background .15s, border-color .15s; }
+.btn:hover { background: var(--sunken); border-color: var(--muted); }
+.btn.primary { background: var(--ink); border-color: var(--ink); color: var(--surface); }
+.btn.primary:hover { background: var(--ink-2); border-color: var(--ink-2); }
+.btn.ghost { border-color: transparent; background: transparent; color: var(--ink-2); }
+.btn.ghost:hover { background: var(--sunken); }
+.btn.small { padding: 5px 10px; font-size: 13px; }
+.btn.danger:hover { color: var(--bad); border-color: var(--bad); }
+.chip { display: inline-flex; align-items: center; gap: 6px; font-size: 12px; font-weight: 500; padding: 3px 9px; border-radius: 99px; background: var(--warn-soft); color: var(--warn); white-space: nowrap; }
+.chip::before { content: ""; width: 6px; height: 6px; border-radius: 50%; background: currentColor; }
 
-.layout { display: grid; grid-template-columns: minmax(0, 520px) minmax(0, 1fr); gap: 24px; align-items: start; }
-@media (max-width: 980px) { .layout { grid-template-columns: minmax(0, 1fr); } }
+.wrap { max-width: 1360px; margin: 0 auto; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); padding-block: 20px 100px; }
+.layout { display: grid; grid-template-columns: minmax(0, 500px) minmax(0, 1fr); gap: 20px; align-items: start; }
+@media (max-width: 1000px) { .layout { grid-template-columns: minmax(0, 1fr); } }
 
-/* formularz */
-.form { display: flex; flex-direction: column; gap: 14px; }
-fieldset { margin: 0; border: 1px solid var(--line); border-radius: var(--r); background: var(--surface); padding: 12px 14px 14px; min-width: 0; }
-legend { font-family: var(--f-display); font-weight: 600; font-size: 13px; text-transform: uppercase; letter-spacing: .08em; color: var(--muted); padding: 0 6px; }
-.grid2 { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px 12px; }
-.grid3 { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px 12px; }
-@media (max-width: 460px) { .grid3 { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+/* karty formularza */
+.form { display: flex; flex-direction: column; gap: 12px; }
+.card { background: var(--surface); border: 1px solid var(--line); border-radius: var(--r); box-shadow: var(--shadow); min-width: 0; }
+fieldset.card { margin: 0; padding: 14px 16px 16px; }
+fieldset.card legend { float: left; width: 100%; padding: 0; margin-bottom: 12px; font-size: 13px; font-weight: 600; color: var(--ink); display: flex; justify-content: space-between; align-items: baseline; gap: 8px; }
+fieldset.card legend small { font-weight: 400; color: var(--muted); font-size: 12px; }
+fieldset.card legend + * { clear: both; }
+.g2, .g3 { display: grid; gap: 12px; }
+.g2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.g3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+@media (max-width: 480px) { .g3 { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
 .full { grid-column: 1 / -1; }
-label.f { display: flex; flex-direction: column; gap: 3px; font-size: 13px; color: var(--muted); min-width: 0; }
-label.f .hint { font-size: 11.5px; color: var(--muted); opacity: .85; }
-input, select, textarea { font: inherit; color: var(--ink); background: var(--accent-soft); border: 1px solid var(--line); border-left: 3px solid var(--accent); border-radius: 4px; padding: 6px 8px; width: 100%; min-width: 0; }
+label.f { display: flex; flex-direction: column; gap: 5px; font-size: 12.5px; font-weight: 500; color: var(--ink-2); min-width: 0; }
+label.f .hint { font-weight: 400; font-size: 11.5px; color: var(--muted); }
+input, select, textarea { font: inherit; font-size: 14px; color: var(--ink); background: var(--surface); border: 1px solid var(--line-2); border-radius: var(--r-s); padding: 7px 10px; width: 100%; min-width: 0; transition: border-color .15s, box-shadow .15s; }
+input:hover, select:hover { border-color: var(--muted); }
+input:focus, select:focus, textarea:focus { outline: none; border-color: var(--accent); box-shadow: 0 0 0 3px var(--accent-soft); }
 input[type=number] { text-align: right; }
-input::placeholder { color: var(--muted); opacity: .8; }
-input.auto { background: var(--sunken); border-left-color: var(--line); }
-textarea { resize: vertical; min-height: 60px; background: var(--sunken); border-left-color: var(--line); }
-.seg { display: inline-flex; border: 1px solid var(--line); border-radius: var(--r); overflow: hidden; }
-.seg button { border: 0; background: var(--surface); color: var(--muted); padding: 6px 12px; font-size: 14px; }
-.seg button[aria-pressed=true] { background: var(--steel); color: var(--surface); }
-details { border-top: 1px dashed var(--line); margin-top: 10px; padding-top: 8px; }
-summary { cursor: pointer; font-size: 13.5px; font-weight: 600; color: var(--steel); }
-.dimtab { width: 100%; border-collapse: collapse; margin-top: 8px; font-size: 13px; }
-.dimtab th { text-align: left; font-weight: 500; color: var(--muted); padding: 3px 4px; }
-.dimtab th.c { text-align: center; width: 84px; }
+input.auto { background: var(--sunken); border-style: dashed; }
+input::placeholder { color: var(--muted); }
+input:disabled { opacity: .55; }
+textarea { resize: vertical; min-height: 70px; font-family: var(--f-num); font-size: 12.5px; }
+.seg { display: inline-flex; padding: 3px; gap: 2px; background: var(--sunken); border: 1px solid var(--line); border-radius: 10px; }
+.seg button { border: 0; background: transparent; padding: 6px 12px; border-radius: 7px; font-size: 13.5px; font-weight: 500; color: var(--muted); white-space: nowrap; }
+.seg button[aria-pressed=true] { background: var(--surface); color: var(--ink); box-shadow: 0 1px 2px rgba(14, 23, 28, .12); }
+.row { display: flex; flex-wrap: wrap; gap: 8px 10px; align-items: center; }
+.note { font-size: 12px; color: var(--muted); margin: 0; }
+details.dims { margin-top: 14px; border-top: 1px solid var(--line); padding-top: 12px; }
+details.dims summary { cursor: pointer; font-size: 13px; font-weight: 600; list-style: none; display: flex; align-items: center; gap: 8px; }
+details.dims summary::-webkit-details-marker { display: none; }
+details.dims summary::before { content: ""; width: 7px; height: 7px; border-right: 1.5px solid var(--muted); border-bottom: 1.5px solid var(--muted); transform: rotate(-45deg); transition: transform .15s; }
+details.dims[open] summary::before { transform: rotate(45deg); }
+details.dims summary span { font-weight: 400; color: var(--muted); }
+.dimtab { width: 100%; border-collapse: collapse; margin-top: 10px; font-size: 13px; }
+.dimtab th { text-align: left; font-weight: 500; color: var(--muted); padding: 4px; font-size: 12px; }
+.dimtab th.c { text-align: center; width: 86px; }
 .dimtab td { padding: 2px 4px; }
-.dimtab td.std { text-align: right; padding-right: 12px; color: var(--muted); font-family: var(--f-num); }
-.dimtab input { padding: 3px 6px; }
-.note { font-size: 12px; color: var(--muted); margin: 6px 0 0; }
+.dimtab td.std { text-align: right; padding-right: 14px; color: var(--muted); font-family: var(--f-num); }
+.dimtab input { padding: 4px 8px; }
+.dimtab tr.gap th { padding-top: 12px; }
 
 /* wynik */
-.result { position: sticky; top: calc(env(safe-area-inset-top, 0px) + 12px); display: flex; flex-direction: column; gap: 14px; min-width: 0; }
-@media (max-width: 980px) { .result { position: static; } }
-.panel { background: var(--surface); border: 1px solid var(--line); border-radius: var(--r); min-width: 0; }
-.hero { padding: 14px 16px; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 0; }
-@media (max-width: 720px) { .hero { grid-template-columns: repeat(2, minmax(0, 1fr)); row-gap: 14px; } }
-.var { padding: 0 12px; border-left: 1px solid var(--line); min-width: 0; }
-.var:first-child { border-left: 0; padding-left: 0; }
-@media (max-width: 720px) { .var:nth-child(3) { border-left: 0; padding-left: 0; } }
-.var .lab { font-family: var(--f-display); font-size: 13px; font-weight: 600; text-transform: uppercase; letter-spacing: .06em; color: var(--muted); }
-.var .price { font-family: var(--f-num); font-size: clamp(17px, 1.9vw, 22px); font-weight: 500; margin-top: 2px; white-space: nowrap; }
-.var:first-child .price { color: var(--steel); }
-.var .sub { font-size: 12.5px; color: var(--muted); font-family: var(--f-num); }
-.var .time { margin-top: 6px; display: inline-block; font-size: 12px; padding: 1px 7px; border-radius: 10px; background: var(--steel-soft); color: var(--steel); font-weight: 600; }
+.result { position: sticky; top: calc(env(safe-area-inset-top, 0px) + 74px); display: flex; flex-direction: column; gap: 12px; min-width: 0; }
+@media (max-width: 1000px) { .result { position: static; } }
+.hero { padding: 18px 20px 16px; }
+.hero-top { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 10px; align-items: center; }
+.eyebrow { font-size: 12px; font-weight: 500; color: var(--muted); }
+.big { font-family: var(--f-num); font-weight: 500; font-size: clamp(30px, 4.2vw, 44px); letter-spacing: -.035em; line-height: 1.05; margin-top: 12px; font-variant-numeric: tabular-nums; }
+.big small { font-size: .45em; color: var(--muted); letter-spacing: 0; margin-left: 4px; }
+.kpis { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 0; margin-top: 16px; border-top: 1px solid var(--line); padding-top: 14px; }
+@media (max-width: 760px) { .kpis { grid-template-columns: repeat(2, minmax(0, 1fr)); row-gap: 12px; } }
+.kpi { padding: 0 14px; border-left: 1px solid var(--line); min-width: 0; }
+.kpi:first-child { border-left: 0; padding-left: 0; }
+@media (max-width: 760px) { .kpi { border-left: 0; padding-left: 0; } }
+.kpi .l { font-size: 11.5px; color: var(--muted); }
+.kpi .v { font-family: var(--f-num); font-size: 15px; font-weight: 500; margin-top: 2px; white-space: nowrap; font-variant-numeric: tabular-nums; }
+.kpi .v.t { color: var(--accent); }
+.compare { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 8px; }
+@media (max-width: 760px) { .compare { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+.cmp { text-align: left; background: var(--surface); border: 1px solid var(--line); border-radius: 10px; padding: 10px 12px; box-shadow: var(--shadow); min-width: 0; transition: border-color .15s; }
+.cmp:hover { border-color: var(--line-2); }
+.cmp[aria-pressed=true] { border-color: var(--accent); box-shadow: 0 0 0 3px var(--accent-soft); }
+.cmp .n { font-size: 12px; color: var(--muted); font-weight: 500; }
+.cmp .p { font-family: var(--f-num); font-size: 15px; font-weight: 500; margin-top: 3px; white-space: nowrap; }
+.cmp .d { font-family: var(--f-num); font-size: 11.5px; color: var(--muted); margin-top: 1px; }
 .alerts { display: flex; flex-direction: column; gap: 6px; }
-.alert { padding: 7px 12px; border-radius: var(--r); font-size: 13.5px; }
+.alert { display: flex; gap: 8px; align-items: baseline; padding: 8px 12px; border-radius: 10px; font-size: 13px; }
+.alert b { font-weight: 600; }
 .alert.blad { background: var(--bad-soft); color: var(--bad); }
 .alert.uwaga { background: var(--warn-soft); color: var(--warn); }
-.tabs { display: flex; gap: 2px; border-bottom: 1px solid var(--line); padding: 0 10px; overflow-x: auto; }
-.tabs button { border: 0; background: none; padding: 10px 12px 9px; color: var(--muted); font-family: var(--f-display); font-weight: 600; font-size: 15px; border-bottom: 3px solid transparent; white-space: nowrap; }
-.tabs button[aria-selected=true] { color: var(--ink); border-bottom-color: var(--accent); }
-.tabpane { padding: 14px 16px 16px; min-width: 0; }
+.tabs { display: flex; gap: 2px; padding: 6px; border-bottom: 1px solid var(--line); overflow-x: auto; scrollbar-width: none; }
+.tabs button { border: 0; background: none; padding: 7px 12px; border-radius: 7px; color: var(--muted); font-weight: 500; font-size: 13.5px; white-space: nowrap; }
+.tabs button:hover { color: var(--ink); background: var(--sunken); }
+.tabs button[aria-selected=true] { color: var(--ink); background: var(--sunken); box-shadow: inset 0 0 0 1px var(--line); }
+.pane { padding: 16px 18px 18px; min-width: 0; }
 .scroll { overflow-x: auto; }
-table.t { width: 100%; border-collapse: collapse; font-size: 13.5px; }
-table.t th, table.t td { padding: 5px 8px; border-bottom: 1px solid var(--line); text-align: right; white-space: nowrap; }
-table.t th:first-child, table.t td:first-child { text-align: left; white-space: normal; min-width: 150px; }
-table.t thead th { font-family: var(--f-display); font-weight: 600; color: var(--muted); font-size: 13px; text-transform: uppercase; letter-spacing: .04em; border-bottom: 2px solid var(--ink); }
-table.t td { font-family: var(--f-num); font-variant-numeric: tabular-nums; }
-table.t td:first-child { font-family: var(--f-body); }
-table.t tr.strong td { font-weight: 600; }
-table.t tr.total td { font-weight: 600; background: var(--good-soft); }
-table.t tr.sep td { border-bottom: 0; padding: 4px; }
-table.t tr.grp td { font-family: var(--f-display); font-weight: 600; color: var(--muted); text-transform: uppercase; font-size: 12px; letter-spacing: .06em; padding-top: 12px; }
-table.t td.best { background: var(--good-soft); color: var(--good); font-weight: 600; }
-table.t td.cur { box-shadow: inset 0 -2px 0 var(--steel); }
-h3.sec { font-size: 15px; font-weight: 600; text-transform: uppercase; letter-spacing: .06em; color: var(--muted); margin: 18px 0 8px; }
+table.t { width: 100%; border-collapse: collapse; font-size: 13px; }
+table.t th, table.t td { padding: 7px 10px; border-bottom: 1px solid var(--line); text-align: right; white-space: nowrap; }
+table.t th:first-child, table.t td:first-child { text-align: left; white-space: normal; min-width: 160px; padding-left: 0; }
+table.t thead th { font-weight: 500; color: var(--muted); font-size: 12px; }
+table.t th.sel { color: var(--accent); }
+table.t td { font-family: var(--f-num); font-variant-numeric: tabular-nums; color: var(--ink-2); }
+table.t td:first-child { font-family: var(--f-ui); color: var(--ink); }
+table.t td.sel { color: var(--ink); background: var(--sunken); }
+table.t tr.strong td { font-weight: 600; color: var(--ink); }
+table.t tr.total td { font-weight: 600; color: var(--ink); border-bottom: 1px solid var(--line-2); }
+table.t tr.grp td { font-family: var(--f-ui); font-weight: 500; color: var(--muted); font-size: 12px; padding-top: 16px; border-bottom-color: var(--line-2); }
+table.t td.best { color: var(--good); font-weight: 600; }
+table.t tr:last-child td { border-bottom: 0; }
+h3.sec { font-size: 13px; font-weight: 600; margin: 22px 0 8px; }
 h3.sec:first-child { margin-top: 0; }
-.bars { display: grid; grid-template-columns: 52px minmax(0, 1fr) auto; gap: 6px 10px; align-items: center; font-size: 13.5px; }
-.bar { height: 14px; background: var(--sunken); border-radius: 3px; overflow: hidden; }
-.bar i { display: block; height: 100%; background: var(--steel); opacity: .55; }
-.bar.best i { background: var(--good); opacity: .8; }
-.bars .v { font-family: var(--f-num); text-align: right; white-space: nowrap; }
-.offer { font-family: var(--f-num); font-size: 13px; background: var(--sunken); border: 1px solid var(--line); border-radius: var(--r); padding: 12px; white-space: pre-wrap; overflow-x: auto; margin: 0; }
-.row { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+.chart { display: grid; grid-template-columns: 112px minmax(0, 1fr) 120px; gap: 8px 12px; align-items: center; font-size: 13px; }
+.chart .who { font-weight: 500; }
+.chart .who small { display: block; font-weight: 400; color: var(--muted); font-size: 11.5px; }
+.track { position: relative; height: 22px; }
+.track::before { content: ""; position: absolute; left: 50%; top: -4px; bottom: -4px; width: 1px; background: var(--line-2); }
+.track i { position: absolute; top: 4px; height: 14px; border-radius: 4px; }
+.track i.cheap { background: var(--cheap); border-top-left-radius: 4px; border-bottom-left-radius: 4px; }
+.track i.dear { background: var(--dear); }
+.track i.zero { left: calc(50% - 1.5px); width: 3px; background: var(--ink-2); border-radius: 2px; }
+.chart .val { font-family: var(--f-num); text-align: right; white-space: nowrap; }
+.chart .val small { display: block; color: var(--muted); font-size: 11.5px; }
+.chart-axis { display: grid; grid-template-columns: 112px minmax(0, 1fr) 120px; gap: 12px; font-size: 11.5px; color: var(--muted); margin-top: 6px; }
+.chart-axis div:nth-child(2) { display: flex; justify-content: space-between; }
+.legend { display: flex; gap: 14px; flex-wrap: wrap; font-size: 12px; color: var(--muted); margin-bottom: 12px; }
+.legend span { display: inline-flex; align-items: center; gap: 6px; }
+.legend i { width: 10px; height: 10px; border-radius: 3px; display: inline-block; }
+.badge { display: inline-block; font-size: 11px; font-weight: 600; padding: 1px 7px; border-radius: 99px; background: var(--good-soft); color: var(--good); margin-left: 6px; vertical-align: 1px; }
+.offer { font-family: var(--f-num); font-size: 12.5px; line-height: 1.6; background: var(--sunken); border: 1px solid var(--line); border-radius: 10px; padding: 14px; white-space: pre-wrap; overflow-x: auto; margin: 0; color: var(--ink-2); }
 .muted { color: var(--muted); }
-.kv { display: grid; grid-template-columns: minmax(0, 1fr) 120px; gap: 6px 12px; align-items: center; font-size: 13.5px; }
-.kv input { padding: 4px 6px; }
-.kv .src { grid-column: 1 / -1; margin-top: -4px; font-size: 11.5px; color: var(--muted); }
-ul.notes { margin: 0; padding-left: 18px; display: flex; flex-direction: column; gap: 8px; font-size: 14px; max-width: 70ch; }
-.saved { display: flex; flex-direction: column; gap: 6px; margin-top: 10px; }
-.saved .it { display: flex; gap: 8px; align-items: center; justify-content: space-between; padding: 6px 10px; border: 1px solid var(--line); border-radius: var(--r); background: var(--sunken); flex-wrap: wrap; }
+.kv { display: grid; grid-template-columns: minmax(0, 1fr) 130px; gap: 6px 14px; align-items: center; font-size: 13px; }
+.kv input { padding: 5px 8px; font-size: 13px; }
+.kv h3 { grid-column: 1 / -1; }
+.tag { display: inline-block; font-size: 11px; padding: 0 6px; border-radius: 99px; background: var(--accent-soft); color: var(--accent); margin-left: 4px; }
+ul.notes { margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 10px; font-size: 13.5px; max-width: 72ch; }
+ul.notes li { padding-left: 16px; position: relative; color: var(--ink-2); }
+ul.notes li::before { content: ""; position: absolute; left: 0; top: .6em; width: 6px; height: 6px; border-radius: 50%; background: var(--warn); }
+.saved { display: flex; flex-direction: column; gap: 6px; margin-top: 12px; }
+.saved .it { display: flex; gap: 8px 12px; align-items: center; justify-content: space-between; padding: 9px 12px; border: 1px solid var(--line); border-radius: 10px; flex-wrap: wrap; }
 .saved .it b { font-weight: 600; }
-.toast { position: fixed; left: 50%; transform: translateX(-50%); bottom: calc(env(safe-area-inset-bottom, 0px) + 72px); background: var(--ink); color: var(--surface); padding: 8px 14px; border-radius: var(--r); font-size: 14px; z-index: 30; }
+.empty { padding: 18px; text-align: center; color: var(--muted); border: 1px dashed var(--line-2); border-radius: 10px; font-size: 13px; }
+.toast { position: fixed; left: 50%; transform: translateX(-50%); bottom: calc(env(safe-area-inset-bottom, 0px) + 80px); background: var(--ink); color: var(--surface); padding: 9px 16px; border-radius: 10px; font-size: 13.5px; z-index: 30; box-shadow: var(--shadow); }
 .mbar { display: none; }
-@media (max-width: 980px) {
+@media (max-width: 1000px) {
   .mbar { display: flex; position: fixed; left: 0; right: 0; bottom: 0; z-index: 20; justify-content: space-between; align-items: center; gap: 10px;
-    background: var(--surface); border-top: 2px solid var(--accent);
+    background: color-mix(in srgb, var(--surface) 92%, transparent); backdrop-filter: blur(10px); border-top: 1px solid var(--line);
     padding: 10px max(16px, env(safe-area-inset-right, 0px)) calc(10px + env(safe-area-inset-bottom, 0px)) max(16px, env(safe-area-inset-left, 0px)); }
-  .mbar .p { font-family: var(--f-num); font-size: 17px; font-weight: 500; }
-  .mbar .s { font-size: 12px; color: var(--muted); }
+  .mbar .p { font-family: var(--f-num); font-size: 18px; font-weight: 500; letter-spacing: -.02em; }
+  .mbar .s { font-size: 11.5px; color: var(--muted); }
 }
-.example { font-size: 12.5px; padding: 4px 10px; border-radius: 10px; background: var(--accent-soft); color: var(--warn); font-weight: 600; }
 @media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
 </style>
 
-<div class="wrap">
-  <header class="top">
+<header class="appbar">
+  <div class="appbar-in">
     <div class="brand">
-      <h1>Kalkulator <span>NK38</span></h1>
-      <p id="projline">Cena kontraktu: urządzenia + montaż + narzuty</p>
+      <div class="logo" aria-hidden="true">NK</div>
+      <div style="min-width:0"><h1>Kalkulator NK38</h1><p id="projline">Cena kontraktu: urządzenia, montaż, narzuty</p></div>
     </div>
     <div class="actions">
-      <span class="example" id="exampleTag" hidden>Przykład</span>
+      <span class="chip" id="exampleTag" hidden></span>
+      <button class="btn ghost" id="bWaw" type="button">Przykład WAW</button>
+      <button class="btn ghost" id="bKrk" type="button">Przykład KRK</button>
       <button class="btn" id="bNew" type="button">Nowa wycena</button>
-      <button class="btn" id="bWaw" type="button">Przykład WAW</button>
-      <button class="btn" id="bKrk" type="button">Przykład KRK</button>
-      <button class="btn primary" id="bSave" type="button">Zapisz wycenę</button>
+      <button class="btn primary" id="bSave" type="button">Zapisz</button>
     </div>
-  </header>
+  </div>
+</header>
 
+<div class="wrap">
   <div class="layout">
     <form class="form" id="form" autocomplete="off">
-      <fieldset>
+      <fieldset class="card">
         <legend>Inwestycja</legend>
-        <div class="grid2">
+        <div class="g2">
           <label class="f full">Nazwa / adres<input id="nazwa" type="text" placeholder="ul. Kasprowicza 18 Warszawa"></label>
           <label class="f">Data oferty<input id="data" type="date"></label>
-          <label class="f">Nr oferty / handlowiec<input id="nr" type="text" placeholder="20261014-SNK"></label>
+          <label class="f">Nr oferty<input id="nr" type="text" placeholder="20261014-SNK"></label>
           <label class="f full">Opis / wariant<input id="opis" type="text" placeholder="H-195 | L-530 | P-380 | ..."></label>
         </div>
       </fieldset>
 
-      <fieldset>
-        <legend>Lokalizacja</legend>
-        <div class="grid2">
-          <div class="full row"><div class="seg" role="group" aria-label="Lokalizacja">
+      <fieldset class="card">
+        <legend>Lokalizacja <small id="lokNote"></small></legend>
+        <div class="g2">
+          <div class="full"><div class="seg" role="group" aria-label="Lokalizacja">
             <button type="button" id="lokKrk">Kraków</button><button type="button" id="lokPoza">Poza Krakowem</button>
-          </div><span class="note" id="lokNote"></span></div>
+          </div></div>
           <label class="f">Odległość od Krakowa [km]<input id="km" type="number" min="0" step="1"><span class="hint">faktyczna, w jedną stronę</span></label>
           <div></div>
-          <label class="f">Km na pomiary / odbiory<input id="km_pom" type="number" min="0" class="auto"><span class="hint">puste = automatycznie</span></label>
+          <label class="f">Km na pomiary i odbiory<input id="km_pom" type="number" min="0" class="auto"><span class="hint">puste = automatycznie</span></label>
           <label class="f">Km na montaż<input id="km_mon" type="number" min="0" class="auto"><span class="hint">puste = odległość + 50</span></label>
         </div>
       </fieldset>
 
-      <fieldset>
-        <legend>Urządzenia</legend>
-        <div class="grid3">
+      <fieldset class="card">
+        <legend>Urządzenia <small id="mpNote"></small></legend>
+        <div class="g3">
           <label class="f">Typ<select id="typ"><option>NK38</option><option>NK37</option></select></label>
           <label class="f">Platformy S<input id="S" type="number" min="0" step="1"><span class="hint">2 MP</span></label>
           <label class="f">Platformy D<input id="D" type="number" min="0" step="1"><span class="hint">4 MP</span></label>
-          <label class="f">Systemy N.P.<input id="NP" type="number" min="0" step="1"><span class="hint">2 MP, jak D</span></label>
+          <label class="f">Systemy N.P.<input id="NP" type="number" min="0" step="1"><span class="hint">2 MP, liczone jak D</span></label>
           <label class="f">Agregaty<input id="agregaty" type="number" min="0" step="1"><span class="hint">wg układu garażu</span></label>
           <label class="f">Magistrala 6 m<input id="magistrala" type="number" min="0" step="1"></label>
           <label class="f">Barierki<input id="barierki" type="number" min="0" step="1"><span class="hint">szt. na stronę</span></label>
           <label class="f">Maskownice<input id="maskownice" type="number" min="0" step="1"></label>
           <label class="f">Utrudnienia +<input id="utr_dod" type="number" min="0" step="0.5"><span class="hint" id="utrHint">osobodni ręcznie</span></label>
         </div>
-        <details id="dimDetails">
-          <summary>Wymiary niestandardowe <span class="muted" id="dimSummary"></span></summary>
-          <p class="note">Wpisz, ile platform ma dany wymiar. Pozostałe są standardowe (szer. 250/500, zagłębienie 170, długość 530).</p>
+        <details class="dims" id="dimDetails">
+          <summary>Wymiary niestandardowe <span id="dimSummary"></span></summary>
+          <p class="note" style="margin-top:8px">Wpisz, ile platform ma dany wymiar. Pozostałe są standardowe: szerokość 250/500, zagłębienie 170, długość 530.</p>
           <table class="dimtab" id="dimTable"></table>
         </details>
       </fieldset>
 
-      <fieldset>
+      <fieldset class="card">
         <legend>Transport i ekipa</legend>
-        <div class="grid2">
+        <div class="g2">
           <label class="f">Liczba TIR<input id="tir" type="number" min="0" step="1"></label>
-          <label class="f">Cena / TIR [zł]<input id="tir_cena" type="number" min="0" step="100"><span class="hint">KRK 1600, WAW/WRO 3300, POZ/ZG 4500</span></label>
-          <label class="f">Rozładunek sprzęt / TIR [zł]<input id="rozl_cena" type="number" min="0" step="100"><span class="hint">WAW 1700, KRK 500</span></label>
-          <label class="f">Dni rozładunku<input id="rozl_dni" type="number" min="0" step="0.5" class="auto"><span class="hint">puste = 0,5 / TIR</span></label>
+          <label class="f">Cena za TIR [zł]<input id="tir_cena" type="number" min="0" step="100"><span class="hint">KRK 1600 · WAW/WRO 3300 · POZ/ZG 4500</span></label>
+          <label class="f">Rozładunek sprzętu za TIR [zł]<input id="rozl_cena" type="number" min="0" step="100"><span class="hint">WAW 1700 · KRK 500</span></label>
+          <label class="f">Dni rozładunku<input id="rozl_dni" type="number" min="0" step="0.5" class="auto"><span class="hint">puste = 0,5 dnia na TIR</span></label>
           <label class="f">Osób na montażu<input id="osoby" type="number" min="1" max="12" step="1"><span class="hint">500 / 400 / kolejne 350 zł</span></label>
           <label class="f">Tygodnie montażu<input id="wyjazdy" type="number" min="0" step="1" class="auto"><span class="hint">puste = automatycznie</span></label>
-          <label class="f full">Czas podróży<select id="wzor"><option value="stary">Stary wzór (poprawiony dla ≥ 800 km)</option><option value="uproszczony">Uproszczony: 650 km dziennie</option></select></label>
+          <label class="f full">Czas podróży<select id="wzor"><option value="stary">Stary wzór, poprawiony dla tras od 800 km</option><option value="uproszczony">Uproszczony: 650 km dziennie</option></select></label>
         </div>
       </fieldset>
 
-      <fieldset>
+      <fieldset class="card">
         <legend>Narzuty</legend>
-        <div class="grid2">
+        <div class="g2">
           <label class="f">Zysk [%]<input id="zysk" type="number" min="0" max="60" step="0.5"></label>
           <label class="f">Zysk do sprawdzenia [%]<input id="zysk_min" type="number" min="0" max="60" step="0.5"><span class="hint">do ilu możemy zejść</span></label>
           <label class="f">Dopłata Q=2500 [%]<input id="q2500" type="number" min="0" max="50" step="0.5" class="auto"><span class="hint">puste = 7%</span></label>
@@ -227,11 +285,12 @@ ul.notes { margin: 0; padding-left: 18px; display: flex; flex-direction: column;
     </form>
 
     <section class="result" aria-live="polite">
-      <div class="panel hero" id="hero"></div>
+      <div class="card hero" id="hero"></div>
+      <div class="compare" id="compare"></div>
       <div class="alerts" id="alerts"></div>
-      <div class="panel">
+      <div class="card">
         <div class="tabs" role="tablist" id="tabs"></div>
-        <div class="tabpane" id="pane"></div>
+        <div class="pane" id="pane"></div>
       </div>
     </section>
   </div>
@@ -244,7 +303,7 @@ ul.notes { margin: 0; padding-left: 18px; display: flex; flex-direction: column;
 (function () {
   "use strict";
   var E = window.NK38;
-  var LS_DRAFT = "nk38.szkic.v1", LS_SAVED = "nk38.wyceny.v1", LS_CENNIK = "nk38.cennik.v1", LS_TAB = "nk38.zakladka";
+  var LS_DRAFT = "nk38.szkic.v1", LS_SAVED = "nk38.wyceny.v1", LS_CENNIK = "nk38.cennik.v1", LS_TAB = "nk38.zakladka", LS_SEL = "nk38.wariant";
   var PRZYKLADY = {
     waw: { nazwa: "ul. Kasprowicza 18 Warszawa", data: "2026-10-14", nr: "20261014-SNK",
       opis: "H-195/202 | L-530-544-584 | P-380 | Hpoj. G-180. D-180 | 1A4+1A5+1A6 | Bok-30 Tył-5 | mgstrl-4",
@@ -276,7 +335,7 @@ ul.notes { margin: 0; padding-left: 18px; display: flex; flex-direction: column;
     ["slupek", "Słupek 3,7 kW / MP", "zł"], ["slupek22", "Słupek 22 kW / MP", "zł"], ["slupek_rbd", "Robocizna słupka [rbd / MP]", ""],
     ["Montaż", null], ["osd_S", "Osobodni / S", ""], ["osd_D", "Osobodni / D", ""], ["osd_NP", "Osobodni / N.P.", ""],
     ["osd_magistrala", "Utrudnienia / magistrala", "osd"], ["osd_barierka", "Utrudnienia / barierka", "osd"], ["rozl_TIR", "Dni rozładunku / TIR", ""],
-    ["dzwig", "Spider Crane / dzień", "zł"], ["dzwig_min", "Spider Crane – cena minimalna", "zł"], ["dzwig_D", "Systemów D na dzień dźwigu", ""],
+    ["dzwig", "Spider Crane / dzień", "zł"], ["dzwig_min", "Spider Crane, cena minimalna", "zł"], ["dzwig_D", "Systemów D na dzień dźwigu", ""],
     ["dzwig_wspS", "Współczynnik S (dźwig)", ""], ["dni_tydzien", "Dni pracy w tygodniu", ""],
     ["km_montaz_dodatek", "Montaż: km dodane", "km"], ["km_krakow", "Kraków: km", "km"], ["km_dzien", "Uproszczony: km dziennie", "km"],
     ["spalanie", "Spalanie l/100 km", ""], ["paliwo", "Paliwo zł/l", "zł"],
@@ -285,14 +344,14 @@ ul.notes { margin: 0; padding-left: 18px; display: flex; flex-direction: column;
     ["Narzuty", null], ["kob", "KOB", "×"], ["gdw", "GDW", "×"], ["podatek", "Podatek efektywny", "×"]
   ];
   var UWAGI = [
-    "Hotel liczony jako (dni pracy + 1) × osoby. Do sprawdzenia, czy „+1” to zapas na przyjazd na odbiór.",
-    "Podatek 14% od robocizny, diet, GDW i zysku to wartość efektywna. Stary arkusz w „koszcie ludzkim” używał ×1,19. Do sprawdzenia.",
+    "Hotel liczony jako (dni pracy + 1) × osoby. Do sprawdzenia, czy dodatkowa noc to zapas na przyjazd na odbiór.",
+    "Podatek 14% od robocizny, diet, GDW i zysku to wartość efektywna. Stary arkusz w koszcie ludzkim używał ×1,19. Do sprawdzenia.",
     "Systemy N.P. liczone jak D: siłowniki, składowe, dźwig, 7 osobodni. Cena 85% D, 2 MP. Do potwierdzenia.",
-    "Czas podróży: „stary wzór” daje dla tras poniżej 800 km to samo co arkusz; od 800 km uwzględnia liczbę wyjazdów (w arkuszu ten człon jej nie miał). „Uproszczony” liczy 650 km dziennie, 2 × km na wyjazd.",
+    "Czas podróży: stary wzór daje dla tras poniżej 800 km to samo co arkusz, a od 800 km uwzględnia liczbę wyjazdów (w arkuszu ten człon jej nie miał). Uproszczony liczy 650 km dziennie, 2 × km na wyjazd.",
     "Cena minimalna liczona jak dawna kolumna N: zysk do sprawdzenia i dźwig 2000 zł/dzień.",
     "Przy danych z plików Kasprowicza i Dekerta wyniki zgadzają się ze starym arkuszem co do grosza."
   ];
-  var TABS = [["wynik", "Wynik"], ["ekipa", "Ekipa"], ["oferta", "Do oferty"], ["obl", "Obliczenia"], ["wyceny", "Wyceny"], ["cennik", "Cennik"], ["uwagi", "Uwagi"]];
+  var TABS = [["wynik", "Warianty"], ["ekipa", "Ekipa"], ["oferta", "Do oferty"], ["obl", "Obliczenia"], ["wyceny", "Wyceny"], ["cennik", "Cennik"], ["uwagi", "Uwagi"]];
 
   var $ = function (id) { return document.getElementById(id); };
   var fmtPLN = new Intl.NumberFormat("pl-PL", { maximumFractionDigits: 0 });
@@ -301,11 +360,13 @@ ul.notes { margin: 0; padding-left: 18px; display: flex; flex-direction: column;
   function eur(v) { return fmtPLN.format(Math.round(v)) + " €"; }
   function n2(v) { return fmt2.format(v); }
   function pct(v) { return fmt2.format(v * 100) + "%"; }
+  function sgn(v) { var r = Math.round(v); return (r > 0 ? "+" : r < 0 ? "−" : "") + fmtPLN.format(Math.abs(r)) + " zł"; }
   function esc(s) { return String(s == null ? "" : s).replace(/[&<>"]/g, function (c) { return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]; }); }
   function lsGet(k, d) { try { var v = localStorage.getItem(k); return v ? JSON.parse(v) : d; } catch (e) { return d; } }
   function lsSet(k, v) { try { localStorage.setItem(k, JSON.stringify(v)); } catch (e) { /* brak pamięci przeglądarki */ } }
+  function sumO(o) { var s = 0; for (var k in o) s += Number(o[k] || 0); return s; }
 
-  var state = { dane: null, tab: lsGet(LS_TAB, "wynik"), przyklad: null, cennik: lsGet(LS_CENNIK, {}), confirm: null };
+  var state = { dane: null, tab: lsGet(LS_TAB, "wynik"), sel: lsGet(LS_SEL, 0), przyklad: null, cennik: lsGet(LS_CENNIK, {}), confirm: null };
   var wynik = null;
 
   function toast(t) {
@@ -316,13 +377,13 @@ ul.notes { margin: 0; padding-left: 18px; display: flex; flex-direction: column;
   /* --- formularz <-> dane --- */
   function buildDimTable() {
     var h = '<thead><tr><th>Zagłębienie</th><th class="c">S</th><th class="c">D</th></tr></thead><tbody>';
-    h += '<tr><td>170 cm (standard)</td><td class="std" id="std_S"></td><td class="std" id="std_D"></td></tr>';
+    h += '<tr><td>170 cm, standard</td><td class="std" id="std_S"></td><td class="std" id="std_D"></td></tr>';
     E.GLEBOKOSCI.forEach(function (cm) {
-      h += '<tr><td>' + cm + ' cm</td><td><input type="number" min="0" step="1" id="glS_' + cm + '"></td><td><input type="number" min="0" step="1" id="glD_' + cm + '"></td></tr>';
+      h += '<tr><td>' + cm + ' cm</td><td><input type="number" min="0" step="1" id="glS_' + cm + '" aria-label="Zagłębienie ' + cm + ' cm, S"></td><td><input type="number" min="0" step="1" id="glD_' + cm + '" aria-label="Zagłębienie ' + cm + ' cm, D"></td></tr>';
     });
-    h += '<tr><th colspan="3" style="padding-top:10px">Szerokość i długość</th></tr>';
+    h += '<tr class="gap"><th colspan="3">Szerokość i długość</th></tr>';
     DIMS.forEach(function (d) {
-      h += '<tr><td>' + d[1] + '</td><td><input type="number" min="0" step="1" id="' + d[0] + '_S"></td><td><input type="number" min="0" step="1" id="' + d[0] + '_D"></td></tr>';
+      h += '<tr><td>' + d[1] + '</td><td><input type="number" min="0" step="1" id="' + d[0] + '_S" aria-label="' + d[1] + ', S"></td><td><input type="number" min="0" step="1" id="' + d[0] + '_D" aria-label="' + d[1] + ', D"></td></tr>';
     });
     $("dimTable").innerHTML = h + "</tbody>";
   }
@@ -335,9 +396,7 @@ ul.notes { margin: 0; padding-left: 18px; display: flex; flex-direction: column;
       $("glS_" + cm).value = d.gl_S && d.gl_S[cm] ? d.gl_S[cm] : "";
       $("glD_" + cm).value = d.gl_D && d.gl_D[cm] ? d.gl_D[cm] : "";
     });
-    DIMS.forEach(function (x) {
-      $(x[0] + "_S").value = d[x[0] + "_S"] || ""; $(x[0] + "_D").value = d[x[0] + "_D"] || "";
-    });
+    DIMS.forEach(function (x) { $(x[0] + "_S").value = d[x[0] + "_S"] || ""; $(x[0] + "_D").value = d[x[0] + "_D"] || ""; });
     var anyDim = Object.keys(d.gl_S || {}).length + Object.keys(d.gl_D || {}).length +
       DIMS.reduce(function (a, x) { return a + (d[x[0] + "_S"] || 0) + (d[x[0] + "_D"] || 0); }, 0);
     $("dimDetails").open = anyDim > 0;
@@ -353,24 +412,20 @@ ul.notes { margin: 0; padding-left: 18px; display: flex; flex-direction: column;
       var v = $(k).value;
       d[k] = v === "" ? (OPTF[k] ? null : (k === "osoby" ? 4 : (k === "eur" ? 4.325 : 0))) : Number(v);
     });
-    PCTF.forEach(function (k) {
-      var v = $(k).value; d[k] = v === "" ? (OPTF[k] ? null : 0) : Number(v) / 100;
-    });
+    PCTF.forEach(function (k) { var v = $(k).value; d[k] = v === "" ? (OPTF[k] ? null : 0) : Number(v) / 100; });
     d.gl_S = {}; d.gl_D = {};
     E.GLEBOKOSCI.forEach(function (cm) {
       var s = Number($("glS_" + cm).value || 0), dd = Number($("glD_" + cm).value || 0);
       if (s) d.gl_S[cm] = s; if (dd) d.gl_D[cm] = dd;
     });
-    DIMS.forEach(function (x) {
-      d[x[0] + "_S"] = Number($(x[0] + "_S").value || 0); d[x[0] + "_D"] = Number($(x[0] + "_D").value || 0);
-    });
+    DIMS.forEach(function (x) { d[x[0] + "_S"] = Number($(x[0] + "_S").value || 0); d[x[0] + "_D"] = Number($(x[0] + "_D").value || 0); });
     return d;
   }
 
   function lokButtons(lok) {
     $("lokKrk").setAttribute("aria-pressed", lok === "Kraków");
     $("lokPoza").setAttribute("aria-pressed", lok !== "Kraków");
-    $("lokNote").textContent = lok === "Kraków" ? "montaż w dniach, 20 km, bez hotelu i diet" : "montaż w tygodniach, hotel i diety";
+    $("lokNote").textContent = lok === "Kraków" ? "montaż w dniach, 20 km, bez hotelu i diet" : "montaż w tygodniach, z hotelem i dietami";
     $("km").disabled = lok === "Kraków";
   }
 
@@ -381,116 +436,130 @@ ul.notes { margin: 0; padding-left: 18px; display: flex; flex-direction: column;
     recalc();
   }
 
-  /* --- obliczenia i render --- */
   function recalc() {
     wynik = E.oblicz(state.dane, state.cennik);
     lsSet(LS_DRAFT, { dane: state.dane, przyklad: state.przyklad });
     render();
   }
 
+  /* --- render --- */
   function render() {
-    var r = wynik, d = r.dane, m = r.mat;
+    var r = wynik, d = r.dane, m = r.mat, sel = state.sel, w = r.warianty[sel];
+    var jed = r.wspolne.krk ? "dni" : "tyg.";
     $("exampleTag").hidden = !state.przyklad;
     $("exampleTag").textContent = state.przyklad ? "Przykład: " + state.przyklad : "";
-    $("projline").textContent = (d.nazwa || "Nowa wycena") + " · " + d.typ + " · " + m.platformy + " platform · " + m.MP + " MP";
+    $("projline").textContent = (d.nazwa || "Nowa wycena") + (d.nr ? " · " + d.nr : "");
+    $("mpNote").textContent = m.platformy + " platform · " + m.MP + " MP";
     $("std_S").textContent = Math.max(0, (d.S || 0) - sumO(d.gl_S));
     $("std_D").textContent = Math.max(0, (d.D || 0) - sumO(d.gl_D));
-    $("utrHint").textContent = "auto z magistrali i barierek: " + n2(m.utrAuto) + " osd";
+    $("utrHint").textContent = "z magistrali i barierek: " + n2(m.utrAuto) + " osd";
     $("km_pom").placeholder = String(r.wspolne.kmPom);
     $("km_mon").placeholder = String(r.wspolne.kmMon);
     $("rozl_dni").placeholder = n2(r.wspolne.rozl);
     $("wyjazdy").placeholder = String(r.warianty[0].iteracje[4]);
     $("q2500").placeholder = n2(r.cennik.q2500 * 100);
-    var ds = [];
-    E.GLEBOKOSCI.forEach(function (cm) { var s = d.gl_S[cm] || 0, dd = d.gl_D[cm] || 0; if (s || dd) ds.push(cm + " cm"); });
-    $("dimSummary").textContent = ds.length ? "· " + ds.join(", ") : "";
+    var ds = E.GLEBOKOSCI.filter(function (cm) { return d.gl_S[cm] || d.gl_D[cm]; }).map(function (cm) { return cm + " cm"; });
+    $("dimSummary").textContent = ds.length ? "· " + ds.join(", ") : "· wszystkie standardowe";
 
-    var jed = r.wspolne.krk ? "dni" : "tyg.";
-    $("hero").innerHTML = r.warianty.map(function (w) {
-      return '<div class="var"><div class="lab">' + esc(w.nazwa) + '</div><div class="price">' + zl(w.cena) +
-        '</div><div class="sub">' + zl(w.cenaMP) + ' / MP · ' + eur(w.cenaMPeur) + '</div><span class="time">' +
-        w.wyjazdy + ' ' + jed + ' · ' + w.dni + ' dni pracy</span></div>';
+    var q = sel % 2, sl = sel >= 2 ? 1 : 0;
+    $("hero").innerHTML =
+      '<div class="hero-top"><div class="row">' +
+      '<div class="seg" role="group" aria-label="Udźwig"><button type="button" data-q="0" aria-pressed="' + (q === 0) + '">2000 kg</button><button type="button" data-q="1" aria-pressed="' + (q === 1) + '">2500 kg</button></div>' +
+      '<div class="seg" role="group" aria-label="Słupki e-ładowarek"><button type="button" data-sl="0" aria-pressed="' + (sl === 0) + '">Bez słupków</button><button type="button" data-sl="1" aria-pressed="' + (sl === 1) + '">Ze słupkami</button></div>' +
+      '</div><span class="eyebrow">' + esc(d.typ) + ' · ' + m.MP + ' MP · ' + esc(d.lok) + '</span></div>' +
+      '<div class="eyebrow" style="margin-top:14px">Cena kontraktu netto</div>' +
+      '<div class="big">' + fmtPLN.format(Math.round(w.cena)) + '<small>zł</small></div>' +
+      '<div class="kpis">' +
+      kpi("Za miejsce postojowe", zl(w.cenaMP)) + kpi("Za MP w euro", eur(w.cenaMPeur)) +
+      kpi("Montaż", w.wyjazdy + " " + jed + " · " + w.dni + " dni", true) +
+      kpi("Zysk " + pct(d.zysk), zl(w.zysk)) + kpi("Cena minimalna", zl(w.cenaMin)) + "</div>";
+    $("compare").innerHTML = r.warianty.map(function (x, i) {
+      return '<button type="button" class="cmp" data-sel="' + i + '" aria-pressed="' + (i === sel) + '"><div class="n">' + esc(x.nazwa) +
+        '</div><div class="p">' + zl(x.cena) + '</div><div class="d">' + (i === sel ? "wybrany" : sgn(x.cena - w.cena)) + "</div></button>";
     }).join("");
     $("alerts").innerHTML = r.ostrzezenia.map(function (a) {
-      return '<div class="alert ' + a.typ + '">' + (a.typ === "blad" ? "Błąd: " : "Uwaga: ") + esc(a.tekst) + "</div>";
+      return '<div class="alert ' + a.typ + '"><b>' + (a.typ === "blad" ? "Błąd" : "Uwaga") + "</b>" + esc(a.tekst) + "</div>";
     }).join("");
-    var w0 = r.warianty[0];
-    $("mbar").innerHTML = '<div><div class="s">2000 kg · ' + w0.wyjazdy + ' ' + jed + '</div><div class="p">' + zl(w0.cena) +
-      '</div></div><div style="text-align:right"><div class="s">2500 kg</div><div class="p">' + zl(r.warianty[1].cena) + '</div></div>';
-
+    $("mbar").innerHTML = '<div><div class="s">' + esc(w.nazwa) + ' · ' + w.wyjazdy + ' ' + jed + '</div><div class="p">' + zl(w.cena) +
+      '</div></div><div style="text-align:right"><div class="s">za MP</div><div class="p" style="font-size:15px">' + zl(w.cenaMP) + "</div></div>";
     $("tabs").innerHTML = TABS.map(function (t) {
       return '<button type="button" role="tab" data-tab="' + t[0] + '" aria-selected="' + (state.tab === t[0]) + '">' + t[1] + "</button>";
     }).join("");
     $("pane").innerHTML = ({ wynik: paneWynik, ekipa: paneEkipa, oferta: paneOferta, obl: paneObl, wyceny: paneWyceny, cennik: paneCennik, uwagi: paneUwagi }[state.tab] || paneWynik)();
   }
-
-  function sumO(o) { var s = 0; for (var k in o) s += Number(o[k] || 0); return s; }
+  function kpi(l, v, t) { return '<div class="kpi"><div class="l">' + l + '</div><div class="v' + (t ? " t" : "") + '">' + v + "</div></div>"; }
 
   function tableRows(rows, ws) {
     return rows.map(function (row) {
-      if (row === "sep") return '<tr class="sep"><td colspan="' + (ws.length + 1) + '"></td></tr>';
       if (typeof row === "string") return '<tr class="grp"><td colspan="' + (ws.length + 1) + '">' + row + "</td></tr>";
-      return '<tr class="' + (row[2] || "") + '"><td>' + row[0] + "</td>" + ws.map(function (w) { return "<td>" + row[1](w) + "</td>"; }).join("") + "</tr>";
+      return '<tr class="' + (row[2] || "") + '"><td>' + row[0] + "</td>" + ws.map(function (w, i) {
+        return '<td class="' + (i === state.sel && ws.length === 4 ? "sel" : "") + '">' + row[1](w) + "</td>";
+      }).join("") + "</tr>";
     }).join("");
+  }
+  function thead(first, ws) {
+    return "<thead><tr><th>" + first + "</th>" + ws.map(function (w, i) { return '<th class="' + (i === state.sel ? "sel" : "") + '">' + esc(w.nazwa) + "</th>"; }).join("") + "</tr></thead>";
   }
 
   function paneWynik() {
     var r = wynik, ws = r.warianty, jed = r.wspolne.krk ? "dni" : "tygodnie";
-    var h = '<div class="scroll"><table class="t"><thead><tr><th>Wariant</th>' + ws.map(function (w) { return "<th>" + esc(w.nazwa) + "</th>"; }).join("") + "</tr></thead><tbody>";
+    var h = '<div class="scroll"><table class="t">' + thead("Wariant", ws) + "<tbody>";
     h += tableRows([
       ["Cena kontraktu netto", function (w) { return zl(w.cena); }, "total"],
       ["Cena za MP", function (w) { return zl(w.cenaMP); }],
-      ["Cena za MP [EUR]", function (w) { return eur(w.cenaMPeur); }],
-      ["Cena minimalna (zysk " + pct(r.dane.zysk_min) + ")", function (w) { return zl(w.cenaMin); }, "strong"],
-      ["Zysk (" + pct(r.dane.zysk) + ")", function (w) { return zl(w.zysk); }],
+      ["Cena za MP w euro", function (w) { return eur(w.cenaMPeur); }],
+      ["Cena minimalna, zysk " + pct(r.dane.zysk_min), function (w) { return zl(w.cenaMin); }, "strong"],
+      ["Zysk " + pct(r.dane.zysk), function (w) { return zl(w.zysk); }],
       ["Koszt rzeczywisty", function (w) { return zl(w.koszt); }],
-      "Struktura",
+      "Struktura kosztów",
       ["Urządzenia", function (w) { return zl(w.koszty.urzadzenia); }],
       ["Słupki e-ładowarek", function (w) { return zl(w.koszty.slupki); }],
       ["Transport, dźwig, rozładunek", function (w) { return zl(w.koszty.transport + w.koszty.dzwig + w.koszty.rozladunek_sprzet); }],
       ["Robocizna", function (w) { return zl(w.koszty.montaz + w.koszty.rozladunek_ludzie + w.koszty.dojazdy); }],
       ["Hotel, diety, paliwo", function (w) { return zl(w.koszty.hotel + w.koszty.diety + w.koszty.paliwo); }],
-      ["KOB + GDW + podatek", function (w) { return zl(w.kob + w.gdw + w.podatek); }],
+      ["KOB, GDW, podatek", function (w) { return zl(w.kob + w.gdw + w.podatek); }],
       "Czas",
       ["Dni pracy ekipy", function (w) { return w.dni; }, "strong"],
-      ["Montaż (" + jed + ")", function (w) { return w.wyjazdy; }, "strong"],
+      ["Montaż, " + jed, function (w) { return w.wyjazdy; }, "strong"],
       ["Osobodni razem", function (w) { return n2(w.osobodni); }]
     ], ws);
     h += "</tbody></table></div>";
-    h += '<h3 class="sec">Opcje do oferty (cena z narzutami)</h3><div class="scroll"><table class="t"><thead><tr><th>Opcja</th><th>Q=2000 kg</th><th>Q=2500 kg</th></tr></thead><tbody>';
-    h += "<tr><td>Słupki e-ładowarek 3,7 kW (z robocizną)</td><td>" + zl(r.opcje.slupki37[0]) + "</td><td>" + zl(r.opcje.slupki37[1]) + "</td></tr>";
-    h += "<tr><td>Słupki e-ładowarek 22 kW (z robocizną)</td><td>" + zl(r.opcje.slupki22[0]) + "</td><td>" + zl(r.opcje.slupki22[1]) + "</td></tr>";
+    h += '<h3 class="sec">Opcje do oferty, cena z narzutami</h3><div class="scroll"><table class="t"><thead><tr><th>Opcja</th><th>Q=2000 kg</th><th>Q=2500 kg</th></tr></thead><tbody>';
+    h += "<tr><td>Słupki e-ładowarek 3,7 kW, z robocizną</td><td>" + zl(r.opcje.slupki37[0]) + "</td><td>" + zl(r.opcje.slupki37[1]) + "</td></tr>";
+    h += "<tr><td>Słupki e-ładowarek 22 kW, z robocizną</td><td>" + zl(r.opcje.slupki22[0]) + "</td><td>" + zl(r.opcje.slupki22[1]) + "</td></tr>";
     h += "<tr><td>Malowanie proszkowe RAL</td><td>" + zl(r.opcje.malowanie) + "</td><td>" + zl(r.opcje.malowanie) + "</td></tr>";
     return h + "</tbody></table></div>";
   }
 
   function paneEkipa() {
-    var r = wynik, an = r.analiza, min = Math.min.apply(null, an.map(function (a) { return a.cena; }));
-    var max = Math.max.apply(null, an.map(function (a) { return a.cena; })), base = min - (max - min) * 0.6 - 1;
-    var jed = r.wspolne.krk ? "dni" : "tyg.";
-    var h = '<div class="row" style="justify-content:space-between;margin-bottom:10px"><div class="muted">Ta sama wycena przy różnej liczbie osób. Wariant:</div>' +
-      '<select id="analizaSel" style="width:auto">' + E.WARIANTY.map(function (w, i) { return "<option value=\"" + i + "\"" + (r.dane.analiza == i ? " selected" : "") + ">" + w + "</option>"; }).join("") + "</select></div>";
-    h += '<div class="bars">' + an.map(function (a) {
-      var best = a.cena === min, cur = a.n === r.warianty[0].osoby;
-      return "<div><b>" + a.n + " os.</b>" + (cur ? ' <span class="muted">·</span>' : "") + '</div><div class="bar' + (best ? " best" : "") + '"><i style="width:' +
-        Math.max(3, (a.cena - base) / (max - base) * 100).toFixed(1) + '%"></i></div><div class="v">' + zl(a.cena) + "</div>";
+    var r = wynik, an = r.analiza, ref = r.warianty[r.dane.analiza], jed = r.wspolne.krk ? "dni" : "tyg.";
+    var deltas = an.map(function (a) { return a.cena - ref.cena; });
+    var maxAbs = Math.max(1, Math.max.apply(null, deltas.map(Math.abs)));
+    var min = Math.min.apply(null, an.map(function (a) { return a.cena; }));
+    var h = '<div class="row" style="justify-content:space-between;margin-bottom:12px"><div class="muted" style="max-width:52ch">Ta sama wycena przy innej liczbie osób, porównana z wpisaną liczbą (' + ref.osoby + ' os.).</div>' +
+      '<select id="analizaSel" style="width:auto" aria-label="Wariant analizy">' + E.WARIANTY.map(function (w, i) { return '<option value="' + i + '"' + (r.dane.analiza == i ? " selected" : "") + ">" + w + "</option>"; }).join("") + "</select></div>";
+    h += '<div class="legend"><span><i style="background:var(--cheap)"></i>taniej</span><span><i style="background:var(--dear)"></i>drożej</span></div>';
+    h += '<div class="chart">' + an.map(function (a, i) {
+      var dlt = deltas[i], wpct = Math.abs(dlt) / maxAbs * 48, bar;
+      if (Math.abs(dlt) < 0.5) bar = '<i class="zero"></i>';
+      else if (dlt < 0) bar = '<i class="cheap" style="left:' + (50 - wpct).toFixed(2) + '%;width:' + wpct.toFixed(2) + '%"></i>';
+      else bar = '<i class="dear" style="left:50%;width:' + wpct.toFixed(2) + '%"></i>';
+      var tip = a.n + " os.: " + zl(a.cena) + ", " + a.wyjazdy + " " + jed + ", " + a.dni + " dni pracy";
+      return '<div class="who">' + a.n + ' os.' + (a.cena === min ? '<span class="badge">najtaniej</span>' : "") + '<small>' + a.wyjazdy + " " + jed + '</small></div><div class="track" title="' + esc(tip) + '">' + bar +
+        '</div><div class="val">' + (Math.abs(dlt) < 0.5 ? "wpisana" : sgn(dlt)) + "<small>" + zl(a.cena) + "</small></div>";
     }).join("") + "</div>";
-    h += '<div class="scroll" style="margin-top:14px"><table class="t"><thead><tr><th>Liczba osób</th>' + an.map(function (a) { return "<th>" + a.n + "</th>"; }).join("") + "</tr></thead><tbody>";
-    function row(lab, f, cls) {
-      return "<tr><td>" + lab + "</td>" + an.map(function (a) {
-        var c = (cls && a.cena === min ? "best" : "") + (a.n === r.warianty[0].osoby ? " cur" : "");
-        return '<td class="' + c + '">' + f(a) + "</td>";
-      }).join("") + "</tr>";
+    h += '<div class="chart-axis"><div></div><div><span>−' + fmtPLN.format(Math.round(maxAbs)) + '</span><span>0</span><span>+' + fmtPLN.format(Math.round(maxAbs)) + "</span></div><div></div></div>";
+    h += '<h3 class="sec">Szczegóły</h3><div class="scroll"><table class="t"><thead><tr><th>Liczba osób</th>' + an.map(function (a) { return "<th>" + a.n + "</th>"; }).join("") + "</tr></thead><tbody>";
+    function row(lab, f, best) {
+      return "<tr><td>" + lab + "</td>" + an.map(function (a) { return '<td class="' + (best && a.cena === min ? "best" : "") + '">' + f(a) + "</td>"; }).join("") + "</tr>";
     }
     h += row("Cena kontraktu", function (a) { return zl(a.cena); }, true);
-    var ref = r.warianty[r.dane.analiza].cena;
-    h += row("Różnica do wpisanej liczby osób", function (a) { var dlt = Math.round(a.cena - ref); return (dlt > 0 ? "+" : "") + fmtPLN.format(dlt); });
     h += row("Średnia stawka", function (a) { return zl(a.stawka); });
     h += row("Dni pracy", function (a) { return a.dni; });
-    h += row("Montaż (" + jed + ")", function (a) { return a.wyjazdy; });
-    h += row("Hotel + diety", function (a) { return zl(a.koszty.hotel + a.koszty.diety); });
+    h += row("Montaż, " + jed, function (a) { return a.wyjazdy; });
+    h += row("Hotel i diety", function (a) { return zl(a.koszty.hotel + a.koszty.diety); });
     h += row("Robocizna", function (a) { return zl(a.koszty.montaz + a.koszty.dojazdy + a.koszty.rozladunek_ludzie); });
-    h += "</tbody></table></div><p class=\"note\">Zielone = najtańsza liczba osób, podkreślone = liczba osób wpisana w formularzu. Jeśli tygodnie montażu są wpisane ręcznie, analiza też ich używa. Wyczyść to pole, żeby porównać liczbę osób.</p>";
+    h += '</tbody></table></div><p class="note" style="margin-top:10px">Jeśli tygodnie montażu są wpisane ręcznie, analiza też ich używa. Wyczyść to pole, żeby porównać liczbę osób.</p>';
     return h;
   }
 
@@ -518,7 +587,7 @@ ul.notes { margin: 0; padding-left: 18px; display: flex; flex-direction: column;
     L.push("Transport:         " + (d.tir || 0) + " TIR × " + zl(d.tir_cena || 0) + ", rozładunek " + zl(d.rozl_cena || 0) + "/TIR, " + n2(w.rozl) + " dni");
     L.push("Ekipa:             " + ws[0].osoby + " os., średnio " + zl(ws[0].stawka) + "/dzień; dźwig " + w.dzwDni + " dni");
     L.push("");
-    L.push("Wariant                Cena netto     Cena/MP   Montaż");
+    L.push("Wariant                 Cena netto     Cena/MP   Montaż");
     ws.forEach(function (x) {
       L.push(pad(x.nazwa, 20) + lpad(zl(x.cena), 14) + lpad(zl(x.cenaMP), 12) + "   " + x.wyjazdy + " " + jed + " (" + x.dni + " dni pracy)");
     });
@@ -532,8 +601,8 @@ ul.notes { margin: 0; padding-left: 18px; display: flex; flex-direction: column;
   function lpad(s, n) { s = String(s); return s.length >= n ? s : " ".repeat(n - s.length) + s; }
 
   function paneOferta() {
-    return '<div class="row" style="justify-content:space-between;margin-bottom:10px"><div class="muted">Wpisane dane i wyniki potrzebne do napisania oferty.</div>' +
-      '<button class="btn small" type="button" id="bCopy">Kopiuj</button></div><pre class="offer" id="offerText">' + esc(ofertaText()) + "</pre>";
+    return '<div class="row" style="justify-content:space-between;margin-bottom:12px"><div class="muted">Wpisane dane i wyniki potrzebne do napisania oferty.</div>' +
+      '<button class="btn small" type="button" id="bCopy">Kopiuj tekst</button></div><pre class="offer" id="offerText">' + esc(ofertaText()) + "</pre>";
   }
 
   function paneObl() {
@@ -546,14 +615,14 @@ ul.notes { margin: 0; padding-left: 18px; display: flex; flex-direction: column;
       ["Mechanika zakupowa i pozostałe", zl(m.mechanika)], ["Suma standard Q=2000 (dawne F87)", zl(m.suma2000)],
       ["Suma Q=2500 (dawne F90, +" + pct(m.q2500) + ")", zl(m.suma2500)]
     ].forEach(function (x, i) { h += '<tr class="' + (i >= 9 ? "strong" : "") + '"><td>' + x[0] + "</td><td>" + x[1] + "</td></tr>"; });
-    h += '</tbody></table></div><h3 class="sec">Montaż</h3><p class="note" style="margin-top:-4px">Km pomiary ' + w.kmPom + " / montaż " + w.kmMon +
-      " · podróże pomiary+odbiory " + n2(w.podrPom) + " osd · rozładunek " + n2(w.rozl) + " dni · dźwig " + w.dzwDni + " dni</p>";
-    h += '<div class="scroll"><table class="t"><thead><tr><th>Pozycja</th>' + ws.map(function (x) { return "<th>" + esc(x.nazwa) + "</th>"; }).join("") + "</tr></thead><tbody>";
+    h += '</tbody></table></div><h3 class="sec">Montaż</h3><p class="note" style="margin:-2px 0 6px">Km pomiary ' + w.kmPom + " / montaż " + w.kmMon +
+      " · podróże pomiary i odbiory " + n2(w.podrPom) + " osd · rozładunek " + n2(w.rozl) + " dni · dźwig " + w.dzwDni + " dni</p>";
+    h += '<div class="scroll"><table class="t">' + thead("Pozycja", ws) + "<tbody>";
     h += tableRows([
       ["Osoby / średnia stawka", function (x) { return x.osoby + " / " + zl(x.stawka); }],
-      ["Osobodni montażu (dawne F50)", function (x) { return n2(x.osd); }],
+      ["Osobodni montażu (F50)", function (x) { return n2(x.osd); }],
       ["Iteracje tygodni / dni", function (x) { return x.iteracje.join(" → "); }],
-      ["Tygodnie / dni montażu (dawne B55)", function (x) { return x.wyjazdy; }, "strong"],
+      ["Tygodnie / dni montażu (B55)", function (x) { return x.wyjazdy; }, "strong"],
       ["Osobodni podróży i rozładunku (G59)", function (x) { return n2(x.podroze); }],
       ["Dni pracy ekipy (J39)", function (x) { return x.dni; }, "strong"],
       ["Kilometry auta", function (x) { return fmtPLN.format(x.km); }],
@@ -564,15 +633,15 @@ ul.notes { margin: 0; padding-left: 18px; display: flex; flex-direction: column;
       ["Hotel", function (x) { return zl(x.koszty.hotel); }],
       ["Transport TIR", function (x) { return zl(x.koszty.transport); }],
       ["Spider Crane", function (x) { return zl(x.koszty.dzwig); }],
-      ["Rozładunek (sprzęt)", function (x) { return zl(x.koszty.rozladunek_sprzet); }],
-      ["Rozładunek (ludzie)", function (x) { return zl(x.koszty.rozladunek_ludzie); }],
-      ["Dojazdy (ludzie)", function (x) { return zl(x.koszty.dojazdy); }],
+      ["Rozładunek, sprzęt", function (x) { return zl(x.koszty.rozladunek_sprzet); }],
+      ["Rozładunek, ludzie", function (x) { return zl(x.koszty.rozladunek_ludzie); }],
+      ["Dojazdy, ludzie", function (x) { return zl(x.koszty.dojazdy); }],
       ["Montaż", function (x) { return zl(x.koszty.montaz); }],
       ["Diety", function (x) { return zl(x.koszty.diety); }],
       ["Suma przed narzutami", function (x) { return zl(x.baza); }, "strong"],
       ["KOB", function (x) { return zl(x.kob); }], ["GDW", function (x) { return zl(x.gdw); }],
       ["Zysk", function (x) { return zl(x.zysk); }], ["Podatek", function (x) { return zl(x.podatek); }],
-      ["Cena kontraktu (dawne K39)", function (x) { return zl(x.cena); }, "total"]
+      ["Cena kontraktu (K39)", function (x) { return zl(x.cena); }, "total"]
     ], ws);
     return h + "</tbody></table></div>";
   }
@@ -581,29 +650,30 @@ ul.notes { margin: 0; padding-left: 18px; display: flex; flex-direction: column;
     var saved = lsGet(LS_SAVED, []);
     var h = '<div class="row"><input id="saveName" type="text" placeholder="Nazwa wyceny" style="flex:1;min-width:180px" value="' +
       esc((wynik.dane.nazwa || "Wycena") + (wynik.dane.data ? " " + wynik.dane.data : "")) + '"><button class="btn primary small" type="button" id="bSave2">Zapisz bieżącą</button></div>';
-    h += '<p class="note">Wyceny zapisują się w tej przeglądarce. Aby przenieść je na inny komputer, użyj eksportu niżej.</p><div class="saved">';
-    if (!saved.length) h += '<div class="muted">Brak zapisanych wycen.</div>';
+    h += '<p class="note" style="margin-top:8px">Wyceny zapisują się w tej przeglądarce. Na inny komputer przeniesiesz je eksportem.</p><div class="saved">';
+    if (!saved.length) h += '<div class="empty">Brak zapisanych wycen. Kliknij „Zapisz”, żeby dodać bieżącą.</div>';
     saved.forEach(function (s, i) {
       var conf = state.confirm === i;
       h += '<div class="it"><div><b>' + esc(s.nazwa) + '</b> <span class="muted">· ' + esc(s.kiedy) + " · " + zl(s.cena) + '</span></div><div class="row">' +
         (conf ? '<span class="muted">Usunąć?</span><button class="btn small danger" type="button" data-del-yes="' + i + '">Tak, usuń</button><button class="btn small" type="button" data-del-no="1">Anuluj</button>'
-          : '<button class="btn small" type="button" data-load="' + i + '">Wczytaj</button><button class="btn small danger" type="button" data-del="' + i + '">Usuń</button>') + "</div></div>";
+          : '<button class="btn small" type="button" data-load="' + i + '">Wczytaj</button><button class="btn small ghost danger" type="button" data-del="' + i + '">Usuń</button>') + "</div></div>";
     });
-    h += '</div><h3 class="sec">Eksport / import</h3><p class="note">Kopiuj zapisuje wszystkie wyceny i zmieniony cennik jako tekst. Wklej taki tekst w pole i kliknij Importuj.</p>' +
+    h += '</div><h3 class="sec">Eksport i import</h3><p class="note" style="margin-bottom:8px">Eksport zapisuje wszystkie wyceny i zmieniony cennik jako tekst. Wklej taki tekst w pole i kliknij Importuj.</p>' +
       '<textarea id="ioText" rows="4" placeholder="Wklej tu tekst eksportu"></textarea><div class="row" style="margin-top:8px"><button class="btn small" type="button" id="bExport">Kopiuj eksport</button><button class="btn small" type="button" id="bImport">Importuj</button></div>';
     return h;
   }
 
   function paneCennik() {
-    var c = wynik.cennik, h = '<div class="row" style="justify-content:space-between;margin-bottom:8px"><div class="muted">Zmiany działają od razu i zapisują się w tej przeglądarce. Zmienione pozycje: ' +
-      Object.keys(state.cennik).length + '.</div><button class="btn small" type="button" id="bCenReset">Przywróć ceny domyślne</button></div><div class="kv">';
+    var c = wynik.cennik, n = Object.keys(state.cennik).length;
+    var h = '<div class="row" style="justify-content:space-between;margin-bottom:6px"><div class="muted">Zmiany działają od razu i zapisują się w tej przeglądarce' + (n ? ". Zmienione pozycje: " + n : "") +
+      '.</div><button class="btn small" type="button" id="bCenReset"' + (n ? "" : " disabled") + '>Przywróć ceny domyślne</button></div><div class="kv">';
     CENNIK_POLA.forEach(function (p) {
-      if (!p[1]) { h += '<h3 class="sec" style="grid-column:1/-1;margin-bottom:0">' + p[0] + "</h3>"; return; }
+      if (!p[1]) { h += '<h3 class="sec">' + p[0] + "</h3>"; return; }
       var changed = state.cennik[p[0]] !== undefined;
-      h += '<label for="cen_' + p[0] + '">' + p[1] + (p[2] ? ' <span class="muted">[' + p[2] + "]</span>" : "") + (changed ? ' <span class="example">zmienione</span>' : "") +
+      h += '<label for="cen_' + p[0] + '">' + p[1] + (p[2] ? ' <span class="muted">' + p[2] + "</span>" : "") + (changed ? '<span class="tag">zmienione</span>' : "") +
         '</label><input type="number" step="any" id="cen_' + p[0] + '" data-cen="' + p[0] + '" value="' + +Number(c[p[0]]).toFixed(5) + '">';
     });
-    return h + '</div><p class="note">Tabela dopłat za zagłębienia i lista składowych platformy są w Excelu (arkusz Cennik). W aplikacji obowiązują wartości ze starego arkusza.</p>';
+    return h + '</div><p class="note" style="margin-top:14px">Tabela dopłat za zagłębienia i lista składowych platformy są w Excelu, w arkuszu Cennik. Aplikacja używa wartości ze starego arkusza.</p>';
   }
 
   function paneUwagi() {
@@ -611,10 +681,7 @@ ul.notes { margin: 0; padding-left: 18px; display: flex; flex-direction: column;
   }
 
   /* --- zdarzenia --- */
-  $("form").addEventListener("input", function (e) {
-    if (e.target.id === "saveName" || e.target.id === "ioText") return;
-    state.dane = fromForm(); state.przyklad = null; recalc();
-  });
+  $("form").addEventListener("input", function () { state.dane = fromForm(); state.przyklad = null; recalc(); });
   $("form").addEventListener("submit", function (e) { e.preventDefault(); });
   $("lokKrk").addEventListener("click", function () { state.dane.lok = "Kraków"; lokButtons("Kraków"); recalc(); });
   $("lokPoza").addEventListener("click", function () { state.dane.lok = "Poza Krakowem"; lokButtons("Poza Krakowem"); recalc(); });
@@ -622,6 +689,16 @@ ul.notes { margin: 0; padding-left: 18px; display: flex; flex-direction: column;
   $("bWaw").addEventListener("click", function () { setDane(PRZYKLADY.waw, "Kasprowicza 18 Warszawa"); });
   $("bKrk").addEventListener("click", function () { setDane(PRZYKLADY.krk, "Dekerta Kraków"); });
   $("bSave").addEventListener("click", function () { saveCurrent((wynik.dane.nazwa || "Wycena") + (wynik.dane.data ? " " + wynik.dane.data : "")); });
+
+  function setSel(i) { state.sel = i; lsSet(LS_SEL, i); render(); }
+  $("hero").addEventListener("click", function (e) {
+    var b = e.target.closest("button"); if (!b) return;
+    var q = state.sel % 2, sl = state.sel >= 2 ? 1 : 0;
+    if (b.dataset.q !== undefined) q = +b.dataset.q;
+    if (b.dataset.sl !== undefined) sl = +b.dataset.sl;
+    setSel(q + 2 * sl);
+  });
+  $("compare").addEventListener("click", function (e) { var b = e.target.closest("button[data-sel]"); if (b) setSel(+b.dataset.sel); });
 
   function saveCurrent(nazwa) {
     var saved = lsGet(LS_SAVED, []);
@@ -632,8 +709,8 @@ ul.notes { margin: 0; padding-left: 18px; display: flex; flex-direction: column;
   }
 
   $("pane").addEventListener("click", function (e) {
-    var t = e.target;
-    if (t.id === "bCopy") copyText(ofertaText(), "Skopiowano zestawienie", "offerText");
+    var t = e.target.closest("button"); if (!t) return;
+    if (t.id === "bCopy") copyText(ofertaText(), "Skopiowano tekst", "offerText");
     if (t.id === "bSave2") saveCurrent($("saveName").value || "Wycena");
     if (t.dataset.load !== undefined) { var s = lsGet(LS_SAVED, [])[+t.dataset.load]; if (s) { setDane(s.dane, null); toast("Wczytano: " + s.nazwa); } }
     if (t.dataset.del !== undefined) { state.confirm = +t.dataset.del; render(); }
@@ -670,11 +747,10 @@ ul.notes { margin: 0; padding-left: 18px; display: flex; flex-direction: column;
   });
 
   function copyText(txt, msg, selId) {
-    function fallback() { var el = $(selId); if (!el) return; var rg = document.createRange(); rg.selectNodeContents(el); var s = getSelection(); s.removeAllRanges(); s.addRange(rg); toast("Zaznaczono tekst – skopiuj Ctrl+C"); }
+    function fallback() { var el = $(selId); if (!el) return; if (el.select) el.select(); else { var rg = document.createRange(); rg.selectNodeContents(el); var s = getSelection(); s.removeAllRanges(); s.addRange(rg); } toast("Zaznaczono tekst. Skopiuj Ctrl+C"); }
     try { navigator.clipboard.writeText(txt).then(function () { toast(msg); }, fallback); } catch (e) { fallback(); }
   }
 
-  /* --- start --- */
   buildDimTable();
   var draft = lsGet(LS_DRAFT, null);
   if (draft && draft.dane) setDane(draft.dane, draft.przyklad);
