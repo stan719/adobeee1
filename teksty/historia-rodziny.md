@@ -178,7 +178,7 @@ Same **Radoszewice** pojawiają się w źródłach pisanych w **1456 roku**. Oś
 [^i18]: S02, s. 1 ⟨S02-p01-s05⟩.
 [^i19]: S08, s. 128–129 ⟨S08-p128-s04, S08-p129-s01⟩.
 
-## 4. Wiek XVI: Mikołaj Węgierski i jego bracia
+## 4. Wiek XVI: Mikołaj Boksa i jego bracia
 
 ### Synowie Bogusława
 
@@ -193,7 +193,7 @@ Drzewo opisuje czterech synów Bogusława. Każdy z nich ma inny charakter:
 
 Według drzewa Mikołaj **dwadzieścia lat służył na Węgrzech**. Zasiadał w radzie, „szczęśliwie hetmanił przeciw rokoszanom i Turkom” i był w wielkim poważaniu u króla Ludwika. Dostał Terebesz z Kamieńcem i „ziemią na dwanaście mil”. Po klęsce pod Mohaczem *(1526, śmierć króla Ludwika II Jagiellończyka)* odebrano mu większość tych dóbr. Resztę sprzedał i wrócił do kraju. W kraju spłacił długi na Radoszewicach, Broszęcinie i Stróży, dokupił Gaje, Wolę i inne majętności. Drzewo podsumowuje to słowami: „wszystko, co mamy [dziś]”. Na Jasną Górę ofiarował pierścień z klejnotem wart pięćdziesiąt grzywien, zdobyty na Turkach. Był „bardzo prawy: co w sercu, to na języku”. Kasztelanii rozprzańskiej od Zygmunta Augusta nie przyjął. Pochowano go w Radoszewicach z epitafium. Ze zmarłą wcześniej **Zofią Konopnicką**, sędzianką z Kroczowa, miał trzech synów.[^m4]
 
-Zeszyt rodzinny potwierdza tę tradycję. Mikołaj „bywał i walczył na Węgrzech”, a od króla Ludwika otrzymał zamki **„Kamienice i Trebar[?]”** i po śmierci Ludwika wrócił do Polski. Zeszyt podaje datę śmierci **1574** i dopisuje, że Mikołaj „żył 85 lat”.[^m5] Urodziłby się więc około 1489 roku, a to zgadza się ze służbą na Węgrzech przed 1526 rokiem. Jako żonę zeszyt wymienia jednak **Kurzepnicką[?]** (nazwisko odczytane niepewnie), a nie Konopnicką. Mogła to być inna żona. Nad słowem „żona” jest drobny dopisek, być może „2. ż[ona]”.[^m6] Ręczny dopisek „85 lat” w rodzinnym egzemplarzu Kosińskiego stoi przy innym Mikołaju, Mikołaju III, o którym drzewo mówi, że żył ponad osiemdziesiąt lat. Być może ktoś z rodziny łączył obie postaci.[^m7]
+Zeszyt rodzinny potwierdza tę tradycję. Mikołaj „bywał i walczył na Węgrzech”, a od króla Ludwika otrzymał zamki **„Kamienice i Trebar[?]”** i po śmierci Ludwika wrócił do Polski. Zeszyt podaje datę śmierci **1574** i dopisuje, że Mikołaj „żył 85 lat”.[^m5] Urodziłby się więc około 1489 roku, a to zgadza się ze służbą na Węgrzech przed 1526 rokiem. Nie zgadza się natomiast z datą śmierci jego ojca: Bogusław zmarł według zeszytu w 1459 roku, trzydzieści lat przed urodzeniem Mikołaja. *Uwaga opracowującego:* między Bogusławem a Mikołajem, który walczył na Węgrzech, zapewne brakuje w drzewie co najmniej jednego pokolenia. Drzewo z XVII wieku mogło je pominąć albo połączyć dwie osoby o tym samym imieniu. Jako żonę zeszyt wymienia jednak **Kurzepnicką[?]** (nazwisko odczytane niepewnie), a nie Konopnicką. Mogła to być inna żona. Nad słowem „żona” jest drobny dopisek, być może „2. ż[ona]”.[^m6] Ręczny dopisek „85 lat” w rodzinnym egzemplarzu Kosińskiego stoi przy innym Mikołaju, Mikołaju III, o którym drzewo mówi, że żył ponad osiemdziesiąt lat. Być może ktoś z rodziny łączył obie postaci.[^m7]
 
 ### Radoszewice w połowie XVI wieku
 
@@ -860,6 +860,7 @@ Na kartce z 8 lipca 2017 roku ktoś z rodziny naszkicował **„szlak przodków 
 
 Najważniejsze sprawy, których źródła nie rozstrzygają. Mogą je wyjaśnić rodzina albo dalsze poszukiwania:
 
+1. **Luka w drzewie w XV–XVI wieku:** Bogusław z Radoszewic zmarł w 1459 roku, a Mikołaj, uważany za jego syna, urodził się ok. 1489 roku. Zapewne brakuje co najmniej jednego pokolenia (rozdz. 4).
 1. **Kto był ojcem Marka, kasztelana wieluńskiego?** Drzewo Kosińskiego podaje Mikołaja V, ale daty życia wskazują raczej Jerzego (rozdz. 5).
 2. **Dwóch Andrzejów:** chorąży zmarły w 1621 roku i fundator sukienki dla obrazu w Pajęcznie z 1630 roku. Czy to ta sama osoba? Któremu z nich należy przypisać żonę Barbarę i epitafium w Krakowie (rozdz. 5)?
 3. **Stanisław 1657 i Stanisław †1679:** jedna osoba żonata dwa razy czy dwie osoby (rozdz. 6)?

@@ -63,6 +63,7 @@ Na kartce z 8 lipca 2017 roku ktoś z rodziny naszkicował **„szlak przodków 
 
 Najważniejsze sprawy, których źródła nie rozstrzygają. Mogą je wyjaśnić rodzina albo dalsze poszukiwania:
 
+1. **Luka w drzewie w XV–XVI wieku:** Bogusław z Radoszewic zmarł w 1459 roku, a Mikołaj, uważany za jego syna, urodził się ok. 1489 roku. Zapewne brakuje co najmniej jednego pokolenia (rozdz. 4).
 1. **Kto był ojcem Marka, kasztelana wieluńskiego?** Drzewo Kosińskiego podaje Mikołaja V, ale daty życia wskazują raczej Jerzego (rozdz. 5).
 2. **Dwóch Andrzejów:** chorąży zmarły w 1621 roku i fundator sukienki dla obrazu w Pajęcznie z 1630 roku. Czy to ta sama osoba? Któremu z nich należy przypisać żonę Barbarę i epitafium w Krakowie (rozdz. 5)?
 3. **Stanisław 1657 i Stanisław †1679:** jedna osoba żonata dwa razy czy dwie osoby (rozdz. 6)?

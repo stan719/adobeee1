@@ -1,4 +1,4 @@
-## 4. Wiek XVI: Mikołaj Węgierski i jego bracia
+## 4. Wiek XVI: Mikołaj Boksa i jego bracia
 
 ### Synowie Bogusława
 
@@ -13,7 +13,7 @@ Drzewo opisuje czterech synów Bogusława. Każdy z nich ma inny charakter:
 
 Według drzewa Mikołaj **dwadzieścia lat służył na Węgrzech**. Zasiadał w radzie, „szczęśliwie hetmanił przeciw rokoszanom i Turkom” i był w wielkim poważaniu u króla Ludwika. Dostał Terebesz z Kamieńcem i „ziemią na dwanaście mil”. Po klęsce pod Mohaczem *(1526, śmierć króla Ludwika II Jagiellończyka)* odebrano mu większość tych dóbr. Resztę sprzedał i wrócił do kraju. W kraju spłacił długi na Radoszewicach, Broszęcinie i Stróży, dokupił Gaje, Wolę i inne majętności. Drzewo podsumowuje to słowami: „wszystko, co mamy [dziś]”. Na Jasną Górę ofiarował pierścień z klejnotem wart pięćdziesiąt grzywien, zdobyty na Turkach. Był „bardzo prawy: co w sercu, to na języku”. Kasztelanii rozprzańskiej od Zygmunta Augusta nie przyjął. Pochowano go w Radoszewicach z epitafium. Ze zmarłą wcześniej **Zofią Konopnicką**, sędzianką z Kroczowa, miał trzech synów.[^m4]
 
-Zeszyt rodzinny potwierdza tę tradycję. Mikołaj „bywał i walczył na Węgrzech”, a od króla Ludwika otrzymał zamki **„Kamienice i Trebar[?]”** i po śmierci Ludwika wrócił do Polski. Zeszyt podaje datę śmierci **1574** i dopisuje, że Mikołaj „żył 85 lat”.[^m5] Urodziłby się więc około 1489 roku, a to zgadza się ze służbą na Węgrzech przed 1526 rokiem. Jako żonę zeszyt wymienia jednak **Kurzepnicką[?]** (nazwisko odczytane niepewnie), a nie Konopnicką. Mogła to być inna żona. Nad słowem „żona” jest drobny dopisek, być może „2. ż[ona]”.[^m6] Ręczny dopisek „85 lat” w rodzinnym egzemplarzu Kosińskiego stoi przy innym Mikołaju, Mikołaju III, o którym drzewo mówi, że żył ponad osiemdziesiąt lat. Być może ktoś z rodziny łączył obie postaci.[^m7]
+Zeszyt rodzinny potwierdza tę tradycję. Mikołaj „bywał i walczył na Węgrzech”, a od króla Ludwika otrzymał zamki **„Kamienice i Trebar[?]”** i po śmierci Ludwika wrócił do Polski. Zeszyt podaje datę śmierci **1574** i dopisuje, że Mikołaj „żył 85 lat”.[^m5] Urodziłby się więc około 1489 roku, a to zgadza się ze służbą na Węgrzech przed 1526 rokiem. Nie zgadza się natomiast z datą śmierci jego ojca: Bogusław zmarł według zeszytu w 1459 roku, trzydzieści lat przed urodzeniem Mikołaja. *Uwaga opracowującego:* między Bogusławem a Mikołajem, który walczył na Węgrzech, zapewne brakuje w drzewie co najmniej jednego pokolenia. Drzewo z XVII wieku mogło je pominąć albo połączyć dwie osoby o tym samym imieniu. Jako żonę zeszyt wymienia jednak **Kurzepnicką[?]** (nazwisko odczytane niepewnie), a nie Konopnicką. Mogła to być inna żona. Nad słowem „żona” jest drobny dopisek, być może „2. ż[ona]”.[^m6] Ręczny dopisek „85 lat” w rodzinnym egzemplarzu Kosińskiego stoi przy innym Mikołaju, Mikołaju III, o którym drzewo mówi, że żył ponad osiemdziesiąt lat. Być może ktoś z rodziny łączył obie postaci.[^m7]
 
 ### Radoszewice w połowie XVI wieku
 
