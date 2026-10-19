@@ -1225,8 +1225,12 @@ def historia(b, pozycje):
         return f'[{t or b.nazwa_osoby(i)}]({b.url(i)})' if i in b.osoby or i in b.miejsca else (t or i)
     tekst = re.sub(r'\[\[([^\]]+)\]\]', osoba_link, tekst)
     html_ = md_html(b, tekst, ext=('footnotes',))
+    html_ = re.sub(r'<p><img alt="([^"]*)" src="([^"]*)" ?/?></p>',
+                   lambda m: f'<figure class="ilustracja"><a href="{m.group(2)}" target="_blank"><img src="{m.group(2)}" alt="" loading="lazy"></a>'
+                             f'<figcaption>{markdown.markdown(html.unescape(m.group(1)))[3:-4]}</figcaption></figure>', html_)
     spis = re.findall(r'<h2 id="([^"]+)">(.*?)</h2>', html_)
-    nav = '<nav class="spis-tresci"><b>Spis treści</b><ol>' + ''.join(f'<li><a href="#{i}">{t}</a></li>' for i, t in spis) + '</ol>' \
+    spis = [x for x in spis if re.match(r'^(\d+\.|Aneks)', x[1])]
+    nav = '<nav class="spis-tresci"><b>Spis treści</b><ul>' + ''.join(f'<li><a href="#{i}">{t}</a></li>' for i, t in spis) + '</ul>' \
           '<p class="drobne">Ten sam tekst w wersji do druku: plik Word w folderze <code>Opracowanie/</code>.</p></nav>'
     zapisz('historia.html', strona('Historia rodu', f'<div class="hist">{nav}<article class="tekst">{html_}</article></div>' + inne,
                                    'historia.html'))

@@ -190,9 +190,11 @@ article.tekst td,article.tekst th{border:1px solid var(--linia);padding:4px 8px;
 article.tekst blockquote{border-left:3px solid var(--akcent2);margin-left:0;padding-left:14px;color:var(--slaby)}
 article.tekst .footnote{font-family:var(--bez);font-size:.86rem;color:var(--slaby);border-top:1px solid var(--linia);margin-top:2em}
 article.tekst .footnote li{margin:.3em 0} article.tekst sup a{color:var(--akcent2);font-weight:600}
+figure.ilustracja{margin:1.4em 0;text-align:center} figure.ilustracja img{max-width:100%;max-height:640px;border-radius:4px;box-shadow:0 1px 4px rgba(0,0,0,.25)}
+figure.ilustracja figcaption{font-family:var(--bez);font-size:.86rem;color:var(--slaby);margin-top:6px}
 .hist{display:grid;grid-template-columns:270px minmax(0,1fr);gap:34px;align-items:start}
 nav.spis-tresci{position:sticky;top:12px;font-size:.9rem;background:var(--tlo2);border-radius:8px;padding:10px 14px;max-height:92vh;overflow:auto}
-nav.spis-tresci ol{padding-left:1.4em;margin:.4em 0} nav.spis-tresci li{margin:.25em 0}
+nav.spis-tresci ul{list-style:none;padding-left:0;margin:.4em 0} nav.spis-tresci li{margin:.3em 0;line-height:1.35}
 .odsyl{font-family:var(--bez);white-space:normal} .kotwica{scroll-margin-top:20px}
 :target{scroll-margin-top:20px}
 /* oś czasu, filtry */
