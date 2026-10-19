@@ -8,7 +8,7 @@ Dalej w tekście:
 - **arkusz MAT** to arkusz „NK38 …”, czyli materiały i urządzenia (wynik w F87),
 - **arkusz KAL** to arkusz „<Inwestycja>-NK38”, czyli montaż, koszty i cena kontraktu (wynik w K39).
 
-> **Weryfikacja zrozumienia:** całą logikę obu arkuszy odtworzyłem w Pythonie (`model_nk38.py`) i w nowym Excelu (`Kalkulator_NK38_v0.xlsx`). Oba dają **dokładnie te same kwoty co Wasze pliki** we wszystkich 4 wariantach (WAW 951 980,82 zł; KRK 2t 2 067 288,64 zł; KRK 2,5t 2 196 465,19 zł; KRK ze słupkami 2 368 495,81 zł). To znaczy, że poniższy opis logiki jest kompletny.
+> **Weryfikacja zrozumienia:** całą logikę obu arkuszy odtworzyłem w Pythonie (`model_nk38.py`) i w nowym Excelu (prototyp v0, teraz `Kalkulator_NK38_v1.xlsx`). Oba dają **dokładnie te same kwoty co Wasze pliki** we wszystkich 4 wariantach (WAW 951 980,82 zł; KRK 2t 2 067 288,64 zł; KRK 2,5t 2 196 465,19 zł; KRK ze słupkami 2 368 495,81 zł). To znaczy, że poniższy opis logiki jest kompletny.
 
 ---
 
@@ -125,18 +125,50 @@ Kolumna N („rabat nadzwyczajny”) to drugi, minimalny wariant ceny z zyskiem 
 - ewentualnie wersja webowa (formularz w przeglądarce, PDF oferty), gdy logika się ustabilizuje,
 - rozszerzenie na inne produkty (NK36/37/40, PXL…) w tym samym schemacie: osobny blok „Materiały” na typ i wspólny „Montaż”.
 
-## 7. Co jest w katalogu
+## 7. Decyzje z 19.10.2026 (wdrożone w v1)
+
+| Temat | Decyzja | Jak jest w v1 |
+|---|---|---|
+| J39 „+06” | Pomijamy. | Usunięte. |
+| Tygodnie montażu | Wyjazd co tydzień, 5 dni pracy; w Krakowie dni. | Liczone automatycznie, z możliwością nadpisania. |
+| Odległości | Pomiary = faktyczna odległość od Krakowa, montaż = +50 km, Kraków = 20 / 20 km. | Wpisujesz jedną odległość; obie można nadpisać. |
+| Osobodni S/D/NP | 5,5 / 7 / 7, aktualne, niezależne od wymiarów. | Bez zmian (Cennik). |
+| „Tonaż” | To utrudnienia. | Nazwa „Utrudnienia”: auto z magistrali i barierek + pole na ręczny dodatek. |
+| Ekipa | Pytanie „ile osób?”; stawki 500 / 400 / każda kolejna 350. | Pole „Osób na montażu” + **analiza 2–7 osób** (cena, tygodnie, hotel+diety), z zaznaczeniem najtańszej. |
+| N.P. | Traktować jak D, mają siłowniki. | Siłowniki, składowe, dźwig i osobodni jak D; cena 85% D, 2 MP. |
+| Długości, 175 cm, dopłaty | Przyjęte założenia. | Bez zmian. |
+| Q=2500 | 7% z możliwością zmiany. | Domyślnie 7% (Cennik), pole do nadpisania. |
+| Agregaty, transport, rozładunek | Ręcznie. | Ręcznie (z podpowiedziami). |
+| Słupki, malowanie | Opcje doliczane do oferty. | Sekcja „Opcje do oferty”: słupki 3,7 kW, 22 kW, malowanie RAL, w cenie z narzutami. |
+| Dźwig | ⌈D/5 + 0,6·S/5⌉. | Bez zmian (N.P. jak D). |
+| Rabat nadzwyczajny | Wpisać inny zysk i sprawdzić, do ilu można zejść. | „Cena minimalna” przy zysku do sprawdzenia (dźwig 2000 zł, błąd B2 poprawiony). |
+| Paliwo | 1 auto. | Bez zmian. |
+| Forma | Aplikacja, z Excelem jako podkładką. | Aplikacja w przeglądarce + Excel v1, liczące identycznie. |
+| Wynik | Podsumowanie wpisanych danych i wyników do napisania oferty. | Zakładka „Do oferty” (z kopiowaniem) i sekcja „Zestawienie do oferty” w Excelu. |
+
+**Czas podróży – propozycja uproszczenia.** Stary wzór liczy podróż (tam i z powrotem) jako `(1 + 0,1·(800−km)/100)·km/500` dnia. Do ~400 km to prawie dokładnie 650–700 km dziennie, ale dalej „przyspiesza”: 700 km wychodzi jako 0,77 dnia w jedną stronę, czyli ~6 h jazdy. Proponuję **2 × km / 650 km dziennie**: dla WAW (330 km) cena rośnie tylko o ~1 000 zł (952 975 zamiast 951 981 zł), a dla dalekich tras wynik jest realistyczny. Domyślnie zostawiłem stary wzór (z poprawką ≥ 800 km, więc dla tras krajowych nic się nie zmienia). Uproszczony wybiera się z listy, a jeśli go zatwierdzisz, ustawię go jako domyślny.
+
+**Uwagi do dalszego sprawdzenia** (są też w aplikacji i w Excelu):
+1. Hotel = (dni pracy + 1) × osoby – czy „+1” to zapas, np. na przyjazd na odbiór.
+2. Podatek 14% (efektywny) od robocizny, diet, GDW i zysku oraz stary współczynnik ×1,19 w „koszcie ludzkim”.
+3. N.P. liczone jak D – do potwierdzenia przy pierwszej ofercie z N.P.
+4. Wybór wzoru czasu podróży.
+
+## 8. Co jest w katalogu
 
 | Plik | Co to |
 |---|---|
-| `Kalkulator_NK38_v0.xlsx` | Prototyp nowego kalkulatora (pusty). |
-| `Kalkulator_NK38_v0_przyklad_WAW.xlsx` / `_KRK.xlsx` | Prototyp z danymi z Waszych plików, do porównania (wyniki 1:1). |
-| `build_kalkulator.py` | Generator prototypu (zmiany robimy tutaj, `./regen.sh` przebudowuje pliki). |
-| `model_nk38.py` + `test_model_nk38.py` | Model obliczeń w Pythonie i testy porównujące go z wartościami z Excela (`python3 -m pytest`). |
+| **Aplikacja** – [claude.ai/artifact/Pmdre1hmYBDXhH8v7CqkWc](https://claude.ai/artifact/Pmdre1hmYBDXhH8v7CqkWc) | Kalkulator w przeglądarce (prywatny link). Źródła: `app/index.html` + `app/nk38-engine.js`. Wyceny i zmiany cennika zapisuje w przeglądarce, z eksportem/importem. |
+| `Kalkulator_NK38_v1.xlsx` | Excel „podkładka” (pusty): Dane → Podsumowanie, Obliczenia, Cennik. |
+| `Kalkulator_NK38_v1_przyklad_WAW.xlsx` / `_KRK.xlsx` | To samo z danymi z Waszych plików (wyniki 1:1 ze starym arkuszem). |
+| `model_nk38.py` + `test_model_nk38.py` | Model obliczeń (źródło prawdy) i testy (`python3 -m pytest`). |
+| `build_kalkulator.py`, `regen.sh` | Generator Excela; `./regen.sh` przebudowuje pliki. |
+| `verify_excel.py` | Losowe zestawy danych: Excel (przeliczony LibreOffice) vs model. Wynik: 27 zestawów × 10 kolumn zgodnych. |
+| `app/test_engine.py` | Losowe zestawy danych: silnik aplikacji (JS) vs model. Wynik: 302 zestawy zgodne. |
 
 ---
 
-## 8. Pytania
+## 9. Pytania (runda 1 – odpowiedzi w sekcji 7)
 
 **Czas montażu i ekipa**
 1. **J39 „043+06 dni”**: co oznacza druga liczba (⌈dni/10⌉+1)? Liczba zjazdów, dni dodatkowe, coś innego? Czy jest gdzieś używana?
