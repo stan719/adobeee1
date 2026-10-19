@@ -1,0 +1,172 @@
+# Analiza kalkulatora NK38 – logika, błędy, propozycje, pytania
+
+Przeanalizowane pliki:
+- `20261014-INK-_NK38-Kasprowicza_18-Warszawa.xlsx`: arkusze **`NK38 15D+3A 14.10.26`** i **`Kapr WAW-NK38 3A 14.10.26`**
+- `20261015-SNK-_Dekerta-Kraków.xlsx`: arkusz **`NK38 12S+27D+7A 15.10.26`** oraz trzy warianty arkusza montażu (**`Dekert KRK… 2t`**, **`Dek KRK… 2,5t`**, **`D KRK… 2t słupk`**)
+
+Dalej w tekście:
+- **arkusz MAT** to arkusz „NK38 …”, czyli materiały i urządzenia (wynik w F87),
+- **arkusz KAL** to arkusz „<Inwestycja>-NK38”, czyli montaż, koszty i cena kontraktu (wynik w K39).
+
+> **Weryfikacja zrozumienia:** całą logikę obu arkuszy odtworzyłem w Pythonie (`model_nk38.py`) i w nowym Excelu (`Kalkulator_NK38_v0.xlsx`). Oba dają **dokładnie te same kwoty co Wasze pliki** we wszystkich 4 wariantach (WAW 951 980,82 zł; KRK 2t 2 067 288,64 zł; KRK 2,5t 2 196 465,19 zł; KRK ze słupkami 2 368 495,81 zł). To znaczy, że poniższy opis logiki jest kompletny.
+
+---
+
+## 1. Przepływ danych
+
+```
+ ARKUSZ MAT ("NK38 …")                              ARKUSZ KAL ("<Inw>-NK38")
+ ─────────────────────                              ─────────────────────────
+ wpisujesz: S, D, NP, zagłębienia,                  wpisujesz: B16/C16 (S/D) – drugi raz!,
+ szerokości, długości, agregaty (D53),              E16 agregaty – drugi raz!, transporty (I21/J21),
+ magistrala (D62), barierki (D66),                  km (C53, C55), B55 tygodnie/dni (ręcznie,
+ maskownice (D67), dopłata 2,5t (D90)               przepisane z J39), rozład. E55, ekipa I47:I53,
+                                                    dieta/hotel (w Krakowie ręcznie na 0), zysk J38
+ F87 (Q=2000) / F90 (Q=2500) ─────────────► I7 (cena urządzeń)
+ D62, D66, D67 ───────────────────────────► B48 („tonaż”) = ⌈magistrala/2 + (barierki+maskownice)/2⌉
+                                                    │
+                                                    ▼
+                                             K39 = CENA KONTRAKTU, J39 = czas montażu
+```
+
+## 2. Arkusz MAT: jak liczy
+
+| Blok | Logika |
+|---|---|
+| Cena bazowa | D = **32 500 zł** (+700 zł dla NK37, wybór w D1). S = **61%** ceny D (F3). N.P. = **85%** ceny D. |
+| Dopłaty wymiarowe | szerokość (S: 260/270 → 1170/1560; D: 520/540 → 1820/3110), zagłębienie 175…225 (0…850 zł), długość 500-510 (2340 zł), 540/550 (+10/+20 cm × 0,127% ceny platformy). Wpisuje się **ile platform** ma dany wymiar, a reszta jest standardowa. |
+| Hydraulika | agregat (6500 + olej 1500 + drobne 200) × liczba agregatów; transport 500/agregat + 50/platformę; rurki (S 172, D 207) + złączki 240 / platformę; **siłowniki: 2 na platformę**, typ zależy od zagłębienia (std 1080 / do 2000: 1175 / do 2250: 1250); magistrala 190,6 zł / 6 m. |
+| Barierki | 600 zł/stronę, maskownica 700 zł (Metazet 538 / 608). |
+| Elektryka | 1000 zł/agregat + skrzynka krosowa 90 + przewody (S 92 / D 112) + sterownia 170 / platformę. |
+| Mechanika | łańcuchy i koła 716 zł, listwy i koła zębate 494,84 zł, tulejki, śruby, kotwy itp. (S ≈ 1024, D ≈ 1517 zł), transport materiałów 300, ogranicznik 40 / platformę, administracja 1800 zł / agregat. |
+| **F87** | suma powyższych (**bez** malowania i słupków). |
+| F90 | F87 × (1 + 6% lub 7%) dla Q = 2500 kg. |
+| Niepodpięte | malowanie RAL (F95), słupki 3,7 kW (F97), słupki 22 kW (F98). Liczą się, ale nigdzie dalej nie trafiają. |
+
+## 3. Arkusz KAL: jak liczy
+
+**Pracochłonność (osobodni):**
+- montaż `F50` = 5,5 × S + 7 × D (+7 × NP) + „tonaż” B48 (+0,37 × MP za słupki, tylko gdy formuła F49 wskazuje B49),
+- podróże `G59` = Σ osoby × (dni rozładunku + czas podróży), liczone dla trzech wyjazdów: pomiary (1 os.), montaż (B55 wyjazdów × liczba monterów), odbiory (2 os.),
+- czas podróży `D53:D58` = `IF(km<800; (1+0,1·(800−km)/100)·km·wyjazdy/500; km/800)`.
+
+**Czas montażu `J39`** = ⌈(F50 + G59) / liczba monterów⌉ dni. Drugi człon („+06”) to ⌈dni/10⌉+1 (znaczenie: pytanie 1). Wynik jest **tekstem** („043+06 dni”), więc nie da się go użyć w dalszych formułach. Dlatego B55 przepisujecie ręcznie: dni/5 → tygodnie, a w Krakowie dni.
+
+**Koszty (kolumna K):**
+
+| Pozycja | Formuła |
+|---|---|
+| Urządzenia | I7 = F87 lub F90 z arkusza MAT |
+| Słupki | 1700 zł × MP, włączane przez J18 = 1 |
+| Paliwo | 2 × Σ km × 113 zł / 100 km (12 l × 9,40 zł) |
+| Hotel | 130 zł × (dni + 1) × osoby |
+| Transport | cena × liczba TIR |
+| Dźwig | 2400 zł × ⌈D/5 + 0,6·S/5⌉ dni |
+| Rozładunek – sprzęt | cena × liczba TIR |
+| Rozładunek, dojazdy, montaż (ludzie) | średnia stawka dzienna (Σ stawek / liczba osób) × osobodni |
+| Diety | 45 zł × (F50 + G59) |
+| KOB 0,5%, GDW 2,5%, Zysk 12,5–13% | liczone **od ceny końcowej**: Σkosztów / (1 − ΣKOB,GDW,zysk) × % |
+| Podatek | 14% × (robocizna + diety + GDW + zysk) |
+| **K39** | suma wszystkiego |
+
+Kolumna N („rabat nadzwyczajny”) to drugi, minimalny wariant ceny z zyskiem 10–11% i dźwigiem za 2000 zł.
+
+---
+
+## 4. Znalezione błędy
+
+| # | Gdzie | Problem | Wpływ |
+|---|---|---|---|
+| **B1** | KAL `D53:D58` | Dla odległości **≥ 800 km** czas podróży = km/800 i **pomija liczbę wyjazdów** (B). Do tego jest skok: przy 799 km pierwsza gałąź daje 1,6 dnia na wyjazd, przy 800 km już 1,0. | Dla danych z WAW cena przy **799 km = 985 053 zł, a przy 800 km = 943 057 zł (−42 000 zł)**. Dotyczy montaży zagranicznych. |
+| **B2** | KAL `N25`, `N41`, `N39` | W wierszu dźwigu kolumny są przesunięte: M25 = cena (2000), N25 = **liczba dni (3)**, O25 = koszt. Suma N39 dodaje więc **3 zł zamiast 6000 zł**. | Cena w wariancie „rabat nadzw.” jest zaniżona o koszt dźwigu z narzutem (WAW: **~7 000 zł**, KRK: ~16 000 zł). Przy okazji L25/O25 pokazują koszt zamiast udziału %. |
+| **B3** | KAL `F49` | Robocizna słupków (0,37 × MP) jest liczona w B49, ale F49 = **C49** (puste). Wchodzi do ceny tylko wtedy, gdy ktoś ręcznie zmieni formułę na `=B49` (tak jest w arkuszu „słupk”). Przełącznik J18 (koszt słupków) i F49 (robocizna) to dwa osobne miejsca. | Łatwo włączyć słupki bez robocizny (KRK: **48,8 osobodnia ≈ 34 000 zł** z narzutami). |
+| **B4** | KAL `J20, J30, J32, J33, J39` | Odwołują się do **D65, które jest puste** (pozostałość po starej wersji). | Brak wpływu dziś, ale to pułapka przy kopiowaniu i wstawianiu wierszy. |
+| **B5** | KAL `I8` | `=F4*J59`, a F4 jest puste. | Brak wpływu (dotyczy S02, nie NK38). |
+| **B6** | KAL `K45` (KRK) | `=J45/J68/K39` daje **#DIV/0!**. | Kosmetyka. |
+| **B7** | MAT `D59` | Liczba siłowników standardowych = S + D − zagłębienia. **Systemy N.P. nie dostają siłowników**, a nie wiadomo, czy to zamierzone (pytanie 9). | Jeśli N.P. ma siłowniki, brakuje 2 × 1080 zł na system. |
+| **B8** | MAT `D59` | Brak kontroli: gdy ktoś wpisze więcej zagłębień niż platform, liczba siłowników std wychodzi **ujemna** i obniża cenę. To samo dotyczy szerokości i długości. | Ryzyko przy wypełnianiu. |
+| **B9** | MAT `E22/E23` vs `E48/E49` | Dopłata za długość dla S jest **zaokrąglana do 100 zł**, dla D **nie** (412,75 zł). | Kosmetyka / niespójność. |
+| **B10** | KAL `J19`, `J39` | Wyniki sklejane z tekstem przez `REPLACE` („7060 km”, „043+06 dni”). Przy kilometrach 6-cyfrowych REPLACE nadpisze cyfrę, a liczby nie da się użyć dalej. | To główny powód ręcznego przepisywania B55. |
+
+## 5. Co się powtarza / co jest zbędne
+
+1. **Te same dane wpisywane dwa razy:** liczba S/D (MAT D6/D32 → KAL B16/C16) i agregaty (MAT D53 → KAL E16). Jeśli się rozjadą, cena urządzeń i robocizna liczą się dla innych ilości.
+2. **Warianty przez kopiowanie całych arkuszy.** W pliku KRK trzy arkusze KAL różnią się 1–3 komórkami (I7 → F87/F90, J18, F49, B55). Każda zmiana parametru wymaga poprawek w 3 miejscach.
+3. **Kopiowanie całego skoroszytu na każdą inwestycję.** 40 arkuszy, z czego 28 ukrytych, 1,6 MB, inne produkty (PXL, NK6501, N4602, Quadro, Parkline…). Ceny są „zamrożone” w każdej kopii, więc zmiana cennika wymaga edycji każdego pliku. Wersje to v.20161221 / v.20250325 / V.20251215.MS.
+4. **Ok. 40 z 45 wierszy wejściowych arkusza KAL dotyczy innych produktów** (PAXL, NK40, NK36, NK37, S02/S12/S13 seg., NK6401, NK6501, N-TT450). Dla NK38 liczą się tylko wiersz 16 (i 17 dla NP).
+5. **Stałe zaszyte w formułach:** 5,5 / 7 osobodnia, 1700 zł/MP, 0,37 rbd, 12 × 9,4, 0,5 dnia/TIR (tylko w komentarzu), 4100 × kurs, 2 siłowniki, 1,19 itd. Nie ma jednego cennika.
+6. **Słupki w dwóch miejscach:** MAT F97 (1700 × MP) i KAL O55 (1700 × MP).
+7. **Kolumny K i N** robią prawie to samo dla dwóch poziomów zysku, z osobnymi formułami (stąd błąd B2).
+8. **Pozycje ręczne, które da się policzyć:**
+   - B55 (z J39),
+   - E55 (0,5 × TIR, jest w komentarzu),
+   - zerowanie hotelu i diet w Krakowie (J57/J58),
+   - cena transportu (w komentarzu: KRK 1600, WAW/WRO 3300, POZ/ZG 4500, a w plikach 1800 i 4000).
+
+## 6. Propozycje zmian
+
+**Struktura (zrobione w prototypie v0):**
+1. **Jeden arkusz `Dane`**: wszystkie pola do wpisania (żółte), każda wartość wpisywana **raz**. Listy rozwijane (Kraków / poza, NK38 / NK37) i walidacja liczb całkowitych.
+2. **`Cennik`**: wszystkie ceny i współczynniki w jednym miejscu, z opisem skąd pochodzą. Zmiana ceny działa wszędzie.
+3. **`Obliczenia`**: materiały i montaż, z **czterema wariantami w kolumnach** (2000 kg / 2500 kg / z słupkami / bez) zamiast kopii arkuszy. Formuły używają nazw (`=c_agregat*in_agregaty`), a nie adresów, więc są czytelne.
+4. **`Podsumowanie`**: cena, cena/MP (zł i €), cena minimalna, zysk, struktura kosztów, czas montażu, a informacyjnie malowanie, słupki 22 kW i konserwacja.
+5. **B55 liczone automatycznie** (iteracja 5 kroków, zbieżna po 2–4: daje dokładnie Wasze 9 / 69 / 79), z możliwością ręcznego nadpisania.
+6. **Kraków = automatycznie** bez hotelu i diet, montaż w dniach.
+7. **Kontrola danych**: ostrzeżenia o więcej zagłębień/szerokości/długości niż platform, za małej liczbie agregatów (< 1 na 6 platform), ≥ 800 km, braku transportu.
+8. Błąd B2 poprawiony w „cenie minimalnej”, a B3 nie może wystąpić (słupki = jeden przełącznik na wariant).
+
+**Do decyzji (po Waszych odpowiedziach):**
+- poprawić wzór czasu podróży (B1),
+- zaokrąglanie dopłat D (B9),
+- siłowniki dla N.P. (B7),
+- liczba transportów liczona z ilości platform / tonażu zamiast wpisywanej,
+- cena transportu z tabeli miast albo z km,
+- malowanie / słupki 22 kW jako opcje doliczane do ceny,
+- ewentualnie wersja webowa (formularz w przeglądarce, PDF oferty), gdy logika się ustabilizuje,
+- rozszerzenie na inne produkty (NK36/37/40, PXL…) w tym samym schemacie: osobny blok „Materiały” na typ i wspólny „Montaż”.
+
+## 7. Co jest w katalogu
+
+| Plik | Co to |
+|---|---|
+| `Kalkulator_NK38_v0.xlsx` | Prototyp nowego kalkulatora (pusty). |
+| `Kalkulator_NK38_v0_przyklad_WAW.xlsx` / `_KRK.xlsx` | Prototyp z danymi z Waszych plików, do porównania (wyniki 1:1). |
+| `build_kalkulator.py` | Generator prototypu (zmiany robimy tutaj, `./regen.sh` przebudowuje pliki). |
+| `model_nk38.py` + `test_model_nk38.py` | Model obliczeń w Pythonie i testy porównujące go z wartościami z Excela (`python3 -m pytest`). |
+
+---
+
+## 8. Pytania
+
+**Czas montażu i ekipa**
+1. **J39 „043+06 dni”**: co oznacza druga liczba (⌈dni/10⌉+1)? Liczba zjazdów, dni dodatkowe, coś innego? Czy jest gdzieś używana?
+2. **B55 poza Krakowem = dni/5, w Krakowie = dni.** Czy to reguła zawsze (tydzień = 5 dni pracy, wyjazd co tydzień)? Czy bywają turnusy 2-tygodniowe lub inna liczba dni w tygodniu?
+3. **Hotel = (dni + 1) × osoby noclegów.** Przy wyjazdach tygodniowych ekipa śpi zwykle 4 noce na 5 dni. Czy „+1” i liczenie hotelu za każdy dzień pracy są zamierzone (np. jako zapas)?
+4. **Czas podróży**: skąd wzór `(1+0,1·(800−km)/100)·km/500` i co miało być dla ≥ 800 km (błąd B1)? Czy to czas w obie strony na wyjazd?
+5. **Pomiary 280 km, montaż 330 km (WAW)**: dlaczego różne odległości? Czy wpisywać jedną odległość od Krakowa, czy zawsze dwie?
+6. **Osobodni / system: S = 5,5, D = 7, NP = 7.** Czy zależą od zagłębienia, szerokości lub Q=2500? Czy są aktualne?
+7. **„Tonaż” (B48)**: w pliku to formuła (½ dnia na magistralę i ½ na barierkę/maskownicę), a nie tonaż. Czy w innych ofertach wpisujecie tu coś ręcznie (utrudnienia, faktyczne tony)? Co ma oznaczać?
+8. **Stawki ekipy** (500/400/350/350, „ceny dla Ukraińców”): czy skład ekipy jest stały (4 osoby poza Krakowem, 5 w Krakowie), czy dobierany do inwestycji?
+
+**Materiały**
+9. **Systemy N.P.**: czy mają siłowniki (obecnie 0, błąd B7)? Jak liczyć dźwig dla N.P. (przyjąłem jak S)? Czy N.P. występuje w ofertach?
+10. **Dopłata za długość 540/550** to % ceny **całej** platformy (0,127%/cm), choć komentarz mówi o wadze stali Metazet. Czy to zamierzone? I czy krótsze 500-510 cm naprawdę kosztuje **więcej** (2340 zł)?
+11. **Dopłata Q=2500 kg (6% WAW, 7% KRK)** naliczana jest od całego F87, razem z hydrauliką, elektryką i administracją. Czy tak ma być i od czego zależy 6 vs 7%?
+12. **Agregaty**: czy liczbę agregatów można liczyć automatycznie (⌈platformy/6⌉, w plikach 5–5,6 platformy na agregat), czy zależy od układu garażu?
+13. **Malowanie RAL i słupki 22 kW** liczą się w MAT, ale nie trafiają do ceny. Czy mają być opcjami doliczanymi w ofercie?
+14. **Siłowniki**: zagłębienie 175 cm jest bez dopłaty, ale liczy siłownik „2000” (droższy od std). Czy tak ma być?
+
+**Transport, koszty, narzuty**
+15. **Transporty**: jak ustalacie liczbę TIR-ów (ile platform na TIR)? Czy cenę liczyć z tabeli miast (komentarz: 1600 / 3300 / 4500), z km, czy wpisywać (pliki: 1800 i 4000)?
+16. **Rozładunek sprzętu**: 1700 zł/TIR w WAW, 500 zł w KRK. Od czego to zależy (wózek, HDS na miejscu)?
+17. **Dźwig**: 1 dzień na 5 systemów D (komentarz w innym arkuszu mówi „1 dniówka / 24 platformy”). Który przelicznik jest aktualny? Czy w Krakowie też liczyć Spider Crane po 2400 zł?
+18. **Podatek 14%** liczony jest od robocizny, diet, **GDW i zysku**. Co to za podatek (ZUS/PIT ekipy, CIT)? Czy baza jest poprawna? Do tego „Σ koszt ludzki” (K42) używa ×1,19. Który wskaźnik obowiązuje?
+19. **Kolumna N („rabat nadzwyczajny”)**: czy potrzebujecie tego wariantu (zysk minimalny + tańszy dźwig)? Czy wystarczy pokazywać cenę dla 2 poziomów zysku?
+20. **Paliwo 9,40 zł/l, 12 l/100 km, 1 auto na wyjazd**: czy przy 5 osobach to nadal 1 auto?
+
+**Zakres i forma nowego kalkulatora**
+21. **Dla kogo** jest nowy kalkulator: tylko dla Ciebie, czy dla handlowców (ukrywanie kosztów i marż, blokada cennika)?
+22. **Forma**: zostajemy w Excelu (prototyp v0), czy docelowo aplikacja w przeglądarce, która generuje PDF oferty?
+23. **Inne produkty**: czy nowy kalkulator ma od razu obejmować NK36/NK37/NK40, PXL, NK6501 itd. (są w arkuszu KAL), czy najpierw tylko NK38?
+24. **Wynik**: czego potrzebujecie na końcu? Sama cena i cena/MP, czy też gotowy opis do oferty (np. tekst jak w I2/I3: „NK38 15xD500, 3xA6kW 2000kg”), harmonogram, wydruk?
+25. **Kurs EUR i ceny Metazet**: jak często się zmieniają i kto aktualizuje cennik?
