@@ -26,65 +26,70 @@
     return { gl: gl.length ? gl.join("; ") : "standard 170 cm", dims: dims.length ? dims.join("; ") : "standard" };
   }
 
-  /* Wartości: liczba + format ("zl" | "eur" | "n" | "int" | "pct" | "txt"). */
-  function raport(r, GL) {
-    var d = r.dane, m = r.mat, w = r.wspolne, ws = r.warianty, an = r.analiza, wy = opisWymiarow(d, GL);
-    var jed = w.krk ? "dni" : "tyg.";
-    var dane = [
-      ["Inwestycja", d.nazwa || "-"], ["Data / nr oferty", (d.data || "-") + " / " + (d.nr || "-")],
-      ["Opis / wariant", d.opis || "-"],
-      ["Lokalizacja", d.lok + (w.krk ? "" : ", " + (d.km || 0) + " km od Krakowa")],
-      ["Km pomiary / montaż", w.kmPom + " / " + w.kmMon + " km"],
-      ["Urządzenia", d.typ + ": " + [d.S ? d.S + " × S" : "", d.D ? d.D + " × D" : "", d.NP ? d.NP + " × N.P." : ""].filter(Boolean).join(", ") + " = " + m.MP + " MP"],
-      ["Agregaty", (d.agregaty || 0) + " szt."],
-      ["Magistrala / barierki / maskownice", (d.magistrala || 0) + " × 6 m / " + (d.barierki || 0) + " / " + (d.maskownice || 0)],
-      ["Utrudnienia", n2(m.utr) + " osd (auto " + n2(m.utrAuto) + ", ręcznie " + n2(d.utr_dod || 0) + ")"],
-      ["Zagłębienia", wy.gl], ["Wymiary", wy.dims],
-      ["Transport", (d.tir || 0) + " TIR × " + zl(d.tir_cena || 0) + ", rozładunek sprzętu " + zl(d.rozl_cena || 0) + " jednorazowo, " + n2(w.rozl) + " dni"],
-      ["Ekipa", ws[0].osoby + " os., średnio " + zl(ws[0].stawka) + "/dzień"],
-      ["Dźwig", w.dzwDni + " dni"],
-      ["Czas podróży", d.wzor === "uproszczony" ? "uproszczony (650 km/dzień)" : "stary wzór (poprawiony)"],
-      ["Zysk A / zysk B", pct(d.zysk) + " / " + pct(d.zysk2)],
-      ["Dopłata Q=2500 / kurs EUR", pct(m.q2500) + " / " + d.eur],
-      ["Zagłębienie H1 / H2, długość, prześwit", (d.h1 || "–") + " / " + (d.h2 || "–") + " cm, " + (d.dl || "–") + " cm, " + (d.przeswit || "–") + " cm"],
-      ["Konserwacja A / B", r.konserwacja.map(function (k) { return zl(k.rok) + " rocznie, " + zl(k.pol) + " półrocznie (" + k.stawka + " zł/MP/mies.)"; }).join("; ")]
+  /* Opis wariantu budowany z danych: H, L, P, wysokości pojazdów, agregaty, barierki, maskownice, magistrala. */
+  function opisAuto(d, o) {
+    var w = wymiary(Object.assign({}, d, { opis: "" }), o || {}), v = function (x) { return x == null || x === "" ? "" : x; };
+    var h = [w.h1, w.h2].filter(function (x) { return x != null; }).join("/");
+    return "H-" + h + " | L-" + v(w.dl) + " | P-" + v(w.p) + " | Hpoj. G-" + v(w.gor) + " D-" + v(w.dol) +
+      " | A-" + (d.agregaty || 0) + " | Bok-" + (d.barierki || 0) + " Tył-" + (d.maskownice || 0) + " | mgstrl-" + (d.magistrala || 0);
+  }
+  function opisEfektywny(d, o) { return d.opis || opisAuto(d, o); }
+
+  /* Wartości: liczba + format ("zl" | "eur" | "n" | "int" | "txt"). */
+  function raport(r, GL, o) {
+    var d = r.dane, m = r.mat, w = r.wspolne, ws = r.warianty, wy = opisWymiarow(d, GL), T = r.szablon.typy;
+    var zA = "zysk " + pct(d.zysk), zB = "zysk " + pct(d.zysk2);
+    var urz = [d.S ? d.S + " × " + T.S.nazwa : "", d.D ? d.D + " × " + T.D.nazwa : "", d.NP ? d.NP + " × " + T.NP.nazwa : ""].filter(Boolean).join(", ");
+    var wym = wymiary(d, o || {});
+    var grupy = [
+      { tytul: "Inwestycja", pary: [
+        ["Nazwa / adres", d.nazwa || "–"], ["Data", d.data || "–"], ["Opis / wariant", opisEfektywny(d, o)],
+        ["Zagłębienie H1 / H2", (wym.h1 == null ? "–" : wym.h1) + " / " + (wym.h2 == null ? "–" : wym.h2) + " cm"],
+        ["Długość zagłębienia / prześwit", (wym.dl || "–") + " / " + (wym.p == null ? "–" : wym.p) + " cm"],
+        ["Lokalizacja", d.lok + (w.krk ? "" : ", " + (d.km || 0) + " km od Krakowa")],
+        ["Km pomiary / montaż", w.kmPom + " / " + w.kmMon + " km"]] },
+      { tytul: "Urządzenia", pary: [
+        ["Szablon urządzenia", d.typ], ["Platformy", (urz || "–") + " = " + m.MP + " MP"], ["Agregaty", (d.agregaty || 0) + " szt."],
+        ["Magistrala / barierki / maskownice", (d.magistrala || 0) + " × 6 m / " + (d.barierki || 0) + " / " + (d.maskownice || 0)],
+        ["Zagłębienia (cennik)", wy.gl], ["Wymiary niestandardowe", wy.dims],
+        ["Utrudnienia", n2(m.utr) + " osd (auto " + n2(m.utrAuto) + ", ręcznie " + n2(d.utr_dod || 0) + ")"]] },
+      { tytul: "Montaż i transport", pary: [
+        ["Transport", (d.tir || 0) + " TIR × " + zl(d.tir_cena || 0)],
+        ["Rozładunek sprzętu", zl(d.rozl_cena || 0) + " jednorazowo, " + n2(w.rozl) + " dni rozładunku"],
+        ["Spider Crane", w.dzwDni + " dni × " + zl(r.cennik.dzwig) + " = " + zl(ws[0].koszty.dzwig) + (d.dzwig_koszt != null ? " (wpisane ręcznie)" : "")],
+        ["Ekipa", ws[0].osoby + " os., średnio " + zl(ws[0].stawka) + "/dzień"],
+        ["Czas montażu", ws[0].dni + " dni pracy = " + ws[0].tygodnie + " tyg."],
+        ["Czas podróży", d.wzor === "uproszczony" ? "uproszczony (650 km dziennie)" : "stary wzór (poprawiony)"]] },
+      { tytul: "Narzuty i serwis", pary: [
+        ["Zysk", pct(d.zysk) + " oraz " + pct(d.zysk2) + " do porównania"], ["Dopłata Q=2500", pct(m.q2500)], ["Kurs EUR/PLN", String(d.eur)],
+        ["Konserwacja", r.konserwacja.map(function (k) { return k.stawka + " zł/MP/mies.: " + zl(k.rok) + " rocznie, " + zl(k.pol) + " półrocznie"; }).join("; ")]] }
     ];
-    var wynik = {
-      head: ["Pozycja"].concat(ws.map(function (x) { return x.nazwa; })),
-      rows: [
-        ["Cena netto, zysk A " + pct(d.zysk), "zl", "cena", 1], ["Cena netto, zysk B " + pct(d.zysk2), "zl", "cena2", 1],
-        ["Cena za MP, zysk A", "zl", "cenaMP"], ["Cena za MP, zysk B", "zl", "cenaMP2"], ["Cena za MP w euro, zysk A", "eur", "cenaMPeur"],
-        ["Zysk A", "zl", "zysk"], ["Zysk B", "zl", "zysk2"], ["Koszt rzeczywisty", "zl", "koszt"],
-        ["Urządzenia", "zl", function (x) { return x.koszty.urzadzenia; }],
-        ["Słupki e-ładowarek", "zl", function (x) { return x.koszty.slupki; }],
-        ["Transport, dźwig, rozładunek", "zl", function (x) { return x.koszty.transport + x.koszty.dzwig + x.koszty.rozladunek_sprzet; }],
-        ["Robocizna", "zl", function (x) { return x.koszty.montaz + x.koszty.rozladunek_ludzie + x.koszty.dojazdy; }],
-        ["Hotel, diety, paliwo", "zl", function (x) { return x.koszty.hotel + x.koszty.diety + x.koszty.paliwo; }],
-        ["KOB, GDW, podatek (zysk A)", "zl", function (x) { return x.kob + x.gdw + x.podatek; }],
-        ["Dni pracy ekipy", "int", "dni", 1], ["Tygodnie montażu", "int", "tygodnie", 1], ["Osobodni razem", "n", "osobodni"]
-      ].map(function (row) {
-        return { label: row[0], fmt: row[1], bold: !!row[3], vals: ws.map(function (x) { return typeof row[2] === "function" ? row[2](x) : x[row[2]]; }) };
-      })
-    };
+    function rows(def, src) {
+      return def.map(function (row) {
+        return { label: row[0], fmt: row[1], bold: !!row[3], vals: src.map(function (x) { return typeof row[2] === "function" ? row[2](x) : x[row[2]]; }) };
+      });
+    }
+    var head = ["Pozycja"].concat(ws.map(function (x) { return x.nazwa; }));
+    var ceny = { head: head, rows: rows([
+      ["Cena netto, " + zA, "zl", "cena", 1], ["Cena netto, " + zB, "zl", "cena2", 1],
+      ["Cena za MP, " + zA, "zl", "cenaMP"], ["Cena za MP, " + zB, "zl", "cenaMP2"], ["Cena za MP w euro, " + zA, "eur", "cenaMPeur"],
+      ["Dni pracy ekipy", "int", "dni"], ["Tygodnie montażu", "int", "tygodnie"]], ws) };
+    var struktura = { head: head, rows: rows([
+      ["Urządzenia (materiały)", "zl", function (x) { return x.koszty.urzadzenia; }],
+      ["Słupki e-ładowarek", "zl", function (x) { return x.koszty.slupki; }],
+      ["Transport, dźwig, rozładunek", "zl", function (x) { return x.koszty.transport + x.koszty.dzwig + x.koszty.rozladunek_sprzet; }],
+      ["Robocizna", "zl", function (x) { return x.koszty.montaz + x.koszty.rozladunek_ludzie + x.koszty.dojazdy; }],
+      ["Hotel, diety, paliwo", "zl", function (x) { return x.koszty.hotel + x.koszty.diety + x.koszty.paliwo; }],
+      ["KOB, GDW, podatek (" + zA + ")", "zl", function (x) { return x.kob + x.gdw + x.podatek; }],
+      ["Zysk " + pct(d.zysk), "zl", "zysk"], ["Zysk " + pct(d.zysk2), "zl", "zysk2"], ["Koszt rzeczywisty", "zl", "koszt", 1],
+      ["Osobodni razem", "n", "osobodni"]], ws) };
     var opcje = {
-      head: ["Opcja", "Q=2000, zysk A", "Q=2500, zysk A", "Q=2000, zysk B", "Q=2500, zysk B"],
+      head: ["Opcja", "2000 kg, " + zA, "2500 kg, " + zA, "2000 kg, " + zB, "2500 kg, " + zB],
       rows: [
         { label: "Słupki e-ładowarek 3,7 kW", fmt: "zl", vals: [r.opcje.slupki37[0], r.opcje.slupki37[1], r.opcje.slupki37b[0], r.opcje.slupki37b[1]] },
         { label: "Słupki e-ładowarek 22 kW", fmt: "zl", vals: [r.opcje.slupki22[0], r.opcje.slupki22[1], r.opcje.slupki22b[0], r.opcje.slupki22b[1]] },
         { label: "Malowanie proszkowe RAL", fmt: "zl", vals: [r.opcje.malowanie, r.opcje.malowanie, r.opcje.malowanieB, r.opcje.malowanieB] }
       ]
-    };
-    var ekipa = {
-      head: ["Liczba osób (" + r.analizaWariant + ")"].concat(an.map(function (a) { return a.n + " os."; })),
-      rows: [
-        ["Cena, zysk A", "zl", "cena", 1], ["Cena, zysk B", "zl", "cena2"], ["Średnia stawka", "zl", "stawka"],
-        ["Dni pracy", "int", "dni"], ["Tygodnie montażu", "int", "tygodnie"], ["Noclegi (osobonoce)", "int", "noclegi"],
-        ["Km auta ekipy", "int", "km"],
-        ["Hotel i diety", "zl", function (a) { return a.koszty.hotel + a.koszty.diety; }],
-        ["Robocizna", "zl", function (a) { return a.koszty.montaz + a.koszty.dojazdy + a.koszty.rozladunek_ludzie; }]
-      ].map(function (row) {
-        return { label: row[0], fmt: row[1], bold: !!row[3], vals: an.map(function (a) { return typeof row[2] === "function" ? row[2](a) : a[row[2]]; }) };
-      })
     };
     var mat = [
       ["Cena platformy D / S / N.P.", zl(m.cenaD) + " / " + zl(m.cenaS) + " / " + zl(m.cenaNP)],
@@ -94,23 +99,20 @@
       ["Mechanika zakupowa i pozostałe", zl(m.mechanika)], ["Suma Q=2000 (dawne F87)", zl(m.suma2000)],
       ["Suma Q=2500 (dawne F90, +" + pct(m.q2500) + ")", zl(m.suma2500)]
     ];
-    var mon = {
-      head: ["Pozycja"].concat(ws.map(function (x) { return x.nazwa; })),
-      rows: [
-        ["Osobodni montażu (F50)", "n", "osd"], ["Tygodnie / dni montażu (B55)", "int", "wyjazdy"],
-        ["Osobodni podróży i rozładunku (G59)", "n", "podroze"], ["Dni pracy ekipy (J39)", "int", "dni"],
-        ["Kilometry auta", "int", "km"], ["Noclegi (osobonoce)", "int", "noclegi"],
-        ["Urządzenia", "zl", "urzadzenia", 0, 1], ["Słupki", "zl", "slupki", 0, 1], ["Paliwo", "zl", "paliwo", 0, 1],
-        ["Hotel", "zl", "hotel", 0, 1], ["Transport TIR", "zl", "transport", 0, 1], ["Spider Crane", "zl", "dzwig", 0, 1],
-        ["Rozładunek, sprzęt", "zl", "rozladunek_sprzet", 0, 1], ["Rozładunek, ludzie", "zl", "rozladunek_ludzie", 0, 1],
-        ["Dojazdy, ludzie", "zl", "dojazdy", 0, 1], ["Montaż", "zl", "montaz", 0, 1], ["Diety", "zl", "diety", 0, 1],
-        ["Suma przed narzutami", "zl", "baza", 1], ["KOB", "zl", "kob"], ["GDW", "zl", "gdw"], ["Zysk A", "zl", "zysk"],
-        ["Podatek", "zl", "podatek"], ["Cena kontraktu, zysk A (K39)", "zl", "cena", 1]
-      ].map(function (row) {
-        return { label: row[0], fmt: row[1], bold: !!row[3], vals: ws.map(function (x) { return row[4] ? x.koszty[row[2]] : x[row[2]]; }) };
-      })
-    };
-    return { dane: dane, wynik: wynik, opcje: opcje, ekipa: ekipa, mat: mat, mon: mon, jed: jed };
+    var mon = { head: head, rows: [
+      ["Osobodni montażu (F50)", "n", "osd"], ["Tygodnie / dni montażu (B55)", "int", "wyjazdy"],
+      ["Osobodni podróży i rozładunku (G59)", "n", "podroze"], ["Dni pracy ekipy (J39)", "int", "dni"],
+      ["Kilometry auta", "int", "km"], ["Noclegi (osobonoce)", "int", "noclegi"],
+      ["Urządzenia", "zl", "urzadzenia", 0, 1], ["Słupki", "zl", "slupki", 0, 1], ["Paliwo", "zl", "paliwo", 0, 1],
+      ["Hotel", "zl", "hotel", 0, 1], ["Transport TIR", "zl", "transport", 0, 1], ["Spider Crane", "zl", "dzwig", 0, 1],
+      ["Rozładunek, sprzęt", "zl", "rozladunek_sprzet", 0, 1], ["Rozładunek, ludzie", "zl", "rozladunek_ludzie", 0, 1],
+      ["Dojazdy, ludzie", "zl", "dojazdy", 0, 1], ["Montaż", "zl", "montaz", 0, 1], ["Diety", "zl", "diety", 0, 1],
+      ["Suma przed narzutami", "zl", "baza", 1], ["KOB", "zl", "kob"], ["GDW", "zl", "gdw"], ["Zysk " + pct(d.zysk), "zl", "zysk"],
+      ["Podatek", "zl", "podatek"], ["Cena kontraktu, " + zA + " (K39)", "zl", "cena", 1]
+    ].map(function (row) {
+      return { label: row[0], fmt: row[1], bold: !!row[3], vals: ws.map(function (x) { return row[4] ? x.koszty[row[2]] : x[row[2]]; }) };
+    }) };
+    return { grupy: grupy, ceny: ceny, struktura: struktura, opcje: opcje, mat: mat, mon: mon, zA: zA, zB: zB };
   }
 
   function fmtVal(v, f) {
@@ -121,31 +123,49 @@
     return String(v);
   }
 
+  /* Cennik szablonu jako lista [etykieta, wartość, jednostka] w grupach. */
+  function cennikWiersze(r, pola, zmiany) {
+    var out = [], sz = r.szablon;
+    pola.forEach(function (p) {
+      if (!p[1]) { out.push({ grupa: p[0] }); return; }
+      out.push({ label: p[1], val: r.cennik[p[0]], jedn: p[2], zm: zmiany && zmiany[p[0]] !== undefined });
+    });
+    out.push({ grupa: "Typy platform (MP, osobodni montażu)" });
+    ["S", "D", "NP"].forEach(function (k) { out.push({ label: sz.typy[k].nazwa, val: sz.typy[k].mp + " MP, " + sz.typy[k].osd + " osd", jedn: "" }); });
+    out.push({ grupa: "Zagłębienia (dopłata, siłownik)" });
+    sz.glebokosci.forEach(function (g) { out.push({ label: g.cm + " cm", val: g.doplata, jedn: "zł · " + g.silownik }); });
+    out.push({ grupa: "Szerokości i długości" });
+    sz.szerokosci.S.concat(sz.szerokosci.D).forEach(function (x) { out.push({ label: "Szerokość " + x.nazwa, val: x.cena, jedn: "zł" }); });
+    sz.dlugosci.forEach(function (x) { out.push({ label: "Długość " + x.nazwa, val: x.wartosc, jedn: x.tryb === "kwota" ? "zł" : "cm × wsp." }); });
+    out.push({ grupa: "Składowe platformy (cena, ilość S / D)" });
+    sz.skladowe.forEach(function (x) { out.push({ label: x.nazwa, val: x.cena, jedn: x.ilS + " / " + x.ilD + " · " + x.grupa }); });
+    return out;
+  }
+
   /* ------------------------------------------------------------ Excel */
   function xlsx(r, ctx) {
-    var R = raport(r, ctx.GLEBOKOSCI), d = r.dane;
+    var R = raport(r, ctx.GLEBOKOSCI, ctx.oferta), d = r.dane, w0 = r.warianty[0];
     var wb = new L.ExcelJS.Workbook();
     wb.creator = "Kalkulator NK38";
     var FONT = "Arial";
-    var C = { acc: "FF0A6B74", accSoft: "FFE3F2F2", ink: "FF0E171C", muted: "FF6A7780", line: "FFD3D9DD", zebra: "FFF7F8F9", good: "FFE3F4EA", goodInk: "FF13794A", warn: "FF8A5300" };
+    var C = { acc: "FF0A6B74", accSoft: "FFE3F2F2", ink: "FF0E171C", muted: "FF6A7780", line: "FFD3D9DD", zebra: "FFF7F8F9", warn: "FF8A5300", tile: "FFF3F8F8" };
     var NF = { zl: '#,##0 "zł";-#,##0 "zł";"–"', eur: '#,##0 "€"', int: "#,##0", n: "#,##0.00" };
     var thin = { style: "thin", color: { argb: C.line } };
     var box = { top: thin, bottom: thin, left: thin, right: thin };
     function fill(argb) { return { type: "pattern", pattern: "solid", fgColor: { argb: argb } }; }
     function font(o) { return Object.assign({ name: FONT, size: 10, color: { argb: C.ink } }, o || {}); }
-
-    function sheet(name, widths, landscape) {
+    /* skala zamiast "dopasuj do strony": Excel przy dopasowaniu ignoruje ręczne podziały stron */
+    function sheet(name, widths, scale) {
       var ws = wb.addWorksheet(name, { views: [{ showGridLines: false }],
-        pageSetup: { paperSize: 9, orientation: landscape ? "landscape" : "portrait", fitToPage: true, fitToWidth: 1, fitToHeight: 0,
-          margins: { left: 0.5, right: 0.5, top: 0.6, bottom: 0.6, header: 0.3, footer: 0.3 } } });
-      ws.columns = widths.map(function (w) { return { width: w }; });
-      ws.properties.defaultRowHeight = 16;
+        pageSetup: { paperSize: 9, orientation: "portrait", fitToPage: false, scale: scale || 85,
+          margins: { left: 0.45, right: 0.45, top: 0.5, bottom: 0.55, header: 0.25, footer: 0.25 } } });
+      ws.columns = widths.map(function (x) { return { width: x }; });
       ws.headerFooter.oddFooter = "&L&8" + (d.nazwa || "Kalkulator NK38") + "&R&8Strona &P z &N";
       return ws;
     }
     function banner(ws, title, sub, cols) {
       var r1 = ws.addRow([title]); ws.mergeCells(r1.number, 1, r1.number, cols);
-      r1.height = 26; r1.getCell(1).font = font({ size: 15, bold: true, color: { argb: "FFFFFFFF" } });
+      r1.height = 28; r1.getCell(1).font = font({ size: 15, bold: true, color: { argb: "FFFFFFFF" } });
       r1.getCell(1).fill = fill(C.acc); r1.getCell(1).alignment = { vertical: "middle", indent: 1 };
       var r2 = ws.addRow([sub]); ws.mergeCells(r2.number, 1, r2.number, cols);
       r2.getCell(1).font = font({ size: 9, color: { argb: C.muted } }); r2.getCell(1).alignment = { indent: 1 };
@@ -153,18 +173,14 @@
     }
     function section(ws, title, cols) {
       var x = ws.addRow([title]); ws.mergeCells(x.number, 1, x.number, cols);
-      x.height = 20; x.getCell(1).font = font({ size: 11, bold: true, color: { argb: C.acc } });
+      x.height = 22; x.getCell(1).font = font({ size: 11, bold: true, color: { argb: C.acc } });
       x.getCell(1).alignment = { vertical: "bottom" };
       x.getCell(1).border = { bottom: { style: "medium", color: { argb: C.acc } } };
-      return x;
     }
-    function table(ws, head, rows, opt) {
-      opt = opt || {};
-      var h = ws.addRow(head);
-      h.height = 30;
+    function table(ws, head, rows) {
+      var h = ws.addRow(head); h.height = 30;
       h.eachCell(function (c, i) {
-        c.fill = fill(C.accSoft); c.border = box;
-        c.font = font({ bold: true, size: 9, color: { argb: C.acc } });
+        c.fill = fill(C.accSoft); c.border = box; c.font = font({ bold: true, size: 9, color: { argb: C.acc } });
         c.alignment = { horizontal: i === 1 ? "left" : "right", vertical: "middle", wrapText: true, indent: i === 1 ? 1 : 0 };
       });
       rows.forEach(function (row, ri) {
@@ -176,105 +192,132 @@
           else { c.numFmt = NF[row.fmt] || "General"; c.alignment = { horizontal: "right", vertical: "middle" }; }
         });
         if (row.bold) x.eachCell(function (c) { c.fill = fill(C.accSoft); });
-        if (opt.best && row.best) {
-          var vals = row.vals, min = Math.min.apply(null, vals);
-          vals.forEach(function (v, i) { if (v === min) { var c = x.getCell(i + 2); c.fill = fill(C.good); c.font = font({ bold: true, color: { argb: C.goodInk } }); } });
-        }
       });
       ws.addRow([]);
     }
-    function pairs(ws, list, cols) {
-      list.forEach(function (p, i) {
+    function pairs(ws, list, cols, labelW) {
+      list.forEach(function (p) {
         var x = ws.addRow([p[0], p[1]]);
         ws.mergeCells(x.number, 2, x.number, cols);
         var a = x.getCell(1), b = x.getCell(2);
-        a.font = font({ color: { argb: C.muted } }); a.fill = fill(C.zebra); a.border = box; a.alignment = { indent: 1, vertical: "top" };
+        a.font = font({ color: { argb: C.muted } }); a.fill = fill(C.zebra); a.border = box; a.alignment = { indent: 1, vertical: "top", wrapText: true };
         b.font = font(); b.border = box; b.alignment = { wrapText: true, vertical: "top", indent: 1 };
-        var len = String(p[1]).length; if (len > 70) x.height = 16 * Math.ceil(len / 70);
+        var len = String(p[1]).length; if (len > (labelW || 70)) x.height = 15 * Math.ceil(len / (labelW || 70));
       });
       ws.addRow([]);
     }
-    var gen = "Wygenerowano " + new Date().toLocaleString("pl-PL") + " · ceny netto w zł";
+    /* kafelki z najważniejszymi liczbami: 2 kolumny na kafelek */
+    function tiles(ws, items) {
+      var r1 = ws.addRow([]), r2 = ws.addRow([]), r3 = ws.addRow([]);
+      r1.height = 18; r2.height = 30; r3.height = 16;
+      var spans = [[1, 2], [3, 5]];
+      items.forEach(function (t, i) {
+        var col = spans[i][0];
+        [r1, r2, r3].forEach(function (row) { ws.mergeCells(row.number, spans[i][0], row.number, spans[i][1]); });
+        var a = r1.getCell(col), b = r2.getCell(col), c = r3.getCell(col);
+        a.value = t[0]; b.value = t[1]; c.value = t[2] || "";
+        [a, b, c].forEach(function (x) { x.fill = fill(C.tile); x.alignment = { indent: 1, vertical: "middle" }; });
+        a.font = font({ size: 9, color: { argb: C.muted } });
+        b.font = font({ size: 16, bold: true, color: { argb: t[4] ? C.ink : C.acc } }); b.numFmt = t[3] || NF.zl;
+        b.alignment = { indent: 1, vertical: "middle", horizontal: "left" };
+        c.font = font({ size: 9, color: { argb: C.muted } });
+        a.border = { top: { style: "medium", color: { argb: C.acc } }, left: thin, right: thin };
+        b.border = { left: thin, right: thin }; c.border = { bottom: thin, left: thin, right: thin };
+      });
+      ws.addRow([]);
+    }
+    var gen = "Wygenerowano " + new Date().toLocaleString("pl-PL") + " · ceny netto w zł · szablon " + d.typ;
 
-    /* Podsumowanie */
-    var s1 = sheet("Podsumowanie", [40, 21, 21, 21, 21], true);
-    banner(s1, "Kalkulator NK38 · " + (d.nazwa || "wycena"), gen, 5);
-    section(s1, "Cena kontraktu", 5);
-    var top = { head: R.wynik.head, rows: R.wynik.rows.slice(0, 5) };
-    table(s1, top.head, top.rows);
-    section(s1, "Struktura kosztów i czas montażu", 5);
-    table(s1, R.wynik.head, R.wynik.rows.slice(5));
-    s1.lastRow.addPageBreak();
+    /* 1. Podsumowanie */
+    var s1 = sheet("Podsumowanie", [36, 18, 18, 18, 18], 82);
+    banner(s1, "Wycena " + d.typ + " · " + (d.nazwa || "bez nazwy"), gen, 5);
+    tiles(s1, [
+      ["Cena netto 2000 kg, " + R.zA, w0.cena, zl(w0.cenaMP) + " / MP"],
+      ["Cena netto 2000 kg, " + R.zB, w0.cena2, zl(w0.cenaMP2) + " / MP"]
+    ]);
+    tiles(s1, [
+      ["Czas montażu", w0.tygodnie + " tyg.", w0.dni + " dni pracy, ekipa " + w0.osoby + " os.", "@", 1],
+      ["Konserwacja roczna / przegląd półroczny", zl(r.konserwacja[0].rok) + " / " + zl(r.konserwacja[0].pol),
+        r.konserwacja[0].stawka + " zł/MP/mies.; przy " + r.konserwacja[1].stawka + " zł/MP/mies.: " + zl(r.konserwacja[1].rok) + " / " + zl(r.konserwacja[1].pol), "@", 1]
+    ]);
+    section(s1, "Ceny wariantów", 5);
+    table(s1, R.ceny.head, R.ceny.rows);
     section(s1, "Opcje do oferty (cena z narzutami)", 5);
     table(s1, R.opcje.head, R.opcje.rows);
+    section(s1, "Struktura kosztów", 5);
+    table(s1, R.struktura.head, R.struktura.rows);
+    s1.lastRow.addPageBreak();
     section(s1, "Dane wejściowe", 5);
-    pairs(s1, R.dane, 5);
-    s1.views = [{ showGridLines: false, state: "frozen", ySplit: 2 }];
+    R.grupy.forEach(function (g) {
+      var x = s1.addRow([g.tytul]); s1.mergeCells(x.number, 1, x.number, 5);
+      x.getCell(1).font = font({ bold: true, size: 10 }); x.getCell(1).fill = fill(C.accSoft); x.getCell(1).alignment = { indent: 1 };
+      pairs(s1, g.pary, 5, 75);
+      s1.lastRow.height = 6;
+    });
 
-    /* Ekipa */
-    var s2 = sheet("Ekipa", [34].concat(r.analiza.map(function () { return 15; })), true);
-    banner(s2, "Analiza liczby osób", "Wariant: " + r.analizaWariant + " · wpisana liczba osób: " + r.warianty[0].osoby + " · zielone = najtańsza", r.analiza.length + 1);
-    var ek = R.ekipa.rows.map(function (row, i) { return Object.assign({}, row, { best: i === 0 }); });
-    table(s2, R.ekipa.head, ek, { best: true });
-    var n = s2.addRow(["Praca to stała liczba osobodni: więcej osób skraca montaż, noclegi i diety prawie się nie zmieniają, km auta maleją z liczbą tygodni."]);
-    s2.mergeCells(n.number, 1, n.number, r.analiza.length + 1); n.getCell(1).font = font({ size: 9, italic: true, color: { argb: C.muted } }); n.getCell(1).alignment = { wrapText: true }; n.height = 28;
+    /* 2. Obliczenia (strona 1) i cennik (strona 2) */
+    var s2 = sheet("Obliczenia i cennik", [40, 19, 19, 19, 19], 82);
+    banner(s2, "Obliczenia krok po kroku", "Strona 1: obliczenia · strona 2: cennik szablonu " + d.typ, 5);
+    section(s2, "Materiały i urządzenia", 5);
+    pairs(s2, R.mat, 5);
+    section(s2, "Montaż i cena", 5);
+    table(s2, R.mon.head, R.mon.rows);
+    s2.lastRow.addPageBreak();
+    banner(s2, "Cennik szablonu " + d.typ, "Pomarańczowe = zmienione względem domyślnego NK38", 5);
+    var cw = cennikWiersze(r, ctx.cennikPola, ctx.cennikZmiany), half = Math.ceil(cw.length / 2);
+    /* dwie kolumny cennika obok siebie, żeby zmieścić się na jednej stronie */
+    for (var i = 0; i < half; i++) {
+      var a = cw[i], b = cw[i + half];
+      var x = s2.addRow([a.grupa || a.label, a.grupa ? "" : a.val, b ? (b.grupa || b.label) : "", "", b && !b.grupa ? b.val : ""]);
+      s2.mergeCells(x.number, 3, x.number, 4);
+      [[a, 1, 2], [b, 3, 5]].forEach(function (z) {
+        var it = z[0]; if (!it) return;
+        var l = x.getCell(z[1]), v = x.getCell(z[2]);
+        if (it.grupa) { l.font = font({ bold: true, size: 9, color: { argb: C.acc } }); l.border = { bottom: thin }; v.border = { bottom: thin }; }
+        else {
+          l.font = font({ size: 8.5, bold: it.zm, color: { argb: it.zm ? C.warn : C.ink } }); l.alignment = { indent: 1 };
+          v.font = font({ size: 8.5 }); v.alignment = { horizontal: "right" };
+          if (typeof it.val === "number") v.numFmt = Math.abs(it.val) < 1 && it.val !== 0 ? "0.00###" : "#,##0.##";
+          if (it.jedn) v.note = undefined;
+        }
+      });
+      x.height = 13;
+    }
 
-    /* Obliczenia */
-    var s3 = sheet("Obliczenia", [42, 20, 20, 20, 20], false);
-    banner(s3, "Obliczenia krok po kroku", "Te same kroki co w starym arkuszu (adresy komórek w nawiasach)", 5);
-    section(s3, "Materiały i urządzenia (dawny arkusz NK38)", 5);
-    pairs(s3, R.mat, 5);
-    section(s3, "Montaż i cena (dawny arkusz montażu)", 5);
-    table(s3, R.mon.head, R.mon.rows);
-
-    /* Do oferty */
-    var s4 = sheet("Do oferty", [24, 96], false);
+    /* 3. Do oferty */
+    var s4 = sheet("Do oferty", [24, 96], 75);
     banner(s4, "Zestawienie do oferty", gen, 2);
     ctx.zestawienie.split("\n").forEach(function (l) {
-      var m = l.match(/^([^:]{3,22}):\s{2,}(.*)$/);
-      var x = m ? s4.addRow([m[1], m[2]]) : s4.addRow([l]);
-      if (!m) s4.mergeCells(x.number, 1, x.number, 2);
-      x.eachCell(function (c, i) { c.font = font({ name: m ? FONT : "Consolas", size: m ? 10 : 9.5, color: { argb: m && i === 1 ? C.muted : C.ink } }); c.alignment = { wrapText: true, vertical: "top" }; });
-    });
-    s4.addRow([]);
-    section(s4, "Uwagi do sprawdzenia", 2);
-    ctx.uwagi.forEach(function (u) {
-      var x = s4.addRow(["•", u]); x.getCell(1).alignment = { horizontal: "right", vertical: "top" };
-      x.getCell(2).alignment = { wrapText: true, vertical: "top" }; x.getCell(2).font = font(); x.height = 16 * Math.max(1, Math.ceil(u.length / 95));
-    });
-
-    /* Cennik */
-    var s5 = sheet("Cennik", [46, 16, 10], false);
-    banner(s5, "Cennik użyty w wycenie", "Pogrubione na pomarańczowo = zmienione względem domyślnego", 3);
-    ctx.cennikPola.forEach(function (p) {
-      if (!p[1]) { section(s5, p[0], 3); return; }
-      var x = s5.addRow([p[1], r.cennik[p[0]], p[2]]), ch = ctx.cennikZmiany[p[0]] !== undefined;
-      x.eachCell(function (c, i) { c.border = box; c.font = font({ bold: ch, color: { argb: ch ? C.warn : (i === 3 ? C.muted : C.ink) } }); });
-      x.getCell(1).alignment = { indent: 1 };
-      x.getCell(2).numFmt = p[2] === "zł" ? '#,##0.00' : (p[2] === "×" ? "0.00###" : "#,##0.##");
+      var mm = l.match(/^([^:]{3,22}):\s{2,}(.*)$/);
+      var x = mm ? s4.addRow([mm[1], mm[2]]) : s4.addRow([l]);
+      if (!mm) s4.mergeCells(x.number, 1, x.number, 2);
+      x.eachCell(function (c, ci) { c.font = font({ name: mm ? FONT : "Consolas", size: mm ? 10 : 9.5, color: { argb: mm && ci === 1 ? C.muted : C.ink } }); c.alignment = { wrapText: true, vertical: "top" }; });
     });
     return wb.xlsx.writeBuffer();
   }
 
   /* ------------------------------------------------------------ PDF (max 4 strony) */
   function pdf(r, ctx) {
-    var R = raport(r, ctx.GLEBOKOSCI), d = r.dane;
+    var R = raport(r, ctx.GLEBOKOSCI, ctx.oferta), d = r.dane, w0 = r.warianty[0];
     var doc = new L.jsPDF({ unit: "mm", format: "a4" });
     doc.addFileToVFS("Carlito-Regular.ttf", ctx.fonts.regular);
     doc.addFileToVFS("Carlito-Bold.ttf", ctx.fonts.bold);
     doc.addFont("Carlito-Regular.ttf", "Carlito", "normal");
     doc.addFont("Carlito-Bold.ttf", "Carlito", "bold");
     doc.setFont("Carlito", "normal");
-    var ACC = [10, 107, 116], INK = [14, 23, 28], MUT = [106, 119, 128], LINE = [227, 231, 234];
+    var ACC = [10, 107, 116], INK = [14, 23, 28], MUT = [106, 119, 128], LINE = [227, 231, 234], SOFT = [227, 242, 242], TILE = [243, 248, 248];
     var base = { styles: { font: "Carlito", fontSize: 8.5, cellPadding: 1.3, textColor: INK, lineColor: LINE, lineWidth: 0.1 },
-      headStyles: { fillColor: ACC, textColor: 255, fontStyle: "bold", halign: "right" },
+      headStyles: { fillColor: SOFT, textColor: ACC, fontStyle: "bold", halign: "right" },
       columnStyles: { 0: { halign: "left" } }, margin: { left: 14, right: 14 }, theme: "grid" };
     function head(t, sub) {
-      doc.setFont("Carlito", "bold"); doc.setFontSize(15); doc.setTextColor.apply(doc, INK); doc.text(t, 14, 18);
-      doc.setFont("Carlito", "normal"); doc.setFontSize(9); doc.setTextColor.apply(doc, MUT); doc.text(sub, 14, 23.5);
-      doc.setDrawColor.apply(doc, ACC); doc.setLineWidth(0.6); doc.line(14, 26, 196, 26);
+      doc.setFillColor.apply(doc, ACC); doc.rect(14, 12, 182, 11, "F");
+      doc.setFont("Carlito", "bold"); doc.setFontSize(14); doc.setTextColor(255, 255, 255); doc.text(t, 17, 19.5);
+      doc.setFont("Carlito", "normal"); doc.setFontSize(8.5); doc.setTextColor.apply(doc, MUT); doc.text(sub, 14, 28);
     }
-    function h2(t, y) { doc.setFont("Carlito", "bold"); doc.setFontSize(11); doc.setTextColor.apply(doc, INK); doc.text(t, 14, y); return y + 2; }
+    function h2(t, y) {
+      doc.setFont("Carlito", "bold"); doc.setFontSize(11); doc.setTextColor.apply(doc, ACC); doc.text(t, 14, y);
+      doc.setDrawColor.apply(doc, ACC); doc.setLineWidth(0.4); doc.line(14, y + 1.2, 196, y + 1.2); return y + 3.5;
+    }
     function numTable(T, y, opts) {
       L.autoTable(doc, Object.assign({}, base, opts || {}, {
         startY: y, head: [T.head],
@@ -283,44 +326,68 @@
         bodyStyles: { halign: "right" },
         didParseCell: function (h) {
           if (h.section === "head" && h.column.index === 0) h.cell.styles.halign = "left";
-          if (h.section === "body" && T.rows[h.row.index].bold) { h.cell.styles.fontStyle = "bold"; h.cell.styles.fillColor = [227, 242, 242]; }
+          if (h.section === "body" && T.rows[h.row.index].bold) { h.cell.styles.fontStyle = "bold"; h.cell.styles.fillColor = SOFT; }
         }
       }));
       return doc.lastAutoTable.finalY + 7;
     }
-    var stopka = (d.nazwa || "Wycena") + (d.nr ? " · " + d.nr : "") + " · wygenerowano " + new Date().toLocaleDateString("pl-PL");
+    function kafelki(y, items) {
+      var wdt = (182 - 3 * 4) / 4;
+      items.forEach(function (t, i) {
+        var x = 14 + i * (wdt + 4);
+        doc.setFillColor.apply(doc, TILE); doc.rect(x, y, wdt, 22, "F");
+        doc.setFillColor.apply(doc, ACC); doc.rect(x, y, wdt, 0.9, "F");
+        doc.setFont("Carlito", "normal"); doc.setFontSize(8); doc.setTextColor.apply(doc, MUT); doc.text(t[0], x + 3, y + 6);
+        doc.setFont("Carlito", "bold"); doc.setFontSize(15); doc.setTextColor.apply(doc, i < 2 ? ACC : INK); doc.text(t[1], x + 3, y + 14);
+        doc.setFont("Carlito", "normal"); doc.setFontSize(7.8); doc.setTextColor.apply(doc, MUT); doc.text(doc.splitTextToSize(t[2], wdt - 5)[0], x + 3, y + 19.2);
+      });
+      return y + 29;
+    }
+    var stopka = (d.nazwa || "Wycena") + " · szablon " + d.typ + " · wygenerowano " + new Date().toLocaleDateString("pl-PL");
 
-    head("Kalkulator NK38 · " + (d.nazwa || "wycena"), stopka);
-    var y = h2("Dane wejściowe", 33);
-    var half = Math.ceil(R.dane.length / 2), body = [];
-    for (var i = 0; i < half; i++) body.push([R.dane[i][0], R.dane[i][1], R.dane[i + half] ? R.dane[i + half][0] : "", R.dane[i + half] ? R.dane[i + half][1] : ""]);
-    L.autoTable(doc, Object.assign({}, base, { startY: y, body: body, theme: "plain",
-      columnStyles: { 0: { textColor: MUT, cellWidth: 34 }, 1: { cellWidth: 57 }, 2: { textColor: MUT, cellWidth: 34 }, 3: { cellWidth: 57 } } }));
-    y = h2("Warianty", doc.lastAutoTable.finalY + 8);
-    numTable(R.wynik, y);
+    head("Wycena " + d.typ + " · " + (d.nazwa || "bez nazwy"), stopka);
+    var y = kafelki(32, [
+      ["Cena netto 2000 kg, " + R.zA, zl(w0.cena), zl(w0.cenaMP) + " / MP"],
+      ["Cena netto 2000 kg, " + R.zB, zl(w0.cena2), zl(w0.cenaMP2) + " / MP"],
+      ["Czas montażu", w0.tygodnie + " tyg.", w0.dni + " dni pracy, " + w0.osoby + " os."],
+      ["Konserwacja roczna", zl(r.konserwacja[0].rok), r.konserwacja[0].stawka + " zł/MP/mies., przegląd półroczny " + zl(r.konserwacja[0].pol)]
+    ]);
+    y = numTable(R.ceny, h2("Ceny wariantów", y));
+    y = numTable(R.opcje, h2("Opcje do oferty (cena z narzutami)", y), { columnStyles: { 0: { halign: "left", cellWidth: 50 } } });
+    numTable(R.struktura, h2("Struktura kosztów", y));
 
-    doc.addPage(); head("Opcje i ekipa", stopka);
-    y = numTable(R.opcje, h2("Opcje do oferty (cena z narzutami)", 33));
-    y = h2("Analiza liczby osób · wariant " + r.analizaWariant + " · wpisano " + r.warianty[0].osoby + " os.", y);
-    numTable(R.ekipa, y, { columnStyles: { 0: { halign: "left", cellWidth: 46 } } });
+    doc.addPage(); head("Dane wejściowe", stopka);
+    y = 34;
+    var colW = 89, xs = [14, 14 + colW + 4], yCol = [y, y];
+    R.grupy.forEach(function (g, gi) {
+      var col = yCol[0] <= yCol[1] ? 0 : 1, x0 = xs[col], yy = yCol[col];
+      doc.setFillColor.apply(doc, SOFT); doc.rect(x0, yy, colW, 6.5, "F");
+      doc.setFont("Carlito", "bold"); doc.setFontSize(9.5); doc.setTextColor.apply(doc, ACC); doc.text(g.tytul, x0 + 2.5, yy + 4.6);
+      L.autoTable(doc, Object.assign({}, base, { startY: yy + 6.5, body: g.pary, theme: "plain", margin: { left: x0, right: 210 - x0 - colW },
+        tableWidth: colW, styles: Object.assign({}, base.styles, { fontSize: 8.4, cellPadding: { top: 1, bottom: 1, left: 2, right: 2 } }),
+        columnStyles: { 0: { textColor: MUT, cellWidth: 33 }, 1: { cellWidth: colW - 33 } },
+        didParseCell: function (h) { if (h.row.index % 2 === 1) h.cell.styles.fillColor = [247, 248, 249]; } }));
+      yCol[col] = doc.lastAutoTable.finalY + 6;
+    });
 
     doc.addPage(); head("Obliczenia krok po kroku", stopka);
-    y = h2("Materiały i urządzenia (dawny arkusz NK38)", 33);
+    y = h2("Materiały i urządzenia", 36);
     L.autoTable(doc, Object.assign({}, base, { startY: y, body: R.mat, theme: "striped",
+      styles: Object.assign({}, base.styles, { fontSize: 8.2, cellPadding: 1 }),
       columnStyles: { 0: { cellWidth: 90 }, 1: { halign: "right" } } }));
-    y = h2("Montaż i cena (dawny arkusz montażu)", doc.lastAutoTable.finalY + 8);
-    numTable(R.mon, y, { styles: Object.assign({}, base.styles, { fontSize: 7.8, cellPadding: 0.9 }) });
+    y = h2("Montaż i cena", doc.lastAutoTable.finalY + 7);
+    numTable(R.mon, y, { styles: Object.assign({}, base.styles, { fontSize: 7.8, cellPadding: 0.85 }) });
 
     doc.addPage(); head("Zestawienie do oferty", stopka);
-    doc.setFont("Carlito", "normal"); doc.setFontSize(8.6); doc.setTextColor.apply(doc, INK);
-    y = 34;
+    doc.setFont("Carlito", "normal"); doc.setFontSize(9); doc.setTextColor.apply(doc, INK);
+    y = 36;
     ctx.zestawienie.split("\n").forEach(function (l) {
-      var lines = doc.splitTextToSize(l || " ", 182);
-      doc.text(lines, 14, y); y += 4 * lines.length;
+      var mm = l.match(/^([^:]{3,22}):\s{2,}(.*)$/);
+      if (mm) {
+        doc.setTextColor.apply(doc, MUT); doc.text(mm[1], 14, y);
+        doc.setTextColor.apply(doc, INK); var lines = doc.splitTextToSize(mm[2], 140); doc.text(lines, 56, y); y += 4.6 * lines.length;
+      } else { var ls = doc.splitTextToSize(l || " ", 182); doc.setTextColor.apply(doc, INK); doc.text(ls, 14, y); y += 4.6 * ls.length; }
     });
-    y = h2("Uwagi do sprawdzenia", y + 5) + 3;
-    doc.setFont("Carlito", "normal"); doc.setFontSize(8.6);
-    ctx.uwagi.forEach(function (u) { var lines = doc.splitTextToSize("• " + u, 182); doc.text(lines, 14, y); y += 4 * lines.length + 1; });
 
     var pages = doc.getNumberOfPages();
     for (var p = 1; p <= pages; p++) {
@@ -450,7 +517,7 @@
 
   /* Oferta Word w układzie oryginalnych ofert PSP: Verdana 8 pt, nagłówek Times/Century Gothic,
      niebieskie etykiety "Pozycja 1", pogrubione liczby, niebieskie punktory. */
-  function docxOferta(r, o, sz, logo) {
+  function docxOferta(r, o, sz, logo, podpis) {
     var D = L.docx, F = oferta(r, o, sz);
     var BLUE = "3366CC", GREY = "444444", BODY = "Verdana", HEAD = "Times New Roman", GOTH = "Century Gothic";
     var W = 9638, IND = 284;                       // szerokość tekstu (A4 - marginesy 2 cm / 1,4 cm) i wcięcie treści
@@ -514,14 +581,17 @@
           cell(638, [numerStrony()], { verticalAlign: D.VerticalAlign.TOP })] })]
       }), p([run("")])] });
     }
-    var stopka = new D.Footer({ children: F.stopka.map(function (l, i) {
+    var stopkaP = function () { return F.stopka.map(function (l, i) {
       var last = i === F.stopka.length - 1;
       var runs = last ? l.split(/(\S+@\S+|https?:\/\/\S+)/).filter(Boolean).map(function (x) {
         var link = /@|https?:/.test(x);
         return new D.TextRun({ text: x, font: GOTH, size: link ? 16 : 18, color: link ? "0000FF" : "000000", underline: link ? {} : undefined });
       }) : [new D.TextRun({ text: l, font: GOTH, size: 20 })];
       return p(runs, { alignment: D.AlignmentType.CENTER, border: i === 0 ? { top: { style: D.BorderStyle.SINGLE, size: 4, color: "BFBFBF", space: 4 } } : undefined });
-    }) });
+    }); };
+    var stopka = new D.Footer({ children: stopkaP() });
+    /* klauzula poufności zawsze na dole drugiej (i dalszych) strony, nad stopką firmy */
+    var stopka2 = new D.Footer({ children: [p([run(F.klauzula, { size: 12, color: GREY })], { alignment: D.AlignmentType.JUSTIFIED, spacing: { after: 120, line: 240 } })].concat(stopkaP()) });
 
     var k = [];
     k.push(p([run(F.miejsceData)], { spacing: { before: 0, after: 0, line: 240 } }));
@@ -588,10 +658,10 @@
     F.gwarancja.forEach(function (l) { k.push(body([run(l)])); });
     k.push(blank());
     F.zakonczenie.forEach(function (l, i) { k.push(body([run(l)], { indent: { left: i ? IND + 284 : IND } })); });
-    k.push(blank(), blank(), blank());
+    if (podpis) k.push(new D.Paragraph({ indent: { left: 340 }, spacing: { before: 60, after: 0 },
+      children: [new D.ImageRun({ type: podpis.type || "jpg", data: podpis.data, transformation: { width: podpis.w, height: podpis.h } })] }));
+    else k.push(blank(), blank(), blank());
     F.podpis.forEach(function (l) { k.push(p([run(l)], { indent: { left: 567 }, alignment: D.AlignmentType.LEFT })); });
-    k.push(blank(), blank());
-    k.push(p([run(F.klauzula, { size: 12, color: GREY })], { alignment: D.AlignmentType.JUSTIFIED }));
 
     var doc = new D.Document({
       creator: "Kalkulator NK38",
@@ -601,7 +671,7 @@
       sections: [{
         properties: { titlePage: true, page: { size: { width: 11906, height: 16838 }, margin: { top: 1418, bottom: 1418, left: 1134, right: 1134, header: 425, footer: 425 } } },
         headers: { first: glowka(true), default: glowka(false) },
-        footers: { first: stopka, default: stopka },
+        footers: { first: stopka, default: stopka2 },
         children: k
       }]
     });
@@ -610,7 +680,7 @@
 
   var api = {
     setLibs: function (x) { Object.assign(L, x); }, xlsx: xlsx, pdf: pdf, docx: docxOferta,
-    oferta: oferta, domyslnaOferta: domyslnaOferta, wymiary: wymiary, SZABLON: SZABLON, zOpisu: zOpisu, ceil100: ceil100, raport: raport
+    oferta: oferta, domyslnaOferta: domyslnaOferta, wymiary: wymiary, opisAuto: opisAuto, opisEfektywny: opisEfektywny, SZABLON: SZABLON, zOpisu: zOpisu, ceil100: ceil100, raport: raport
   };
   if (typeof module !== "undefined" && module.exports) module.exports = api;
   else root.NK38X = api;

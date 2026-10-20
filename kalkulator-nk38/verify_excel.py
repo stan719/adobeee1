@@ -35,7 +35,7 @@ def model(inp, wariant, osoby=None):
         km_pomiary=inp.get("in_km_pom"), km_montaz=inp.get("in_km_mon"),
         osoby=osoby or g("in_osoby", 4), wyjazdy=inp.get("in_wyjazdy"),
         transport_cena=g("in_tir_cena"), transporty=g("in_tir"),
-        rozladunek_sprzet=g("in_rozl_cena"), dni_rozladunku=inp.get("in_rozl_dni"),
+        rozladunek_sprzet=g("in_rozl_cena"), dni_rozladunku=inp.get("in_rozl_dni"), dzwig_koszt=inp.get("in_dzwig_koszt"),
         wzor_podrozy="uproszczony" if g("in_wzor", "") == "Uproszczony" else "stary",
         zysk=g("in_zysk", 0.14), zysk2=g("in_zysk2", 0.10), eur=g("in_eur", 4.325)))
 
@@ -59,6 +59,8 @@ def losuj(rnd):
         inp["in_wyjazdy"] = rnd.randint(3, 20)
     if rnd.random() < 0.2:
         inp["in_rozl_dni"] = 2
+    if rnd.random() < 0.25:
+        inp["in_dzwig_koszt"] = 7500
     gl = lambda n: {cm: k for cm, k in zip(rnd.sample([g[0] for g in GLEBOKOSCI], 2),
                                            (n // 2, n - n // 2))} if n and rnd.random() < 0.7 else {}
     inp["gl_S"], inp["gl_D"] = gl(s), gl(d)

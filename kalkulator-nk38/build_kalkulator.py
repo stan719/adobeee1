@@ -355,6 +355,7 @@ def build(inputs=None):
     inp(r, "in_tir_cena", "Cena transportu / TIR", 0, PLN, "Orientacyjnie: KRK 1600, WAW/WRO 3300, POZ/ZG 4500"); r += 1
     inp(r, "in_rozl_cena", "Rozładunek - sprzęt (jednorazowo)", 0, PLN, "Jednorazowy koszt przyjazdu i wyjazdu wózka"); r += 1
     inp(r, "in_rozl_dni", "Nadpisz: dni rozładunku", None, NUM, "puste = 0,5 dnia / TIR"); r += 1
+    inp(r, "in_dzwig_koszt", "Nadpisz: koszt Spider Crane razem", None, PLN, "puste = cena za dzień x liczba dni"); r += 1
     inp(r, "in_osoby", "Liczba osób na montażu", 4, "0",
         "Stawki: 500 / 400 / każda kolejna 350 zł. Zobacz analizę liczby osób w Podsumowaniu", "os"); r += 1
     inp(r, "in_wyjazdy", "Nadpisz: tygodnie (Kraków: dni) montażu", None, "0", "puste = automatycznie"); r += 1
@@ -528,7 +529,7 @@ def build(inputs=None):
     mrow("k_pal", "Paliwo", "={km}/100*ROUNDUP(c_spalanie*c_paliwo,0)")
     mrow("k_hot", "Hotel", "=IF(e_krk,0,c_hotel*({dni}+1)*{os})")
     mrow("k_tr", "Transport TIR", "=in_tir_cena*in_tir")
-    mrow("k_dzw", "Spider Crane", "=c_dzwig*e_dzw_dni")
+    mrow("k_dzw", "Spider Crane", "=IF(ISBLANK(in_dzwig_koszt),c_dzwig*e_dzw_dni,in_dzwig_koszt)")
     mrow("k_rs", "Rozładunek (sprzęt, jednorazowo)", "=in_rozl_cena")
     mrow("k_rl", "Rozładunek (ludzie)", "={st}*e_rozl_dni*{os}")
     mrow("k_doj", "Dojazdy (ludzie)", "={st}*({podr}-{os}*e_rozl_dni)")

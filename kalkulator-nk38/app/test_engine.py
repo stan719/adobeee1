@@ -18,6 +18,8 @@ def do_js(inp):
     d["gl_D"] = {str(k): v for k, v in inp.get("gl_D", {}).items()}
     d["wzor"] = "uproszczony" if inp.get("in_wzor") == "Uproszczony" else "stary"
     d["analiza"] = WARIANTY.index(inp.get("in_analiza", WARIANTY[0]))
+    d["dzwig_koszt"] = inp.get("in_dzwig_koszt")
+    d["szablon"] = "nk37" if inp.get("in_typ") == "NK37" else "nk38"
     return d
 
 
@@ -36,7 +38,7 @@ def main(n=200):
 const E = require(%s); const cases = JSON.parse(require('fs').readFileSync(0, 'utf8'));
 let bad = 0;
 cases.forEach((c, i) => {
-  const r = E.oblicz(c.dane);
+  const r = E.oblicz(c.dane, E.szablonyWbudowane().find(x => x.id === c.dane.szablon));
   r.warianty.forEach((w, j) => { const e = c.warianty[j];
     [[w.cena, e[0]], [w.cena2, e[1]], [w.dni, e[2]], [w.wyjazdy, e[3]], [w.tygodnie, e[4]]].forEach(([a, b], k) => {
       if (Math.abs(a - b) > 0.01) { bad++; if (bad < 10) console.log('zestaw', i, 'wariant', j, 'pole', k, a, b); } }); });
