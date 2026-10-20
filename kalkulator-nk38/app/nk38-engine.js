@@ -81,6 +81,10 @@
     var s = bazaLista();
     s.id = "pusty"; s.nazwa = "Nowe urządzenie"; s.wbudowany = false;
     s.pozycje = []; s.wariantB = { nazwa: "2500 kg", tryb: "%", wartosc: 0, waluta: "PLN" };
+    s.teksty = Object.assign(tekstyNK38(), { barierki: "", opcjaQ2500: "",
+      wstep: "przedstawiamy {oferte} na dostawę i montaż {n} urządzeń {typ} na inwestycję zlokalizowaną {garaz}.",
+      tech: "Prześwit: min. {P}cm;\nWysokość parkowanych pojazdów*: ▲-{G}cm;" });
+    s.wysokosci = { tryb: "przeswit", k: 15, dol: 0 };
     s.opisOferty = "Urządzenia {typ} do niezależnego parkowania pojazdów";
     s.typy = {
       S: { nazwa: "Urządzenia typ 1", mp: 0, osd: 0, cena: 0, waluta: "PLN", dzwig: 0, oferta: "{n} szt. – {typ}" },
@@ -387,7 +391,7 @@
       osobodni: osdAll, dni: dni, km: km, koszty: k, baza: baza,
       kob: n.brutto * c.kob, gdw: n.brutto * c.gdw, zysk: n.brutto * zysk, podatek: n.podatek,
       cena: cena, koszt: cena - n.brutto * zysk, cenaMP: m.MP ? cena / m.MP : 0,
-      cenaMPeur: m.MP ? cena / m.MP / num(d.eur, 4.325) : 0,
+      cenaMPeur: m.MP && num(d.eur) > 0 ? cena / m.MP / num(d.eur) : 0,
       cena2: cena2, zysk2: n2.brutto * zysk2, podatek2: n2.podatek, cenaMP2: m.MP ? cena2 / m.MP : 0,
       tygodnie: tyg, tygodnieZakres: [tyg, Math.max(tyg, Math.round(tyg * 1.25))],
       noclegi: w.krk ? 0 : (dni + 1) * os

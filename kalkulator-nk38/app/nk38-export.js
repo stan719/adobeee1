@@ -62,11 +62,12 @@
     var grupy = [
       { tytul: "Inwestycja", pary: [
         ["Nazwa / adres", d.nazwa || "–"], ["Data", d.data || "–"], ["Opis / wariant", opisEfektywny(d, o)],
+      ].concat((d.wysokosci || {}).tryb === "przeswit" || (d.wysokosci || {}).tryb === "przeswit2" ? [["Prześwit", lub(function (w) { return k(w.p); }) + " cm"]] : [
         ["Zagłębienie H1 / H2", lub(function (w) { return k(w.h1) + " / " + k(w.h2); }) + " cm"],
-        ["Długość zagłębienia / prześwit", lub(function (w) { return k(w.dl) + " / " + k(w.p); }) + " cm"],
+        ["Długość zagłębienia / prześwit", lub(function (w) { return k(w.dl) + " / " + k(w.p); }) + " cm"]]).concat([
         ["Wysokość pojazdów ▲ / ▼", lub(function (w) { return k(w.gor) + " / " + k(w.dol); }) + " cm"],
         ["Lokalizacja", d.lok + (w.krk ? "" : ", " + (d.km || 0) + " km od Krakowa")],
-        ["Km pomiary / montaż", w.kmPom + " / " + w.kmMon + " km"]] },
+        ["Km pomiary / montaż", w.kmPom + " / " + w.kmMon + " km"]]) },
       { tytul: "Urządzenia", pary: (lista ? [
         ["Szablon urządzenia", d.typ], ["Urządzenia", (urz || "–") + " = " + m.MP + " MP"]]
         .concat(sz.opcje.agregaty ? [["Agregaty", (d.agregaty || 0) + " szt."]] : [])
@@ -160,8 +161,19 @@
       if (!p[1]) { out.push({ grupa: p[0] }); return; }
       out.push({ label: p[1], val: r.cennik[p[0]], jedn: p[2], zm: zmiany && zmiany[p[0]] !== undefined });
     });
-    out.push({ grupa: "Typy platform (MP, osobodni montażu)" });
-    ["S", "D", "NP"].forEach(function (k) { out.push({ label: sz.typy[k].nazwa, val: sz.typy[k].mp + " MP, " + sz.typy[k].osd + " osd", jedn: "" }); });
+    var lista = sz.model === "lista";
+    out.push({ grupa: lista ? "Typy urządzeń (cena, MP, osobodni)" : "Typy platform (MP, osobodni montażu)" });
+    ["S", "D", "NP"].forEach(function (k) {
+      var t = sz.typy[k]; if (lista && !t.nazwa) return;
+      out.push({ label: t.nazwa, val: (lista ? t.cena + " " + t.waluta + "/szt., " : "") + t.mp + " MP, " + t.osd + " osd", jedn: "" });
+    });
+    if (lista) {
+      if (sz.pozycje.length) out.push({ grupa: "Pozycje kosztowe" });
+      sz.pozycje.forEach(function (x) { out.push({ label: x.nazwa + (x.opcja ? " (opcja)" : ""), val: x.naCo === "kwota" ? "wpisywana" : x.cena + " " + x.waluta + (x.wsp !== 1 ? " × " + x.wsp : ""), jedn: "" }); });
+      if (sz.import.wl) { out.push({ grupa: "Fracht: koszty kontenera" }); sz.import.koszty.forEach(function (x) { out.push({ label: x.nazwa, val: x.kwota + " " + x.waluta, jedn: "" }); }); }
+      if (sz.wariantB.nazwa) { out.push({ grupa: "Wariant 2" }); out.push({ label: sz.wariantB.nazwa, val: sz.wariantB.tryb === "szt" ? sz.wariantB.wartosc + " " + sz.wariantB.waluta + "/szt." : (sz.wariantB.wartosc * 100) + "%", jedn: "" }); }
+      return out;
+    }
     out.push({ grupa: "Zagłębienia (dopłata, siłownik)" });
     sz.glebokosci.forEach(function (g) { out.push({ label: g.cm + " cm", val: g.doplata, jedn: "zł · " + g.silownik }); });
     out.push({ grupa: "Szerokości i długości" });
@@ -541,7 +553,7 @@
         " na dostawę i montaż " + m.platformy + " platform służących do niezależnego parkowania " + m.MP + " pojazdów w garażu " +
         (o.garaz || ("inwestycji " + (d.nazwa || "…"))) + ".",
       tech: tech,
-      wyposazenie: [TT.obciazenie, TT.zabezpieczenie, d.barierki ? TT.barierki : ""].filter(Boolean).join("\n"),
+      wyposazenie: [TT.obciazenie, TT.zabezpieczenie, d.barierki && !lista ? TT.barierki : ""].filter(Boolean).join("\n"),
       lista: ["S", "D", "NP"].map(function (k) { return d[k] ? sub(TY[k].oferta, { n: d[k], typ: typ }) : ""; }).concat([
         d.agregaty && r.szablon.opcje.agregaty ? d.agregaty + " szt. – " + eff.agregat + "." : ""]).filter(Boolean).join("\n"),
       platnosci: eff.platnosci,

@@ -683,7 +683,7 @@ table.t.edt input[type=text], table.t.edt td input:not([type=number]) { min-widt
     $("pozBox").innerHTML = reczne.map(function (x) {
       var v = (d.poz || {})[x.id];
       return '<label class="f">' + esc(x.nazwa) + (x.naCo === "kwota" ? " [zł]" : " [szt.]") + '<input type="number" min="0" step="any" data-pozid="' + esc(x.id) + '" value="' + (v == null ? "" : v) + '"' +
-        (x.naCo === "kwota" && x.cena ? ' placeholder="' + x.cena + '" class="auto"' : "") + '><span class="hint">' + (x.naCo === "kwota" ? "wpisuje liczący (np. wycena automatyka)" : "ilość × " + x.cena + " " + x.waluta) + "</span></label>";
+        (x.naCo === "kwota" && x.cena ? ' placeholder="' + esc(x.cena) + '" class="auto"' : "") + '><span class="hint">' + (x.naCo === "kwota" ? "wpisuje liczący (np. wycena automatyka)" : "ilość × " + esc(x.cena) + " " + esc(x.waluta)) + "</span></label>";
     }).join("");
     $("pozBox").classList.toggle("ukryj", !reczne.length);
     var dm = sz.domyslne || {}, hint = function (id, t) { var el = $(id).nextElementSibling; if (el) el.textContent = t; };
@@ -851,7 +851,7 @@ table.t.edt input[type=text], table.t.edt td input:not([type=number]) { min-widt
     var r = wynik, d = r.dane, m = r.mat, sel = state.sel, w = r.warianty[sel], T = r.szablon.typy;
     var zA = "zysk " + pct(d.zysk), zB = "zysk " + pct(d.zysk2);
     if (state.view === "kalk") { $("appTitle").textContent = "Kalkulator " + d.typ; $("projline").textContent = (d.nazwa || "Nowa wycena") + " · " + d.typ; }
-    $("mpNote").textContent = m.platformy + " platform · " + m.MP + " MP";
+    $("mpNote").textContent = r.szablon.model === "lista" ? m.platformy + " " + odm(m.platformy, "urządzenie", "urządzenia", "urządzeń") + " · " + m.MP + " MP" : m.platformy + " platform · " + m.MP + " MP";
     ["S", "D", "NP"].forEach(function (k) { $("lbl" + k).textContent = T[k].nazwa; $("hint" + k).textContent = T[k].mp + " MP"; });
     $("std_S").textContent = Math.max(0, (d.S || 0) - sumO(d.gl_S));
     $("std_D").textContent = Math.max(0, (d.D || 0) - sumO(d.gl_D));
@@ -880,7 +880,7 @@ table.t.edt input[type=text], table.t.edt td input:not([type=number]) { min-widt
     $("dimSummary").textContent = ds.length ? "· " + ds.join(", ") : "· wszystkie standardowe";
 
     var maB = !!r.szablon.wariantB.nazwa, jm = r.szablon.opcje.konserwacjaNa === "szt" ? "szt." : "MP";
-    if (!maB && sel % 2) { sel = state.sel = sel - 1; w = r.warianty[sel]; }
+    if (!maB && sel % 2) { sel = state.sel = sel - 1; w = r.warianty[sel]; lsSet(LS.sel, sel); }
     var q = sel % 2, sl = sel >= 2 ? 1 : 0, recz = d.wyjazdy != null, K = r.konserwacja;
     $("hero").innerHTML =
       '<div class="hero-top"><div class="row">' +
@@ -956,11 +956,9 @@ table.t.edt input[type=text], table.t.edt td input:not([type=number]) { min-widt
       ["Osobodni razem", function (w) { return n2(w.osobodni); }]
     ], ws);
     h += "</tbody></table></div>";
-    var O = r.opcje;
-    h += '<h3 class="sec">Opcje do oferty, cena z narzutami</h3><div class="scroll"><table class="t"><thead><tr><th>Opcja</th><th>2000 kg, ' + zA + '</th><th>2500 kg, ' + zA + '</th><th>2000 kg, ' + zB + '</th><th>2500 kg, ' + zB + '</th></tr></thead><tbody>';
-    h += "<tr><td>Słupki e-ładowarek 3,7 kW, z robocizną</td><td>" + [O.slupki37[0], O.slupki37[1], O.slupki37b[0], O.slupki37b[1]].map(zl).join("</td><td>") + "</td></tr>";
-    h += "<tr><td>Słupki e-ładowarek 22 kW, z robocizną</td><td>" + [O.slupki22[0], O.slupki22[1], O.slupki22b[0], O.slupki22b[1]].map(zl).join("</td><td>") + "</td></tr>";
-    h += "<tr><td>Malowanie proszkowe RAL</td><td>" + [O.malowanie, O.malowanie, O.malowanieB, O.malowanieB].map(zl).join("</td><td>") + "</td></tr>";
+    var RO = X.raport(r, r.szablon.glebokosci.map(function (g) { return g.cm; }), d.oferta).opcje;
+    h += '<h3 class="sec">Opcje do oferty, cena z narzutami</h3><div class="scroll"><table class="t"><thead><tr>' + RO.head.map(function (x) { return "<th>" + esc(x) + "</th>"; }).join("") + "</tr></thead><tbody>";
+    RO.rows.forEach(function (x) { h += "<tr><td>" + esc(x.label) + "</td><td>" + x.vals.map(zl).join("</td><td>") + "</td></tr>"; });
     return h + "</tbody></table></div>";
   }
 
@@ -1028,7 +1026,7 @@ table.t.edt input[type=text], table.t.edt td input:not([type=number]) { min-widt
   function paneObl() {
     var R = X.raport(wynik, wynik.szablon.glebokosci.map(function (g) { return g.cm; }), wynik.dane.oferta);
     var h = '<h3 class="sec">Materiały i urządzenia</h3><div class="scroll"><table class="t"><tbody>' +
-      R.mat.map(function (x) { return '<tr class="' + (/^Suma/.test(x[0]) ? "strong" : "") + '"><td>' + x[0] + "</td><td>" + x[1] + "</td></tr>"; }).join("") + "</tbody></table></div>";
+      R.mat.map(function (x) { return '<tr class="' + (/^Suma/.test(x[0]) ? "strong" : "") + '"><td>' + esc(x[0]) + "</td><td>" + esc(x[1]) + "</td></tr>"; }).join("") + "</tbody></table></div>";
     var wv = X.widoczneWarianty(wynik);
     h += '<h3 class="sec">Montaż i cena</h3><div class="scroll"><table class="t">' + thead("Pozycja", wv) + "<tbody>" +
       R.mon.rows.map(function (row) {
@@ -1220,10 +1218,8 @@ table.t.edt input[type=text], table.t.edt td input:not([type=number]) { min-widt
   }
   function renderOfertaForm() {
     var r = wynik, d = r.dane, o = d.oferta, sz = tekstyOferty(), F = X.oferta(r, o, sz), wy = F.wymiary;
-    ["agregat", "kw", "gw", "platnosci"].forEach(function (k) { if (!o[k]) o[k] = F.eff[k]; });   // domyślne z szablonu urządzenia, dalej do edycji
-    if (o.dostawa === "" || o.dostawa == null) o.dostawa = F.eff.dostawa;
     var nrNast = o.nrAuto || nastepnyNumer();
-    var ch = function (k, l) { return '<label><input type="checkbox" data-of="opcje.' + k + '"' + (o.opcje[k] ? " checked" : "") + "> " + l + "</label>"; };
+    var ch = function (k, l) { return '<label><input type="checkbox" data-of="opcje.' + esc(k) + '"' + (o.opcje[k] ? " checked" : "") + "> " + l + "</label>"; };
     var h = "";
     h += sekcja("A", "Numer, data i adresat", '<div class="ofgrid">' +
       ofField("Nr oferty", "nr", { ph: nrNast, hint: o.nrAuto ? "nadany: " + o.nrAuto + ' <button type="button" class="linkbtn" id="bNowyNr">Nadaj nowy</button>' : "puste = nadawany automatycznie przy pobraniu" }) +
@@ -1243,7 +1239,7 @@ table.t.edt input[type=text], table.t.edt td input:not([type=number]) { min-widt
           ofField("Wysokość pojazdów ▼ dolna [cm]", pre + "hd", { num: 1, ph: w.dolAuto == null ? "" : String(w.dolAuto), hint: "puste = niższe H − 15" }) +
           ofField("Wysokość pojazdów ▲ górna [cm]", pre + "hg", { num: 1, ph: w.gorAuto == null ? "" : String(w.gorAuto), hint: "puste = (prześwit − 320) − (dolna − 150) + 150" });
       }).join("") +
-      (r.szablon.opcje.agregaty ? ofField("Opis agregatu", "agregat") : "") + ofField("Moc agregatu / zasilania (do warunków elektrycznych)", "kw") + "</div>" +
+      (r.szablon.opcje.agregaty ? ofField("Opis agregatu", "agregat", { ph: F.eff.agregat, hint: "puste = z szablonu urządzenia" }) : "") + ofField("Moc agregatu / zasilania (do warunków elektrycznych)", "kw", { ph: F.eff.kw }) + "</div>" +
       autoTekst("tech", "Dane techniczne", F) + autoTekst("wyposazenie", "Obciążenie i zabezpieczenia", F) + autoTekst("lista", "Lista urządzeń", F) +
       '<div class="ofsep">Opcje</div><div class="checks">' + F.opcjeDost.map(function (x) {
         var nazwa = { q2500: r.szablon.wariantB.nazwa, slupki37: "Słupki 3,7 kW", slupki22: "Słupki 22 kW", malowanie: "Malowanie RAL" }[x.klucz];
@@ -1254,17 +1250,17 @@ table.t.edt input[type=text], table.t.edt td input:not([type=number]) { min-widt
       '<div class="seg" role="group" aria-label="Zysk w ofercie"><button type="button" data-ofzysk="A" aria-pressed="' + (o.zysk !== "B") + '">zysk ' + pct(d.zysk) + '</button><button type="button" data-ofzysk="B" aria-pressed="' + (o.zysk === "B") + '">zysk ' + pct(d.zysk2) + "</button></div></div>" +
       '<div class="scroll"><table class="t"><thead><tr><th>Pozycja</th><th>Z kalkulatora</th><th>W ofercie</th></tr></thead><tbody>' +
       F.ceny.map(function (c) {
-        return "<tr><td>" + c.label + "</td><td>" + zl(c.auto) + '</td><td><input type="number" step="100" data-of="ceny.' + c.klucz + '" id="of_ceny_' + c.klucz + '" placeholder="' + c.auto + '" value="' + (o.ceny[c.klucz] != null ? o.ceny[c.klucz] : "") + '" style="max-width:150px"></td></tr>';
+        return "<tr><td>" + c.label + "</td><td>" + zl(c.auto) + '</td><td><input type="number" step="100" data-of="ceny.' + esc(c.klucz) + '" id="of_ceny_' + esc(c.klucz) + '" placeholder="' + c.auto + '" value="' + (o.ceny[c.klucz] != null ? o.ceny[c.klucz] : "") + '" style="max-width:150px"></td></tr>';
       }).join("") + "</tbody></table></div>" +
       '<p class="note" style="margin:6px 0 12px">Ceny zaokrąglają się w górę do 100 zł. Puste pole = cena z kalkulatora.</p>' +
-      ofField("Warunki płatności (każda linia osobno)", "platnosci", { area: 1, rows: 6, full: 1 }), false);
+      autoTekst("platnosci", "Warunki płatności (każda linia osobno)", F), false);
     h += sekcja("3", "Dostawa i montaż", '<div class="ofgrid">' +
-      ofField("Dostawa po ok. … tygodniach", "dostawa", { num: 1 }) + "<div></div>" +
+      ofField("Dostawa po ok. … tygodniach", "dostawa", { num: 1, ph: String(F.eff.dostawa), hint: "puste = z szablonu urządzenia" }) + "<div></div>" +
       ofField("Czas montażu od [tyg.]", "montOd", { num: 1, ph: String(r.warianty[0].tygodnieZakres[0]), hint: "puste = z kalkulatora" }) +
       ofField("Czas montażu do [tyg.]", "montDo", { num: 1, ph: String(r.warianty[0].tygodnieZakres[1]), hint: "puste = z kalkulatora + 25%" }) + "</div>" +
       autoTekst("dostawa", "Zdanie o dostawie", F) + autoTekst("montaz", "Zdanie o montażu", F), false);
     var stale = function (k, l) { return '<label class="f" style="margin-bottom:10px">' + l + '<textarea rows="4" data-tx="' + k + '" id="tx_' + k + '">' + esc(sz[k]) + "</textarea></label>"; };
-    h += sekcja("4–6", "Zakres, warunki montażu, gwarancja", ofField("Gwarancja [mies.]", "gw", { hint: "np. 36 lub 36/60" }) + '<div style="height:10px"></div>' +
+    h += sekcja("4–6", "Zakres, warunki montażu, gwarancja", ofField("Gwarancja [mies.]", "gw", { ph: F.eff.gw, hint: "puste = " + F.eff.gw + " z szablonu" }) + '<div style="height:10px"></div>' +
       stale("zakres", "4. Zakres oferty") + stale("warunki", "5. Warunki montażu ({tir}, {kw}, {typ} wstawiane automatycznie)") + stale("gwarancja", "6. Gwarancja ({gw})") +
       '<p class="note">Te teksty są wspólne dla wszystkich ofert.</p>', false);
     var lg = lsGet(LS.logo, null), pd = lsGet(LS.podpis, null);
@@ -1439,7 +1435,8 @@ table.t.edt input[type=text], table.t.edt td input:not([type=number]) { min-widt
   /* Nowa wycena dla urządzenia: wartości startowe z szablonu (zysk, konserwacja, transport…). */
   function nowaWycena(id) {
     var sz = szablony.filter(function (x) { return x.id === id; })[0] || szablony[0];
-    return Object.assign(E.domyslneDane(), kopia((sz && sz.domyslne) || {}), { data: dzis(), szablon: sz.id,
+    var dm = {}; Object.keys((sz && sz.domyslne) || {}).forEach(function (k) { var v = sz.domyslne[k]; if (v != null && v !== "") dm[k] = v; });
+    return Object.assign(E.domyslneDane(), dm, { data: dzis(), szablon: sz.id,
       oferta: { opcje: { q2500: sz.model !== "lista" } } });   // w nowych urządzeniach opcja wariantu 2 domyślnie wyłączona
   }
   $("bNew").addEventListener("click", function () { setDane(nowaWycena(szablonAktywny().id)); buildDimTable(); toForm(state.dane); toast("Nowa wycena"); });
@@ -1513,7 +1510,7 @@ table.t.edt input[type=text], table.t.edt td input:not([type=number]) { min-widt
     if (t.id === "bSave2") return zapiszBiezaca($("saveName").value || "Wycena");
     if (t.dataset.load !== undefined) {
       var w = (state.wyceny || []).filter(function (x) { return x.id === t.dataset.load; })[0];
-      if (w) { setDane(w.dane); toast("Wczytano: " + w.nazwa); }
+      if (w) { odlozSzkic(); setDane(w.dane); buildDimTable(); toForm(state.dane); recalc(); toast("Wczytano: " + w.nazwa); }
       return;
     }
     if (t.dataset.del !== undefined) { state.confirm = t.dataset.del; return wypelnijWyceny(); }
@@ -1547,7 +1544,8 @@ table.t.edt input[type=text], table.t.edt td input:not([type=number]) { min-widt
       zapiszSzablony(); wypelnijSzablony(); $("szablon").value = szablonAktywny().id; buildDimTable(); recalc(); if (state.view === "edytor") pokaz("pulpit"); toast("Usunięto szablon"); return;
     }
     if (t.dataset.szadd) {
-      var nowe = { glebokosci: { cm: 230, doplata: 0, silownik: "2250" }, skladowe: { nazwa: "Nowa pozycja", cena: 0, ilS: 0, ilD: 0, grupa: "Mechanika" },
+      var maxCm = s.glebokosci.reduce(function (a, g) { return Math.max(a, Number(g.cm) || 0); }, 225);
+      var nowe = { glebokosci: { cm: maxCm + 5, doplata: 0, silownik: "2250" }, skladowe: { nazwa: "Nowa pozycja", cena: 0, ilS: 0, ilD: 0, grupa: "Mechanika" },
         pozycje: { id: "p" + Date.now().toString(36), nazwa: "Nowa pozycja", cena: 0, waluta: "PLN", naCo: "szt", wsp: 1, osd: 0, opcja: false, tekst: "" },
         "import.koszty": { nazwa: "Nowy koszt", kwota: 0, waluta: "PLN" } }[t.dataset.szadd];
       t.dataset.szadd.split(".").reduce(function (a, k) { return a[k]; }, s).push(nowe);
@@ -1563,7 +1561,7 @@ table.t.edt input[type=text], table.t.edt td input:not([type=number]) { min-widt
         var o = JSON.parse($("szIo").value), lista = (o.szablony || []).map(E.uzupelnijSzablon);
         if (!lista.length) throw new Error("pusty");
         lista.forEach(function (x) { var i = szablony.map(function (y) { return y.id; }).indexOf(x.id); if (i >= 0) szablony[i] = x; else szablony.push(x); });
-        zapiszSzablony(); wypelnijSzablony(); $("szablon").value = szablonAktywny().id; buildDimTable(); recalc(); toast("Zaimportowano szablony: " + lista.length);
+        zapiszSzablony(); wypelnijSzablony(); $("szablon").value = szablonAktywny().id; buildDimTable(); recalc(); odswiezSz(); toast("Zaimportowano szablony: " + lista.length);
       } catch (er) { toast("Nie udało się odczytać tekstu. Wklej cały eksport szablonów."); }
     }
   });
@@ -1674,6 +1672,10 @@ table.t.edt input[type=text], table.t.edt td input:not([type=number]) { min-widt
     $("szPane").querySelectorAll("details > summary").forEach(function (x) { var k = x.textContent.replace(/\s*\(.*$/, ""); if (k in otwarte) x.parentNode.open = otwarte[k]; });
   }
   function noweId() { return "s" + Date.now().toString(36) + Math.random().toString(36).slice(2, 5); }
+  function odlozSzkic() {   // bieżąca wycena trafia do szkiców swojego urządzenia
+    if (!state.dane) return;
+    var drafty = lsGet(LS.drafty, {}); drafty[state.dane.szablon || "nk38"] = state.dane; lsSet(LS.drafty, drafty);
+  }
   function otworzUrzadzenie(id) {
     var drafty = lsGet(LS.drafty, {});
     if (state.dane && state.dane.szablon !== id) {
@@ -1710,7 +1712,7 @@ table.t.edt input[type=text], table.t.edt td input:not([type=number]) { min-widt
     }
     if (ds.pLoad) {
       var w = (state.wyceny || []).filter(function (x) { return x.id === ds.pLoad; })[0];
-      if (w) { setDane(w.dane); $("szablon").value = szablonAktywny().id; buildDimTable(); toForm(state.dane); recalc(); pokaz("kalk"); toast("Wczytano: " + w.nazwa); }
+      if (w) { odlozSzkic(); setDane(w.dane); $("szablon").value = szablonAktywny().id; buildDimTable(); toForm(state.dane); recalc(); pokaz("kalk"); toast("Wczytano: " + w.nazwa); }
       return;
     }
     if (t.id === "bBackup") return busy(t, kopiaZapasowa);
@@ -1742,7 +1744,7 @@ table.t.edt input[type=text], table.t.edt td input:not([type=number]) { min-widt
     for (var i = 0; i < (o.wyceny || []).length; i++) {
       var w = o.wyceny[i];
       if (jest.indexOf((w.ts || 0) + "|" + w.nazwa) >= 0) continue;
-      await Store.dodajWycene(w); dodane++;
+      await Store.dodajWycene(w); dodane++; jest.push((w.ts || 0) + "|" + w.nazwa);
     }
     wypelnijSzablony(); $("szablon").value = szablonAktywny().id; buildDimTable(); recalc(); renderPulpit();
     toast("Wczytano: szablony " + lista.length + ", nowe wyceny " + dodane);
