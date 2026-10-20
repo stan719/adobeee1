@@ -202,3 +202,20 @@ Kolumna N („rabat nadzwyczajny”) to drugi, minimalny wariant ceny z zyskiem 
 23. **Inne produkty**: czy nowy kalkulator ma od razu obejmować NK36/NK37/NK40, PXL, NK6501 itd. (są w arkuszu KAL), czy najpierw tylko NK38?
 24. **Wynik**: czego potrzebujecie na końcu? Sama cena i cena/MP, czy też gotowy opis do oferty (np. tekst jak w I2/I3: „NK38 15xD500, 3xA6kW 2000kg”), harmonogram, wydruk?
 25. **Kurs EUR i ceny Metazet**: jak często się zmieniają i kto aktualizuje cennik?
+
+---
+
+## 10. Zmiany 20.10.2026 (po pierwszym sprawdzeniu)
+
+| Uwaga | Co zrobiłem |
+|---|---|
+| Przy zmianie liczby osób nie zmieniają się tygodnie, hotel i km | Model liczył poprawnie (WAW: 4/5/6/8 os. = 9/7/6/5 tyg.), ale nie było tego widać. Tygodnie nie zmieniają się, gdy zaokrąglenie do pełnego tygodnia daje to samo (np. 7 i 8 os. = 5 tyg.), w Krakowie (montaż w dniach) oraz gdy tygodnie wpisano ręcznie. Teraz: tygodnie są zawsze pokazane (także w Krakowie: dni/5), w analizie ekipy są wiersze noclegi, km, hotel, diety i paliwo, objaśnienie, a przy ręcznie wpisanych tygodniach pojawia się ostrzeżenie. Noclegi i diety liczą się od osobodni, więc przy większej ekipie prawie się nie zmieniają (+1 nocleg na osobę); km maleją z liczbą tygodni. |
+| Eksport PDF ucina widok | Przycisk **Raport PDF** tworzy plik z całością: dane i warianty, opcje i ekipa, obliczenia, zestawienie i uwagi, zawsze 4 strony. |
+| Zakładka Uwagi przewija się dopiero po lewej stronie | Prawa kolumna przewija się niezależnie. |
+| Dwa progi zysku | **Zysk A 14%** i **zysk B 10%** (do zmiany w formularzu), obie ceny obok siebie w nagłówku, w kafelkach, tabelach, opcjach i eksportach. Zysk B liczy się od tych samych kosztów (bez zmiany ceny dźwigu, jak w starej kolumnie N). |
+| Utrudnienia nie liczą się automatycznie | Liczyły się, ale wynik był tylko w drobnym dopisku. Teraz pod polami jest wyraźny wiersz: „Utrudnienia razem 20 osd = magistrala 4 × 0,5 + barierki i maskownice 35 × 0,5 = 19,5 → 20 (+ ręcznie)”. |
+| Eksport do Excela | Przycisk **Excel**: arkusze Podsumowanie, Ekipa, Obliczenia, Do oferty, Cennik. |
+| Dni montażu nachodzą na zysk | Nowy układ wskaźników z zawijaniem. |
+| Gotowa oferta | Zakładka **Oferta**: adresat, numer, treść, dane techniczne (z opisu wariantu H-/L-/P-/G-/D-), opcje (2500 kg, słupki 3,7 / 22 kW, malowanie), ceny z kalkulatora zaokrąglone w górę do 100 zł (do nadpisania), płatności, terminy (montaż z kalkulatora z zapasem 25%, np. 9-11 tyg.), teksty stałe i logo. Podgląd na stronie i **plik Word** w układzie Waszych ofert. |
+
+Weryfikacja: testy modelu (11), Excel vs model (17 zestawów), silnik aplikacji vs model (202 zestawy), test eksportów `app/test_export.cjs` (WAW i KRK: Excel, PDF 4 strony, Word) oraz eksport w przeglądarce.

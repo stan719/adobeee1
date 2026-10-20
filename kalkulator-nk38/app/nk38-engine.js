@@ -18,7 +18,7 @@
     barierka: 600, maskownica: 700, skrzynka_zasil: 1000, admin: 1800,
     mal_S: 6400, mal_D: 13500, mal_bar: 200, slupek: 1700, slupek22: 6300, slupek_rbd: 0.37,
     osd_S: 5.5, osd_D: 7, osd_NP: 7, osd_magistrala: 0.5, osd_barierka: 0.5,
-    rozl_TIR: 0.5, dzwig: 2400, dzwig_min: 2000, dzwig_D: 5, dzwig_wspS: 0.6,
+    rozl_TIR: 0.5, dzwig: 2400, dzwig_D: 5, dzwig_wspS: 0.6,
     dni_tydzien: 5, km_montaz_dodatek: 50, km_krakow: 20, km_dzien: 650,
     spalanie: 12, paliwo: 9.4, pomiary_osoby: 1, odbiory_osoby: 2,
     stawka_1: 500, stawka_2: 400, stawka_kolejna: 350, dieta: 45, hotel: 130,
@@ -54,7 +54,7 @@
       dl500_S: 0, dl540_S: 0, dl550_S: 0, dl500_D: 0, dl540_D: 0, dl550_D: 0,
       tir: 0, tir_cena: 0, rozl_cena: 0, rozl_dni: null,
       osoby: 4, wyjazdy: null, wzor: "stary",
-      zysk: 0.125, zysk_min: 0.10, q2500: null, eur: 4.325, analiza: 0
+      zysk: 0.14, zysk2: 0.10, q2500: null, eur: 4.325, analiza: 0
     };
   }
 
@@ -153,16 +153,19 @@
       var brutto = b / (1 - (c.kob + c.gdw + zysk));
       return { brutto: brutto, podatek: c.podatek * (robocizna + brutto * (c.gdw + zysk)) };
     }
-    var zysk = num(d.zysk), zyskMin = num(d.zysk_min);
-    var n = narzuty(baza, zysk);
-    var nMin = narzuty(baza - k.dzwig + c.dzwig_min * w.dzwDni, zyskMin);
-    var cena = n.brutto + n.podatek;
+    var zysk = num(d.zysk), zysk2 = num(d.zysk2);
+    var n = narzuty(baza, zysk), n2 = narzuty(baza, zysk2);
+    var cena = n.brutto + n.podatek, cena2 = n2.brutto + n2.podatek;
+    var tyg = w.krk ? ceil(dni / c.dni_tydzien) : wyj;
     return {
       osoby: os, stawka: st, osd: osd, iteracje: iteracje, wyjazdy: wyj, podroze: podr,
       osobodni: osdAll, dni: dni, km: km, koszty: k, baza: baza,
       kob: n.brutto * c.kob, gdw: n.brutto * c.gdw, zysk: n.brutto * zysk, podatek: n.podatek,
-      cena: cena, koszt: cena - n.brutto * zysk, cenaMin: nMin.brutto + nMin.podatek,
-      cenaMP: m.MP ? cena / m.MP : 0, cenaMPeur: m.MP ? cena / m.MP / num(d.eur, 4.325) : 0
+      cena: cena, koszt: cena - n.brutto * zysk, cenaMP: m.MP ? cena / m.MP : 0,
+      cenaMPeur: m.MP ? cena / m.MP / num(d.eur, 4.325) : 0,
+      cena2: cena2, zysk2: n2.brutto * zysk2, podatek2: n2.podatek, cenaMP2: m.MP ? cena2 / m.MP : 0,
+      tygodnie: tyg, tygodnieZakres: [tyg, Math.max(tyg, Math.round(tyg * 1.25))],
+      noclegi: w.krk ? 0 : (dni + 1) * os
     };
   }
 
@@ -185,6 +188,7 @@
 
   function oblicz(dane, cennik) {
     var d = Object.assign(domyslneDane(), dane || {});
+    if ((dane || {}).zysk2 === undefined && (dane || {}).zysk_min !== undefined) d.zysk2 = dane.zysk_min;
     var c = Object.assign({}, CENNIK, cennik || {});
     var m = materialy(d, c), w = wspolne(d, c), os = Math.max(1, num(d.osoby, 4));
     var warianty = WARIANTY.map(function (nazwa, i) {
@@ -194,15 +198,20 @@
     var analiza = OSOBY_ANALIZA.map(function (n) {
       return Object.assign({ n: n }, montaz(d, c, m, w, a % 2 === 1, a >= 2, n));
     });
-    var mnoznik = (1 + c.podatek * (c.gdw + num(d.zysk))) / (1 - (c.kob + c.gdw + num(d.zysk)));
+    function mn(z) { return (1 + c.podatek * (c.gdw + z)) / (1 - (c.kob + c.gdw + z)); }
+    var mnoznik = mn(num(d.zysk)), mnoznik2 = mn(num(d.zysk2));
     var sl37 = [warianty[2].cena - warianty[0].cena, warianty[3].cena - warianty[1].cena];
     var dop22 = (c.slupek22 - c.slupek) * m.MP * mnoznik;
+    var sl37b = [warianty[2].cena2 - warianty[0].cena2, warianty[3].cena2 - warianty[1].cena2];
+    var dop22b = (c.slupek22 - c.slupek) * m.MP * mnoznik2;
     return {
       dane: d, cennik: c, mat: m, wspolne: w, warianty: warianty,
       analiza: analiza, analizaWariant: WARIANTY[a],
       opcje: {
         slupki37: sl37, slupki22: [sl37[0] + dop22, sl37[1] + dop22],
-        malowanie: m.malowanie * mnoznik
+        malowanie: m.malowanie * mnoznik,
+        slupki37b: sl37b, slupki22b: [sl37b[0] + dop22b, sl37b[1] + dop22b],
+        malowanieB: m.malowanie * mnoznik2
       },
       mnoznik: mnoznik, ostrzezenia: ostrzezenia(d)
     };

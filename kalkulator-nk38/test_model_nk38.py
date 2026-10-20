@@ -14,7 +14,7 @@ def waw(**kw):
     mat = wycena_materialow(WAW_MAT)
     a = dict(cena_urzadzen=mat["F87"], d=15, utrudnienia=mat["utrudnienia_auto"],
              km=280, osoby=4, transport_cena=4000, transporty=3,
-             rozladunek_sprzet=1700, zysk=0.125, zysk_min=0.10)
+             rozladunek_sprzet=1700, zysk=0.125, zysk2=0.10)
     a.update(kw)
     return Montaz(**a)
 
@@ -23,7 +23,7 @@ def krk(**kw):
     mat = wycena_materialow(KRK_MAT)
     a = dict(cena_urzadzen=mat["F87"], s=12, d=27, utrudnienia=mat["utrudnienia_auto"],
              krakow=True, osoby=5, transport_cena=1800, transporty=6,
-             rozladunek_sprzet=500, zysk=0.13, zysk_min=0.11)
+             rozladunek_sprzet=500, zysk=0.13, zysk2=0.11)
     a.update(kw)
     return Montaz(**a)
 
@@ -53,10 +53,16 @@ def test_montaz_krk_warianty():
     assert r["wyjazdy"] == 79
 
 
-def test_cena_minimalna_waw_poprawiony_dzwig():
-    # stary N39 = 913 374,81 zł zawierał 3 zł zamiast kosztu dźwigu (błąd B2)
-    r = wycena_montazu(waw())
-    assert r["cena_min"] == pytest.approx(920388.543184828)
+def test_zysk_b():
+    # zysk B = te same koszty, inny procent zysku
+    r = wycena_montazu(waw(zysk2=0.125))
+    assert r["cena2"] == pytest.approx(r["cena"])
+    assert wycena_montazu(waw())["cena2"] < r["cena"]
+
+
+def test_tygodnie_krakow():
+    r = wycena_montazu(krk())
+    assert (r["dni"], r["tygodnie"]) == (69, 14)
 
 
 # ---------------------------------------------------- nowe reguły

@@ -30,7 +30,7 @@ def main(n=200):
         a = inp.get("in_analiza", WARIANTY[0])
         an = [model(inp, a, k) for k in range(2, 8)]
         cases.append({"dane": do_js(inp),
-                      "warianty": [[e["cena"], e["cena_min"], e["dni"], e["wyjazdy"]] for e in exp],
+                      "warianty": [[e["cena"], e["cena2"], e["dni"], e["wyjazdy"], e["tygodnie"]] for e in exp],
                       "analiza": [[e["cena"], e["dni"]] for e in an]})
     js = """
 const E = require(%s); const cases = JSON.parse(require('fs').readFileSync(0, 'utf8'));
@@ -38,7 +38,7 @@ let bad = 0;
 cases.forEach((c, i) => {
   const r = E.oblicz(c.dane);
   r.warianty.forEach((w, j) => { const e = c.warianty[j];
-    [[w.cena, e[0]], [w.cenaMin, e[1]], [w.dni, e[2]], [w.wyjazdy, e[3]]].forEach(([a, b], k) => {
+    [[w.cena, e[0]], [w.cena2, e[1]], [w.dni, e[2]], [w.wyjazdy, e[3]], [w.tygodnie, e[4]]].forEach(([a, b], k) => {
       if (Math.abs(a - b) > 0.01) { bad++; if (bad < 10) console.log('zestaw', i, 'wariant', j, 'pole', k, a, b); } }); });
   r.analiza.forEach((w, j) => { const e = c.analiza[j];
     if (Math.abs(w.cena - e[0]) > 0.01 || w.dni !== e[1]) { bad++; if (bad < 10) console.log('zestaw', i, 'osoby', j + 2, w.cena, e[0]); } });

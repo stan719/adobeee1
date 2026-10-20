@@ -55,7 +55,7 @@ UWAGI = [
     "Systemy N.P. liczone jak D (siłowniki, składowe, dźwig, 7 osobodni), cena 85% D, 2 MP - do potwierdzenia.",
     "Czas podróży: wzór 'Stary (poprawiony)' = stary dla < 800 km, dla >= 800 km uwzględnia liczbę wyjazdów. "
     "'Uproszczony' = 2 x km / 650 km dziennie na wyjazd.",
-    "Cena minimalna liczona z dźwigiem 2000 zł/dzień (jak w starej kolumnie N).",
+    "Zysk B liczony od tych samych kosztów co zysk A (dawna kolumna N, bez zmiany ceny dźwigu).",
 ]
 
 CENNIK = [
@@ -101,7 +101,6 @@ CENNIK = [
     ("c_osd_barierka", "Utrudnienia: osobodni / barierka lub maskownica", 0.5, NUM, "KAL!B48 ('tonaż')"),
     ("c_rozl_TIR", "Dni rozładunku / TIR", 0.5, NUM, "KAL!E55 (komentarz)"),
     ("c_dzwig", "Spider Crane / dzień", 2400, PLN, "KAL!I25"),
-    ("c_dzwig_alt", "Spider Crane / dzień - cena minimalna", 2000, PLN, "KAL!M25"),
     ("c_dzwig_D", "Systemów D (i NP) na 1 dzień dźwigu", 5, NUM, "KAL!J25"),
     ("c_dzwig_wspS", "Współczynnik S względem D (dźwig)", 0.6, NUM, "KAL!J25"),
     ("c_dni_tydzien", "Dni montażu w tygodniu (wyjazd co tydzień)", 5, NUM, "B55 = J39/5"),
@@ -164,13 +163,13 @@ PRZYKLADY = {
                 in_lok="Poza Krakowem", in_km=280, in_D=15, in_agregaty=3,
                 in_magistrala=4, in_barierki=30, in_maskownice=5, gl_D={200: 15},
                 in_tir=3, in_tir_cena=4000, in_rozl_cena=1700, in_osoby=4,
-                in_zysk=0.125, in_zysk_min=0.10, in_q2500=0.06, in_data=date(2026, 10, 14),
+                in_zysk=0.125, in_zysk2=0.10, in_q2500=0.06, in_data=date(2026, 10, 14),
                 in_opis="H-195/202 | L-530-544-584 | P-380 | Hpoj. G-180. D-180 | 1A4+1A5+1A6 | Bok-30 Tył-5 | mgstrl-4"),
     "krk": dict(in_nazwa="ul. Dekerta Kraków", in_nr="20261015-SNK", in_lok="Kraków",
                 in_S=12, in_D=27, in_agregaty=7, in_magistrala=32, in_barierki=58,
                 in_maskownice=4, gl_S={225: 12}, gl_D={225: 27}, in_tir=6,
                 in_tir_cena=1800, in_rozl_cena=500, in_osoby=5, in_zysk=0.13,
-                in_zysk_min=0.11, in_q2500=0.07, in_data=date(2026, 10, 15),
+                in_zysk2=0.11, in_q2500=0.07, in_data=date(2026, 10, 15),
                 in_opis="H-225 | L-530 | P-392/352? | Hpoj. G-170(185). D-200(185) | 5A6+1A5+1A4 | Bok-58 Tył-4 | mgstrl- 32"),
 }
 
@@ -365,8 +364,8 @@ def build(inputs=None):
     inp(r, "in_wzor", "Wzór czasu podróży", WZORY[0], None, "Patrz uwagi w Podsumowaniu", "wzor"); r += 1
     r += 1
     section(dane, r, "6. Narzuty i kurs"); r += 1
-    inp(r, "in_zysk", "Zysk (udział w cenie)", 0.125, PCT); r += 1
-    inp(r, "in_zysk_min", "Zysk do sprawdzenia 'do ilu zejdziemy' (cena minimalna)", 0.10, PCT); r += 1
+    inp(r, "in_zysk", "Zysk A (udział w cenie)", 0.14, PCT); r += 1
+    inp(r, "in_zysk2", "Zysk B - do porównania, do ilu możemy zejść", 0.10, PCT); r += 1
     inp(r, "in_q2500", "Dopłata za Q=2500 kg", "=c_q2500", PCT, "domyślnie 7% z Cennika"); r += 1
     inp(r, "in_eur", "Kurs EUR/PLN", 4.325, "0.0000"); r += 1
     inp(r, "in_analiza", "Analiza liczby osób dla wariantu", WARIANTY[0], None, None, "war"); r += 1
@@ -523,6 +522,7 @@ def build(inputs=None):
     mrow("podr", "Osobodni podróży i rozładunku (dawne G59)", "=" + podr("{wyj}"), NUM)
     mrow("osd_all", "Osobodni razem", "={osd}+{podr}", NUM)
     mrow("dni", "Dni pracy ekipy (dawne J39)", "=CEILING({osd_all}/{os},1)", "0", True)
+    mrow("tyg", "Tygodnie montażu (do oferty)", "=IF(e_krk,CEILING({dni}/c_dni_tydzien,1),{wyj})", "0", True)
     mrow("km", "Kilometry razem (1 auto ekipy)", "=2*(e_km_mon*{wyj}+2*e_km_pom)", NUM)
     mrow("k_urz", "Urządzenia (materiały)", "=IF({q}=1,m_suma_2500,m_suma_2000)")
     mrow("k_sl", "Słupki e-ładowarek", "={sl}*c_slupek*m_MP")
@@ -545,10 +545,11 @@ def build(inputs=None):
     mrow("koszt", "Koszt rzeczywisty (dawne K43)", "={cena}-{k_zysk}")
     mrow("cena_mp", "Cena za MP", "=IF(m_MP>0,{cena}/m_MP,0)")
     mrow("cena_mp_eur", "Cena za MP [EUR]", "={cena_mp}/in_eur", EUR)
-    mrow("brutto_min", "Cena minimalna: podstawa narzutów",
-         "=({baza}-{k_dzw}+c_dzwig_alt*e_dzw_dni)/(1-(c_kob+c_gdw+in_zysk_min))")
-    mrow("cena_min", "CENA MINIMALNA (zysk do sprawdzenia, dźwig 2000)",
-         "={brutto_min}+c_podatek*({k_rl}+{k_doj}+{k_mon}+{k_die}+{brutto_min}*(c_gdw+in_zysk_min))", PLN, True)
+    mrow("brutto2", "Zysk B: podstawa narzutów", "={baza}/(1-(c_kob+c_gdw+in_zysk2))")
+    mrow("k_zysk2", "Zysk B", "={brutto2}*in_zysk2")
+    mrow("cena2", "CENA KONTRAKTU NETTO - ZYSK B",
+         "={brutto2}+c_podatek*({k_rl}+{k_doj}+{k_mon}+{k_die}+{brutto2}*(c_gdw+in_zysk2))", PLN, True)
+    mrow("cena_mp2", "Cena za MP - zysk B", "=IF(m_MP>0,{cena2}/m_MP,0)")
 
     def oref(key, i):
         return f"Obliczenia!{cols[i]['col']}{rows[key]}"
@@ -575,11 +576,13 @@ def build(inputs=None):
 
     table_head(r, WARIANTY); r += 1
     MAIN = [
-        ("CENA KONTRAKTU NETTO", ("cena",), PLN, True),
-        ("Cena za miejsce postojowe", ("cena_mp",), PLN, False),
-        ("Cena za MP [EUR]", ("cena_mp_eur",), EUR, False),
-        ("Cena minimalna (zysk do sprawdzenia)", ("cena_min",), PLN, False),
-        ("Zysk", ("k_zysk",), PLN, False),
+        ('="CENA NETTO - ZYSK A "&TEXT(in_zysk,"0.0%")', ("cena",), PLN, True),
+        ('="CENA NETTO - ZYSK B "&TEXT(in_zysk2,"0.0%")', ("cena2",), PLN, True),
+        ("Cena za MP - zysk A", ("cena_mp",), PLN, False),
+        ("Cena za MP - zysk B", ("cena_mp2",), PLN, False),
+        ("Cena za MP [EUR] - zysk A", ("cena_mp_eur",), EUR, False),
+        ("Zysk A [zł]", ("k_zysk",), PLN, False),
+        ("Zysk B [zł]", ("k_zysk2",), PLN, False),
         ("Koszt rzeczywisty", ("koszt",), PLN, False),
         (None,) * 4,
         ("Urządzenia (materiały)", ("k_urz",), PLN, False),
@@ -590,7 +593,7 @@ def build(inputs=None):
         ("KOB + GDW + podatek", ("k_kob", "k_gdw", "k_pod"), PLN, False),
         (None,) * 4,
         ("Dni pracy ekipy", ("dni",), "0", True),
-        ("Tygodnie (Kraków: dni) montażu", ("wyj",), "0", True),
+        ("Tygodnie montażu", ("tyg",), "0", True),
         ("Osobodni razem", ("osd_all",), NUM, False),
     ]
     for label, keys, fmt, bold in MAIN:
@@ -669,7 +672,7 @@ def build(inputs=None):
          f'={oref("dni", 0)}&" dni pracy = "&{oref("wyj", 0)}&IF(e_krk," dni"," tyg.")&", "&TEXT({oref("osd_all", 0)},"0.0")&" osobodni"'),
         ("Czas montażu (ze słupkami)",
          f'={oref("dni", 2)}&" dni pracy = "&{oref("wyj", 2)}&IF(e_krk," dni"," tyg.")&", "&TEXT({oref("osd_all", 2)},"0.0")&" osobodni"'),
-        ("Zysk / cena minimalna przy", '=TEXT(in_zysk,"0.0%")&" / "&TEXT(in_zysk_min,"0.0%")'),
+        ("Zysk A / zysk B", '=TEXT(in_zysk,"0.0%")&" / "&TEXT(in_zysk2,"0.0%")'),
         ("Dopłata Q=2500", '=TEXT(in_q2500,"0.0%")'),
         ("Wzór czasu podróży", "=in_wzor"),
         ("Konserwacja roczna (40 / 45 / 50 zł/MP/mies.)",

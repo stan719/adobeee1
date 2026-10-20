@@ -107,20 +107,26 @@ details.dims summary span { font-weight: 400; color: var(--muted); }
 .dimtab tr.gap th { padding-top: 12px; }
 
 /* wynik */
-.result { position: sticky; top: calc(env(safe-area-inset-top, 0px) + 74px); display: flex; flex-direction: column; gap: 12px; min-width: 0; }
-@media (max-width: 1000px) { .result { position: static; } }
+.result { position: sticky; top: calc(env(safe-area-inset-top, 0px) + 74px); max-height: calc(100vh - env(safe-area-inset-top, 0px) - 86px); overflow-y: auto; overscroll-behavior: contain; scrollbar-gutter: stable; margin-right: -6px; padding-right: 6px; padding-bottom: 4px; display: flex; flex-direction: column; gap: 12px; min-width: 0; }
+@media (max-width: 1000px) { .result { position: static; max-height: none; overflow: visible; margin-right: 0; padding-right: 0; } }
 .hero { padding: 18px 20px 16px; }
 .hero-top { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 10px; align-items: center; }
 .eyebrow { font-size: 12px; font-weight: 500; color: var(--muted); }
-.big { font-family: var(--f-num); font-weight: 500; font-size: clamp(30px, 4.2vw, 44px); letter-spacing: -.035em; line-height: 1.05; margin-top: 12px; font-variant-numeric: tabular-nums; }
+.prices { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; margin-top: 14px; }
+@media (max-width: 560px) { .prices { grid-template-columns: minmax(0, 1fr); } }
+.pz { min-width: 0; }
+.pz + .pz { border-left: 1px solid var(--line); padding-left: 16px; }
+@media (max-width: 560px) { .pz + .pz { border-left: 0; padding-left: 0; } }
+.big { font-family: var(--f-num); font-weight: 500; font-size: clamp(26px, 3.4vw, 40px); letter-spacing: -.035em; line-height: 1.05; margin-top: 4px; font-variant-numeric: tabular-nums; white-space: nowrap; }
 .big small { font-size: .45em; color: var(--muted); letter-spacing: 0; margin-left: 4px; }
-.kpis { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 0; margin-top: 16px; border-top: 1px solid var(--line); padding-top: 14px; }
-@media (max-width: 760px) { .kpis { grid-template-columns: repeat(2, minmax(0, 1fr)); row-gap: 12px; } }
+.pz.b .big { color: var(--ink-2); }
+.pz .d { font-family: var(--f-num); font-size: 12px; color: var(--muted); margin-top: 3px; }
+.kpis { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 12px 0; margin-top: 16px; border-top: 1px solid var(--line); padding-top: 14px; }
 .kpi { padding: 0 14px; border-left: 1px solid var(--line); min-width: 0; }
 .kpi:first-child { border-left: 0; padding-left: 0; }
-@media (max-width: 760px) { .kpi { border-left: 0; padding-left: 0; } }
 .kpi .l { font-size: 11.5px; color: var(--muted); }
-.kpi .v { font-family: var(--f-num); font-size: 15px; font-weight: 500; margin-top: 2px; white-space: nowrap; font-variant-numeric: tabular-nums; }
+.kpi .v { font-family: var(--f-num); font-size: 14.5px; font-weight: 500; margin-top: 2px; font-variant-numeric: tabular-nums; overflow-wrap: anywhere; }
+.kpi .v small { display: block; font-size: 12px; color: var(--muted); font-weight: 400; }
 .kpi .v.t { color: var(--accent); }
 .compare { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 8px; }
 @media (max-width: 760px) { .compare { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
@@ -130,6 +136,36 @@ details.dims summary span { font-weight: 400; color: var(--muted); }
 .cmp .n { font-size: 12px; color: var(--muted); font-weight: 500; }
 .cmp .p { font-family: var(--f-num); font-size: 15px; font-weight: 500; margin-top: 3px; white-space: nowrap; }
 .cmp .d { font-family: var(--f-num); font-size: 11.5px; color: var(--muted); margin-top: 1px; }
+.calcline { margin-top: 12px; padding: 9px 12px; border-radius: var(--r-s); background: var(--accent-soft); color: var(--ink-2); font-size: 12.5px; display: flex; flex-wrap: wrap; gap: 4px 10px; align-items: baseline; }
+.calcline b { color: var(--accent); font-family: var(--f-num); font-size: 14px; }
+.exp { display: inline-flex; gap: 6px; }
+.btn[disabled] { opacity: .5; cursor: default; }
+.info { padding: 10px 12px; border-radius: 10px; background: var(--sunken); border: 1px solid var(--line); font-size: 12.5px; color: var(--ink-2); margin-top: 12px; }
+.ofgrid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+@media (max-width: 560px) { .ofgrid { grid-template-columns: minmax(0, 1fr); } }
+details.grp { border: 1px solid var(--line); border-radius: 10px; padding: 10px 12px; margin-top: 10px; }
+details.grp > summary { cursor: pointer; font-weight: 600; font-size: 13px; }
+details.grp[open] > summary { margin-bottom: 12px; }
+.autotag { font-size: 11px; font-weight: 500; padding: 0 6px; border-radius: 99px; background: var(--sunken); color: var(--muted); margin-left: 6px; }
+.autotag.ch { background: var(--warn-soft); color: var(--warn); }
+.linkbtn { border: 0; background: none; color: var(--accent); font-size: 12px; padding: 0; margin-left: 6px; }
+.checks { display: flex; flex-wrap: wrap; gap: 8px 16px; font-size: 13px; }
+.checks label { display: inline-flex; gap: 6px; align-items: center; }
+.checks input { width: auto; }
+.paper { background: #ffffff; color: #111111; border: 1px solid var(--line-2); border-radius: 6px; padding: 28px 32px; font-family: Calibri, Carlito, "Segoe UI", sans-serif; font-size: 12.5px; line-height: 1.4; box-shadow: var(--shadow); max-width: 760px; margin: 0 auto; }
+.paper .hd { display: flex; justify-content: space-between; gap: 16px; align-items: center; border-bottom: 1px solid #dddddd; padding-bottom: 8px; margin-bottom: 14px; }
+.paper .hd .lh { text-align: center; font-size: 10.5px; color: #333333; flex: 1; }
+.paper .hd .lh b { display: block; font-size: 11px; color: #111111; }
+.paper .hd img { max-height: 48px; max-width: 180px; }
+.paper h4 { margin: 12px 0 4px; font-size: 12.5px; }
+.paper p { margin: 0 0 4px; }
+.paper .in { padding-left: 18px; }
+.paper .blue { color: #1f4e9a; font-weight: 700; }
+.paper .nr { font-weight: 700; font-style: italic; text-decoration: underline; margin: 10px 0; }
+.paper .pr { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 0 16px; padding-left: 18px; }
+.paper .pr .v { text-align: right; font-weight: 700; white-space: nowrap; }
+.paper .ft { border-top: 1px solid #dddddd; margin-top: 18px; padding-top: 6px; text-align: center; font-size: 10px; color: #555555; }
+.paper .kl { font-size: 9.5px; color: #555555; margin-top: 14px; }
 .alerts { display: flex; flex-direction: column; gap: 6px; }
 .alert { display: flex; gap: 8px; align-items: baseline; padding: 8px 12px; border-radius: 10px; font-size: 13px; }
 .alert b { font-weight: 600; }
@@ -209,6 +245,7 @@ ul.notes li::before { content: ""; position: absolute; left: 0; top: .6em; width
       <button class="btn ghost" id="bWaw" type="button">Przykład WAW</button>
       <button class="btn ghost" id="bKrk" type="button">Przykład KRK</button>
       <button class="btn" id="bNew" type="button">Nowa wycena</button>
+      <span class="exp"><button class="btn" id="bXlsx" type="button">Excel</button><button class="btn" id="bPdf" type="button">Raport PDF</button></span>
       <button class="btn primary" id="bSave" type="button">Zapisz</button>
     </div>
   </div>
@@ -251,8 +288,9 @@ ul.notes li::before { content: ""; position: absolute; left: 0; top: .6em; width
           <label class="f">Magistrala 6 m<input id="magistrala" type="number" min="0" step="1"></label>
           <label class="f">Barierki<input id="barierki" type="number" min="0" step="1"><span class="hint">szt. na stronę</span></label>
           <label class="f">Maskownice<input id="maskownice" type="number" min="0" step="1"></label>
-          <label class="f">Utrudnienia +<input id="utr_dod" type="number" min="0" step="0.5"><span class="hint" id="utrHint">osobodni ręcznie</span></label>
+          <label class="f">Utrudnienia ręcznie<input id="utr_dod" type="number" min="0" step="0.5"><span class="hint">dodatkowe osobodni</span></label>
         </div>
+        <div class="calcline" id="utrLine"></div>
         <details class="dims" id="dimDetails">
           <summary>Wymiary niestandardowe <span id="dimSummary"></span></summary>
           <p class="note" style="margin-top:8px">Wpisz, ile platform ma dany wymiar. Pozostałe są standardowe: szerokość 250/500, zagłębienie 170, długość 530.</p>
@@ -276,8 +314,8 @@ ul.notes li::before { content: ""; position: absolute; left: 0; top: .6em; width
       <fieldset class="card">
         <legend>Narzuty</legend>
         <div class="g2">
-          <label class="f">Zysk [%]<input id="zysk" type="number" min="0" max="60" step="0.5"></label>
-          <label class="f">Zysk do sprawdzenia [%]<input id="zysk_min" type="number" min="0" max="60" step="0.5"><span class="hint">do ilu możemy zejść</span></label>
+          <label class="f">Zysk A [%]<input id="zysk" type="number" min="0" max="60" step="0.5"><span class="hint">domyślnie 14%</span></label>
+          <label class="f">Zysk B [%]<input id="zysk2" type="number" min="0" max="60" step="0.5"><span class="hint">domyślnie 10%, do porównania</span></label>
           <label class="f">Dopłata Q=2500 [%]<input id="q2500" type="number" min="0" max="50" step="0.5" class="auto"><span class="hint">puste = 7%</span></label>
           <label class="f">Kurs EUR/PLN<input id="eur" type="number" min="0" step="0.001"></label>
         </div>
@@ -299,6 +337,7 @@ ul.notes li::before { content: ""; position: absolute; left: 0; top: .6em; width
 <div class="toast" id="toast" hidden></div>
 
 <script src="nk38-engine.js"></script>
+<script src="nk38-export.js"></script>
 <script>
 (function () {
   "use strict";
@@ -308,16 +347,16 @@ ul.notes li::before { content: ""; position: absolute; left: 0; top: .6em; width
     waw: { nazwa: "ul. Kasprowicza 18 Warszawa", data: "2026-10-14", nr: "20261014-SNK",
       opis: "H-195/202 | L-530-544-584 | P-380 | Hpoj. G-180. D-180 | 1A4+1A5+1A6 | Bok-30 Tył-5 | mgstrl-4",
       lok: "Poza Krakowem", km: 280, D: 15, agregaty: 3, magistrala: 4, barierki: 30, maskownice: 5,
-      gl_D: { 200: 15 }, tir: 3, tir_cena: 4000, rozl_cena: 1700, osoby: 4, zysk: 0.125, zysk_min: 0.10, q2500: 0.06 },
+      gl_D: { 200: 15 }, tir: 3, tir_cena: 4000, rozl_cena: 1700, osoby: 4, zysk: 0.125, zysk2: 0.10, q2500: 0.06 },
     krk: { nazwa: "ul. Dekerta Kraków", data: "2026-10-15", nr: "20261015-SNK",
       opis: "H-225 | L-530 | P-392/352? | Hpoj. G-170(185). D-200(185) | 5A6+1A5+1A4 | Bok-58 Tył-4 | mgstrl- 32",
       lok: "Kraków", S: 12, D: 27, agregaty: 7, magistrala: 32, barierki: 58, maskownice: 4,
-      gl_S: { 225: 12 }, gl_D: { 225: 27 }, tir: 6, tir_cena: 1800, rozl_cena: 500, osoby: 5, zysk: 0.13, zysk_min: 0.11, q2500: 0.07 }
+      gl_S: { 225: 12 }, gl_D: { 225: 27 }, tir: 6, tir_cena: 1800, rozl_cena: 500, osoby: 5, zysk: 0.13, zysk2: 0.11, q2500: 0.07 }
   };
   var NUMF = ["km", "km_pom", "km_mon", "S", "D", "NP", "agregaty", "magistrala", "barierki", "maskownice", "utr_dod",
     "tir", "tir_cena", "rozl_cena", "rozl_dni", "osoby", "wyjazdy", "eur"];
   var OPTF = { km_pom: 1, km_mon: 1, rozl_dni: 1, wyjazdy: 1, q2500: 1 };
-  var PCTF = ["zysk", "zysk_min", "q2500"];
+  var PCTF = ["zysk", "zysk2", "q2500"];
   var TXTF = ["nazwa", "data", "nr", "opis", "typ", "wzor"];
   var DIMS = [["szer1", "Szerokość 260 (S) / 520 (D)"], ["szer2", "Szerokość 270 (S) / 540 (D)"],
     ["dl500", "Długość 500–510 cm"], ["dl540", "Długość 540 cm"], ["dl550", "Długość 550 cm"]];
@@ -335,7 +374,7 @@ ul.notes li::before { content: ""; position: absolute; left: 0; top: .6em; width
     ["slupek", "Słupek 3,7 kW / MP", "zł"], ["slupek22", "Słupek 22 kW / MP", "zł"], ["slupek_rbd", "Robocizna słupka [rbd / MP]", ""],
     ["Montaż", null], ["osd_S", "Osobodni / S", ""], ["osd_D", "Osobodni / D", ""], ["osd_NP", "Osobodni / N.P.", ""],
     ["osd_magistrala", "Utrudnienia / magistrala", "osd"], ["osd_barierka", "Utrudnienia / barierka", "osd"], ["rozl_TIR", "Dni rozładunku / TIR", ""],
-    ["dzwig", "Spider Crane / dzień", "zł"], ["dzwig_min", "Spider Crane, cena minimalna", "zł"], ["dzwig_D", "Systemów D na dzień dźwigu", ""],
+    ["dzwig", "Spider Crane / dzień", "zł"], ["dzwig_D", "Systemów D na dzień dźwigu", ""],
     ["dzwig_wspS", "Współczynnik S (dźwig)", ""], ["dni_tydzien", "Dni pracy w tygodniu", ""],
     ["km_montaz_dodatek", "Montaż: km dodane", "km"], ["km_krakow", "Kraków: km", "km"], ["km_dzien", "Uproszczony: km dziennie", "km"],
     ["spalanie", "Spalanie l/100 km", ""], ["paliwo", "Paliwo zł/l", "zł"],
@@ -348,10 +387,13 @@ ul.notes li::before { content: ""; position: absolute; left: 0; top: .6em; width
     "Podatek 14% od robocizny, diet, GDW i zysku to wartość efektywna. Stary arkusz w koszcie ludzkim używał ×1,19. Do sprawdzenia.",
     "Systemy N.P. liczone jak D: siłowniki, składowe, dźwig, 7 osobodni. Cena 85% D, 2 MP. Do potwierdzenia.",
     "Czas podróży: stary wzór daje dla tras poniżej 800 km to samo co arkusz, a od 800 km uwzględnia liczbę wyjazdów (w arkuszu ten człon jej nie miał). Uproszczony liczy 650 km dziennie, 2 × km na wyjazd.",
-    "Cena minimalna liczona jak dawna kolumna N: zysk do sprawdzenia i dźwig 2000 zł/dzień.",
+    "Zysk B liczony od tych samych kosztów co zysk A. Dawna kolumna N zmieniała też cenę dźwigu na 2000 zł, tu tego nie ma.",
+    "Więcej osób skraca montaż, ale noclegi i diety liczą się od osobodni, więc prawie się nie zmieniają (dochodzi 1 nocleg na osobę). Km auta zależą od liczby tygodni (1 auto na tydzień).",
     "Przy danych z plików Kasprowicza i Dekerta wyniki zgadzają się ze starym arkuszem co do grosza."
   ];
-  var TABS = [["wynik", "Warianty"], ["ekipa", "Ekipa"], ["oferta", "Do oferty"], ["obl", "Obliczenia"], ["wyceny", "Wyceny"], ["cennik", "Cennik"], ["uwagi", "Uwagi"]];
+  var TABS = [["wynik", "Warianty"], ["ekipa", "Ekipa"], ["oferta", "Oferta"], ["zestaw", "Zestawienie"], ["obl", "Obliczenia"], ["wyceny", "Wyceny"], ["cennik", "Cennik"], ["uwagi", "Uwagi"]];
+  var LS_SZABLON = "nk38.szablon.v1", LS_LOGO = "nk38.logo.v1";
+  var X = window.NK38X;
 
   var $ = function (id) { return document.getElementById(id); };
   var fmtPLN = new Intl.NumberFormat("pl-PL", { maximumFractionDigits: 0 });
@@ -407,6 +449,7 @@ ul.notes li::before { content: ""; position: absolute; left: 0; top: .6em; width
     var d = E.domyslneDane();
     d.lok = state.dane ? state.dane.lok : d.lok;
     d.analiza = state.dane ? state.dane.analiza : 0;
+    d.oferta = state.dane ? state.dane.oferta : null;
     TXTF.forEach(function (k) { d[k] = $(k).value; });
     NUMF.forEach(function (k) {
       var v = $(k).value;
@@ -431,6 +474,12 @@ ul.notes li::before { content: ""; position: absolute; left: 0; top: .6em; width
 
   function setDane(d, przyklad) {
     state.dane = Object.assign(E.domyslneDane(), d);
+    if (d.zysk2 === undefined && d.zysk_min !== undefined) state.dane.zysk2 = d.zysk_min;
+    var o = Object.assign(X.domyslnaOferta(), d.oferta || {});
+    o.opcje = Object.assign(X.domyslnaOferta().opcje, (d.oferta || {}).opcje || {});
+    o.ceny = Object.assign({}, (d.oferta || {}).ceny || {});
+    o.tekst = Object.assign({}, (d.oferta || {}).tekst || {});
+    state.dane.oferta = o;
     state.przyklad = przyklad || null;
     toForm(state.dane);
     recalc();
@@ -452,7 +501,10 @@ ul.notes li::before { content: ""; position: absolute; left: 0; top: .6em; width
     $("mpNote").textContent = m.platformy + " platform · " + m.MP + " MP";
     $("std_S").textContent = Math.max(0, (d.S || 0) - sumO(d.gl_S));
     $("std_D").textContent = Math.max(0, (d.D || 0) - sumO(d.gl_D));
-    $("utrHint").textContent = "z magistrali i barierek: " + n2(m.utrAuto) + " osd";
+    var surowe = (d.magistrala || 0) * r.cennik.osd_magistrala + ((d.barierki || 0) + (d.maskownice || 0)) * r.cennik.osd_barierka;
+    $("utrLine").innerHTML = "Utrudnienia razem <b>" + n2(m.utr) + " osd</b><span>= magistrala " + (d.magistrala || 0) + " × " + n2(r.cennik.osd_magistrala) +
+      " + barierki i maskownice " + ((d.barierki || 0) + (d.maskownice || 0)) + " × " + n2(r.cennik.osd_barierka) + " = " + n2(surowe) + " → " + n2(m.utrAuto) +
+      (d.utr_dod ? ", + ręcznie " + n2(d.utr_dod) : "") + "</span>";
     $("km_pom").placeholder = String(r.wspolne.kmPom);
     $("km_mon").placeholder = String(r.wspolne.kmMon);
     $("rozl_dni").placeholder = n2(r.wspolne.rozl);
@@ -461,31 +513,34 @@ ul.notes li::before { content: ""; position: absolute; left: 0; top: .6em; width
     var ds = E.GLEBOKOSCI.filter(function (cm) { return d.gl_S[cm] || d.gl_D[cm]; }).map(function (cm) { return cm + " cm"; });
     $("dimSummary").textContent = ds.length ? "· " + ds.join(", ") : "· wszystkie standardowe";
 
-    var q = sel % 2, sl = sel >= 2 ? 1 : 0;
+    var q = sel % 2, sl = sel >= 2 ? 1 : 0, recz = d.wyjazdy != null;
     $("hero").innerHTML =
       '<div class="hero-top"><div class="row">' +
       '<div class="seg" role="group" aria-label="Udźwig"><button type="button" data-q="0" aria-pressed="' + (q === 0) + '">2000 kg</button><button type="button" data-q="1" aria-pressed="' + (q === 1) + '">2500 kg</button></div>' +
       '<div class="seg" role="group" aria-label="Słupki e-ładowarek"><button type="button" data-sl="0" aria-pressed="' + (sl === 0) + '">Bez słupków</button><button type="button" data-sl="1" aria-pressed="' + (sl === 1) + '">Ze słupkami</button></div>' +
       '</div><span class="eyebrow">' + esc(d.typ) + ' · ' + m.MP + ' MP · ' + esc(d.lok) + '</span></div>' +
-      '<div class="eyebrow" style="margin-top:14px">Cena kontraktu netto</div>' +
-      '<div class="big">' + fmtPLN.format(Math.round(w.cena)) + '<small>zł</small></div>' +
+      '<div class="prices"><div class="pz"><div class="eyebrow">Cena netto · zysk A ' + pct(d.zysk) + '</div><div class="big">' + fmtPLN.format(Math.round(w.cena)) + '<small>zł</small></div>' +
+      '<div class="d">' + zl(w.cenaMP) + ' / MP · ' + eur(w.cenaMPeur) + ' / MP</div></div>' +
+      '<div class="pz b"><div class="eyebrow">Cena netto · zysk B ' + pct(d.zysk2) + '</div><div class="big">' + fmtPLN.format(Math.round(w.cena2)) + '<small>zł</small></div>' +
+      '<div class="d">' + zl(w.cenaMP2) + ' / MP · ' + sgn(w.cena2 - w.cena) + '</div></div></div>' +
       '<div class="kpis">' +
-      kpi("Za miejsce postojowe", zl(w.cenaMP)) + kpi("Za MP w euro", eur(w.cenaMPeur)) +
-      kpi("Montaż", w.wyjazdy + " " + jed + " · " + w.dni + " dni", true) +
-      kpi("Zysk " + pct(d.zysk), zl(w.zysk)) + kpi("Cena minimalna", zl(w.cenaMin)) + "</div>";
+      kpi("Montaż", w.tygodnie + " tyg.<small>" + w.dni + " dni pracy" + (recz ? ", tygodnie wpisane ręcznie" : "") + "</small>", true) +
+      kpi("Ekipa", w.osoby + " os.<small>" + n2(w.osobodni) + " osobodni</small>") +
+      kpi("Zysk A / B", zl(w.zysk) + "<small>" + zl(w.zysk2) + "</small>") +
+      kpi("Urządzenia", zl(w.koszty.urzadzenia) + "<small>" + pct(w.koszty.urzadzenia / w.cena) + " ceny</small>") + "</div>";
     $("compare").innerHTML = r.warianty.map(function (x, i) {
       return '<button type="button" class="cmp" data-sel="' + i + '" aria-pressed="' + (i === sel) + '"><div class="n">' + esc(x.nazwa) +
-        '</div><div class="p">' + zl(x.cena) + '</div><div class="d">' + (i === sel ? "wybrany" : sgn(x.cena - w.cena)) + "</div></button>";
+        '</div><div class="p">' + zl(x.cena) + '</div><div class="d">B: ' + zl(x.cena2) + "</div></button>";
     }).join("");
     $("alerts").innerHTML = r.ostrzezenia.map(function (a) {
       return '<div class="alert ' + a.typ + '"><b>' + (a.typ === "blad" ? "Błąd" : "Uwaga") + "</b>" + esc(a.tekst) + "</div>";
     }).join("");
-    $("mbar").innerHTML = '<div><div class="s">' + esc(w.nazwa) + ' · ' + w.wyjazdy + ' ' + jed + '</div><div class="p">' + zl(w.cena) +
-      '</div></div><div style="text-align:right"><div class="s">za MP</div><div class="p" style="font-size:15px">' + zl(w.cenaMP) + "</div></div>";
+    $("mbar").innerHTML = '<div><div class="s">' + esc(w.nazwa) + ' · zysk A · ' + w.tygodnie + ' tyg.</div><div class="p">' + zl(w.cena) +
+      '</div></div><div style="text-align:right"><div class="s">zysk B</div><div class="p" style="font-size:15px">' + zl(w.cena2) + "</div></div>";
     $("tabs").innerHTML = TABS.map(function (t) {
       return '<button type="button" role="tab" data-tab="' + t[0] + '" aria-selected="' + (state.tab === t[0]) + '">' + t[1] + "</button>";
     }).join("");
-    $("pane").innerHTML = ({ wynik: paneWynik, ekipa: paneEkipa, oferta: paneOferta, obl: paneObl, wyceny: paneWyceny, cennik: paneCennik, uwagi: paneUwagi }[state.tab] || paneWynik)();
+    $("pane").innerHTML = ({ wynik: paneWynik, ekipa: paneEkipa, oferta: paneOfertaDok, zestaw: paneOferta, obl: paneObl, wyceny: paneWyceny, cennik: paneCennik, uwagi: paneUwagi }[state.tab] || paneWynik)();
   }
   function kpi(l, v, t) { return '<div class="kpi"><div class="l">' + l + '</div><div class="v' + (t ? " t" : "") + '">' + v + "</div></div>"; }
 
@@ -505,11 +560,13 @@ ul.notes li::before { content: ""; position: absolute; left: 0; top: .6em; width
     var r = wynik, ws = r.warianty, jed = r.wspolne.krk ? "dni" : "tygodnie";
     var h = '<div class="scroll"><table class="t">' + thead("Wariant", ws) + "<tbody>";
     h += tableRows([
-      ["Cena kontraktu netto", function (w) { return zl(w.cena); }, "total"],
-      ["Cena za MP", function (w) { return zl(w.cenaMP); }],
-      ["Cena za MP w euro", function (w) { return eur(w.cenaMPeur); }],
-      ["Cena minimalna, zysk " + pct(r.dane.zysk_min), function (w) { return zl(w.cenaMin); }, "strong"],
-      ["Zysk " + pct(r.dane.zysk), function (w) { return zl(w.zysk); }],
+      ["Cena netto, zysk A " + pct(r.dane.zysk), function (w) { return zl(w.cena); }, "total"],
+      ["Cena netto, zysk B " + pct(r.dane.zysk2), function (w) { return zl(w.cena2); }, "total"],
+      ["Różnica B − A", function (w) { return sgn(w.cena2 - w.cena); }],
+      ["Cena za MP, zysk A", function (w) { return zl(w.cenaMP); }],
+      ["Cena za MP, zysk B", function (w) { return zl(w.cenaMP2); }],
+      ["Cena za MP w euro, zysk A", function (w) { return eur(w.cenaMPeur); }],
+      ["Zysk A / zysk B", function (w) { return zl(w.zysk) + " / " + zl(w.zysk2); }],
       ["Koszt rzeczywisty", function (w) { return zl(w.koszt); }],
       "Struktura kosztów",
       ["Urządzenia", function (w) { return zl(w.koszty.urzadzenia); }],
@@ -520,14 +577,15 @@ ul.notes li::before { content: ""; position: absolute; left: 0; top: .6em; width
       ["KOB, GDW, podatek", function (w) { return zl(w.kob + w.gdw + w.podatek); }],
       "Czas",
       ["Dni pracy ekipy", function (w) { return w.dni; }, "strong"],
-      ["Montaż, " + jed, function (w) { return w.wyjazdy; }, "strong"],
+      ["Tygodnie montażu", function (w) { return w.tygodnie; }, "strong"],
       ["Osobodni razem", function (w) { return n2(w.osobodni); }]
     ], ws);
     h += "</tbody></table></div>";
-    h += '<h3 class="sec">Opcje do oferty, cena z narzutami</h3><div class="scroll"><table class="t"><thead><tr><th>Opcja</th><th>Q=2000 kg</th><th>Q=2500 kg</th></tr></thead><tbody>';
-    h += "<tr><td>Słupki e-ładowarek 3,7 kW, z robocizną</td><td>" + zl(r.opcje.slupki37[0]) + "</td><td>" + zl(r.opcje.slupki37[1]) + "</td></tr>";
-    h += "<tr><td>Słupki e-ładowarek 22 kW, z robocizną</td><td>" + zl(r.opcje.slupki22[0]) + "</td><td>" + zl(r.opcje.slupki22[1]) + "</td></tr>";
-    h += "<tr><td>Malowanie proszkowe RAL</td><td>" + zl(r.opcje.malowanie) + "</td><td>" + zl(r.opcje.malowanie) + "</td></tr>";
+    var O = r.opcje;
+    h += '<h3 class="sec">Opcje do oferty, cena z narzutami</h3><div class="scroll"><table class="t"><thead><tr><th>Opcja</th><th>2000 kg, zysk A</th><th>2500 kg, zysk A</th><th>2000 kg, zysk B</th><th>2500 kg, zysk B</th></tr></thead><tbody>';
+    h += "<tr><td>Słupki e-ładowarek 3,7 kW, z robocizną</td><td>" + [O.slupki37[0], O.slupki37[1], O.slupki37b[0], O.slupki37b[1]].map(zl).join("</td><td>") + "</td></tr>";
+    h += "<tr><td>Słupki e-ładowarek 22 kW, z robocizną</td><td>" + [O.slupki22[0], O.slupki22[1], O.slupki22b[0], O.slupki22b[1]].map(zl).join("</td><td>") + "</td></tr>";
+    h += "<tr><td>Malowanie proszkowe RAL</td><td>" + [O.malowanie, O.malowanie, O.malowanieB, O.malowanieB].map(zl).join("</td><td>") + "</td></tr>";
     return h + "</tbody></table></div>";
   }
 
@@ -544,8 +602,8 @@ ul.notes li::before { content: ""; position: absolute; left: 0; top: .6em; width
       if (Math.abs(dlt) < 0.5) bar = '<i class="zero"></i>';
       else if (dlt < 0) bar = '<i class="cheap" style="left:' + (50 - wpct).toFixed(2) + '%;width:' + wpct.toFixed(2) + '%"></i>';
       else bar = '<i class="dear" style="left:50%;width:' + wpct.toFixed(2) + '%"></i>';
-      var tip = a.n + " os.: " + zl(a.cena) + ", " + a.wyjazdy + " " + jed + ", " + a.dni + " dni pracy";
-      return '<div class="who">' + a.n + ' os.' + (a.cena === min ? '<span class="badge">najtaniej</span>' : "") + '<small>' + a.wyjazdy + " " + jed + '</small></div><div class="track" title="' + esc(tip) + '">' + bar +
+      var tip = a.n + " os.: " + zl(a.cena) + ", " + a.tygodnie + " tyg., " + a.dni + " dni pracy";
+      return '<div class="who">' + a.n + ' os.' + (a.cena === min ? '<span class="badge">najtaniej</span>' : "") + '<small>' + a.tygodnie + " tyg. · " + a.dni + " dni" + '</small></div><div class="track" title="' + esc(tip) + '">' + bar +
         '</div><div class="val">' + (Math.abs(dlt) < 0.5 ? "wpisana" : sgn(dlt)) + "<small>" + zl(a.cena) + "</small></div>";
     }).join("") + "</div>";
     h += '<div class="chart-axis"><div></div><div><span>−' + fmtPLN.format(Math.round(maxAbs)) + '</span><span>0</span><span>+' + fmtPLN.format(Math.round(maxAbs)) + "</span></div><div></div></div>";
@@ -553,13 +611,19 @@ ul.notes li::before { content: ""; position: absolute; left: 0; top: .6em; width
     function row(lab, f, best) {
       return "<tr><td>" + lab + "</td>" + an.map(function (a) { return '<td class="' + (best && a.cena === min ? "best" : "") + '">' + f(a) + "</td>"; }).join("") + "</tr>";
     }
-    h += row("Cena kontraktu", function (a) { return zl(a.cena); }, true);
+    h += row("Cena, zysk A", function (a) { return zl(a.cena); }, true);
+    h += row("Cena, zysk B", function (a) { return zl(a.cena2); });
     h += row("Średnia stawka", function (a) { return zl(a.stawka); });
     h += row("Dni pracy", function (a) { return a.dni; });
-    h += row("Montaż, " + jed, function (a) { return a.wyjazdy; });
-    h += row("Hotel i diety", function (a) { return zl(a.koszty.hotel + a.koszty.diety); });
+    h += row("Tygodnie montażu", function (a) { return a.tygodnie; });
+    h += row("Noclegi (osobonoce)", function (a) { return fmtPLN.format(a.noclegi); });
+    h += row("Km auta ekipy", function (a) { return fmtPLN.format(a.km); });
+    h += row("Hotel", function (a) { return zl(a.koszty.hotel); });
+    h += row("Diety", function (a) { return zl(a.koszty.diety); });
+    h += row("Paliwo", function (a) { return zl(a.koszty.paliwo); });
     h += row("Robocizna", function (a) { return zl(a.koszty.montaz + a.koszty.dojazdy + a.koszty.rozladunek_ludzie); });
-    h += '</tbody></table></div><p class="note" style="margin-top:10px">Jeśli tygodnie montażu są wpisane ręcznie, analiza też ich używa. Wyczyść to pole, żeby porównać liczbę osób.</p>';
+    h += '</tbody></table></div><div class="info"><b>Jak to liczy.</b> Praca to stała liczba osobodni, więc więcej osób skraca montaż (mniej dni i tygodni). Noclegi i diety liczą się od osobodni, dlatego prawie się nie zmieniają: ta sama praca rozkłada się na więcej osób, a dochodzi 1 nocleg na osobę. Km auta i paliwo maleją z liczbą tygodni (1 auto na tydzień). Jeśli dwie liczby osób dają tyle samo tygodni, km są takie same. Tygodnie to dni pracy podzielone przez 5 i zaokrąglone w górę, więc nie każda zmiana liczby osób je zmienia.</div>' +
+      (r.dane.wyjazdy != null ? '<div class="alert uwaga" style="margin-top:10px"><b>Uwaga</b>Tygodnie montażu są wpisane ręcznie (' + r.dane.wyjazdy + '), więc analiza ich nie zmienia. Wyczyść to pole w formularzu.</div>' : "");
     return h;
   }
 
@@ -587,13 +651,13 @@ ul.notes li::before { content: ""; position: absolute; left: 0; top: .6em; width
     L.push("Transport:         " + (d.tir || 0) + " TIR × " + zl(d.tir_cena || 0) + ", rozładunek " + zl(d.rozl_cena || 0) + "/TIR, " + n2(w.rozl) + " dni");
     L.push("Ekipa:             " + ws[0].osoby + " os., średnio " + zl(ws[0].stawka) + "/dzień; dźwig " + w.dzwDni + " dni");
     L.push("");
-    L.push("Wariant                 Cena netto     Cena/MP   Montaż");
+    L.push(pad("Wariant", 20) + lpad("Zysk A " + pct(d.zysk), 14) + lpad("Zysk B " + pct(d.zysk2), 14) + lpad("MP (A)", 12) + "   Montaż");
     ws.forEach(function (x) {
-      L.push(pad(x.nazwa, 20) + lpad(zl(x.cena), 14) + lpad(zl(x.cenaMP), 12) + "   " + x.wyjazdy + " " + jed + " (" + x.dni + " dni pracy)");
+      L.push(pad(x.nazwa, 20) + lpad(zl(x.cena), 14) + lpad(zl(x.cena2), 14) + lpad(zl(x.cenaMP), 12) + "   " + x.tygodnie + " tyg. (" + x.dni + " dni pracy)");
     });
     L.push("");
     L.push("Opcje:  słupki 3,7 kW +" + zl(r.opcje.slupki37[0]) + "  |  słupki 22 kW +" + zl(r.opcje.slupki22[0]) + "  |  malowanie RAL +" + zl(r.opcje.malowanie));
-    L.push("Cena minimalna (zysk " + pct(d.zysk_min) + "): " + zl(ws[0].cenaMin) + " (2000 kg)");
+    L.push("Do oferty: czas montażu " + ws[0].tygodnieZakres[0] + "-" + ws[0].tygodnieZakres[1] + " tygodni (2000 kg)");
     L.push("Konserwacja roczna: " + r.cennik.konserw.map(function (k) { return fmtPLN.format(k * m.MP * 12); }).join(" / ") + " zł (40 / 45 / 50 zł/MP/mies.)");
     return L.join("\n");
   }
@@ -623,6 +687,8 @@ ul.notes li::before { content: ""; position: absolute; left: 0; top: .6em; width
       ["Osobodni montażu (F50)", function (x) { return n2(x.osd); }],
       ["Iteracje tygodni / dni", function (x) { return x.iteracje.join(" → "); }],
       ["Tygodnie / dni montażu (B55)", function (x) { return x.wyjazdy; }, "strong"],
+      ["Tygodnie montażu (do oferty)", function (x) { return x.tygodnie; }, "strong"],
+      ["Noclegi (osobonoce)", function (x) { return fmtPLN.format(x.noclegi); }],
       ["Osobodni podróży i rozładunku (G59)", function (x) { return n2(x.podroze); }],
       ["Dni pracy ekipy (J39)", function (x) { return x.dni; }, "strong"],
       ["Kilometry auta", function (x) { return fmtPLN.format(x.km); }],
@@ -680,6 +746,149 @@ ul.notes li::before { content: ""; position: absolute; left: 0; top: .6em; width
     return '<h3 class="sec">Do sprawdzenia</h3><ul class="notes">' + UWAGI.map(function (u) { return "<li>" + esc(u) + "</li>"; }).join("") + "</ul>";
   }
 
+
+  /* --- oferta (dokument) --- */
+  function szablon() { return Object.assign({}, X.SZABLON, lsGet(LS_SZABLON, {})); }
+  function ofField(label, key, opt) {
+    opt = opt || {};
+    var o = state.dane.oferta, v = key.split(".").reduce(function (a, k) { return a == null ? a : a[k]; }, o);
+    var attrs = ' id="of_' + key.replace(/\./g, "_") + '" data-of="' + key + '"' + (opt.ph ? ' placeholder="' + esc(opt.ph) + '"' : "");
+    var ctl = opt.area ? '<textarea' + attrs + ' rows="' + (opt.rows || 4) + '">' + esc(v == null ? "" : v) + "</textarea>"
+      : '<input type="' + (opt.num ? "number" : "text") + '"' + attrs + ' value="' + esc(v == null ? "" : v) + '">';
+    return '<label class="f' + (opt.full ? " full" : "") + '">' + label + ctl + (opt.hint ? '<span class="hint">' + opt.hint + "</span>" : "") + "</label>";
+  }
+  function paneOfertaDok() {
+    var r = wynik, o = state.dane.oferta, sz = szablon(), F = X.oferta(r, o, sz), op = X.zOpisu(r.dane.opis);
+    var view = state.ofView || "dane";
+    var h = '<div class="row" style="justify-content:space-between;margin-bottom:12px"><div class="seg" role="group" aria-label="Widok oferty">' +
+      '<button type="button" data-ofview="dane" aria-pressed="' + (view === "dane") + '">Dane oferty</button><button type="button" data-ofview="podglad" aria-pressed="' + (view === "podglad") + '">Podgląd</button></div>' +
+      '<button class="btn primary small" type="button" id="bDocx">Pobierz ofertę (Word)</button></div>';
+    if (view === "podglad") return h + podgladOferty(F);
+    h += '<p class="note">Oferta korzysta z wyliczeń kalkulatora (wariant 2000 kg bez słupków jako Pozycja 10, opcje jako różnice). Ceny zaokrąglają się w górę do 100 zł; każdą możesz nadpisać.</p>';
+    h += '<details class="grp" open><summary>Adresat i numer</summary><div class="ofgrid">' +
+      ofField("Nr oferty", "nr", { ph: "2026101412/INK" }) + ofField("Miejscowość", "miejsce") +
+      ofField("Zwrot", "zwrot") + '<div></div>' +
+      ofField("Adresat (każda linia osobno, druga linia pogrubiona)", "adresat", { area: 1, rows: 7, full: 1, ph: "Szanowna Pani\nImię Nazwisko\nStanowisko\ntel. …\n\nFirma\nul. …\n00-000 Miasto" }) + "</div></details>";
+    h += '<details class="grp" open><summary>Treść i dane techniczne</summary><div class="ofgrid">' +
+      '<label class="f">Powód oferty<select data-of="powod" id="of_powod"><option value="zapytanie"' + (o.powod !== "rabat" ? " selected" : "") + '>Otrzymane zapytanie</option><option value="rabat"' + (o.powod === "rabat" ? " selected" : "") + '>Prośba o rabat (oferta zrabatowana)</option></select></label>' +
+      ofField("W garażu…", "garaz", { ph: "inwestycji " + (r.dane.nazwa || "…"), hint: "np. wznoszonego budynku przy ul. Dekerta w Krakowie" }) +
+      ofField("Zagłębienie: wysokość [cm]", "h", { ph: op.h || "" }) + ofField("Zagłębienie: długość [cm]", "l", { ph: op.l || "" }) +
+      ofField("Prześwit min. [cm]", "p", { ph: op.p || "" }) + '<div></div>' +
+      ofField("Wysokość pojazdów ▲ górna [cm]", "hg", { ph: op.hg || "" }) + ofField("Wysokość pojazdów ▼ dolna [cm]", "hd", { ph: op.hd || "" }) +
+      ofField("Opis agregatu", "agregat") + ofField("Moc agregatu (warunki elektryczne)", "kw") + "</div>" +
+      '<p class="note" style="margin-top:8px">Puste pola biorą wartości z opisu wariantu (H-, L-, P-, G-, D-).</p></details>';
+    var ch = function (k, l) { return '<label><input type="checkbox" data-of="opcje.' + k + '"' + (o.opcje[k] ? " checked" : "") + "> " + l + "</label>"; };
+    h += '<details class="grp" open><summary>Opcje i ceny</summary><div class="row" style="margin-bottom:10px"><span class="muted">Ceny w ofercie z:</span>' +
+      '<div class="seg" role="group" aria-label="Zysk w ofercie"><button type="button" data-ofzysk="A" aria-pressed="' + (o.zysk !== "B") + '">zysk A ' + pct(r.dane.zysk) + '</button><button type="button" data-ofzysk="B" aria-pressed="' + (o.zysk === "B") + '">zysk B ' + pct(r.dane.zysk2) + "</button></div></div>" +
+      '<div class="checks">' + ch("q2500", "Opcja: 2500 kg") + ch("slupki37", "Opcja: słupki 3,7 kW") + ch("slupki22", "Opcja: słupki 22 kW") + ch("malowanie", "Opcja: malowanie RAL") + "</div>" +
+      '<div class="scroll" style="margin-top:10px"><table class="t"><thead><tr><th>Pozycja</th><th>Z kalkulatora</th><th>W ofercie</th></tr></thead><tbody>' +
+      F.ceny.map(function (c) {
+        return "<tr><td>" + c.label + "</td><td>" + zl(c.auto) + '</td><td><input type="number" step="100" data-of="ceny.' + c.klucz + '" id="of_ceny_' + c.klucz + '" placeholder="' + c.auto + '" value="' + (o.ceny[c.klucz] != null ? o.ceny[c.klucz] : "") + '" style="max-width:150px"></td></tr>';
+      }).join("") + "</tbody></table></div></details>";
+    h += '<details class="grp"><summary>Płatności, terminy, gwarancja</summary><div class="ofgrid">' +
+      ofField("Warunki płatności (każda linia osobno)", "platnosci", { area: 1, rows: 6, full: 1 }) +
+      ofField("Dostawa po ok. … tygodniach", "dostawa", { num: 1 }) + ofField("Długość TIR [m]", "tir", { num: 1 }) +
+      ofField("Gwarancja [mies.]", "gw", { hint: "np. 36 lub 36/60" }) + "</div>" +
+      '<p class="note" style="margin-top:8px">Czas montażu w ofercie: ' + r.warianty[0].tygodnieZakres.join("-") + ' tygodni (z kalkulatora, z zapasem 25%).</p></details>';
+    h += '<details class="grp"><summary>Teksty liczone automatycznie</summary>';
+    [["wstep", "Wstęp"], ["tech", "Dane techniczne"], ["wyposazenie", "Obciążenie i zabezpieczenia"], ["lista", "Lista urządzeń"], ["dostawa", "Dostawa"], ["montaz", "Montaż"]].forEach(function (t) {
+      var changed = o.tekst[t[0]] != null;
+      h += '<label class="f" style="margin-bottom:10px">' + t[1] + '<span><span class="autotag' + (changed ? " ch" : "") + '">' + (changed ? "zmieniony" : "automatyczny") + "</span>" +
+        (changed ? '<button type="button" class="linkbtn" data-reset="' + t[0] + '">Przywróć automatyczny</button>' : "") + '</span><textarea rows="3" data-of="tekst.' + t[0] + '" id="of_tekst_' + t[0] + '">' + esc(changed ? o.tekst[t[0]] : F.auto[t[0]]) + "</textarea></label>";
+    });
+    h += "</details>";
+    h += '<details class="grp"><summary>Teksty stałe i logo (wspólne dla wszystkich ofert)</summary>' +
+      '<div class="row" style="margin-bottom:10px"><label class="btn small" for="logoFile">Wgraj logo</label><input type="file" id="logoFile" accept="image/png,image/jpeg" hidden>' +
+      (lsGet(LS_LOGO, null) ? '<span class="muted">Logo wgrane.</span><button type="button" class="btn small ghost danger" id="bLogoDel">Usuń logo</button>' : '<span class="muted">Bez logo w nagłówku.</span>') + "</div>";
+    [["naglowek", "Nagłówek (prawa strona)"], ["stopka", "Stopka"], ["uwaga_tech", "Uwaga pod danymi technicznymi"], ["zakres", "4. Zakres oferty"],
+      ["warunki", "5. Warunki montażu ({tir}, {kw}, {typ} wstawiane automatycznie)"], ["gwarancja", "6. Gwarancja ({gw})"], ["zakonczenie", "Zakończenie"], ["podpis", "Podpis"], ["klauzula", "Klauzula poufności"]].forEach(function (t) {
+      h += '<label class="f" style="margin-bottom:10px">' + t[1] + '<textarea rows="4" data-sz="' + t[0] + '" id="sz_' + t[0] + '">' + esc(sz[t[0]]) + "</textarea></label>";
+    });
+    return h + '<button type="button" class="btn small" id="bSzReset">Przywróć teksty stałe</button></details>';
+  }
+  function podgladOferty(F) {
+    var logo = lsGet(LS_LOGO, null), P = function (arr, cls) { return arr.map(function (l) { return '<p class="' + (cls || "") + '">' + (esc(l) || "&nbsp;") + "</p>"; }).join(""); };
+    var h = '<div class="paper"><div class="hd">' + (logo ? '<img src="' + logo.dataUrl + '" alt="Logo">' : "") + '<div class="lh">' +
+      F.naglowek.map(function (l, i) { return i < 2 ? "<b>" + esc(l) + "</b>" : esc(l) + "<br>"; }).join("") + "</div></div>";
+    h += "<p>" + esc(F.miejsceData) + "</p><br>" + F.adresat.map(function (l, i) { return "<p>" + (i === 1 ? "<b>" + esc(l) + "</b>" : esc(l) || "&nbsp;") + "</p>"; }).join("");
+    h += '<p class="nr">' + esc(F.nr) + "</p><p>" + esc(F.zwrot) + "</p><p>" + esc(F.wstep) + "</p>";
+    h += '<h4>1. Specyfikacja oferty:</h4><div class="in"><p><span class="blue">Pozycja 10:</span> ' + esc(F.pozycja) + '</p><p><u>Dane techniczne:</u></p>' +
+      P(F.tech) + P(F.uwagaTech) + P(F.wyposazenie) + "<ul>" + F.lista.map(function (l) { return "<li>" + esc(l) + "</li>"; }).join("") + "</ul>" +
+      F.opcje.map(function (op) { return '<p class="blue" style="margin-top:8px">' + esc(op.label) + "</p><p>" + esc(op.tekst) + "</p>"; }).join("") + "</div>";
+    h += '<h4>2. Wartość zamówienia netto.</h4><div class="pr">';
+    var lewa = ["Warunki płatności:"].concat(F.platnosci);
+    for (var i = 0; i < Math.max(lewa.length, F.ceny.length); i++) {
+      var c = F.ceny[i];
+      h += "<div>" + esc(lewa[i] || "") + '</div><div class="v">' + (c ? '<span class="blue">' + esc(c.label) + "</span> " + esc(F.kwota(c.kwota)) : "") + "</div>";
+    }
+    h += '</div><h4>3. Dostawa i montaż.</h4><div class="in">' + P([F.dostawa, F.montaz]) + '</div><h4>4. Zakres oferty.</h4><div class="in">' + P(F.zakres) +
+      '</div><h4>5. Warunki montażu.</h4><div class="in">' + P(F.warunki) + '</div><h4>6. Gwarancja.</h4><div class="in">' + P(F.gwarancja) + "</div><br>" +
+      P(F.zakonczenie) + "<br><br>" + P(F.podpis, "in") + '<p class="kl">' + esc(F.klauzula) + '</p><div class="ft">' + F.stopka.map(esc).join("<br>") + "</div></div>";
+    return h;
+  }
+
+  /* --- eksporty --- */
+  var LIBS = window.NK38_LIBS || {
+    exceljs: "https://cdn.jsdelivr.net/npm/exceljs@4.4.0/dist/exceljs.min.js",
+    jspdf: "https://cdn.jsdelivr.net/npm/jspdf@2.5.1/dist/jspdf.umd.min.js",
+    autotable: "https://cdn.jsdelivr.net/npm/jspdf-autotable@3.8.2/dist/jspdf.plugin.autotable.min.js",
+    docx: "https://cdn.jsdelivr.net/npm/docx@8.5.0/build/index.umd.js"
+  };
+  var loaded = {};
+  function loadScript(key) {
+    if (!loaded[key]) loaded[key] = new Promise(function (ok, fail) {
+      var el = document.createElement("script"); el.src = LIBS[key]; el.onload = ok;
+      el.onerror = function () { delete loaded[key]; fail(new Error("lib")); }; document.head.appendChild(el);
+    });
+    return loaded[key];
+  }
+  function b64(buf) { var b = new Uint8Array(buf), s = ""; for (var i = 0; i < b.length; i += 0x8000) s += String.fromCharCode.apply(null, b.subarray(i, i + 0x8000)); return btoa(s); }
+  var fontsP = null;
+  function fonts() {
+    if (!fontsP) fontsP = Promise.all(["fonts/Carlito-Regular.ttf", "fonts/Carlito-Bold.ttf"].map(function (u) {
+      return fetch(u).then(function (r) { if (!r.ok) throw new Error("font"); return r.arrayBuffer(); }).then(b64);
+    })).then(function (a) { return { regular: a[0], bold: a[1] }; }, function (e) { fontsP = null; throw e; });
+    return fontsP;
+  }
+  function nazwaPliku(prefix, ext) {
+    var d = wynik.dane, base = (d.nazwa || "wycena").normalize("NFD").replace(/[̀-ͯ]/g, "").replace(/ł/g, "l").replace(/Ł/g, "L").replace(/[^\w]+/g, "_").replace(/^_|_$/g, "");
+    return prefix + "_" + base + (d.data ? "_" + d.data : "") + "." + ext;
+  }
+  async function zapisz(filename, data) {
+    if (window.__NK38_SAVE) return window.__NK38_SAVE(filename, data);
+    var dl = window.claude && window.claude.use ? await window.claude.use("downloads") : null;
+    if (!dl) { toast("Zapis plików nie działa w tym widoku. Otwórz stronę w claude.ai."); return; }
+    try { await dl.save({ filename: filename, data: data }); toast("Zapisano " + filename); }
+    catch (e) { if (e && e.code !== "declined") toast(e.code === "rate_limited" ? "Poczekaj chwilę i spróbuj ponownie." : "Nie udało się zapisać pliku (" + (e.code || "błąd") + ")."); }
+  }
+  function ctxExport(f) {
+    return { GLEBOKOSCI: E.GLEBOKOSCI, zestawienie: ofertaText(), uwagi: UWAGI, cennikPola: CENNIK_POLA, cennikZmiany: state.cennik, fonts: f };
+  }
+  async function busy(btn, fn) {
+    if (btn.disabled) return; var t = btn.textContent; btn.disabled = true; btn.textContent = "Przygotowuję…";
+    try { await fn(); } catch (e) { toast(e && e.message === "lib" ? "Nie udało się wczytać biblioteki eksportu. Sprawdź internet i spróbuj ponownie." : "Eksport się nie udał."); if (window.__NK38_ERR) window.__NK38_ERR(e); }
+    finally { btn.disabled = false; btn.textContent = t; }
+  }
+  async function eksportXlsx() {
+    await loadScript("exceljs"); X.setLibs({ ExcelJS: window.ExcelJS });
+    var buf = await X.xlsx(wynik, ctxExport(null));
+    await zapisz(nazwaPliku("Kalkulator_NK38", "xlsx"), new Blob([buf]));
+  }
+  async function eksportPdf() {
+    await loadScript("jspdf"); await loadScript("autotable");
+    X.setLibs({ jsPDF: window.jspdf.jsPDF, autoTable: function (doc, o) { return doc.autoTable(o); } });
+    var buf = X.pdf(wynik, ctxExport(await fonts()));
+    await zapisz(nazwaPliku("Raport_NK38", "pdf"), new Blob([buf]));
+  }
+  async function eksportDocx() {
+    await loadScript("docx"); X.setLibs({ docx: window.docx });
+    var lg = lsGet(LS_LOGO, null), logo = null;
+    if (lg) { var bin = atob(lg.dataUrl.split(",")[1]), u = new Uint8Array(bin.length); for (var i = 0; i < bin.length; i++) u[i] = bin.charCodeAt(i); logo = { data: u, w: lg.w, h: lg.h }; }
+    var blob = await X.docx(wynik, state.dane.oferta, szablon(), logo);
+    var nr = (state.dane.oferta.nr || "").replace(/[^\w]+/g, "");
+    await zapisz(nazwaPliku("Oferta" + (nr ? "_" + nr : ""), "docx"), blob);
+  }
+
   /* --- zdarzenia --- */
   $("form").addEventListener("input", function () { state.dane = fromForm(); state.przyklad = null; recalc(); });
   $("form").addEventListener("submit", function (e) { e.preventDefault(); });
@@ -688,6 +897,8 @@ ul.notes li::before { content: ""; position: absolute; left: 0; top: .6em; width
   $("bNew").addEventListener("click", function () { setDane(E.domyslneDane(), null); toast("Nowa wycena"); });
   $("bWaw").addEventListener("click", function () { setDane(PRZYKLADY.waw, "Kasprowicza 18 Warszawa"); });
   $("bKrk").addEventListener("click", function () { setDane(PRZYKLADY.krk, "Dekerta Kraków"); });
+  $("bXlsx").addEventListener("click", function () { busy($("bXlsx"), eksportXlsx); });
+  $("bPdf").addEventListener("click", function () { busy($("bPdf"), eksportPdf); });
   $("bSave").addEventListener("click", function () { saveCurrent((wynik.dane.nazwa || "Wycena") + (wynik.dane.data ? " " + wynik.dane.data : "")); });
 
   function setSel(i) { state.sel = i; lsSet(LS_SEL, i); render(); }
@@ -708,8 +919,25 @@ ul.notes li::before { content: ""; position: absolute; left: 0; top: .6em; width
     if (state.tab === "wyceny") render();
   }
 
+  $("pane").addEventListener("input", function (e) {
+    var t = e.target, o = state.dane.oferta;
+    if (t.dataset.of && t.type !== "checkbox") {
+      var path = t.dataset.of.split("."), v = t.value;
+      if (path[0] === "ceny") { if (v === "") delete o.ceny[path[1]]; else o.ceny[path[1]] = Number(v); }
+      else if (path[0] === "tekst") o.tekst[path[1]] = v;
+      else o[path[0]] = t.type === "number" ? (v === "" ? "" : Number(v)) : v;
+      lsSet(LS_DRAFT, { dane: state.dane, przyklad: state.przyklad });
+    }
+    if (t.dataset.sz) { var sz = lsGet(LS_SZABLON, {}); sz[t.dataset.sz] = t.value; lsSet(LS_SZABLON, sz); }
+  });
   $("pane").addEventListener("click", function (e) {
     var t = e.target.closest("button"); if (!t) return;
+    if (t.dataset.ofview) { state.ofView = t.dataset.ofview; render(); return; }
+    if (t.dataset.ofzysk) { state.dane.oferta.zysk = t.dataset.ofzysk; recalc(); return; }
+    if (t.dataset.reset) { delete state.dane.oferta.tekst[t.dataset.reset]; recalc(); return; }
+    if (t.id === "bDocx") { busy(t, eksportDocx); return; }
+    if (t.id === "bSzReset") { lsSet(LS_SZABLON, {}); render(); toast("Przywrócono teksty stałe"); return; }
+    if (t.id === "bLogoDel") { try { localStorage.removeItem(LS_LOGO); } catch (er) { /* brak pamięci */ } render(); return; }
     if (t.id === "bCopy") copyText(ofertaText(), "Skopiowano tekst", "offerText");
     if (t.id === "bSave2") saveCurrent($("saveName").value || "Wycena");
     if (t.dataset.load !== undefined) { var s = lsGet(LS_SAVED, [])[+t.dataset.load]; if (s) { setDane(s.dane, null); toast("Wczytano: " + s.nazwa); } }
@@ -735,6 +963,20 @@ ul.notes li::before { content: ""; position: absolute; left: 0; top: .6em; width
   $("pane").addEventListener("change", function (e) {
     var t = e.target;
     if (t.id === "analizaSel") { state.dane.analiza = +t.value; recalc(); }
+    if (t.dataset.of && (t.type === "checkbox" || t.tagName === "SELECT")) {
+      var path = t.dataset.of.split(".");
+      if (path[0] === "opcje") state.dane.oferta.opcje[path[1]] = t.checked; else state.dane.oferta[path[0]] = t.value;
+      recalc();
+    }
+    if (t.id === "logoFile" && t.files && t.files[0]) {
+      var fr = new FileReader();
+      fr.onload = function () {
+        var img = new Image();
+        img.onload = function () { var h = 50, w = Math.round(img.width * h / img.height); lsSet(LS_LOGO, { dataUrl: fr.result, w: w, h: h }); render(); toast("Wgrano logo"); };
+        img.src = fr.result;
+      };
+      fr.readAsDataURL(t.files[0]);
+    }
     if (t.dataset.cen) {
       var k = t.dataset.cen, v = t.value === "" ? null : Number(t.value);
       if (v === null || v === E.CENNIK[k]) delete state.cennik[k]; else state.cennik[k] = v;

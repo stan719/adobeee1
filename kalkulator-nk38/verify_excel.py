@@ -37,7 +37,7 @@ def model(inp, wariant, osoby=None):
         transport_cena=g("in_tir_cena"), transporty=g("in_tir"),
         rozladunek_sprzet=g("in_rozl_cena"), dni_rozladunku=inp.get("in_rozl_dni"),
         wzor_podrozy="uproszczony" if g("in_wzor", "") == "Uproszczony" else "stary",
-        zysk=g("in_zysk", 0.125), zysk_min=g("in_zysk_min", 0.10), eur=g("in_eur", 4.325)))
+        zysk=g("in_zysk", 0.14), zysk2=g("in_zysk2", 0.10), eur=g("in_eur", 4.325)))
 
 
 def losuj(rnd):
@@ -51,7 +51,7 @@ def losuj(rnd):
                in_tir=rnd.randint(1, 8), in_tir_cena=rnd.choice([1600, 3300, 4500]),
                in_rozl_cena=rnd.choice([500, 1700]), in_osoby=rnd.randint(2, 7),
                in_wzor=rnd.choice(["Stary (poprawiony)", "Uproszczony"]),
-               in_zysk=rnd.choice([0.10, 0.125, 0.15]), in_zysk_min=0.08,
+               in_zysk=rnd.choice([0.10, 0.125, 0.15]), in_zysk2=0.08,
                in_q2500=rnd.choice([0.06, 0.07]), in_analiza=rnd.choice(WARIANTY))
     if rnd.random() < 0.3:
         inp["in_km_mon"] = inp["in_km"] + 120
@@ -88,7 +88,7 @@ def main(n):
             war = c["label"] if not c["label"].endswith("os.") else inp.get("in_analiza", WARIANTY[0])
             os_ = int(c["label"].split()[0]) if c["label"].endswith("os.") else None
             m = model(inp, war, os_)
-            for key, mk in (("cena", "cena"), ("cena_min", "cena_min"), ("dni", "dni"),
+            for key, mk in (("cena", "cena"), ("cena2", "cena2"), ("dni", "dni"), ("tyg", "tygodnie"),
                             ("wyj", "wyjazdy"), ("osd_all", "osobodni")):
                 xv = ws[f"{c['col']}{rows[key]}"].value
                 if not isinstance(xv, (int, float)) or abs(xv - m[mk]) > 0.01:

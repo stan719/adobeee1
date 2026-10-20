@@ -13,7 +13,7 @@ Zmiany względem starego arkusza (ustalone 19.10.2026):
   - N.P. traktowane jak D (siłowniki, składowe, dźwig), cena 85% D, 2 MP,
   - "tonaż" = utrudnienia: wyliczane z magistrali i barierek + ręczny dodatek,
   - czas podróży: stary wzór z poprawką dla >= 800 km albo wzór uproszczony,
-  - wariant minimalny (dawna kolumna N) z poprawionym błędem dźwigu.
+  - dwa poziomy zysku (A i B) liczone obok siebie (dawna kolumna N, bez zmiany ceny dźwigu).
 Dla danych z plików 14-15.10.2026 wynik jest identyczny ze starym arkuszem.
 """
 from dataclasses import dataclass, field
@@ -32,7 +32,7 @@ CENNIK = dict(
     barierka=600, maskownica=700, skrzynka_zasil=1000, admin=1800,
     mal_S=6400, mal_D=13500, mal_bar=200, slupek=1700, slupek22=6300, slupek_rbd=0.37,
     osd_S=5.5, osd_D=7, osd_NP=7, osd_magistrala=0.5, osd_barierka=0.5,
-    rozl_TIR=0.5, dzwig=2400, dzwig_min=2000, dzwig_D=5, dzwig_wspS=0.6,
+    rozl_TIR=0.5, dzwig=2400, dzwig_D=5, dzwig_wspS=0.6,
     dni_tydzien=5, km_montaz_dodatek=50, km_krakow=20, km_dzien=650,
     stawka_1=500, stawka_2=400, stawka_kolejna=350,
     dieta=45, hotel=130, spalanie=12, paliwo=9.4,
@@ -151,8 +151,8 @@ class Montaz:
     rozladunek_sprzet: float = 0
     dni_rozladunku: float = None      # nadpisanie (domyślnie 0,5 / TIR)
     wzor_podrozy: str = "stary"       # "stary" | "uproszczony"
-    zysk: float = 0.125
-    zysk_min: float = 0.10
+    zysk: float = 0.14
+    zysk2: float = 0.10
     eur: float = 4.325
 
 
@@ -228,9 +228,10 @@ def wycena_montazu(w: Montaz, c=CENNIK) -> dict:
     k["zysk"] = brutto * w.zysk
     k["podatek"] = podatek
     cena = brutto + podatek
-    brutto_min, podatek_min = narzuty(baza - k["dzwig"] + c["dzwig_min"] * dzwig_dni, w.zysk_min)
+    brutto2, podatek2 = narzuty(baza, w.zysk2)
     return {
-        "K39": cena, "cena": cena, "cena_min": brutto_min + podatek_min, "pozycje": k,
+        "K39": cena, "cena": cena, "cena2": brutto2 + podatek2, "pozycje": k,
+        "tygodnie": ceiling(dni / c["dni_tydzien"]) if w.krakow else wyj,
         "MP": mp, "osoby": osoby, "stawka": stawka, "km_pomiary": km_pom, "km_montaz": km_mon,
         "dni_rozladunku": rozl, "osobodni_montaz": osd, "osobodni_podroze": podr,
         "osobodni": osd_all, "dni": dni, "wyjazdy": wyj, "dzwig_dni": dzwig_dni,
