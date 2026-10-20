@@ -219,3 +219,25 @@ Kolumna N („rabat nadzwyczajny”) to drugi, minimalny wariant ceny z zyskiem 
 | Gotowa oferta | Zakładka **Oferta**: adresat, numer, treść, dane techniczne (z opisu wariantu H-/L-/P-/G-/D-), opcje (2500 kg, słupki 3,7 / 22 kW, malowanie), ceny z kalkulatora zaokrąglone w górę do 100 zł (do nadpisania), płatności, terminy (montaż z kalkulatora z zapasem 25%, np. 9-11 tyg.), teksty stałe i logo. Podgląd na stronie i **plik Word** w układzie Waszych ofert. |
 
 Weryfikacja: testy modelu (11), Excel vs model (17 zestawów), silnik aplikacji vs model (202 zestawy), test eksportów `app/test_export.cjs` (WAW i KRK: Excel, PDF 4 strony, Word) oraz eksport w przeglądarce.
+
+---
+
+## 11. Zmiany 20.10.2026 (druga runda, 13 punktów)
+
+| Punkt | Co zrobiłem |
+|---|---|
+| 1. Logo | Logo z Waszych ofert jest w nagłówku oferty. Inne logo można wgrać w panelu oferty (sekcja P). |
+| 2. Spider Crane | Pod polem: „Cena za 1 dzień: 2400 zł × N dni = …”. Koszt razem jest wyliczany automatycznie i można go nadpisać (model, Excel `in_dzwig_koszt`, aplikacja). |
+| 3. Pasek przy przewijaniu | Lewa kolumna kończy się nad dolną krawędzią okna, a panel wyniku mieści się w oknie. |
+| 4. Konserwacja | Przy konserwacji rocznej i przeglądzie półrocznym widać wpisane stawki zł/MP/mies. |
+| 5. Opis / wariant | Tworzy się sam: `H-h1/h2 \| L-dł \| P-prześwit \| Hpoj. G-… D-… \| A-agregaty \| Bok-barierki Tył-maskownice \| mgstrl-magistrala`. Po ręcznej zmianie pole jest oznaczone „zmieniony”, a przycisk przywraca wersję automatyczną. |
+| 6. Uwagi | Pozycje usunięte, zakładki Uwagi nie ma. |
+| 7. Oferta | Przycisk **Przygotuj ofertę** pod pulpitem otwiera pełnoekranowy panel: sekcje A (numer, adresat), B (wstęp), 1–6 (specyfikacja, ceny, dostawa, teksty stałe), P (podpis, logo, nagłówek, stopka, klauzula) oraz podgląd na żywo. Przykłady WAW/KRK usunięte z aplikacji (zostały w testach i plikach Excel). |
+| 8. Klauzula poufności | Zawsze w stopce 2. strony. |
+| 9. Podpis | Wgrywany raz w panelu oferty. Zostaje tylko w tej przeglądarce (nie jest publikowany ze stroną) i trafia nad linie podpisu. |
+| 10. Raport PDF | Dane wejściowe w 4 grupach w dwóch kolumnach, bez analizy osób i uwag. |
+| 11. Excel | Bez analizy osób. Arkusz „Obliczenia i cennik” drukuje się na 2 stronach A4 (obliczenia, potem cennik). Podsumowanie zaczyna się od kafelków z cenami. |
+| 12. Zysk | Wszędzie wartości procentowe zamiast A/B (np. „Zysk 14%”, „Zysk 10%”). |
+| 13. Szablony urządzeń | Zakładka **Szablony urządzeń**: typy platform (nazwa, MP, osobodni, tekst w ofercie), cennik, zagłębienia z siłownikami, szerokości i długości niestandardowe, składowe platformy, tekst pozycji w ofercie. Można skopiować szablon, dodawać i usuwać wiersze, eksportować i importować. Szablon wybiera się w karcie Inwestycja. Wbudowane: NK38 i NK37. Szablony, teksty oferty, numeracja i zapisane wyceny są w bazie strony (dostęp tylko dla Ciebie); poza claude.ai zapisują się w przeglądarce. |
+
+Weryfikacja: testy modelu (11), Excel vs model (22 zestawy), silnik vs model (202 zestawy), test eksportów (Excel, PDF 4 strony, Word), test w przeglądarce (bez błędów JS; eksporty; panel oferty na komputerze i telefonie; kopia szablonu zmienia cenę i zostaje po przeładowaniu).
