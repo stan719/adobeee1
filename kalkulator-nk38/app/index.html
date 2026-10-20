@@ -1439,7 +1439,8 @@ table.t.edt input[type=text], table.t.edt td input:not([type=number]) { min-widt
   /* Nowa wycena dla urządzenia: wartości startowe z szablonu (zysk, konserwacja, transport…). */
   function nowaWycena(id) {
     var sz = szablony.filter(function (x) { return x.id === id; })[0] || szablony[0];
-    return Object.assign(E.domyslneDane(), kopia((sz && sz.domyslne) || {}), { data: dzis(), szablon: sz.id });
+    return Object.assign(E.domyslneDane(), kopia((sz && sz.domyslne) || {}), { data: dzis(), szablon: sz.id,
+      oferta: { opcje: { q2500: sz.model !== "lista" } } });   // w nowych urządzeniach opcja wariantu 2 domyślnie wyłączona
   }
   $("bNew").addEventListener("click", function () { setDane(nowaWycena(szablonAktywny().id)); buildDimTable(); toForm(state.dane); toast("Nowa wycena"); });
   $("bXlsx").addEventListener("click", function () { busy($("bXlsx"), eksportXlsx); });
