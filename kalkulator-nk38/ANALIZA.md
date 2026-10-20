@@ -253,3 +253,25 @@ W karcie Inwestycja przycisk **+ Dodaj parę zagłębienie / prześwit** dodaje 
 - Każde urządzenie ma **własny szkic** wyceny; przełączanie urządzeń nie gubi wpisanych danych.
 - **Kopia zapasowa** (plik JSON): szablony, teksty oferty, numeracja, wyceny. Wczytanie dodaje wyceny i zastępuje szablony o tym samym identyfikatorze.
 - **Wersja offline** `app/Kalkulator_offline.html` (budowana przez `app/build_offline.py`): jeden plik z silnikiem, eksportami, logo i czcionkami; działa po otwarciu w przeglądarce, zapisuje w przeglądarce, pliki pobiera zwykłym pobieraniem. Biblioteki eksportu pobiera z internetu.
+
+## 14. Szablony NK6501 i NKPXLH, uniwersalny model liczenia (20.10.2026)
+
+Silnik ma dwa sposoby liczenia ceny urządzeń, wybierane w szablonie:
+- **Cennik składowych NK38** (NK38, NK37): bez zmian, zgodny ze starym Excelem.
+- **Uniwersalny: cena za sztukę + pozycje kosztowe** (NK6501, NKPXLH, nowe urządzenia):
+  - do 3 typów urządzeń: nazwa, MP i osobodni na sztukę, cena w PLN / EUR / USD, dni dźwigu na sztukę, tekst w ofercie;
+  - pozycje kosztowe: cena × kurs × ilość × mnożnik; ilość od: każdego urządzenia, typu, agregatu, MP, raz na wycenę, ilości lub **kwoty wpisywanej w wycenie** (np. Mufas); pozycja może być **opcją** (poza ceną, w ofercie jako opcja), może dodawać osobodni;
+  - **import z frachtem**: lista kosztów kontenera (w walutach) + ubezpieczenie (stawka od % wartości), fracht na urządzenie = (koszty + ubezpieczenie) × liczba kontenerów / liczba urządzeń;
+  - wariant 2 (np. 2500 kg): procent albo kwota na urządzenie; bez nazwy = brak wariantu;
+  - konserwacja od MP albo od urządzenia, przegląd półroczny wł./wył., rozładunek jednorazowo albo za każdy transport, odbiory: liczba osób i wyjazdów;
+  - wysokości pojazdów w ofercie: z zagłębienia (NK38), jeden poziom (▲ = prześwit − k), dwa poziomy (▲ + ▼ = prześwit − k);
+  - wartości startowe nowej wyceny (zysk, konserwacja, transport, kursy);
+  - wszystkie teksty oferty urządzenia: wstęp, dane techniczne (z polami {H} {L} {P} {G} {D}), uwaga, obciążenie, zabezpieczenie, zdanie po liście, opcja wariantu 2, agregat, płatności, dostawa, gwarancja, zakres, warunki montażu.
+
+Montaż, podróże, hotel, diety, narzuty (KOB, GDW, zysk, podatek) są wspólne dla wszystkich urządzeń.
+
+**Zgodność z Excelem** (`app/test_szablony.cjs`, w `npm test`):
+- NK6501 (Verdiego, arkusz 16.12.25, przy hotelu 100 i diecie 0 jak w arkuszu): 134 711,08 zł przy zysku 11% i 133 007,47 zł przy 10% — jak K38 / N38.
+- NKPXLH (Witosa, arkusz 18x2DS 9.10.26): fracht 2022,81 zł/szt., cena z frachtem 10 900,81 zł, urządzenia 196 214,58 zł, kontrakt 374 983,16 zł przy zysku 28% — jak F3 / F4 / I14 / K40. Kolumna N arkusza pomija dźwig (N18 liczy dni zamiast kosztu), więc 357 308 zł z arkusza jest zaniżone o dźwig.
+
+Ustalenia: NK6501 ma hotel 130 zł (jak NK38) i dietę 45 zł; Mufas wpisywany ręcznie; bez agregatów i dźwigu; konserwacja tylko roczna (50 / 60 zł/MP). NKPXLH: 2300 USD/szt. stałe (komórka D4), +650 USD/szt. dla 2500 kg, hydraulika liczona w 20%, dźwig 1200 zł/dzień (0,06 dnia na szt.), rozładunek 1 dzień na kontener, odbiory 2 wyjazdy × 2 osoby, konserwacja i przegląd od urządzenia (35 / 45 zł), MP = 2 na urządzenie (do oferty: 18 urządzeń = 36 pojazdów).

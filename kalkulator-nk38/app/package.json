@@ -2,6 +2,6 @@
   "name": "kalkulator-nk38-app",
   "private": true,
   "description": "Testy eksportów aplikacji (biblioteki w tych samych wersjach co na stronie, z CDN jsDelivr).",
-  "scripts": { "test": "node test_export.cjs" },
+  "scripts": { "test": "node test_szablony.cjs && node test_export.cjs" },
   "devDependencies": { "docx": "8.5.0", "exceljs": "4.4.0", "jspdf": "2.5.1", "jspdf-autotable": "3.8.2" }
 }
