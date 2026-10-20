@@ -344,7 +344,7 @@ table.t.edt input[type=text], table.t.edt td input:not([type=number]) { min-widt
           <label class="f">Utrudnienia ręcznie<input id="utr_dod" type="number" min="0" step="0.5"><span class="hint">dodatkowe osobodni</span></label>
         </div>
         <div class="calcline" id="utrLine"></div>
-        <details class="dims" id="dimDetails">
+        <details class="dims" id="dimDetails" open>
           <summary>Wymiary niestandardowe <span id="dimSummary"></span></summary>
           <p class="note" style="margin-top:8px">Wpisz, ile platform ma dany wymiar. Pozostałe są standardowe. Wiersze i ceny pochodzą z szablonu urządzenia.</p>
           <table class="dimtab" id="dimTable"></table>
@@ -571,8 +571,6 @@ table.t.edt input[type=text], table.t.edt td input:not([type=number]) { min-widt
     $("szablon").value = szablonAktywny().id;
     renderPary(d);
     buildDimTable();
-    var anyDim = sumO(d.gl_S || {}) + sumO(d.gl_D || {}) + DIMKEYS.reduce(function (a, k) { return a + (d[k + "_S"] || 0) + (d[k + "_D"] || 0); }, 0);
-    $("dimDetails").open = anyDim > 0;
     lokButtons(d.lok);
   }
 
