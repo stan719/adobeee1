@@ -880,7 +880,7 @@ table.t.edt input[type=text], table.t.edt td input:not([type=number]) { min-widt
     var s = szEdytowany(), wb = E.szablonyWbudowane().filter(function (x) { return x.id === s.id; })[0];
     var h = '<div class="row" style="justify-content:space-between;margin-bottom:12px"><div class="row"><label class="f" style="flex-direction:row;align-items:center;gap:8px">Edytuj szablon<select id="szSel" style="width:auto">' +
       szablony.map(function (x) { return '<option value="' + esc(x.id) + '"' + (x.id === s.id ? " selected" : "") + ">" + esc(x.nazwa) + "</option>"; }).join("") + "</select></label></div>" +
-      '<div class="row"><button class="btn small" type="button" id="szNowy">Nowy szablon (kopia)</button>' +
+      '<div class="row"><button class="btn small" type="button" id="szPusty">Nowy pusty szablon</button><button class="btn small" type="button" id="szNowy">Nowy szablon (kopia)</button>' +
       (wb ? '<button class="btn small" type="button" id="szReset">Przywróć domyślne</button>' : '<button class="btn small danger" type="button" id="szUsun">Usuń szablon</button>') + "</div></div>";
     if (state.szUsun) h += '<div class="alert uwaga" style="margin-bottom:10px"><b>Usunąć „' + esc(s.nazwa) + '”?</b><span class="row"><button class="btn small danger" type="button" id="szUsunTak">Tak, usuń</button><button class="btn small" type="button" id="szUsunNie">Anuluj</button></span></div>';
     h += '<p class="note">Zmiany zapisują się od razu' + (Store.db ? " przy kalkulatorze (na każdym urządzeniu)" : " w tej przeglądarce") + '. Szablon wybierasz w karcie Inwestycja; wycena liczy się z jego cen i tabel.</p>';
@@ -1225,6 +1225,11 @@ table.t.edt input[type=text], table.t.edt td input:not([type=number]) { min-widt
     }
     /* szablony */
     var s = szEdytowany();
+    if (t.id === "szPusty") {
+      var np = E.szablonPusty(); np.id = "s" + Date.now().toString(36);
+      szablony.push(np); state.edytowany = np.id; zapiszSzablony(); wypelnijSzablony(); $("szablon").value = szablonAktywny().id; render();
+      toast("Utworzono pusty szablon. Wpisz nazwę, MP, osobodni, ceny i tabele."); return;
+    }
     if (t.id === "szNowy") {
       var n = E.uzupelnijSzablon(kopia(s)); n.id = "s" + Date.now().toString(36); n.nazwa = s.nazwa + " (kopia)"; n.wbudowany = false;
       szablony.push(n); state.edytowany = n.id; zapiszSzablony(); wypelnijSzablony(); $("szablon").value = szablonAktywny().id; render();

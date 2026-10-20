@@ -63,6 +63,24 @@
     s.id = "nk37"; s.nazwa = "NK37"; s.cennik.cena_D = 32500 + 700;
     return s;
   }
+  /* Pusty szablon do nowego urządzenia: zerowe ceny platform, siłowników i malowania, puste tabele.
+     Koszty firmowe (ekipa, transport, narzuty) i akcesoria zostają jak w NK38 - do zmiany w edytorze. */
+  function szablonPusty() {
+    var s = szablonNK38();
+    s.id = "pusty"; s.nazwa = "Nowe urządzenie"; s.wbudowany = false;
+    s.opisOferty = "Urządzenia {typ} do niezależnego parkowania pojazdów";
+    s.typy = {
+      S: { nazwa: "Platformy S", mp: 0, osd: 0, oferta: "{n} szt. – {typ}-S" },
+      D: { nazwa: "Platformy D", mp: 0, osd: 0, oferta: "{n} szt. – {typ}-D" },
+      NP: { nazwa: "Systemy N.P.", mp: 0, osd: 0, oferta: "{n} szt. – {typ} dla osób niepełnosprawnych" }
+    };
+    ["cena_D", "wsp_S", "wsp_NP", "dl_wsp", "sil_1700", "sil_2000", "sil_2250", "mal_S", "mal_D"].forEach(function (k) { s.cennik[k] = 0; });
+    s.glebokosci = [];
+    s.szerokosci = { S: [{ nazwa: "", cena: 0 }, { nazwa: "", cena: 0 }], D: [{ nazwa: "", cena: 0 }, { nazwa: "", cena: 0 }] };
+    s.dlugosci = [0, 1, 2].map(function () { return { nazwa: "", tryb: "kwota", wartosc: 0 }; });
+    s.skladowe = [];
+    return s;
+  }
   function szablonyWbudowane() { return [szablonNK38(), szablonNK37()]; }
   /* Uzupełnia szablon o brakujące pola (np. zapisany starszą wersją aplikacji). */
   function uzupelnijSzablon(sz) {
@@ -268,7 +286,7 @@
   var api = {
     oblicz: oblicz, domyslneDane: domyslneDane, CENNIK: CENNIK,
     GLEBOKOSCI: szablonNK38().glebokosci.map(function (g) { return g.cm; }),
-    szablonNK38: szablonNK38, szablonyWbudowane: szablonyWbudowane, uzupelnijSzablon: uzupelnijSzablon,
+    szablonNK38: szablonNK38, szablonPusty: szablonPusty, szablonyWbudowane: szablonyWbudowane, uzupelnijSzablon: uzupelnijSzablon,
     WARIANTY: WARIANTY, OSOBY_ANALIZA: OSOBY_ANALIZA, czasPodrozy: czasPodrozy, stawkaSrednia: stawkaSrednia
   };
   if (typeof module !== "undefined" && module.exports) module.exports = api;
