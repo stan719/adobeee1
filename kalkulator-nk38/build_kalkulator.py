@@ -55,6 +55,7 @@ UWAGI = [
     "Systemy N.P. liczone jak D (siłowniki, składowe, dźwig, 7 osobodni), cena 85% D, 2 MP - do potwierdzenia.",
     "Czas podróży: wzór 'Stary (poprawiony)' = stary dla < 800 km, dla >= 800 km uwzględnia liczbę wyjazdów. "
     "'Uproszczony' = 2 x km / 650 km dziennie na wyjazd.",
+    "Rozładunek sprzętu to jednorazowy koszt przyjazdu i wyjazdu wózka (nie mnoży się przez liczbę TIR-ów).",
     "Zysk B liczony od tych samych kosztów co zysk A (dawna kolumna N, bez zmiany ceny dźwigu).",
 ]
 
@@ -122,10 +123,6 @@ CENNIK = [
     ("c_kob", "KOB (udział w cenie)", 0.005, PCT, "KAL!J35"),
     ("c_gdw", "GDW (udział w cenie)", 0.025, PCT, "KAL!J36"),
     ("c_podatek", "Podatek efektywny od robocizny, diet, GDW i zysku", 0.14, PCT, "KAL!J37"),
-    ("Serwis (informacyjnie)", None),
-    ("c_konserw", "Konserwacja zł / MP / miesiąc (wariant 1)", 40, PLN, "KAL!I45"),
-    ("c_konserw2", "Konserwacja zł / MP / miesiąc (wariant 2)", 45, PLN, "KAL!L45"),
-    ("c_konserw3", "Konserwacja zł / MP / miesiąc (wariant 3)", 50, PLN, "KAL!N45"),
 ]
 
 SKLADOWE = [
@@ -162,13 +159,13 @@ PRZYKLADY = {
     "waw": dict(in_nazwa="ul. Kasprowicza 18 Warszawa", in_nr="20261014-SNK",
                 in_lok="Poza Krakowem", in_km=280, in_D=15, in_agregaty=3,
                 in_magistrala=4, in_barierki=30, in_maskownice=5, gl_D={200: 15},
-                in_tir=3, in_tir_cena=4000, in_rozl_cena=1700, in_osoby=4,
+                in_tir=3, in_tir_cena=4000, in_rozl_cena=5100, in_osoby=4,
                 in_zysk=0.125, in_zysk2=0.10, in_q2500=0.06, in_data=date(2026, 10, 14),
                 in_opis="H-195/202 | L-530-544-584 | P-380 | Hpoj. G-180. D-180 | 1A4+1A5+1A6 | Bok-30 Tył-5 | mgstrl-4"),
     "krk": dict(in_nazwa="ul. Dekerta Kraków", in_nr="20261015-SNK", in_lok="Kraków",
                 in_S=12, in_D=27, in_agregaty=7, in_magistrala=32, in_barierki=58,
                 in_maskownice=4, gl_S={225: 12}, gl_D={225: 27}, in_tir=6,
-                in_tir_cena=1800, in_rozl_cena=500, in_osoby=5, in_zysk=0.13,
+                in_tir_cena=1800, in_rozl_cena=3000, in_osoby=5, in_zysk=0.13,
                 in_zysk2=0.11, in_q2500=0.07, in_data=date(2026, 10, 15),
                 in_opis="H-225 | L-530 | P-392/352? | Hpoj. G-170(185). D-200(185) | 5A6+1A5+1A4 | Bok-58 Tył-4 | mgstrl- 32"),
 }
@@ -356,7 +353,7 @@ def build(inputs=None):
     section(dane, r, "5. Transport i ekipa"); r += 1
     inp(r, "in_tir", "Liczba transportów (TIR)", 0, "0", None, "int"); r += 1
     inp(r, "in_tir_cena", "Cena transportu / TIR", 0, PLN, "Orientacyjnie: KRK 1600, WAW/WRO 3300, POZ/ZG 4500"); r += 1
-    inp(r, "in_rozl_cena", "Rozładunek - sprzęt / TIR", 0, PLN, "WAW 1700, KRK 500"); r += 1
+    inp(r, "in_rozl_cena", "Rozładunek - sprzęt (jednorazowo)", 0, PLN, "Jednorazowy koszt przyjazdu i wyjazdu wózka"); r += 1
     inp(r, "in_rozl_dni", "Nadpisz: dni rozładunku", None, NUM, "puste = 0,5 dnia / TIR"); r += 1
     inp(r, "in_osoby", "Liczba osób na montażu", 4, "0",
         "Stawki: 500 / 400 / każda kolejna 350 zł. Zobacz analizę liczby osób w Podsumowaniu", "os"); r += 1
@@ -368,6 +365,8 @@ def build(inputs=None):
     inp(r, "in_zysk2", "Zysk B - do porównania, do ilu możemy zejść", 0.10, PCT); r += 1
     inp(r, "in_q2500", "Dopłata za Q=2500 kg", "=c_q2500", PCT, "domyślnie 7% z Cennika"); r += 1
     inp(r, "in_eur", "Kurs EUR/PLN", 4.325, "0.0000"); r += 1
+    inp(r, "in_konsA", "Konserwacja - cena A [zł / MP / miesiąc]", 40, PLN); r += 1
+    inp(r, "in_konsB", "Konserwacja - cena B [zł / MP / miesiąc]", 50, PLN); r += 1
     inp(r, "in_analiza", "Analiza liczby osób dla wariantu", WARIANTY[0], None, None, "war"); r += 1
     r += 1
     section(dane, r, "Kontrola danych"); r += 1
@@ -530,7 +529,7 @@ def build(inputs=None):
     mrow("k_hot", "Hotel", "=IF(e_krk,0,c_hotel*({dni}+1)*{os})")
     mrow("k_tr", "Transport TIR", "=in_tir_cena*in_tir")
     mrow("k_dzw", "Spider Crane", "=c_dzwig*e_dzw_dni")
-    mrow("k_rs", "Rozładunek (sprzęt)", "=in_rozl_cena*in_tir")
+    mrow("k_rs", "Rozładunek (sprzęt, jednorazowo)", "=in_rozl_cena")
     mrow("k_rl", "Rozładunek (ludzie)", "={st}*e_rozl_dni*{os}")
     mrow("k_doj", "Dojazdy (ludzie)", "={st}*({podr}-{os}*e_rozl_dni)")
     mrow("k_mon", "Montaż", "=IF({wyj}>0,{st}*{osd},0)")
@@ -665,7 +664,7 @@ def build(inputs=None):
         ("Utrudnienia [osobodni]", '=m_utr&" (z magistrali i barierek "&m_utr_auto&", ręcznie "&in_utr_dod&")"'),
         ("Lokalizacja", '=in_lok&IF(e_krk,"","  ("&in_km&" km od Krakowa)")'),
         ("Km pomiary / montaż", '=e_km_pom&" / "&e_km_mon&" km"'),
-        ("Transport", '=in_tir&" TIR x "&TEXT(in_tir_cena,"#,##0")&" zł, rozładunek "&TEXT(in_rozl_cena,"#,##0")&" zł/TIR, "&e_rozl_dni&" dni"'),
+        ("Transport", '=in_tir&" TIR x "&TEXT(in_tir_cena,"#,##0")&" zł, rozładunek sprzętu "&TEXT(in_rozl_cena,"#,##0")&" zł jednorazowo, "&e_rozl_dni&" dni"'),
         ("Ekipa", f'=in_osoby&" osób, średnia stawka "&TEXT({oref("st", 0)},"#,##0")&" zł/dzień"'),
         ("Dźwig", '=e_dzw_dni&" dni"'),
         ("Czas montażu (bez słupków)",
@@ -675,8 +674,8 @@ def build(inputs=None):
         ("Zysk A / zysk B", '=TEXT(in_zysk,"0.0%")&" / "&TEXT(in_zysk2,"0.0%")'),
         ("Dopłata Q=2500", '=TEXT(in_q2500,"0.0%")'),
         ("Wzór czasu podróży", "=in_wzor"),
-        ("Konserwacja roczna (40 / 45 / 50 zł/MP/mies.)",
-         '=TEXT(c_konserw*m_MP*12,"#,##0")&" / "&TEXT(c_konserw2*m_MP*12,"#,##0")&" / "&TEXT(c_konserw3*m_MP*12,"#,##0")&" zł"'),
+        ("Konserwacja roczna A / B",
+         '=TEXT(in_konsA*m_MP*12,"#,##0")&" / "&TEXT(in_konsB*m_MP*12,"#,##0")&" zł  (przegląd półroczny "&TEXT(in_konsA*m_MP*6,"#,##0")&" / "&TEXT(in_konsB*m_MP*6,"#,##0")&" zł)"'),
         ("Opis / wariant", '=in_opis&""'),
     ]
     for label, f in ZEST:

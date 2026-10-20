@@ -245,7 +245,7 @@ ul.notes li::before { content: ""; position: absolute; left: 0; top: .6em; width
       <button class="btn ghost" id="bWaw" type="button">Przykład WAW</button>
       <button class="btn ghost" id="bKrk" type="button">Przykład KRK</button>
       <button class="btn" id="bNew" type="button">Nowa wycena</button>
-      <span class="exp"><button class="btn" id="bXlsx" type="button">Excel</button><button class="btn" id="bPdf" type="button">Raport PDF</button></span>
+      <span class="exp"><button class="btn" id="bXlsx" type="button">Excel</button><button class="btn" id="bPdf" type="button">Raport PDF</button><button class="btn" id="bDocxTop" type="button">Oferta Word</button></span>
       <button class="btn primary" id="bSave" type="button">Zapisz</button>
     </div>
   </div>
@@ -261,6 +261,10 @@ ul.notes li::before { content: ""; position: absolute; left: 0; top: .6em; width
           <label class="f">Data oferty<input id="data" type="date"></label>
           <label class="f">Nr oferty<input id="nr" type="text" placeholder="20261014-SNK"></label>
           <label class="f full">Opis / wariant<input id="opis" type="text" placeholder="H-195 | L-530 | P-380 | ..."></label>
+          <label class="f">Zagłębienie H1 [cm]<input id="h1" type="number" min="0" step="1"></label>
+          <label class="f">Zagłębienie H2 [cm]<input id="h2" type="number" min="0" step="1"></label>
+          <label class="f">Długość zagłębienia [cm]<input id="dl" type="text" placeholder="530"></label>
+          <label class="f">Prześwit [cm]<input id="przeswit" type="number" min="0" step="1"></label>
         </div>
       </fieldset>
 
@@ -303,7 +307,7 @@ ul.notes li::before { content: ""; position: absolute; left: 0; top: .6em; width
         <div class="g2">
           <label class="f">Liczba TIR<input id="tir" type="number" min="0" step="1"></label>
           <label class="f">Cena za TIR [zł]<input id="tir_cena" type="number" min="0" step="100"><span class="hint">KRK 1600 · WAW/WRO 3300 · POZ/ZG 4500</span></label>
-          <label class="f">Rozładunek sprzętu za TIR [zł]<input id="rozl_cena" type="number" min="0" step="100"><span class="hint">WAW 1700 · KRK 500</span></label>
+          <label class="f">Rozładunek sprzętu [zł]<input id="rozl_cena" type="number" min="0" step="100"><span class="hint">jednorazowo: przyjazd i wyjazd wózka</span></label>
           <label class="f">Dni rozładunku<input id="rozl_dni" type="number" min="0" step="0.5" class="auto"><span class="hint">puste = 0,5 dnia na TIR</span></label>
           <label class="f">Osób na montażu<input id="osoby" type="number" min="1" max="12" step="1"><span class="hint">500 / 400 / kolejne 350 zł</span></label>
           <label class="f">Tygodnie montażu<input id="wyjazdy" type="number" min="0" step="1" class="auto"><span class="hint">puste = automatycznie</span></label>
@@ -312,12 +316,14 @@ ul.notes li::before { content: ""; position: absolute; left: 0; top: .6em; width
       </fieldset>
 
       <fieldset class="card">
-        <legend>Narzuty</legend>
+        <legend>Narzuty i serwis</legend>
         <div class="g2">
           <label class="f">Zysk A [%]<input id="zysk" type="number" min="0" max="60" step="0.5"><span class="hint">domyślnie 14%</span></label>
           <label class="f">Zysk B [%]<input id="zysk2" type="number" min="0" max="60" step="0.5"><span class="hint">domyślnie 10%, do porównania</span></label>
           <label class="f">Dopłata Q=2500 [%]<input id="q2500" type="number" min="0" max="50" step="0.5" class="auto"><span class="hint">puste = 7%</span></label>
           <label class="f">Kurs EUR/PLN<input id="eur" type="number" min="0" step="0.001"></label>
+          <label class="f">Konserwacja A [zł/MP/mies.]<input id="konserwA" type="number" min="0" step="1"><span class="hint">domyślnie 40 zł</span></label>
+          <label class="f">Konserwacja B [zł/MP/mies.]<input id="konserwB" type="number" min="0" step="1"><span class="hint">domyślnie 50 zł</span></label>
         </div>
       </fieldset>
     </form>
@@ -347,17 +353,17 @@ ul.notes li::before { content: ""; position: absolute; left: 0; top: .6em; width
     waw: { nazwa: "ul. Kasprowicza 18 Warszawa", data: "2026-10-14", nr: "20261014-SNK",
       opis: "H-195/202 | L-530-544-584 | P-380 | Hpoj. G-180. D-180 | 1A4+1A5+1A6 | Bok-30 Tył-5 | mgstrl-4",
       lok: "Poza Krakowem", km: 280, D: 15, agregaty: 3, magistrala: 4, barierki: 30, maskownice: 5,
-      gl_D: { 200: 15 }, tir: 3, tir_cena: 4000, rozl_cena: 1700, osoby: 4, zysk: 0.125, zysk2: 0.10, q2500: 0.06 },
+      gl_D: { 200: 15 }, tir: 3, tir_cena: 4000, rozl_cena: 5100, osoby: 4, h1: 195, h2: 202, dl: "530-584", przeswit: 380, zysk: 0.125, zysk2: 0.10, q2500: 0.06 },
     krk: { nazwa: "ul. Dekerta Kraków", data: "2026-10-15", nr: "20261015-SNK",
       opis: "H-225 | L-530 | P-392/352? | Hpoj. G-170(185). D-200(185) | 5A6+1A5+1A4 | Bok-58 Tył-4 | mgstrl- 32",
       lok: "Kraków", S: 12, D: 27, agregaty: 7, magistrala: 32, barierki: 58, maskownice: 4,
-      gl_S: { 225: 12 }, gl_D: { 225: 27 }, tir: 6, tir_cena: 1800, rozl_cena: 500, osoby: 5, zysk: 0.13, zysk2: 0.11, q2500: 0.07 }
+      gl_S: { 225: 12 }, gl_D: { 225: 27 }, tir: 6, tir_cena: 1800, rozl_cena: 3000, osoby: 5, h1: 220, h2: 225, dl: "530", przeswit: 392, zysk: 0.13, zysk2: 0.11, q2500: 0.07 }
   };
   var NUMF = ["km", "km_pom", "km_mon", "S", "D", "NP", "agregaty", "magistrala", "barierki", "maskownice", "utr_dod",
-    "tir", "tir_cena", "rozl_cena", "rozl_dni", "osoby", "wyjazdy", "eur"];
-  var OPTF = { km_pom: 1, km_mon: 1, rozl_dni: 1, wyjazdy: 1, q2500: 1 };
+    "tir", "tir_cena", "rozl_cena", "rozl_dni", "osoby", "wyjazdy", "eur", "h1", "h2", "przeswit", "konserwA", "konserwB"];
+  var OPTF = { km_pom: 1, km_mon: 1, rozl_dni: 1, wyjazdy: 1, q2500: 1, h1: 1, h2: 1, przeswit: 1 };
   var PCTF = ["zysk", "zysk2", "q2500"];
-  var TXTF = ["nazwa", "data", "nr", "opis", "typ", "wzor"];
+  var TXTF = ["nazwa", "data", "nr", "opis", "typ", "wzor", "dl"];
   var DIMS = [["szer1", "Szerokość 260 (S) / 520 (D)"], ["szer2", "Szerokość 270 (S) / 540 (D)"],
     ["dl500", "Długość 500–510 cm"], ["dl540", "Długość 540 cm"], ["dl550", "Długość 550 cm"]];
   var CENNIK_POLA = [
@@ -387,6 +393,7 @@ ul.notes li::before { content: ""; position: absolute; left: 0; top: .6em; width
     "Podatek 14% od robocizny, diet, GDW i zysku to wartość efektywna. Stary arkusz w koszcie ludzkim używał ×1,19. Do sprawdzenia.",
     "Systemy N.P. liczone jak D: siłowniki, składowe, dźwig, 7 osobodni. Cena 85% D, 2 MP. Do potwierdzenia.",
     "Czas podróży: stary wzór daje dla tras poniżej 800 km to samo co arkusz, a od 800 km uwzględnia liczbę wyjazdów (w arkuszu ten człon jej nie miał). Uproszczony liczy 650 km dziennie, 2 × km na wyjazd.",
+    "Rozładunek sprzętu to jednorazowy koszt przyjazdu i wyjazdu wózka, nie mnoży się przez liczbę TIR-ów.",
     "Zysk B liczony od tych samych kosztów co zysk A. Dawna kolumna N zmieniała też cenę dźwigu na 2000 zł, tu tego nie ma.",
     "Więcej osób skraca montaż, ale noclegi i diety liczą się od osobodni, więc prawie się nie zmieniają (dochodzi 1 nocleg na osobę). Km auta zależą od liczby tygodni (1 auto na tydzień).",
     "Przy danych z plików Kasprowicza i Dekerta wyniki zgadzają się ze starym arkuszem co do grosza."
@@ -453,7 +460,7 @@ ul.notes li::before { content: ""; position: absolute; left: 0; top: .6em; width
     TXTF.forEach(function (k) { d[k] = $(k).value; });
     NUMF.forEach(function (k) {
       var v = $(k).value;
-      d[k] = v === "" ? (OPTF[k] ? null : (k === "osoby" ? 4 : (k === "eur" ? 4.325 : 0))) : Number(v);
+      d[k] = v === "" ? (OPTF[k] ? null : ({ osoby: 4, eur: 4.325, konserwA: 40, konserwB: 50 }[k] || 0)) : Number(v);
     });
     PCTF.forEach(function (k) { var v = $(k).value; d[k] = v === "" ? (OPTF[k] ? null : 0) : Number(v) / 100; });
     d.gl_S = {}; d.gl_D = {};
@@ -477,6 +484,7 @@ ul.notes li::before { content: ""; position: absolute; left: 0; top: .6em; width
     if (d.zysk2 === undefined && d.zysk_min !== undefined) state.dane.zysk2 = d.zysk_min;
     var o = Object.assign(X.domyslnaOferta(), d.oferta || {});
     o.opcje = Object.assign(X.domyslnaOferta().opcje, (d.oferta || {}).opcje || {});
+    o.adr = Object.assign(X.domyslnaOferta().adr, (d.oferta || {}).adr || {});
     o.ceny = Object.assign({}, (d.oferta || {}).ceny || {});
     o.tekst = Object.assign({}, (d.oferta || {}).tekst || {});
     state.dane.oferta = o;
@@ -527,7 +535,8 @@ ul.notes li::before { content: ""; position: absolute; left: 0; top: .6em; width
       kpi("Montaż", w.tygodnie + " tyg.<small>" + w.dni + " dni pracy" + (recz ? ", tygodnie wpisane ręcznie" : "") + "</small>", true) +
       kpi("Ekipa", w.osoby + " os.<small>" + n2(w.osobodni) + " osobodni</small>") +
       kpi("Zysk A / B", zl(w.zysk) + "<small>" + zl(w.zysk2) + "</small>") +
-      kpi("Urządzenia", zl(w.koszty.urzadzenia) + "<small>" + pct(w.koszty.urzadzenia / w.cena) + " ceny</small>") + "</div>";
+      kpi("Konserwacja roczna A / B", zl(r.konserwacja[0].rok) + "<small>" + zl(r.konserwacja[1].rok) + "</small>") +
+      kpi("Przegląd półroczny A / B", zl(r.konserwacja[0].pol) + "<small>" + zl(r.konserwacja[1].pol) + "</small>") + "</div>";
     $("compare").innerHTML = r.warianty.map(function (x, i) {
       return '<button type="button" class="cmp" data-sel="' + i + '" aria-pressed="' + (i === sel) + '"><div class="n">' + esc(x.nazwa) +
         '</div><div class="p">' + zl(x.cena) + '</div><div class="d">B: ' + zl(x.cena2) + "</div></button>";
@@ -764,19 +773,22 @@ ul.notes li::before { content: ""; position: absolute; left: 0; top: .6em; width
       '<button type="button" data-ofview="dane" aria-pressed="' + (view === "dane") + '">Dane oferty</button><button type="button" data-ofview="podglad" aria-pressed="' + (view === "podglad") + '">Podgląd</button></div>' +
       '<button class="btn primary small" type="button" id="bDocx">Pobierz ofertę (Word)</button></div>';
     if (view === "podglad") return h + podgladOferty(F);
-    h += '<p class="note">Oferta korzysta z wyliczeń kalkulatora (wariant 2000 kg bez słupków jako Pozycja 10, opcje jako różnice). Ceny zaokrąglają się w górę do 100 zł; każdą możesz nadpisać.</p>';
+    h += '<p class="note">Oferta korzysta z wyliczeń kalkulatora (wariant 2000 kg bez słupków jako Pozycja 1, opcje jako różnice). Ceny zaokrąglają się w górę do 100 zł; każdą możesz nadpisać. Data jest dzisiejsza.</p>';
+    var nrNast = o.nrAuto || nastepnyNumer();
     h += '<details class="grp" open><summary>Adresat i numer</summary><div class="ofgrid">' +
-      ofField("Nr oferty", "nr", { ph: "2026101412/INK" }) + ofField("Miejscowość", "miejsce") +
-      ofField("Zwrot", "zwrot") + '<div></div>' +
-      ofField("Adresat (każda linia osobno, druga linia pogrubiona)", "adresat", { area: 1, rows: 7, full: 1, ph: "Szanowna Pani\nImię Nazwisko\nStanowisko\ntel. …\n\nFirma\nul. …\n00-000 Miasto" }) + "</div></details>";
+      ofField("Nr oferty", "nr", { ph: nrNast, hint: o.nrAuto ? "nadany przy pobraniu: " + o.nrAuto + ' <button type="button" class="linkbtn" id="bNowyNr">Nadaj nowy</button>' : "puste = nadawany automatycznie przy pobraniu" }) + ofField("Miejscowość", "miejsce") +
+      '<label class="f">Zwrot<select data-of="adr.zwrot" id="of_adr_zwrot"><option' + (o.adr.zwrot !== "Szanowny Pan" ? " selected" : "") + '>Szanowna Pani</option><option' + (o.adr.zwrot === "Szanowny Pan" ? " selected" : "") + '>Szanowny Pan</option></select></label>' +
+      ofField("Imię i nazwisko", "adr.imie") + ofField("Stanowisko", "adr.stanowisko") + ofField("Telefon", "adr.tel") +
+      ofField("E-mail", "adr.email") + '<div></div>' +
+      ofField("Nazwa firmy", "adr.firma") + ofField("Ulica", "adr.ulica") + ofField("Kod i miasto", "adr.kod") + ofField("NIP", "adr.nip") +
+      '</div><p class="note" style="margin-top:8px">Puste pola nie pojawiają się w ofercie.</p></details>';
     h += '<details class="grp" open><summary>Treść i dane techniczne</summary><div class="ofgrid">' +
       '<label class="f">Powód oferty<select data-of="powod" id="of_powod"><option value="zapytanie"' + (o.powod !== "rabat" ? " selected" : "") + '>Otrzymane zapytanie</option><option value="rabat"' + (o.powod === "rabat" ? " selected" : "") + '>Prośba o rabat (oferta zrabatowana)</option></select></label>' +
       ofField("W garażu…", "garaz", { ph: "inwestycji " + (r.dane.nazwa || "…"), hint: "np. wznoszonego budynku przy ul. Dekerta w Krakowie" }) +
-      ofField("Zagłębienie: wysokość [cm]", "h", { ph: op.h || "" }) + ofField("Zagłębienie: długość [cm]", "l", { ph: op.l || "" }) +
-      ofField("Prześwit min. [cm]", "p", { ph: op.p || "" }) + '<div></div>' +
-      ofField("Wysokość pojazdów ▲ górna [cm]", "hg", { ph: op.hg || "" }) + ofField("Wysokość pojazdów ▼ dolna [cm]", "hd", { ph: op.hd || "" }) +
+      ofField("Wysokość pojazdów ▼ dolna [cm]", "hd", { num: 1, ph: F.wymiary.dolAuto == null ? "" : String(F.wymiary.dolAuto), hint: "puste = niższe H − 15" }) +
+      ofField("Wysokość pojazdów ▲ górna [cm]", "hg", { num: 1, ph: F.wymiary.gorAuto == null ? "" : String(F.wymiary.gorAuto), hint: "puste = (prześwit − 320) − (dolna − 150) + 150" }) +
       ofField("Opis agregatu", "agregat") + ofField("Moc agregatu (warunki elektryczne)", "kw") + "</div>" +
-      '<p class="note" style="margin-top:8px">Puste pola biorą wartości z opisu wariantu (H-, L-, P-, G-, D-).</p></details>';
+      '<p class="note" style="margin-top:8px">Zagłębienie H1 / H2, długość i prześwit wpisujesz w karcie Inwestycja (teraz: H1 ' + (F.wymiary.h1 == null ? "–" : F.wymiary.h1) + ', H2 ' + (F.wymiary.h2 == null ? "–" : F.wymiary.h2) + ', długość ' + (F.wymiary.dl || "–") + ', prześwit ' + (F.wymiary.p == null ? "–" : F.wymiary.p) + ' cm).</p></details>';
     var ch = function (k, l) { return '<label><input type="checkbox" data-of="opcje.' + k + '"' + (o.opcje[k] ? " checked" : "") + "> " + l + "</label>"; };
     h += '<details class="grp" open><summary>Opcje i ceny</summary><div class="row" style="margin-bottom:10px"><span class="muted">Ceny w ofercie z:</span>' +
       '<div class="seg" role="group" aria-label="Zysk w ofercie"><button type="button" data-ofzysk="A" aria-pressed="' + (o.zysk !== "B") + '">zysk A ' + pct(r.dane.zysk) + '</button><button type="button" data-ofzysk="B" aria-pressed="' + (o.zysk === "B") + '">zysk B ' + pct(r.dane.zysk2) + "</button></div></div>" +
@@ -787,9 +799,9 @@ ul.notes li::before { content: ""; position: absolute; left: 0; top: .6em; width
       }).join("") + "</tbody></table></div></details>";
     h += '<details class="grp"><summary>Płatności, terminy, gwarancja</summary><div class="ofgrid">' +
       ofField("Warunki płatności (każda linia osobno)", "platnosci", { area: 1, rows: 6, full: 1 }) +
-      ofField("Dostawa po ok. … tygodniach", "dostawa", { num: 1 }) + ofField("Długość TIR [m]", "tir", { num: 1 }) +
-      ofField("Gwarancja [mies.]", "gw", { hint: "np. 36 lub 36/60" }) + "</div>" +
-      '<p class="note" style="margin-top:8px">Czas montażu w ofercie: ' + r.warianty[0].tygodnieZakres.join("-") + ' tygodni (z kalkulatora, z zapasem 25%).</p></details>';
+      ofField("Dostawa po ok. … tygodniach", "dostawa", { num: 1 }) + ofField("Gwarancja [mies.]", "gw", { hint: "np. 36 lub 36/60" }) +
+      ofField("Czas montażu od [tyg.]", "montOd", { num: 1, ph: String(r.warianty[0].tygodnieZakres[0]), hint: "puste = z kalkulatora" }) +
+      ofField("Czas montażu do [tyg.]", "montDo", { num: 1, ph: String(r.warianty[0].tygodnieZakres[1]), hint: "puste = z kalkulatora + 25%" }) + "</div></details>";
     h += '<details class="grp"><summary>Teksty liczone automatycznie</summary>';
     [["wstep", "Wstęp"], ["tech", "Dane techniczne"], ["wyposazenie", "Obciążenie i zabezpieczenia"], ["lista", "Lista urządzeń"], ["dostawa", "Dostawa"], ["montaz", "Montaż"]].forEach(function (t) {
       var changed = o.tekst[t[0]] != null;
@@ -799,7 +811,7 @@ ul.notes li::before { content: ""; position: absolute; left: 0; top: .6em; width
     h += "</details>";
     h += '<details class="grp"><summary>Teksty stałe i logo (wspólne dla wszystkich ofert)</summary>' +
       '<div class="row" style="margin-bottom:10px"><label class="btn small" for="logoFile">Wgraj logo</label><input type="file" id="logoFile" accept="image/png,image/jpeg" hidden>' +
-      (lsGet(LS_LOGO, null) ? '<span class="muted">Logo wgrane.</span><button type="button" class="btn small ghost danger" id="bLogoDel">Usuń logo</button>' : '<span class="muted">Bez logo w nagłówku.</span>') + "</div>";
+      (lsGet(LS_LOGO, null) ? '<span class="muted">Używane jest wgrane logo.</span><button type="button" class="btn small ghost danger" id="bLogoDel">Wróć do logo firmowego</button>' : '<span class="muted">Używane jest logo firmowe. Możesz wgrać inne.</span>') + "</div>";
     [["naglowek", "Nagłówek (prawa strona)"], ["stopka", "Stopka"], ["uwaga_tech", "Uwaga pod danymi technicznymi"], ["zakres", "4. Zakres oferty"],
       ["warunki", "5. Warunki montażu ({tir}, {kw}, {typ} wstawiane automatycznie)"], ["gwarancja", "6. Gwarancja ({gw})"], ["zakonczenie", "Zakończenie"], ["podpis", "Podpis"], ["klauzula", "Klauzula poufności"]].forEach(function (t) {
       h += '<label class="f" style="margin-bottom:10px">' + t[1] + '<textarea rows="4" data-sz="' + t[0] + '" id="sz_' + t[0] + '">' + esc(sz[t[0]]) + "</textarea></label>";
@@ -807,12 +819,12 @@ ul.notes li::before { content: ""; position: absolute; left: 0; top: .6em; width
     return h + '<button type="button" class="btn small" id="bSzReset">Przywróć teksty stałe</button></details>';
   }
   function podgladOferty(F) {
-    var logo = lsGet(LS_LOGO, null), P = function (arr, cls) { return arr.map(function (l) { return '<p class="' + (cls || "") + '">' + (esc(l) || "&nbsp;") + "</p>"; }).join(""); };
+    var logo = lsGet(LS_LOGO, null) || { dataUrl: "logo.png" }, P = function (arr, cls) { return arr.map(function (l) { return '<p class="' + (cls || "") + '">' + (esc(l) || "&nbsp;") + "</p>"; }).join(""); };
     var h = '<div class="paper"><div class="hd">' + (logo ? '<img src="' + logo.dataUrl + '" alt="Logo">' : "") + '<div class="lh">' +
       F.naglowek.map(function (l, i) { return i < 2 ? "<b>" + esc(l) + "</b>" : esc(l) + "<br>"; }).join("") + "</div></div>";
     h += "<p>" + esc(F.miejsceData) + "</p><br>" + F.adresat.map(function (l, i) { return "<p>" + (i === 1 ? "<b>" + esc(l) + "</b>" : esc(l) || "&nbsp;") + "</p>"; }).join("");
     h += '<p class="nr">' + esc(F.nr) + "</p><p>" + esc(F.zwrot) + "</p><p>" + esc(F.wstep) + "</p>";
-    h += '<h4>1. Specyfikacja oferty:</h4><div class="in"><p><span class="blue">Pozycja 10:</span> ' + esc(F.pozycja) + '</p><p><u>Dane techniczne:</u></p>' +
+    h += '<h4>1. Specyfikacja oferty:</h4><div class="in"><p><span class="blue">Pozycja 1:</span> ' + esc(F.pozycja) + '</p><p><u>Dane techniczne:</u></p>' +
       P(F.tech) + P(F.uwagaTech) + P(F.wyposazenie) + "<ul>" + F.lista.map(function (l) { return "<li>" + esc(l) + "</li>"; }).join("") + "</ul>" +
       F.opcje.map(function (op) { return '<p class="blue" style="margin-top:8px">' + esc(op.label) + "</p><p>" + esc(op.tekst) + "</p>"; }).join("") + "</div>";
     h += '<h4>2. Wartość zamówienia netto.</h4><div class="pr">';
@@ -880,13 +892,39 @@ ul.notes li::before { content: ""; position: absolute; left: 0; top: .6em; width
     var buf = X.pdf(wynik, ctxExport(await fonts()));
     await zapisz(nazwaPliku("Raport_NK38", "pdf"), new Blob([buf]));
   }
+  /* Numer oferty: RRRRMMDDGG/INK, kolejne w tej samej godzinie dostają litery A, B, C… */
+  var LS_NUMERY = "nk38.numery.v1";
+  function bazaNumeru() {
+    var t = new Date(), z = function (x) { return ("0" + x).slice(-2); };
+    return t.getFullYear() + z(t.getMonth() + 1) + z(t.getDate()) + z(t.getHours());
+  }
+  function nastepnyNumer() {
+    var b = bazaNumeru(), n = lsGet(LS_NUMERY, {})[b] || 0;
+    return b + (n ? String.fromCharCode(64 + n) : "") + "/INK";
+  }
+  function nadajNumer() {
+    var b = bazaNumeru(), reg = lsGet(LS_NUMERY, {}), n = reg[b] || 0, nr = b + (n ? String.fromCharCode(64 + n) : "") + "/INK";
+    reg = {}; reg[b] = n + 1; lsSet(LS_NUMERY, reg);
+    return nr;
+  }
+  var logoDomP = null;
+  function logoDomyslne() {
+    if (!logoDomP) logoDomP = fetch("logo.png").then(function (r) { if (!r.ok) throw new Error("logo"); return r.arrayBuffer(); })
+      .then(function (b) { return { data: new Uint8Array(b), w: 232, h: 58 }; }, function () { logoDomP = null; return null; });
+    return logoDomP;
+  }
   async function eksportDocx() {
     await loadScript("docx"); X.setLibs({ docx: window.docx });
+    var o = state.dane.oferta;
+    if (!o.nr && !o.nrAuto) { o.nrAuto = nadajNumer(); lsSet(LS_DRAFT, { dane: state.dane, przyklad: state.przyklad }); }
     var lg = lsGet(LS_LOGO, null), logo = null;
     if (lg) { var bin = atob(lg.dataUrl.split(",")[1]), u = new Uint8Array(bin.length); for (var i = 0; i < bin.length; i++) u[i] = bin.charCodeAt(i); logo = { data: u, w: lg.w, h: lg.h }; }
-    var blob = await X.docx(wynik, state.dane.oferta, szablon(), logo);
-    var nr = (state.dane.oferta.nr || "").replace(/[^\w]+/g, "");
-    await zapisz(nazwaPliku("Oferta" + (nr ? "_" + nr : ""), "docx"), blob);
+    else logo = await logoDomyslne();
+    var blob = await X.docx(wynik, o, szablon(), logo);
+    var nr = (o.nr || o.nrAuto).replace("/", "-").replace(/[^\w-]+/g, "");
+    var adres = (wynik.dane.nazwa || "").replace(/^ul\.?\s*/i, "").normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/ł/g, "l").replace(/Ł/g, "L").replace(/[^\w]+/g, "_").replace(/^_|_$/g, "");
+    await zapisz("Oferta_nr_" + nr + "-" + wynik.dane.typ + (adres ? "-" + adres : "") + ".docx", blob);
+    if (state.tab === "oferta") render();
   }
 
   /* --- zdarzenia --- */
@@ -894,11 +932,15 @@ ul.notes li::before { content: ""; position: absolute; left: 0; top: .6em; width
   $("form").addEventListener("submit", function (e) { e.preventDefault(); });
   $("lokKrk").addEventListener("click", function () { state.dane.lok = "Kraków"; lokButtons("Kraków"); recalc(); });
   $("lokPoza").addEventListener("click", function () { state.dane.lok = "Poza Krakowem"; lokButtons("Poza Krakowem"); recalc(); });
-  $("bNew").addEventListener("click", function () { setDane(E.domyslneDane(), null); toast("Nowa wycena"); });
+  $("bNew").addEventListener("click", function () {
+    var t = new Date(), z = function (x) { return ("0" + x).slice(-2); };
+    setDane(Object.assign(E.domyslneDane(), { data: t.getFullYear() + "-" + z(t.getMonth() + 1) + "-" + z(t.getDate()) }), null); toast("Nowa wycena");
+  });
   $("bWaw").addEventListener("click", function () { setDane(PRZYKLADY.waw, "Kasprowicza 18 Warszawa"); });
   $("bKrk").addEventListener("click", function () { setDane(PRZYKLADY.krk, "Dekerta Kraków"); });
   $("bXlsx").addEventListener("click", function () { busy($("bXlsx"), eksportXlsx); });
   $("bPdf").addEventListener("click", function () { busy($("bPdf"), eksportPdf); });
+  $("bDocxTop").addEventListener("click", function () { busy($("bDocxTop"), eksportDocx); });
   $("bSave").addEventListener("click", function () { saveCurrent((wynik.dane.nazwa || "Wycena") + (wynik.dane.data ? " " + wynik.dane.data : "")); });
 
   function setSel(i) { state.sel = i; lsSet(LS_SEL, i); render(); }
@@ -925,6 +967,7 @@ ul.notes li::before { content: ""; position: absolute; left: 0; top: .6em; width
       var path = t.dataset.of.split("."), v = t.value;
       if (path[0] === "ceny") { if (v === "") delete o.ceny[path[1]]; else o.ceny[path[1]] = Number(v); }
       else if (path[0] === "tekst") o.tekst[path[1]] = v;
+      else if (path[0] === "adr") o.adr[path[1]] = v;
       else o[path[0]] = t.type === "number" ? (v === "" ? "" : Number(v)) : v;
       lsSet(LS_DRAFT, { dane: state.dane, przyklad: state.przyklad });
     }
@@ -936,6 +979,7 @@ ul.notes li::before { content: ""; position: absolute; left: 0; top: .6em; width
     if (t.dataset.ofzysk) { state.dane.oferta.zysk = t.dataset.ofzysk; recalc(); return; }
     if (t.dataset.reset) { delete state.dane.oferta.tekst[t.dataset.reset]; recalc(); return; }
     if (t.id === "bDocx") { busy(t, eksportDocx); return; }
+    if (t.id === "bNowyNr") { state.dane.oferta.nrAuto = nadajNumer(); recalc(); return; }
     if (t.id === "bSzReset") { lsSet(LS_SZABLON, {}); render(); toast("Przywrócono teksty stałe"); return; }
     if (t.id === "bLogoDel") { try { localStorage.removeItem(LS_LOGO); } catch (er) { /* brak pamięci */ } render(); return; }
     if (t.id === "bCopy") copyText(ofertaText(), "Skopiowano tekst", "offerText");
@@ -965,7 +1009,9 @@ ul.notes li::before { content: ""; position: absolute; left: 0; top: .6em; width
     if (t.id === "analizaSel") { state.dane.analiza = +t.value; recalc(); }
     if (t.dataset.of && (t.type === "checkbox" || t.tagName === "SELECT")) {
       var path = t.dataset.of.split(".");
-      if (path[0] === "opcje") state.dane.oferta.opcje[path[1]] = t.checked; else state.dane.oferta[path[0]] = t.value;
+      if (path[0] === "opcje") state.dane.oferta.opcje[path[1]] = t.checked;
+      else if (path[0] === "adr") state.dane.oferta.adr[path[1]] = t.value;
+      else state.dane.oferta[path[0]] = t.value;
       recalc();
     }
     if (t.id === "logoFile" && t.files && t.files[0]) {

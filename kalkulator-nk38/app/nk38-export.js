@@ -40,12 +40,14 @@
       ["Magistrala / barierki / maskownice", (d.magistrala || 0) + " × 6 m / " + (d.barierki || 0) + " / " + (d.maskownice || 0)],
       ["Utrudnienia", n2(m.utr) + " osd (auto " + n2(m.utrAuto) + ", ręcznie " + n2(d.utr_dod || 0) + ")"],
       ["Zagłębienia", wy.gl], ["Wymiary", wy.dims],
-      ["Transport", (d.tir || 0) + " TIR × " + zl(d.tir_cena || 0) + ", rozładunek " + zl(d.rozl_cena || 0) + "/TIR, " + n2(w.rozl) + " dni"],
+      ["Transport", (d.tir || 0) + " TIR × " + zl(d.tir_cena || 0) + ", rozładunek sprzętu " + zl(d.rozl_cena || 0) + " jednorazowo, " + n2(w.rozl) + " dni"],
       ["Ekipa", ws[0].osoby + " os., średnio " + zl(ws[0].stawka) + "/dzień"],
       ["Dźwig", w.dzwDni + " dni"],
       ["Czas podróży", d.wzor === "uproszczony" ? "uproszczony (650 km/dzień)" : "stary wzór (poprawiony)"],
       ["Zysk A / zysk B", pct(d.zysk) + " / " + pct(d.zysk2)],
-      ["Dopłata Q=2500 / kurs EUR", pct(m.q2500) + " / " + d.eur]
+      ["Dopłata Q=2500 / kurs EUR", pct(m.q2500) + " / " + d.eur],
+      ["Zagłębienie H1 / H2, długość, prześwit", (d.h1 || "–") + " / " + (d.h2 || "–") + " cm, " + (d.dl || "–") + " cm, " + (d.przeswit || "–") + " cm"],
+      ["Konserwacja A / B", r.konserwacja.map(function (k) { return zl(k.rok) + " rocznie, " + zl(k.pol) + " półrocznie (" + k.stawka + " zł/MP/mies.)"; }).join("; ")]
     ];
     var wynik = {
       head: ["Pozycja"].concat(ws.map(function (x) { return x.nazwa; })),
@@ -343,8 +345,9 @@
 
   function domyslnaOferta() {
     return {
-      nr: "", miejsce: "Kraków", adresat: "", zwrot: "Szanowna Pani,", powod: "zapytanie", garaz: "",
-      h: "", l: "", p: "", hg: "", hd: "", agregat: "Agregat hydrauliczny 400V, 50Hz, 6kW", kw: "6kW",
+      nr: "", nrAuto: "", miejsce: "Kraków", powod: "zapytanie", garaz: "",
+      adr: { zwrot: "Szanowna Pani", imie: "", stanowisko: "", tel: "", email: "", firma: "", ulica: "", kod: "", nip: "" },
+      hg: "", hd: "", montOd: "", montDo: "", agregat: "Agregat hydrauliczny 400V, 50Hz, 6kW", kw: "6kW",
       opcje: { q2500: true, slupki37: false, slupki22: false, malowanie: false },
       zysk: "A", ceny: {}, platnosci: "30% zaliczka na 22 tygodnie przed dostawą,\ndo 60% płatność na 5 dni przed dostawą,\ndo 90% płatność do 21 dni po dostawie,\ndo 100% płatność do 21 dni po pierwszym badaniu UDT.\nOferta ważna jest 2 miesiące.",
       dostawa: 24, montaz: "", tir: 20, gw: "36/60", tekst: {}
@@ -355,7 +358,9 @@
   function zOpisu(opis) {
     var o = {}, s = String(opis || "");
     var m;
-    if ((m = s.match(/\bH-\s*([\d\/(),.]+)/))) o.h = m[1].replace(/[.,]$/, "");
+    if ((m = s.match(/\bH-\s*([\d\/(),.]+)/))) { o.h = m[1].replace(/[.,]$/, ""); var hh = o.h.match(/\d+/g) || []; o.h1 = hh[0]; o.h2 = hh[1]; }
+    if ((m = s.match(/\bH1-\s*(\d+)/))) o.h1 = m[1];
+    if ((m = s.match(/\bH2-\s*(\d+)/))) o.h2 = m[1];
     if ((m = s.match(/\bL-\s*([\d\-\/(),.]+)/))) o.l = m[1].replace(/[.,]$/, "");
     if ((m = s.match(/\bP-\s*([\d\/(),.?]+)/))) o.p = m[1].replace(/[.,]$/, "");
     if ((m = s.match(/G-\s*([\d\/()]+)/))) o.hg = m[1];
@@ -365,20 +370,46 @@
 
   function sub(t, v) { return String(t).replace(/\{(\w+)\}/g, function (a, k) { return v[k] !== undefined ? v[k] : a; }); }
 
+  /* Adresat z osobnych pól; puste pola nie tworzą wierszy. */
+  function adresatLinie(a) {
+    a = a || {};
+    var osoba = [a.zwrot, a.imie, a.stanowisko, a.tel ? "tel. " + a.tel : "", a.email ? "e-mail: " + a.email : ""].filter(Boolean);
+    var firma = [a.firma, a.ulica, a.kod, a.nip ? "NIP: " + a.nip : ""].filter(Boolean);
+    return osoba.concat(osoba.length && firma.length ? [""] : [], firma);
+  }
+  function powitanie(a) { return (a && a.zwrot === "Szanowny Pan") ? "Szanowny Panie," : "Szanowna Pani,"; }
+
+  /* Wymiary zagłębienia i domyślne wysokości pojazdów: dolny = min(H) - 15,
+     górny = (prześwit - 320) - (dolny - 150) + 150. */
+  function wymiary(d, o) {
+    var op = zOpisu(d.opis), num = function (v) { return v === "" || v == null || isNaN(v) ? null : Number(v); };
+    var h1 = num(d.h1) != null ? num(d.h1) : num(op.h1), h2 = num(d.h2) != null ? num(d.h2) : num(op.h2);
+    var p = num(d.przeswit) != null ? num(d.przeswit) : num((op.p || "").match(/\d+/) && op.p.match(/\d+/)[0]);
+    var dl = d.dl || op.l || "";
+    var hs = [h1, h2].filter(function (x) { return x != null; });
+    var dolAuto = hs.length ? Math.min.apply(null, hs) - 15 : null;
+    var dol = num(o.hd) != null ? num(o.hd) : dolAuto;
+    var gorAuto = p != null && dol != null ? (p - 320) - (dol - 150) + 150 : null;
+    var gor = num(o.hg) != null ? num(o.hg) : gorAuto;
+    return { h1: h1, h2: h2, p: p, dl: dl, dolAuto: dolAuto, gorAuto: gorAuto, dol: dol, gor: gor };
+  }
+
   /* Treść oferty jako struktura (podgląd HTML i plik Word używają tego samego). */
   function oferta(r, o, sz) {
     var d = r.dane, m = r.mat, ws = r.warianty, B = o.zysk === "B";
     var c = function (x) { return B ? x.cena2 : x.cena; };
-    var opisy = zOpisu(d.opis), pole = function (k) { return o[k] || opisy[k] || "…"; };
-    var t = ws[0].tygodnieZakres, typ = d.typ;
-    var vars = { tir: o.tir, kw: o.kw, gw: o.gw, typ: typ };
-    var data = d.data ? d.data.split("-").reverse().join(".") : new Date().toLocaleDateString("pl-PL");
+    var wy = wymiary(d, o), v = function (x) { return x == null || x === "" ? "…" : x; };
+    var t = [o.montOd !== "" && o.montOd != null ? Number(o.montOd) : ws[0].tygodnieZakres[0], o.montDo !== "" && o.montDo != null ? Number(o.montDo) : ws[0].tygodnieZakres[1]];
+    var typ = d.typ;
+    var vars = { tir: o.tir || 20, kw: o.kw, gw: o.gw, typ: typ };
+    var dz = new Date(), data = ("0" + dz.getDate()).slice(-2) + "." + ("0" + (dz.getMonth() + 1)).slice(-2) + "." + dz.getFullYear();
+    var zagl = wy.h2 != null && wy.h2 !== wy.h1 ? "H1-" + v(wy.h1) + ", H2-" + v(wy.h2) : v(wy.h1);
     var auto = {
       wstep: "w związku z " + (o.powod === "rabat" ? "Państwa prośbą o rabat przedstawiamy naszą zrabatowaną ofertę" : "otrzymanym zapytaniem przedstawiamy naszą ofertę") +
         " na dostawę i montaż " + m.platformy + " platform służących do niezależnego parkowania " + m.MP + " pojazdów w garażu " +
         (o.garaz || ("inwestycji " + (d.nazwa || "…"))) + ".",
-      tech: "Zagłębienie: wysokość " + pole("h") + "cm; długość " + pole("l") + "cm;\nPrześwit między-kondygnacyjny: min. " + pole("p") +
-        "cm;\nWysokość parkowanych pojazdów*: ▲-" + pole("hg") + "cm, ▼-" + pole("hd") + "cm;",
+      tech: "Zagłębienie: wysokość " + zagl + "cm; długość " + v(wy.dl) + "cm;\nPrześwit między-kondygnacyjny: min. " + v(wy.p) +
+        "cm;\nWysokość parkowanych pojazdów*: ▲-" + v(wy.gor) + "cm, ▼-" + v(wy.dol) + "cm;",
       wyposazenie: "Obciążenie platformy: 2000kg/miejsce postojowe, 500kg/koło;\nZabezpieczenie antykorozyjne: urządzenie zabezpieczone ocynkiem ogniowym oraz częściowo lakierowane." +
         (d.barierki ? "\nZabezpieczenie po bokach: barierki systemowe lub profile zmniejszające prześwit poziomy mocowane do ścian wszędzie tam gdzie istnieje przerwa pomiędzy platformami bądź platformami i ścianami co najmniej 20cm, zg. z PN." : ""),
       lista: [d.S ? d.S + " szt. – " + typ + "-S szer. użytkowa platformy 250cm, szer. zewnętrzna urządzenia 280cm," : "",
@@ -395,10 +426,10 @@
       ["slupki22", "Słupki do e-ładowania do 22 kW na każdym ze " + m.MP + " miejsc postojowych, obejmujące montaż słupka pod ładowarkę, prowadnic, i puszki przyłączeniowej, bez samej stacji ładowania.", B ? r.opcje.slupki22b[0] : r.opcje.slupki22[0]],
       ["malowanie", "Malowanie proszkowe platform w kolorze RAL wybranym przez Zamawiającego.", B ? r.opcje.malowanieB : r.opcje.malowanie]
     ];
-    var opcje = [], ceny = [{ klucz: "poz10", label: "Pozycja 10:", auto: ceil100(c(ws[0])) }];
+    var opcje = [], ceny = [{ klucz: "poz10", label: "Pozycja 1:", auto: ceil100(c(ws[0])) }];
     opcjeDef.forEach(function (x) {
       if (!o.opcje[x[0]]) return;
-      var nr = "Opcja " + (opcje.length + 1) * 10 + ":";
+      var nr = "Opcja " + (opcje.length + 1) + ":";
       opcje.push({ label: nr, tekst: x[1] });
       ceny.push({ klucz: x[0], label: nr, auto: ceil100(x[2]) });
     });
@@ -406,7 +437,7 @@
     return {
       naglowek: sz.naglowek.split("\n"), stopka: sz.stopka.split("\n"),
       miejsceData: (o.miejsce || "Kraków") + ", dnia " + data + "r.",
-      adresat: (o.adresat || "").split("\n"), nr: "Oferta nr " + (o.nr || "…"), zwrot: o.zwrot,
+      adresat: adresatLinie(o.adr), nr: "Oferta nr " + (o.nr || o.nrAuto || "…"), zwrot: powitanie(o.adr), wymiary: wy,
       wstep: txt("wstep"), pozycja: "Urządzenia " + typ + " do niezależnego parkowania pojazdów (z zagłębieniem)",
       tech: txt("tech").split("\n"), uwagaTech: sz.uwaga_tech.split("\n"), wyposazenie: txt("wyposazenie").split("\n"),
       lista: txt("lista").split("\n").filter(Boolean), opcje: opcje, ceny: ceny,
@@ -417,14 +448,14 @@
     };
   }
 
-  /* Oferta Word w układzie oryginalnych ofert PSP: Verdana 9 pt, nagłówek Times/Century Gothic,
-     niebieskie etykiety "Pozycja 1⁰", pogrubione liczby, niebieskie punktory. */
+  /* Oferta Word w układzie oryginalnych ofert PSP: Verdana 8 pt, nagłówek Times/Century Gothic,
+     niebieskie etykiety "Pozycja 1", pogrubione liczby, niebieskie punktory. */
   function docxOferta(r, o, sz, logo) {
     var D = L.docx, F = oferta(r, o, sz);
     var BLUE = "3366CC", GREY = "444444", BODY = "Verdana", HEAD = "Times New Roman", GOTH = "Century Gothic";
     var W = 9638, IND = 284;                       // szerokość tekstu (A4 - marginesy 2 cm / 1,4 cm) i wcięcie treści
     var SP = { after: 0, line: 240 };
-    function run(text, opt) { return new D.TextRun(Object.assign({ text: text, font: BODY, size: 18 }, opt || {})); }
+    function run(text, opt) { return new D.TextRun(Object.assign({ text: text, font: BODY, size: 16 }, opt || {})); }
     function p(children, opt) { return new D.Paragraph(Object.assign({ children: children, spacing: SP }, opt || {})); }
     function blank(pt) { return p([run("")], { spacing: { after: 0, line: 240, before: pt || 0 } }); }
     function body(children, opt) { return p(children, Object.assign({ indent: { left: IND }, alignment: D.AlignmentType.JUSTIFIED }, opt || {})); }
@@ -432,13 +463,8 @@
       return p([run(nr + ".", { bold: true }), new D.TextRun({ children: [new D.Tab()] }), run(t, { bold: true })],
         { spacing: { before: 200, after: 20, line: 240 }, indent: { left: IND, hanging: IND }, tabStops: [{ type: D.TabStopType.LEFT, position: IND }] });
     }
-    /* "Pozycja 10:" -> "Pozycja 1" + indeks górny "0" + ":" (jak w oryginale) */
-    function etykieta(label, extra) {
-      var m = String(label).match(/^(\S+ )(\d+?)0:$/);
-      var base = Object.assign({ color: BLUE, bold: true }, extra || {});
-      if (!m) return [run(label, base)];
-      return [run(m[1] + m[2], base), run("0", Object.assign({}, base, { superScript: true })), run(":", base)];
-    }
+    /* Niebieska etykieta "Pozycja 1:" / "Opcja 1:" */
+    function etykieta(label, extra) { return [run(label, Object.assign({ color: BLUE, bold: true }, extra || {}))]; }
     /* Pogrubia liczby i wymiary ("195/202", "▲-180(170)") w tekście danych technicznych. */
     function liczbyBold(text, opt) {
       var out = [], re = /([▲▼]?-?\d[\d\/\-().,]*)/g, last = 0, m;
@@ -519,7 +545,7 @@
 
     k.push(heading(1, "Specyfikacja oferty:"));
     var poz = F.pozycja.split(r.dane.typ);
-    k.push(body(etykieta("Pozycja 10:").concat([run(" " + poz[0], { color: BLUE }), run(r.dane.typ, { color: BLUE, bold: true }), run(poz.slice(1).join(r.dane.typ), { color: BLUE })])));
+    k.push(body(etykieta("Pozycja 1:").concat([run(" " + poz[0], { color: BLUE }), run(r.dane.typ, { color: BLUE, bold: true }), run(poz.slice(1).join(r.dane.typ), { color: BLUE })])));
     k.push(body([run("Dane techniczne:", { underline: {} })]));
     F.tech.forEach(function (l) { k.push(body(opisowa(l))); });
     F.uwagaTech.forEach(function (l) { k.push(body([run(l, { italics: true })])); });
@@ -565,11 +591,11 @@
     k.push(blank(), blank(), blank());
     F.podpis.forEach(function (l) { k.push(p([run(l)], { indent: { left: 567 }, alignment: D.AlignmentType.LEFT })); });
     k.push(blank(), blank());
-    k.push(p([run(F.klauzula, { size: 13, color: GREY })], { alignment: D.AlignmentType.JUSTIFIED }));
+    k.push(p([run(F.klauzula, { size: 12, color: GREY })], { alignment: D.AlignmentType.JUSTIFIED }));
 
     var doc = new D.Document({
       creator: "Kalkulator NK38",
-      styles: { default: { document: { run: { font: BODY, size: 18 } } } },
+      styles: { default: { document: { run: { font: BODY, size: 16 } } } },
       numbering: { config: [{ reference: "punkty", levels: [{ level: 0, format: D.LevelFormat.BULLET, text: "•", alignment: D.AlignmentType.LEFT,
         style: { paragraph: { indent: { left: 709, hanging: 284 } }, run: { color: BLUE, size: 22 } } }] }] },
       sections: [{
@@ -584,7 +610,7 @@
 
   var api = {
     setLibs: function (x) { Object.assign(L, x); }, xlsx: xlsx, pdf: pdf, docx: docxOferta,
-    oferta: oferta, domyslnaOferta: domyslnaOferta, SZABLON: SZABLON, zOpisu: zOpisu, ceil100: ceil100, raport: raport
+    oferta: oferta, domyslnaOferta: domyslnaOferta, wymiary: wymiary, SZABLON: SZABLON, zOpisu: zOpisu, ceil100: ceil100, raport: raport
   };
   if (typeof module !== "undefined" && module.exports) module.exports = api;
   else root.NK38X = api;

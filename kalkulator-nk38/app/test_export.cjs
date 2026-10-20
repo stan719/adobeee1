@@ -8,8 +8,8 @@ const font = (f) => fs.readFileSync(path.join(__dirname, "fonts", f)).toString("
 const ctx = { GLEBOKOSCI: E.GLEBOKOSCI, zestawienie: "Zestawienie testowe ąęłńóśźż", uwagi: ["Uwaga testowa"],
   cennikPola: [["Platformy", null], ["cena_D", "Platforma D", "zł"]], cennikZmiany: {}, fonts: { regular: font("Carlito-Regular.ttf"), bold: font("Carlito-Bold.ttf") } };
 const PRZYKLADY = {
-  waw: { nazwa: "ul. Kasprowicza 18 Warszawa", data: "2026-10-14", opis: "H-195/202 | L-530-544-584 | P-380 | Hpoj. G-180. D-180", lok: "Poza Krakowem", km: 280, D: 15, agregaty: 3, magistrala: 4, barierki: 30, maskownice: 5, gl_D: { 200: 15 }, tir: 3, tir_cena: 4000, rozl_cena: 1700, osoby: 4 },
-  krk: { nazwa: "ul. Dekerta Kraków", data: "2026-10-15", opis: "H-225 | L-530 | P-392", lok: "Kraków", S: 12, D: 27, agregaty: 7, magistrala: 32, barierki: 58, maskownice: 4, gl_S: { 225: 12 }, gl_D: { 225: 27 }, tir: 6, tir_cena: 1800, rozl_cena: 500, osoby: 5 }
+  waw: { nazwa: "ul. Kasprowicza 18 Warszawa", data: "2026-10-14", opis: "H-195/202 | L-530-544-584 | P-380 | Hpoj. G-180. D-180", lok: "Poza Krakowem", km: 280, D: 15, agregaty: 3, magistrala: 4, barierki: 30, maskownice: 5, gl_D: { 200: 15 }, tir: 3, tir_cena: 4000, rozl_cena: 5100, osoby: 4 },
+  krk: { nazwa: "ul. Dekerta Kraków", data: "2026-10-15", opis: "H-225 | L-530 | P-392", lok: "Kraków", S: 12, D: 27, agregaty: 7, magistrala: 32, barierki: 58, maskownice: 4, gl_S: { 225: 12 }, gl_D: { 225: 27 }, tir: 6, tir_cena: 1800, rozl_cena: 3000, osoby: 5 }
 };
 (async () => {
   const out = path.join(__dirname, "out"); fs.mkdirSync(out, { recursive: true });

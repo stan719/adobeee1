@@ -148,7 +148,7 @@ class Montaz:
     wyjazdy: int = None               # nadpisanie tygodni / dni montażu
     transport_cena: float = 0
     transporty: int = 0
-    rozladunek_sprzet: float = 0
+    rozladunek_sprzet: float = 0      # jednorazowo: przyjazd i wyjazd wózka
     dni_rozladunku: float = None      # nadpisanie (domyślnie 0,5 / TIR)
     wzor_podrozy: str = "stary"       # "stary" | "uproszczony"
     zysk: float = 0.14
@@ -210,7 +210,7 @@ def wycena_montazu(w: Montaz, c=CENNIK) -> dict:
     k["transport"] = w.transport_cena * w.transporty
     dzwig_dni = ceil(round((w.d + w.np) / c["dzwig_D"] + w.s * c["dzwig_wspS"] / c["dzwig_D"], 9))
     k["dzwig"] = c["dzwig"] * dzwig_dni
-    k["rozladunek_sprzet"] = w.rozladunek_sprzet * w.transporty
+    k["rozladunek_sprzet"] = w.rozladunek_sprzet
     k["rozladunek_ludzie"] = stawka * rozl * osoby
     k["dojazd_ludzie"] = stawka * (podr - osoby * rozl)
     k["montaz"] = stawka * osd if wyj > 0 else 0

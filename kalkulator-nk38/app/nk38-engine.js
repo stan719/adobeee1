@@ -46,7 +46,7 @@
 
   function domyslneDane() {
     return {
-      nazwa: "", data: "", nr: "", opis: "",
+      nazwa: "", data: "", nr: "", opis: "", h1: null, h2: null, dl: "", przeswit: null,
       lok: "Poza Krakowem", km: 0, km_pom: null, km_mon: null,
       typ: "NK38", S: 0, D: 0, NP: 0, agregaty: 0, magistrala: 0, barierki: 0, maskownice: 0, utr_dod: 0,
       gl_S: {}, gl_D: {},
@@ -54,7 +54,7 @@
       dl500_S: 0, dl540_S: 0, dl550_S: 0, dl500_D: 0, dl540_D: 0, dl550_D: 0,
       tir: 0, tir_cena: 0, rozl_cena: 0, rozl_dni: null,
       osoby: 4, wyjazdy: null, wzor: "stary",
-      zysk: 0.14, zysk2: 0.10, q2500: null, eur: 4.325, analiza: 0
+      zysk: 0.14, zysk2: 0.10, q2500: null, konserwA: 40, konserwB: 50, eur: 4.325, analiza: 0
     };
   }
 
@@ -140,7 +140,7 @@
       hotel: w.krk ? 0 : c.hotel * (dni + 1) * os,
       transport: num(d.tir_cena) * num(d.tir),
       dzwig: c.dzwig * w.dzwDni,
-      rozladunek_sprzet: num(d.rozl_cena) * num(d.tir),
+      rozladunek_sprzet: num(d.rozl_cena),
       rozladunek_ludzie: st * w.rozl * os,
       dojazdy: st * (podr - os * w.rozl),
       montaz: wyj > 0 ? st * osd : 0,
@@ -213,7 +213,10 @@
         slupki37b: sl37b, slupki22b: [sl37b[0] + dop22b, sl37b[1] + dop22b],
         malowanieB: m.malowanie * mnoznik2
       },
-      mnoznik: mnoznik, ostrzezenia: ostrzezenia(d)
+      mnoznik: mnoznik, ostrzezenia: ostrzezenia(d),
+      konserwacja: [num(d.konserwA, 40), num(d.konserwB, 50)].map(function (st) {
+        return { stawka: st, rok: st * m.MP * 12, pol: st * m.MP * 6 };
+      })
     };
   }
 

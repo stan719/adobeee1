@@ -49,7 +49,7 @@ def losuj(rnd):
                in_lok=rnd.choice(["Kraków", "Poza Krakowem", "Poza Krakowem"]),
                in_km=rnd.choice([150, 280, 450, 790, 950, 1300]),
                in_tir=rnd.randint(1, 8), in_tir_cena=rnd.choice([1600, 3300, 4500]),
-               in_rozl_cena=rnd.choice([500, 1700]), in_osoby=rnd.randint(2, 7),
+               in_rozl_cena=rnd.choice([500, 1700, 5100]), in_osoby=rnd.randint(2, 7),
                in_wzor=rnd.choice(["Stary (poprawiony)", "Uproszczony"]),
                in_zysk=rnd.choice([0.10, 0.125, 0.15]), in_zysk2=0.08,
                in_q2500=rnd.choice([0.06, 0.07]), in_analiza=rnd.choice(WARIANTY))

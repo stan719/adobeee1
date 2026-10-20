@@ -14,7 +14,7 @@ def waw(**kw):
     mat = wycena_materialow(WAW_MAT)
     a = dict(cena_urzadzen=mat["F87"], d=15, utrudnienia=mat["utrudnienia_auto"],
              km=280, osoby=4, transport_cena=4000, transporty=3,
-             rozladunek_sprzet=1700, zysk=0.125, zysk2=0.10)
+             rozladunek_sprzet=5100, zysk=0.125, zysk2=0.10)
     a.update(kw)
     return Montaz(**a)
 
@@ -23,7 +23,7 @@ def krk(**kw):
     mat = wycena_materialow(KRK_MAT)
     a = dict(cena_urzadzen=mat["F87"], s=12, d=27, utrudnienia=mat["utrudnienia_auto"],
              krakow=True, osoby=5, transport_cena=1800, transporty=6,
-             rozladunek_sprzet=500, zysk=0.13, zysk2=0.11)
+             rozladunek_sprzet=3000, zysk=0.13, zysk2=0.11)
     a.update(kw)
     return Montaz(**a)
 
