@@ -35,6 +35,7 @@
   color-scheme: dark }
 
 * { box-sizing: border-box; }
+[hidden] { display: none !important; }
 body { background: var(--bg); color: var(--ink); font-family: var(--f-ui); font-size: 14.5px; line-height: 1.45; -webkit-font-smoothing: antialiased; }
 body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); z-index: 10; background: var(--surface); }
 h1, h2, h3 { margin: 0; text-wrap: balance; }
@@ -235,7 +236,7 @@ ul.notes li::before { content: ""; position: absolute; left: 0; top: .6em; width
 @media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
 /* przewijanie: lewa kolumna kończy się nad dolną krawędzią, panel wyniku mieści się w oknie */
 @media (min-width: 1001px) {
-  .wrap { padding-bottom: 24px; }
+  #vKalk { padding-bottom: 24px; }
   .result { max-height: calc(100vh - env(safe-area-inset-top, 0px) - 74px - 24px); }
 }
 .chip.ok { background: var(--good-soft); color: var(--good); }
@@ -274,6 +275,34 @@ details.ofsec[open] > summary::after { transform: rotate(-135deg); }
 .paper .pg { font-size: 10px; color: #555555; }
 .paper .bluet { color: #1f4e9a; }
 .paper .sig { display: block; max-height: 64px; max-width: 200px; margin: 6px 0 2px 18px; }
+/* pulpit i edytor */
+.phead { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: end; gap: 12px 20px; margin: 6px 0 16px; }
+.phead h2 { font-size: 22px; font-weight: 600; letter-spacing: -.02em; }
+.phead p { margin: 4px 0 0; color: var(--muted); font-size: 13.5px; max-width: 70ch; }
+.devgrid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 12px; }
+.dev { display: flex; flex-direction: column; gap: 12px; padding: 16px; }
+.dev-top { display: flex; justify-content: space-between; align-items: start; gap: 10px; }
+.dev h3 { font-size: 18px; font-weight: 600; letter-spacing: -.01em; }
+.dev .tg { font-size: 11px; font-weight: 500; padding: 1px 8px; border-radius: 99px; background: var(--sunken); color: var(--muted); white-space: nowrap; }
+.dev .tg.own { background: var(--accent-soft); color: var(--accent); }
+.dev dl { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 4px 12px; margin: 0; font-size: 12.5px; }
+.dev dt { color: var(--muted); }
+.dev dd { margin: 0; font-family: var(--f-num); text-align: right; font-variant-numeric: tabular-nums; }
+.dev .row { margin-top: auto; }
+.dev.add { align-items: flex-start; justify-content: center; border-style: dashed; box-shadow: none; background: transparent; min-height: 200px; }
+.dev.add p { margin: 0; font-size: 13px; color: var(--muted); }
+.pgrid2 { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 12px; margin-top: 20px; }
+@media (max-width: 900px) { .pgrid2 { grid-template-columns: minmax(0, 1fr); } }
+.pgrid2 .card { padding: 16px 18px; }
+.plist { display: flex; flex-direction: column; gap: 6px; }
+.plist .it { display: flex; justify-content: space-between; align-items: center; gap: 8px 12px; flex-wrap: wrap; padding: 9px 12px; border: 1px solid var(--line); border-radius: 10px; font-size: 13px; }
+.plist .it b { font-weight: 600; }
+.mv { display: flex; flex-direction: column; gap: 14px; font-size: 13px; color: var(--ink-2); }
+.mv h4 { margin: 0 0 4px; font-size: 13px; font-weight: 600; color: var(--ink); }
+.mv p { margin: 0 0 8px; }
+.edhead { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 10px 16px; margin: 4px 0 14px; }
+.edhead h2 { font-size: 20px; font-weight: 600; letter-spacing: -.01em; }
+#szPane { padding: 16px 18px 18px; }
 .paryhd { display: flex; justify-content: space-between; align-items: baseline; gap: 8px; margin-top: 2px; }
 .para { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 8px 12px; margin-top: 6px; }
 @media (max-width: 480px) { .para { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
@@ -293,14 +322,44 @@ table.t.edt input[type=text], table.t.edt td input:not([type=number]) { min-widt
     </div>
     <div class="actions">
       <span class="chip" id="storeTag" hidden></span>
+      <button class="btn" id="bPulpit" type="button" hidden>← Pulpit</button>
+      <span class="actions" id="kalkActions" hidden>
       <button class="btn" id="bNew" type="button">Nowa wycena</button>
       <span class="exp"><button class="btn" id="bXlsx" type="button">Excel</button><button class="btn" id="bPdf" type="button">Raport PDF</button><button class="btn" id="bDocxTop" type="button">Oferta Word</button></span>
       <button class="btn primary" id="bSave" type="button">Zapisz</button>
+      </span>
     </div>
   </div>
 </header>
 
-<div class="wrap">
+<div class="wrap" id="vPulpit">
+  <div class="phead">
+    <div><h2>Wybierz urządzenie</h2><p>Każde urządzenie ma własny szablon: typy platform, cennik, zagłębienia, wymiary, składowe i teksty oferty. Skopiuj istniejący szablon albo zacznij od pustego, żeby dodać kolejny typ.</p></div>
+    <button class="btn" type="button" id="pPusty">+ Nowe urządzenie</button>
+  </div>
+  <div class="devgrid" id="devGrid"></div>
+  <div class="pgrid2">
+    <section class="card"><h3 class="sec">Ostatnie wyceny</h3><div class="plist" id="pWyceny"></div></section>
+    <section class="card"><h3 class="sec">Przenoszenie na inny komputer</h3>
+      <div class="mv">
+        <div><h4>Kopia zapasowa danych</h4><p>Jeden plik z szablonami urządzeń, tekstami oferty, numeracją ofert i zapisanymi wycenami. Wczytanie dodaje wyceny i zastępuje szablony o tym samym identyfikatorze.</p>
+          <div class="row"><button class="btn small" type="button" id="bBackup">Pobierz kopię zapasową</button><label class="btn small" for="backupFile">Wczytaj kopię zapasową</label><input type="file" id="backupFile" accept="application/json,.json" hidden></div></div>
+        <div id="offlineBox"><h4>Wersja offline</h4><p>Jeden plik HTML z całą aplikacją. Otwierasz go w przeglądarce na dowolnym komputerze, bez claude.ai. Dane zapisuje w tej przeglądarce; przenieś je kopią zapasową. Eksporty potrzebują internetu do pobrania bibliotek.</p>
+          <div class="row"><button class="btn small" type="button" id="bOffline">Pobierz wersję offline</button></div></div>
+      </div>
+    </section>
+  </div>
+</div>
+
+<div class="wrap" id="vEdytor" hidden>
+  <div class="edhead">
+    <div style="min-width:0"><p class="note">Edycja szablonu urządzenia</p><h2 id="edTitle">Szablon</h2></div>
+    <div class="row"><button class="btn" type="button" data-go="pulpit">← Pulpit</button><button class="btn primary" type="button" id="edPolicz">Policz tym urządzeniem</button></div>
+  </div>
+  <section class="card" id="szPane"></section>
+</div>
+
+<div class="wrap" id="vKalk" hidden>
   <div class="layout">
     <form class="form" id="form" autocomplete="off">
       <fieldset class="card">
@@ -417,7 +476,7 @@ table.t.edt input[type=text], table.t.edt td input:not([type=number]) { min-widt
 (function () {
   "use strict";
   var E = window.NK38, X = window.NK38X;
-  var LS = { draft: "nk38.szkic.v1", tab: "nk38.zakladka", sel: "nk38.wariant", logo: "nk38.logo.v1", podpis: "nk38.podpis.v1",
+  var LS = { drafty: "nk38.szkice.v1", draft: "nk38.szkic.v1", tab: "nk38.zakladka", sel: "nk38.wariant", logo: "nk38.logo.v1", podpis: "nk38.podpis.v1",
     szablony: "nk38.szablony.v1", wyceny: "nk38.wyceny.v1", tekstyOferty: "nk38.szablon.v1", numery: "nk38.numery.v1", cennikStary: "nk38.cennik.v1" };
   var NUMF = ["km", "km_pom", "km_mon", "S", "D", "NP", "agregaty", "magistrala", "barierki", "maskownice", "utr_dod",
     "tir", "tir_cena", "rozl_cena", "rozl_dni", "dzwig_koszt", "osoby", "wyjazdy", "eur", "h1", "h2", "przeswit", "konserwA", "konserwB"];
@@ -446,8 +505,9 @@ table.t.edt input[type=text], table.t.edt td input:not([type=number]) { min-widt
     ["Narzuty", null], ["kob", "KOB", "×"], ["gdw", "GDW", "×"], ["podatek", "Podatek efektywny", "×"]
   ];
   var GRUPY = ["Mechanika", "Hydraulika", "Elektryka", "Inne"];
-  var TABS = [["wynik", "Warianty"], ["ekipa", "Ekipa"], ["zestaw", "Zestawienie"], ["obl", "Obliczenia"], ["wyceny", "Wyceny"], ["szablony", "Szablony urządzeń"]];
+  var TABS = [["wynik", "Warianty"], ["ekipa", "Ekipa"], ["zestaw", "Zestawienie"], ["obl", "Obliczenia"], ["wyceny", "Wyceny"]];
 
+  var LOGO_URL = window.NK38_LOGO || "logo.png";   // wersja offline ma logo wbudowane
   var $ = function (id) { return document.getElementById(id); };
   var fmtPLN = new Intl.NumberFormat("pl-PL", { maximumFractionDigits: 0 });
   var fmt2 = new Intl.NumberFormat("pl-PL", { maximumFractionDigits: 2 });
@@ -512,6 +572,10 @@ table.t.edt input[type=text], table.t.edt td input:not([type=number]) { min-widt
       if (!this.db) { var l = lsGet(LS.wyceny, []); l.unshift(w); lsSet(LS.wyceny, l.slice(0, 300)); return; }
       await this.db.collection("nk38/dane/wyceny").add(kopia(w));
     },
+    dodajWycene: async function (w) {
+      if (!this.db) { var l = lsGet(LS.wyceny, []); l.push(w); l.sort(function (a, b) { return (b.ts || 0) - (a.ts || 0); }); lsSet(LS.wyceny, l.slice(0, 300)); return; }
+      await this.db.collection("nk38/dane/wyceny").add(kopia(w));
+    },
     usunWycene: async function (id) {
       if (!this.db) { var l = lsGet(LS.wyceny, []); l.splice(+id.slice(2), 1); lsSet(LS.wyceny, l); return; }
       await this.db.doc("nk38/dane/wyceny/" + id).delete();
@@ -535,7 +599,7 @@ table.t.edt input[type=text], table.t.edt td input:not([type=number]) { min-widt
     return szablony.filter(function (s) { return s.id === id; })[0] || szablony[0];
   }
 
-  var state = { dane: null, tab: lsGet(LS.tab, "wynik"), sel: lsGet(LS.sel, 0), confirm: null, edytowany: null, ovView: "form" };
+  var state = { view: "pulpit", dane: null, tab: lsGet(LS.tab, "wynik"), sel: lsGet(LS.sel, 0), confirm: null, edytowany: null, ovView: "form" };
   if (!TABS.some(function (t) { return t[0] === state.tab; })) state.tab = "wynik";
   var wynik = null;
 
@@ -647,8 +711,7 @@ table.t.edt input[type=text], table.t.edt td input:not([type=number]) { min-widt
   function render() {
     var r = wynik, d = r.dane, m = r.mat, sel = state.sel, w = r.warianty[sel], T = r.szablon.typy;
     var zA = "zysk " + pct(d.zysk), zB = "zysk " + pct(d.zysk2);
-    $("appTitle").textContent = "Kalkulator " + d.typ;
-    $("projline").textContent = (d.nazwa || "Nowa wycena") + " · " + d.typ;
+    if (state.view === "kalk") { $("appTitle").textContent = "Kalkulator " + d.typ; $("projline").textContent = (d.nazwa || "Nowa wycena") + " · " + d.typ; }
     $("mpNote").textContent = m.platformy + " platform · " + m.MP + " MP";
     ["S", "D", "NP"].forEach(function (k) { $("lbl" + k).textContent = T[k].nazwa; $("hint" + k).textContent = T[k].mp + " MP"; });
     $("std_S").textContent = Math.max(0, (d.S || 0) - sumO(d.gl_S));
@@ -706,8 +769,7 @@ table.t.edt input[type=text], table.t.edt td input:not([type=number]) { min-widt
     $("tabs").innerHTML = TABS.map(function (t) {
       return '<button type="button" role="tab" data-tab="' + t[0] + '" aria-selected="' + (state.tab === t[0]) + '">' + t[1] + "</button>";
     }).join("");
-    if (state.tab === "szablony" && document.activeElement && document.activeElement.closest && document.activeElement.closest("#pane")) return;
-    $("pane").innerHTML = ({ wynik: paneWynik, ekipa: paneEkipa, zestaw: paneZestaw, obl: paneObl, wyceny: paneWyceny, szablony: paneSzablony }[state.tab] || paneWynik)();
+    $("pane").innerHTML = ({ wynik: paneWynik, ekipa: paneEkipa, zestaw: paneZestaw, obl: paneObl, wyceny: paneWyceny }[state.tab] || paneWynik)();
     if (state.tab === "wyceny") wypelnijWyceny();
   }
   function kpi(l, v, t) { return '<div class="kpi"><div class="l">' + l + '</div><div class="v' + (t ? " t" : "") + '">' + v + "</div></div>"; }
@@ -874,6 +936,7 @@ table.t.edt input[type=text], table.t.edt td input:not([type=number]) { min-widt
   function szEdytowany() { return szablony.filter(function (s) { return s.id === state.edytowany; })[0] || szablonAktywny(); }
   function fld(path, val, opt) {
     opt = opt || {};
+    if (opt.area) return '<textarea data-szp="' + path + '" rows="' + (opt.rows || 2) + '" aria-label="' + esc(opt.label || path) + '">' + esc(val == null ? "" : val) + "</textarea>";
     return '<input data-szp="' + path + '" type="' + (opt.text ? "text" : "number") + '" step="any" value="' + esc(val == null ? "" : val) + '"' + (opt.style ? ' style="' + opt.style + '"' : "") + ' aria-label="' + esc(opt.label || path) + '">';
   }
   function paneSzablony() {
@@ -883,7 +946,7 @@ table.t.edt input[type=text], table.t.edt td input:not([type=number]) { min-widt
       '<div class="row"><button class="btn small" type="button" id="szPusty">Nowy pusty szablon</button><button class="btn small" type="button" id="szNowy">Nowy szablon (kopia)</button>' +
       (wb ? '<button class="btn small" type="button" id="szReset">Przywróć domyślne</button>' : '<button class="btn small danger" type="button" id="szUsun">Usuń szablon</button>') + "</div></div>";
     if (state.szUsun) h += '<div class="alert uwaga" style="margin-bottom:10px"><b>Usunąć „' + esc(s.nazwa) + '”?</b><span class="row"><button class="btn small danger" type="button" id="szUsunTak">Tak, usuń</button><button class="btn small" type="button" id="szUsunNie">Anuluj</button></span></div>';
-    h += '<p class="note">Zmiany zapisują się od razu' + (Store.db ? " przy kalkulatorze (na każdym urządzeniu)" : " w tej przeglądarce") + '. Szablon wybierasz w karcie Inwestycja; wycena liczy się z jego cen i tabel.</p>';
+    h += '<p class="note">Zmiany zapisują się od razu' + (Store.db ? " na koncie (na każdym urządzeniu)" : " w tej przeglądarce") + '. Wycena liczy się z cen i tabel tego szablonu.</p>';
     h += '<details class="grp" open><summary>Ogólne</summary><div class="ofgrid">' +
       '<label class="f">Nazwa urządzenia (w ofercie)' + fld("nazwa", s.nazwa, { text: 1 }) + '</label>' +
       '<label class="f full">Pozycja w ofercie ({typ} = nazwa)' + fld("opisOferty", s.opisOferty, { text: 1 }) + '</label></div>' +
@@ -921,6 +984,11 @@ table.t.edt input[type=text], table.t.edt td input:not([type=number]) { min-widt
           '</td><td><select data-szp="skladowe.' + i + '.grupa">' + GRUPY.map(function (g) { return '<option' + (x.grupa === g ? " selected" : "") + ">" + g + "</option>"; }).join("") +
           '</select></td><td><button type="button" class="btn small ghost danger" data-szdel="skladowe.' + i + '">Usuń</button></td></tr>';
       }).join("") + '</tbody></table></div><button type="button" class="btn small" data-szadd="skladowe">Dodaj pozycję</button></details>';
+    var TX = [["obciazenie", "Obciążenie (2000 kg)"], ["zabezpieczenie", "Zabezpieczenie antykorozyjne"], ["barierki", "Barierki (gdy są w wycenie)"],
+      ["opcjaQ2500", "Opcja: obciążenie 2500 kg"], ["uwagaTech", "Uwaga pod danymi technicznymi (puste = tekst wspólny)"]];
+    h += '<details class="grp"><summary>Teksty oferty dla tego urządzenia</summary><div class="ofgrid">' +
+      TX.map(function (x) { return '<label class="f full">' + x[1] + fld("teksty." + x[0], s.teksty[x[0]], { area: 1, rows: x[0] === "barierki" || x[0] === "uwagaTech" ? 3 : 2, label: x[1] }) + "</label>"; }).join("") +
+      '</div><p class="note" style="margin-top:8px">W tekstach typów platform: {n} = liczba sztuk, {typ} = nazwa urządzenia.</p></details>';
     h += '<details class="grp"><summary>Eksport i import szablonów</summary><p class="note" style="margin-bottom:8px">Kopia zapasowa wszystkich szablonów jako tekst. Wklej taki tekst i kliknij Importuj, żeby je wczytać.</p>' +
       '<textarea id="szIo" rows="4" placeholder="Wklej tu tekst eksportu"></textarea><div class="row" style="margin-top:8px"><button class="btn small" type="button" id="szExport">Kopiuj eksport</button><button class="btn small" type="button" id="szImport">Importuj</button></div></details>';
     return h;
@@ -992,7 +1060,7 @@ table.t.edt input[type=text], table.t.edt td input:not([type=number]) { min-widt
       '<div class="ofgrid"><div><div class="ofsep">Podpis</div><div class="row">' + (pd ? '<img src="' + pd.dataUrl + '" alt="Podpis" class="thumb">' : '<span class="muted">Brak podpisu w ofercie.</span>') +
       '</div><div class="row" style="margin-top:6px"><label class="btn small" for="podpisFile">' + (pd ? "Zmień" : "Wgraj") + ' podpis</label><input type="file" id="podpisFile" accept="image/png,image/jpeg" hidden>' +
       (pd ? '<button type="button" class="btn small ghost danger" id="bPodpisDel">Usuń</button>' : "") + '</div><p class="note" style="margin-top:6px">Podpis zostaje tylko w tej przeglądarce i nie jest zapisywany na stronie.</p></div>' +
-      '<div><div class="ofsep">Logo</div><div class="row"><img src="' + (lg ? lg.dataUrl : "logo.png") + '" alt="Logo" class="thumb"></div><div class="row" style="margin-top:6px"><label class="btn small" for="logoFile">Wgraj inne logo</label><input type="file" id="logoFile" accept="image/png,image/jpeg" hidden>' +
+      '<div><div class="ofsep">Logo</div><div class="row"><img src="' + (lg ? lg.dataUrl : LOGO_URL) + '" alt="Logo" class="thumb"></div><div class="row" style="margin-top:6px"><label class="btn small" for="logoFile">Wgraj inne logo</label><input type="file" id="logoFile" accept="image/png,image/jpeg" hidden>' +
       (lg ? '<button type="button" class="btn small ghost danger" id="bLogoDel">Wróć do logo firmowego</button>' : "") + "</div></div></div>" +
       '<div style="height:12px"></div>' + stale("naglowek", "Nagłówek (prawa strona)") + stale("stopka", "Stopka") + stale("zakonczenie", "Zakończenie") + stale("podpis", "Imię, nazwisko i stanowisko pod podpisem") +
       stale("klauzula", "Klauzula poufności (dół 2. strony)") + stale("uwaga_tech", "Uwaga pod danymi technicznymi") +
@@ -1007,7 +1075,7 @@ table.t.edt input[type=text], table.t.edt td input:not([type=number]) { min-widt
   }
   function renderPodglad() {
     var F = X.oferta(wynik, state.dane.oferta, tekstyOferty());
-    var logo = lsGet(LS.logo, null) || { dataUrl: "logo.png" }, pd = lsGet(LS.podpis, null);
+    var logo = lsGet(LS.logo, null) || { dataUrl: LOGO_URL }, pd = lsGet(LS.podpis, null);
     var P = function (arr, cls) { return arr.map(function (l) { return '<p class="' + (cls || "") + '">' + (esc(l) || "&nbsp;") + "</p>"; }).join(""); };
     var h = '<div class="paper"><div class="hd"><img src="' + logo.dataUrl + '" alt="Logo"><div class="lh">' +
       F.naglowek.map(function (l, i) { return i < 2 ? "<b>" + esc(l) + "</b>" : esc(l) + "<br>"; }).join("") + '</div><span class="pg">1</span></div>';
@@ -1067,6 +1135,7 @@ table.t.edt input[type=text], table.t.edt td input:not([type=number]) { min-widt
   function zDataUrl(u) { var bin = atob(u.split(",")[1]), a = new Uint8Array(bin.length); for (var i = 0; i < bin.length; i++) a[i] = bin.charCodeAt(i); return a; }
   var fontsP = null;
   function fonts() {
+    if (window.NK38_FONTS) return Promise.resolve(window.NK38_FONTS);
     if (!fontsP) fontsP = Promise.all(["fonts/Carlito-Regular.ttf", "fonts/Carlito-Bold.ttf"].map(function (u) {
       return fetch(u).then(function (r) { if (!r.ok) throw new Error("font"); return r.arrayBuffer(); }).then(b64);
     })).then(function (a) { return { regular: a[0], bold: a[1] }; }, function (e) { fontsP = null; throw e; });
@@ -1077,7 +1146,11 @@ table.t.edt input[type=text], table.t.edt td input:not([type=number]) { min-widt
   async function zapisz(filename, data) {
     if (window.__NK38_SAVE) return window.__NK38_SAVE(filename, data);
     var dl = window.claude && window.claude.use ? await window.claude.use("downloads") : null;
-    if (!dl) { toast("Zapis plików nie działa w tym widoku. Otwórz stronę w claude.ai."); return; }
+    if (!dl) {   // poza claude.ai (wersja offline): zwykłe pobieranie przez przeglądarkę
+      var blob = data instanceof Blob ? data : new Blob([data]), url = URL.createObjectURL(blob), a = document.createElement("a");
+      a.href = url; a.download = filename; document.body.appendChild(a); a.click(); a.remove();
+      setTimeout(function () { URL.revokeObjectURL(url); }, 4000); toast("Zapisano " + filename); return;
+    }
     try { await dl.save({ filename: filename, data: data }); toast("Zapisano " + filename); }
     catch (e) { if (e && e.code !== "declined") toast(e.code === "rate_limited" ? "Poczekaj chwilę i spróbuj ponownie." : "Nie udało się zapisać pliku (" + (e.code || "błąd") + ")."); }
   }
@@ -1108,7 +1181,7 @@ table.t.edt input[type=text], table.t.edt td input:not([type=number]) { min-widt
   }
   var logoDomP = null;
   function logoDomyslne() {
-    if (!logoDomP) logoDomP = fetch("logo.png").then(function (r) { if (!r.ok) throw new Error("logo"); return r.arrayBuffer(); })
+    if (!logoDomP) logoDomP = fetch(LOGO_URL).then(function (r) { if (!r.ok) throw new Error("logo"); return r.arrayBuffer(); })
       .then(function (b) { return { data: new Uint8Array(b), w: 232, h: 58, type: "png" }; }, function () { logoDomP = null; return null; });
     return logoDomP;
   }
@@ -1186,13 +1259,15 @@ table.t.edt input[type=text], table.t.edt td input:not([type=number]) { min-widt
 
   /* --- zdarzenia: zakładki (wyceny, szablony) --- */
   var szTimer = null;
-  $("pane").addEventListener("input", function (e) {
+  function naObu(ev, fn) { $("pane").addEventListener(ev, fn); $("szPane").addEventListener(ev, fn); }
+  function odswiezSz() { if (state.view === "edytor") renderEdytor(); else render(); }
+  naObu("input", function (e) {
     var t = e.target;
     if (t.dataset.szp && t.tagName !== "SELECT") {
       var s = szEdytowany(), v = t.type === "number" ? (t.value === "" ? 0 : Number(t.value)) : t.value;
       ustawSciezke(s, t.dataset.szp, v);
       clearTimeout(szTimer);
-      szTimer = setTimeout(function () { zapiszSzablony(); if (t.dataset.szp === "nazwa") wypelnijSzablony(), $("szablon").value = szablonAktywny().id; recalcBezPanelu(); }, 250);
+      szTimer = setTimeout(function () { zapiszSzablony(); wypelnijSzablony(); $("szablon").value = szablonAktywny().id; if (state.view === "edytor") $("edTitle").textContent = $("appTitle").textContent = s.nazwa; recalcBezPanelu(); }, 250);
     }
   });
   function recalcBezPanelu() {
@@ -1201,14 +1276,14 @@ table.t.edt input[type=text], table.t.edt td input:not([type=number]) { min-widt
     var tab = state.tab; state.tab = "_"; render(); state.tab = tab;
     $("tabs").innerHTML = TABS.map(function (t) { return '<button type="button" role="tab" data-tab="' + t[0] + '" aria-selected="' + (state.tab === t[0]) + '">' + t[1] + "</button>"; }).join("");
   }
-  $("pane").addEventListener("change", function (e) {
+  naObu("change", function (e) {
     var t = e.target;
     if (t.id === "analizaSel") { state.dane.analiza = +t.value; recalc(); return; }
-    if (t.id === "szSel") { state.edytowany = t.value; state.szUsun = false; render(); return; }
+    if (t.id === "szSel") { state.edytowany = t.value; state.szUsun = false; odswiezSz(); return; }
     if (t.dataset.szp && t.tagName === "SELECT") { ustawSciezke(szEdytowany(), t.dataset.szp, t.value); zapiszSzablony(); recalcBezPanelu(); return; }
     if (t.dataset.szp) { state.dane = state.dane; buildDimTable(); }
   });
-  $("pane").addEventListener("click", async function (e) {
+  naObu("click", async function (e) {
     var t = e.target.closest("button"); if (!t) return;
     if (t.id === "bCopy") return copyText(zestawienie(), "Skopiowano tekst", "offerText");
     if (t.id === "bSave2") return zapiszBiezaca($("saveName").value || "Wycena");
@@ -1227,34 +1302,34 @@ table.t.edt input[type=text], table.t.edt td input:not([type=number]) { min-widt
     var s = szEdytowany();
     if (t.id === "szPusty") {
       var np = E.szablonPusty(); np.id = "s" + Date.now().toString(36);
-      szablony.push(np); state.edytowany = np.id; zapiszSzablony(); wypelnijSzablony(); $("szablon").value = szablonAktywny().id; render();
+      szablony.push(np); state.edytowany = np.id; zapiszSzablony(); wypelnijSzablony(); $("szablon").value = szablonAktywny().id; odswiezSz();
       toast("Utworzono pusty szablon. Wpisz nazwę, MP, osobodni, ceny i tabele."); return;
     }
     if (t.id === "szNowy") {
       var n = E.uzupelnijSzablon(kopia(s)); n.id = "s" + Date.now().toString(36); n.nazwa = s.nazwa + " (kopia)"; n.wbudowany = false;
-      szablony.push(n); state.edytowany = n.id; zapiszSzablony(); wypelnijSzablony(); $("szablon").value = szablonAktywny().id; render();
+      szablony.push(n); state.edytowany = n.id; zapiszSzablony(); wypelnijSzablony(); $("szablon").value = szablonAktywny().id; odswiezSz();
       toast("Utworzono szablon „" + n.nazwa + "”. Zmień nazwę i ceny."); return;
     }
     if (t.id === "szReset") {
       var b = E.szablonyWbudowane().filter(function (x) { return x.id === s.id; })[0];
-      if (b) { szablony[szablony.indexOf(s)] = b; zapiszSzablony(); wypelnijSzablony(); $("szablon").value = szablonAktywny().id; buildDimTable(); recalc(); toast("Przywrócono domyślne wartości " + b.nazwa); }
+      if (b) { szablony[szablony.indexOf(s)] = b; zapiszSzablony(); wypelnijSzablony(); $("szablon").value = szablonAktywny().id; buildDimTable(); recalc(); odswiezSz(); toast("Przywrócono domyślne wartości " + b.nazwa); }
       return;
     }
-    if (t.id === "szUsun") { state.szUsun = true; render(); return; }
-    if (t.id === "szUsunNie") { state.szUsun = false; render(); return; }
+    if (t.id === "szUsun") { state.szUsun = true; odswiezSz(); return; }
+    if (t.id === "szUsunNie") { state.szUsun = false; odswiezSz(); return; }
     if (t.id === "szUsunTak") {
       szablony = szablony.filter(function (x) { return x !== s; }); state.szUsun = false; state.edytowany = null;
       if (state.dane.szablon === s.id) state.dane.szablon = szablony[0].id;
-      zapiszSzablony(); wypelnijSzablony(); $("szablon").value = szablonAktywny().id; buildDimTable(); recalc(); toast("Usunięto szablon"); return;
+      zapiszSzablony(); wypelnijSzablony(); $("szablon").value = szablonAktywny().id; buildDimTable(); recalc(); if (state.view === "edytor") pokaz("pulpit"); toast("Usunięto szablon"); return;
     }
     if (t.dataset.szadd) {
       if (t.dataset.szadd === "glebokosci") s.glebokosci.push({ cm: 230, doplata: 0, silownik: "2250" });
       else s.skladowe.push({ nazwa: "Nowa pozycja", cena: 0, ilS: 0, ilD: 0, grupa: "Mechanika" });
-      zapiszSzablony(); buildDimTable(); state.dane = fromForm(); recalc(); return;
+      zapiszSzablony(); buildDimTable(); state.dane = fromForm(); recalc(); odswiezSz(); return;
     }
     if (t.dataset.szdel) {
       var p = t.dataset.szdel.split("."); s[p[0]].splice(+p[1], 1);
-      zapiszSzablony(); buildDimTable(); state.dane = fromForm(); recalc(); return;
+      zapiszSzablony(); buildDimTable(); state.dane = fromForm(); recalc(); odswiezSz(); return;
     }
     if (t.id === "szExport") { var txt = JSON.stringify({ szablony: szablony }); $("szIo").value = txt; return copyText(txt, "Skopiowano eksport szablonów", "szIo"); }
     if (t.id === "szImport") {
@@ -1321,6 +1396,132 @@ table.t.edt input[type=text], table.t.edt td input:not([type=number]) { min-widt
     try { navigator.clipboard.writeText(txt).then(function () { toast(msg); }, fallback); } catch (e) { fallback(); }
   }
 
+  /* --- widoki: pulpit (wybór urządzenia), edytor szablonu, kalkulator --- */
+  function pokaz(v) {
+    state.view = v;
+    $("vPulpit").hidden = v !== "pulpit"; $("vEdytor").hidden = v !== "edytor"; $("vKalk").hidden = v !== "kalk";
+    $("kalkActions").hidden = v !== "kalk"; $("bPulpit").hidden = v === "pulpit";
+    $("mbar").style.display = v === "kalk" ? "" : "none";
+    if (v === "pulpit") { $("appTitle").textContent = "Kalkulator urządzeń"; $("projline").textContent = "Pulpit · wybierz urządzenie do wyceny"; renderPulpit(); }
+    if (v === "edytor") { $("appTitle").textContent = szEdytowany().nazwa; $("projline").textContent = "Edycja urządzenia"; renderEdytor(); }
+    if (v === "kalk") render();
+    window.scrollTo(0, 0);
+  }
+  function renderPulpit() {
+    var h = szablony.map(function (s) {
+      var wb = E.szablonyWbudowane().some(function (x) { return x.id === s.id; }), c = s.cennik, conf = state.pUsun === s.id;
+      return '<article class="card dev"><div class="dev-top"><h3>' + esc(s.nazwa) + '</h3><span class="tg' + (wb ? "" : " own") + '">' + (wb ? "wbudowany" : "własny") + "</span></div>" +
+        "<dl><dt>Cena platformy D</dt><dd>" + zl(c.cena_D || 0) + "</dd><dt>MP na S / D</dt><dd>" + (s.typy.S.mp || 0) + " / " + (s.typy.D.mp || 0) + "</dd>" +
+        "<dt>Osobodni S / D</dt><dd>" + n2(s.typy.S.osd || 0) + " / " + n2(s.typy.D.osd || 0) + "</dd><dt>Zagłębienia / składowe</dt><dd>" + s.glebokosci.length + " / " + s.skladowe.length + "</dd></dl>" +
+        (conf ? '<div class="row"><span class="muted">Usunąć szablon?</span><button class="btn small danger" type="button" data-dev-usun-tak="' + esc(s.id) + '">Tak, usuń</button><button class="btn small" type="button" data-dev-usun-nie="1">Anuluj</button></div>'
+          : '<div class="row"><button class="btn primary" type="button" data-dev-policz="' + esc(s.id) + '">Policz</button><button class="btn small" type="button" data-dev-edytuj="' + esc(s.id) + '">Edytuj</button>' +
+            '<button class="btn small" type="button" data-dev-kopiuj="' + esc(s.id) + '">Kopiuj</button>' + (wb ? "" : '<button class="btn small ghost danger" type="button" data-dev-usun="' + esc(s.id) + '">Usuń</button>') + "</div>") + "</article>";
+    }).join("");
+    h += '<article class="card dev add"><h3>Nowe urządzenie</h3><p>Pusty szablon: wpisujesz typy platform, ceny i tabele. Możesz też skopiować istniejące urządzenie przyciskiem „Kopiuj”.</p><button class="btn" type="button" data-dev-pusty="1">Utwórz pusty szablon</button></article>';
+    $("devGrid").innerHTML = h;
+    $("offlineBox").hidden = !!window.NK38_OFFLINE;
+    renderPulpitWyceny();
+  }
+  async function renderPulpitWyceny() {
+    var lista = [];
+    try { lista = await Store.listaWycen(); } catch (e) { $("pWyceny").innerHTML = '<div class="empty">Nie udało się wczytać wycen.</div>'; return; }
+    state.wyceny = lista;
+    var nazwa = function (id) { var s = szablony.filter(function (x) { return x.id === id; })[0]; return s ? s.nazwa : "NK38"; };
+    $("pWyceny").innerHTML = lista.length ? lista.slice(0, 8).map(function (w) {
+      return '<div class="it"><div><b>' + esc(w.nazwa) + '</b> <span class="muted">· ' + esc(nazwa((w.dane || {}).szablon)) + " · " + esc(w.kiedy || "") + " · " + zl(w.cena || 0) + '</span></div><button class="btn small" type="button" data-p-load="' + esc(w.id) + '">Otwórz</button></div>';
+    }).join("") : '<div class="empty">Brak zapisanych wycen. Zapisujesz je przyciskiem „Zapisz” w kalkulatorze.</div>';
+  }
+  function renderEdytor() {
+    var s = szEdytowany();
+    $("edTitle").textContent = s.nazwa;
+    $("szPane").innerHTML = paneSzablony();
+  }
+  function noweId() { return "s" + Date.now().toString(36) + Math.random().toString(36).slice(2, 5); }
+  function otworzUrzadzenie(id) {
+    var drafty = lsGet(LS.drafty, {});
+    if (state.dane && state.dane.szablon !== id) {
+      drafty[state.dane.szablon || "nk38"] = state.dane;
+      setDane(drafty[id] || Object.assign(E.domyslneDane(), { data: dzis(), szablon: id }));
+      lsSet(LS.drafty, drafty);
+    }
+    $("szablon").value = szablonAktywny().id; buildDimTable(); state.dane = fromForm(); recalc();
+    pokaz("kalk");
+  }
+  function edytuj(id) { state.edytowany = id; state.szUsun = false; pokaz("edytor"); }
+  $("vPulpit").addEventListener("click", function (e) {
+    var t = e.target.closest("button"); if (!t) return;
+    var ds = t.dataset;
+    if (ds.devPolicz) return otworzUrzadzenie(ds.devPolicz);
+    if (ds.devEdytuj) return edytuj(ds.devEdytuj);
+    if (ds.devKopiuj) {
+      var z = szablony.filter(function (x) { return x.id === ds.devKopiuj; })[0];
+      var n = E.uzupelnijSzablon(kopia(z)); n.id = noweId(); n.nazwa = z.nazwa + " (kopia)"; n.wbudowany = false;
+      szablony.push(n); zapiszSzablony(); wypelnijSzablony(); $("szablon").value = szablonAktywny().id;
+      toast("Utworzono „" + n.nazwa + "”. Zmień nazwę, ceny i tabele."); return edytuj(n.id);
+    }
+    if (ds.devPusty || t.id === "pPusty") {
+      var np = E.szablonPusty(); np.id = noweId();
+      szablony.push(np); zapiszSzablony(); wypelnijSzablony(); $("szablon").value = szablonAktywny().id;
+      toast("Utworzono pusty szablon. Wpisz nazwę, MP, osobodni, ceny i tabele."); return edytuj(np.id);
+    }
+    if (ds.devUsun) { state.pUsun = ds.devUsun; return renderPulpit(); }
+    if (ds.devUsunNie) { state.pUsun = null; return renderPulpit(); }
+    if (ds.devUsunTak) {
+      szablony = szablony.filter(function (x) { return x.id !== ds.devUsunTak; }); state.pUsun = null;
+      if (state.dane.szablon === ds.devUsunTak) state.dane.szablon = szablony[0].id;
+      zapiszSzablony(); wypelnijSzablony(); $("szablon").value = szablonAktywny().id; buildDimTable(); recalc(); renderPulpit(); toast("Usunięto szablon"); return;
+    }
+    if (ds.pLoad) {
+      var w = (state.wyceny || []).filter(function (x) { return x.id === ds.pLoad; })[0];
+      if (w) { setDane(w.dane); $("szablon").value = szablonAktywny().id; buildDimTable(); toForm(state.dane); recalc(); pokaz("kalk"); toast("Wczytano: " + w.nazwa); }
+      return;
+    }
+    if (t.id === "bBackup") return busy(t, kopiaZapasowa);
+    if (t.id === "bOffline") return busy(t, pobierzOffline);
+  });
+  $("vEdytor").addEventListener("click", function (e) {
+    var t = e.target.closest("button"); if (!t) return;
+    if (t.dataset.go === "pulpit") pokaz("pulpit");
+    if (t.id === "edPolicz") otworzUrzadzenie(szEdytowany().id);
+  });
+  $("bPulpit").addEventListener("click", function () { pokaz("pulpit"); });
+
+  /* kopia zapasowa: przenoszenie danych między komputerami i między wersją w claude.ai a offline */
+  async function kopiaZapasowa() {
+    var wyceny = (await Store.listaWycen()).map(function (w) { var c = kopia(w); delete c.id; return c; });
+    var dane = { aplikacja: "kalkulator-nk38", wersja: 1, utworzono: new Date().toISOString(), szablony: szablony,
+      tekstyOferty: Store.get("tekstyOferty", {}) || {}, numery: Store.get("numery", {}) || {}, wyceny: wyceny };
+    await zapisz("Kalkulator_kopia_zapasowa_" + dzis() + ".json", new Blob([JSON.stringify(dane, null, 1)], { type: "application/json" }));
+  }
+  async function wczytajKopie(tekst) {
+    var o = JSON.parse(tekst);
+    if (!o || o.aplikacja !== "kalkulator-nk38" || !Array.isArray(o.szablony)) throw new Error("format");
+    var lista = o.szablony.map(E.uzupelnijSzablon);
+    lista.forEach(function (x) { var i = szablony.map(function (y) { return y.id; }).indexOf(x.id); if (i >= 0) szablony[i] = x; else szablony.push(x); });
+    zapiszSzablony();
+    if (o.tekstyOferty) Store.set("tekstyOferty", Object.assign({}, Store.get("tekstyOferty", {}) || {}, o.tekstyOferty));
+    if (o.numery) { var nr = Store.get("numery", {}) || {}; Object.keys(o.numery).forEach(function (k) { nr[k] = Math.max(nr[k] || 0, o.numery[k] || 0); }); Store.set("numery", nr); }
+    var jest = (await Store.listaWycen()).map(function (w) { return (w.ts || 0) + "|" + w.nazwa; }), dodane = 0;
+    for (var i = 0; i < (o.wyceny || []).length; i++) {
+      var w = o.wyceny[i];
+      if (jest.indexOf((w.ts || 0) + "|" + w.nazwa) >= 0) continue;
+      await Store.dodajWycene(w); dodane++;
+    }
+    wypelnijSzablony(); $("szablon").value = szablonAktywny().id; buildDimTable(); recalc(); renderPulpit();
+    toast("Wczytano: szablony " + lista.length + ", nowe wyceny " + dodane);
+  }
+  $("backupFile").addEventListener("change", function (e) {
+    var f = e.target.files && e.target.files[0]; if (!f) return;
+    var fr = new FileReader();
+    fr.onload = function () { wczytajKopie(fr.result).catch(function () { toast("To nie jest plik kopii zapasowej kalkulatora."); }); e.target.value = ""; };
+    fr.readAsText(f);
+  });
+  async function pobierzOffline() {
+    var r = await fetch("Kalkulator_offline.html");
+    if (!r.ok) throw new Error("offline");
+    await zapisz("Kalkulator_NK_offline.html", new Blob([await r.arrayBuffer()], { type: "text/html" }));
+  }
+
   /* --- start --- */
   (async function start() {
     szablony = E.szablonyWbudowane();
@@ -1331,10 +1532,11 @@ table.t.edt input[type=text], table.t.edt td input:not([type=number]) { min-widt
     wczytajSzablony(); wypelnijSzablony();
     $("szablon").value = szablonAktywny().id; buildDimTable();
     var tag = $("storeTag"); tag.hidden = false;
-    tag.textContent = Store.db ? "Zapis przy kalkulatorze" : "Zapis w tej przeglądarce";
+    tag.textContent = Store.db ? "Zapis na koncie" : "Zapis w tej przeglądarce";
     tag.title = Store.db ? "Szablony, wyceny i numery ofert zapisują się trwale i są dostępne na każdym urządzeniu." : "Baza kalkulatora jest niedostępna w tym widoku. Dane zostają tylko w tej przeglądarce.";
     tag.classList.toggle("ok", !!Store.db);
     recalc();
+    pokaz("pulpit");
   })();
 })();
 </script>

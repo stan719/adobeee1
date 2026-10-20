@@ -22,12 +22,23 @@
     kob: 0.005, gdw: 0.025, podatek: 0.14
   };
 
+  /* Teksty oferty zależne od urządzenia (pusta uwaga = tekst wspólny z ustawień oferty). */
+  function tekstyNK38() {
+    return {
+      obciazenie: "Obciążenie platformy: 2000kg/miejsce postojowe, 500kg/koło;",
+      zabezpieczenie: "Zabezpieczenie antykorozyjne: urządzenie zabezpieczone ocynkiem ogniowym oraz częściowo lakierowane.",
+      barierki: "Zabezpieczenie po bokach: barierki systemowe lub profile zmniejszające prześwit poziomy mocowane do ścian wszędzie tam gdzie istnieje przerwa pomiędzy platformami bądź platformami i ścianami co najmniej 20cm, zg. z PN.",
+      opcjaQ2500: "Obciążenie platformy: 2500kg/miejsce postojowe, 625kg/koło.",
+      uwagaTech: ""
+    };
+  }
   /* Szablon urządzenia: wszystko, co różni jedno urządzenie od drugiego.
      Użytkownik edytuje go w panelu Szablony urządzeń. */
   function szablonNK38() {
     return {
       id: "nk38", nazwa: "NK38", wbudowany: true,
       opisOferty: "Urządzenia {typ} do niezależnego parkowania pojazdów (z zagłębieniem)",
+      teksty: tekstyNK38(),
       typy: {
         S: { nazwa: "Platformy S", mp: 2, osd: 5.5, oferta: "{n} szt. – {typ}-S szer. użytkowa platformy 250cm, szer. zewnętrzna urządzenia 280cm," },
         D: { nazwa: "Platformy D", mp: 4, osd: 7, oferta: "{n} szt. – {typ}-D szer. użytkowa platformy 500cm, szer. zewnętrzna urządzenia 530cm," },
@@ -88,6 +99,7 @@
     s.cennik = Object.assign({}, b.cennik, s.cennik || {});
     s.typy = s.typy || b.typy;
     ["S", "D", "NP"].forEach(function (k) { s.typy[k] = Object.assign({}, b.typy[k], s.typy[k] || {}); });
+    s.teksty = Object.assign(tekstyNK38(), s.teksty || {});
     ["glebokosci", "szerokosci", "dlugosci", "skladowe", "opisOferty"].forEach(function (k) { if (s[k] == null) s[k] = b[k]; });
     return s;
   }

@@ -245,3 +245,11 @@ Weryfikacja: testy modelu (11), Excel vs model (22 zestawy), silnik vs model (20
 ## 12. Kilka par zagłębienie / prześwit (20.10.2026)
 
 W karcie Inwestycja przycisk **+ Dodaj parę zagłębienie / prześwit** dodaje kolejną parę (H1, H2, długość, prześwit; pusta długość = jak w parze 1). Każda para ma własne wysokości pojazdów: liczone tym samym wzorem i do nadpisania w panelu oferty. W ofercie dane techniczne są podane dla każdej pary, rozdzielone słowem **lub**. Tak samo w opisie wariantu, raporcie PDF, Excelu i zestawieniu. Pary nie wpływają na cenę (cenę zagłębień liczy tabela zagłębień w karcie Urządzenia).
+
+## 13. Pulpit urządzeń i przenoszenie na inny komputer (20.10.2026)
+
+- **Pulpit** na starcie: karta każdego urządzenia (cena D, MP, osobodni, liczba zagłębień i składowych) z przyciskami Policz, Edytuj, Kopiuj, Usuń (własne). Karta „Nowe urządzenie” tworzy pusty szablon. Pod spodem ostatnie wyceny.
+- **Edytor szablonu** jako osobny ekran: typy platform, cennik, zagłębienia, wymiary, składowe, a teraz też **teksty oferty urządzenia** (obciążenie, zabezpieczenie, barierki, opcja 2500 kg, uwaga pod danymi technicznymi). Oferta korzysta z tekstów typów platform i pozycji z szablonu.
+- Każde urządzenie ma **własny szkic** wyceny; przełączanie urządzeń nie gubi wpisanych danych.
+- **Kopia zapasowa** (plik JSON): szablony, teksty oferty, numeracja, wyceny. Wczytanie dodaje wyceny i zastępuje szablony o tym samym identyfikatorze.
+- **Wersja offline** `app/Kalkulator_offline.html` (budowana przez `app/build_offline.py`): jeden plik z silnikiem, eksportami, logo i czcionkami; działa po otwarciu w przeglądarce, zapisuje w przeglądarce, pliki pobiera zwykłym pobieraniem. Biblioteki eksportu pobiera z internetu.

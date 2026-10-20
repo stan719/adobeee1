@@ -480,6 +480,7 @@
   function oferta(r, o, sz) {
     var d = r.dane, m = r.mat, ws = r.warianty, B = o.zysk === "B";
     var c = function (x) { return B ? x.cena2 : x.cena; };
+    var TT = (r.szablon && r.szablon.teksty) || {}, TY = r.szablon.typy;
     var wpary = wymiaryPary(d, o), wy = wpary[0], v = function (x) { return x == null || x === "" ? "…" : x; };
     var t = [o.montOd !== "" && o.montOd != null ? Number(o.montOd) : ws[0].tygodnieZakres[0], o.montDo !== "" && o.montDo != null ? Number(o.montDo) : ws[0].tygodnieZakres[1]];
     var typ = d.typ;
@@ -495,18 +496,15 @@
         " na dostawę i montaż " + m.platformy + " platform służących do niezależnego parkowania " + m.MP + " pojazdów w garażu " +
         (o.garaz || ("inwestycji " + (d.nazwa || "…"))) + ".",
       tech: tech,
-      wyposazenie: "Obciążenie platformy: 2000kg/miejsce postojowe, 500kg/koło;\nZabezpieczenie antykorozyjne: urządzenie zabezpieczone ocynkiem ogniowym oraz częściowo lakierowane." +
-        (d.barierki ? "\nZabezpieczenie po bokach: barierki systemowe lub profile zmniejszające prześwit poziomy mocowane do ścian wszędzie tam gdzie istnieje przerwa pomiędzy platformami bądź platformami i ścianami co najmniej 20cm, zg. z PN." : ""),
-      lista: [d.S ? d.S + " szt. – " + typ + "-S szer. użytkowa platformy 250cm, szer. zewnętrzna urządzenia 280cm," : "",
-        d.D ? d.D + " szt. – " + typ + "-D szer. użytkowa platformy 500cm, szer. zewnętrzna urządzenia 530cm," : "",
-        d.NP ? d.NP + " szt. – " + typ + " dla osób niepełnosprawnych," : "",
-        d.agregaty ? d.agregaty + " szt. – " + o.agregat + "." : ""].filter(Boolean).join("\n"),
+      wyposazenie: [TT.obciazenie, TT.zabezpieczenie, d.barierki ? TT.barierki : ""].filter(Boolean).join("\n"),
+      lista: ["S", "D", "NP"].map(function (k) { return d[k] ? sub(TY[k].oferta, { n: d[k], typ: typ }) : ""; }).concat([
+        d.agregaty ? d.agregaty + " szt. – " + o.agregat + "." : ""]).filter(Boolean).join("\n"),
       dostawa: "Pierwsza dostawa nastąpi nie wcześniej niż po ok. " + o.dostawa + " tygodniach od zawarcia umowy, w zależności od aktualnie realizowanych zleceń.",
       montaz: "Przewidywany czas montażu " + (t[0] === t[1] ? "ok. " + t[0] : t[0] + "-" + t[1]) + " tygodni od dnia dostawy, w zależności od warunków panujących na budowie."
     };
     function txt(k) { return o.tekst[k] != null ? o.tekst[k] : auto[k]; }
     var opcjeDef = [
-      ["q2500", "Obciążenie platformy: 2500kg/miejsce postojowe, 625kg/koło.", c(ws[1]) - c(ws[0])],
+      ["q2500", TT.opcjaQ2500, c(ws[1]) - c(ws[0])],
       ["slupki37", "Słupki do e-ładowania na każdym ze " + m.MP + " miejsc postojowych, obejmujące montaż słupka pod ładowarkę, prowadnic, i puszki przyłączeniowej, bez samej stacji ładowania.", B ? r.opcje.slupki37b[0] : r.opcje.slupki37[0]],
       ["slupki22", "Słupki do e-ładowania do 22 kW na każdym ze " + m.MP + " miejsc postojowych, obejmujące montaż słupka pod ładowarkę, prowadnic, i puszki przyłączeniowej, bez samej stacji ładowania.", B ? r.opcje.slupki22b[0] : r.opcje.slupki22[0]],
       ["malowanie", "Malowanie proszkowe platform w kolorze RAL wybranym przez Zamawiającego.", B ? r.opcje.malowanieB : r.opcje.malowanie]
@@ -523,8 +521,8 @@
       naglowek: sz.naglowek.split("\n"), stopka: sz.stopka.split("\n"),
       miejsceData: (o.miejsce || "Kraków") + ", dnia " + data + "r.",
       adresat: adresatLinie(o.adr), nr: "Oferta nr " + (o.nr || o.nrAuto || "…"), zwrot: powitanie(o.adr), wymiary: wy, wymiaryPary: wpary,
-      wstep: txt("wstep"), pozycja: "Urządzenia " + typ + " do niezależnego parkowania pojazdów (z zagłębieniem)",
-      tech: txt("tech").split("\n"), uwagaTech: sz.uwaga_tech.split("\n"), wyposazenie: txt("wyposazenie").split("\n"),
+      wstep: txt("wstep"), pozycja: sub(r.szablon.opisOferty || "Urządzenia {typ}", { typ: typ }),
+      tech: txt("tech").split("\n"), uwagaTech: (TT.uwagaTech || sz.uwaga_tech).split("\n"), wyposazenie: txt("wyposazenie").split("\n"),
       lista: txt("lista").split("\n").filter(Boolean), opcje: opcje, ceny: ceny,
       platnosci: o.platnosci.split("\n"), dostawa: txt("dostawa"), montaz: txt("montaz"),
       zakres: sz.zakres.split("\n"), warunki: sub(sz.warunki, vars).split("\n"), gwarancja: sub(sz.gwarancja, vars).split("\n"),

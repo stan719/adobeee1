@@ -8,3 +8,4 @@ python3 build_kalkulator.py "$T/Kalkulator_NK38_v1_przyklad_WAW.xlsx" --przyklad
 python3 build_kalkulator.py "$T/Kalkulator_NK38_v1_przyklad_KRK.xlsx" --przyklad krk
 soffice --headless --convert-to xlsx:"Calc MS Excel 2007 XML" --outdir . "$T"/*.xlsx >/dev/null
 rm -rf "$T"
+python3 app/build_offline.py
