@@ -274,6 +274,11 @@ details.ofsec[open] > summary::after { transform: rotate(-135deg); }
 .paper .pg { font-size: 10px; color: #555555; }
 .paper .bluet { color: #1f4e9a; }
 .paper .sig { display: block; max-height: 64px; max-width: 200px; margin: 6px 0 2px 18px; }
+.paryhd { display: flex; justify-content: space-between; align-items: baseline; gap: 8px; margin-top: 2px; }
+.para { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 8px 12px; margin-top: 6px; }
+@media (max-width: 480px) { .para { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+.paryadd { margin-top: 10px; }
+.paper .lub { font-weight: 700; }
 table.t.edt td { padding: 3px 6px; }
 table.t.edt td:first-child { min-width: 120px; }
 table.t.edt input, table.t.edt select { padding: 4px 7px; font-size: 13px; min-width: 70px; }
@@ -308,7 +313,8 @@ table.t.edt input[type=text], table.t.edt td input:not([type=number]) { min-widt
           <label class="f">Zagłębienie H2 [cm]<input id="h2" type="number" min="0" step="1"></label>
           <label class="f">Długość zagłębienia [cm]<input id="dl" type="text" placeholder="530"></label>
           <label class="f">Prześwit [cm]<input id="przeswit" type="number" min="0" step="1"></label>
-          <label class="f full"><span>Opis / wariant <span class="autotag" id="opisTag">automatyczny</span><button type="button" class="linkbtn" id="opisReset" hidden>Przywróć automatyczny</button></span><input id="opis" type="text"><span class="hint">Tworzy się sam z H, L, P, wysokości pojazdów, agregatów, barierek, maskownic i magistrali. Możesz go nadpisać.</span></label>
+          <div class="full" id="paryBox"></div>
+          <label class="f full"><span>Opis / wariant <span class="autotag" id="opisTag">automatyczny</span><button type="button" class="linkbtn" id="opisReset" hidden>Przywróć automatyczny</button></span><input id="opis" type="text"><span class="hint">Tworzy się sam z H, L, P (wszystkich par), wysokości pojazdów, agregatów, barierek, maskownic i magistrali. Możesz go nadpisać.</span></label>
         </div>
       </fieldset>
 
@@ -563,10 +569,24 @@ table.t.edt input[type=text], table.t.edt td input:not([type=number]) { min-widt
     NUMF.forEach(function (k) { $(k).value = d[k] == null ? "" : d[k]; });
     PCTF.forEach(function (k) { $(k).value = d[k] == null ? "" : +(d[k] * 100).toFixed(4); });
     $("szablon").value = szablonAktywny().id;
+    renderPary(d);
     buildDimTable();
     var anyDim = sumO(d.gl_S || {}) + sumO(d.gl_D || {}) + DIMKEYS.reduce(function (a, k) { return a + (d[k + "_S"] || 0) + (d[k + "_D"] || 0); }, 0);
     $("dimDetails").open = anyDim > 0;
     lokButtons(d.lok);
+  }
+
+  /* Kolejne pary zagłębienie + prześwit (pierwsza to pola H1/H2/dł./prześwit). */
+  function renderPary(d) {
+    var pary = d.pary || [], inp = function (i, k, v, num, ph) {
+      return '<input type="' + (num ? "number" : "text") + '"' + (num ? ' min="0" step="1"' : "") + ' data-para="' + i + '" data-k="' + k + '" value="' + esc(v == null ? "" : v) + '"' + (ph ? ' placeholder="' + esc(ph) + '"' : "") + ">";
+    };
+    $("paryBox").innerHTML = pary.map(function (p, i) {
+      return '<div class="paryhd"><span class="ofsep">Para ' + (i + 2) + ' (w ofercie „lub”)</span><button type="button" class="linkbtn" data-para-del="' + i + '">Usuń</button></div><div class="para">' +
+        '<label class="f">H1 [cm]' + inp(i, "h1", p.h1, 1) + '</label><label class="f">H2 [cm]' + inp(i, "h2", p.h2, 1) + '</label>' +
+        '<label class="f">Długość [cm]' + inp(i, "dl", p.dl, 0, d.dl || "jak w parze 1") + '</label><label class="f">Prześwit [cm]' + inp(i, "przeswit", p.przeswit, 1) + "</label></div>";
+    }).join("") + '<div class="row paryadd"><button type="button" class="btn small" id="bParaAdd">+ Dodaj parę zagłębienie / prześwit</button>' +
+      '<span class="note">gdy w garażu są różne zagłębienia lub prześwity</span></div>';
   }
 
   function fromForm() {
@@ -582,6 +602,12 @@ table.t.edt input[type=text], table.t.edt td input:not([type=number]) { min-widt
     d.gl_S = {}; d.gl_D = {};
     document.querySelectorAll("[data-gl]").forEach(function (el) { var v = Number(el.value || 0); if (v) (el.dataset.gl === "S" ? d.gl_S : d.gl_D)[el.dataset.cm] = v; });
     DIMKEYS.forEach(function (k) { d[k + "_S"] = Number(($(k + "_S") || {}).value || 0); d[k + "_D"] = Number(($(k + "_D") || {}).value || 0); });
+    d.pary = [];
+    document.querySelectorAll("[data-para]").forEach(function (el) {
+      var i = +el.dataset.para, k = el.dataset.k, v = el.value;
+      d.pary[i] = d.pary[i] || { h1: null, h2: null, dl: "", przeswit: null };
+      d.pary[i][k] = k === "dl" ? v : (v === "" ? null : Number(v));
+    });
     var opisPole = $("opis").value;
     d.opis = opisPole === "" || opisPole === state.opisAuto ? "" : opisPole;
     return d;
@@ -600,6 +626,7 @@ table.t.edt input[type=text], table.t.edt td input:not([type=number]) { min-widt
     o.adr = Object.assign(X.domyslnaOferta().adr, (d.oferta || {}).adr || {});
     o.ceny = Object.assign({}, (d.oferta || {}).ceny || {});
     o.tekst = Object.assign({}, (d.oferta || {}).tekst || {});
+    o.wysPary = Array.isArray(o.wysPary) ? o.wysPary.slice() : [];
     return o;
   }
   function setDane(d) {
@@ -781,8 +808,11 @@ table.t.edt input[type=text], table.t.edt td input:not([type=number]) { min-widt
     L.push("");
     L.push("Urządzenia:        " + (urz || "-") + " = " + m.MP + " MP");
     L.push("Agregaty:          " + (d.agregaty || 0) + " szt.");
-    L.push("Zagłębienie:       H1 " + (wy.h1 == null ? "–" : wy.h1) + " / H2 " + (wy.h2 == null ? "–" : wy.h2) + " cm, długość " + (wy.dl || "–") + " cm, prześwit " + (wy.p == null ? "–" : wy.p) + " cm");
-    L.push("Wys. pojazdów:     górny " + (wy.gor == null ? "–" : wy.gor) + " cm, dolny " + (wy.dol == null ? "–" : wy.dol) + " cm");
+    X.wymiaryPary(d, o).forEach(function (wy, i) {
+      var pre = i ? "lub para " + (i + 1) + ":   " : "";
+      L.push((pre || "Zagłębienie:       ") + "H1 " + (wy.h1 == null ? "–" : wy.h1) + " / H2 " + (wy.h2 == null ? "–" : wy.h2) + " cm, długość " + (wy.dl || "–") + " cm, prześwit " + (wy.p == null ? "–" : wy.p) + " cm");
+      L.push((i ? "                   " : "Wys. pojazdów:     ") + "górny " + (wy.gor == null ? "–" : wy.gor) + " cm, dolny " + (wy.dol == null ? "–" : wy.dol) + " cm");
+    });
     L.push("Zagłęb. (cennik):  " + (gl.length ? gl.join("; ") : "standard"));
     L.push("Magistrala EXTRA:  " + (d.magistrala || 0) + " × 6 m");
     L.push("Barierki:          " + (d.barierki || 0) + " szt. na stronę, maskownice " + (d.maskownice || 0) + " szt.");
@@ -933,9 +963,12 @@ table.t.edt input[type=text], table.t.edt td input:not([type=number]) { min-widt
       '<label class="f">Powód oferty<select data-of="powod" id="of_powod"><option value="zapytanie"' + (o.powod !== "rabat" ? " selected" : "") + '>Otrzymane zapytanie</option><option value="rabat"' + (o.powod === "rabat" ? " selected" : "") + '>Prośba o rabat (oferta zrabatowana)</option></select></label>' +
       ofField("W garażu…", "garaz", { ph: "inwestycji " + (d.nazwa || "…"), hint: "np. wznoszonego budynku przy ul. Dekerta w Krakowie" }) + "</div>" + autoTekst("wstep", "Treść wstępu", F), true);
     h += sekcja("1", "Specyfikacja oferty", '<div class="ofgrid">' +
-      '<div class="full note">Zagłębienie H1 ' + (wy.h1 == null ? "–" : wy.h1) + ', H2 ' + (wy.h2 == null ? "–" : wy.h2) + ', długość ' + (wy.dl || "–") + ', prześwit ' + (wy.p == null ? "–" : wy.p) + ' cm (z karty Inwestycja).</div>' +
-      ofField("Wysokość pojazdów ▼ dolna [cm]", "hd", { num: 1, ph: wy.dolAuto == null ? "" : String(wy.dolAuto), hint: "puste = niższe H − 15" }) +
-      ofField("Wysokość pojazdów ▲ górna [cm]", "hg", { num: 1, ph: wy.gorAuto == null ? "" : String(wy.gorAuto), hint: "puste = (prześwit − 320) − (dolna − 150) + 150" }) +
+      F.wymiaryPary.map(function (w, i) {
+        var pre = w.idx == null ? "" : "wysPary." + w.idx + ".";
+        return '<div class="full note">' + (F.wymiaryPary.length > 1 ? "<b>Para " + (i + 1) + ":</b> " : "") + 'zagłębienie H1 ' + (w.h1 == null ? "–" : w.h1) + ', H2 ' + (w.h2 == null ? "–" : w.h2) + ', długość ' + (w.dl || "–") + ', prześwit ' + (w.p == null ? "–" : w.p) + ' cm (z karty Inwestycja).</div>' +
+          ofField("Wysokość pojazdów ▼ dolna [cm]", pre + "hd", { num: 1, ph: w.dolAuto == null ? "" : String(w.dolAuto), hint: "puste = niższe H − 15" }) +
+          ofField("Wysokość pojazdów ▲ górna [cm]", pre + "hg", { num: 1, ph: w.gorAuto == null ? "" : String(w.gorAuto), hint: "puste = (prześwit − 320) − (dolna − 150) + 150" });
+      }).join("") +
       ofField("Opis agregatu", "agregat") + ofField("Moc agregatu (do warunków elektrycznych)", "kw") + "</div>" +
       autoTekst("tech", "Dane techniczne", F) + autoTekst("wyposazenie", "Obciążenie i zabezpieczenia", F) + autoTekst("lista", "Lista urządzeń", F) +
       '<div class="ofsep">Opcje</div><div class="checks">' + ch("q2500", "2500 kg") + ch("slupki37", "Słupki 3,7 kW") + ch("slupki22", "Słupki 22 kW") + ch("malowanie", "Malowanie RAL") + "</div>", true);
@@ -983,7 +1016,7 @@ table.t.edt input[type=text], table.t.edt td input:not([type=number]) { min-widt
     h += "<p>" + esc(F.miejsceData) + "</p><br>" + F.adresat.map(function (l, i) { return "<p>" + (i === 1 ? "<b>" + esc(l) + "</b>" : esc(l) || "&nbsp;") + "</p>"; }).join("");
     h += '<p class="nr">' + esc(F.nr) + "</p><p>" + esc(F.zwrot) + "</p><p>" + esc(F.wstep) + "</p>";
     h += '<h4>1. Specyfikacja oferty:</h4><div class="in"><p><span class="blue">Pozycja 1:</span> <span class="bluet">' + esc(F.pozycja) + '</span></p><p><u>Dane techniczne:</u></p>' +
-      P(F.tech) + P(F.uwagaTech, "it") + P(F.wyposazenie) + "<ul>" + F.lista.map(function (l) { return "<li>" + esc(l) + "</li>"; }).join("") + "</ul>" +
+      F.tech.map(function (l) { return l.trim() === "lub" ? '<p class="lub">lub</p>' : P([l]); }).join("") + P(F.uwagaTech, "it") + P(F.wyposazenie) + "<ul>" + F.lista.map(function (l) { return "<li>" + esc(l) + "</li>"; }).join("") + "</ul>" +
       F.opcje.map(function (op) { return '<p class="blue" style="margin-top:8px">' + esc(op.label) + "</p><p>" + esc(op.tekst) + "</p>"; }).join("") + "</div>";
     h += '<h4>2. Wartość zamówienia netto.</h4><div class="pr">';
     var lewa = ["Warunki płatności:"].concat(F.platnosci);
@@ -1105,6 +1138,18 @@ table.t.edt input[type=text], table.t.edt td input:not([type=number]) { min-widt
     state.dane = fromForm(); buildDimTable(); state.dane = fromForm(); state.edytowany = state.dane.szablon; recalc();
   });
   $("form").addEventListener("submit", function (e) { e.preventDefault(); });
+  $("form").addEventListener("click", function (e) {
+    var t = e.target.closest("button"); if (!t) return;
+    if (t.id === "bParaAdd") {
+      state.dane = fromForm(); state.dane.pary.push({ h1: null, h2: null, dl: "", przeswit: null });
+      renderPary(state.dane); recalc();
+      var nowe = document.querySelector('[data-para="' + (state.dane.pary.length - 1) + '"]'); if (nowe) nowe.focus();
+    } else if (t.dataset.paraDel != null) {
+      var i = +t.dataset.paraDel; state.dane = fromForm();
+      state.dane.pary.splice(i, 1); (state.dane.oferta.wysPary || []).splice(i, 1);
+      renderPary(state.dane); recalc();
+    }
+  });
   $("opisReset").addEventListener("click", function () { state.dane.opis = ""; $("opis").value = ""; recalc(); });
   $("lokKrk").addEventListener("click", function () { state.dane.lok = "Kraków"; lokButtons("Kraków"); recalc(); });
   $("lokPoza").addEventListener("click", function () { state.dane.lok = "Poza Krakowem"; lokButtons("Poza Krakowem"); recalc(); });
@@ -1229,8 +1274,9 @@ table.t.edt input[type=text], table.t.edt td input:not([type=number]) { min-widt
       if (path[0] === "ceny") { if (v === "") delete o.ceny[path[1]]; else o.ceny[path[1]] = Number(v); }
       else if (path[0] === "tekst") { o.tekst[path[1]] = v; var tag = $("tag_" + path[1]); if (tag) { tag.textContent = "zmieniony"; tag.classList.add("ch"); tag.nextElementSibling.hidden = false; } }
       else if (path[0] === "adr") o.adr[path[1]] = v;
+      else if (path[0] === "wysPary") { o.wysPary = o.wysPary || []; var pw = o.wysPary[+path[1]] = o.wysPary[+path[1]] || {}; pw[path[2]] = v === "" ? "" : Number(v); }
       else o[path[0]] = t.type === "number" ? (v === "" ? "" : Number(v)) : v;
-      if (path[0] === "hd" || path[0] === "hg") { wynik = E.oblicz(state.dane, szablonAktywny()); }
+      if (path[0] === "hd" || path[0] === "hg" || path[0] === "wysPary") { wynik = E.oblicz(state.dane, szablonAktywny()); }
       lsSet(LS.draft, { dane: state.dane });
       odswiezPodglad();
     }

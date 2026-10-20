@@ -28,10 +28,12 @@
 
   /* Opis wariantu budowany z danych: H, L, P, wysokości pojazdów, agregaty, barierki, maskownice, magistrala. */
   function opisAuto(d, o) {
-    var w = wymiary(Object.assign({}, d, { opis: "" }), o || {}), v = function (x) { return x == null || x === "" ? "" : x; };
-    var h = [w.h1, w.h2].filter(function (x) { return x != null; }).join("/");
-    return "H-" + h + " | L-" + v(w.dl) + " | P-" + v(w.p) + " | Hpoj. G-" + v(w.gor) + " D-" + v(w.dol) +
-      " | A-" + (d.agregaty || 0) + " | Bok-" + (d.barierki || 0) + " Tył-" + (d.maskownice || 0) + " | mgstrl-" + (d.magistrala || 0);
+    var v = function (x) { return x == null || x === "" ? "" : x; };
+    var pary = wymiaryPary(Object.assign({}, d, { opis: "" }), o || {}).map(function (w) {
+      var h = [w.h1, w.h2].filter(function (x) { return x != null; }).join("/");
+      return "H-" + h + " | L-" + v(w.dl) + " | P-" + v(w.p) + " | Hpoj. G-" + v(w.gor) + " D-" + v(w.dol);
+    });
+    return pary.join(" lub ") + " | A-" + (d.agregaty || 0) + " | Bok-" + (d.barierki || 0) + " Tył-" + (d.maskownice || 0) + " | mgstrl-" + (d.magistrala || 0);
   }
   function opisEfektywny(d, o) { return d.opis || opisAuto(d, o); }
 
@@ -40,12 +42,13 @@
     var d = r.dane, m = r.mat, w = r.wspolne, ws = r.warianty, wy = opisWymiarow(d, GL), T = r.szablon.typy;
     var zA = "zysk " + pct(d.zysk), zB = "zysk " + pct(d.zysk2);
     var urz = [d.S ? d.S + " × " + T.S.nazwa : "", d.D ? d.D + " × " + T.D.nazwa : "", d.NP ? d.NP + " × " + T.NP.nazwa : ""].filter(Boolean).join(", ");
-    var wym = wymiary(d, o || {});
+    var wp = wymiaryPary(d, o || {}), lub = function (f) { return wp.map(f).join(" lub "); }, k = function (x) { return x == null || x === "" ? "–" : x; };
     var grupy = [
       { tytul: "Inwestycja", pary: [
         ["Nazwa / adres", d.nazwa || "–"], ["Data", d.data || "–"], ["Opis / wariant", opisEfektywny(d, o)],
-        ["Zagłębienie H1 / H2", (wym.h1 == null ? "–" : wym.h1) + " / " + (wym.h2 == null ? "–" : wym.h2) + " cm"],
-        ["Długość zagłębienia / prześwit", (wym.dl || "–") + " / " + (wym.p == null ? "–" : wym.p) + " cm"],
+        ["Zagłębienie H1 / H2", lub(function (w) { return k(w.h1) + " / " + k(w.h2); }) + " cm"],
+        ["Długość zagłębienia / prześwit", lub(function (w) { return k(w.dl) + " / " + k(w.p); }) + " cm"],
+        ["Wysokość pojazdów ▲ / ▼", lub(function (w) { return k(w.gor) + " / " + k(w.dol); }) + " cm"],
         ["Lokalizacja", d.lok + (w.krk ? "" : ", " + (d.km || 0) + " km od Krakowa")],
         ["Km pomiary / montaż", w.kmPom + " / " + w.kmMon + " km"]] },
       { tytul: "Urządzenia", pary: [
@@ -414,7 +417,7 @@
     return {
       nr: "", nrAuto: "", miejsce: "Kraków", powod: "zapytanie", garaz: "",
       adr: { zwrot: "Szanowna Pani", imie: "", stanowisko: "", tel: "", email: "", firma: "", ulica: "", kod: "", nip: "" },
-      hg: "", hd: "", montOd: "", montDo: "", agregat: "Agregat hydrauliczny 400V, 50Hz, 6kW", kw: "6kW",
+      hg: "", hd: "", wysPary: [], montOd: "", montDo: "", agregat: "Agregat hydrauliczny 400V, 50Hz, 6kW", kw: "6kW",
       opcje: { q2500: true, slupki37: false, slupki22: false, malowanie: false },
       zysk: "A", ceny: {}, platnosci: "30% zaliczka na 22 tygodnie przed dostawą,\ndo 60% płatność na 5 dni przed dostawą,\ndo 90% płatność do 21 dni po dostawie,\ndo 100% płatność do 21 dni po pierwszym badaniu UDT.\nOferta ważna jest 2 miesiące.",
       dostawa: 24, montaz: "", tir: 20, gw: "36/60", tekst: {}
@@ -460,23 +463,38 @@
     var gor = num(o.hg) != null ? num(o.hg) : gorAuto;
     return { h1: h1, h2: h2, p: p, dl: dl, dolAuto: dolAuto, gorAuto: gorAuto, dol: dol, gor: gor };
   }
+  /* Wszystkie pary zagłębienie + prześwit: pierwsza z pól H1/H2/dł./prześwit, kolejne z d.pary
+     (pusta długość = jak w pierwszej parze). Wysokości pojazdów do nadpisania w o.wysPary[i]. */
+  function wymiaryPary(d, o) {
+    o = o || {};
+    var w0 = wymiary(d, o), wynik = [w0], wp = o.wysPary || [];
+    (d.pary || []).forEach(function (p, i) {
+      if (!p || [p.h1, p.h2, p.dl, p.przeswit].every(function (x) { return x == null || x === ""; })) return;
+      var ov = wp[i] || {};
+      wynik.push(Object.assign(wymiary({ h1: p.h1, h2: p.h2, dl: p.dl || w0.dl, przeswit: p.przeswit, opis: "" }, { hd: ov.hd, hg: ov.hg }), { idx: i }));
+    });
+    return wynik;
+  }
 
   /* Treść oferty jako struktura (podgląd HTML i plik Word używają tego samego). */
   function oferta(r, o, sz) {
     var d = r.dane, m = r.mat, ws = r.warianty, B = o.zysk === "B";
     var c = function (x) { return B ? x.cena2 : x.cena; };
-    var wy = wymiary(d, o), v = function (x) { return x == null || x === "" ? "…" : x; };
+    var wpary = wymiaryPary(d, o), wy = wpary[0], v = function (x) { return x == null || x === "" ? "…" : x; };
     var t = [o.montOd !== "" && o.montOd != null ? Number(o.montOd) : ws[0].tygodnieZakres[0], o.montDo !== "" && o.montDo != null ? Number(o.montDo) : ws[0].tygodnieZakres[1]];
     var typ = d.typ;
     var vars = { tir: o.tir || 20, kw: o.kw, gw: o.gw, typ: typ };
     var dz = new Date(), data = ("0" + dz.getDate()).slice(-2) + "." + ("0" + (dz.getMonth() + 1)).slice(-2) + "." + dz.getFullYear();
-    var zagl = wy.h2 != null && wy.h2 !== wy.h1 ? "H1-" + v(wy.h1) + ", H2-" + v(wy.h2) : v(wy.h1);
+    var tech = wpary.map(function (w) {
+      var zagl = w.h2 != null && w.h2 !== w.h1 ? "H1-" + v(w.h1) + ", H2-" + v(w.h2) : v(w.h1);
+      return "Zagłębienie: wysokość " + zagl + "cm; długość " + v(w.dl) + "cm;\nPrześwit między-kondygnacyjny: min. " + v(w.p) +
+        "cm;\nWysokość parkowanych pojazdów*: ▲-" + v(w.gor) + "cm, ▼-" + v(w.dol) + "cm;";
+    }).join("\nlub\n");
     var auto = {
       wstep: "w związku z " + (o.powod === "rabat" ? "Państwa prośbą o rabat przedstawiamy naszą zrabatowaną ofertę" : "otrzymanym zapytaniem przedstawiamy naszą ofertę") +
         " na dostawę i montaż " + m.platformy + " platform służących do niezależnego parkowania " + m.MP + " pojazdów w garażu " +
         (o.garaz || ("inwestycji " + (d.nazwa || "…"))) + ".",
-      tech: "Zagłębienie: wysokość " + zagl + "cm; długość " + v(wy.dl) + "cm;\nPrześwit między-kondygnacyjny: min. " + v(wy.p) +
-        "cm;\nWysokość parkowanych pojazdów*: ▲-" + v(wy.gor) + "cm, ▼-" + v(wy.dol) + "cm;",
+      tech: tech,
       wyposazenie: "Obciążenie platformy: 2000kg/miejsce postojowe, 500kg/koło;\nZabezpieczenie antykorozyjne: urządzenie zabezpieczone ocynkiem ogniowym oraz częściowo lakierowane." +
         (d.barierki ? "\nZabezpieczenie po bokach: barierki systemowe lub profile zmniejszające prześwit poziomy mocowane do ścian wszędzie tam gdzie istnieje przerwa pomiędzy platformami bądź platformami i ścianami co najmniej 20cm, zg. z PN." : ""),
       lista: [d.S ? d.S + " szt. – " + typ + "-S szer. użytkowa platformy 250cm, szer. zewnętrzna urządzenia 280cm," : "",
@@ -504,7 +522,7 @@
     return {
       naglowek: sz.naglowek.split("\n"), stopka: sz.stopka.split("\n"),
       miejsceData: (o.miejsce || "Kraków") + ", dnia " + data + "r.",
-      adresat: adresatLinie(o.adr), nr: "Oferta nr " + (o.nr || o.nrAuto || "…"), zwrot: powitanie(o.adr), wymiary: wy,
+      adresat: adresatLinie(o.adr), nr: "Oferta nr " + (o.nr || o.nrAuto || "…"), zwrot: powitanie(o.adr), wymiary: wy, wymiaryPary: wpary,
       wstep: txt("wstep"), pozycja: "Urządzenia " + typ + " do niezależnego parkowania pojazdów (z zagłębieniem)",
       tech: txt("tech").split("\n"), uwagaTech: sz.uwaga_tech.split("\n"), wyposazenie: txt("wyposazenie").split("\n"),
       lista: txt("lista").split("\n").filter(Boolean), opcje: opcje, ceny: ceny,
@@ -617,7 +635,7 @@
     var poz = F.pozycja.split(r.dane.typ);
     k.push(body(etykieta("Pozycja 1:").concat([run(" " + poz[0], { color: BLUE }), run(r.dane.typ, { color: BLUE, bold: true }), run(poz.slice(1).join(r.dane.typ), { color: BLUE })])));
     k.push(body([run("Dane techniczne:", { underline: {} })]));
-    F.tech.forEach(function (l) { k.push(body(opisowa(l))); });
+    F.tech.forEach(function (l) { k.push(body(l.trim() === "lub" ? [run("lub", { bold: true })] : opisowa(l))); });
     F.uwagaTech.forEach(function (l) { k.push(body([run(l, { italics: true })])); });
     F.wyposazenie.forEach(function (l) { k.push(body(opisowa(l))); });
     F.lista.forEach(function (l) {
@@ -680,7 +698,7 @@
 
   var api = {
     setLibs: function (x) { Object.assign(L, x); }, xlsx: xlsx, pdf: pdf, docx: docxOferta,
-    oferta: oferta, domyslnaOferta: domyslnaOferta, wymiary: wymiary, opisAuto: opisAuto, opisEfektywny: opisEfektywny, SZABLON: SZABLON, zOpisu: zOpisu, ceil100: ceil100, raport: raport
+    oferta: oferta, domyslnaOferta: domyslnaOferta, wymiary: wymiary, wymiaryPary: wymiaryPary, opisAuto: opisAuto, opisEfektywny: opisEfektywny, SZABLON: SZABLON, zOpisu: zOpisu, ceil100: ceil100, raport: raport
   };
   if (typeof module !== "undefined" && module.exports) module.exports = api;
   else root.NK38X = api;

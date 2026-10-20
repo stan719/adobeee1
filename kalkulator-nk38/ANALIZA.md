@@ -241,3 +241,7 @@ Weryfikacja: testy modelu (11), Excel vs model (17 zestawów), silnik aplikacji 
 | 13. Szablony urządzeń | Zakładka **Szablony urządzeń**: typy platform (nazwa, MP, osobodni, tekst w ofercie), cennik, zagłębienia z siłownikami, szerokości i długości niestandardowe, składowe platformy, tekst pozycji w ofercie. Można skopiować szablon, dodawać i usuwać wiersze, eksportować i importować. Szablon wybiera się w karcie Inwestycja. Wbudowane: NK38 i NK37. Szablony, teksty oferty, numeracja i zapisane wyceny są w bazie strony (dostęp tylko dla Ciebie); poza claude.ai zapisują się w przeglądarce. |
 
 Weryfikacja: testy modelu (11), Excel vs model (22 zestawy), silnik vs model (202 zestawy), test eksportów (Excel, PDF 4 strony, Word), test w przeglądarce (bez błędów JS; eksporty; panel oferty na komputerze i telefonie; kopia szablonu zmienia cenę i zostaje po przeładowaniu).
+
+## 12. Kilka par zagłębienie / prześwit (20.10.2026)
+
+W karcie Inwestycja przycisk **+ Dodaj parę zagłębienie / prześwit** dodaje kolejną parę (H1, H2, długość, prześwit; pusta długość = jak w parze 1). Każda para ma własne wysokości pojazdów: liczone tym samym wzorem i do nadpisania w panelu oferty. W ofercie dane techniczne są podane dla każdej pary, rozdzielone słowem **lub**. Tak samo w opisie wariantu, raporcie PDF, Excelu i zestawieniu. Pary nie wpływają na cenę (cenę zagłębień liczy tabela zagłębień w karcie Urządzenia).
