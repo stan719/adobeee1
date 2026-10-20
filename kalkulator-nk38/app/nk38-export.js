@@ -124,68 +124,132 @@
     var R = raport(r, ctx.GLEBOKOSCI), d = r.dane;
     var wb = new L.ExcelJS.Workbook();
     wb.creator = "Kalkulator NK38";
-    var NF = { zl: '#,##0 "zł"', eur: '#,##0 "€"', int: "#,##0", n: "#,##0.00" };
-    var HEAD = { type: "pattern", pattern: "solid", fgColor: { argb: "FF0A6B74" } };
-    var SOFT = { type: "pattern", pattern: "solid", fgColor: { argb: "FFE3F2F2" } };
+    var FONT = "Arial";
+    var C = { acc: "FF0A6B74", accSoft: "FFE3F2F2", ink: "FF0E171C", muted: "FF6A7780", line: "FFD3D9DD", zebra: "FFF7F8F9", good: "FFE3F4EA", goodInk: "FF13794A", warn: "FF8A5300" };
+    var NF = { zl: '#,##0 "zł";-#,##0 "zł";"–"', eur: '#,##0 "€"', int: "#,##0", n: "#,##0.00" };
+    var thin = { style: "thin", color: { argb: C.line } };
+    var box = { top: thin, bottom: thin, left: thin, right: thin };
+    function fill(argb) { return { type: "pattern", pattern: "solid", fgColor: { argb: argb } }; }
+    function font(o) { return Object.assign({ name: FONT, size: 10, color: { argb: C.ink } }, o || {}); }
 
-    function title(ws, t, sub) {
-      ws.addRow([t]).font = { bold: true, size: 14 };
-      if (sub) ws.addRow([sub]).font = { color: { argb: "FF6A7780" } };
+    function sheet(name, widths, landscape) {
+      var ws = wb.addWorksheet(name, { views: [{ showGridLines: false }],
+        pageSetup: { paperSize: 9, orientation: landscape ? "landscape" : "portrait", fitToPage: true, fitToWidth: 1, fitToHeight: 0,
+          margins: { left: 0.5, right: 0.5, top: 0.6, bottom: 0.6, header: 0.3, footer: 0.3 } } });
+      ws.columns = widths.map(function (w) { return { width: w }; });
+      ws.properties.defaultRowHeight = 16;
+      ws.headerFooter.oddFooter = "&L&8" + (d.nazwa || "Kalkulator NK38") + "&R&8Strona &P z &N";
+      return ws;
+    }
+    function banner(ws, title, sub, cols) {
+      var r1 = ws.addRow([title]); ws.mergeCells(r1.number, 1, r1.number, cols);
+      r1.height = 26; r1.getCell(1).font = font({ size: 15, bold: true, color: { argb: "FFFFFFFF" } });
+      r1.getCell(1).fill = fill(C.acc); r1.getCell(1).alignment = { vertical: "middle", indent: 1 };
+      var r2 = ws.addRow([sub]); ws.mergeCells(r2.number, 1, r2.number, cols);
+      r2.getCell(1).font = font({ size: 9, color: { argb: C.muted } }); r2.getCell(1).alignment = { indent: 1 };
       ws.addRow([]);
     }
-    function table(ws, head, rows) {
+    function section(ws, title, cols) {
+      var x = ws.addRow([title]); ws.mergeCells(x.number, 1, x.number, cols);
+      x.height = 20; x.getCell(1).font = font({ size: 11, bold: true, color: { argb: C.acc } });
+      x.getCell(1).alignment = { vertical: "bottom" };
+      x.getCell(1).border = { bottom: { style: "medium", color: { argb: C.acc } } };
+      return x;
+    }
+    function table(ws, head, rows, opt) {
+      opt = opt || {};
       var h = ws.addRow(head);
-      h.eachCell(function (c) { c.fill = HEAD; c.font = { bold: true, color: { argb: "FFFFFFFF" } }; c.alignment = { horizontal: "center", wrapText: true }; });
-      h.getCell(1).alignment = { horizontal: "left" };
-      rows.forEach(function (row) {
+      h.height = 30;
+      h.eachCell(function (c, i) {
+        c.fill = fill(C.accSoft); c.border = box;
+        c.font = font({ bold: true, size: 9, color: { argb: C.acc } });
+        c.alignment = { horizontal: i === 1 ? "left" : "right", vertical: "middle", wrapText: true, indent: i === 1 ? 1 : 0 };
+      });
+      rows.forEach(function (row, ri) {
         var x = ws.addRow([row.label].concat(row.vals));
-        row.vals.forEach(function (v, i) { x.getCell(i + 2).numFmt = NF[row.fmt] || "General"; });
-        if (row.bold) { x.font = { bold: true }; x.eachCell(function (c) { c.fill = SOFT; }); }
+        x.eachCell({ includeEmpty: true }, function (c, i) {
+          c.border = box; c.font = font({ bold: !!row.bold });
+          if (ri % 2 === 1) c.fill = fill(C.zebra);
+          if (i === 1) c.alignment = { indent: 1, vertical: "middle", wrapText: true };
+          else { c.numFmt = NF[row.fmt] || "General"; c.alignment = { horizontal: "right", vertical: "middle" }; }
+        });
+        if (row.bold) x.eachCell(function (c) { c.fill = fill(C.accSoft); });
+        if (opt.best && row.best) {
+          var vals = row.vals, min = Math.min.apply(null, vals);
+          vals.forEach(function (v, i) { if (v === min) { var c = x.getCell(i + 2); c.fill = fill(C.good); c.font = font({ bold: true, color: { argb: C.goodInk } }); } });
+        }
       });
       ws.addRow([]);
     }
-    function pairs(ws, list) {
-      list.forEach(function (p) { var x = ws.addRow(p); x.getCell(1).font = { color: { argb: "FF6A7780" } }; x.getCell(2).alignment = { wrapText: true }; });
+    function pairs(ws, list, cols) {
+      list.forEach(function (p, i) {
+        var x = ws.addRow([p[0], p[1]]);
+        ws.mergeCells(x.number, 2, x.number, cols);
+        var a = x.getCell(1), b = x.getCell(2);
+        a.font = font({ color: { argb: C.muted } }); a.fill = fill(C.zebra); a.border = box; a.alignment = { indent: 1, vertical: "top" };
+        b.font = font(); b.border = box; b.alignment = { wrapText: true, vertical: "top", indent: 1 };
+        var len = String(p[1]).length; if (len > 70) x.height = 16 * Math.ceil(len / 70);
+      });
       ws.addRow([]);
     }
+    var gen = "Wygenerowano " + new Date().toLocaleString("pl-PL") + " · ceny netto w zł";
 
-    var s1 = wb.addWorksheet("Podsumowanie", { views: [{ showGridLines: false }] });
-    s1.columns = [{ width: 38 }, { width: 22 }, { width: 22 }, { width: 22 }, { width: 22 }];
-    title(s1, "Kalkulator NK38: " + (d.nazwa || "wycena"), "Wygenerowano " + new Date().toLocaleString("pl-PL"));
-    s1.addRow(["Dane wejściowe"]).font = { bold: true, size: 12 };
-    pairs(s1, R.dane);
-    s1.addRow(["Warianty"]).font = { bold: true, size: 12 };
-    table(s1, R.wynik.head, R.wynik.rows);
-    s1.addRow(["Opcje do oferty (cena z narzutami)"]).font = { bold: true, size: 12 };
+    /* Podsumowanie */
+    var s1 = sheet("Podsumowanie", [40, 21, 21, 21, 21], true);
+    banner(s1, "Kalkulator NK38 · " + (d.nazwa || "wycena"), gen, 5);
+    section(s1, "Cena kontraktu", 5);
+    var top = { head: R.wynik.head, rows: R.wynik.rows.slice(0, 5) };
+    table(s1, top.head, top.rows);
+    section(s1, "Struktura kosztów i czas montażu", 5);
+    table(s1, R.wynik.head, R.wynik.rows.slice(5));
+    s1.lastRow.addPageBreak();
+    section(s1, "Opcje do oferty (cena z narzutami)", 5);
     table(s1, R.opcje.head, R.opcje.rows);
+    section(s1, "Dane wejściowe", 5);
+    pairs(s1, R.dane, 5);
+    s1.views = [{ showGridLines: false, state: "frozen", ySplit: 2 }];
 
-    var s2 = wb.addWorksheet("Ekipa", { views: [{ showGridLines: false }] });
-    s2.columns = [{ width: 34 }].concat(r.analiza.map(function () { return { width: 16 }; }));
-    title(s2, "Analiza liczby osób", "Wariant: " + r.analizaWariant + ". Wpisana liczba osób: " + r.warianty[0].osoby + ".");
-    table(s2, R.ekipa.head, R.ekipa.rows);
+    /* Ekipa */
+    var s2 = sheet("Ekipa", [34].concat(r.analiza.map(function () { return 15; })), true);
+    banner(s2, "Analiza liczby osób", "Wariant: " + r.analizaWariant + " · wpisana liczba osób: " + r.warianty[0].osoby + " · zielone = najtańsza", r.analiza.length + 1);
+    var ek = R.ekipa.rows.map(function (row, i) { return Object.assign({}, row, { best: i === 0 }); });
+    table(s2, R.ekipa.head, ek, { best: true });
+    var n = s2.addRow(["Praca to stała liczba osobodni: więcej osób skraca montaż, noclegi i diety prawie się nie zmieniają, km auta maleją z liczbą tygodni."]);
+    s2.mergeCells(n.number, 1, n.number, r.analiza.length + 1); n.getCell(1).font = font({ size: 9, italic: true, color: { argb: C.muted } }); n.getCell(1).alignment = { wrapText: true }; n.height = 28;
 
-    var s3 = wb.addWorksheet("Obliczenia", { views: [{ showGridLines: false }] });
-    s3.columns = [{ width: 40 }, { width: 24 }, { width: 20 }, { width: 20 }, { width: 20 }];
-    title(s3, "Obliczenia krok po kroku");
-    s3.addRow(["Materiały i urządzenia"]).font = { bold: true, size: 12 };
-    pairs(s3, R.mat);
-    s3.addRow(["Montaż i cena"]).font = { bold: true, size: 12 };
+    /* Obliczenia */
+    var s3 = sheet("Obliczenia", [42, 20, 20, 20, 20], false);
+    banner(s3, "Obliczenia krok po kroku", "Te same kroki co w starym arkuszu (adresy komórek w nawiasach)", 5);
+    section(s3, "Materiały i urządzenia (dawny arkusz NK38)", 5);
+    pairs(s3, R.mat, 5);
+    section(s3, "Montaż i cena (dawny arkusz montażu)", 5);
     table(s3, R.mon.head, R.mon.rows);
 
-    var s4 = wb.addWorksheet("Do oferty", { views: [{ showGridLines: false }] });
-    s4.columns = [{ width: 110 }];
-    ctx.zestawienie.split("\n").forEach(function (l) { s4.addRow([l]).font = { name: "Consolas", size: 10 }; });
+    /* Do oferty */
+    var s4 = sheet("Do oferty", [24, 96], false);
+    banner(s4, "Zestawienie do oferty", gen, 2);
+    ctx.zestawienie.split("\n").forEach(function (l) {
+      var m = l.match(/^([^:]{3,22}):\s{2,}(.*)$/);
+      var x = m ? s4.addRow([m[1], m[2]]) : s4.addRow([l]);
+      if (!m) s4.mergeCells(x.number, 1, x.number, 2);
+      x.eachCell(function (c, i) { c.font = font({ name: m ? FONT : "Consolas", size: m ? 10 : 9.5, color: { argb: m && i === 1 ? C.muted : C.ink } }); c.alignment = { wrapText: true, vertical: "top" }; });
+    });
     s4.addRow([]);
-    s4.addRow(["Uwagi do sprawdzenia"]).font = { bold: true };
-    ctx.uwagi.forEach(function (u) { s4.addRow(["• " + u]).alignment = { wrapText: true }; });
+    section(s4, "Uwagi do sprawdzenia", 2);
+    ctx.uwagi.forEach(function (u) {
+      var x = s4.addRow(["•", u]); x.getCell(1).alignment = { horizontal: "right", vertical: "top" };
+      x.getCell(2).alignment = { wrapText: true, vertical: "top" }; x.getCell(2).font = font(); x.height = 16 * Math.max(1, Math.ceil(u.length / 95));
+    });
 
-    var s5 = wb.addWorksheet("Cennik", { views: [{ showGridLines: false }] });
-    s5.columns = [{ width: 44 }, { width: 16 }, { width: 10 }];
-    title(s5, "Cennik użyty w wycenie");
+    /* Cennik */
+    var s5 = sheet("Cennik", [46, 16, 10], false);
+    banner(s5, "Cennik użyty w wycenie", "Pogrubione na pomarańczowo = zmienione względem domyślnego", 3);
     ctx.cennikPola.forEach(function (p) {
-      if (!p[1]) { s5.addRow([p[0]]).font = { bold: true }; return; }
-      var x = s5.addRow([p[1], r.cennik[p[0]], p[2]]);
-      if (ctx.cennikZmiany[p[0]] !== undefined) x.getCell(1).font = { bold: true, color: { argb: "FF8A5300" } };
+      if (!p[1]) { section(s5, p[0], 3); return; }
+      var x = s5.addRow([p[1], r.cennik[p[0]], p[2]]), ch = ctx.cennikZmiany[p[0]] !== undefined;
+      x.eachCell(function (c, i) { c.border = box; c.font = font({ bold: ch, color: { argb: ch ? C.warn : (i === 3 ? C.muted : C.ink) } }); });
+      x.getCell(1).alignment = { indent: 1 };
+      x.getCell(2).numFmt = p[2] === "zł" ? '#,##0.00' : (p[2] === "×" ? "0.00###" : "#,##0.##");
     });
     return wb.xlsx.writeBuffer();
   }
@@ -353,71 +417,167 @@
     };
   }
 
+  /* Oferta Word w układzie oryginalnych ofert PSP: Verdana 9 pt, nagłówek Times/Century Gothic,
+     niebieskie etykiety "Pozycja 1⁰", pogrubione liczby, niebieskie punktory. */
   function docxOferta(r, o, sz, logo) {
     var D = L.docx, F = oferta(r, o, sz);
-    var BLUE = "1F4E9A", RIGHT = 9638;
-    function run(text, opt) { return new D.TextRun(Object.assign({ text: text }, opt || {})); }
-    function para(children, opt) { return new D.Paragraph(Object.assign({ children: Array.isArray(children) ? children : [run(children)], spacing: { after: 0, line: 252 } }, opt || {})); }
-    function lines(arr, opt) { return arr.map(function (l) { return para(l, opt); }); }
-    function indent(arr, opt) { return lines(arr, Object.assign({ indent: { left: 284 }, alignment: D.AlignmentType.JUSTIFIED }, opt || {})); }
-    function heading(t) { return para([run(t, { bold: true })], { spacing: { before: 160, after: 40 } }); }
-    var NONE = { style: D.BorderStyle.NONE, size: 0, color: "FFFFFF" };
-    var noBorders = { top: NONE, bottom: NONE, left: NONE, right: NONE, insideHorizontal: NONE, insideVertical: NONE };
-    var logoCell = logo ? [new D.Paragraph({ children: [new D.ImageRun({ data: logo.data, transformation: { width: logo.w, height: logo.h } })] })] : [para("")];
-    var header = new D.Header({ children: [
-      new D.Table({ width: { size: 100, type: D.WidthType.PERCENTAGE }, borders: noBorders, rows: [new D.TableRow({ children: [
-        new D.TableCell({ width: { size: 40, type: D.WidthType.PERCENTAGE }, borders: noBorders, children: logoCell }),
-        new D.TableCell({ width: { size: 60, type: D.WidthType.PERCENTAGE }, borders: noBorders,
-          children: F.naglowek.map(function (l, i) { return para([run(l, { bold: i < 2, size: i < 2 ? 18 : 16 })], { alignment: D.AlignmentType.CENTER }); }) })
-      ] })] }),
-      para([run("", {}), new D.TextRun({ children: [D.PageNumber.CURRENT], size: 16 })], { alignment: D.AlignmentType.RIGHT })
-    ] });
-    var footer = new D.Footer({ children: F.stopka.map(function (l) { return para([run(l, { size: 16, color: "555555" })], { alignment: D.AlignmentType.CENTER }); }) });
-    var kids = [];
-    kids.push(para(F.miejsceData));
-    kids.push(para(""));
-    F.adresat.forEach(function (l, i) { kids.push(para([run(l, { bold: i === 1 })])); });
-    kids.push(para(""));
-    kids.push(para([run(F.nr, { bold: true, italics: true, underline: {} })], { spacing: { before: 120, after: 120 } }));
-    kids.push(para(F.zwrot));
-    kids.push(para(F.wstep, { alignment: D.AlignmentType.JUSTIFIED, spacing: { after: 120 } }));
-    kids.push(heading("1. Specyfikacja oferty:"));
-    kids.push(para([run("Pozycja 10: ", { bold: true, color: BLUE }), run(F.pozycja)], { indent: { left: 284 } }));
-    kids.push(para([run("Dane techniczne:", { underline: {} })], { indent: { left: 284 } }));
-    kids = kids.concat(indent(F.tech), indent(F.uwagaTech));
-    kids = kids.concat(indent(F.wyposazenie));
-    F.lista.forEach(function (l) { kids.push(new D.Paragraph({ children: [run(l)], bullet: { level: 0 }, spacing: { after: 0 } })); });
-    F.opcje.forEach(function (op) {
-      kids.push(para([run(op.label, { bold: true, color: BLUE })], { indent: { left: 284 }, spacing: { before: 120 } }));
-      kids.push(para(op.tekst, { indent: { left: 284 }, alignment: D.AlignmentType.JUSTIFIED }));
-    });
-    kids.push(new D.Paragraph({ children: [run("2. Wartość zamówienia netto.", { bold: true }), new D.TextRun({ children: [new D.Tab()] }),
-      run(F.ceny[0].label + " ", { bold: true, color: BLUE }), run(F.kwota(F.ceny[0].kwota), { bold: true })],
-      tabStops: [{ type: D.TabStopType.RIGHT, position: RIGHT }], spacing: { before: 160, after: 0 } }));
-    var lewa = ["Warunki płatności:"].concat(F.platnosci), prawa = F.ceny.slice(1);
-    for (var i = 0; i < Math.max(lewa.length, prawa.length); i++) {
-      var ch = [run(lewa[i] || "")], pr = prawa[i];
-      if (pr) ch.push(new D.TextRun({ children: [new D.Tab()] }), run(pr.label + " ", { bold: true, color: BLUE }), run(F.kwota(pr.kwota), { bold: true }));
-      kids.push(new D.Paragraph({ children: ch, indent: { left: 284 }, tabStops: [{ type: D.TabStopType.RIGHT, position: RIGHT - 284 }], spacing: { after: 0 } }));
+    var BLUE = "3366CC", GREY = "444444", BODY = "Verdana", HEAD = "Times New Roman", GOTH = "Century Gothic";
+    var W = 9638, IND = 284;                       // szerokość tekstu (A4 - marginesy 2 cm / 1,4 cm) i wcięcie treści
+    var SP = { after: 0, line: 240 };
+    function run(text, opt) { return new D.TextRun(Object.assign({ text: text, font: BODY, size: 18 }, opt || {})); }
+    function p(children, opt) { return new D.Paragraph(Object.assign({ children: children, spacing: SP }, opt || {})); }
+    function blank(pt) { return p([run("")], { spacing: { after: 0, line: 240, before: pt || 0 } }); }
+    function body(children, opt) { return p(children, Object.assign({ indent: { left: IND }, alignment: D.AlignmentType.JUSTIFIED }, opt || {})); }
+    function heading(nr, t) {
+      return p([run(nr + ".", { bold: true }), new D.TextRun({ children: [new D.Tab()] }), run(t, { bold: true })],
+        { spacing: { before: 200, after: 20, line: 240 }, indent: { left: IND, hanging: IND }, tabStops: [{ type: D.TabStopType.LEFT, position: IND }] });
     }
-    kids.push(heading("3. Dostawa i montaż."));
-    kids = kids.concat(indent([F.dostawa, F.montaz]));
-    kids.push(heading("4. Zakres oferty."));
-    kids = kids.concat(indent(F.zakres, { spacing: { after: 80 } }));
-    kids.push(heading("5. Warunki montażu."));
-    kids = kids.concat(indent(F.warunki));
-    kids.push(heading("6. Gwarancja."));
-    kids = kids.concat(indent(F.gwarancja));
-    kids.push(para(""));
-    kids = kids.concat(indent(F.zakonczenie));
-    kids.push(para("")); kids.push(para("")); kids.push(para(""));
-    F.podpis.forEach(function (l) { kids.push(para(l, { indent: { left: 567 } })); });
-    kids.push(para("")); kids.push(para(""));
-    kids.push(para([run(F.klauzula, { size: 14, color: "555555" })], { alignment: D.AlignmentType.JUSTIFIED }));
+    /* "Pozycja 10:" -> "Pozycja 1" + indeks górny "0" + ":" (jak w oryginale) */
+    function etykieta(label, extra) {
+      var m = String(label).match(/^(\S+ )(\d+?)0:$/);
+      var base = Object.assign({ color: BLUE, bold: true }, extra || {});
+      if (!m) return [run(label, base)];
+      return [run(m[1] + m[2], base), run("0", Object.assign({}, base, { superScript: true })), run(":", base)];
+    }
+    /* Pogrubia liczby i wymiary ("195/202", "▲-180(170)") w tekście danych technicznych. */
+    function liczbyBold(text, opt) {
+      var out = [], re = /([▲▼]?-?\d[\d\/\-().,]*)/g, last = 0, m;
+      while ((m = re.exec(text))) {
+        if (m.index > last) out.push(run(text.slice(last, m.index), opt));
+        out.push(run(m[1], Object.assign({}, opt || {}, { bold: true })));
+        last = re.lastIndex;
+      }
+      if (last < text.length) out.push(run(text.slice(last), opt));
+      return out;
+    }
+    /* "Etykieta: wartość" -> etykieta kursywą, liczby w wartości pogrubione. */
+    function opisowa(line) {
+      var i = line.indexOf(":");
+      if (i < 0 || i > 45) return liczbyBold(line);
+      return [run(line.slice(0, i + 1), { italics: true })].concat(liczbyBold(line.slice(i + 1)));
+    }
+    function pozycjaUrzadzen(line) {
+      var m = line.match(/^(\d+ szt\. –)\s*(\S+)(.*)$/);
+      if (!m) return [run(line)];
+      var rest = m[3], out = [run(m[1] + "  ", { bold: true })];
+      if (/^[A-Z]{2}\d/.test(m[2])) out.push(run(m[2], { bold: true })); else out.push(run(m[2]));
+      var w = rest.match(/^(.*?platformy )(\d+)(.*)$/);
+      if (w) out.push(run(w[1]), run(w[2], { bold: true }), run(w[3])); else out.push(run(rest));
+      return out;
+    }
+    var NONE = { style: D.BorderStyle.NONE, size: 0, color: "FFFFFF" };
+    var NB = { top: NONE, bottom: NONE, left: NONE, right: NONE, insideHorizontal: NONE, insideVertical: NONE };
+    function cell(w, children, opt) {
+      return new D.TableCell(Object.assign({ width: { size: w, type: D.WidthType.DXA }, borders: NB, children: children,
+        margins: { top: 0, bottom: 0, left: 0, right: 0 } }, opt || {}));
+    }
+    function numerStrony() {
+      return p([new D.TextRun({ children: [D.PageNumber.CURRENT], font: "Book Antiqua", bold: true, size: 20, color: "FFFFFF" })],
+        { alignment: D.AlignmentType.CENTER, shading: { type: D.ShadingType.CLEAR, fill: "9DBCE3", color: "auto" } });
+    }
+    function glowka(pelna) {
+      var lh = F.naglowek.map(function (l, i) {
+        if (!pelna && i > 0) return null;
+        return p([new D.TextRun({ text: l, font: i < 2 ? HEAD : GOTH, bold: i < 2, size: i < 2 ? 18 : 17, color: i < 2 ? "000000" : GREY })],
+          { alignment: D.AlignmentType.CENTER });
+      }).filter(Boolean);
+      var logoP = logo && pelna ? [new D.Paragraph({ children: [new D.ImageRun({ type: logo.type || "png", data: logo.data, transformation: { width: logo.w, height: logo.h } })] })] : [p([run("")])];
+      return new D.Header({ children: [new D.Table({
+        width: { size: W, type: D.WidthType.DXA }, columnWidths: [3600, 5400, 638], borders: NB,
+        rows: [new D.TableRow({ children: [cell(3600, logoP), cell(5400, lh, { verticalAlign: D.VerticalAlign.TOP }),
+          cell(638, [numerStrony()], { verticalAlign: D.VerticalAlign.TOP })] })]
+      }), p([run("")])] });
+    }
+    var stopka = new D.Footer({ children: F.stopka.map(function (l, i) {
+      var last = i === F.stopka.length - 1;
+      var runs = last ? l.split(/(\S+@\S+|https?:\/\/\S+)/).filter(Boolean).map(function (x) {
+        var link = /@|https?:/.test(x);
+        return new D.TextRun({ text: x, font: GOTH, size: link ? 16 : 18, color: link ? "0000FF" : "000000", underline: link ? {} : undefined });
+      }) : [new D.TextRun({ text: l, font: GOTH, size: 20 })];
+      return p(runs, { alignment: D.AlignmentType.CENTER, border: i === 0 ? { top: { style: D.BorderStyle.SINGLE, size: 4, color: "BFBFBF", space: 4 } } : undefined });
+    }) });
+
+    var k = [];
+    k.push(p([run(F.miejsceData)], { spacing: { before: 0, after: 0, line: 240 } }));
+    k.push(blank(), blank());
+    var poPustej = false;
+    F.adresat.forEach(function (l, i) {
+      if (!l.trim()) { k.push(blank()); poPustej = true; return; }
+      var runs;
+      var mail = l.match(/^(.*?e-mail:\s*)(\S+@\S+)(.*)$/i);
+      if (mail) runs = [run(mail[1]), run(mail[2], { color: "0000FF", underline: {} }), run(mail[3])];
+      else if (poPustej) { runs = [run(l, { bold: true, underline: {} })]; poPustej = false; }
+      else runs = [run(l, { bold: i === 1 })];
+      k.push(p(runs));
+    });
+    k.push(blank(), blank());
+    k.push(p([run(F.nr, { bold: true, italics: true, underline: {} })]));
+    k.push(blank());
+    k.push(p([run(F.zwrot)]));
+    k.push(p([run(F.wstep)], { alignment: D.AlignmentType.JUSTIFIED }));
+    k.push(blank());
+
+    k.push(heading(1, "Specyfikacja oferty:"));
+    var poz = F.pozycja.split(r.dane.typ);
+    k.push(body(etykieta("Pozycja 10:").concat([run(" " + poz[0], { color: BLUE }), run(r.dane.typ, { color: BLUE, bold: true }), run(poz.slice(1).join(r.dane.typ), { color: BLUE })])));
+    k.push(body([run("Dane techniczne:", { underline: {} })]));
+    F.tech.forEach(function (l) { k.push(body(opisowa(l))); });
+    F.uwagaTech.forEach(function (l) { k.push(body([run(l, { italics: true })])); });
+    F.wyposazenie.forEach(function (l) { k.push(body(opisowa(l))); });
+    F.lista.forEach(function (l) {
+      k.push(new D.Paragraph({ children: pozycjaUrzadzen(l), numbering: { reference: "punkty", level: 0 }, spacing: { before: 40, after: 0, line: 240 } }));
+    });
+    F.opcje.forEach(function (op) {
+      k.push(body(etykieta(op.label), { spacing: { before: 120, after: 0, line: 240 } }));
+      k.push(body(opisowa(op.tekst)));
+    });
+
+    var prawy = [{ type: D.TabStopType.RIGHT, position: W }];
+    function cena(c) { return etykieta(c.label).concat([run(" "), run(F.kwota(c.kwota), { bold: true, underline: {} })]); }
+    k.push(p([run("2.", { bold: true }), new D.TextRun({ children: [new D.Tab()] }), run("Wartość zamówienia netto.", { bold: true }),
+      new D.TextRun({ children: [new D.Tab()] })].concat(cena(F.ceny[0])),
+      { spacing: { before: 200, after: 20, line: 240 }, indent: { left: IND, hanging: IND }, tabStops: [{ type: D.TabStopType.LEFT, position: IND }].concat(prawy) }));
+    var lewa = ["Warunki płatności:"].concat(F.platnosci), dalsze = F.ceny.slice(1);
+    for (var i = 0; i < Math.max(lewa.length, dalsze.length); i++) {
+      var ch = [run(lewa[i] || "")];
+      if (dalsze[i]) ch = ch.concat([new D.TextRun({ children: [new D.Tab()] })], cena(dalsze[i]));
+      k.push(p(ch, { indent: { left: IND }, tabStops: prawy }));
+    }
+
+    k.push(heading(3, "Dostawa i montaż."));
+    k.push(body([run(F.dostawa)]), body([run(F.montaz)]));
+    k.push(heading(4, "Zakres oferty."));
+    F.zakres.forEach(function (l, i) {
+      var m = l.match(/^(Poza ofertą pozostają:)(.*)$/);
+      k.push(body(m ? [run(m[1], { underline: {} }), run(m[2])] : [run(l)], { spacing: { before: i ? 120 : 0, after: 0, line: 240 } }));
+    });
+    k.push(heading(5, "Warunki montażu."));
+    F.warunki.forEach(function (l) {
+      var m = l.match(/^(\d+)\.\s*(.*)$/);
+      if (m) k.push(p([run(m[1] + "."), new D.TextRun({ children: [new D.Tab()] }), run(m[2])],
+        { indent: { left: IND + 426, hanging: 426 }, tabStops: [{ type: D.TabStopType.LEFT, position: IND + 426 }] }));
+      else k.push(body([run(l)], { spacing: { before: 80, after: 0, line: 240 } }));
+    });
+    k.push(heading(6, "Gwarancja."));
+    F.gwarancja.forEach(function (l) { k.push(body([run(l)])); });
+    k.push(blank());
+    F.zakonczenie.forEach(function (l, i) { k.push(body([run(l)], { indent: { left: i ? IND + 284 : IND } })); });
+    k.push(blank(), blank(), blank());
+    F.podpis.forEach(function (l) { k.push(p([run(l)], { indent: { left: 567 }, alignment: D.AlignmentType.LEFT })); });
+    k.push(blank(), blank());
+    k.push(p([run(F.klauzula, { size: 13, color: GREY })], { alignment: D.AlignmentType.JUSTIFIED }));
+
     var doc = new D.Document({
-      styles: { default: { document: { run: { font: "Calibri", size: 20 } } } },
-      sections: [{ properties: { page: { size: { width: 11906, height: 16838 }, margin: { top: 1134, bottom: 1134, left: 1134, right: 1134, header: 425, footer: 425 } } },
-        headers: { default: header }, footers: { default: footer }, children: kids }]
+      creator: "Kalkulator NK38",
+      styles: { default: { document: { run: { font: BODY, size: 18 } } } },
+      numbering: { config: [{ reference: "punkty", levels: [{ level: 0, format: D.LevelFormat.BULLET, text: "•", alignment: D.AlignmentType.LEFT,
+        style: { paragraph: { indent: { left: 709, hanging: 284 } }, run: { color: BLUE, size: 22 } } }] }] },
+      sections: [{
+        properties: { titlePage: true, page: { size: { width: 11906, height: 16838 }, margin: { top: 1418, bottom: 1418, left: 1134, right: 1134, header: 425, footer: 425 } } },
+        headers: { first: glowka(true), default: glowka(false) },
+        footers: { first: stopka, default: stopka },
+        children: k
+      }]
     });
     return typeof window === "undefined" ? D.Packer.toBuffer(doc) : D.Packer.toBlob(doc);
   }

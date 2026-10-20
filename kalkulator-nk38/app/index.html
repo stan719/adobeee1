@@ -972,7 +972,7 @@ ul.notes li::before { content: ""; position: absolute; left: 0; top: .6em; width
       var fr = new FileReader();
       fr.onload = function () {
         var img = new Image();
-        img.onload = function () { var h = 50, w = Math.round(img.width * h / img.height); lsSet(LS_LOGO, { dataUrl: fr.result, w: w, h: h }); render(); toast("Wgrano logo"); };
+        img.onload = function () { var h = 58, w = Math.round(img.width * h / img.height); lsSet(LS_LOGO, { dataUrl: fr.result, w: w, h: h }); render(); toast("Wgrano logo"); };
         img.src = fr.result;
       };
       fr.readAsDataURL(t.files[0]);
