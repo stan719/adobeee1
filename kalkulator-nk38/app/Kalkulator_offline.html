@@ -137,6 +137,7 @@ details.dims summary span { font-weight: 400; color: var(--muted); }
 .kpi .v { font-family: var(--f-num); font-size: 14.5px; font-weight: 500; margin-top: 2px; font-variant-numeric: tabular-nums; overflow-wrap: anywhere; }
 .kpi .v small { display: block; font-size: 12px; color: var(--muted); font-weight: 400; }
 .kpi .v.t { color: var(--accent); }
+.kpi .v .kw2 { color: var(--ink); white-space: nowrap; }
 .compare { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 8px; }
 @media (max-width: 760px) { .compare { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
 .cmp { text-align: left; background: var(--surface); border: 1px solid var(--line); border-radius: 10px; padding: 10px 12px; box-shadow: var(--shadow); min-width: 0; transition: border-color .15s; }
@@ -2228,9 +2229,9 @@ window.NK38_FONTS = { regular: "AAEAAAAOAIAAAwBgR0RFRgS1BUEAAH9cAAAARkdQT1MAGQAM
       strukturaCeny(w) +
       '<div class="kpis">' +
       kpi("Montaż", w.tygodnie + " tyg.<small>" + w.dni + " dni pracy, " + w.osoby + " os." + (recz ? ", tygodnie wpisane ręcznie" : "") + "</small>", true) +
-      kpi("Zysk z narzutem " + pct(d.zysk), zl(w.zyskN) + "<small>przy " + pct(d.zysk2) + ':<br><span style="white-space:nowrap">' + zl(w.zyskN2) + "</span></small>") +
-      kpi("Konserwacja roczna", zl(K[0].rok) + "<small>przy " + K[0].stawka + " zł/" + jm + " · " + zl(K[1].rok) + " przy " + K[1].stawka + " zł/" + jm + "</small>") +
-      (r.szablon.opcje.przeglad ? kpi("Przegląd półroczny", zl(K[0].pol) + "<small>przy " + K[0].stawka + " zł/" + jm + " · " + zl(K[1].pol) + " przy " + K[1].stawka + " zł/" + jm + "</small>") : "") + "</div>";
+      kpi("Zysk z narzutem " + pct(d.zysk), zl(w.zyskN) + drugaKwota("przy " + pct(d.zysk2), w.zyskN2)) +
+      kpi("Konserwacja roczna, " + K[0].stawka + " zł/" + jm, zl(K[0].rok) + drugaKwota("przy " + K[1].stawka + " zł/" + jm, K[1].rok)) +
+      (r.szablon.opcje.przeglad ? kpi("Przegląd półroczny, " + K[0].stawka + " zł/" + jm, zl(K[0].pol) + drugaKwota("przy " + K[1].stawka + " zł/" + jm, K[1].pol)) : "") + "</div>";
     liczbyHero(w, r.szablon.id + "|" + sel);
     $("compare").innerHTML = r.warianty.map(function (x, i) {
       if ((!maB && i % 2) || (!maSl && i >= 2)) return "";
@@ -2252,6 +2253,8 @@ window.NK38_FONTS = { regular: "AAEAAAAOAIAAAwBgR0RFRgS1BUEAAH9cAAAARkdQT1MAGQAM
     $("pane").innerHTML = ({ wynik: paneWynik, ekipa: paneEkipa, zestaw: paneZestaw, obl: paneObl, wyceny: paneWyceny }[state.tab] || paneWynik)();
     if (state.tab === "wyceny") wypelnijWyceny();
   }
+  /* druga wartość w kafelku: etykieta w jednej linii, kwota pod nią w kolorze tekstu */
+  function drugaKwota(etykieta, kw) { return "<small>" + esc(etykieta) + ':<br><span class="kw2">' + zl(kw) + "</span></small>"; }
   function kpi(l, v, t) { return '<div class="kpi"><div class="l">' + l + '</div><div class="v' + (t ? " t" : "") + '">' + v + "</div></div>"; }
 
   function tableRows(rows, ws) {
