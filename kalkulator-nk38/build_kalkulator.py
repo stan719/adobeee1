@@ -542,7 +542,8 @@ def build(inputs=None):
     mrow("k_zysk", "Zysk", "={brutto}*in_zysk")
     mrow("k_pod", "Podatek", "=c_podatek*({k_rl}+{k_doj}+{k_mon}+{k_die}+{k_gdw}+{k_zysk})")
     mrow("cena", "CENA KONTRAKTU NETTO (dawne K39)", "={brutto}+{k_pod}", PLN, True)
-    mrow("koszt", "Koszt rzeczywisty (dawne K43)", "={cena}-{k_zysk}")
+    mrow("koszt", "Koszt rzeczywisty (dawne K43)", "={cena}-{k_zysk}-{k_gdw}")
+    mrow("zysk_n", "Zysk z narzutem (dawne J44 = zysk + GDW)", "={cena}-{koszt}", PLN, True)
     mrow("cena_mp", "Cena za MP", "=IF(m_MP>0,{cena}/m_MP,0)")
     mrow("cena_mp_eur", "Cena za MP [EUR]", "={cena_mp}/in_eur", EUR)
     mrow("brutto2", "Zysk B: podstawa narzutów", "={baza}/(1-(c_kob+c_gdw+in_zysk2))")
@@ -581,6 +582,7 @@ def build(inputs=None):
         ("Cena za MP - zysk A", ("cena_mp",), PLN, False),
         ("Cena za MP - zysk B", ("cena_mp2",), PLN, False),
         ("Cena za MP [EUR] - zysk A", ("cena_mp_eur",), EUR, False),
+        ("Zysk z narzutem A [zł]", ("zysk_n",), PLN, False),
         ("Zysk A [zł]", ("k_zysk",), PLN, False),
         ("Zysk B [zł]", ("k_zysk2",), PLN, False),
         ("Koszt rzeczywisty", ("koszt",), PLN, False),

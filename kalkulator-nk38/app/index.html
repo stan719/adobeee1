@@ -346,6 +346,11 @@ fieldset.card:focus-within { border-color: color-mix(in srgb, var(--accent) 45%,
 .edhead h2 { font-size: 20px; font-weight: 600; letter-spacing: -.01em; }
 #szPane { padding: 16px 18px 18px; }
 .ukryj { display: none !important; }
+.dlg-bg { position: fixed; inset: 0; z-index: 35; background: color-mix(in srgb, var(--ink) 35%, transparent); display: grid; place-items: center;
+  padding: max(16px, env(safe-area-inset-top, 0px)) max(16px, env(safe-area-inset-right, 0px)) max(16px, env(safe-area-inset-bottom, 0px)) max(16px, env(safe-area-inset-left, 0px)); }
+.dlg { width: min(460px, 100%); padding: 20px; display: flex; flex-direction: column; gap: 12px; animation: wejscie .2s ease-out both; }
+.dlg h3 { font-size: 16px; font-weight: 600; }
+.edstan { font-size: 12px; color: var(--muted); }
 .chkl { display: inline-flex; gap: 6px; align-items: center; font-size: 13px; }
 .chkl input { width: auto; }
 .paryhd { display: flex; justify-content: space-between; align-items: baseline; gap: 8px; margin-top: 2px; }
@@ -399,7 +404,7 @@ table.t.edt input[type=text], table.t.edt td input:not([type=number]) { min-widt
 <div class="wrap" id="vEdytor" hidden>
   <div class="edhead">
     <div style="min-width:0"><p class="note">Edycja szablonu urządzenia</p><h2 id="edTitle">Szablon</h2></div>
-    <div class="row"><button class="btn" type="button" data-go="pulpit">← Pulpit</button><button class="btn primary" type="button" id="edPolicz">Policz tym urządzeniem</button></div>
+    <div class="row"><span class="edstan" id="edStan">Zmiany zapisują się automatycznie</span><button class="btn" type="button" data-go="pulpit">← Pulpit</button><button class="btn" type="button" id="edZapisz">Zapisz szablon</button><button class="btn primary" type="button" id="edPolicz">Policz tym urządzeniem</button></div>
   </div>
   <section class="card" id="szPane"></section>
 </div>
@@ -515,6 +520,14 @@ table.t.edt input[type=text], table.t.edt td input:not([type=number]) { min-widt
 </div>
 
 <div class="mbar" id="mbar"></div>
+<div class="dlg-bg" id="dlg" hidden>
+  <div class="card dlg" role="dialog" aria-modal="true" aria-labelledby="dlgT">
+    <h3 id="dlgT">Zapisz wycenę</h3>
+    <p class="note" id="dlgInfo"></p>
+    <label class="f">Nazwa nowej wyceny<input id="dlgNazwa" type="text"></label>
+    <div class="row" style="justify-content:flex-end"><button class="btn ghost" type="button" id="dlgAnul">Anuluj</button><button class="btn" type="button" id="dlgNowa">Zapisz jako nową</button><button class="btn primary" type="button" id="dlgNadpisz">Nadpisz</button></div>
+  </div>
+</div>
 <div class="toast" id="toast" hidden></div>
 
 <script src="nk38-engine.js"></script>
@@ -613,21 +626,34 @@ table.t.edt input[type=text], table.t.edt td input:not([type=number]) { min-widt
       }, 700);
     },
     listaWycen: async function () {
-      if (!this.db) return lsGet(LS.wyceny, []).map(function (w, i) { return Object.assign({ id: "ls" + i }, w); });
+      if (!this.db) {   // lokalne wyceny dostają stałe identyfikatory (potrzebne do nadpisywania i usuwania)
+        var l = lsGet(LS.wyceny, []), zm = false;
+        l.forEach(function (w, i) { if (!w.id) { w.id = "w" + (w.ts || Date.now()).toString(36) + i; zm = true; } });
+        if (zm) lsSet(LS.wyceny, l);
+        return l.map(function (w) { return Object.assign({}, w); });
+      }
       var q = await this.db.collection("nk38/dane/wyceny").get();
       return q.docs.map(function (d) { return Object.assign({ id: d.id }, d.data()); }).sort(function (a, b) { return (b.ts || 0) - (a.ts || 0); });
     },
-    zapiszWycene: async function (w) {
+    zapiszWycene: async function (w) {   // zwraca identyfikator zapisanej wyceny
       w.ts = Date.now();
-      if (!this.db) { var l = lsGet(LS.wyceny, []); l.unshift(w); lsSet(LS.wyceny, l.slice(0, 300)); return; }
-      await this.db.collection("nk38/dane/wyceny").add(kopia(w));
+      if (!this.db) { w.id = "w" + w.ts.toString(36); var l = lsGet(LS.wyceny, []); l.unshift(w); lsSet(LS.wyceny, l.slice(0, 300)); return w.id; }
+      var ref = await this.db.collection("nk38/dane/wyceny").add(kopia(w));
+      return ref && ref.id;
+    },
+    nadpiszWycene: async function (id, w) {
+      w.ts = Date.now();
+      if (!this.db) { var l = lsGet(LS.wyceny, []).filter(function (x) { return x.id !== id; }); w.id = id; l.unshift(w); lsSet(LS.wyceny, l); return id; }
+      var c = kopia(w); delete c.id;
+      await this.db.doc("nk38/dane/wyceny/" + id).set(c);
+      return id;
     },
     dodajWycene: async function (w) {
       if (!this.db) { var l = lsGet(LS.wyceny, []); l.push(w); l.sort(function (a, b) { return (b.ts || 0) - (a.ts || 0); }); lsSet(LS.wyceny, l.slice(0, 300)); return; }
       await this.db.collection("nk38/dane/wyceny").add(kopia(w));
     },
     usunWycene: async function (id) {
-      if (!this.db) { var l = lsGet(LS.wyceny, []); l.splice(+id.slice(2), 1); lsSet(LS.wyceny, l); return; }
+      if (!this.db) { lsSet(LS.wyceny, lsGet(LS.wyceny, []).filter(function (x) { return x.id !== id; })); return; }
       await this.db.doc("nk38/dane/wyceny/" + id).delete();
     }
   };
@@ -649,7 +675,11 @@ table.t.edt input[type=text], table.t.edt td input:not([type=number]) { min-widt
     });
     szablony = lista.map(E.uzupelnijSzablon);
   }
-  function zapiszSzablony() { Store.set("szablony", szablony); }
+  function zapiszSzablony() { Store.set("szablony", szablony); oznaczZapis(); }
+  function oznaczZapis() {
+    var el = $("edStan"); if (!el) return;
+    var t = new Date(); el.textContent = "Zapisano o " + ("0" + t.getHours()).slice(-2) + ":" + ("0" + t.getMinutes()).slice(-2);
+  }
   function szablonAktywny() {
     var id = state.dane && state.dane.szablon;
     return szablony.filter(function (s) { return s.id === id; })[0] || szablony[0];
@@ -680,7 +710,7 @@ table.t.edt input[type=text], table.t.edt td input:not([type=number]) { min-widt
     $("hintRozl").textContent = sz.opcje.rozladunekNaTransport ? "za każdy transport / kontener" : "jednorazowo: przyjazd i wyjazd wózka";
     $("hintRozlDni").textContent = "puste = " + n2(c.rozl_TIR) + " dnia na transport";
     $("hintOsoby").textContent = c.stawka_1 + " / " + c.stawka_2 + " / kolejne " + c.stawka_kolejna + " zł";
-    $("lblUtr").textContent = lista ? "Tonaż / utrudnienia ręcznie" : "Utrudnienia ręcznie";
+    $("lblUtr").textContent = lista ? "Tonaż [osd]" : "Utrudnienia ręcznie";
     var jm = sz.opcje.konserwacjaNa === "szt" ? "szt." : "MP";
     $("lblKA").textContent = "Konserwacja, cena 1 [zł/" + jm + "/mies.]"; $("lblKB").textContent = "Konserwacja, cena 2 [zł/" + jm + "/mies.]";
     var reczne = lista ? sz.pozycje.filter(function (x) { return x.naCo === "kwota" || x.naCo === "ilosc"; }) : [];
@@ -709,6 +739,11 @@ table.t.edt input[type=text], table.t.edt td input:not([type=number]) { min-widt
       h += '<tr><td>' + esc(x[1]) + '</td><td><input type="number" min="0" step="1" id="' + x[0] + '_S" aria-label="' + esc(x[1]) + ', S"></td><td><input type="number" min="0" step="1" id="' + x[0] + '_D" aria-label="' + esc(x[1]) + ', D"></td></tr>';
     });
     $("dimTable").innerHTML = h + "</tbody>";
+    /* wpisane wartości wracają do pól po każdym przebudowaniu tabeli */
+    if (d) {
+      document.querySelectorAll("#dimTable [data-gl]").forEach(function (el) { var v = ((el.dataset.gl === "S" ? d.gl_S : d.gl_D) || {})[el.dataset.cm]; if (v) el.value = v; });
+      DIMKEYS.forEach(function (k) { ["S", "D"].forEach(function (x) { var el = $(k + "_" + x), v = d[k + "_" + x]; if (el && v) el.value = v; }); });
+    }
     ukladFormularza(sz, d);
     if (d) {
       document.querySelectorAll("[data-gl]").forEach(function (el) { var v = (el.dataset.gl === "S" ? d.gl_S : d.gl_D)[el.dataset.cm]; el.value = v || ""; });
@@ -741,7 +776,7 @@ table.t.edt input[type=text], table.t.edt td input:not([type=number]) { min-widt
 
   function fromForm() {
     var d = E.domyslneDane(), s = state.dane;
-    ["lok", "analiza", "oferta", "opis"].forEach(function (k) { if (s && s[k] !== undefined) d[k] = s[k]; });
+    ["lok", "analiza", "oferta", "opis", "_wid", "_wnazwa"].forEach(function (k) { if (s && s[k] !== undefined) d[k] = s[k]; });
     TXTF.forEach(function (k) { d[k] = $(k).value; });
     d.szablon = $("szablon").value;
     NUMF.forEach(function (k) {
@@ -805,7 +840,7 @@ table.t.edt input[type=text], table.t.edt td input:not([type=number]) { min-widt
     var k = w.koszty, seg = [
       ["Urządzenia", k.urzadzenia + k.slupki, "--s1"], ["Robocizna", k.montaz + k.dojazdy + k.rozladunek_ludzie, "--s2"],
       ["Transport i dźwig", k.transport + k.dzwig + k.rozladunek_sprzet, "--s3"], ["Hotel, diety, paliwo", k.hotel + k.diety + k.paliwo, "--s4"],
-      ["KOB, GDW, podatek", w.kob + w.gdw + w.podatek, "--s5"], ["Zysk", w.zysk, "--s6"]];
+      ["KOB i podatek", w.kob + w.podatek, "--s5"], ["Zysk z narzutem", w.zyskN, "--s6"]];
     var suma = w.cena || 1;
     return '<div class="struct"><div class="eyebrow" style="margin-bottom:6px">Z czego składa się cena</div><div class="struct-bar" role="img" aria-label="Struktura ceny">' +
       seg.map(function (x) { return '<i style="flex-grow:' + Math.max(0, x[1]).toFixed(0) + ';background:var(' + x[2] + ')" data-tip="' + esc(x[0]) + ": " + zl(x[1]) + " (" + n2(x[1] / suma * 100) + '%)"></i>'; }).join("") +
@@ -899,7 +934,7 @@ table.t.edt input[type=text], table.t.edt td input:not([type=number]) { min-widt
       strukturaCeny(w) +
       '<div class="kpis">' +
       kpi("Montaż", w.tygodnie + " tyg.<small>" + w.dni + " dni pracy, " + w.osoby + " os." + (recz ? ", tygodnie wpisane ręcznie" : "") + "</small>", true) +
-      kpi("Zysk " + pct(d.zysk) + " / " + pct(d.zysk2), zl(w.zysk) + "<small>" + zl(w.zysk2) + "</small>") +
+      kpi("Zysk z narzutem", zl(w.zyskN) + "<small>przy zysku " + pct(d.zysk) + " · " + zl(w.zyskN2) + " przy " + pct(d.zysk2) + "</small>") +
       kpi("Konserwacja roczna", zl(K[0].rok) + "<small>przy " + K[0].stawka + " zł/" + jm + " · " + zl(K[1].rok) + " przy " + K[1].stawka + " zł/" + jm + "</small>") +
       (r.szablon.opcje.przeglad ? kpi("Przegląd półroczny", zl(K[0].pol) + "<small>przy " + K[0].stawka + " zł/" + jm + " · " + zl(K[1].pol) + " przy " + K[1].stawka + " zł/" + jm + "</small>") : "") + "</div>";
     liczbyHero(w, r.szablon.id + "|" + sel);
@@ -946,7 +981,7 @@ table.t.edt input[type=text], table.t.edt td input:not([type=number]) { min-widt
       ["Cena za MP, " + zA, function (w) { return zl(w.cenaMP); }],
       ["Cena za MP, " + zB, function (w) { return zl(w.cenaMP2); }],
       ["Cena za MP w euro, " + zA, function (w) { return eur(w.cenaMPeur); }],
-      ["Zysk " + pct(d.zysk) + " / " + pct(d.zysk2), function (w) { return zl(w.zysk) + " / " + zl(w.zysk2); }],
+      ["Zysk z narzutem, " + zA + " / " + zB, function (w) { return zl(w.zyskN) + " / " + zl(w.zyskN2); }],
       ["Koszt rzeczywisty", function (w) { return zl(w.koszt); }],
       "Struktura kosztów",
       ["Urządzenia", function (w) { return zl(w.koszty.urzadzenia); }],
@@ -1449,17 +1484,50 @@ table.t.edt input[type=text], table.t.edt td input:not([type=number]) { min-widt
   $("bPdf").addEventListener("click", function () { busy($("bPdf"), eksportPdf); });
   $("bDocxTop").addEventListener("click", function () { busy($("bDocxTop"), eksportDocx); });
   $("bDocx").addEventListener("click", function () { busy($("bDocx"), eksportDocx); });
-  $("bSave").addEventListener("click", function () { zapiszBiezaca((wynik.dane.nazwa || "Wycena") + (wynik.dane.data ? " " + wynik.dane.data : "")); });
+  $("bSave").addEventListener("click", function () { oknoZapisu(); });
   $("bOferta").addEventListener("click", otworzOferte);
   $("bOvClose").addEventListener("click", zamknijOferte);
   document.addEventListener("keydown", function (e) { if (e.key === "Escape" && !$("ov").hidden) zamknijOferte(); });
 
-  async function zapiszBiezaca(nazwa) {
+  /* Zapis wyceny: nadpisanie wczytanej albo nowa pozycja pod nową nazwą (domyślnie z dzisiejszą datą). */
+  function oknoZapisu(nazwa) {
+    var d = state.dane, jest = !!d._wid;
+    $("dlgInfo").textContent = jest ? "Ta wycena jest zapisana jako „" + d._wnazwa + "”. Nadpisz ją albo zapisz jako nową pozycję." : "Zapisz bieżącą wycenę w ostatnich wycenach.";
+    $("dlgNazwa").value = nazwa || ((d.nazwa || "Wycena") + " " + dzis());
+    $("dlgNadpisz").hidden = !jest;
+    $("dlgNowa").textContent = jest ? "Zapisz jako nową" : "Zapisz";
+    $("dlgNowa").className = "btn" + (jest ? "" : " primary");
+    $("dlg").hidden = false; (jest ? $("dlgNadpisz") : $("dlgNazwa")).focus();
+  }
+  async function zapiszBiezaca(nadpisz) {
+    var d = state.dane, nazwa = nadpisz ? d._wnazwa : ($("dlgNazwa").value.trim() || "Wycena " + dzis());
+    $("dlg").hidden = true;
+    var w = { nazwa: nazwa, kiedy: new Date().toLocaleString("pl-PL"), cena: wynik.warianty[0].cena, dane: kopia(d) };
+    delete w.dane._wid; delete w.dane._wnazwa;
     try {
-      await Store.zapiszWycene({ nazwa: nazwa, kiedy: new Date().toLocaleString("pl-PL"), cena: wynik.warianty[0].cena, dane: kopia(state.dane) });
-      toast("Zapisano: " + nazwa);
+      var id = nadpisz ? await Store.nadpiszWycene(d._wid, w) : await Store.zapiszWycene(w);
+      d._wid = id; d._wnazwa = nazwa; lsSet(LS.draft, { dane: d });
+      toast((nadpisz ? "Nadpisano: " : "Zapisano: ") + nazwa);
       if (state.tab === "wyceny") wypelnijWyceny();
     } catch (e) { toast("Nie udało się zapisać wyceny. Spróbuj ponownie."); }
+  }
+  $("dlgNowa").addEventListener("click", function () { zapiszBiezaca(false); });
+  $("dlgNadpisz").addEventListener("click", function () { zapiszBiezaca(true); });
+  $("dlgAnul").addEventListener("click", function () { $("dlg").hidden = true; });
+  $("dlgNazwa").addEventListener("keydown", function (e) { if (e.key === "Enter") zapiszBiezaca(false); });
+  document.addEventListener("keydown", function (e) { if (e.key === "Escape" && !$("dlg").hidden) $("dlg").hidden = true; });
+  /* Potwierdzenie w miejscu przycisku, bez przerysowania ekranu. */
+  function potwierdz(btn, pytanie, tak) {
+    var row = btn.parentNode, bylo = row.innerHTML;
+    row.innerHTML = '<span class="muted">' + esc(pytanie) + '</span><button type="button" class="btn small danger pt-tak">Tak, usuń</button><button type="button" class="btn small pt-nie">Anuluj</button>';
+    row.querySelector(".pt-tak").addEventListener("click", function (e) { e.stopPropagation(); tak(); });
+    row.querySelector(".pt-nie").addEventListener("click", function (e) { e.stopPropagation(); row.innerHTML = bylo; });
+    row.querySelector(".pt-nie").focus();
+  }
+  async function usunWycene(id) {
+    try { await Store.usunWycene(id); toast("Usunięto wycenę"); } catch (er) { toast("Nie udało się usunąć wyceny. Spróbuj ponownie."); }
+    if (state.dane && state.dane._wid === id) { delete state.dane._wid; delete state.dane._wnazwa; }
+    if (state.view === "pulpit") renderPulpitWyceny(); else wypelnijWyceny();
   }
   function setSel(i) { state.sel = i; lsSet(LS.sel, i); render(); }
   $("hero").addEventListener("click", function (e) {
@@ -1512,13 +1580,13 @@ table.t.edt input[type=text], table.t.edt td input:not([type=number]) { min-widt
   naObu("click", async function (e) {
     var t = e.target.closest("button"); if (!t) return;
     if (t.id === "bCopy") return copyText(zestawienie(), "Skopiowano tekst", "offerText");
-    if (t.id === "bSave2") return zapiszBiezaca($("saveName").value || "Wycena");
+    if (t.id === "bSave2") return oknoZapisu($("saveName").value);
     if (t.dataset.load !== undefined) {
       var w = (state.wyceny || []).filter(function (x) { return x.id === t.dataset.load; })[0];
-      if (w) { odlozSzkic(); setDane(w.dane); buildDimTable(); toForm(state.dane); recalc(); toast("Wczytano: " + w.nazwa); }
+      if (w) { odlozSzkic(); setDane(Object.assign({}, w.dane, { _wid: w.id, _wnazwa: w.nazwa })); toast("Wczytano: " + w.nazwa); }
       return;
     }
-    if (t.dataset.del !== undefined) { state.confirm = t.dataset.del; return wypelnijWyceny(); }
+    if (t.dataset.del !== undefined) { var idd = t.dataset.del; return potwierdz(t, "Usunąć wycenę?", function () { usunWycene(idd); }); }
     if (t.dataset.delNo !== undefined) { state.confirm = null; return wypelnijWyceny(); }
     if (t.dataset.delYes !== undefined) {
       try { await Store.usunWycene(t.dataset.delYes); toast("Usunięto"); } catch (er) { toast("Nie udało się usunąć wyceny."); }
@@ -1541,7 +1609,13 @@ table.t.edt input[type=text], table.t.edt td input:not([type=number]) { min-widt
       if (b) { szablony[szablony.indexOf(s)] = b; zapiszSzablony(); wypelnijSzablony(); $("szablon").value = szablonAktywny().id; buildDimTable(); recalc(); odswiezSz(); toast("Przywrócono domyślne wartości " + b.nazwa); }
       return;
     }
-    if (t.id === "szUsun") { state.szUsun = true; odswiezSz(); return; }
+    if (t.id === "szUsun") {
+      return potwierdz(t, "Usunąć „" + s.nazwa + "”?", function () {
+        szablony = szablony.filter(function (x) { return x !== s; }); state.edytowany = null;
+        if (state.dane.szablon === s.id) state.dane.szablon = szablony[0].id;
+        zapiszSzablony(); wypelnijSzablony(); $("szablon").value = szablonAktywny().id; buildDimTable(); recalc(); pokaz("pulpit"); toast("Usunięto szablon");
+      });
+    }
     if (t.id === "szUsunNie") { state.szUsun = false; odswiezSz(); return; }
     if (t.id === "szUsunTak") {
       szablony = szablony.filter(function (x) { return x !== s; }); state.szUsun = false; state.edytowany = null;
@@ -1666,7 +1740,7 @@ table.t.edt input[type=text], table.t.edt td input:not([type=number]) { min-widt
     $("pStat").insertAdjacentHTML("beforeend", "<span><b>" + lista.length + "</b> " + odm(lista.length, "zapisana wycena", "zapisane wyceny", "zapisanych wycen") + "</span>");
     var nazwa = function (id) { var s = szablony.filter(function (x) { return x.id === id; })[0]; return s ? s.nazwa : "NK38"; };
     $("pWyceny").innerHTML = lista.length ? lista.slice(0, 8).map(function (w) {
-      return '<div class="it"><div><b>' + esc(w.nazwa) + '</b> <span class="muted">· ' + esc(nazwa((w.dane || {}).szablon)) + " · " + esc(w.kiedy || "") + " · " + zl(w.cena || 0) + '</span></div><button class="btn small" type="button" data-p-load="' + esc(w.id) + '">Otwórz</button></div>';
+      return '<div class="it"><div><b>' + esc(w.nazwa) + '</b> <span class="muted">· ' + esc(nazwa((w.dane || {}).szablon)) + " · " + esc(w.kiedy || "") + " · " + zl(w.cena || 0) + '</span></div><div class="row"><button class="btn small" type="button" data-p-load="' + esc(w.id) + '">Otwórz</button><button class="btn small ghost danger" type="button" data-p-del="' + esc(w.id) + '">Usuń</button></div></div>';
     }).join("") : '<div class="empty">Brak zapisanych wycen. Zapisujesz je przyciskiem „Zapisz” w kalkulatorze.</div>';
   }
   function renderEdytor() {
@@ -1708,7 +1782,15 @@ table.t.edt input[type=text], table.t.edt td input:not([type=number]) { min-widt
       szablony.push(np); zapiszSzablony(); wypelnijSzablony(); $("szablon").value = szablonAktywny().id;
       toast("Utworzono pusty szablon. Wpisz nazwę, MP, osobodni, ceny i tabele."); return edytuj(np.id);
     }
-    if (ds.devUsun) { state.pUsun = ds.devUsun; return renderPulpit(); }
+    if (ds.devUsun) {
+      var uid = ds.devUsun;
+      return potwierdz(t, "Usunąć szablon?", function () {
+        szablony = szablony.filter(function (x) { return x.id !== uid; });
+        if (state.dane.szablon === uid) state.dane.szablon = szablony[0].id;
+        zapiszSzablony(); wypelnijSzablony(); $("szablon").value = szablonAktywny().id; buildDimTable(); recalc(); renderPulpit(); toast("Usunięto szablon");
+      });
+    }
+    if (ds.pDel) { var pid = ds.pDel; return potwierdz(t, "Usunąć?", function () { usunWycene(pid); }); }
     if (ds.devUsunNie) { state.pUsun = null; return renderPulpit(); }
     if (ds.devUsunTak) {
       szablony = szablony.filter(function (x) { return x.id !== ds.devUsunTak; }); state.pUsun = null;
@@ -1717,7 +1799,7 @@ table.t.edt input[type=text], table.t.edt td input:not([type=number]) { min-widt
     }
     if (ds.pLoad) {
       var w = (state.wyceny || []).filter(function (x) { return x.id === ds.pLoad; })[0];
-      if (w) { odlozSzkic(); setDane(w.dane); $("szablon").value = szablonAktywny().id; buildDimTable(); toForm(state.dane); recalc(); pokaz("kalk"); toast("Wczytano: " + w.nazwa); }
+      if (w) { odlozSzkic(); setDane(Object.assign({}, w.dane, { _wid: w.id, _wnazwa: w.nazwa })); pokaz("kalk"); toast("Wczytano: " + w.nazwa); }
       return;
     }
     if (t.id === "bBackup") return busy(t, kopiaZapasowa);
@@ -1727,6 +1809,7 @@ table.t.edt input[type=text], table.t.edt td input:not([type=number]) { min-widt
     var t = e.target.closest("button"); if (!t) return;
     if (t.dataset.go === "pulpit") pokaz("pulpit");
     if (t.id === "edPolicz") otworzUrzadzenie(szEdytowany().id);
+    if (t.id === "edZapisz") { zapiszSzablony(); oznaczZapis(); toast("Zapisano szablon „" + szEdytowany().nazwa + "”"); }
   });
   $("bPulpit").addEventListener("click", function () { pokaz("pulpit"); });
 

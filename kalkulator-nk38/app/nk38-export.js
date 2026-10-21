@@ -110,8 +110,8 @@
       ["Transport, dźwig, rozładunek", "zl", function (x) { return x.koszty.transport + x.koszty.dzwig + x.koszty.rozladunek_sprzet; }],
       ["Robocizna", "zl", function (x) { return x.koszty.montaz + x.koszty.rozladunek_ludzie + x.koszty.dojazdy; }],
       ["Hotel, diety, paliwo", "zl", function (x) { return x.koszty.hotel + x.koszty.diety + x.koszty.paliwo; }],
-      ["KOB, GDW, podatek (" + zA + ")", "zl", function (x) { return x.kob + x.gdw + x.podatek; }],
-      ["Zysk " + pct(d.zysk), "zl", "zysk"], ["Zysk " + pct(d.zysk2), "zl", "zysk2"], ["Koszt rzeczywisty", "zl", "koszt", 1],
+      ["KOB i podatek (" + zA + ")", "zl", function (x) { return x.kob + x.podatek; }],
+      ["Zysk z narzutem, " + zA, "zl", "zyskN"], ["Zysk z narzutem, " + zB, "zl", "zyskN2"], ["Koszt rzeczywisty", "zl", "koszt", 1],
       ["Osobodni razem", "n", "osobodni"]], ws) };
     var kol = nB ? [0, 1, 2, 3] : [0, 2], wybierz = function (v) { return kol.map(function (i) { return v[i]; }); };
     var opcje = {
@@ -139,7 +139,7 @@
       ["Hotel", "zl", "hotel", 0, 1], ["Transport", "zl", "transport", 0, 1], ["Spider Crane", "zl", "dzwig", 0, 1],
       ["Rozładunek, sprzęt", "zl", "rozladunek_sprzet", 0, 1], ["Rozładunek, ludzie", "zl", "rozladunek_ludzie", 0, 1],
       ["Dojazdy, ludzie", "zl", "dojazdy", 0, 1], ["Montaż", "zl", "montaz", 0, 1], ["Diety", "zl", "diety", 0, 1],
-      ["Suma przed narzutami", "zl", "baza", 1], ["KOB", "zl", "kob"], ["GDW", "zl", "gdw"], ["Zysk " + pct(d.zysk), "zl", "zysk"],
+      ["Suma przed narzutami", "zl", "baza", 1], ["KOB", "zl", "kob"], ["GDW", "zl", "gdw"], ["Zysk " + pct(d.zysk), "zl", "zysk"], ["Zysk z narzutem (zysk + GDW)", "zl", "zyskN"],
       ["Podatek", "zl", "podatek"], ["Cena kontraktu, " + zA + " (K39)", "zl", "cena", 1]
     ].map(function (row) {
       return { label: row[0], fmt: row[1], bold: !!row[3], vals: ws.map(function (x) { return row[4] ? x.koszty[row[2]] : x[row[2]]; }) };

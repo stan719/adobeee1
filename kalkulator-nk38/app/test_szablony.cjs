@@ -20,6 +20,9 @@ blisko(r1.warianty[0].koszty.hotel, 4800, "hotel (K20)");
 blisko(r1.warianty[0].koszty.paliwo, 2251.2, "paliwo (K19)");
 blisko(r1.warianty[0].cena, 134711.0847732558, "kontrakt, zysk 11% (K38)");
 blisko(r1.warianty[0].cena2, 133007.4726724138, "kontrakt, zysk 10% (N38)");
+blisko(r1.warianty[0].koszt, 117148.61297093023, "koszt rzeczywisty (K42)");
+blisko(r1.warianty[0].zyskN, 17562.47180232557, "zysk z narzutem (J43)");
+blisko(r1.warianty[0].zyskN2, 16074.633620689667, "zysk z narzutem, 10% (M43)");
 blisko(r1.konserwacja[0].rok, 50 * 6 * 12, "konserwacja roczna 50 zł/MP");
 
 // NKPXLH: 18 urządzeń, 1 kontener, 3 wyjazdy montażowe. Kolumna N arkusza pomija dźwig (N18 liczy dni, nie koszt), więc porównujemy K.
@@ -37,6 +40,7 @@ blisko(r2.warianty[0].koszty.dzwig, 2400, "Spider Crane (K18)");
 blisko(r2.warianty[0].koszty.paliwo, 3376.8, "paliwo (K20)");
 blisko(r2.warianty[0].koszty.hotel, 7680, "hotel (K21)");
 blisko(r2.warianty[0].cena, 374983.16299568635, "kontrakt, zysk 28% (K40)");
+blisko(r2.warianty[0].zyskN, 108617.21648368117, "zysk z narzutem (J45)");
 blisko(r2.konserwacja[0].rok, 7560, "konserwacja roczna 35 zł × 18 szt. (J46)");
 blisko(r2.konserwacja[0].pol, 3780, "przegląd 35 zł × 18 szt. (J47)");
 assert(r2.mat.suma2500 > r2.mat.suma2000, "wariant 2500 kg droższy");

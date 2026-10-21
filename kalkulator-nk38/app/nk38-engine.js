@@ -390,7 +390,9 @@
       osoby: os, stawka: st, osd: osd, iteracje: iteracje, wyjazdy: wyj, podroze: podr,
       osobodni: osdAll, dni: dni, km: km, koszty: k, baza: baza,
       kob: n.brutto * c.kob, gdw: n.brutto * c.gdw, zysk: n.brutto * zysk, podatek: n.podatek,
-      cena: cena, koszt: cena - n.brutto * zysk, cenaMP: m.MP ? cena / m.MP : 0,
+      /* Jak w Excelu: koszt rzeczywisty = koszty + KOB + podatek, zysk z narzutem = cena − koszt = zysk + GDW. */
+      zyskN: n.brutto * (c.gdw + zysk), zyskN2: n2.brutto * (c.gdw + zysk2),
+      cena: cena, koszt: cena - n.brutto * (c.gdw + zysk), cenaMP: m.MP ? cena / m.MP : 0,
       cenaMPeur: m.MP && num(d.eur) > 0 ? cena / m.MP / num(d.eur) : 0,
       cena2: cena2, zysk2: n2.brutto * zysk2, podatek2: n2.podatek, cenaMP2: m.MP ? cena2 / m.MP : 0,
       tygodnie: tyg, tygodnieZakres: [tyg, Math.max(tyg, Math.round(tyg * 1.25))],

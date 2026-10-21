@@ -238,7 +238,9 @@ def wycena_montazu(w: Montaz, c=CENNIK) -> dict:
         "osobodni": osd_all, "dni": dni, "wyjazdy": wyj, "dzwig_dni": dzwig_dni,
         "cena_za_mp": cena / mp if mp else 0,
         "cena_za_mp_eur": cena / mp / w.eur if mp else 0,
-        "koszt_rzeczywisty": cena - k["zysk"],
+        # jak w Excelu: koszt rzeczywisty = koszty + KOB + podatek; zysk z narzutem = cena - koszt (zysk + GDW)
+        "koszt_rzeczywisty": cena - k["zysk"] - k["gdw"],
+        "zysk_z_narzutem": k["zysk"] + k["gdw"],
         # przelicznik kosztu czysto materiałowego na cenę (malowanie, słupki 22 kW)
         "mnoznik_materialu": (1 + c["podatek"] * (c["gdw"] + w.zysk)) / (1 - (c["kob"] + c["gdw"] + w.zysk)),
     }
