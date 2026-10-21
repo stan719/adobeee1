@@ -186,7 +186,45 @@
     });
     return s;
   }
-  function szablonyWbudowane() { return [szablonNK38(), szablonNK37(), szablonNK6501(), szablonNKPXLH()].map(uzupelnijSzablon); }
+  /* NK41: platformy zależne pochylane (kalkulator "-NK3 2T A .10.26", oferta Żegiestowska 5 Wrocław). Koszty produkcji z dołu arkusza. */
+  function szablonNK41() {
+    var s = bazaLista();
+    s.id = "nk41"; s.nazwa = "NK41";
+    s.opisOferty = "Platformy służące do zależnego parkowania pojazdów w pochyleniu {typ}";
+    s.typy = {
+      S: { nazwa: "Platformy NK41", mp: 2, osd: 2.2, cena: 12000, waluta: "PLN", dzwig: 1 / 15,
+        oferta: "{n} szt. – NKPXL szer. użytkowa miejsca postojowego 250cm, szer. zewnętrzna urządzenia 280cm;" },
+      D: { nazwa: "", mp: 0, osd: 0, cena: 0, waluta: "PLN", dzwig: 0, oferta: "" },
+      NP: { nazwa: "", mp: 0, osd: 0, cena: 0, waluta: "PLN", dzwig: 0, oferta: "" }
+    };
+    s.pozycje = [
+      { id: "hydr", nazwa: "Hydraulika (siłownik 850 + rury i złączki 470 + wąż 100)", cena: 1420, waluta: "PLN", naCo: "szt", wsp: 1, osd: 0, opcja: false, tekst: "" },
+      { id: "agr", nazwa: "Agregat hydrauliczny", cena: 780, waluta: "EUR", naCo: "agregat", wsp: 1, osd: 0, opcja: false, tekst: "" },
+      { id: "ster_a", nazwa: "Sterowanie i elektryka: na agregat", cena: 1400, waluta: "PLN", naCo: "agregat", wsp: 1, osd: 0, opcja: false, tekst: "" },
+      { id: "ster_u", nazwa: "Sterowanie i elektryka: na urządzenie", cena: 500, waluta: "PLN", naCo: "szt", wsp: 1, osd: 0, opcja: false, tekst: "" }
+    ];
+    s.wariantB = { nazwa: "", tryb: "%", wartosc: 0, waluta: "PLN" };
+    s.opcje.rozladunekNaTransport = true; s.opcje.konserwacjaNa = "szt"; s.opcje.agregaty = true; s.opcje.slupki = true;
+    s.wysokosci = { tryb: "przeswit2", k: -20, dol: 150, dlugosc: 400 };
+    s.domyslne = { zysk: 0.14, zysk2: 0.11, konserwA: 40, konserwB: 50, tir: 1, tir_cena: 3200, rozl_cena: 1500 };
+    Object.assign(s.cennik, { stawka_1: 500, stawka_2: 400, stawka_kolejna: 350, hotel: 130, dieta: 45, odbiory_osoby: 2, dzwig: 2400, rozl_TIR: 0.5, kob: 0.00515, gdw: 0.02585, slupek: 1700 });
+    s.teksty = Object.assign(tekstyNK38(), {
+      obciazenie: "Obciążenie platformy: 2.000kg/miejsce;",
+      zabezpieczenie: "Zabezpieczenie antykorozyjne: platforma ocynkowana ogniowo, słupy i siłowniki malowane.",
+      barierki: "", opcjaQ2500: "",
+      uwagaTech: "*parametry pojazdów dopuszczonych do wjazdu w obręb urządzeń są zależne od wysokości prześwitu dostępnego na danym miejscu w garażu.",
+      wstep: "przedstawiamy {oferte} na dostawę i montaż {n} platform służących do zależnego parkowania {mp} pojazdów w pochyleniu dla inwestycji {garaz}.",
+      tech: "Zagłębienie: brak;\nWysokość prześwitu: {P}cm;\nWysokość parkowanych pojazdów*: ▲-{G}cm, ▼-{D}cm;\nDługość parkowanych pojazdów: ▲-{M}cm, ▼-{M}cm;",
+      agregat: "agregat hydrauliczny 400V, 50Hz, 3kW", kw: "3kW",
+      platnosci: "30% zaliczka płatna na 22 tygodnie przed dostawą,\n30% płatność na 7 dni przed dostawą,\n90% płatność do 21 dni po dostawie,\n100% płatność do 21 dni po zakończeniu montażu i pierwszym badaniu UDT.\nOferta ważna jest 2 miesiące.",
+      dostawa: 22, gw: "60",
+      zakres: "Dostawa na plac budowy urządzeń parkingowych, montaż, rozruch i doprowadzenie do badań ruchowych poprzedzających wydanie Decyzji o Dopuszczeniu do Użytkowania wraz z kompletem dokumentów określonych przepisami UDT.\nPoza ofertą pozostają: koszty przeprowadzenia badania przez UDT, wszelkie roboty budowlano-wykończeniowe obiektu, wykonanie barier stałych zabezpieczających dostęp pod platformy z tyłu lub z boku w przypadku braku ścian (jeśli konieczne / zgodnie z naszymi wytycznymi), wykonanie przepustów przez ściany działowe o średnicy fi 150mm dla przeprowadzenia przewodów elektrycznych i hydraulicznych (jeśli konieczne / zgodnie z naszymi wytycznymi), napraw tynkarsko-malarskich po montażu urządzeń sterowniczych oraz mocowań konstrukcyjnych, wyposażenia w instalację przeciw-pożarową, wentylacyjną, elektryczną obiektu, sygnalizacyjną, oznaczeń pionowych i poziomych organizacji ruchu na terenie parkingu.",
+      gwarancja: "Producent udziela {gw} miesięcznej gwarancji jakości na sprawne działanie urządzeń pod warunkiem podpisania z dostawcą umowy konserwacyjno-serwisowej umożliwiającej nam stałą opiekę oraz nadzór nad stanem technicznym platform. W ramach umowy serwisowej dokonywane są 2 przeglądy serwisowe w ciągu roku.\nGwarancja nie obejmuje zużycia części eksploatacyjnych, uszkodzeń wynikających z eksploatacji niezgodnej z instrukcją użytkowania, agresywnego środowiska, zbyt dużej wilgotności, uszkodzeń powstałych w wyniku zdarzeń losowych (np. pożar, zalanie). Po upływie okresu gwarancji świadczymy serwis pogwarancyjny."
+    });
+    s.teksty.warunki = szablonNKPXLH().teksty.warunki;
+    return s;
+  }
+  function szablonyWbudowane() { return [szablonNK38(), szablonNK37(), szablonNK6501(), szablonNKPXLH(), szablonNK41()].map(uzupelnijSzablon); }
   /* Uzupełnia szablon o brakujące pola (np. zapisany starszą wersją aplikacji). */
   function uzupelnijSzablon(sz) {
     var b = szablonNK38(), s = JSON.parse(JSON.stringify(sz || b));
@@ -387,7 +425,7 @@
     var cena = n.brutto + n.podatek, cena2 = n2.brutto + n2.podatek;
     var tyg = w.krk ? ceil(dni / c.dni_tydzien) : wyj;
     return {
-      osoby: os, stawka: st, osd: osd, iteracje: iteracje, wyjazdy: wyj, podroze: podr,
+      robocizna: robocizna, osoby: os, stawka: st, osd: osd, iteracje: iteracje, wyjazdy: wyj, podroze: podr,
       osobodni: osdAll, dni: dni, km: km, koszty: k, baza: baza,
       kob: n.brutto * c.kob, gdw: n.brutto * c.gdw, zysk: n.brutto * zysk, podatek: n.podatek,
       /* Jak w Excelu: koszt rzeczywisty = koszty + KOB + podatek, zysk z narzutem = cena − koszt = zysk + GDW. */
@@ -447,7 +485,7 @@
     var dop22 = (c.slupek22 - c.slupek) * m.MP * mnoznik;
     var sl37b = [warianty[2].cena2 - warianty[0].cena2, warianty[3].cena2 - warianty[1].cena2];
     var dop22b = (c.slupek22 - c.slupek) * m.MP * mnoznik2;
-    return {
+    var wynik = {
       dane: d, cennik: c, szablon: sz, mat: m, wspolne: w, warianty: warianty,
       analiza: analiza, analizaWariant: nazwy[a],
       opcje: {
@@ -463,12 +501,34 @@
         return { stawka: st, rok: st * baza * 12, pol: sz.opcje.przeglad ? st * baza * 6 : 0 };
       })
     };
+    wynik.negocjacje = negocjacje(wynik, 0);
+    return wynik;
+  }
+
+  /* Cena wariantu przy dowolnym procencie zysku (te same koszty i narzuty): do drabinki negocjacyjnej. */
+  function cenaPrzyZysku(r, w, z) {
+    var c = r.cennik, b = w.baza / (1 - (c.kob + c.gdw + z)), pod = c.podatek * (w.robocizna + b * (c.gdw + z)), cena = b + pod;
+    return { zysk: z, cena: cena, zyskN: b * (c.gdw + z), cenaMP: r.mat.MP ? cena / r.mat.MP : 0 };
+  }
+  /* Drabinka: od zysku ofertowego w dół co 2 pkt proc. do 0%, z zyskiem do porównania; rabat liczony od ceny ofertowej. */
+  function negocjacje(r, wi) {
+    var w = r.warianty[wi || 0], zA = num(r.dane.zysk), zB = num(r.dane.zysk2), poz = [zA, zB, 0];
+    for (var p = Math.floor(zA * 100 / 2) * 2; p > 0; p -= 2) poz.push(p / 100);
+    poz = poz.map(function (z) { return Math.round(z * 10000) / 10000; }).filter(function (z, i, a) { return z <= zA + 1e-9 && a.indexOf(z) === i; }).sort(function (a, b) { return b - a; });
+    var A = cenaPrzyZysku(r, w, zA);
+    var wiersze = poz.map(function (z) {
+      var x = cenaPrzyZysku(r, w, z);
+      return Object.assign(x, { rabat: A.cena - x.cena, rabatPct: A.cena ? (A.cena - x.cena) / A.cena : 0, oferta: z === Math.round(zA * 10000) / 10000, porownanie: z === Math.round(zB * 10000) / 10000 && zB < zA, prog: z === 0 });
+    });
+    var B = cenaPrzyZysku(r, w, Math.min(zA, zB)), Z = cenaPrzyZysku(r, w, 0);
+    return { wariant: w.nazwa, zA: zA, zB: Math.min(zA, zB), cenaA: A.cena, cenaB: B.cena, cenaMin: Z.cena, zyskNA: A.zyskN, zyskNB: B.zyskN, wiersze: wiersze };
   }
 
   var api = {
+    cenaPrzyZysku: cenaPrzyZysku, negocjacje: negocjacje,
     oblicz: oblicz, domyslneDane: domyslneDane, CENNIK: CENNIK,
     GLEBOKOSCI: szablonNK38().glebokosci.map(function (g) { return g.cm; }),
-    szablonNK38: szablonNK38, szablonNK6501: szablonNK6501, szablonNKPXLH: szablonNKPXLH, szablonPusty: szablonPusty, nazwyWariantow: nazwyWariantow, szablonyWbudowane: szablonyWbudowane, uzupelnijSzablon: uzupelnijSzablon,
+    szablonNK38: szablonNK38, szablonNK6501: szablonNK6501, szablonNKPXLH: szablonNKPXLH, szablonNK41: szablonNK41, szablonPusty: szablonPusty, nazwyWariantow: nazwyWariantow, szablonyWbudowane: szablonyWbudowane, uzupelnijSzablon: uzupelnijSzablon,
     WARIANTY: WARIANTY, OSOBY_ANALIZA: OSOBY_ANALIZA, czasPodrozy: czasPodrozy, stawkaSrednia: stawkaSrednia
   };
   if (typeof module !== "undefined" && module.exports) module.exports = api;

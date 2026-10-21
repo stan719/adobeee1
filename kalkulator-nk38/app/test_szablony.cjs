@@ -46,4 +46,18 @@ blisko(r2.konserwacja[0].rok, 7560, "konserwacja roczna 35 zł × 18 szt. (J46)"
 blisko(r2.konserwacja[0].pol, 3780, "przegląd 35 zł × 18 szt. (J47)");
 assert(r2.mat.suma2500 > r2.mat.suma2000, "wariant 2500 kg droższy");
 blisko(r2.mat.suma2500 - r2.mat.suma2000, 18 * 700 * 3.86, "2500 kg: 3000 USD/szt. (+700)");
+
+// NK41: arkusz "-NK3 2T A .10.26" przeliczony w LibreOffice dla 23 urządzeń, 6 agregatów, 300 km (montaż 350 km), 1 wyjazd montażowy.
+const r3 = E.oblicz(Object.assign(E.domyslneDane(), szablon("nk41").domyslne, {
+  szablon: "nk41", S: 23, agregaty: 6, km: 300, wyjazdy: 1, eur: 4.325
+}), szablon("nk41"));
+console.log("NK41");
+blisko(r3.mat.suma2000, 276000 + 20241 + 19900 + 32660, "urządzenia, agregaty, sterowanie, hydraulika (I14:I17)");
+blisko(r3.warianty[0].osd, 50.6, "osobodni montażu (F51)");
+blisko(r3.warianty[0].koszty.dzwig, 4800, "Spider Crane 2 dni (K26)");
+blisko(r3.warianty[0].koszty.hotel, 8320, "hotel (K21)");
+blisko(r3.warianty[0].koszty.paliwo, 2147, "paliwo (K20)");
+blisko(r3.warianty[0].cena, 491465.267590832, "kontrakt, zysk 14% (K40)");
+blisko(r3.warianty[0].zyskN, 79060.474933655, "zysk z narzutem (K45)");
+blisko(r3.konserwacja[0].rok, 11040, "konserwacja 40 zł × 23 szt. (J46)");
 console.log("szablony: OK");

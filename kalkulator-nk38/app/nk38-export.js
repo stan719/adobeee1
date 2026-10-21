@@ -156,7 +156,15 @@
     ].map(function (row) {
       return { label: row[0], info: row[4] ? info[row[2]] : "", fmt: row[1], bold: !!row[3], vals: ws.map(function (x) { return row[4] ? x.koszty[row[2]] : x[row[2]]; }) };
     }) };
-    return { grupy: grupy, ceny: ceny, struktura: struktura, opcje: opcje, mat: mat, mon: mon, zA: zA, zB: zB, jm: jm, przeglad: sz.opcje.przeglad };
+    var N = r.negocjacje, neg = N && {
+      N: N,
+      head: ["Zysk", "Cena netto", "Rabat od oferty", "Rabat %", "Zysk z narzutem", "Cena za MP"],
+      rows: N.wiersze.map(function (x) {
+        return { x: x, vals: [pct(x.zysk) + (x.oferta ? "  oferta" : x.porownanie ? "  do porównania" : x.prog ? "  próg" : ""), zl(x.cena), x.rabat ? "−" + zl(x.rabat) : "–",
+          x.rabat ? "−" + n2(x.rabatPct * 100) + "%" : "–", zl(x.zyskN), zl(x.cenaMP)] };
+      })
+    };
+    return { grupy: grupy, ceny: ceny, struktura: struktura, opcje: opcje, mat: mat, mon: mon, zA: zA, zB: zB, jm: jm, przeglad: sz.opcje.przeglad, neg: neg };
   }
 
   function fmtVal(v, f) {
@@ -265,7 +273,7 @@
     function tiles(ws, items) {
       var r1 = ws.addRow([]), r2 = ws.addRow([]), r3 = ws.addRow([]);
       r1.height = 18; r2.height = 30; r3.height = 16;
-      var spans = [[1, 2], [3, 5]];
+      var spans = items.spans || [[1, 2], [3, 5]];
       items.forEach(function (t, i) {
         var col = spans[i][0];
         [r1, r2, r3].forEach(function (row) { ws.mergeCells(row.number, spans[i][0], row.number, spans[i][1]); });
@@ -284,30 +292,45 @@
     var gen = "Wygenerowano " + new Date().toLocaleString("pl-PL") + " · ceny netto w zł · szablon " + d.typ;
 
     /* 1. Podsumowanie */
-    var s1 = sheet("Podsumowanie", [36, 18, 18, 18, 18], 82);
-    banner(s1, "Wycena " + d.typ + " · " + (d.nazwa || "bez nazwy"), gen, 5);
-    tiles(s1, [
-      ["Cena netto " + w0.nazwa + ", " + R.zA, w0.cena, zl(w0.cenaMP) + " / MP"],
-      ["Cena netto " + w0.nazwa + ", " + R.zB, w0.cena2, zl(w0.cenaMP2) + " / MP"]
-    ]);
-    tiles(s1, [
-      ["Czas montażu", w0.tygodnie + " tyg.", w0.dni + " dni pracy, ekipa " + w0.osoby + " os.", "@", 1],
-      R.przeglad ? ["Konserwacja roczna / przegląd półroczny", zl(r.konserwacja[0].rok) + " / " + zl(r.konserwacja[0].pol),
-        r.konserwacja[0].stawka + " zł/" + R.jm + "/mies.; przy " + r.konserwacja[1].stawka + " zł/" + R.jm + "/mies.: " + zl(r.konserwacja[1].rok) + " / " + zl(r.konserwacja[1].pol), "@", 1]
-        : ["Konserwacja roczna", zl(r.konserwacja[0].rok), r.konserwacja[0].stawka + " zł/" + R.jm + "/mies.; przy " + r.konserwacja[1].stawka + " zł/" + R.jm + "/mies.: " + zl(r.konserwacja[1].rok), "@", 1]
-    ]);
-    section(s1, "Ceny wariantów", 5);
+    var s1 = sheet("Podsumowanie", [30, 17, 17, 16, 17, 17], 80), N = R.neg.N;
+    banner(s1, "Wycena " + d.typ + " · " + (d.nazwa || "bez nazwy"), gen, 6);
+    var t1 = [
+      ["Cena ofertowa · zysk " + pct(N.zA), N.cenaA, w0.nazwa + " · " + zl(w0.cenaMP) + " / MP"],
+      ["Można zejść do · zysk " + pct(N.zB), N.cenaB, "rabat −" + zl(N.cenaA - N.cenaB) + " (−" + n2((N.cenaA - N.cenaB) / N.cenaA * 100) + "%)"]]; t1.spans = [[1, 3], [4, 6]];
+    tiles(s1, t1);
+    var t2 = [
+      ["Próg opłacalności · zysk 0%", N.cenaMin, "maks. rabat −" + zl(N.cenaA - N.cenaMin) + " (−" + n2((N.cenaA - N.cenaMin) / N.cenaA * 100) + "%)", null, 1],
+      ["Montaż / konserwacja roczna", w0.tygodnie + " tyg. / " + zl(r.konserwacja[0].rok), w0.dni + " dni pracy, ekipa " + w0.osoby + " os.; konserwacja " + r.konserwacja[0].stawka + " zł/" + R.jm + "/mies.", "@", 1]]; t2.spans = [[1, 3], [4, 6]];
+    tiles(s1, t2);
+    section(s1, "Pole do negocjacji: o ile można zejść z ceny (" + w0.nazwa + ")", 6);
+    var GOOD = "FFE3F4EA", GOODT = "FF13794A", WARN = "FFFDF3DD", BAD = "FFFDECEA", BADT = "FFB42318";
+    var hn = s1.addRow(R.neg.head); hn.height = 26;
+    hn.eachCell(function (c, i) { c.fill = fill(C.accSoft); c.border = box; c.font = font({ bold: true, size: 9, color: { argb: C.acc } }); c.alignment = { horizontal: i === 1 ? "left" : "right", vertical: "middle", wrapText: true, indent: i === 1 ? 1 : 0 }; });
+    N.wiersze.forEach(function (x) {
+      var row = s1.addRow([x.zysk, x.cena, x.rabat ? -x.rabat : 0, x.rabat ? -x.rabatPct : 0, x.zyskN, x.cenaMP]);
+      var kolor = x.oferta ? C.accSoft : x.porownanie ? GOOD : x.prog ? BAD : x.zysk < N.zB ? WARN : "FFF4FAF6";
+      var tekst = x.oferta ? C.acc : x.porownanie ? GOODT : x.prog ? BADT : C.ink;
+      row.eachCell({ includeEmpty: true }, function (c, i) {
+        c.border = box; c.fill = fill(kolor); c.font = font({ bold: x.oferta || x.porownanie, color: { argb: tekst } });
+        c.numFmt = i === 1 ? '0.0%"' + (x.oferta ? "  oferta" : x.porownanie ? "  do porównania" : x.prog ? "  próg" : "") + '"' : i === 4 ? '0.0%;-0.0%;"–"' : NF.zl;
+        c.alignment = { horizontal: i === 1 ? "left" : "right", indent: i === 1 ? 1 : 0, vertical: "middle" };
+      });
+    });
+    var leg = s1.addRow(["Zielone: rabat bez zejścia poniżej zysku " + pct(N.zB) + ". Żółte: poniżej zysku do porównania. Przy zysku 0% w cenie zostają koszty, KOB, GDW i podatek."]);
+    s1.mergeCells(leg.number, 1, leg.number, 6); leg.getCell(1).font = font({ size: 8.5, color: { argb: C.muted } }); leg.getCell(1).alignment = { wrapText: true, indent: 1 }; leg.height = 24;
+    s1.addRow([]);
+    section(s1, "Warianty wykonania", 6);
     table(s1, R.ceny.head, R.ceny.rows);
-    section(s1, "Opcje do oferty (cena z narzutami)", 5);
+    section(s1, "Opcje do oferty (cena z narzutami)", 6);
     table(s1, R.opcje.head, R.opcje.rows);
-    section(s1, "Struktura kosztów", 5);
-    table(s1, R.struktura.head, R.struktura.rows);
     s1.lastRow.addPageBreak();
-    section(s1, "Dane wejściowe", 5);
+    section(s1, "Struktura kosztów", 6);
+    table(s1, R.struktura.head, R.struktura.rows);
+    section(s1, "Dane wejściowe", 6);
     R.grupy.forEach(function (g) {
-      var x = s1.addRow([g.tytul]); s1.mergeCells(x.number, 1, x.number, 5);
+      var x = s1.addRow([g.tytul]); s1.mergeCells(x.number, 1, x.number, 6);
       x.getCell(1).font = font({ bold: true, size: 10 }); x.getCell(1).fill = fill(C.accSoft); x.getCell(1).alignment = { indent: 1 };
-      pairs(s1, g.pary, 5, 75);
+      pairs(s1, g.pary, 6, 85);
       s1.lastRow.height = 6;
     });
 
@@ -401,16 +424,56 @@
     }
     var stopka = (d.nazwa || "Wycena") + " · szablon " + d.typ + " · wygenerowano " + new Date().toLocaleDateString("pl-PL");
 
+    var GOOD = [227, 244, 234], GOODT = [19, 121, 74], WARN = [253, 243, 221], WARNT = [138, 83, 0], BAD = [253, 236, 234], BADT = [180, 35, 24];
+    var N = R.neg.N;
+    /* pasek: od progu (zysk 0%) do ceny ofertowej; zielone pole = rabat bez zejścia poniżej zysku do porównania */
+    function pasek(y) {
+      var x0 = 14, W = 182, h = 8, lo = N.cenaMin, hi = N.cenaA, span = (hi - lo) || 1;
+      var X = function (v) { return x0 + (v - lo) / span * W; }, xb = X(N.cenaB);
+      doc.setFillColor.apply(doc, WARN); doc.rect(x0, y, xb - x0, h, "F");
+      doc.setFillColor.apply(doc, GOOD); doc.rect(xb, y, x0 + W - xb, h, "F");
+      doc.setFont("Carlito", "bold"); doc.setFontSize(8);
+      var tg = "rabat do −" + zl(N.cenaA - N.cenaB) + " zachowuje zysk " + pct(N.zB), tw = "poniżej zysku " + pct(N.zB);
+      doc.setTextColor.apply(doc, GOODT);
+      if (x0 + W - xb > doc.getTextWidth(tg) + 4) doc.text(tg, (xb + x0 + W) / 2, y + 5.3, { align: "center" });
+      else doc.text(tg, x0 + W, y - 2.5, { align: "right" });   // wąskie pole: podpis nad paskiem
+      doc.setTextColor.apply(doc, WARNT);
+      if (xb - x0 > doc.getTextWidth(tw) + 4) doc.text(tw, (x0 + xb) / 2, y + 5.3, { align: "center" });
+      doc.setDrawColor.apply(doc, INK); doc.setLineWidth(0.5);
+      [[lo, "Próg · zysk 0%", "left"], [N.cenaB, "Zysk " + pct(N.zB), "center"], [hi, "Oferta · zysk " + pct(N.zA), "right"]].forEach(function (m) {
+        var x = X(m[0]); doc.line(x, y - 1.5, x, y + h + 1.5);
+        doc.setFont("Carlito", "normal"); doc.setFontSize(7.8); doc.setTextColor.apply(doc, MUT); doc.text(m[1], x, y + h + 5, { align: m[2] });
+        doc.setFont("Carlito", "bold"); doc.setFontSize(9); doc.setTextColor.apply(doc, INK); doc.text(zl(m[0]), x, y + h + 9.2, { align: m[2] });
+      });
+      return y + h + 16;
+    }
     head("Wycena " + d.typ + " · " + (d.nazwa || "bez nazwy"), stopka);
     var y = kafelki(32, [
-      ["Cena netto " + w0.nazwa + ", " + R.zA, zl(w0.cena), zl(w0.cenaMP) + " / MP"],
-      ["Cena netto " + w0.nazwa + ", " + R.zB, zl(w0.cena2), zl(w0.cenaMP2) + " / MP"],
-      ["Czas montażu", w0.tygodnie + " tyg.", w0.dni + " dni pracy, " + w0.osoby + " os."],
-      ["Konserwacja roczna", zl(r.konserwacja[0].rok), r.konserwacja[0].stawka + " zł/" + R.jm + "/mies." + (R.przeglad ? ", przegląd półroczny " + zl(r.konserwacja[0].pol) : "")]
+      ["Cena ofertowa · zysk " + pct(N.zA), zl(N.cenaA), w0.nazwa + " · " + zl(w0.cenaMP) + " / MP"],
+      ["Można zejść do · zysk " + pct(N.zB), zl(N.cenaB), "rabat −" + zl(N.cenaA - N.cenaB) + " (−" + n2((N.cenaA - N.cenaB) / N.cenaA * 100) + "%)"],
+      ["Próg opłacalności · zysk 0%", zl(N.cenaMin), "maks. rabat −" + zl(N.cenaA - N.cenaMin) + " (−" + n2((N.cenaA - N.cenaMin) / N.cenaA * 100) + "%)"],
+      ["Czas montażu", w0.tygodnie + " tyg.", w0.dni + " dni pracy, ekipa " + w0.osoby + " os."]
     ]);
-    y = numTable(R.ceny, h2("Ceny wariantów", y));
-    y = numTable(R.opcje, h2("Opcje do oferty (cena z narzutami)", y), { columnStyles: { 0: { halign: "left", cellWidth: 50 } } });
-    numTable(R.struktura, h2("Struktura kosztów", y));
+    y = pasek(h2("Pole do negocjacji (" + w0.nazwa + ")", y) + 7);
+    L.autoTable(doc, Object.assign({}, base, {
+      startY: y, head: [R.neg.head], body: R.neg.rows.map(function (x) { return x.vals; }),
+      columnStyles: { 0: { halign: "left", cellWidth: 40 } }, bodyStyles: { halign: "right" },
+      didParseCell: function (hh) {
+        if (hh.section === "head" && hh.column.index === 0) hh.cell.styles.halign = "left";
+        if (hh.section !== "body") return;
+        var x = R.neg.rows[hh.row.index].x;
+        if (x.oferta) { hh.cell.styles.fillColor = SOFT; hh.cell.styles.fontStyle = "bold"; hh.cell.styles.textColor = ACC; }
+        else if (x.porownanie) { hh.cell.styles.fillColor = GOOD; hh.cell.styles.fontStyle = "bold"; hh.cell.styles.textColor = GOODT; }
+        else if (x.prog) { hh.cell.styles.fillColor = BAD; hh.cell.styles.textColor = BADT; }
+        else if (x.zysk < N.zB) hh.cell.styles.fillColor = WARN;
+        else hh.cell.styles.fillColor = [244, 250, 246];
+      }
+    }));
+    doc.setFont("Carlito", "normal"); doc.setFontSize(7.6); doc.setTextColor.apply(doc, MUT);
+    doc.text("Zielone: rabat bez zejścia poniżej zysku " + pct(N.zB) + ". Żółte: poniżej zysku do porównania. Przy zysku 0% w cenie zostają koszty, KOB, GDW i podatek.", 14, doc.lastAutoTable.finalY + 4);
+    y = doc.lastAutoTable.finalY + 11;
+    y = numTable(R.ceny, h2("Warianty wykonania", y));
+    numTable(R.opcje, h2("Opcje do oferty (cena z narzutami)", y), { columnStyles: { 0: { halign: "left", cellWidth: 50 } } });
 
     doc.addPage(); head("Dane wejściowe", stopka);
     y = 34;
@@ -425,6 +488,7 @@
         didParseCell: function (h) { if (h.row.index % 2 === 1) h.cell.styles.fillColor = [247, 248, 249]; } }));
       yCol[col] = doc.lastAutoTable.finalY + 6;
     });
+    numTable(R.struktura, h2("Struktura kosztów", Math.max(yCol[0], yCol[1]) + 2));
 
     doc.addPage(); head("Obliczenia krok po kroku", stopka);
     y = h2("Materiały i urządzenia", 36);
@@ -556,7 +620,7 @@
     var dz = new Date(), data = ("0" + dz.getDate()).slice(-2) + "." + ("0" + (dz.getMonth() + 1)).slice(-2) + "." + dz.getFullYear();
     var tech = wpary.map(function (w) {
       var zagl = w.h2 != null && w.h2 !== w.h1 ? "H1-" + v(w.h1) + ", H2-" + v(w.h2) : v(w.h1);
-      if (TT.tech) return sub(TT.tech, { H: zagl, L: v(w.dl), P: v(w.p), G: v(w.gor), D: v(w.dol), M: v(d.dlMiejsca || 500) });
+      if (TT.tech) return sub(TT.tech, { H: zagl, L: v(w.dl), P: v(w.p), G: v(w.gor), D: v(w.dol), M: v(d.dlMiejsca || (d.wysokosci || {}).dlugosc || 500) });
       return "Zagłębienie: wysokość " + zagl + "cm; długość " + v(w.dl) + "cm;\nPrześwit między-kondygnacyjny: min. " + v(w.p) +
         "cm;\nWysokość parkowanych pojazdów*: ▲-" + v(w.gor) + "cm, ▼-" + v(w.dol) + "cm;";
     }).join("\nlub\n");

@@ -353,6 +353,17 @@ fieldset.card:focus-within { border-color: color-mix(in srgb, var(--accent) 45%,
 .edhead h2 { font-size: 20px; font-weight: 600; letter-spacing: -.01em; }
 #szPane { padding: 16px 18px 18px; }
 .ukryj { display: none !important; }
+.negkaf { display: grid; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)); gap: 10px; }
+.negkaf > div { border: 1px solid var(--line); border-radius: 10px; padding: 10px 12px; display: flex; flex-direction: column; gap: 2px; background: var(--accent-soft); }
+.negkaf > div.ok { background: var(--good-soft); } .negkaf > div.pr { background: var(--bad-soft); }
+.negkaf span { font-size: 11.5px; color: var(--muted); } .negkaf b { font-family: var(--f-num); font-size: 19px; font-weight: 500; }
+.negkaf small { font-family: var(--f-num); font-size: 12px; color: var(--ink-2); }
+.negbar { display: flex; gap: 2px; height: 12px; margin-top: 16px; border-radius: 4px; overflow: hidden; }
+.negbar .w { background: var(--warn); opacity: .55; } .negbar .g { background: var(--good); opacity: .7; }
+.negosi { position: relative; height: 34px; font-family: var(--f-num); font-size: 12px; margin-top: 4px; }
+.negosi span { position: absolute; top: 0; white-space: nowrap; } .negosi span:first-child { left: 0; } .negosi span:last-child { right: 0; text-align: right; }
+.negosi span:nth-child(2) { transform: translateX(-50%); text-align: center; } .negosi small { color: var(--muted); font-family: var(--f-ui); }
+table.t tr.negb td { background: var(--good-soft); font-weight: 600; } table.t tr.negw td { background: var(--warn-soft); } table.t tr.negp td { background: var(--bad-soft); }
 .dlg-bg { position: fixed; inset: 0; z-index: 35; background: color-mix(in srgb, var(--ink) 35%, transparent); display: grid; place-items: center;
   padding: max(16px, env(safe-area-inset-top, 0px)) max(16px, env(safe-area-inset-right, 0px)) max(16px, env(safe-area-inset-bottom, 0px)) max(16px, env(safe-area-inset-left, 0px)); }
 .dlg { width: min(460px, 100%); padding: 20px; display: flex; flex-direction: column; gap: 12px; animation: wejscie .2s ease-out both; }
@@ -740,7 +751,45 @@ window.NK38_FONTS = { regular: "AAEAAAAOAIAAAwBgR0RFRgS1BUEAAH9cAAAARkdQT1MAGQAM
     });
     return s;
   }
-  function szablonyWbudowane() { return [szablonNK38(), szablonNK37(), szablonNK6501(), szablonNKPXLH()].map(uzupelnijSzablon); }
+  /* NK41: platformy zależne pochylane (kalkulator "-NK3 2T A .10.26", oferta Żegiestowska 5 Wrocław). Koszty produkcji z dołu arkusza. */
+  function szablonNK41() {
+    var s = bazaLista();
+    s.id = "nk41"; s.nazwa = "NK41";
+    s.opisOferty = "Platformy służące do zależnego parkowania pojazdów w pochyleniu {typ}";
+    s.typy = {
+      S: { nazwa: "Platformy NK41", mp: 2, osd: 2.2, cena: 12000, waluta: "PLN", dzwig: 1 / 15,
+        oferta: "{n} szt. – NKPXL szer. użytkowa miejsca postojowego 250cm, szer. zewnętrzna urządzenia 280cm;" },
+      D: { nazwa: "", mp: 0, osd: 0, cena: 0, waluta: "PLN", dzwig: 0, oferta: "" },
+      NP: { nazwa: "", mp: 0, osd: 0, cena: 0, waluta: "PLN", dzwig: 0, oferta: "" }
+    };
+    s.pozycje = [
+      { id: "hydr", nazwa: "Hydraulika (siłownik 850 + rury i złączki 470 + wąż 100)", cena: 1420, waluta: "PLN", naCo: "szt", wsp: 1, osd: 0, opcja: false, tekst: "" },
+      { id: "agr", nazwa: "Agregat hydrauliczny", cena: 780, waluta: "EUR", naCo: "agregat", wsp: 1, osd: 0, opcja: false, tekst: "" },
+      { id: "ster_a", nazwa: "Sterowanie i elektryka: na agregat", cena: 1400, waluta: "PLN", naCo: "agregat", wsp: 1, osd: 0, opcja: false, tekst: "" },
+      { id: "ster_u", nazwa: "Sterowanie i elektryka: na urządzenie", cena: 500, waluta: "PLN", naCo: "szt", wsp: 1, osd: 0, opcja: false, tekst: "" }
+    ];
+    s.wariantB = { nazwa: "", tryb: "%", wartosc: 0, waluta: "PLN" };
+    s.opcje.rozladunekNaTransport = true; s.opcje.konserwacjaNa = "szt"; s.opcje.agregaty = true; s.opcje.slupki = true;
+    s.wysokosci = { tryb: "przeswit2", k: -20, dol: 150, dlugosc: 400 };
+    s.domyslne = { zysk: 0.14, zysk2: 0.11, konserwA: 40, konserwB: 50, tir: 1, tir_cena: 3200, rozl_cena: 1500 };
+    Object.assign(s.cennik, { stawka_1: 500, stawka_2: 400, stawka_kolejna: 350, hotel: 130, dieta: 45, odbiory_osoby: 2, dzwig: 2400, rozl_TIR: 0.5, kob: 0.00515, gdw: 0.02585, slupek: 1700 });
+    s.teksty = Object.assign(tekstyNK38(), {
+      obciazenie: "Obciążenie platformy: 2.000kg/miejsce;",
+      zabezpieczenie: "Zabezpieczenie antykorozyjne: platforma ocynkowana ogniowo, słupy i siłowniki malowane.",
+      barierki: "", opcjaQ2500: "",
+      uwagaTech: "*parametry pojazdów dopuszczonych do wjazdu w obręb urządzeń są zależne od wysokości prześwitu dostępnego na danym miejscu w garażu.",
+      wstep: "przedstawiamy {oferte} na dostawę i montaż {n} platform służących do zależnego parkowania {mp} pojazdów w pochyleniu dla inwestycji {garaz}.",
+      tech: "Zagłębienie: brak;\nWysokość prześwitu: {P}cm;\nWysokość parkowanych pojazdów*: ▲-{G}cm, ▼-{D}cm;\nDługość parkowanych pojazdów: ▲-{M}cm, ▼-{M}cm;",
+      agregat: "agregat hydrauliczny 400V, 50Hz, 3kW", kw: "3kW",
+      platnosci: "30% zaliczka płatna na 22 tygodnie przed dostawą,\n30% płatność na 7 dni przed dostawą,\n90% płatność do 21 dni po dostawie,\n100% płatność do 21 dni po zakończeniu montażu i pierwszym badaniu UDT.\nOferta ważna jest 2 miesiące.",
+      dostawa: 22, gw: "60",
+      zakres: "Dostawa na plac budowy urządzeń parkingowych, montaż, rozruch i doprowadzenie do badań ruchowych poprzedzających wydanie Decyzji o Dopuszczeniu do Użytkowania wraz z kompletem dokumentów określonych przepisami UDT.\nPoza ofertą pozostają: koszty przeprowadzenia badania przez UDT, wszelkie roboty budowlano-wykończeniowe obiektu, wykonanie barier stałych zabezpieczających dostęp pod platformy z tyłu lub z boku w przypadku braku ścian (jeśli konieczne / zgodnie z naszymi wytycznymi), wykonanie przepustów przez ściany działowe o średnicy fi 150mm dla przeprowadzenia przewodów elektrycznych i hydraulicznych (jeśli konieczne / zgodnie z naszymi wytycznymi), napraw tynkarsko-malarskich po montażu urządzeń sterowniczych oraz mocowań konstrukcyjnych, wyposażenia w instalację przeciw-pożarową, wentylacyjną, elektryczną obiektu, sygnalizacyjną, oznaczeń pionowych i poziomych organizacji ruchu na terenie parkingu.",
+      gwarancja: "Producent udziela {gw} miesięcznej gwarancji jakości na sprawne działanie urządzeń pod warunkiem podpisania z dostawcą umowy konserwacyjno-serwisowej umożliwiającej nam stałą opiekę oraz nadzór nad stanem technicznym platform. W ramach umowy serwisowej dokonywane są 2 przeglądy serwisowe w ciągu roku.\nGwarancja nie obejmuje zużycia części eksploatacyjnych, uszkodzeń wynikających z eksploatacji niezgodnej z instrukcją użytkowania, agresywnego środowiska, zbyt dużej wilgotności, uszkodzeń powstałych w wyniku zdarzeń losowych (np. pożar, zalanie). Po upływie okresu gwarancji świadczymy serwis pogwarancyjny."
+    });
+    s.teksty.warunki = szablonNKPXLH().teksty.warunki;
+    return s;
+  }
+  function szablonyWbudowane() { return [szablonNK38(), szablonNK37(), szablonNK6501(), szablonNKPXLH(), szablonNK41()].map(uzupelnijSzablon); }
   /* Uzupełnia szablon o brakujące pola (np. zapisany starszą wersją aplikacji). */
   function uzupelnijSzablon(sz) {
     var b = szablonNK38(), s = JSON.parse(JSON.stringify(sz || b));
@@ -941,7 +990,7 @@ window.NK38_FONTS = { regular: "AAEAAAAOAIAAAwBgR0RFRgS1BUEAAH9cAAAARkdQT1MAGQAM
     var cena = n.brutto + n.podatek, cena2 = n2.brutto + n2.podatek;
     var tyg = w.krk ? ceil(dni / c.dni_tydzien) : wyj;
     return {
-      osoby: os, stawka: st, osd: osd, iteracje: iteracje, wyjazdy: wyj, podroze: podr,
+      robocizna: robocizna, osoby: os, stawka: st, osd: osd, iteracje: iteracje, wyjazdy: wyj, podroze: podr,
       osobodni: osdAll, dni: dni, km: km, koszty: k, baza: baza,
       kob: n.brutto * c.kob, gdw: n.brutto * c.gdw, zysk: n.brutto * zysk, podatek: n.podatek,
       /* Jak w Excelu: koszt rzeczywisty = koszty + KOB + podatek, zysk z narzutem = cena − koszt = zysk + GDW. */
@@ -1001,7 +1050,7 @@ window.NK38_FONTS = { regular: "AAEAAAAOAIAAAwBgR0RFRgS1BUEAAH9cAAAARkdQT1MAGQAM
     var dop22 = (c.slupek22 - c.slupek) * m.MP * mnoznik;
     var sl37b = [warianty[2].cena2 - warianty[0].cena2, warianty[3].cena2 - warianty[1].cena2];
     var dop22b = (c.slupek22 - c.slupek) * m.MP * mnoznik2;
-    return {
+    var wynik = {
       dane: d, cennik: c, szablon: sz, mat: m, wspolne: w, warianty: warianty,
       analiza: analiza, analizaWariant: nazwy[a],
       opcje: {
@@ -1017,12 +1066,34 @@ window.NK38_FONTS = { regular: "AAEAAAAOAIAAAwBgR0RFRgS1BUEAAH9cAAAARkdQT1MAGQAM
         return { stawka: st, rok: st * baza * 12, pol: sz.opcje.przeglad ? st * baza * 6 : 0 };
       })
     };
+    wynik.negocjacje = negocjacje(wynik, 0);
+    return wynik;
+  }
+
+  /* Cena wariantu przy dowolnym procencie zysku (te same koszty i narzuty): do drabinki negocjacyjnej. */
+  function cenaPrzyZysku(r, w, z) {
+    var c = r.cennik, b = w.baza / (1 - (c.kob + c.gdw + z)), pod = c.podatek * (w.robocizna + b * (c.gdw + z)), cena = b + pod;
+    return { zysk: z, cena: cena, zyskN: b * (c.gdw + z), cenaMP: r.mat.MP ? cena / r.mat.MP : 0 };
+  }
+  /* Drabinka: od zysku ofertowego w dół co 2 pkt proc. do 0%, z zyskiem do porównania; rabat liczony od ceny ofertowej. */
+  function negocjacje(r, wi) {
+    var w = r.warianty[wi || 0], zA = num(r.dane.zysk), zB = num(r.dane.zysk2), poz = [zA, zB, 0];
+    for (var p = Math.floor(zA * 100 / 2) * 2; p > 0; p -= 2) poz.push(p / 100);
+    poz = poz.map(function (z) { return Math.round(z * 10000) / 10000; }).filter(function (z, i, a) { return z <= zA + 1e-9 && a.indexOf(z) === i; }).sort(function (a, b) { return b - a; });
+    var A = cenaPrzyZysku(r, w, zA);
+    var wiersze = poz.map(function (z) {
+      var x = cenaPrzyZysku(r, w, z);
+      return Object.assign(x, { rabat: A.cena - x.cena, rabatPct: A.cena ? (A.cena - x.cena) / A.cena : 0, oferta: z === Math.round(zA * 10000) / 10000, porownanie: z === Math.round(zB * 10000) / 10000 && zB < zA, prog: z === 0 });
+    });
+    var B = cenaPrzyZysku(r, w, Math.min(zA, zB)), Z = cenaPrzyZysku(r, w, 0);
+    return { wariant: w.nazwa, zA: zA, zB: Math.min(zA, zB), cenaA: A.cena, cenaB: B.cena, cenaMin: Z.cena, zyskNA: A.zyskN, zyskNB: B.zyskN, wiersze: wiersze };
   }
 
   var api = {
+    cenaPrzyZysku: cenaPrzyZysku, negocjacje: negocjacje,
     oblicz: oblicz, domyslneDane: domyslneDane, CENNIK: CENNIK,
     GLEBOKOSCI: szablonNK38().glebokosci.map(function (g) { return g.cm; }),
-    szablonNK38: szablonNK38, szablonNK6501: szablonNK6501, szablonNKPXLH: szablonNKPXLH, szablonPusty: szablonPusty, nazwyWariantow: nazwyWariantow, szablonyWbudowane: szablonyWbudowane, uzupelnijSzablon: uzupelnijSzablon,
+    szablonNK38: szablonNK38, szablonNK6501: szablonNK6501, szablonNKPXLH: szablonNKPXLH, szablonNK41: szablonNK41, szablonPusty: szablonPusty, nazwyWariantow: nazwyWariantow, szablonyWbudowane: szablonyWbudowane, uzupelnijSzablon: uzupelnijSzablon,
     WARIANTY: WARIANTY, OSOBY_ANALIZA: OSOBY_ANALIZA, czasPodrozy: czasPodrozy, stawkaSrednia: stawkaSrednia
   };
   if (typeof module !== "undefined" && module.exports) module.exports = api;
@@ -1189,7 +1260,15 @@ window.NK38_FONTS = { regular: "AAEAAAAOAIAAAwBgR0RFRgS1BUEAAH9cAAAARkdQT1MAGQAM
     ].map(function (row) {
       return { label: row[0], info: row[4] ? info[row[2]] : "", fmt: row[1], bold: !!row[3], vals: ws.map(function (x) { return row[4] ? x.koszty[row[2]] : x[row[2]]; }) };
     }) };
-    return { grupy: grupy, ceny: ceny, struktura: struktura, opcje: opcje, mat: mat, mon: mon, zA: zA, zB: zB, jm: jm, przeglad: sz.opcje.przeglad };
+    var N = r.negocjacje, neg = N && {
+      N: N,
+      head: ["Zysk", "Cena netto", "Rabat od oferty", "Rabat %", "Zysk z narzutem", "Cena za MP"],
+      rows: N.wiersze.map(function (x) {
+        return { x: x, vals: [pct(x.zysk) + (x.oferta ? "  oferta" : x.porownanie ? "  do porównania" : x.prog ? "  próg" : ""), zl(x.cena), x.rabat ? "−" + zl(x.rabat) : "–",
+          x.rabat ? "−" + n2(x.rabatPct * 100) + "%" : "–", zl(x.zyskN), zl(x.cenaMP)] };
+      })
+    };
+    return { grupy: grupy, ceny: ceny, struktura: struktura, opcje: opcje, mat: mat, mon: mon, zA: zA, zB: zB, jm: jm, przeglad: sz.opcje.przeglad, neg: neg };
   }
 
   function fmtVal(v, f) {
@@ -1298,7 +1377,7 @@ window.NK38_FONTS = { regular: "AAEAAAAOAIAAAwBgR0RFRgS1BUEAAH9cAAAARkdQT1MAGQAM
     function tiles(ws, items) {
       var r1 = ws.addRow([]), r2 = ws.addRow([]), r3 = ws.addRow([]);
       r1.height = 18; r2.height = 30; r3.height = 16;
-      var spans = [[1, 2], [3, 5]];
+      var spans = items.spans || [[1, 2], [3, 5]];
       items.forEach(function (t, i) {
         var col = spans[i][0];
         [r1, r2, r3].forEach(function (row) { ws.mergeCells(row.number, spans[i][0], row.number, spans[i][1]); });
@@ -1317,30 +1396,45 @@ window.NK38_FONTS = { regular: "AAEAAAAOAIAAAwBgR0RFRgS1BUEAAH9cAAAARkdQT1MAGQAM
     var gen = "Wygenerowano " + new Date().toLocaleString("pl-PL") + " · ceny netto w zł · szablon " + d.typ;
 
     /* 1. Podsumowanie */
-    var s1 = sheet("Podsumowanie", [36, 18, 18, 18, 18], 82);
-    banner(s1, "Wycena " + d.typ + " · " + (d.nazwa || "bez nazwy"), gen, 5);
-    tiles(s1, [
-      ["Cena netto " + w0.nazwa + ", " + R.zA, w0.cena, zl(w0.cenaMP) + " / MP"],
-      ["Cena netto " + w0.nazwa + ", " + R.zB, w0.cena2, zl(w0.cenaMP2) + " / MP"]
-    ]);
-    tiles(s1, [
-      ["Czas montażu", w0.tygodnie + " tyg.", w0.dni + " dni pracy, ekipa " + w0.osoby + " os.", "@", 1],
-      R.przeglad ? ["Konserwacja roczna / przegląd półroczny", zl(r.konserwacja[0].rok) + " / " + zl(r.konserwacja[0].pol),
-        r.konserwacja[0].stawka + " zł/" + R.jm + "/mies.; przy " + r.konserwacja[1].stawka + " zł/" + R.jm + "/mies.: " + zl(r.konserwacja[1].rok) + " / " + zl(r.konserwacja[1].pol), "@", 1]
-        : ["Konserwacja roczna", zl(r.konserwacja[0].rok), r.konserwacja[0].stawka + " zł/" + R.jm + "/mies.; przy " + r.konserwacja[1].stawka + " zł/" + R.jm + "/mies.: " + zl(r.konserwacja[1].rok), "@", 1]
-    ]);
-    section(s1, "Ceny wariantów", 5);
+    var s1 = sheet("Podsumowanie", [30, 17, 17, 16, 17, 17], 80), N = R.neg.N;
+    banner(s1, "Wycena " + d.typ + " · " + (d.nazwa || "bez nazwy"), gen, 6);
+    var t1 = [
+      ["Cena ofertowa · zysk " + pct(N.zA), N.cenaA, w0.nazwa + " · " + zl(w0.cenaMP) + " / MP"],
+      ["Można zejść do · zysk " + pct(N.zB), N.cenaB, "rabat −" + zl(N.cenaA - N.cenaB) + " (−" + n2((N.cenaA - N.cenaB) / N.cenaA * 100) + "%)"]]; t1.spans = [[1, 3], [4, 6]];
+    tiles(s1, t1);
+    var t2 = [
+      ["Próg opłacalności · zysk 0%", N.cenaMin, "maks. rabat −" + zl(N.cenaA - N.cenaMin) + " (−" + n2((N.cenaA - N.cenaMin) / N.cenaA * 100) + "%)", null, 1],
+      ["Montaż / konserwacja roczna", w0.tygodnie + " tyg. / " + zl(r.konserwacja[0].rok), w0.dni + " dni pracy, ekipa " + w0.osoby + " os.; konserwacja " + r.konserwacja[0].stawka + " zł/" + R.jm + "/mies.", "@", 1]]; t2.spans = [[1, 3], [4, 6]];
+    tiles(s1, t2);
+    section(s1, "Pole do negocjacji: o ile można zejść z ceny (" + w0.nazwa + ")", 6);
+    var GOOD = "FFE3F4EA", GOODT = "FF13794A", WARN = "FFFDF3DD", BAD = "FFFDECEA", BADT = "FFB42318";
+    var hn = s1.addRow(R.neg.head); hn.height = 26;
+    hn.eachCell(function (c, i) { c.fill = fill(C.accSoft); c.border = box; c.font = font({ bold: true, size: 9, color: { argb: C.acc } }); c.alignment = { horizontal: i === 1 ? "left" : "right", vertical: "middle", wrapText: true, indent: i === 1 ? 1 : 0 }; });
+    N.wiersze.forEach(function (x) {
+      var row = s1.addRow([x.zysk, x.cena, x.rabat ? -x.rabat : 0, x.rabat ? -x.rabatPct : 0, x.zyskN, x.cenaMP]);
+      var kolor = x.oferta ? C.accSoft : x.porownanie ? GOOD : x.prog ? BAD : x.zysk < N.zB ? WARN : "FFF4FAF6";
+      var tekst = x.oferta ? C.acc : x.porownanie ? GOODT : x.prog ? BADT : C.ink;
+      row.eachCell({ includeEmpty: true }, function (c, i) {
+        c.border = box; c.fill = fill(kolor); c.font = font({ bold: x.oferta || x.porownanie, color: { argb: tekst } });
+        c.numFmt = i === 1 ? '0.0%"' + (x.oferta ? "  oferta" : x.porownanie ? "  do porównania" : x.prog ? "  próg" : "") + '"' : i === 4 ? '0.0%;-0.0%;"–"' : NF.zl;
+        c.alignment = { horizontal: i === 1 ? "left" : "right", indent: i === 1 ? 1 : 0, vertical: "middle" };
+      });
+    });
+    var leg = s1.addRow(["Zielone: rabat bez zejścia poniżej zysku " + pct(N.zB) + ". Żółte: poniżej zysku do porównania. Przy zysku 0% w cenie zostają koszty, KOB, GDW i podatek."]);
+    s1.mergeCells(leg.number, 1, leg.number, 6); leg.getCell(1).font = font({ size: 8.5, color: { argb: C.muted } }); leg.getCell(1).alignment = { wrapText: true, indent: 1 }; leg.height = 24;
+    s1.addRow([]);
+    section(s1, "Warianty wykonania", 6);
     table(s1, R.ceny.head, R.ceny.rows);
-    section(s1, "Opcje do oferty (cena z narzutami)", 5);
+    section(s1, "Opcje do oferty (cena z narzutami)", 6);
     table(s1, R.opcje.head, R.opcje.rows);
-    section(s1, "Struktura kosztów", 5);
-    table(s1, R.struktura.head, R.struktura.rows);
     s1.lastRow.addPageBreak();
-    section(s1, "Dane wejściowe", 5);
+    section(s1, "Struktura kosztów", 6);
+    table(s1, R.struktura.head, R.struktura.rows);
+    section(s1, "Dane wejściowe", 6);
     R.grupy.forEach(function (g) {
-      var x = s1.addRow([g.tytul]); s1.mergeCells(x.number, 1, x.number, 5);
+      var x = s1.addRow([g.tytul]); s1.mergeCells(x.number, 1, x.number, 6);
       x.getCell(1).font = font({ bold: true, size: 10 }); x.getCell(1).fill = fill(C.accSoft); x.getCell(1).alignment = { indent: 1 };
-      pairs(s1, g.pary, 5, 75);
+      pairs(s1, g.pary, 6, 85);
       s1.lastRow.height = 6;
     });
 
@@ -1434,16 +1528,56 @@ window.NK38_FONTS = { regular: "AAEAAAAOAIAAAwBgR0RFRgS1BUEAAH9cAAAARkdQT1MAGQAM
     }
     var stopka = (d.nazwa || "Wycena") + " · szablon " + d.typ + " · wygenerowano " + new Date().toLocaleDateString("pl-PL");
 
+    var GOOD = [227, 244, 234], GOODT = [19, 121, 74], WARN = [253, 243, 221], WARNT = [138, 83, 0], BAD = [253, 236, 234], BADT = [180, 35, 24];
+    var N = R.neg.N;
+    /* pasek: od progu (zysk 0%) do ceny ofertowej; zielone pole = rabat bez zejścia poniżej zysku do porównania */
+    function pasek(y) {
+      var x0 = 14, W = 182, h = 8, lo = N.cenaMin, hi = N.cenaA, span = (hi - lo) || 1;
+      var X = function (v) { return x0 + (v - lo) / span * W; }, xb = X(N.cenaB);
+      doc.setFillColor.apply(doc, WARN); doc.rect(x0, y, xb - x0, h, "F");
+      doc.setFillColor.apply(doc, GOOD); doc.rect(xb, y, x0 + W - xb, h, "F");
+      doc.setFont("Carlito", "bold"); doc.setFontSize(8);
+      var tg = "rabat do −" + zl(N.cenaA - N.cenaB) + " zachowuje zysk " + pct(N.zB), tw = "poniżej zysku " + pct(N.zB);
+      doc.setTextColor.apply(doc, GOODT);
+      if (x0 + W - xb > doc.getTextWidth(tg) + 4) doc.text(tg, (xb + x0 + W) / 2, y + 5.3, { align: "center" });
+      else doc.text(tg, x0 + W, y - 2.5, { align: "right" });   // wąskie pole: podpis nad paskiem
+      doc.setTextColor.apply(doc, WARNT);
+      if (xb - x0 > doc.getTextWidth(tw) + 4) doc.text(tw, (x0 + xb) / 2, y + 5.3, { align: "center" });
+      doc.setDrawColor.apply(doc, INK); doc.setLineWidth(0.5);
+      [[lo, "Próg · zysk 0%", "left"], [N.cenaB, "Zysk " + pct(N.zB), "center"], [hi, "Oferta · zysk " + pct(N.zA), "right"]].forEach(function (m) {
+        var x = X(m[0]); doc.line(x, y - 1.5, x, y + h + 1.5);
+        doc.setFont("Carlito", "normal"); doc.setFontSize(7.8); doc.setTextColor.apply(doc, MUT); doc.text(m[1], x, y + h + 5, { align: m[2] });
+        doc.setFont("Carlito", "bold"); doc.setFontSize(9); doc.setTextColor.apply(doc, INK); doc.text(zl(m[0]), x, y + h + 9.2, { align: m[2] });
+      });
+      return y + h + 16;
+    }
     head("Wycena " + d.typ + " · " + (d.nazwa || "bez nazwy"), stopka);
     var y = kafelki(32, [
-      ["Cena netto " + w0.nazwa + ", " + R.zA, zl(w0.cena), zl(w0.cenaMP) + " / MP"],
-      ["Cena netto " + w0.nazwa + ", " + R.zB, zl(w0.cena2), zl(w0.cenaMP2) + " / MP"],
-      ["Czas montażu", w0.tygodnie + " tyg.", w0.dni + " dni pracy, " + w0.osoby + " os."],
-      ["Konserwacja roczna", zl(r.konserwacja[0].rok), r.konserwacja[0].stawka + " zł/" + R.jm + "/mies." + (R.przeglad ? ", przegląd półroczny " + zl(r.konserwacja[0].pol) : "")]
+      ["Cena ofertowa · zysk " + pct(N.zA), zl(N.cenaA), w0.nazwa + " · " + zl(w0.cenaMP) + " / MP"],
+      ["Można zejść do · zysk " + pct(N.zB), zl(N.cenaB), "rabat −" + zl(N.cenaA - N.cenaB) + " (−" + n2((N.cenaA - N.cenaB) / N.cenaA * 100) + "%)"],
+      ["Próg opłacalności · zysk 0%", zl(N.cenaMin), "maks. rabat −" + zl(N.cenaA - N.cenaMin) + " (−" + n2((N.cenaA - N.cenaMin) / N.cenaA * 100) + "%)"],
+      ["Czas montażu", w0.tygodnie + " tyg.", w0.dni + " dni pracy, ekipa " + w0.osoby + " os."]
     ]);
-    y = numTable(R.ceny, h2("Ceny wariantów", y));
-    y = numTable(R.opcje, h2("Opcje do oferty (cena z narzutami)", y), { columnStyles: { 0: { halign: "left", cellWidth: 50 } } });
-    numTable(R.struktura, h2("Struktura kosztów", y));
+    y = pasek(h2("Pole do negocjacji (" + w0.nazwa + ")", y) + 7);
+    L.autoTable(doc, Object.assign({}, base, {
+      startY: y, head: [R.neg.head], body: R.neg.rows.map(function (x) { return x.vals; }),
+      columnStyles: { 0: { halign: "left", cellWidth: 40 } }, bodyStyles: { halign: "right" },
+      didParseCell: function (hh) {
+        if (hh.section === "head" && hh.column.index === 0) hh.cell.styles.halign = "left";
+        if (hh.section !== "body") return;
+        var x = R.neg.rows[hh.row.index].x;
+        if (x.oferta) { hh.cell.styles.fillColor = SOFT; hh.cell.styles.fontStyle = "bold"; hh.cell.styles.textColor = ACC; }
+        else if (x.porownanie) { hh.cell.styles.fillColor = GOOD; hh.cell.styles.fontStyle = "bold"; hh.cell.styles.textColor = GOODT; }
+        else if (x.prog) { hh.cell.styles.fillColor = BAD; hh.cell.styles.textColor = BADT; }
+        else if (x.zysk < N.zB) hh.cell.styles.fillColor = WARN;
+        else hh.cell.styles.fillColor = [244, 250, 246];
+      }
+    }));
+    doc.setFont("Carlito", "normal"); doc.setFontSize(7.6); doc.setTextColor.apply(doc, MUT);
+    doc.text("Zielone: rabat bez zejścia poniżej zysku " + pct(N.zB) + ". Żółte: poniżej zysku do porównania. Przy zysku 0% w cenie zostają koszty, KOB, GDW i podatek.", 14, doc.lastAutoTable.finalY + 4);
+    y = doc.lastAutoTable.finalY + 11;
+    y = numTable(R.ceny, h2("Warianty wykonania", y));
+    numTable(R.opcje, h2("Opcje do oferty (cena z narzutami)", y), { columnStyles: { 0: { halign: "left", cellWidth: 50 } } });
 
     doc.addPage(); head("Dane wejściowe", stopka);
     y = 34;
@@ -1458,6 +1592,7 @@ window.NK38_FONTS = { regular: "AAEAAAAOAIAAAwBgR0RFRgS1BUEAAH9cAAAARkdQT1MAGQAM
         didParseCell: function (h) { if (h.row.index % 2 === 1) h.cell.styles.fillColor = [247, 248, 249]; } }));
       yCol[col] = doc.lastAutoTable.finalY + 6;
     });
+    numTable(R.struktura, h2("Struktura kosztów", Math.max(yCol[0], yCol[1]) + 2));
 
     doc.addPage(); head("Obliczenia krok po kroku", stopka);
     y = h2("Materiały i urządzenia", 36);
@@ -1589,7 +1724,7 @@ window.NK38_FONTS = { regular: "AAEAAAAOAIAAAwBgR0RFRgS1BUEAAH9cAAAARkdQT1MAGQAM
     var dz = new Date(), data = ("0" + dz.getDate()).slice(-2) + "." + ("0" + (dz.getMonth() + 1)).slice(-2) + "." + dz.getFullYear();
     var tech = wpary.map(function (w) {
       var zagl = w.h2 != null && w.h2 !== w.h1 ? "H1-" + v(w.h1) + ", H2-" + v(w.h2) : v(w.h1);
-      if (TT.tech) return sub(TT.tech, { H: zagl, L: v(w.dl), P: v(w.p), G: v(w.gor), D: v(w.dol), M: v(d.dlMiejsca || 500) });
+      if (TT.tech) return sub(TT.tech, { H: zagl, L: v(w.dl), P: v(w.p), G: v(w.gor), D: v(w.dol), M: v(d.dlMiejsca || (d.wysokosci || {}).dlugosc || 500) });
       return "Zagłębienie: wysokość " + zagl + "cm; długość " + v(w.dl) + "cm;\nPrześwit między-kondygnacyjny: min. " + v(w.p) +
         "cm;\nWysokość parkowanych pojazdów*: ▲-" + v(w.gor) + "cm, ▼-" + v(w.dol) + "cm;";
     }).join("\nlub\n");
@@ -1843,7 +1978,7 @@ window.NK38_FONTS = { regular: "AAEAAAAOAIAAAwBgR0RFRgS1BUEAAH9cAAAARkdQT1MAGQAM
     ["Narzuty", null], ["kob", "KOB", "×"], ["gdw", "GDW", "×"], ["podatek", "Podatek efektywny", "×"]
   ];
   var GRUPY = ["Mechanika", "Hydraulika", "Elektryka", "Inne"];
-  var TABS = [["wynik", "Warianty"], ["ekipa", "Ekipa"], ["zestaw", "Zestawienie"], ["obl", "Obliczenia"], ["wyceny", "Wyceny"]];
+  var TABS = [["wynik", "Warianty"], ["neg", "Negocjacje"], ["ekipa", "Ekipa"], ["zestaw", "Zestawienie"], ["obl", "Obliczenia"], ["wyceny", "Wyceny"]];
 
   var LOGO_URL = window.NK38_LOGO || "logo.png";   // wersja offline ma logo wbudowane
   var $ = function (id) { return document.getElementById(id); };
@@ -2333,7 +2468,7 @@ window.NK38_FONTS = { regular: "AAEAAAAOAIAAAwBgR0RFRgS1BUEAAH9cAAAARkdQT1MAGQAM
       return '<button type="button" role="tab" data-tab="' + t[0] + '" aria-selected="' + (state.tab === t[0]) + '">' + t[1] + "</button>";
     }).join("");
     if (state.bezPanelu) return;
-    $("pane").innerHTML = ({ wynik: paneWynik, ekipa: paneEkipa, zestaw: paneZestaw, obl: paneObl, wyceny: paneWyceny }[state.tab] || paneWynik)();
+    $("pane").innerHTML = ({ wynik: paneWynik, neg: paneNeg, ekipa: paneEkipa, zestaw: paneZestaw, obl: paneObl, wyceny: paneWyceny }[state.tab] || paneWynik)();
     if (state.tab === "wyceny") wypelnijWyceny();
   }
   /* druga wartość w kafelku: etykieta w jednej linii, kwota pod nią w kolorze tekstu */
@@ -2463,6 +2598,22 @@ window.NK38_FONTS = { regular: "AAEAAAAOAIAAAwBgR0RFRgS1BUEAAH9cAAAARkdQT1MAGQAM
     return h;
   }
 
+  /* Negocjacje: o ile można zejść z ceny ofertowej przy kolejnych poziomach zysku */
+  function paneNeg() {
+    var N = wynik.negocjacje, lo = N.cenaMin, hi = N.cenaA, span = (hi - lo) || 1, pb = (N.cenaB - lo) / span * 100;
+    var h = '<div class="negkaf"><div><span>Cena ofertowa · zysk ' + pct(N.zA) + "</span><b>" + zl(N.cenaA) + "</b></div>" +
+      '<div class="ok"><span>Można zejść do · zysk ' + pct(N.zB) + "</span><b>" + zl(N.cenaB) + "</b><small>rabat −" + zl(N.cenaA - N.cenaB) + " (−" + n2((N.cenaA - N.cenaB) / N.cenaA * 100) + "%)</small></div>" +
+      '<div class="pr"><span>Próg opłacalności · zysk 0%</span><b>' + zl(N.cenaMin) + "</b><small>maks. rabat −" + zl(N.cenaA - N.cenaMin) + " (−" + n2((N.cenaA - N.cenaMin) / N.cenaA * 100) + "%)</small></div></div>";
+    h += '<div class="negbar" role="img" aria-label="Pole do negocjacji"><i class="w" style="width:' + pb.toFixed(1) + '%"></i><i class="g" style="width:' + (100 - pb).toFixed(1) + '%"></i></div>' +
+      '<div class="negosi"><span>' + zl(lo) + "<br><small>zysk 0%</small></span><span style=\"left:" + pb.toFixed(1) + '%">' + zl(N.cenaB) + "<br><small>zysk " + pct(N.zB) + "</small></span><span>" + zl(hi) + "<br><small>oferta</small></span></div>";
+    h += '<div class="scroll" style="margin-top:14px"><table class="t"><thead><tr><th>Zysk</th><th>Cena netto</th><th>Rabat od oferty</th><th>Rabat %</th><th>Zysk z narzutem</th><th>Cena za MP</th></tr></thead><tbody>' +
+      N.wiersze.map(function (x) {
+        var kl = x.oferta ? "strong" : x.porownanie ? "negb" : x.prog ? "negp" : x.zysk < N.zB ? "negw" : "";
+        return '<tr class="' + kl + '"><td>' + pct(x.zysk) + (x.oferta ? ' <span class="tag">oferta</span>' : x.porownanie ? ' <span class="tag">do porównania</span>' : x.prog ? ' <span class="tag">próg</span>' : "") +
+          "</td><td>" + zl(x.cena) + "</td><td>" + (x.rabat ? "−" + zl(x.rabat) : "–") + "</td><td>" + (x.rabat ? "−" + n2(x.rabatPct * 100) + "%" : "–") + "</td><td>" + zl(x.zyskN) + "</td><td>" + zl(x.cenaMP) + "</td></tr>";
+      }).join("") + '</tbody></table></div><p class="note" style="margin-top:8px">Wariant ' + esc(N.wariant) + ". Te same koszty i narzuty, zmienia się tylko zysk. Przy zysku 0% w cenie zostają koszty, KOB, GDW i podatek.</p>";
+    return h;
+  }
   function paneWyceny() {
     return '<div class="row"><input id="saveName" type="text" placeholder="Nazwa wyceny" style="flex:1;min-width:180px" value="' +
       esc((wynik.dane.nazwa || "Wycena") + (wynik.dane.data ? " " + wynik.dane.data : "")) + '"><button class="btn primary small" type="button" id="bSave2">Zapisz bieżącą</button></div>' +

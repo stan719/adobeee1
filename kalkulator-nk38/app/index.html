@@ -349,6 +349,17 @@ fieldset.card:focus-within { border-color: color-mix(in srgb, var(--accent) 45%,
 .edhead h2 { font-size: 20px; font-weight: 600; letter-spacing: -.01em; }
 #szPane { padding: 16px 18px 18px; }
 .ukryj { display: none !important; }
+.negkaf { display: grid; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)); gap: 10px; }
+.negkaf > div { border: 1px solid var(--line); border-radius: 10px; padding: 10px 12px; display: flex; flex-direction: column; gap: 2px; background: var(--accent-soft); }
+.negkaf > div.ok { background: var(--good-soft); } .negkaf > div.pr { background: var(--bad-soft); }
+.negkaf span { font-size: 11.5px; color: var(--muted); } .negkaf b { font-family: var(--f-num); font-size: 19px; font-weight: 500; }
+.negkaf small { font-family: var(--f-num); font-size: 12px; color: var(--ink-2); }
+.negbar { display: flex; gap: 2px; height: 12px; margin-top: 16px; border-radius: 4px; overflow: hidden; }
+.negbar .w { background: var(--warn); opacity: .55; } .negbar .g { background: var(--good); opacity: .7; }
+.negosi { position: relative; height: 34px; font-family: var(--f-num); font-size: 12px; margin-top: 4px; }
+.negosi span { position: absolute; top: 0; white-space: nowrap; } .negosi span:first-child { left: 0; } .negosi span:last-child { right: 0; text-align: right; }
+.negosi span:nth-child(2) { transform: translateX(-50%); text-align: center; } .negosi small { color: var(--muted); font-family: var(--f-ui); }
+table.t tr.negb td { background: var(--good-soft); font-weight: 600; } table.t tr.negw td { background: var(--warn-soft); } table.t tr.negp td { background: var(--bad-soft); }
 .dlg-bg { position: fixed; inset: 0; z-index: 35; background: color-mix(in srgb, var(--ink) 35%, transparent); display: grid; place-items: center;
   padding: max(16px, env(safe-area-inset-top, 0px)) max(16px, env(safe-area-inset-right, 0px)) max(16px, env(safe-area-inset-bottom, 0px)) max(16px, env(safe-area-inset-left, 0px)); }
 .dlg { width: min(460px, 100%); padding: 20px; display: flex; flex-direction: column; gap: 12px; animation: wejscie .2s ease-out both; }
@@ -580,7 +591,7 @@ table.t.edt input[type=text], table.t.edt td input:not([type=number]) { min-widt
     ["Narzuty", null], ["kob", "KOB", "×"], ["gdw", "GDW", "×"], ["podatek", "Podatek efektywny", "×"]
   ];
   var GRUPY = ["Mechanika", "Hydraulika", "Elektryka", "Inne"];
-  var TABS = [["wynik", "Warianty"], ["ekipa", "Ekipa"], ["zestaw", "Zestawienie"], ["obl", "Obliczenia"], ["wyceny", "Wyceny"]];
+  var TABS = [["wynik", "Warianty"], ["neg", "Negocjacje"], ["ekipa", "Ekipa"], ["zestaw", "Zestawienie"], ["obl", "Obliczenia"], ["wyceny", "Wyceny"]];
 
   var LOGO_URL = window.NK38_LOGO || "logo.png";   // wersja offline ma logo wbudowane
   var $ = function (id) { return document.getElementById(id); };
@@ -1070,7 +1081,7 @@ table.t.edt input[type=text], table.t.edt td input:not([type=number]) { min-widt
       return '<button type="button" role="tab" data-tab="' + t[0] + '" aria-selected="' + (state.tab === t[0]) + '">' + t[1] + "</button>";
     }).join("");
     if (state.bezPanelu) return;
-    $("pane").innerHTML = ({ wynik: paneWynik, ekipa: paneEkipa, zestaw: paneZestaw, obl: paneObl, wyceny: paneWyceny }[state.tab] || paneWynik)();
+    $("pane").innerHTML = ({ wynik: paneWynik, neg: paneNeg, ekipa: paneEkipa, zestaw: paneZestaw, obl: paneObl, wyceny: paneWyceny }[state.tab] || paneWynik)();
     if (state.tab === "wyceny") wypelnijWyceny();
   }
   /* druga wartość w kafelku: etykieta w jednej linii, kwota pod nią w kolorze tekstu */
@@ -1200,6 +1211,22 @@ table.t.edt input[type=text], table.t.edt td input:not([type=number]) { min-widt
     return h;
   }
 
+  /* Negocjacje: o ile można zejść z ceny ofertowej przy kolejnych poziomach zysku */
+  function paneNeg() {
+    var N = wynik.negocjacje, lo = N.cenaMin, hi = N.cenaA, span = (hi - lo) || 1, pb = (N.cenaB - lo) / span * 100;
+    var h = '<div class="negkaf"><div><span>Cena ofertowa · zysk ' + pct(N.zA) + "</span><b>" + zl(N.cenaA) + "</b></div>" +
+      '<div class="ok"><span>Można zejść do · zysk ' + pct(N.zB) + "</span><b>" + zl(N.cenaB) + "</b><small>rabat −" + zl(N.cenaA - N.cenaB) + " (−" + n2((N.cenaA - N.cenaB) / N.cenaA * 100) + "%)</small></div>" +
+      '<div class="pr"><span>Próg opłacalności · zysk 0%</span><b>' + zl(N.cenaMin) + "</b><small>maks. rabat −" + zl(N.cenaA - N.cenaMin) + " (−" + n2((N.cenaA - N.cenaMin) / N.cenaA * 100) + "%)</small></div></div>";
+    h += '<div class="negbar" role="img" aria-label="Pole do negocjacji"><i class="w" style="width:' + pb.toFixed(1) + '%"></i><i class="g" style="width:' + (100 - pb).toFixed(1) + '%"></i></div>' +
+      '<div class="negosi"><span>' + zl(lo) + "<br><small>zysk 0%</small></span><span style=\"left:" + pb.toFixed(1) + '%">' + zl(N.cenaB) + "<br><small>zysk " + pct(N.zB) + "</small></span><span>" + zl(hi) + "<br><small>oferta</small></span></div>";
+    h += '<div class="scroll" style="margin-top:14px"><table class="t"><thead><tr><th>Zysk</th><th>Cena netto</th><th>Rabat od oferty</th><th>Rabat %</th><th>Zysk z narzutem</th><th>Cena za MP</th></tr></thead><tbody>' +
+      N.wiersze.map(function (x) {
+        var kl = x.oferta ? "strong" : x.porownanie ? "negb" : x.prog ? "negp" : x.zysk < N.zB ? "negw" : "";
+        return '<tr class="' + kl + '"><td>' + pct(x.zysk) + (x.oferta ? ' <span class="tag">oferta</span>' : x.porownanie ? ' <span class="tag">do porównania</span>' : x.prog ? ' <span class="tag">próg</span>' : "") +
+          "</td><td>" + zl(x.cena) + "</td><td>" + (x.rabat ? "−" + zl(x.rabat) : "–") + "</td><td>" + (x.rabat ? "−" + n2(x.rabatPct * 100) + "%" : "–") + "</td><td>" + zl(x.zyskN) + "</td><td>" + zl(x.cenaMP) + "</td></tr>";
+      }).join("") + '</tbody></table></div><p class="note" style="margin-top:8px">Wariant ' + esc(N.wariant) + ". Te same koszty i narzuty, zmienia się tylko zysk. Przy zysku 0% w cenie zostają koszty, KOB, GDW i podatek.</p>";
+    return h;
+  }
   function paneWyceny() {
     return '<div class="row"><input id="saveName" type="text" placeholder="Nazwa wyceny" style="flex:1;min-width:180px" value="' +
       esc((wynik.dane.nazwa || "Wycena") + (wynik.dane.data ? " " + wynik.dane.data : "")) + '"><button class="btn primary small" type="button" id="bSave2">Zapisz bieżącą</button></div>' +
