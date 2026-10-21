@@ -358,6 +358,9 @@ fieldset.card:focus-within { border-color: color-mix(in srgb, var(--accent) 45%,
 .dlg { width: min(460px, 100%); padding: 20px; display: flex; flex-direction: column; gap: 12px; animation: wejscie .2s ease-out both; }
 .dlg h3 { font-size: 16px; font-weight: 600; }
 .edstan { font-size: 12px; color: var(--muted); }
+.hist { border: 1px solid var(--line); border-radius: 10px; padding: 9px 12px; font-size: 13px; margin-bottom: 6px; }
+.hist ul { margin: 6px 0 0; padding-left: 18px; color: var(--ink-2); font-size: 12.5px; }
+.hist s { color: var(--muted); }
 .chkl { display: inline-flex; gap: 6px; align-items: center; font-size: 13px; }
 .chkl input { width: auto; }
 .paryhd { display: flex; justify-content: space-between; align-items: baseline; gap: 8px; margin-top: 2px; }
@@ -397,8 +400,12 @@ table.t.edt input[type=text], table.t.edt td input:not([type=number]) { min-widt
   <div class="pgrid2">
     <section class="card"><div class="row" style="justify-content:space-between;margin-bottom:10px"><h3 class="sec" style="margin:0">Ostatnie wyceny</h3>
       <input id="pSzukaj" type="search" placeholder="Szukaj: nazwa, adres, miasto, urządzenie" style="max-width:280px" aria-label="Szukaj wycen"></div><div class="plist" id="pWyceny"></div></section>
-    <section class="card"><h3 class="sec">Przenoszenie na inny komputer</h3>
+    <section class="card"><h3 class="sec">Dane i przenoszenie</h3>
       <div class="mv">
+        <div><h4>Użytkownik</h4><p>Podpisuje zmiany w historii szablonów.</p>
+          <div class="row"><input id="uzytkownik" type="text" placeholder="Imię i nazwisko" style="max-width:260px" aria-label="Użytkownik"></div></div>
+        <div id="folderBox" hidden><h4>Folder danych</h4><p id="folderInfo"></p>
+          <div class="row"><button class="btn small primary" type="button" id="bFolderPolacz" hidden>Połącz folder</button><button class="btn small" type="button" id="bFolder">Wybierz folder danych</button></div></div>
         <div><h4>Kopia zapasowa danych</h4><p>Jeden plik z szablonami urządzeń, tekstami oferty, numeracją ofert i zapisanymi wycenami. Wczytanie dodaje wyceny i zastępuje szablony o tym samym identyfikatorze.</p>
           <div class="row"><button class="btn small" type="button" id="bBackup">Pobierz kopię zapasową</button><label class="btn small" for="backupFile">Wczytaj kopię zapasową</label><input type="file" id="backupFile" accept="application/json,.json" hidden></div></div>
         <div id="offlineBox"><h4>Wersja offline</h4><p>Jeden plik HTML z całą aplikacją. Otwierasz go w przeglądarce na dowolnym komputerze, bez claude.ai. Dane zapisuje w tej przeglądarce; przenieś je kopią zapasową. Eksporty potrzebują internetu do pobrania bibliotek.</p>
@@ -1807,7 +1814,7 @@ window.NK38_FONTS = { regular: "AAEAAAAOAIAAAwBgR0RFRgS1BUEAAH9cAAAARkdQT1MAGQAM
   "use strict";
   var E = window.NK38, X = window.NK38X;
   var LS = { robocze: "nk38.robocze.v1", drafty: "nk38.szkice.v1", draft: "nk38.szkic.v1", tab: "nk38.zakladka", sel: "nk38.wariant", logo: "nk38.logo.v1", podpis: "nk38.podpis.v1",
-    szablony: "nk38.szablony.v1", wyceny: "nk38.wyceny.v1", tekstyOferty: "nk38.szablon.v1", numery: "nk38.numery.v1", cennikStary: "nk38.cennik.v1", usuniete: "nk38.usuniete.v1", migracja2: "nk38.migracja2" };
+    szablony: "nk38.szablony.v1", wyceny: "nk38.wyceny.v1", tekstyOferty: "nk38.szablon.v1", numery: "nk38.numery.v1", cennikStary: "nk38.cennik.v1", usuniete: "nk38.usuniete.v1", migracja2: "nk38.migracja2", historia: "nk38.historia.v1", uzytkownik: "nk38.uzytkownik.v1" };
   var NUMF = ["km", "km_pom", "km_mon", "S", "D", "NP", "agregaty", "magistrala", "barierki", "maskownice", "utr_dod",
     "tir", "tir_cena", "rozl_cena", "rozl_dni", "dzwig_koszt", "osoby", "wyjazdy", "eur", "usd", "h1", "h2", "przeswit", "konserwA", "konserwB", "dlMiejsca"];
   var OPTF = { km_pom: 1, km_mon: 1, rozl_dni: 1, dzwig_koszt: 1, wyjazdy: 1, h1: 1, h2: 1, przeswit: 1, dlMiejsca: 1 };
@@ -1849,7 +1856,7 @@ window.NK38_FONTS = { regular: "AAEAAAAOAIAAAwBgR0RFRgS1BUEAAH9cAAAARkdQT1MAGQAM
   function sgn(v) { var r = Math.round(v); return (r > 0 ? "+" : r < 0 ? "−" : "") + fmtPLN.format(Math.abs(r)) + " zł"; }
   function esc(s) { return String(s == null ? "" : s).replace(/[&<>"]/g, function (c) { return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]; }); }
   function lsGet(k, d) { try { var v = localStorage.getItem(k); return v ? JSON.parse(v) : d; } catch (e) { return d; } }
-  function lsSet(k, v) { try { localStorage.setItem(k, JSON.stringify(v)); } catch (e) { /* brak pamięci przeglądarki */ } }
+  function lsSet(k, v) { try { localStorage.setItem(k, JSON.stringify(v)); } catch (e) { /* brak pamięci przeglądarki */ } if (typeof Plik !== "undefined") Plik.zmiana(k); }
   function sumO(o) { var s = 0; for (var k in o) s += Number(o[k] || 0); return s; }
   function dzis() { var t = new Date(), z = function (x) { return ("0" + x).slice(-2); }; return t.getFullYear() + "-" + z(t.getMonth() + 1) + "-" + z(t.getDate()); }
   /* Odmiana polska: 1 urządzenie, 2–4 urządzenia, 5+ urządzeń (12–14 → forma mnoga dopełniacza). */
@@ -1862,6 +1869,61 @@ window.NK38_FONTS = { regular: "AAEAAAAOAIAAAwBgR0RFRgS1BUEAAH9cAAAARkdQT1MAGQAM
   }
 
   /* --- zapis danych: baza artefaktu (trwała, na każdym urządzeniu), a gdy niedostępna: ta przeglądarka --- */
+  /* Folder danych (wersja offline, Chrome/Edge): pliki JSON w wybranym folderze, przeglądarka trzyma tylko kopię roboczą. */
+  var PLIKI = { ustawienia: "kalkulator-ustawienia.json", wyceny: "kalkulator-wyceny.json", robocze: "kalkulator-wersje-robocze.json", historia: "kalkulator-historia-szablonow.json" };
+  var Plik = {
+    h: null, czeka: null, timery: {},
+    dostepny: function () { return !!window.showDirectoryPicker; },
+    idb: function () {
+      return new Promise(function (ok) {
+        try { var r = indexedDB.open("kalkulator-nk", 1); r.onupgradeneeded = function () { r.result.createObjectStore("h"); }; r.onsuccess = function () { ok(r.result); }; r.onerror = function () { ok(null); }; }
+        catch (e) { ok(null); }
+      });
+    },
+    zapamietaj: async function (h) { try { var db = await this.idb(); if (db) db.transaction("h", "readwrite").objectStore("h").put(h, "folder"); } catch (e) { /* uchwyt nie do zapamiętania: folder trzeba wybrać przy kolejnym otwarciu */ } },
+    uchwyt: async function () {
+      var db = await this.idb(); if (!db) return null;
+      return new Promise(function (ok) { try { var q = db.transaction("h").objectStore("h").get("folder"); q.onsuccess = function () { ok(q.result || null); }; q.onerror = function () { ok(null); }; } catch (e) { ok(null); } });
+    },
+    czytaj: async function (rodzaj) {
+      try { var fh = await this.h.getFileHandle(PLIKI[rodzaj]); return JSON.parse(await (await fh.getFile()).text()); } catch (e) { return undefined; }
+    },
+    pisz: async function (rodzaj, dane) {
+      var fh = await this.h.getFileHandle(PLIKI[rodzaj], { create: true }), w = await fh.createWritable();
+      await w.write(JSON.stringify(dane, null, 1)); await w.close();
+    },
+    dane: function (rodzaj) {
+      if (rodzaj === "ustawienia") return Store.cache;
+      return lsGet({ wyceny: LS.wyceny, robocze: LS.robocze, historia: LS.historia }[rodzaj], []);
+    },
+    /* każdy zapis do przeglądarki odkłada też zapis pliku (z krótkim opóźnieniem) */
+    zmiana: function (klucz) {
+      if (!this.h || this.wczytuje) return;
+      var rodzaj = klucz === LS.wyceny ? "wyceny" : klucz === LS.robocze ? "robocze" : klucz === LS.historia ? "historia" :
+        [LS.szablony, LS.tekstyOferty, LS.numery, LS.usuniete, LS.migracja2, LS.uzytkownik].indexOf(klucz) >= 0 ? "ustawienia" : null;
+      if (!rodzaj) return;
+      var self = this; clearTimeout(this.timery[rodzaj]);
+      this.timery[rodzaj] = setTimeout(function () { self.pisz(rodzaj, self.dane(rodzaj)).catch(function () { toast("Nie udało się zapisać pliku w folderze danych. Sprawdź dostęp do folderu."); }); }, 400);
+    },
+    /* połączenie z folderem: pusty folder dostaje obecne dane, folder z danymi zastępuje kopię w przeglądarce */
+    polacz: async function (h) {
+      this.h = h; this.czeka = null;
+      var ust = await this.czytaj("ustawienia");
+      if (ust === undefined) {
+        for (var r in PLIKI) await this.pisz(r, this.dane(r));
+        toast("Folder danych gotowy: zapisano w nim obecne dane.");
+      } else {
+        var map = { szablony: LS.szablony, tekstyOferty: LS.tekstyOferty, numery: LS.numery, usuniete: LS.usuniete, migracja2: LS.migracja2, uzytkownik: LS.uzytkownik };
+        this.wczytuje = true;   // bez zapisu zwrotnego podczas wczytywania
+        Object.keys(map).forEach(function (k) { if (ust[k] !== undefined) lsSet(map[k], ust[k]); });
+        lsSet(LS.wyceny, (await this.czytaj("wyceny")) || []); lsSet(LS.robocze, (await this.czytaj("robocze")) || []); lsSet(LS.historia, (await this.czytaj("historia")) || []);
+        this.wczytuje = false; Store.cache = kopia(ust);
+        toast("Wczytano dane z folderu " + h.name);
+      }
+      await this.zapamietaj(h);
+    }
+  };
+
   var Store = {
     db: null, cache: {},
     init: async function () {
@@ -1881,7 +1943,28 @@ window.NK38_FONTS = { regular: "AAEAAAAOAIAAAwBgR0RFRgS1BUEAAH9cAAAARkdQT1MAGQAM
         } catch (e) { this.db = null; }
       }
       this.cache = { szablony: lsGet(LS.szablony, null), tekstyOferty: lsGet(LS.tekstyOferty, null), numery: lsGet(LS.numery, null),
-        usuniete: lsGet(LS.usuniete, null), migracja2: lsGet(LS.migracja2, null) };
+        usuniete: lsGet(LS.usuniete, null), migracja2: lsGet(LS.migracja2, null), uzytkownik: lsGet(LS.uzytkownik, null) };
+      if (Plik.dostepny()) {   // wersja offline: ostatnio używany folder danych
+        var hf = await Plik.uchwyt();
+        if (hf) {
+          var perm = "prompt"; try { perm = await hf.queryPermission({ mode: "readwrite" }); } catch (e) { /* stara przeglądarka */ }
+          if (perm === "granted") { try { await Plik.polacz(hf); } catch (e) { Plik.h = null; Plik.czeka = hf; } } else Plik.czeka = hf;
+        }
+      }
+    },
+    /* historia zmian szablonów: baza strony (kolekcja) albo przeglądarka / folder danych */
+    historia: async function () {
+      if (!this.db) return lsGet(LS.historia, []).sort(function (a, b) { return (b.ts || 0) - (a.ts || 0); });
+      var q = await this.db.collection("nk38/dane/historia").get();
+      return q.docs.map(function (d) { return Object.assign({ id: d.id }, d.data()); }).sort(function (a, b) { return (b.ts || 0) - (a.ts || 0); });
+    },
+    dodajHistorie: async function (h) {
+      if (!this.db) {
+        var l = lsGet(LS.historia, []); h.id = "h" + Date.now().toString(36) + Math.random().toString(36).slice(2, 5); l.unshift(h);
+        var ile = {}; l = l.filter(function (x) { ile[x.szablon] = (ile[x.szablon] || 0) + 1; return ile[x.szablon] <= 25; });   // 25 wersji na szablon
+        lsSet(LS.historia, l); return;
+      }
+      await this.db.collection("nk38/dane/historia").add(kopia(h));
     },
     get: function (k, d) { return this.cache[k] != null ? kopia(this.cache[k]) : d; },
     set: function (k, v) {
@@ -2423,6 +2506,69 @@ window.NK38_FONTS = { regular: "AAEAAAAOAIAAAwBgR0RFRgS1BUEAAH9cAAAARkdQT1MAGQAM
   var WALUTY = [["PLN", "PLN"], ["EUR", "EUR"], ["USD", "USD"]];
   var NA_CO = [["szt", "każde urządzenie"], ["S", "urządzenie typu 1"], ["D", "urządzenie typu 2"], ["NP", "urządzenie typu 3"], ["agregat", "agregat"], ["MP", "miejsce postojowe"],
     ["stala", "raz na wycenę"], ["ilosc", "ilość wpisywana w wycenie"], ["kwota", "kwota wpisywana w wycenie"]];
+  /* --- historia zmian szablonów: kto, kiedy, co; każda wersja do przywrócenia --- */
+  var histBaza = {};   // stan szablonu od ostatniego wpisu w historii
+  function etykietaSciezki(path, sz) {
+    var p = path.split("."), pole = CENNIK_POLA.filter(function (x) { return x[0] === p[1]; })[0];
+    var TYP = { S: "Typ 1", D: "Typ 2", NP: "Typ 3" }, POLA = { nazwa: "nazwa", mp: "MP", osd: "osobodni", cena: "cena", waluta: "waluta", dzwig: "dni dźwigu", oferta: "tekst w ofercie",
+      wsp: "mnożnik", naCo: "liczona od", opcja: "opcja", tekst: "tekst", kwota: "kwota", doplata: "dopłata", silownik: "siłownik", cm: "wysokość", ilS: "ilość S", ilD: "ilość D", grupa: "grupa", tryb: "sposób", wartosc: "wartość" };
+    if (p[0] === "cennik") return pole ? pole[1] : p[1];
+    if (p[0] === "typy") return (sz.model === "lista" ? TYP[p[1]] : p[1]) + ": " + (POLA[p[2]] || p[2]);
+    if (p[0] === "teksty") return "Tekst oferty: " + p[1];
+    if (p[0] === "pozycje" || p[0] === "skladowe" || p[0] === "glebokosci") {
+      var el = (sz[p[0]] || [])[+p[1]] || {}, nz = el.nazwa || (el.cm ? el.cm + " cm" : "#" + (+p[1] + 1));
+      return { pozycje: "Pozycja", skladowe: "Składowa", glebokosci: "Zagłębienie" }[p[0]] + " „" + nz + "”: " + (POLA[p[2]] || p[2] || "");
+    }
+    if (p[0] === "import") return "Fracht: " + (p[1] === "koszty" ? "koszt „" + (((sz.import.koszty || [])[+p[2]]) || {}).nazwa + "” " + (POLA[p[3]] || p[3] || "") : p[1]);
+    return { nazwa: "Nazwa urządzenia", opisOferty: "Pozycja w ofercie", model: "Sposób liczenia", wariantA: "Wariant podstawowy" }[p[0]] || path;
+  }
+  function roznice(a, b, sz) {
+    var plaskie = function (o, pre, out) {
+      if (o && typeof o === "object") { Object.keys(o).forEach(function (k) { plaskie(o[k], pre ? pre + "." + k : k, out); }); if (Array.isArray(o)) out[pre + ".#"] = o.length; }
+      else out[pre] = o;
+      return out;
+    };
+    var A = plaskie(a, "", {}), B = plaskie(b, "", {}), out = [];
+    Object.keys(Object.assign({}, A, B)).forEach(function (k) {
+      if (/\.#$/.test(k) || JSON.stringify(A[k]) === JSON.stringify(B[k])) return;
+      if (/\.#$/.test(k)) return;
+      var krotko = function (v) { v = v == null ? "–" : String(v); return v.length > 40 ? v.slice(0, 38) + "…" : v; };
+      out.push({ co: etykietaSciezki(k, b), z: krotko(A[k]), na: krotko(B[k]) });
+    });
+    Object.keys(B).forEach(function (k) {
+      if (!/\.#$/.test(k) || A[k] === B[k]) return;
+      var nazwa = { "pozycje.#": "pozycje kosztowe", "skladowe.#": "składowe", "glebokosci.#": "zagłębienia", "import.koszty.#": "koszty frachtu" }[k] || k;
+      out.unshift({ co: "Liczba: " + nazwa, z: String(A[k] == null ? 0 : A[k]), na: String(B[k]) });
+    });
+    return out;
+  }
+  function bazaHistorii(sz) { if (!(sz.id in histBaza)) histBaza[sz.id] = JSON.stringify(sz); }
+  async function zapiszHistorie(sz, opis) {
+    if (!sz || !(sz.id in histBaza)) return;
+    var teraz = JSON.stringify(sz); if (teraz === histBaza[sz.id] && !opis) return;
+    var przed = JSON.parse(histBaza[sz.id]), zm = roznice(przed, sz, sz);
+    if (!zm.length && !opis) { histBaza[sz.id] = teraz; return; }
+    var kto = Store.get("uzytkownik", "") || "", lista = (await Store.historia()).filter(function (x) { return x.szablon === sz.id; });
+    if (!lista.length) await Store.dodajHistorie({ szablon: sz.id, nazwa: przed.nazwa, ts: Date.now() - 1, kto: kto, opis: "Stan przed pierwszą zapisaną zmianą", zmiany: [], wersja: przed });
+    await Store.dodajHistorie({ szablon: sz.id, nazwa: sz.nazwa, ts: Date.now(), kto: kto, opis: opis || "", zmiany: zm.slice(0, 40), ileZmian: zm.length, wersja: JSON.parse(teraz) });
+    histBaza[sz.id] = teraz;
+    if (state.view === "edytor") wypelnijHistorie();
+  }
+  async function wypelnijHistorie() {
+    var el = $("szHist"); if (!el) return;
+    var sz = szEdytowany(), lista = [];
+    try { lista = (await Store.historia()).filter(function (x) { return x.szablon === sz.id; }); } catch (e) { el.innerHTML = '<div class="empty">Nie udało się wczytać historii.</div>'; return; }
+    state.historia = lista;
+    $("szHistIle").textContent = lista.length ? "(" + lista.length + ")" : "";
+    el.innerHTML = lista.length ? lista.map(function (x, i) {
+      var zm = (x.zmiany || []).map(function (z) { return "<li>" + esc(z.co) + ": <s>" + esc(z.z) + "</s> → <b>" + esc(z.na) + "</b></li>"; }).join("");
+      var wiecej = x.ileZmian > (x.zmiany || []).length ? "<li class=\"muted\">i " + (x.ileZmian - x.zmiany.length) + " innych zmian</li>" : "";
+      return '<div class="hist"><div class="row" style="justify-content:space-between"><div><b>' + new Date(x.ts).toLocaleString("pl-PL") + "</b> · " + esc(x.kto || "użytkownik bez nazwy") +
+        (i === 0 ? ' <span class="tag">obecna wersja</span>' : "") + (x.opis ? ' <span class="muted">· ' + esc(x.opis) + "</span>" : "") + "</div>" +
+        (i === 0 ? "" : '<div class="row"><button type="button" class="btn small" data-hist="' + esc(x.id) + '">Przywróć tę wersję</button></div>') + "</div>" +
+        (zm || wiecej ? "<ul>" + zm + wiecej + "</ul>" : "") + "</div>";
+    }).join("") : '<div class="empty">Brak zapisanych zmian. Historia zapisuje się przy przycisku „Zapisz szablon”, po wyjściu z edytora i przy zmianie szablonu.</div>';
+  }
   function paneSzablony() {
     var s = szEdytowany(), wb = E.szablonyWbudowane().filter(function (x) { return x.id === s.id; })[0], lista = s.model === "lista";
     var h = '<div class="row" style="justify-content:space-between;margin-bottom:12px"><div class="row"><label class="f" style="flex-direction:row;align-items:center;gap:8px">Edytuj szablon<select id="szSel" style="width:auto">' +
@@ -2535,6 +2681,7 @@ window.NK38_FONTS = { regular: "AAEAAAAOAIAAAwBgR0RFRgS1BUEAAH9cAAAARkdQT1MAGQAM
     h += '<details class="grp"><summary>Teksty oferty dla tego urządzenia</summary><div class="ofgrid">' +
       TX.map(function (x) { return '<label class="f full">' + x[1] + fld("teksty." + x[0], s.teksty[x[0]], x[2] > 1 ? { area: 1, rows: x[2], label: x[1] } : { text: 1, label: x[1] }) + "</label>"; }).join("") +
       '</div><p class="note" style="margin-top:8px">W tekstach typów: {n} = liczba sztuk, {typ} = nazwa urządzenia. Teksty wspólne dla wszystkich urządzeń są w panelu oferty, sekcja P.</p></details>';
+    h += '<details class="grp" open><summary>Historia zmian <span id="szHistIle"></span></summary><p class="note" style="margin-bottom:8px">Każde zapisanie szablonu tworzy wpis: kto, kiedy i co zmienił. Starszą wersję możesz przywrócić; przywrócenie też trafia do historii.</p><div id="szHist"><div class="empty">Wczytuję historię…</div></div></details>';
     h += '<details class="grp"><summary>Eksport i import szablonów</summary><p class="note" style="margin-bottom:8px">Kopia zapasowa wszystkich szablonów jako tekst. Wklej taki tekst i kliknij Importuj, żeby je wczytać.</p>' +
       '<textarea id="szIo" rows="4" placeholder="Wklej tu tekst eksportu"></textarea><div class="row" style="margin-top:8px"><button class="btn small" type="button" id="szExport">Kopiuj eksport</button><button class="btn small" type="button" id="szImport">Importuj</button></div></details>';
     return h;
@@ -2883,7 +3030,7 @@ window.NK38_FONTS = { regular: "AAEAAAAOAIAAAwBgR0RFRgS1BUEAAH9cAAAARkdQT1MAGQAM
   naObu("change", function (e) {
     var t = e.target;
     if (t.id === "analizaSel") { state.dane.analiza = +t.value; recalc(); return; }
-    if (t.id === "szSel") { state.edytowany = t.value; state.szUsun = false; odswiezSz(); return; }
+    if (t.id === "szSel") { zapiszHistorie(szEdytowany()); state.edytowany = t.value; state.szUsun = false; odswiezSz(); return; }
     if (t.dataset.szp && (t.tagName === "SELECT" || t.type === "checkbox")) {
       var sz = szEdytowany();
       ustawSciezke(sz, t.dataset.szp, t.type === "checkbox" ? t.checked : t.value);
@@ -2923,6 +3070,17 @@ window.NK38_FONTS = { regular: "AAEAAAAOAIAAAwBgR0RFRgS1BUEAAH9cAAAARkdQT1MAGQAM
       var b = E.szablonyWbudowane().filter(function (x) { return x.id === s.id; })[0];
       if (b) { szablony[szablony.indexOf(s)] = b; zapiszSzablony(); wypelnijSzablony(); $("szablon").value = szablonAktywny().id; buildDimTable(); recalc(); odswiezSz(); toast("Przywrócono domyślne wartości " + b.nazwa); }
       return;
+    }
+    if (t.dataset.hist) {
+      var hw = (state.historia || []).filter(function (x) { return x.id === t.dataset.hist; })[0]; if (!hw) return;
+      return potwierdz(t, "Przywrócić wersję z " + new Date(hw.ts).toLocaleString("pl-PL") + "?", async function () {
+        await zapiszHistorie(s);
+        var nowy = E.uzupelnijSzablon(kopia(hw.wersja)); nowy.id = s.id;
+        szablony[szablony.indexOf(s)] = nowy; zapiszSzablony(); wypelnijSzablony();
+        buildDimTable(); state.dane = fromForm(); recalc();
+        await zapiszHistorie(nowy, "Przywrócono wersję z " + new Date(hw.ts).toLocaleString("pl-PL")); odswiezSz();
+        toast("Przywrócono wersję szablonu");
+      });
     }
     if (t.id === "szUsun") {
       if (szablony.length < 2) { toast("Zostaw przynajmniej jedno urządzenie."); return; }
@@ -3018,6 +3176,7 @@ window.NK38_FONTS = { regular: "AAEAAAAOAIAAAwBgR0RFRgS1BUEAAH9cAAAARkdQT1MAGQAM
   /* --- widoki: pulpit (wybór urządzenia), edytor szablonu, kalkulator --- */
   function pokaz(v) {
     if (state.view === "kalk" && v !== "kalk") odlozSzkic();
+    if (state.view === "edytor" && v !== "edytor") zapiszHistorie(szEdytowany());
     state.view = v;
     $("vPulpit").hidden = v !== "pulpit"; $("vEdytor").hidden = v !== "edytor"; $("vKalk").hidden = v !== "kalk";
     $("kalkActions").hidden = v !== "kalk"; $("bPulpit").hidden = v === "pulpit";
@@ -3048,6 +3207,14 @@ window.NK38_FONTS = { regular: "AAEAAAAOAIAAAwBgR0RFRgS1BUEAAH9cAAAARkdQT1MAGQAM
     var nU = szablony.filter(function (x) { return x.model === "lista"; }).length;
     $("pStat").innerHTML = "<span><b>" + szablony.length + "</b> " + odm(szablony.length, "urządzenie", "urządzenia", "urządzeń") + "</span><span><b>" + nU + "</b> w modelu uniwersalnym</span>";
     $("offlineBox").hidden = !!window.NK38_OFFLINE;
+    $("uzytkownik").value = Store.get("uzytkownik", "") || "";
+    var fb = !Store.db; $("folderBox").hidden = !fb;
+    if (fb) {
+      if (!Plik.dostepny()) { $("folderInfo").textContent = "Zapis do folderu działa w Chrome i Edge. Teraz dane są tylko w tej przeglądarce."; $("bFolder").hidden = true; }
+      else if (Plik.h) { $("folderInfo").innerHTML = "Dane zapisują się w folderze <b>" + esc(Plik.h.name) + "</b> (pliki kalkulator-*.json)."; $("bFolder").textContent = "Zmień folder"; }
+      else if (Plik.czeka) { $("folderInfo").innerHTML = "Folder <b>" + esc(Plik.czeka.name) + "</b> czeka na zgodę przeglądarki. Kliknij „Połącz folder”."; $("bFolderPolacz").hidden = false; }
+      else $("folderInfo").textContent = "Dane są teraz w tej przeglądarce. Wybierz folder na dysku (np. Dokumenty/Kalkulator), żeby trzymać je w plikach.";
+    }
     renderPulpitWyceny();
   }
   async function renderPulpitWyceny() {
@@ -3077,7 +3244,9 @@ window.NK38_FONTS = { regular: "AAEAAAAOAIAAAwBgR0RFRgS1BUEAAH9cAAAARkdQT1MAGQAM
     var s = szEdytowany(), otwarte = {};
     $("szPane").querySelectorAll("details > summary").forEach(function (x) { otwarte[x.textContent.replace(/\s*\(.*$/, "")] = x.parentNode.open; });
     $("edTitle").textContent = s.nazwa;
+    bazaHistorii(s);
     $("szPane").innerHTML = paneSzablony();
+    wypelnijHistorie();
     $("szPane").querySelectorAll("details > summary").forEach(function (x) { var k = x.textContent.replace(/\s*\(.*$/, ""); if (k in otwarte) x.parentNode.open = otwarte[k]; });
   }
   function noweId() { return "s" + Date.now().toString(36) + Math.random().toString(36).slice(2, 5); }
@@ -3144,9 +3313,20 @@ window.NK38_FONTS = { regular: "AAEAAAAOAIAAAwBgR0RFRgS1BUEAAH9cAAAARkdQT1MAGQAM
     var t = e.target.closest("button"); if (!t) return;
     if (t.dataset.go === "pulpit") pokaz("pulpit");
     if (t.id === "edPolicz") otworzUrzadzenie(szEdytowany().id);
-    if (t.id === "edZapisz") { zapiszSzablony(); oznaczZapis(); toast("Zapisano szablon „" + szEdytowany().nazwa + "”"); }
+    if (t.id === "edZapisz") { zapiszSzablony(); oznaczZapis(); zapiszHistorie(szEdytowany()); toast("Zapisano szablon „" + szEdytowany().nazwa + "”"); }
   });
   $("bPulpit").addEventListener("click", function () { pokaz("pulpit"); });
+  $("uzytkownik").addEventListener("change", function () { Store.set("uzytkownik", this.value.trim()); toast("Zapisano nazwę użytkownika"); });
+  async function poPolaczeniu() { wczytajSzablony(); wypelnijSzablony(); $("szablon").value = szablonAktywny().id; buildDimTable(); recalc(); renderPulpit(); }
+  $("bFolder").addEventListener("click", async function () {
+    try { var h = await window.showDirectoryPicker({ id: "kalkulator-nk", mode: "readwrite" }); await Plik.polacz(h); await poPolaczeniu(); }
+    catch (e) { if (e && e.name !== "AbortError") toast("Nie udało się otworzyć folderu (" + (e.name || "błąd") + ")."); }
+  });
+  $("bFolderPolacz").addEventListener("click", async function () {
+    var h = Plik.czeka; if (!h) return;
+    try { if ((await h.requestPermission({ mode: "readwrite" })) === "granted") { await Plik.polacz(h); await poPolaczeniu(); } else toast("Bez zgody przeglądarki dane zostają w przeglądarce."); }
+    catch (e) { toast("Nie udało się połączyć folderu. Wybierz go ponownie."); }
+  });
   var szukT = null;
   $("pSzukaj").addEventListener("input", function () { clearTimeout(szukT); szukT = setTimeout(renderPulpitWyceny, 150); });
 
@@ -3154,7 +3334,8 @@ window.NK38_FONTS = { regular: "AAEAAAAOAIAAAwBgR0RFRgS1BUEAAH9cAAAARkdQT1MAGQAM
   async function kopiaZapasowa() {
     var wyceny = (await Store.listaWycen()).map(function (w) { var c = kopia(w); delete c.id; return c; });
     var dane = { aplikacja: "kalkulator-nk38", wersja: 1, utworzono: new Date().toISOString(), szablony: szablony,
-      tekstyOferty: Store.get("tekstyOferty", {}) || {}, numery: Store.get("numery", {}) || {}, wyceny: wyceny };
+      tekstyOferty: Store.get("tekstyOferty", {}) || {}, numery: Store.get("numery", {}) || {}, wyceny: wyceny,
+      historia: (await Store.historia()).map(function (h) { var c = kopia(h); delete c.id; return c; }) };
     await zapisz("Kalkulator_kopia_zapasowa_" + dzis() + ".json", new Blob([JSON.stringify(dane, null, 1)], { type: "application/json" }));
   }
   async function wczytajKopie(tekst) {
@@ -3171,6 +3352,8 @@ window.NK38_FONTS = { regular: "AAEAAAAOAIAAAwBgR0RFRgS1BUEAAH9cAAAARkdQT1MAGQAM
       if (jest.indexOf((w.ts || 0) + "|" + w.nazwa) >= 0) continue;
       await Store.dodajWycene(w); dodane++; jest.push((w.ts || 0) + "|" + w.nazwa);
     }
+    var hj = (await Store.historia()).map(function (h) { return h.szablon + "|" + h.ts; });
+    for (var hi = (o.historia || []).length - 1; hi >= 0; hi--) { var hh = o.historia[hi]; if (hj.indexOf(hh.szablon + "|" + hh.ts) < 0) await Store.dodajHistorie(hh); }
     wypelnijSzablony(); $("szablon").value = szablonAktywny().id; buildDimTable(); recalc(); renderPulpit();
     toast("Wczytano: szablony " + lista.length + ", nowe wyceny " + dodane);
   }

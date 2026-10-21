@@ -275,3 +275,9 @@ Montaż, podróże, hotel, diety, narzuty (KOB, GDW, zysk, podatek) są wspólne
 - NKPXLH (Witosa, arkusz 18x2DS 9.10.26): fracht 2022,81 zł/szt., cena z frachtem 10 900,81 zł, urządzenia 196 214,58 zł, kontrakt 374 983,16 zł przy zysku 28% — jak F3 / F4 / I14 / K40. Kolumna N arkusza pomija dźwig (N18 liczy dni zamiast kosztu), więc 357 308 zł z arkusza jest zaniżone o dźwig.
 
 Ustalenia: NK6501 ma hotel 130 zł (jak NK38) i dietę 45 zł; Mufas wpisywany ręcznie; bez agregatów i dźwigu; konserwacja tylko roczna (50 / 60 zł/MP). NKPXLH: 2300 USD/szt. stałe (komórka D4), +650 USD/szt. dla 2500 kg, hydraulika liczona w 20%, dźwig 1200 zł/dzień (0,06 dnia na szt.), rozładunek 1 dzień na kontener, odbiory 2 wyjazdy × 2 osoby, konserwacja i przegląd od urządzenia (35 / 45 zł), MP = 2 na urządzenie (do oferty: 18 urządzeń = 36 pojazdów).
+
+## 15. Praca na kilku komputerach: folder danych i historia szablonów (21.10.2026)
+
+- **Folder danych** (wersja offline, Chrome/Edge na Windows i Mac): na pulpicie „Wybierz folder danych”. Dane zapisują się w plikach `kalkulator-ustawienia.json` (szablony, teksty oferty, numeracja, użytkownik), `kalkulator-wyceny.json`, `kalkulator-wersje-robocze.json`, `kalkulator-historia-szablonow.json`. Pusty folder dostaje obecne dane, folder z danymi zastępuje kopię w przeglądarce. Przy kolejnym otwarciu przeglądarka pyta o zgodę („Połącz folder”).
+- **Każdy użytkownik ma swoje dane** we własnym folderze. Nowa wersja programu (plik HTML) nie rusza danych; nowe wbudowane urządzenia dochodzą automatycznie.
+- **Historia zmian szablonów**: wpis przy „Zapisz szablon”, wyjściu z edytora i zmianie szablonu; kto (nazwa użytkownika z pulpitu), kiedy, co zmieniło się z czego na co; przywracanie dowolnej wersji (też trafia do historii); 25 wersji na szablon. Historia jest w kopii zapasowej.
