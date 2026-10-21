@@ -127,7 +127,7 @@
     s.opcje.przeglad = false; s.opcje.slupki = false;
     s.wysokosci = { tryb: "przeswit", k: 15, dol: 0 };
     s.domyslne = { zysk: 0.11, zysk2: 0.10, konserwA: 50, konserwB: 60, tir: 1, tir_cena: 3500, rozl_cena: 3000 };
-    Object.assign(s.cennik, { stawka_1: 450, stawka_2: 350, stawka_kolejna: 350, hotel: 130, dieta: 45, paliwo: 7, odbiory_osoby: 1, dzwig: 0 });
+    Object.assign(s.cennik, { stawka_1: 450, stawka_2: 350, stawka_kolejna: 350, hotel: 130, dieta: 45, odbiory_osoby: 1, dzwig: 0 });
     s.teksty = Object.assign(tekstyNK38(), {
       obciazenie: "Obciążenie palety pojazdem: 2000kg/miejsce postojowe,",
       zabezpieczenie: "Zabezpieczenie antykorozyjne: urządzenie w całości ocynkowane ogniowo.",
@@ -164,18 +164,18 @@
     s.pozycje = [
       { id: "hydr", nazwa: "Hydraulika PXL (140 + 65 + 29 EUR/szt.)", cena: 234, waluta: "EUR", naCo: "szt", wsp: 0.2, osd: 0, opcja: false, tekst: "" }
     ];
-    s.wariantB = { nazwa: "2500 kg", tryb: "szt", wartosc: 650, waluta: "USD" };
-    s.opcje.rozladunekNaTransport = true; s.opcje.konserwacjaNa = "szt"; s.opcje.agregaty = true;
+    s.wariantB = { nazwa: "2500 kg", tryb: "szt", wartosc: 700, waluta: "USD" };   // 2500 kg: 3000 USD/szt. zamiast 2300
+    s.opcje.rozladunekNaTransport = true; s.opcje.konserwacjaNa = "szt"; s.opcje.agregaty = true; s.opcje.slupki = false;
     s.wysokosci = { tryb: "przeswit2", k: 20, dol: 170 };
     s.domyslne = { zysk: 0.28, zysk2: 0.255, konserwA: 35, konserwB: 45, tir: 1, tir_cena: 3500, rozl_cena: 2800, eur: 4.33, usd: 3.86 };
-    Object.assign(s.cennik, { stawka_1: 550, stawka_2: 400, stawka_kolejna: 350, hotel: 120, dieta: 45, paliwo: 7, odbiory_osoby: 2, odbiory_wyjazdy: 2, dzwig: 1200, rozl_TIR: 1 });
+    Object.assign(s.cennik, { stawka_1: 550, stawka_2: 400, stawka_kolejna: 350, hotel: 130, dieta: 45, odbiory_osoby: 2, odbiory_wyjazdy: 2, dzwig: 1200, rozl_TIR: 1 });
     s.teksty = Object.assign(tekstyNK38(), {
       obciazenie: "Obciążenie platformy: 2.000kg/miejsce;",
       zabezpieczenie: "Zabezpieczenie antykorozyjne: platforma ocynkowana ogniowo, słupy malowane.",
       barierki: "", opcjaQ2500: "Obciążenie platformy: 2.500kg/miejsce.",
       uwagaTech: "*parametry pojazdów dopuszczonych do wjazdu w obręb urządzeń są zależne od wysokości prześwitu dostępnego na danym miejscu w garażu. Możliwa jest inna konfiguracja wysokości podnoszenia platformy.",
       wstep: "przedstawiamy {oferte} na dostawę i montaż {n} urządzeń służących do zależnego parkowania {mp} pojazdów na inwestycję zlokalizowaną {garaz}.",
-      tech: "Zagłębienie: brak;\nWysokość prześwitu: {P}cm;\nWysokość parkowanych pojazdów*: ▲-{G}cm, ▼-{D}cm;\nDługość parkowanych pojazdów: ▲-500cm, ▼-500cm;",
+      tech: "Zagłębienie: brak;\nWysokość prześwitu: {P}cm;\nWysokość parkowanych pojazdów*: ▲-{G}cm, ▼-{D}cm;\nDługość parkowanych pojazdów: ▲-{M}cm, ▼-{M}cm;",
       poLiscie: "Urządzenia wyposażone są w kluczykowe sterownie zamontowane na słupach/ścianach przed rzędem urządzeń.",
       agregat: "agregat hydrauliczny 400V, 50Hz, 3kW", kw: "3kW",
       platnosci: "30% zaliczka płatna na 24 tygodnie przed dostawą,\nDo 60% płatność na 7 dni przed dostawą,\nDo 90% płatność do 14 dni po dostawie,\nDo 100% płatność do 21 dni po badaniu wstępnym UDT.\nKoszty ogólne budowy – 0%.\nOferta ważna jest 2 miesiące.",
@@ -215,7 +215,7 @@
 
   function domyslneDane() {
     return {
-      nazwa: "", data: "", nr: "", opis: "", h1: null, h2: null, dl: "", przeswit: null, pary: [], poz: {}, usd: 3.86,
+      nazwa: "", data: "", nr: "", opis: "", h1: null, h2: null, dl: "", przeswit: null, pary: [], poz: {}, usd: 3.86, nadpis: {}, dlMiejsca: null, agrOpis: "",
       lok: "Poza Krakowem", km: 0, km_pom: null, km_mon: null,
       szablon: "nk38", S: 0, D: 0, NP: 0, agregaty: 0, magistrala: 0, barierki: 0, maskownice: 0, utr_dod: 0,
       gl_S: {}, gl_D: {},
@@ -427,7 +427,10 @@
   function oblicz(dane, szablon) {
     var d = Object.assign(domyslneDane(), dane || {});
     if ((dane || {}).zysk2 === undefined && (dane || {}).zysk_min !== undefined) d.zysk2 = dane.zysk_min;
-    var sz = uzupelnijSzablon(szablon), c = sz.cennik, T = sz.typy;
+    var sz = uzupelnijSzablon(szablon), T = sz.typy;
+    /* stawki zmienione tylko w tej wycenie (hotel, dieta, paliwo, dźwig…) nie ruszają szablonu */
+    var c = sz.cennik = Object.assign({}, sz.cennik);
+    Object.keys(d.nadpis || {}).forEach(function (k) { var v = opt(d.nadpis[k]); if (v !== null && k in c) c[k] = v; });
     d.typ = sz.nazwa; d.wysokosci = sz.wysokosci; d.model = sz.model; d.pokazAgregaty = sz.opcje.agregaty;
     var m = sz.model === "lista" ? materialyLista(d, c, sz) : materialy(d, c, sz), w = wspolne(d, c, sz), os = Math.max(1, num(d.osoby, 4));
     var nazwy = nazwyWariantow(sz);

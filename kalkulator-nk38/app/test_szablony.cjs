@@ -11,7 +11,7 @@ const s1 = szablon("nk6501");
 Object.assign(s1.cennik, { hotel: 100, dieta: 0 });
 const r1 = E.oblicz(Object.assign(E.domyslneDane(), {
   szablon: "nk6501", S: 6, utr_dod: 2, km: 310, wyjazdy: 2, tir: 1, tir_cena: 3500, rozl_cena: 3000,
-  osoby: 4, zysk: 0.11, zysk2: 0.10, poz: { mufas: 19900 }, eur: 4.325, konserwA: 50
+  osoby: 4, zysk: 0.11, zysk2: 0.10, poz: { mufas: 19900 }, eur: 4.325, konserwA: 50, nadpis: { paliwo: 7 }
 }), s1);
 console.log("NK6501");
 blisko(r1.mat.suma2000, 82900, "urządzenia (K39)");
@@ -25,11 +25,12 @@ blisko(r1.warianty[0].zyskN, 17562.47180232557, "zysk z narzutem (J43)");
 blisko(r1.warianty[0].zyskN2, 16074.633620689667, "zysk z narzutem, 10% (M43)");
 blisko(r1.konserwacja[0].rok, 50 * 6 * 12, "konserwacja roczna 50 zł/MP");
 
+// Arkusze liczą paliwo po 7 zł/l (NKPXLH także hotel 120 zł); szablony mają 9,40 zł i 130 zł, więc podajemy stawki arkusza jako zmienione w tej wycenie.
 // NKPXLH: 18 urządzeń, 1 kontener, 3 wyjazdy montażowe. Kolumna N arkusza pomija dźwig (N18 liczy dni, nie koszt), więc porównujemy K.
 const s2 = szablon("nkpxlh");
 const r2 = E.oblicz(Object.assign(E.domyslneDane(), {
   szablon: "nkpxlh", S: 18, agregaty: 3, km: 310, wyjazdy: 3, tir: 1, tir_cena: 3500, rozl_cena: 2800,
-  osoby: 4, zysk: 0.28, zysk2: 0.255, eur: 4.33, usd: 3.86, konserwA: 35
+  osoby: 4, zysk: 0.28, zysk2: 0.255, eur: 4.33, usd: 3.86, konserwA: 35, nadpis: { paliwo: 7, hotel: 120 }
 }), s2);
 console.log("NKPXLH");
 blisko(r2.mat.frachtSzt, 2022.8098982222223, "fracht na urządzenie (F3)");
@@ -44,5 +45,5 @@ blisko(r2.warianty[0].zyskN, 108617.21648368117, "zysk z narzutem (J45)");
 blisko(r2.konserwacja[0].rok, 7560, "konserwacja roczna 35 zł × 18 szt. (J46)");
 blisko(r2.konserwacja[0].pol, 3780, "przegląd 35 zł × 18 szt. (J47)");
 assert(r2.mat.suma2500 > r2.mat.suma2000, "wariant 2500 kg droższy");
-blisko(r2.mat.suma2500 - r2.mat.suma2000, 18 * 650 * 3.86, "2500 kg: +650 USD/szt.");
+blisko(r2.mat.suma2500 - r2.mat.suma2000, 18 * 700 * 3.86, "2500 kg: 3000 USD/szt. (+700)");
 console.log("szablony: OK");

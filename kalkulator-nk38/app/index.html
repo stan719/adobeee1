@@ -339,6 +339,8 @@ fieldset.card:focus-within { border-color: color-mix(in srgb, var(--accent) 45%,
 .plist { display: flex; flex-direction: column; gap: 6px; }
 .plist .it { display: flex; justify-content: space-between; align-items: center; gap: 8px 12px; flex-wrap: wrap; padding: 9px 12px; border: 1px solid var(--line); border-radius: 10px; font-size: 13px; }
 .plist .it b { font-weight: 600; }
+.plist .it.rob { border-style: dashed; background: var(--sunken); }
+.plist .tg { font-size: 11px; font-weight: 500; padding: 1px 8px; border-radius: 99px; background: var(--warn-soft); color: var(--warn); margin-left: 6px; white-space: nowrap; }
 .mv { display: flex; flex-direction: column; gap: 14px; font-size: 13px; color: var(--ink-2); }
 .mv h4 { margin: 0 0 4px; font-size: 13px; font-weight: 600; color: var(--ink); }
 .mv p { margin: 0 0 8px; }
@@ -385,11 +387,11 @@ table.t.edt input[type=text], table.t.edt td input:not([type=number]) { min-widt
 <div class="wrap" id="vPulpit">
   <div class="phead">
     <div><h2>Wybierz urządzenie</h2><p>Każde urządzenie ma własny szablon: typy, ceny, pozycje kosztowe, montaż i teksty oferty. Skopiuj istniejący szablon albo zacznij od pustego, żeby dodać kolejny typ.</p><div class="pstat" id="pStat"></div></div>
-    <button class="btn" type="button" id="pPusty">+ Nowe urządzenie</button>
   </div>
   <div class="devgrid" id="devGrid"></div>
   <div class="pgrid2">
-    <section class="card"><h3 class="sec">Ostatnie wyceny</h3><div class="plist" id="pWyceny"></div></section>
+    <section class="card"><div class="row" style="justify-content:space-between;margin-bottom:10px"><h3 class="sec" style="margin:0">Ostatnie wyceny</h3>
+      <input id="pSzukaj" type="search" placeholder="Szukaj: nazwa, adres, miasto, urządzenie" style="max-width:280px" aria-label="Szukaj wycen"></div><div class="plist" id="pWyceny"></div></section>
     <section class="card"><h3 class="sec">Przenoszenie na inny komputer</h3>
       <div class="mv">
         <div><h4>Kopia zapasowa danych</h4><p>Jeden plik z szablonami urządzeń, tekstami oferty, numeracją ofert i zapisanymi wycenami. Wczytanie dodaje wyceny i zastępuje szablony o tym samym identyfikatorze.</p>
@@ -422,6 +424,8 @@ table.t.edt input[type=text], table.t.edt td input:not([type=number]) { min-widt
           <label class="f zagl">Zagłębienie H2 [cm]<input id="h2" type="number" min="0" step="1"></label>
           <label class="f zagl">Długość zagłębienia [cm]<input id="dl" type="text" placeholder="530"></label>
           <label class="f">Prześwit [cm]<input id="przeswit" type="number" min="0" step="1"></label>
+          <label class="f nzagl">Długość miejsca / pojazdów [cm]<input id="dlMiejsca" type="number" min="0" step="1" placeholder="500"><span class="hint">do danych technicznych oferty</span></label>
+          <label class="f">Agregaty w opisie<input id="agrOpis" type="text" placeholder="np. 3xA4+2xA5"><span class="hint">puste = liczba agregatów</span></label>
           <div class="full" id="paryBox"></div>
           <label class="f full"><span>Opis / wariant <span class="autotag" id="opisTag">automatyczny</span><button type="button" class="linkbtn" id="opisReset" hidden>Przywróć automatyczny</button></span><input id="opis" type="text"><span class="hint">Tworzy się sam z wpisanych wymiarów, wysokości pojazdów i wyposażenia. Możesz go nadpisać.</span></label>
         </div>
@@ -471,6 +475,8 @@ table.t.edt input[type=text], table.t.edt td input:not([type=number]) { min-widt
           <label class="f pDzw">Spider Crane, koszt razem [zł]<input id="dzwig_koszt" type="number" min="0" step="100" class="auto"><span class="hint" id="dzwigHint"></span></label>
           <label class="f">Osób na montażu<input id="osoby" type="number" min="1" max="12" step="1"><span class="hint" id="hintOsoby">500 / 400 / kolejne 350 zł</span></label>
           <label class="f">Tygodnie montażu<input id="wyjazdy" type="number" min="0" step="1" class="auto"><span class="hint">puste = automatycznie (Kraków: dni)</span></label>
+          <label class="f">Hotel [zł/doba]<input id="nad_hotel" type="number" min="0" step="5" class="auto"><span class="hint" id="hintHotel"></span></label>
+          <label class="f">Dieta [zł/dzień]<input id="nad_dieta" type="number" min="0" step="1" class="auto"><span class="hint">w Krakowie hotel i diety = 0</span></label>
           <label class="f">Czas podróży<select id="wzor"><option value="stary">Stary wzór, poprawiony od 800 km</option><option value="uproszczony">Uproszczony: 650 km dziennie</option></select></label>
         </div>
       </fieldset>
@@ -524,7 +530,7 @@ table.t.edt input[type=text], table.t.edt td input:not([type=number]) { min-widt
   <div class="card dlg" role="dialog" aria-modal="true" aria-labelledby="dlgT">
     <h3 id="dlgT">Zapisz wycenę</h3>
     <p class="note" id="dlgInfo"></p>
-    <label class="f">Nazwa nowej wyceny<input id="dlgNazwa" type="text"></label>
+    <label class="f" id="dlgNazwaL">Nazwa nowej wyceny<input id="dlgNazwa" type="text"></label>
     <div class="row" style="justify-content:flex-end"><button class="btn ghost" type="button" id="dlgAnul">Anuluj</button><button class="btn" type="button" id="dlgNowa">Zapisz jako nową</button><button class="btn primary" type="button" id="dlgNadpisz">Nadpisz</button></div>
   </div>
 </div>
@@ -536,13 +542,13 @@ table.t.edt input[type=text], table.t.edt td input:not([type=number]) { min-widt
 (function () {
   "use strict";
   var E = window.NK38, X = window.NK38X;
-  var LS = { drafty: "nk38.szkice.v1", draft: "nk38.szkic.v1", tab: "nk38.zakladka", sel: "nk38.wariant", logo: "nk38.logo.v1", podpis: "nk38.podpis.v1",
-    szablony: "nk38.szablony.v1", wyceny: "nk38.wyceny.v1", tekstyOferty: "nk38.szablon.v1", numery: "nk38.numery.v1", cennikStary: "nk38.cennik.v1" };
+  var LS = { robocze: "nk38.robocze.v1", drafty: "nk38.szkice.v1", draft: "nk38.szkic.v1", tab: "nk38.zakladka", sel: "nk38.wariant", logo: "nk38.logo.v1", podpis: "nk38.podpis.v1",
+    szablony: "nk38.szablony.v1", wyceny: "nk38.wyceny.v1", tekstyOferty: "nk38.szablon.v1", numery: "nk38.numery.v1", cennikStary: "nk38.cennik.v1", usuniete: "nk38.usuniete.v1", migracja2: "nk38.migracja2" };
   var NUMF = ["km", "km_pom", "km_mon", "S", "D", "NP", "agregaty", "magistrala", "barierki", "maskownice", "utr_dod",
-    "tir", "tir_cena", "rozl_cena", "rozl_dni", "dzwig_koszt", "osoby", "wyjazdy", "eur", "usd", "h1", "h2", "przeswit", "konserwA", "konserwB"];
-  var OPTF = { km_pom: 1, km_mon: 1, rozl_dni: 1, dzwig_koszt: 1, wyjazdy: 1, h1: 1, h2: 1, przeswit: 1 };
+    "tir", "tir_cena", "rozl_cena", "rozl_dni", "dzwig_koszt", "osoby", "wyjazdy", "eur", "usd", "h1", "h2", "przeswit", "konserwA", "konserwB", "dlMiejsca"];
+  var OPTF = { km_pom: 1, km_mon: 1, rozl_dni: 1, dzwig_koszt: 1, wyjazdy: 1, h1: 1, h2: 1, przeswit: 1, dlMiejsca: 1 };
   var PCTF = ["zysk", "zysk2", "q2500"];
-  var TXTF = ["nazwa", "data", "wzor", "dl"];
+  var TXTF = ["nazwa", "data", "wzor", "dl", "agrOpis"];
   var DIMKEYS = ["szer1", "szer2", "dl500", "dl540", "dl550"];
   var CENNIK_POLA = [
     ["Platformy", null], ["cena_D", "Platforma D (4 MP)", "zł"],
@@ -610,7 +616,8 @@ table.t.edt input[type=text], table.t.edt td input:not([type=number]) { min-widt
           return;
         } catch (e) { this.db = null; }
       }
-      this.cache = { szablony: lsGet(LS.szablony, null), tekstyOferty: lsGet(LS.tekstyOferty, null), numery: lsGet(LS.numery, null) };
+      this.cache = { szablony: lsGet(LS.szablony, null), tekstyOferty: lsGet(LS.tekstyOferty, null), numery: lsGet(LS.numery, null),
+        usuniete: lsGet(LS.usuniete, null), migracja2: lsGet(LS.migracja2, null) };
     },
     get: function (k, d) { return this.cache[k] != null ? kopia(this.cache[k]) : d; },
     set: function (k, v) {
@@ -667,14 +674,27 @@ table.t.edt input[type=text], table.t.edt td input:not([type=number]) { min-widt
       var stary = lsGet(LS.cennikStary, null);   // zmiany cennika z poprzedniej wersji aplikacji
       if (stary) Object.keys(stary).forEach(function (k) { if (k in lista[0].cennik) lista[0].cennik[k] = stary[k]; });
     }
-    var ids = lista.map(function (x) { return x.id; });   // nowe wbudowane urządzenia dochodzą do zapisanych szablonów
-    E.szablonyWbudowane().forEach(function (x) { if (ids.indexOf(x.id) < 0) lista.push(x); });
+    var ids = lista.map(function (x) { return x.id; }), usuniete = Store.get("usuniete", []) || [];   // nowe wbudowane urządzenia dochodzą, usunięte nie wracają
+    E.szablonyWbudowane().forEach(function (x) { if (ids.indexOf(x.id) < 0 && usuniete.indexOf(x.id) < 0) lista.push(x); });
+    if (!Store.get("migracja2", false)) {   // 21.10: paliwo jak NK38, NKPXLH: hotel 130, 2500 kg = 3000 USD, bez słupków, długość miejsca w ofercie
+      lista.forEach(function (x) {
+        if (x.id !== "nk6501" && x.id !== "nkpxlh") return;
+        x.cennik = x.cennik || {}; x.cennik.paliwo = 9.4;
+        if (x.id === "nkpxlh") {
+          x.cennik.hotel = 130; x.opcje = x.opcje || {}; x.opcje.slupki = false;
+          if (x.wariantB) x.wariantB.wartosc = 700;
+          if (x.teksty && x.teksty.tech) x.teksty.tech = x.teksty.tech.replace(/▲-500cm, ▼-500cm/, "▲-{M}cm, ▼-{M}cm");
+        }
+      });
+      Store.set("migracja2", true); Store.set("szablony", lista.map(E.uzupelnijSzablon));
+    }
     lista.forEach(function (x) {   // nowe ustawienia wbudowanych urządzeń dla szablonów zapisanych wcześniej
       var wb = E.szablonyWbudowane().filter(function (y) { return y.id === x.id; })[0];
       if (wb && x.opcje && x.opcje.slupki === undefined) x.opcje.slupki = wb.opcje.slupki;
     });
     szablony = lista.map(E.uzupelnijSzablon);
   }
+  function oznaczUsuniety(id) { var u = Store.get("usuniete", []) || []; if (u.indexOf(id) < 0) { u.push(id); Store.set("usuniete", u); } }
   function zapiszSzablony() { Store.set("szablony", szablony); oznaczZapis(); }
   function oznaczZapis() {
     var el = $("edStan"); if (!el) return;
@@ -696,7 +716,8 @@ table.t.edt input[type=text], table.t.edt td input:not([type=number]) { min-widt
   /* Pola formularza zależne od szablonu: typy urządzeń, pozycje wpisywane ręcznie, transport, dźwig, kursy. */
   function ukladFormularza(sz, d) {
     var lista = sz.model === "lista", c = sz.cennik, pokaz = function (sel, on) { document.querySelectorAll(sel).forEach(function (el) { el.classList.toggle("ukryj", !on); }); };
-    pokaz(".zagl", sz.wysokosci.tryb === "zaglebienie");
+    pokaz(".zagl", sz.wysokosci.tryb === "zaglebienie"); pokaz(".nzagl", sz.wysokosci.tryb !== "zaglebienie");
+    var cs = sz.cennik; $("nad_hotel").placeholder = cs.hotel; $("nad_dieta").placeholder = cs.dieta; $("hintHotel").textContent = "puste = " + cs.hotel + " zł z szablonu";
     pokaz(".pNK", !lista); pokaz(".pAgr", lista ? sz.opcje.agregaty : true);
     pokaz(".pDzw", !lista || c.dzwig > 0 || d.dzwig_koszt != null);
     pokaz(".pUSD", lista); pokaz(".pQ", !!sz.wariantB.nazwa && sz.wariantB.tryb === "%");
@@ -756,6 +777,7 @@ table.t.edt input[type=text], table.t.edt td input:not([type=number]) { min-widt
     NUMF.forEach(function (k) { $(k).value = d[k] == null ? "" : d[k]; });
     PCTF.forEach(function (k) { $(k).value = d[k] == null ? "" : +(d[k] * 100).toFixed(4); });
     $("szablon").value = szablonAktywny().id;
+    ["hotel", "dieta"].forEach(function (k) { $("nad_" + k).value = (d.nadpis || {})[k] != null ? d.nadpis[k] : ""; });
     renderPary(d);
     buildDimTable();
     lokButtons(d.lok);
@@ -776,7 +798,9 @@ table.t.edt input[type=text], table.t.edt td input:not([type=number]) { min-widt
 
   function fromForm() {
     var d = E.domyslneDane(), s = state.dane;
-    ["lok", "analiza", "oferta", "opis", "_wid", "_wnazwa"].forEach(function (k) { if (s && s[k] !== undefined) d[k] = s[k]; });
+    ["lok", "analiza", "oferta", "opis", "_wid", "_wnazwa", "_rid", "nadpis"].forEach(function (k) { if (s && s[k] !== undefined) d[k] = s[k]; });
+    d.nadpis = Object.assign({}, d.nadpis || {});
+    ["hotel", "dieta"].forEach(function (k) { var v = $("nad_" + k).value; if (v === "") delete d.nadpis[k]; else d.nadpis[k] = Number(v); });
     TXTF.forEach(function (k) { d[k] = $(k).value; });
     d.szablon = $("szablon").value;
     NUMF.forEach(function (k) {
@@ -874,6 +898,8 @@ table.t.edt input[type=text], table.t.edt td input:not([type=number]) { min-widt
       }
     });
   }
+  /* kółko myszy nie zmienia wartości w polach liczbowych */
+  document.addEventListener("wheel", function (e) { var t = e.target; if (t && t.type === "number" && document.activeElement === t) t.blur(); }, { passive: true });
   var tipEl = null;
   ["input", "scroll", "click"].forEach(function (ev) { document.addEventListener(ev, function () { if (tipEl) tipEl.hidden = true; }, true); });
   document.addEventListener("mouseover", function (e) {
@@ -891,7 +917,12 @@ table.t.edt input[type=text], table.t.edt td input:not([type=number]) { min-widt
     var zA = "zysk " + pct(d.zysk), zB = "zysk " + pct(d.zysk2);
     if (state.view === "kalk") { $("appTitle").textContent = "Kalkulator " + d.typ; $("projline").textContent = (d.nazwa || "Nowa wycena") + " · " + d.typ; }
     $("mpNote").textContent = r.szablon.model === "lista" ? m.platformy + " " + odm(m.platformy, "urządzenie", "urządzenia", "urządzeń") + " · " + m.MP + " MP" : m.platformy + " platform · " + m.MP + " MP";
-    ["S", "D", "NP"].forEach(function (k) { $("lbl" + k).textContent = T[k].nazwa; $("hint" + k).textContent = T[k].mp + " MP"; });
+    ["S", "D", "NP"].forEach(function (k) {
+      var t = T[k], wb = r.szablon.wariantB, txt = t.mp + " MP";
+      if (r.szablon.model === "lista" && t.cena) txt += " · " + fmtPLN.format(t.cena) + " " + t.waluta + "/szt." +
+        (wb.nazwa && wb.tryb === "szt" && wb.waluta === t.waluta ? " (" + wb.nazwa + ": " + fmtPLN.format(t.cena + Number(wb.wartosc)) + " " + t.waluta + ")" : "");
+      $("lbl" + k).textContent = t.nazwa; $("hint" + k).textContent = txt;
+    });
     $("std_S").textContent = Math.max(0, (d.S || 0) - sumO(d.gl_S));
     $("std_D").textContent = Math.max(0, (d.D || 0) - sumO(d.gl_D));
     var surowe = (d.magistrala || 0) * r.cennik.osd_magistrala + ((d.barierki || 0) + (d.maskownice || 0)) * r.cennik.osd_barierka;
@@ -934,7 +965,7 @@ table.t.edt input[type=text], table.t.edt td input:not([type=number]) { min-widt
       strukturaCeny(w) +
       '<div class="kpis">' +
       kpi("Montaż", w.tygodnie + " tyg.<small>" + w.dni + " dni pracy, " + w.osoby + " os." + (recz ? ", tygodnie wpisane ręcznie" : "") + "</small>", true) +
-      kpi("Zysk z narzutem " + pct(d.zysk) + " / " + pct(d.zysk2), zl(w.zyskN) + "<small>" + zl(w.zyskN2) + "</small>") +
+      kpi("Zysk z narzutem " + pct(d.zysk), zl(w.zyskN) + "<small>przy " + pct(d.zysk2) + ": " + zl(w.zyskN2) + "</small>") +
       kpi("Konserwacja roczna", zl(K[0].rok) + "<small>przy " + K[0].stawka + " zł/" + jm + " · " + zl(K[1].rok) + " przy " + K[1].stawka + " zł/" + jm + "</small>") +
       (r.szablon.opcje.przeglad ? kpi("Przegląd półroczny", zl(K[0].pol) + "<small>przy " + K[0].stawka + " zł/" + jm + " · " + zl(K[1].pol) + " przy " + K[1].stawka + " zł/" + jm + "</small>") : "") + "</div>";
     liczbyHero(w, r.szablon.id + "|" + sel);
@@ -954,6 +985,7 @@ table.t.edt input[type=text], table.t.edt td input:not([type=number]) { min-widt
     $("tabs").innerHTML = TABS.map(function (t) {
       return '<button type="button" role="tab" data-tab="' + t[0] + '" aria-selected="' + (state.tab === t[0]) + '">' + t[1] + "</button>";
     }).join("");
+    if (state.bezPanelu) return;
     $("pane").innerHTML = ({ wynik: paneWynik, ekipa: paneEkipa, zestaw: paneZestaw, obl: paneObl, wyceny: paneWyceny }[state.tab] || paneWynik)();
     if (state.tab === "wyceny") wypelnijWyceny();
   }
@@ -1063,14 +1095,18 @@ table.t.edt input[type=text], table.t.edt td input:not([type=number]) { min-widt
       '<button class="btn small" type="button" id="bCopy">Kopiuj tekst</button></div><pre class="offer" id="offerText">' + esc(zestawienie()) + "</pre>";
   }
 
+  var STAWKI = [["paliwo", "Paliwo [zł/l]"], ["spalanie", "Spalanie [l/100 km]"], ["hotel", "Hotel [zł/doba]"], ["dieta", "Dieta [zł/dzień]"], ["dzwig", "Spider Crane [zł/dzień]"],
+    ["stawka_1", "Stawka 1. osoby [zł]"], ["stawka_2", "Stawka 2. osoby [zł]"], ["stawka_kolejna", "Stawka kolejnych [zł]"], ["km_montaz_dodatek", "Montaż: km dodane"]];
   function paneObl() {
-    var R = X.raport(wynik, wynik.szablon.glebokosci.map(function (g) { return g.cm; }), wynik.dane.oferta);
-    var h = '<h3 class="sec">Materiały i urządzenia</h3><div class="scroll"><table class="t"><tbody>' +
+    var R = X.raport(wynik, wynik.szablon.glebokosci.map(function (g) { return g.cm; }), wynik.dane.oferta), nd = wynik.dane.nadpis || {}, sc = szablonAktywny().cennik;
+    var h = '<h3 class="sec">Stawki w tej wycenie</h3><p class="note" style="margin-bottom:8px">Zmiana dotyczy tylko tej wyceny, szablon zostaje bez zmian. Puste pole = wartość z szablonu.</p><div class="kv stawki">' +
+      STAWKI.map(function (x) { return "<label for=\"st_" + x[0] + "\">" + x[1] + (nd[x[0]] != null ? ' <span class="tag">zmienione</span>' : "") + '</label><input id="st_' + x[0] + '" data-stawka="' + x[0] + '" type="number" step="any" placeholder="' + esc(sc[x[0]]) + '" value="' + (nd[x[0]] != null ? nd[x[0]] : "") + '">'; }).join("") + "</div>";
+    h += '<h3 class="sec">Materiały i urządzenia</h3><div class="scroll"><table class="t"><tbody>' +
       R.mat.map(function (x) { return '<tr class="' + (/^Suma/.test(x[0]) ? "strong" : "") + '"><td>' + esc(x[0]) + "</td><td>" + esc(x[1]) + "</td></tr>"; }).join("") + "</tbody></table></div>";
     var wv = X.widoczneWarianty(wynik);
     h += '<h3 class="sec">Montaż i cena</h3><div class="scroll"><table class="t">' + thead("Pozycja", wv) + "<tbody>" +
       R.mon.rows.map(function (row) {
-        return '<tr class="' + (row.bold ? "strong" : "") + '"><td>' + row.label + "</td>" + row.vals.map(function (v, i) {
+        return '<tr class="' + (row.bold ? "strong" : "") + '"><td>' + row.label + (row.info ? '<div class="muted" style="font-size:11.5px;font-weight:400">' + esc(row.info) + "</div>" : "") + "</td>" + row.vals.map(function (v, i) {
           var f = row.fmt === "zl" ? zl(v) : row.fmt === "int" ? fmtPLN.format(v) : n2(v);
           return '<td class="' + (wv[i] === wynik.warianty[state.sel] ? "sel" : "") + '">' + f + "</td>";
         }).join("") + "</tr>";
@@ -1126,7 +1162,7 @@ table.t.edt input[type=text], table.t.edt td input:not([type=number]) { min-widt
     var h = '<div class="row" style="justify-content:space-between;margin-bottom:12px"><div class="row"><label class="f" style="flex-direction:row;align-items:center;gap:8px">Edytuj szablon<select id="szSel" style="width:auto">' +
       szablony.map(function (x) { return '<option value="' + esc(x.id) + '"' + (x.id === s.id ? " selected" : "") + ">" + esc(x.nazwa) + "</option>"; }).join("") + "</select></label></div>" +
       '<div class="row"><button class="btn small" type="button" id="szNowy">Kopiuj ten szablon</button>' +
-      (wb ? '<button class="btn small" type="button" id="szReset">Przywróć domyślne</button>' : '<button class="btn small danger" type="button" id="szUsun">Usuń szablon</button>') + "</div></div>";
+      (wb ? '<button class="btn small" type="button" id="szReset">Przywróć domyślne</button>' : "") + '<button class="btn small danger" type="button" id="szUsun">Usuń szablon</button></div></div>';
     if (state.szUsun) h += '<div class="alert uwaga" style="margin-bottom:10px"><b>Usunąć „' + esc(s.nazwa) + '”?</b><span class="row"><button class="btn small danger" type="button" id="szUsunTak">Tak, usuń</button><button class="btn small" type="button" id="szUsunNie">Anuluj</button></span></div>';
     h += '<p class="note">Zmiany zapisują się od razu' + (Store.db ? " na koncie (na każdym urządzeniu)" : " w tej przeglądarce") + '. Wycena liczy się z cen, tabel i ustawień tego szablonu.</p>';
 
@@ -1479,7 +1515,7 @@ table.t.edt input[type=text], table.t.edt td input:not([type=number]) { min-widt
     return Object.assign(E.domyslneDane(), dm, { data: dzis(), szablon: sz.id,
       oferta: { opcje: { q2500: sz.model !== "lista" } } });   // w nowych urządzeniach opcja wariantu 2 domyślnie wyłączona
   }
-  $("bNew").addEventListener("click", function () { setDane(nowaWycena(szablonAktywny().id)); buildDimTable(); toForm(state.dane); toast("Nowa wycena"); });
+  $("bNew").addEventListener("click", function () { odlozSzkic(); setDane(nowaWycena(szablonAktywny().id)); stanCzysty(); toast("Nowa wycena"); });
   $("bXlsx").addEventListener("click", function () { busy($("bXlsx"), eksportXlsx); });
   $("bPdf").addEventListener("click", function () { busy($("bPdf"), eksportPdf); });
   $("bDocxTop").addEventListener("click", function () { busy($("bDocxTop"), eksportDocx); });
@@ -1493,20 +1529,23 @@ table.t.edt input[type=text], table.t.edt td input:not([type=number]) { min-widt
   function oknoZapisu(nazwa) {
     var d = state.dane, jest = !!d._wid;
     $("dlgInfo").textContent = jest ? "Ta wycena jest zapisana jako „" + d._wnazwa + "”. Nadpisz ją albo zapisz jako nową pozycję." : "Zapisz bieżącą wycenę w ostatnich wycenach.";
-    $("dlgNazwa").value = nazwa || ((d.nazwa || "Wycena") + " " + dzis());
+    $("dlgNazwa").value = nazwa || (jest ? d._wnazwa : (d.nazwa || "Wycena") + " " + dzis());
+    $("dlgNazwaL").firstChild.nodeValue = jest ? "Nazwa wyceny" : "Nazwa nowej wyceny";
     $("dlgNadpisz").hidden = !jest;
     $("dlgNowa").textContent = jest ? "Zapisz jako nową" : "Zapisz";
     $("dlgNowa").className = "btn" + (jest ? "" : " primary");
     $("dlg").hidden = false; (jest ? $("dlgNadpisz") : $("dlgNazwa")).focus();
   }
   async function zapiszBiezaca(nadpisz) {
-    var d = state.dane, nazwa = nadpisz ? d._wnazwa : ($("dlgNazwa").value.trim() || "Wycena " + dzis());
+    var d = state.dane, nazwa = $("dlgNazwa").value.trim() || (nadpisz ? d._wnazwa : "Wycena " + dzis());
+    if (!nadpisz && d._wid && nazwa === d._wnazwa) nazwa += " (" + dzis() + ")";   // nowa pozycja nie dubluje nazwy
     $("dlg").hidden = true;
     var w = { nazwa: nazwa, kiedy: new Date().toLocaleString("pl-PL"), cena: wynik.warianty[0].cena, dane: kopia(d) };
-    delete w.dane._wid; delete w.dane._wnazwa;
+    delete w.dane._wid; delete w.dane._wnazwa; delete w.dane._rid;
     try {
       var id = nadpisz ? await Store.nadpiszWycene(d._wid, w) : await Store.zapiszWycene(w);
-      d._wid = id; d._wnazwa = nazwa; lsSet(LS.draft, { dane: d });
+      d._wid = id; d._wnazwa = nazwa; if (d._rid) { usunRobocza(d._rid); delete d._rid; }
+      lsSet(LS.draft, { dane: d }); stanCzysty();
       toast((nadpisz ? "Nadpisano: " : "Zapisano: ") + nazwa);
       if (state.tab === "wyceny") wypelnijWyceny();
     } catch (e) { toast("Nie udało się zapisać wyceny. Spróbuj ponownie."); }
@@ -1551,6 +1590,17 @@ table.t.edt input[type=text], table.t.edt td input:not([type=number]) { min-widt
   function odswiezSz() { if (state.view === "edytor") renderEdytor(); else render(); }
   naObu("input", function (e) {
     var t = e.target;
+    if (t.dataset.stawka) {   // stawka tylko dla tej wyceny
+      var nd = state.dane.nadpis = Object.assign({}, state.dane.nadpis || {});
+      if (t.value === "") delete nd[t.dataset.stawka]; else nd[t.dataset.stawka] = Number(t.value);
+      ["hotel", "dieta"].forEach(function (k) { $("nad_" + k).value = nd[k] != null ? nd[k] : ""; });
+      recalcBezPanelu();
+      clearTimeout(state.stT); state.stT = setTimeout(function () {   // tabela obliczeń odświeża się po chwili, kursor zostaje w polu
+        var a = document.activeElement, id = a && a.id; render();
+        var el = id && $(id); if (el) { el.focus(); try { var n = el.value.length; el.setSelectionRange && el.type !== "number" && el.setSelectionRange(n, n); } catch (er) { /* pola liczbowe */ } }
+      }, 700);
+      return;
+    }
     if (t.dataset.szp && t.tagName !== "SELECT" && t.type !== "checkbox") {
       var s = szEdytowany(), v = t.type === "number" ? (t.value === "" ? 0 : Number(t.value)) : t.value;
       if (/^domyslne\./.test(t.dataset.szp)) v = t.value === "" ? null : Number(t.value) / (t.dataset.pct ? 100 : 1);
@@ -1562,8 +1612,7 @@ table.t.edt input[type=text], table.t.edt td input:not([type=number]) { min-widt
   function recalcBezPanelu() {
     wynik = E.oblicz(state.dane, szablonAktywny());
     lsSet(LS.draft, { dane: state.dane });
-    var tab = state.tab; state.tab = "_"; render(); state.tab = tab;
-    $("tabs").innerHTML = TABS.map(function (t) { return '<button type="button" role="tab" data-tab="' + t[0] + '" aria-selected="' + (state.tab === t[0]) + '">' + t[1] + "</button>"; }).join("");
+    state.bezPanelu = true; render(); state.bezPanelu = false;   // dolna tabela zostaje (kursor w polu nie ucieka)
   }
   naObu("change", function (e) {
     var t = e.target;
@@ -1583,7 +1632,7 @@ table.t.edt input[type=text], table.t.edt td input:not([type=number]) { min-widt
     if (t.id === "bSave2") return oknoZapisu($("saveName").value);
     if (t.dataset.load !== undefined) {
       var w = (state.wyceny || []).filter(function (x) { return x.id === t.dataset.load; })[0];
-      if (w) { odlozSzkic(); setDane(Object.assign({}, w.dane, { _wid: w.id, _wnazwa: w.nazwa })); toast("Wczytano: " + w.nazwa); }
+      if (w) { odlozSzkic(); setDane(Object.assign({}, w.dane, { _wid: w.id, _wnazwa: w.nazwa })); stanCzysty(); toast("Wczytano: " + w.nazwa); }
       return;
     }
     if (t.dataset.del !== undefined) { var idd = t.dataset.del; return potwierdz(t, "Usunąć wycenę?", function () { usunWycene(idd); }); }
@@ -1610,8 +1659,9 @@ table.t.edt input[type=text], table.t.edt td input:not([type=number]) { min-widt
       return;
     }
     if (t.id === "szUsun") {
+      if (szablony.length < 2) { toast("Zostaw przynajmniej jedno urządzenie."); return; }
       return potwierdz(t, "Usunąć „" + s.nazwa + "”?", function () {
-        szablony = szablony.filter(function (x) { return x !== s; }); state.edytowany = null;
+        szablony = szablony.filter(function (x) { return x !== s; }); state.edytowany = null; oznaczUsuniety(s.id);
         if (state.dane.szablon === s.id) state.dane.szablon = szablony[0].id;
         zapiszSzablony(); wypelnijSzablony(); $("szablon").value = szablonAktywny().id; buildDimTable(); recalc(); pokaz("pulpit"); toast("Usunięto szablon");
       });
@@ -1701,6 +1751,7 @@ table.t.edt input[type=text], table.t.edt td input:not([type=number]) { min-widt
 
   /* --- widoki: pulpit (wybór urządzenia), edytor szablonu, kalkulator --- */
   function pokaz(v) {
+    if (state.view === "kalk" && v !== "kalk") odlozSzkic();
     state.view = v;
     $("vPulpit").hidden = v !== "pulpit"; $("vEdytor").hidden = v !== "edytor"; $("vKalk").hidden = v !== "kalk";
     $("kalkActions").hidden = v !== "kalk"; $("bPulpit").hidden = v === "pulpit";
@@ -1724,7 +1775,7 @@ table.t.edt input[type=text], table.t.edt td input:not([type=number]) { min-widt
             "<dt>Osobodni S / D</dt><dd>" + n2(s.typy.S.osd || 0) + " / " + n2(s.typy.D.osd || 0) + "</dd><dt>Zagłębienia / składowe</dt><dd>" + s.glebokosci.length + " / " + s.skladowe.length + "</dd></dl>") +
         (conf ? '<div class="row"><span class="muted">Usunąć szablon?</span><button class="btn small danger" type="button" data-dev-usun-tak="' + esc(s.id) + '">Tak, usuń</button><button class="btn small" type="button" data-dev-usun-nie="1">Anuluj</button></div>'
           : '<div class="row"><button class="btn primary" type="button" data-dev-policz="' + esc(s.id) + '">Policz</button><button class="btn small" type="button" data-dev-edytuj="' + esc(s.id) + '">Edytuj</button>' +
-            '<button class="btn small" type="button" data-dev-kopiuj="' + esc(s.id) + '">Kopiuj</button>' + (wb ? "" : '<button class="btn small ghost danger" type="button" data-dev-usun="' + esc(s.id) + '">Usuń</button>') + "</div>") + "</article>";
+            '<button class="btn small" type="button" data-dev-kopiuj="' + esc(s.id) + '">Kopiuj</button><button class="btn small ghost danger" type="button" data-dev-usun="' + esc(s.id) + '">Usuń</button></div>') + "</article>";
     }).join("");
     h += '<article class="card dev add wejscie" style="--i:' + szablony.length + '"><div><h3>Nowe urządzenie</h3><p>Pusty szablon: wpisujesz typy urządzeń, ceny i pozycje kosztowe. Możesz też skopiować istniejące urządzenie przyciskiem „Kopiuj”.</p></div><button class="btn" type="button" data-dev-pusty="1">Utwórz pusty szablon</button></article>';
     $("devGrid").innerHTML = h;
@@ -1737,11 +1788,24 @@ table.t.edt input[type=text], table.t.edt td input:not([type=number]) { min-widt
     var lista = [];
     try { lista = await Store.listaWycen(); } catch (e) { $("pWyceny").innerHTML = '<div class="empty">Nie udało się wczytać wycen.</div>'; return; }
     state.wyceny = lista;
-    $("pStat").insertAdjacentHTML("beforeend", "<span><b>" + lista.length + "</b> " + odm(lista.length, "zapisana wycena", "zapisane wyceny", "zapisanych wycen") + "</span>");
+    var ps = $("pStatW"); if (ps) ps.remove();
+    $("pStat").insertAdjacentHTML("beforeend", "<span id=\"pStatW\"><b>" + lista.length + "</b> " + odm(lista.length, "zapisana wycena", "zapisane wyceny", "zapisanych wycen") + "</span>");
     var nazwa = function (id) { var s = szablony.filter(function (x) { return x.id === id; })[0]; return s ? s.nazwa : "NK38"; };
-    $("pWyceny").innerHTML = lista.length ? lista.slice(0, 8).map(function (w) {
-      return '<div class="it"><div><b>' + esc(w.nazwa) + '</b> <span class="muted">· ' + esc(nazwa((w.dane || {}).szablon)) + " · " + esc(w.kiedy || "") + " · " + zl(w.cena || 0) + '</span></div><div class="row"><button class="btn small" type="button" data-p-load="' + esc(w.id) + '">Otwórz</button><button class="btn small ghost danger" type="button" data-p-del="' + esc(w.id) + '">Usuń</button></div></div>';
-    }).join("") : '<div class="empty">Brak zapisanych wycen. Zapisujesz je przyciskiem „Zapisz” w kalkulatorze.</div>';
+    var q = ($("pSzukaj").value || "").toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/ł/g, "l");
+    var pasuje = function (txt) { return !q || q.split(/\s+/).every(function (w) { return txt.indexOf(w) >= 0; }); };
+    var norm = function (t) { return String(t || "").toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/ł/g, "l"); };
+    var rb = robocze().map(function (r) { return { rob: 1, id: r.id, ts: r.ts, nazwa: r.nazwa, typ: r.typ, adres: (r.dane || {}).nazwa, cena: r.cena, kiedy: new Date(r.ts).toLocaleString("pl-PL") }; });
+    var zap = lista.map(function (w) { return { id: w.id, ts: w.ts || 0, nazwa: w.nazwa, typ: nazwa((w.dane || {}).szablon), adres: (w.dane || {}).nazwa, cena: w.cena, kiedy: w.kiedy }; });
+    var wsz = rb.concat(zap).sort(function (a, b) { return (b.ts || 0) - (a.ts || 0); })
+      .filter(function (x) { return pasuje(norm([x.nazwa, x.adres, x.typ].join(" "))); });
+    var limit = state.pWszystkie || q ? wsz.length : 10;
+    $("pWyceny").innerHTML = (wsz.length ? wsz.slice(0, limit).map(function (x) {
+      return '<div class="it' + (x.rob ? " rob" : "") + '"><div style="min-width:0"><b>' + esc(x.nazwa) + "</b>" + (x.rob ? ' <span class="tg own">wersja robocza, niezapisana</span>' : "") +
+        '<div class="muted" style="font-size:12px">' + esc(x.typ) + (x.adres && x.adres !== x.nazwa ? " · " + esc(x.adres) : "") + " · " + esc(x.kiedy || "") + " · " + zl(x.cena || 0) + '</div></div><div class="row">' +
+        (x.rob ? '<button class="btn small" type="button" data-r-load="' + esc(x.id) + '">Otwórz</button><button class="btn small ghost danger" type="button" data-r-del="' + esc(x.id) + '">Usuń</button>'
+          : '<button class="btn small" type="button" data-p-load="' + esc(x.id) + '">Otwórz</button><button class="btn small ghost danger" type="button" data-p-del="' + esc(x.id) + '">Usuń</button>') + "</div></div>";
+    }).join("") : '<div class="empty">' + (q ? "Nic nie pasuje do wyszukiwania." : "Brak wycen. Zapisujesz je przyciskiem „Zapisz” w kalkulatorze.") + "</div>") +
+      (!q && wsz.length > 10 ? '<button class="btn small ghost" type="button" id="pWszystkie">' + (state.pWszystkie ? "Pokaż ostatnie 10" : "Zobacz wszystkie (" + wsz.length + ")") + "</button>" : "");
   }
   function renderEdytor() {
     var s = szEdytowany(), otwarte = {};
@@ -1751,20 +1815,21 @@ table.t.edt input[type=text], table.t.edt td input:not([type=number]) { min-widt
     $("szPane").querySelectorAll("details > summary").forEach(function (x) { var k = x.textContent.replace(/\s*\(.*$/, ""); if (k in otwarte) x.parentNode.open = otwarte[k]; });
   }
   function noweId() { return "s" + Date.now().toString(36) + Math.random().toString(36).slice(2, 5); }
-  function odlozSzkic() {   // bieżąca wycena trafia do szkiców swojego urządzenia
-    if (!state.dane) return;
-    var drafty = lsGet(LS.drafty, {}); drafty[state.dane.szablon || "nk38"] = state.dane; lsSet(LS.drafty, drafty);
+  /* Wersje robocze: niezapisana praca z kalkulatora trafia do ostatnich wycen jako "wersja robocza", nigdy do szablonu. */
+  function stanCzysty() { state.czysta = JSON.stringify(state.dane); }
+  function robocze() { return lsGet(LS.robocze, []); }
+  function odlozSzkic() {
+    var d = state.dane; if (!d || JSON.stringify(d) === state.czysta) return;
+    var l = robocze(), id = d._rid || ("r" + Date.now().toString(36));
+    d._rid = id;
+    l = l.filter(function (x) { return x.id !== id; });
+    var sz = szablony.filter(function (x) { return x.id === d.szablon; })[0];
+    l.unshift({ id: id, ts: Date.now(), nazwa: d._wnazwa || d.nazwa || "Bez nazwy", typ: sz ? sz.nazwa : "", cena: wynik ? wynik.warianty[0].cena : 0, dane: kopia(d) });
+    lsSet(LS.robocze, l.slice(0, 30)); stanCzysty();
   }
-  function otworzUrzadzenie(id) {
-    var drafty = lsGet(LS.drafty, {});
-    if (state.dane && state.dane.szablon !== id) {
-      drafty[state.dane.szablon || "nk38"] = state.dane;
-      setDane(drafty[id] || nowaWycena(id));
-      lsSet(LS.drafty, drafty);
-    }
-    $("szablon").value = szablonAktywny().id; buildDimTable(); state.dane = fromForm(); recalc();
-    pokaz("kalk");
-  }
+  function usunRobocza(id) { lsSet(LS.robocze, robocze().filter(function (x) { return x.id !== id; })); }
+  function otworzDane(d) { setDane(d); stanCzysty(); pokaz("kalk"); }
+  function otworzUrzadzenie(id) { otworzDane(nowaWycena(id)); }   // zawsze czysta kalkulacja z wartości szablonu
   function edytuj(id) { state.edytowany = id; state.szUsun = false; pokaz("edytor"); }
   $("vPulpit").addEventListener("click", function (e) {
     var t = e.target.closest("button"); if (!t) return;
@@ -1784,12 +1849,16 @@ table.t.edt input[type=text], table.t.edt td input:not([type=number]) { min-widt
     }
     if (ds.devUsun) {
       var uid = ds.devUsun;
+      if (szablony.length < 2) { toast("Zostaw przynajmniej jedno urządzenie."); return; }
       return potwierdz(t, "Usunąć szablon?", function () {
-        szablony = szablony.filter(function (x) { return x.id !== uid; });
+        szablony = szablony.filter(function (x) { return x.id !== uid; }); oznaczUsuniety(uid);
         if (state.dane.szablon === uid) state.dane.szablon = szablony[0].id;
         zapiszSzablony(); wypelnijSzablony(); $("szablon").value = szablonAktywny().id; buildDimTable(); recalc(); renderPulpit(); toast("Usunięto szablon");
       });
     }
+    if (ds.rLoad) { var rb = robocze().filter(function (x) { return x.id === ds.rLoad; })[0]; if (rb) { otworzDane(rb.dane); state.czysta = null; } return; }
+    if (ds.rDel) { var rid = ds.rDel; return potwierdz(t, "Usunąć wersję roboczą?", function () { usunRobocza(rid); renderPulpitWyceny(); }); }
+    if (t.id === "pWszystkie") { state.pWszystkie = !state.pWszystkie; return renderPulpitWyceny(); }
     if (ds.pDel) { var pid = ds.pDel; return potwierdz(t, "Usunąć?", function () { usunWycene(pid); }); }
     if (ds.devUsunNie) { state.pUsun = null; return renderPulpit(); }
     if (ds.devUsunTak) {
@@ -1799,7 +1868,7 @@ table.t.edt input[type=text], table.t.edt td input:not([type=number]) { min-widt
     }
     if (ds.pLoad) {
       var w = (state.wyceny || []).filter(function (x) { return x.id === ds.pLoad; })[0];
-      if (w) { odlozSzkic(); setDane(Object.assign({}, w.dane, { _wid: w.id, _wnazwa: w.nazwa })); pokaz("kalk"); toast("Wczytano: " + w.nazwa); }
+      if (w) { otworzDane(Object.assign({}, w.dane, { _wid: w.id, _wnazwa: w.nazwa })); toast("Wczytano: " + w.nazwa); }
       return;
     }
     if (t.id === "bBackup") return busy(t, kopiaZapasowa);
@@ -1812,6 +1881,8 @@ table.t.edt input[type=text], table.t.edt td input:not([type=number]) { min-widt
     if (t.id === "edZapisz") { zapiszSzablony(); oznaczZapis(); toast("Zapisano szablon „" + szEdytowany().nazwa + "”"); }
   });
   $("bPulpit").addEventListener("click", function () { pokaz("pulpit"); });
+  var szukT = null;
+  $("pSzukaj").addEventListener("input", function () { clearTimeout(szukT); szukT = setTimeout(renderPulpitWyceny, 150); });
 
   /* kopia zapasowa: przenoszenie danych między komputerami i między wersją w claude.ai a offline */
   async function kopiaZapasowa() {
@@ -1862,7 +1933,7 @@ table.t.edt input[type=text], table.t.edt td input:not([type=number]) { min-widt
     tag.textContent = Store.db ? "Zapis na koncie" : "Zapis w tej przeglądarce";
     tag.title = Store.db ? "Szablony, wyceny i numery ofert zapisują się trwale i są dostępne na każdym urządzeniu." : "Baza kalkulatora jest niedostępna w tym widoku. Dane zostają tylko w tej przeglądarce.";
     tag.classList.toggle("ok", !!Store.db);
-    recalc();
+    recalc(); stanCzysty();
     pokaz("pulpit");
   })();
 })();

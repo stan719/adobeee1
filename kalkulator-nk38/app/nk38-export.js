@@ -41,9 +41,11 @@
         if (hp) g.push("Hpoj. " + hp);
         return g.join(" | ");
       }).filter(Boolean);
-      return lp.join(" lub ") + (d.pokazAgregaty && d.agregaty ? (lp.length ? " | " : "") + "A-" + d.agregaty : "");
+      var ag = d.agrOpis || (d.pokazAgregaty && d.agregaty ? d.agregaty : "");
+      if (d.dlMiejsca) lp = lp.map(function (x) { return x + " | L-" + d.dlMiejsca; });
+      return lp.join(" lub ") + (ag ? (lp.length ? " | " : "") + "A-" + ag : "");
     }
-    return pary.join(" lub ") + " | A-" + (d.agregaty || 0) + " | Bok-" + (d.barierki || 0) + " Tył-" + (d.maskownice || 0) + " | mgstrl-" + (d.magistrala || 0);
+    return pary.join(" lub ") + " | A-" + (d.agrOpis || d.agregaty || 0) + " | Bok-" + (d.barierki || 0) + " Tył-" + (d.maskownice || 0) + " | mgstrl-" + (d.magistrala || 0);
   }
   function opisEfektywny(d, o) { return d.opis || opisAuto(d, o); }
 
@@ -131,6 +133,16 @@
       ["Mechanika zakupowa i pozostałe", zl(m.mechanika)], ["Suma Q=2000 (dawne F87)", zl(m.suma2000)],
       ["Suma Q=2500 (dawne F90, +" + pct(m.q2500) + ")", zl(m.suma2500)]
     ];
+    /* krótka informacja o stawce przy pozycji (wartości bieżącej wyceny, z ewentualnymi zmianami) */
+    var C = r.cennik, w0 = ws[0], st = function (x) { return fmt0.format(Math.round(x)); };
+    var info = {
+      paliwo: w0.km + " km × " + n2(Math.ceil(C.spalanie * C.paliwo)) + " zł/100 km (" + n2(C.spalanie) + " l × " + n2(C.paliwo) + " zł)",
+      hotel: w.krk ? "Kraków: bez hotelu" : w0.noclegi + " noclegów × " + st(C.hotel) + " zł/doba",
+      dzwig: d.dzwig_koszt != null ? "wpisane ręcznie" : w.dzwDni + " dni × " + st(C.dzwig) + " zł/dzień",
+      diety: w.krk ? "Kraków: bez diet" : n2(w0.osobodni) + " osd × " + st(C.dieta) + " zł",
+      montaz: n2(w0.osd) + " osd × " + st(w0.stawka) + " zł (średnia stawka)",
+      transport: (d.tir || 0) + " × " + st(d.tir_cena || 0) + " zł"
+    };
     var mon = { head: head, rows: [
       ["Osobodni montażu (F50)", "n", "osd"], ["Tygodnie / dni montażu (B55)", "int", "wyjazdy"],
       ["Osobodni podróży i rozładunku (G59)", "n", "podroze"], ["Dni pracy ekipy (J39)", "int", "dni"],
@@ -142,7 +154,7 @@
       ["Suma przed narzutami", "zl", "baza", 1], ["KOB", "zl", "kob"], ["GDW", "zl", "gdw"], ["Zysk " + pct(d.zysk), "zl", "zysk"], ["Zysk z narzutem (zysk + GDW)", "zl", "zyskN"],
       ["Podatek", "zl", "podatek"], ["Cena kontraktu, " + zA + " (K39)", "zl", "cena", 1]
     ].map(function (row) {
-      return { label: row[0], fmt: row[1], bold: !!row[3], vals: ws.map(function (x) { return row[4] ? x.koszty[row[2]] : x[row[2]]; }) };
+      return { label: row[0], info: row[4] ? info[row[2]] : "", fmt: row[1], bold: !!row[3], vals: ws.map(function (x) { return row[4] ? x.koszty[row[2]] : x[row[2]]; }) };
     }) };
     return { grupy: grupy, ceny: ceny, struktura: struktura, opcje: opcje, mat: mat, mon: mon, zA: zA, zB: zB, jm: jm, przeglad: sz.opcje.przeglad };
   }
@@ -544,7 +556,7 @@
     var dz = new Date(), data = ("0" + dz.getDate()).slice(-2) + "." + ("0" + (dz.getMonth() + 1)).slice(-2) + "." + dz.getFullYear();
     var tech = wpary.map(function (w) {
       var zagl = w.h2 != null && w.h2 !== w.h1 ? "H1-" + v(w.h1) + ", H2-" + v(w.h2) : v(w.h1);
-      if (TT.tech) return sub(TT.tech, { H: zagl, L: v(w.dl), P: v(w.p), G: v(w.gor), D: v(w.dol) });
+      if (TT.tech) return sub(TT.tech, { H: zagl, L: v(w.dl), P: v(w.p), G: v(w.gor), D: v(w.dol), M: v(d.dlMiejsca || 500) });
       return "Zagłębienie: wysokość " + zagl + "cm; długość " + v(w.dl) + "cm;\nPrześwit między-kondygnacyjny: min. " + v(w.p) +
         "cm;\nWysokość parkowanych pojazdów*: ▲-" + v(w.gor) + "cm, ▼-" + v(w.dol) + "cm;";
     }).join("\nlub\n");
