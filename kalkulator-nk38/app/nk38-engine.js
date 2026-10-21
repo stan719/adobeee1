@@ -124,7 +124,7 @@
       { id: "malowanie", nazwa: "Malowanie RAL", cena: 500, waluta: "PLN", naCo: "S", wsp: 1, osd: 0, opcja: true, tekst: "Malowanie proszkowe palet w kolorze RAL wybranym przez Zamawiającego." }
     ];
     s.wariantB = { nazwa: "", tryb: "%", wartosc: 0, waluta: "PLN" };
-    s.opcje.przeglad = false;
+    s.opcje.przeglad = false; s.opcje.slupki = false;
     s.wysokosci = { tryb: "przeswit", k: 15, dol: 0 };
     s.domyslne = { zysk: 0.11, zysk2: 0.10, konserwA: 50, konserwB: 60, tir: 1, tir_cena: 3500, rozl_cena: 3000 };
     Object.assign(s.cennik, { stawka_1: 450, stawka_2: 350, stawka_kolejna: 350, hotel: 130, dieta: 45, paliwo: 7, odbiory_osoby: 1, dzwig: 0 });
@@ -200,7 +200,7 @@
     s.import = Object.assign({ wl: false, koszty: [], ubezpWartosc: 0, ubezpWaluta: "USD", ubezpStawka: 0.0014, ubezpWsp: 1.1 }, s.import || {});
     s.wariantA = s.wariantA || "2000 kg";
     s.wariantB = Object.assign({ nazwa: "2500 kg", tryb: "%", wartosc: 0, waluta: "PLN" }, s.wariantB || {});
-    s.opcje = Object.assign({ rozladunekNaTransport: false, przeglad: true, konserwacjaNa: "MP", agregaty: true, dodatkiNK38: s.model === "nk38", wymiary: s.model === "nk38" }, s.opcje || {});
+    s.opcje = Object.assign({ rozladunekNaTransport: false, przeglad: true, konserwacjaNa: "MP", agregaty: true, slupki: true, dodatkiNK38: s.model === "nk38", wymiary: s.model === "nk38" }, s.opcje || {});
     s.wysokosci = Object.assign({ tryb: "zaglebienie", k: 15, dol: 170 }, s.wysokosci || {});
     s.domyslne = s.domyslne || {};
     ["glebokosci", "szerokosci", "dlugosci", "skladowe", "opisOferty"].forEach(function (k) { if (s[k] == null) s[k] = b[k]; });

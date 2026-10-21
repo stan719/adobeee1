@@ -643,6 +643,10 @@ table.t.edt input[type=text], table.t.edt td input:not([type=number]) { min-widt
     }
     var ids = lista.map(function (x) { return x.id; });   // nowe wbudowane urządzenia dochodzą do zapisanych szablonów
     E.szablonyWbudowane().forEach(function (x) { if (ids.indexOf(x.id) < 0) lista.push(x); });
+    lista.forEach(function (x) {   // nowe ustawienia wbudowanych urządzeń dla szablonów zapisanych wcześniej
+      var wb = E.szablonyWbudowane().filter(function (y) { return y.id === x.id; })[0];
+      if (wb && x.opcje && x.opcje.slupki === undefined) x.opcje.slupki = wb.opcje.slupki;
+    });
     szablony = lista.map(E.uzupelnijSzablon);
   }
   function zapiszSzablony() { Store.set("szablony", szablony); }
@@ -880,12 +884,13 @@ table.t.edt input[type=text], table.t.edt td input:not([type=number]) { min-widt
     $("dimSummary").textContent = ds.length ? "· " + ds.join(", ") : "· wszystkie standardowe";
 
     var maB = !!r.szablon.wariantB.nazwa, jm = r.szablon.opcje.konserwacjaNa === "szt" ? "szt." : "MP";
-    if (!maB && sel % 2) { sel = state.sel = sel - 1; w = r.warianty[sel]; lsSet(LS.sel, sel); }
+    var maSl = r.szablon.opcje.slupki !== false;
+    if ((!maB && sel % 2) || (!maSl && sel >= 2)) { if (!maB && sel % 2) sel -= 1; if (!maSl && sel >= 2) sel -= 2; state.sel = sel; w = r.warianty[sel]; lsSet(LS.sel, sel); }
     var q = sel % 2, sl = sel >= 2 ? 1 : 0, recz = d.wyjazdy != null, K = r.konserwacja;
     $("hero").innerHTML =
       '<div class="hero-top"><div class="row">' +
       (maB ? '<div class="seg" role="group" aria-label="Wariant"><button type="button" data-q="0" aria-pressed="' + (q === 0) + '">' + esc(r.warianty[0].nazwa) + '</button><button type="button" data-q="1" aria-pressed="' + (q === 1) + '">' + esc(r.warianty[1].nazwa) + "</button></div>" : "") +
-      '<div class="seg" role="group" aria-label="Słupki e-ładowarek"><button type="button" data-sl="0" aria-pressed="' + (sl === 0) + '">Bez słupków</button><button type="button" data-sl="1" aria-pressed="' + (sl === 1) + '">Ze słupkami</button></div>' +
+      (maSl ? '<div class="seg" role="group" aria-label="Słupki e-ładowarek"><button type="button" data-sl="0" aria-pressed="' + (sl === 0) + '">Bez słupków</button><button type="button" data-sl="1" aria-pressed="' + (sl === 1) + '">Ze słupkami</button></div>' : "") +
       '</div><span class="eyebrow">' + esc(d.typ) + ' · ' + m.MP + ' MP · ' + esc(d.lok) + '</span></div>' +
       '<div class="prices"><div class="pz"><div class="eyebrow">Cena netto · ' + zA + '</div><div class="big">' + fmtPLN.format(Math.round(w.cena)) + '<small>zł</small></div>' +
       '<div class="d">' + zl(w.cenaMP) + ' / MP · ' + eur(w.cenaMPeur) + ' / MP</div></div>' +
@@ -899,7 +904,7 @@ table.t.edt input[type=text], table.t.edt td input:not([type=number]) { min-widt
       (r.szablon.opcje.przeglad ? kpi("Przegląd półroczny", zl(K[0].pol) + "<small>przy " + K[0].stawka + " zł/" + jm + " · " + zl(K[1].pol) + " przy " + K[1].stawka + " zł/" + jm + "</small>") : "") + "</div>";
     liczbyHero(w, r.szablon.id + "|" + sel);
     $("compare").innerHTML = r.warianty.map(function (x, i) {
-      if (!maB && i % 2) return "";
+      if ((!maB && i % 2) || (!maSl && i >= 2)) return "";
       return '<button type="button" class="cmp" data-sel="' + i + '" aria-pressed="' + (i === sel) + '"><div class="n">' + esc(x.nazwa) +
         '</div><div class="p">' + zl(x.cena) + '</div><div class="d">' + pct(d.zysk2) + ': ' + zl(x.cena2) + "</div></button>";
     }).join("");
@@ -1138,7 +1143,7 @@ table.t.edt input[type=text], table.t.edt td input:not([type=number]) { min-widt
         '<label class="f">' + (wbB.tryb === "szt" ? "Kwota na urządzenie" : "Procent (0,07 = 7%)") + fld("wariantB.wartosc", wbB.wartosc) + "</label>" +
         (wbB.tryb === "szt" ? '<label class="f">Waluta kwoty' + sel("wariantB.waluta", wbB.waluta, WALUTY) + "</label><div></div>" : "") : '<div class="full note">Dopłata wariantu 2 w cenniku (Dopłata Q=2500).</div>') +
       '<label class="f">Konserwacja liczona od' + sel("opcje.konserwacjaNa", o.konserwacjaNa, [["MP", "miejsca postojowego"], ["szt", "urządzenia"]]) + "</label>" +
-      '<div class="checks" style="align-self:end">' + chk("opcje.przeglad", o.przeglad, "Przegląd półroczny") + chk("opcje.rozladunekNaTransport", o.rozladunekNaTransport, "Rozładunek za każdy transport") +
+      '<div class="checks" style="align-self:end">' + chk("opcje.przeglad", o.przeglad, "Przegląd półroczny") + chk("opcje.slupki", o.slupki !== false, "Słupki e-ładowarek") + chk("opcje.rozladunekNaTransport", o.rozladunekNaTransport, "Rozładunek za każdy transport") +
       (lista ? chk("opcje.agregaty", o.agregaty, "Agregaty w wycenie i ofercie") : "") + "</div>" +
       '<label class="f">Wysokości pojazdów w ofercie' + sel("wysokosci.tryb", W.tryb, [["zaglebienie", "z zagłębienia (NK38): ▼ = niższe H − 15"], ["przeswit", "jeden poziom: ▲ = prześwit − k"], ["przeswit2", "dwa poziomy: ▲ + ▼ = prześwit − k"]]) + "</label>" +
       (W.tryb !== "zaglebienie" ? '<label class="f">k [cm]' + fld("wysokosci.k", W.k) + "</label>" : "<div></div>") +

@@ -651,7 +651,7 @@ window.NK38_FONTS = { regular: "AAEAAAAOAIAAAwBgR0RFRgS1BUEAAH9cAAAARkdQT1MAGQAM
       { id: "malowanie", nazwa: "Malowanie RAL", cena: 500, waluta: "PLN", naCo: "S", wsp: 1, osd: 0, opcja: true, tekst: "Malowanie proszkowe palet w kolorze RAL wybranym przez Zamawiającego." }
     ];
     s.wariantB = { nazwa: "", tryb: "%", wartosc: 0, waluta: "PLN" };
-    s.opcje.przeglad = false;
+    s.opcje.przeglad = false; s.opcje.slupki = false;
     s.wysokosci = { tryb: "przeswit", k: 15, dol: 0 };
     s.domyslne = { zysk: 0.11, zysk2: 0.10, konserwA: 50, konserwB: 60, tir: 1, tir_cena: 3500, rozl_cena: 3000 };
     Object.assign(s.cennik, { stawka_1: 450, stawka_2: 350, stawka_kolejna: 350, hotel: 130, dieta: 45, paliwo: 7, odbiory_osoby: 1, dzwig: 0 });
@@ -727,7 +727,7 @@ window.NK38_FONTS = { regular: "AAEAAAAOAIAAAwBgR0RFRgS1BUEAAH9cAAAARkdQT1MAGQAM
     s.import = Object.assign({ wl: false, koszty: [], ubezpWartosc: 0, ubezpWaluta: "USD", ubezpStawka: 0.0014, ubezpWsp: 1.1 }, s.import || {});
     s.wariantA = s.wariantA || "2000 kg";
     s.wariantB = Object.assign({ nazwa: "2500 kg", tryb: "%", wartosc: 0, waluta: "PLN" }, s.wariantB || {});
-    s.opcje = Object.assign({ rozladunekNaTransport: false, przeglad: true, konserwacjaNa: "MP", agregaty: true, dodatkiNK38: s.model === "nk38", wymiary: s.model === "nk38" }, s.opcje || {});
+    s.opcje = Object.assign({ rozladunekNaTransport: false, przeglad: true, konserwacjaNa: "MP", agregaty: true, slupki: true, dodatkiNK38: s.model === "nk38", wymiary: s.model === "nk38" }, s.opcje || {});
     s.wysokosci = Object.assign({ tryb: "zaglebienie", k: 15, dol: 170 }, s.wysokosci || {});
     s.domyslne = s.domyslne || {};
     ["glebokosci", "szerokosci", "dlugosci", "skladowe", "opisOferty"].forEach(function (k) { if (s[k] == null) s[k] = b[k]; });
@@ -1052,7 +1052,8 @@ window.NK38_FONTS = { regular: "AAEAAAAOAIAAAwBgR0RFRgS1BUEAAH9cAAAARkdQT1MAGQAM
   /* Warianty pokazywane w tabelach: bez wariantu B (np. 2500 kg), gdy szablon go nie ma. */
   function widoczneWarianty(r) {
     var maB = !!(r.szablon.wariantB && r.szablon.wariantB.nazwa);
-    return r.warianty.filter(function (x, i) { return maB || i % 2 === 0; });
+    var sl = r.szablon.opcje.slupki !== false;
+    return r.warianty.filter(function (x, i) { return (maB || i % 2 === 0) && (sl || i < 2); });
   }
   function raport(r, GL, o) {
     var d = r.dane, m = r.mat, w = r.wspolne, ws = widoczneWarianty(r), wy = opisWymiarow(d, GL), sz = r.szablon, T = sz.typy;
@@ -1116,10 +1117,10 @@ window.NK38_FONTS = { regular: "AAEAAAAOAIAAAwBgR0RFRgS1BUEAAH9cAAAARkdQT1MAGQAM
     var kol = nB ? [0, 1, 2, 3] : [0, 2], wybierz = function (v) { return kol.map(function (i) { return v[i]; }); };
     var opcje = {
       head: ["Opcja"].concat(wybierz([nA + ", " + zA, nB + ", " + zA, nA + ", " + zB, nB + ", " + zB])),
-      rows: [
+      rows: (sz.opcje.slupki === false ? [] : [
         { label: "Słupki e-ładowarek 3,7 kW", fmt: "zl", vals: wybierz([r.opcje.slupki37[0], r.opcje.slupki37[1], r.opcje.slupki37b[0], r.opcje.slupki37b[1]]) },
         { label: "Słupki e-ładowarek 22 kW", fmt: "zl", vals: wybierz([r.opcje.slupki22[0], r.opcje.slupki22[1], r.opcje.slupki22b[0], r.opcje.slupki22b[1]]) }
-      ].concat(lista ? [] : [{ label: "Malowanie proszkowe RAL", fmt: "zl", vals: wybierz([r.opcje.malowanie, r.opcje.malowanie, r.opcje.malowanieB, r.opcje.malowanieB]) }])
+      ]).concat(lista ? [] : [{ label: "Malowanie proszkowe RAL", fmt: "zl", vals: wybierz([r.opcje.malowanie, r.opcje.malowanie, r.opcje.malowanieB, r.opcje.malowanieB]) }])
         .concat((r.opcje.pozycje || []).map(function (p) { return { label: p.nazwa, fmt: "zl", vals: wybierz([p.kwota, p.kwota, p.kwotaB, p.kwotaB]) }; }))
     };
     var mat = lista ? m.wiersze.map(function (x) { return [x[0], zl(x[1])]; }).concat([["Suma " + nA, zl(m.suma2000)]])
@@ -1564,8 +1565,8 @@ window.NK38_FONTS = { regular: "AAEAAAAOAIAAAwBgR0RFRgS1BUEAAH9cAAAARkdQT1MAGQAM
     function txt(k) { return o.tekst[k] != null ? o.tekst[k] : auto[k]; }
     var opcjeDef = [
       maB && TT.opcjaQ2500 ? ["q2500", TT.opcjaQ2500, c(ws[1]) - c(ws[0])] : null,
-      ["slupki37", "Słupki do e-ładowania na każdym ze " + m.MP + " miejsc postojowych, obejmujące montaż słupka pod ładowarkę, prowadnic, i puszki przyłączeniowej, bez samej stacji ładowania.", B ? r.opcje.slupki37b[0] : r.opcje.slupki37[0]],
-      ["slupki22", "Słupki do e-ładowania do 22 kW na każdym ze " + m.MP + " miejsc postojowych, obejmujące montaż słupka pod ładowarkę, prowadnic, i puszki przyłączeniowej, bez samej stacji ładowania.", B ? r.opcje.slupki22b[0] : r.opcje.slupki22[0]],
+      r.szablon.opcje.slupki === false ? null : ["slupki37", "Słupki do e-ładowania na każdym ze " + m.MP + " miejsc postojowych, obejmujące montaż słupka pod ładowarkę, prowadnic, i puszki przyłączeniowej, bez samej stacji ładowania.", B ? r.opcje.slupki37b[0] : r.opcje.slupki37[0]],
+      r.szablon.opcje.slupki === false ? null : ["slupki22", "Słupki do e-ładowania do 22 kW na każdym ze " + m.MP + " miejsc postojowych, obejmujące montaż słupka pod ładowarkę, prowadnic, i puszki przyłączeniowej, bez samej stacji ładowania.", B ? r.opcje.slupki22b[0] : r.opcje.slupki22[0]],
       lista ? null : ["malowanie", "Malowanie proszkowe platform w kolorze RAL wybranym przez Zamawiającego.", B ? r.opcje.malowanieB : r.opcje.malowanie]
     ].concat((r.opcje.pozycje || []).map(function (p) { return ["poz_" + p.id, p.tekst || p.nazwa, B ? p.kwotaB : p.kwota]; })).filter(Boolean);
     var opcje = [], ceny = [{ klucz: "poz10", label: "Pozycja 1:", auto: ceil100(c(ws[0])) }];
@@ -1888,6 +1889,10 @@ window.NK38_FONTS = { regular: "AAEAAAAOAIAAAwBgR0RFRgS1BUEAAH9cAAAARkdQT1MAGQAM
     }
     var ids = lista.map(function (x) { return x.id; });   // nowe wbudowane urządzenia dochodzą do zapisanych szablonów
     E.szablonyWbudowane().forEach(function (x) { if (ids.indexOf(x.id) < 0) lista.push(x); });
+    lista.forEach(function (x) {   // nowe ustawienia wbudowanych urządzeń dla szablonów zapisanych wcześniej
+      var wb = E.szablonyWbudowane().filter(function (y) { return y.id === x.id; })[0];
+      if (wb && x.opcje && x.opcje.slupki === undefined) x.opcje.slupki = wb.opcje.slupki;
+    });
     szablony = lista.map(E.uzupelnijSzablon);
   }
   function zapiszSzablony() { Store.set("szablony", szablony); }
@@ -2125,12 +2130,13 @@ window.NK38_FONTS = { regular: "AAEAAAAOAIAAAwBgR0RFRgS1BUEAAH9cAAAARkdQT1MAGQAM
     $("dimSummary").textContent = ds.length ? "· " + ds.join(", ") : "· wszystkie standardowe";
 
     var maB = !!r.szablon.wariantB.nazwa, jm = r.szablon.opcje.konserwacjaNa === "szt" ? "szt." : "MP";
-    if (!maB && sel % 2) { sel = state.sel = sel - 1; w = r.warianty[sel]; lsSet(LS.sel, sel); }
+    var maSl = r.szablon.opcje.slupki !== false;
+    if ((!maB && sel % 2) || (!maSl && sel >= 2)) { if (!maB && sel % 2) sel -= 1; if (!maSl && sel >= 2) sel -= 2; state.sel = sel; w = r.warianty[sel]; lsSet(LS.sel, sel); }
     var q = sel % 2, sl = sel >= 2 ? 1 : 0, recz = d.wyjazdy != null, K = r.konserwacja;
     $("hero").innerHTML =
       '<div class="hero-top"><div class="row">' +
       (maB ? '<div class="seg" role="group" aria-label="Wariant"><button type="button" data-q="0" aria-pressed="' + (q === 0) + '">' + esc(r.warianty[0].nazwa) + '</button><button type="button" data-q="1" aria-pressed="' + (q === 1) + '">' + esc(r.warianty[1].nazwa) + "</button></div>" : "") +
-      '<div class="seg" role="group" aria-label="Słupki e-ładowarek"><button type="button" data-sl="0" aria-pressed="' + (sl === 0) + '">Bez słupków</button><button type="button" data-sl="1" aria-pressed="' + (sl === 1) + '">Ze słupkami</button></div>' +
+      (maSl ? '<div class="seg" role="group" aria-label="Słupki e-ładowarek"><button type="button" data-sl="0" aria-pressed="' + (sl === 0) + '">Bez słupków</button><button type="button" data-sl="1" aria-pressed="' + (sl === 1) + '">Ze słupkami</button></div>' : "") +
       '</div><span class="eyebrow">' + esc(d.typ) + ' · ' + m.MP + ' MP · ' + esc(d.lok) + '</span></div>' +
       '<div class="prices"><div class="pz"><div class="eyebrow">Cena netto · ' + zA + '</div><div class="big">' + fmtPLN.format(Math.round(w.cena)) + '<small>zł</small></div>' +
       '<div class="d">' + zl(w.cenaMP) + ' / MP · ' + eur(w.cenaMPeur) + ' / MP</div></div>' +
@@ -2144,7 +2150,7 @@ window.NK38_FONTS = { regular: "AAEAAAAOAIAAAwBgR0RFRgS1BUEAAH9cAAAARkdQT1MAGQAM
       (r.szablon.opcje.przeglad ? kpi("Przegląd półroczny", zl(K[0].pol) + "<small>przy " + K[0].stawka + " zł/" + jm + " · " + zl(K[1].pol) + " przy " + K[1].stawka + " zł/" + jm + "</small>") : "") + "</div>";
     liczbyHero(w, r.szablon.id + "|" + sel);
     $("compare").innerHTML = r.warianty.map(function (x, i) {
-      if (!maB && i % 2) return "";
+      if ((!maB && i % 2) || (!maSl && i >= 2)) return "";
       return '<button type="button" class="cmp" data-sel="' + i + '" aria-pressed="' + (i === sel) + '"><div class="n">' + esc(x.nazwa) +
         '</div><div class="p">' + zl(x.cena) + '</div><div class="d">' + pct(d.zysk2) + ': ' + zl(x.cena2) + "</div></button>";
     }).join("");
@@ -2383,7 +2389,7 @@ window.NK38_FONTS = { regular: "AAEAAAAOAIAAAwBgR0RFRgS1BUEAAH9cAAAARkdQT1MAGQAM
         '<label class="f">' + (wbB.tryb === "szt" ? "Kwota na urządzenie" : "Procent (0,07 = 7%)") + fld("wariantB.wartosc", wbB.wartosc) + "</label>" +
         (wbB.tryb === "szt" ? '<label class="f">Waluta kwoty' + sel("wariantB.waluta", wbB.waluta, WALUTY) + "</label><div></div>" : "") : '<div class="full note">Dopłata wariantu 2 w cenniku (Dopłata Q=2500).</div>') +
       '<label class="f">Konserwacja liczona od' + sel("opcje.konserwacjaNa", o.konserwacjaNa, [["MP", "miejsca postojowego"], ["szt", "urządzenia"]]) + "</label>" +
-      '<div class="checks" style="align-self:end">' + chk("opcje.przeglad", o.przeglad, "Przegląd półroczny") + chk("opcje.rozladunekNaTransport", o.rozladunekNaTransport, "Rozładunek za każdy transport") +
+      '<div class="checks" style="align-self:end">' + chk("opcje.przeglad", o.przeglad, "Przegląd półroczny") + chk("opcje.slupki", o.slupki !== false, "Słupki e-ładowarek") + chk("opcje.rozladunekNaTransport", o.rozladunekNaTransport, "Rozładunek za każdy transport") +
       (lista ? chk("opcje.agregaty", o.agregaty, "Agregaty w wycenie i ofercie") : "") + "</div>" +
       '<label class="f">Wysokości pojazdów w ofercie' + sel("wysokosci.tryb", W.tryb, [["zaglebienie", "z zagłębienia (NK38): ▼ = niższe H − 15"], ["przeswit", "jeden poziom: ▲ = prześwit − k"], ["przeswit2", "dwa poziomy: ▲ + ▼ = prześwit − k"]]) + "</label>" +
       (W.tryb !== "zaglebienie" ? '<label class="f">k [cm]' + fld("wysokosci.k", W.k) + "</label>" : "<div></div>") +
