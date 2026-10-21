@@ -68,7 +68,7 @@
       ].concat((d.wysokosci || {}).tryb === "przeswit" || (d.wysokosci || {}).tryb === "przeswit2" ? [["Prześwit", lub(function (w) { return k(w.p); }) + " cm"]] : [
         ["Zagłębienie H1 / H2", lub(function (w) { return k(w.h1) + " / " + k(w.h2); }) + " cm"],
         ["Długość zagłębienia / prześwit", lub(function (w) { return k(w.dl) + " / " + k(w.p); }) + " cm"]]).concat([
-        ["Wysokość pojazdów ▲ / ▼", lub(function (w) { return k(w.gor) + " / " + k(w.dol); }) + " cm"],
+        ["Wysokość pojazdów góra / dół", lub(function (w) { return k(w.gor) + " / " + k(w.dol); }) + " cm"],
         ["Lokalizacja", d.lok + (w.krk ? "" : ", " + (d.km || 0) + " km od Krakowa")],
         ["Km pomiary / montaż", w.kmPom + " / " + w.kmMon + " km"]]) },
       { tytul: "Urządzenia", pary: (lista ? [
@@ -164,7 +164,38 @@
           x.rabat ? "−" + n2(x.rabatPct * 100) + "%" : "–", zl(x.zyskN), zl(x.cenaMP)] };
       })
     };
-    return { grupy: grupy, ceny: ceny, struktura: struktura, opcje: opcje, mat: mat, mon: mon, zA: zA, zB: zB, jm: jm, przeglad: sz.opcje.przeglad, neg: neg };
+    /* karta inwestycji na 1. stronę: to, co widać w ofercie (urządzenia, agregaty, wymiary, konserwacja) */
+    var odmiana = function (n, a, b, c) { var r10 = n % 10, r100 = n % 100; return n === 1 ? a : r10 >= 2 && r10 <= 4 && (r100 < 12 || r100 > 14) ? b : c; };
+    var kod = function (k) {
+      var t = String(T[k].oferta || "").replace(/\{typ\}/g, d.typ), mm = t.match(/\bNK[\w-]*/i);
+      return mm ? mm[0].replace(/-\d+cm$/i, "") : T[k].nazwa;
+    };
+    var baza = sz.opcje.konserwacjaNa === "szt" ? m.platformy : m.MP;
+    var karta = {
+      adres: d.nazwa || "bez nazwy", data: /^\d{4}-\d{2}-\d{2}$/.test(d.data || "") ? d.data.split("-").reverse().join(".") : (d.data || "–"),
+      lok: d.lok + (w.krk ? "" : " · " + (d.km || 0) + " km od Krakowa"),
+      urz: ["S", "D", "NP"].filter(function (x) { return d[x]; }).map(function (x) { return d[x] + "× " + kod(x); }),
+      razem: m.platformy + " " + odmiana(m.platformy, "urządzenie", "urządzenia", "urządzeń") + " = " + m.MP + " " + odmiana(m.MP, "miejsce postojowe", "miejsca postojowe", "miejsc postojowych"),
+      agregaty: sz.opcje.agregaty || d.agregaty ? (d.agregaty || 0) + " szt." + (d.agrOpis ? " (" + d.agrOpis + ")" : "") : "",
+      wymiary: wp.map(function (x) {
+        var t = [];
+        if (x.h1 != null && x.h1 !== "") t.push(["Zagłębienie", (x.h2 != null && x.h2 !== x.h1 ? "H1 " + x.h1 + " / H2 " + x.h2 : x.h1) + " cm" + (x.dl ? ", dł. " + x.dl + " cm" : "")]);
+        if (x.p != null && x.p !== "") t.push(["Prześwit", x.p + " cm"]);
+        if (x.gor != null || x.dol != null) t.push(["Wysokość pojazdów", [k(x.gor) + " cm", k(x.dol) + " cm"]]);
+        return t;
+      }),
+      dlMiejsca: lista && (d.dlMiejsca || (d.wysokosci || {}).dlugosc) ? (d.dlMiejsca || d.wysokosci.dlugosc) + " cm" : "",
+      wyposazenie: lista ? "" : "barierki " + (d.barierki || 0) + " · maskownice " + (d.maskownice || 0) + " · magistrala " + (d.magistrala || 0) + " × 6 m",
+      opis: opisEfektywny(d, o),
+      montaz: ws[0].tygodnie + " tyg. (" + ws[0].dni + " dni pracy), ekipa " + ws[0].osoby + " os.",
+      transport: (d.tir || 0) + (sz.import.wl ? " kont." : " TIR") + " × " + zl(d.tir_cena || 0) + (r.cennik.dzwig || d.dzwig_koszt != null ? " · Spider Crane " + w.dzwDni + " " + odmiana(w.dzwDni, "dzień", "dni", "dni") : ""),
+      konserwacja: r.konserwacja.map(function (x, i) {
+        return { nazwa: "Konserwacja · wariant " + (i + 1), stawka: x.stawka + " zł/" + jm + "/mies.", mies: x.stawka * baza, rok: x.rok, pol: x.pol };
+      })
+    };
+    var naPierwszej = /^(Nazwa \/ adres|Data|Opis \/ wariant|Prześwit|Zagłębienie H1|Długość zagłębienia|Wysokość pojazdów|Lokalizacja|Platformy|Urządzenia|Agregaty|Magistrala|Transport|Czas montażu|Ekipa|Konserwacja)/, szczegoly = [];
+    grupy.forEach(function (g) { g.pary.forEach(function (pp) { if (!naPierwszej.test(pp[0])) szczegoly.push(pp); }); });
+    return { szczegoly: szczegoly, grupy: grupy, ceny: ceny, struktura: struktura, opcje: opcje, mat: mat, mon: mon, zA: zA, zB: zB, jm: jm, przeglad: sz.opcje.przeglad, neg: neg, karta: karta };
   }
 
   function fmtVal(v, f) {
@@ -292,15 +323,25 @@
     var gen = "Wygenerowano " + new Date().toLocaleString("pl-PL") + " · ceny netto w zł · szablon " + d.typ;
 
     /* 1. Podsumowanie */
-    var s1 = sheet("Podsumowanie", [30, 17, 17, 16, 17, 17], 80), N = R.neg.N;
-    banner(s1, "Wycena " + d.typ + " · " + (d.nazwa || "bez nazwy"), gen, 6);
+    var s1 = sheet("Podsumowanie", [30, 17, 17, 16, 17, 17], 80), N = R.neg.N, K = R.karta;
+    /* nagłówek: adres inwestycji i data kalkulacji */
+    var b1 = s1.addRow(["KALKULACJA " + d.typ, "", "", "", "Data kalkulacji"]), b2 = s1.addRow([K.adres, "", "", "", K.data]);
+    [b1, b2].forEach(function (row) { s1.mergeCells(row.number, 1, row.number, 4); s1.mergeCells(row.number, 5, row.number, 6); });
+    b1.height = 16; b2.height = 26;
+    [b1.getCell(1), b1.getCell(5), b2.getCell(1), b2.getCell(5)].forEach(function (c, i) {
+      c.fill = fill(C.acc); c.alignment = { vertical: "middle", horizontal: i % 2 ? "right" : "left", indent: 1 };
+      c.font = i < 2 ? font({ size: 8, color: { argb: "FFC4E4E7" } }) : font({ size: i === 2 ? 15 : 13, bold: true, color: { argb: "FFFFFFFF" } });
+    });
+    var b3 = s1.addRow([K.lok + " · " + gen]); s1.mergeCells(b3.number, 1, b3.number, 6);
+    b3.getCell(1).font = font({ size: 9, color: { argb: C.muted } }); b3.getCell(1).alignment = { indent: 1 };
+    s1.addRow([]);
     var t1 = [
       ["Cena ofertowa · zysk " + pct(N.zA), N.cenaA, w0.nazwa + " · " + zl(w0.cenaMP) + " / MP"],
       ["Można zejść do · zysk " + pct(N.zB), N.cenaB, "rabat −" + zl(N.cenaA - N.cenaB) + " (−" + n2((N.cenaA - N.cenaB) / N.cenaA * 100) + "%)"]]; t1.spans = [[1, 3], [4, 6]];
     tiles(s1, t1);
     var t2 = [
       ["Próg opłacalności · zysk 0%", N.cenaMin, "maks. rabat −" + zl(N.cenaA - N.cenaMin) + " (−" + n2((N.cenaA - N.cenaMin) / N.cenaA * 100) + "%)", null, 1],
-      ["Montaż / konserwacja roczna", w0.tygodnie + " tyg. / " + zl(r.konserwacja[0].rok), w0.dni + " dni pracy, ekipa " + w0.osoby + " os.; konserwacja " + r.konserwacja[0].stawka + " zł/" + R.jm + "/mies.", "@", 1]]; t2.spans = [[1, 3], [4, 6]];
+      ["Czas montażu", w0.tygodnie + " tyg.", w0.dni + " dni pracy, ekipa " + w0.osoby + " os.", "@", 1]]; t2.spans = [[1, 3], [4, 6]];
     tiles(s1, t2);
     section(s1, "Pole do negocjacji: o ile można zejść z ceny (" + w0.nazwa + ")", 6);
     var GOOD = "FFE3F4EA", GOODT = "FF13794A", WARN = "FFFDF3DD", BAD = "FFFDECEA", BADT = "FFB42318";
@@ -319,20 +360,62 @@
     var leg = s1.addRow(["Zielone: rabat bez zejścia poniżej zysku " + pct(N.zB) + ". Żółte: poniżej zysku do porównania. Przy zysku 0% w cenie zostają koszty, KOB, GDW i podatek."]);
     s1.mergeCells(leg.number, 1, leg.number, 6); leg.getCell(1).font = font({ size: 8.5, color: { argb: C.muted } }); leg.getCell(1).alignment = { wrapText: true, indent: 1 }; leg.height = 24;
     s1.addRow([]);
+
+    /* karta inwestycji: zakres (lewa połowa) i wymiary (prawa) jak w ofercie */
+    section(s1, "Dane wejściowe", 6);
+    var lewa = [["et", "Urządzenia"]].concat((K.urz.length ? K.urz : ["–"]).map(function (t) { return ["urz", t]; }), [["txt", K.razem]]);
+    if (K.agregaty) lewa.push(["et", "Agregaty"], ["wart", K.agregaty]);
+    if (K.wyposazenie) lewa.push(["et", "Barierki / maskownice / magistrala"], ["txt", K.wyposazenie]);
+    var prawa = [];
+    K.wymiary.forEach(function (grp, gi) {
+      if (gi) prawa.push(["lub", "lub"]);
+      grp.forEach(function (pp) { prawa.push(["et", pp[0]], ["wart", Array.isArray(pp[1]) ? "▲ " + pp[1][0] + "   ▼ " + pp[1][1] : pp[1]]); });
+    });
+    if (K.dlMiejsca) prawa.push(["et", "Długość miejsca postojowego"], ["wart", K.dlMiejsca]);
+    var styl = {
+      et: { font: font({ size: 8.5, color: { argb: C.muted } }), h: 14 }, txt: { font: font({ size: 10 }), h: 16 },
+      urz: { font: font({ size: 14, bold: true, color: { argb: C.acc } }), h: 21 }, wart: { font: font({ size: 12, bold: true }), h: 19 },
+      lub: { font: font({ size: 9, bold: true, color: { argb: C.acc } }), h: 14 }
+    };
+    var naglK = s1.addRow(["ZAKRES", "", "", "WYMIARY"]); s1.mergeCells(naglK.number, 1, naglK.number, 3); s1.mergeCells(naglK.number, 4, naglK.number, 6);
+    [1, 4].forEach(function (ci) { var c = naglK.getCell(ci); c.font = font({ size: 8, bold: true, color: { argb: C.acc } }); c.fill = fill(C.tile); c.alignment = { indent: 1 }; c.border = { top: { style: "medium", color: { argb: C.acc } } }; });
+    for (var li = 0; li < Math.max(lewa.length, prawa.length); li++) {
+      var L1 = lewa[li], P1 = prawa[li], kr = s1.addRow([L1 ? L1[1] : "", "", "", P1 ? P1[1] : ""]);
+      s1.mergeCells(kr.number, 1, kr.number, 3); s1.mergeCells(kr.number, 4, kr.number, 6);
+      kr.height = Math.max(L1 ? styl[L1[0]].h : 0, P1 ? styl[P1[0]].h : 0);
+      [[L1, 1], [P1, 4]].forEach(function (z) {
+        var c = kr.getCell(z[1]); c.fill = fill(C.tile); c.alignment = { indent: 1, vertical: "bottom" };
+        if (z[0]) c.font = styl[z[0][0]].font;
+      });
+    }
+    s1.addRow([]);
+    var op = s1.addRow(["Opis wariantu", K.opis || "–"]); s1.mergeCells(op.number, 2, op.number, 6);
+    op.getCell(1).font = font({ size: 8.5, color: { argb: C.muted } }); op.getCell(1).alignment = { indent: 1, vertical: "top" };
+    op.getCell(2).font = font({ name: "Consolas", size: 9.5 }); op.getCell(2).alignment = { wrapText: true, vertical: "top" };
+    if (String(K.opis).length > 75) op.height = 15 * Math.ceil(String(K.opis).length / 75);
+    var e3 = s1.addRow(["Lokalizacja", "", "Montaż", "", "Transport", ""]), v3 = s1.addRow([K.lok, "", K.montaz, "", K.transport, ""]);
+    [e3, v3].forEach(function (row, ri) {
+      [1, 3, 5].forEach(function (ci) {
+        s1.mergeCells(row.number, ci, row.number, ci + 1);
+        var c = row.getCell(ci); c.alignment = { indent: 1, wrapText: true, vertical: "top" };
+        c.font = ri ? font({ size: 10, bold: true }) : font({ size: 8.5, color: { argb: C.muted } });
+      });
+    });
+    v3.height = 28;
+    s1.addRow([]);
+    var t3 = K.konserwacja.map(function (kk) {
+      return [kk.nazwa + " · " + kk.stawka, kk.rok, zl(kk.mies) + " miesięcznie" + (R.przeglad ? " · przegląd półroczny " + zl(kk.pol) : ""), '#,##0 "zł rocznie"', 1];
+    }); t3.spans = [[1, 3], [4, 6]];
+    tiles(s1, t3);
+
+    s1.lastRow.addPageBreak();
     section(s1, "Warianty wykonania", 6);
     table(s1, R.ceny.head, R.ceny.rows);
-    section(s1, "Opcje do oferty (cena z narzutami)", 6);
-    table(s1, R.opcje.head, R.opcje.rows);
-    s1.lastRow.addPageBreak();
+    if (R.opcje.rows.length) { section(s1, "Opcje do oferty (cena z narzutami)", 6); table(s1, R.opcje.head, R.opcje.rows); }
     section(s1, "Struktura kosztów", 6);
     table(s1, R.struktura.head, R.struktura.rows);
-    section(s1, "Dane wejściowe", 6);
-    R.grupy.forEach(function (g) {
-      var x = s1.addRow([g.tytul]); s1.mergeCells(x.number, 1, x.number, 6);
-      x.getCell(1).font = font({ bold: true, size: 10 }); x.getCell(1).fill = fill(C.accSoft); x.getCell(1).alignment = { indent: 1 };
-      pairs(s1, g.pary, 6, 85);
-      s1.lastRow.height = 6;
-    });
+    section(s1, "Pozostałe dane wejściowe", 6);
+    pairs(s1, R.szczegoly, 6, 85);
 
     /* 2. Obliczenia (strona 1) i cennik (strona 2) */
     var s2 = sheet("Obliczenia i cennik", [40, 19, 19, 19, 19], 82);
@@ -440,28 +523,46 @@
       doc.setTextColor.apply(doc, WARNT);
       if (xb - x0 > doc.getTextWidth(tw) + 4) doc.text(tw, (x0 + xb) / 2, y + 5.3, { align: "center" });
       doc.setDrawColor.apply(doc, INK); doc.setLineWidth(0.5);
-      [[lo, "Próg · zysk 0%", "left"], [N.cenaB, "Zysk " + pct(N.zB), "center"], [hi, "Oferta · zysk " + pct(N.zA), "right"]].forEach(function (m) {
-        var x = X(m[0]); doc.line(x, y - 1.5, x, y + h + 1.5);
-        doc.setFont("Carlito", "normal"); doc.setFontSize(7.8); doc.setTextColor.apply(doc, MUT); doc.text(m[1], x, y + h + 5, { align: m[2] });
-        doc.setFont("Carlito", "bold"); doc.setFontSize(9); doc.setTextColor.apply(doc, INK); doc.text(zl(m[0]), x, y + h + 9.2, { align: m[2] });
+      /* znacznik zysku do porównania blisko końca paska: podpis wyrównany do kreski, żeby nie nachodził na sąsiedni */
+      var alB = xb > x0 + W - 40 ? "right" : xb < x0 + 40 ? "left" : "center", dB = alB === "right" ? -1.5 : alB === "left" ? 1.5 : 0;
+      if (alB === "right" && x0 + W - xb < 2) alB = "center";
+      [[lo, "Próg · zysk 0%", "left", 0], [N.cenaB, "Zysk " + pct(N.zB), alB, dB], [hi, "Oferta · zysk " + pct(N.zA), "right", 0]].forEach(function (m, i) {
+        var x = X(m[0]), lx = x + m[3]; doc.line(x, y - 1.5, x, y + h + 1.5);
+        if (i === 1 && alB === "right") lx = Math.min(lx, x0 + W - 34);
+        doc.setFont("Carlito", "normal"); doc.setFontSize(7.8); doc.setTextColor.apply(doc, MUT); doc.text(m[1], lx, y + h + 5, { align: m[2] });
+        doc.setFont("Carlito", "bold"); doc.setFontSize(9); doc.setTextColor.apply(doc, INK); doc.text(zl(m[0]), lx, y + h + 9.2, { align: m[2] });
       });
       return y + h + 16;
     }
-    head("Wycena " + d.typ + " · " + (d.nazwa || "bez nazwy"), stopka);
-    var y = kafelki(32, [
+    /* 1. strona: nagłówek z adresem i datą kalkulacji, pole do negocjacji, karta inwestycji jak w ofercie */
+    var K = R.karta, JASNY = [196, 228, 231];
+    doc.setFillColor.apply(doc, ACC); doc.rect(14, 12, 182, 17, "F");
+    doc.setFont("Carlito", "normal"); doc.setFontSize(8); doc.setTextColor.apply(doc, JASNY);
+    doc.text("KALKULACJA " + d.typ, 17, 17.5); doc.text("Data kalkulacji", 193, 17.5, { align: "right" });
+    doc.setFont("Carlito", "bold"); doc.setTextColor(255, 255, 255);
+    doc.setFontSize(13); doc.text(K.data, 193, 24.5, { align: "right" });
+    doc.setFontSize(15); doc.text(doc.splitTextToSize(K.adres, 140)[0], 17, 24.5);
+    doc.setFont("Carlito", "normal"); doc.setFontSize(8.5); doc.setTextColor.apply(doc, MUT);
+    doc.text(K.lok + " · ceny netto · wygenerowano " + new Date().toLocaleDateString("pl-PL"), 14, 33.5);
+    var y = kafelki(37, [
       ["Cena ofertowa · zysk " + pct(N.zA), zl(N.cenaA), w0.nazwa + " · " + zl(w0.cenaMP) + " / MP"],
       ["Można zejść do · zysk " + pct(N.zB), zl(N.cenaB), "rabat −" + zl(N.cenaA - N.cenaB) + " (−" + n2((N.cenaA - N.cenaB) / N.cenaA * 100) + "%)"],
       ["Próg opłacalności · zysk 0%", zl(N.cenaMin), "maks. rabat −" + zl(N.cenaA - N.cenaMin) + " (−" + n2((N.cenaA - N.cenaMin) / N.cenaA * 100) + "%)"],
       ["Czas montażu", w0.tygodnie + " tyg.", w0.dni + " dni pracy, ekipa " + w0.osoby + " os."]
     ]);
-    y = pasek(h2("Pole do negocjacji (" + w0.nazwa + ")", y) + 7);
+    y = pasek(h2("Pole do negocjacji (" + w0.nazwa + ")", y - 1) + 7);
+    /* długa drabinka (wysoki zysk ofertowy): poniżej zysku do porównania co 4 pkt proc., żeby zmieścić kartę inwestycji */
+    var negRows = R.neg.rows.length <= 11 ? R.neg.rows : R.neg.rows.filter(function (q) {
+      var x = q.x; return x.oferta || x.porownanie || x.prog || x.zysk > N.zB || Math.round(x.zysk * 100) % 4 === 0;
+    });
     L.autoTable(doc, Object.assign({}, base, {
-      startY: y, head: [R.neg.head], body: R.neg.rows.map(function (x) { return x.vals; }),
+      startY: y - 2, head: [R.neg.head], body: negRows.map(function (x) { return x.vals; }),
+      styles: Object.assign({}, base.styles, { fontSize: 8.2, cellPadding: 1 }),
       columnStyles: { 0: { halign: "left", cellWidth: 40 } }, bodyStyles: { halign: "right" },
       didParseCell: function (hh) {
         if (hh.section === "head" && hh.column.index === 0) hh.cell.styles.halign = "left";
         if (hh.section !== "body") return;
-        var x = R.neg.rows[hh.row.index].x;
+        var x = negRows[hh.row.index].x;
         if (x.oferta) { hh.cell.styles.fillColor = SOFT; hh.cell.styles.fontStyle = "bold"; hh.cell.styles.textColor = ACC; }
         else if (x.porownanie) { hh.cell.styles.fillColor = GOOD; hh.cell.styles.fontStyle = "bold"; hh.cell.styles.textColor = GOODT; }
         else if (x.prog) { hh.cell.styles.fillColor = BAD; hh.cell.styles.textColor = BADT; }
@@ -469,26 +570,77 @@
         else hh.cell.styles.fillColor = [244, 250, 246];
       }
     }));
-    doc.setFont("Carlito", "normal"); doc.setFontSize(7.6); doc.setTextColor.apply(doc, MUT);
-    doc.text("Zielone: rabat bez zejścia poniżej zysku " + pct(N.zB) + ". Żółte: poniżej zysku do porównania. Przy zysku 0% w cenie zostają koszty, KOB, GDW i podatek.", 14, doc.lastAutoTable.finalY + 4);
-    y = doc.lastAutoTable.finalY + 11;
-    y = numTable(R.ceny, h2("Warianty wykonania", y));
-    numTable(R.opcje, h2("Opcje do oferty (cena z narzutami)", y), { columnStyles: { 0: { halign: "left", cellWidth: 50 } } });
+    doc.setFont("Carlito", "normal"); doc.setFontSize(7.4); doc.setTextColor.apply(doc, MUT);
+    doc.text("Zielone: rabat bez zejścia poniżej zysku " + pct(N.zB) + ". Żółte: poniżej zysku do porównania. Przy zysku 0% w cenie zostają koszty, KOB, GDW i podatek.", 14, doc.lastAutoTable.finalY + 3.6);
+    y = h2("Dane wejściowe", doc.lastAutoTable.finalY + 10) + 2.5;
 
-    doc.addPage(); head("Dane wejściowe", stopka);
-    y = 34;
-    var colW = 89, xs = [14, 14 + colW + 4], yCol = [y, y];
-    R.grupy.forEach(function (g, gi) {
-      var col = yCol[0] <= yCol[1] ? 0 : 1, x0 = xs[col], yy = yCol[col];
-      doc.setFillColor.apply(doc, SOFT); doc.rect(x0, yy, colW, 6.5, "F");
-      doc.setFont("Carlito", "bold"); doc.setFontSize(9.5); doc.setTextColor.apply(doc, ACC); doc.text(g.tytul, x0 + 2.5, yy + 4.6);
-      L.autoTable(doc, Object.assign({}, base, { startY: yy + 6.5, body: g.pary, theme: "plain", margin: { left: x0, right: 210 - x0 - colW },
-        tableWidth: colW, styles: Object.assign({}, base.styles, { fontSize: 8.4, cellPadding: { top: 1, bottom: 1, left: 2, right: 2 } }),
-        columnStyles: { 0: { textColor: MUT, cellWidth: 33 }, 1: { cellWidth: colW - 33 } },
-        didParseCell: function (h) { if (h.row.index % 2 === 1) h.cell.styles.fillColor = [247, 248, 249]; } }));
-      yCol[col] = doc.lastAutoTable.finalY + 6;
+    /* pole: mała etykieta, pod nią wyraźna wartość */
+    function pole(x, yy, wdt, et, wart, rozm) {
+      doc.setFont("Carlito", "normal"); doc.setFontSize(7.6); doc.setTextColor.apply(doc, MUT); doc.text(et, x, yy);
+      doc.setFont("Carlito", "bold"); doc.setFontSize(rozm || 10.5); doc.setTextColor.apply(doc, INK);
+      if (Array.isArray(wart)) {   // wysokości pojazdów: trójkąty jak w ofercie (Carlito nie ma ▲▼)
+        var xx = x; doc.setFillColor.apply(doc, ACC);
+        wart.forEach(function (t, i) {
+          var yb = yy + 4.6 - 0.6;
+          if (i === 0) doc.triangle(xx, yb, xx + 3, yb, xx + 1.5, yb - 2.8, "F"); else doc.triangle(xx, yb - 2.8, xx + 3, yb - 2.8, xx + 1.5, yb, "F");
+          doc.text(t, xx + 4.2, yy + 4.6); xx += 4.2 + doc.getTextWidth(t) + 7;
+        });
+        return yy + 9;
+      }
+      var ls = doc.splitTextToSize(String(wart), wdt); doc.text(ls, x, yy + 4.6);
+      return yy + 4.6 + (ls.length - 1) * (rozm || 10.5) * 0.42 + 4.4;
+    }
+    var cw = 89, xL = 14, xP = 14 + cw + 4, y0 = y;
+    /* lewa kolumna: urządzenia i agregaty */
+    var yl = y0 + 5;
+    doc.setFont("Carlito", "normal"); doc.setFontSize(7.6); doc.setTextColor.apply(doc, MUT); doc.text("Urządzenia", xL + 3, yl);
+    doc.setFont("Carlito", "bold"); doc.setFontSize(14); doc.setTextColor.apply(doc, ACC);
+    (K.urz.length ? K.urz : ["–"]).forEach(function (t) { yl += 6; doc.text(t, xL + 3, yl); });
+    doc.setFont("Carlito", "normal"); doc.setFontSize(8.4); doc.setTextColor.apply(doc, INK); doc.text(K.razem, xL + 3, yl + 4.6);
+    yl += 10.5;
+    if (K.agregaty) yl = pole(xL + 3, yl, cw - 6, "Agregaty", K.agregaty, 12);
+    if (K.wyposazenie) yl = pole(xL + 3, yl, cw - 6, "Barierki / maskownice / magistrala", K.wyposazenie, 9.5);
+    /* prawa kolumna: wymiary (kolejne pary zagłębień oddzielone "lub") */
+    var yp = y0 + 5;
+    K.wymiary.forEach(function (grp, gi) {
+      if (gi) { doc.setFont("Carlito", "bold"); doc.setFontSize(8); doc.setTextColor.apply(doc, ACC); doc.text("lub", xP + 3, yp - 1); yp += 3; }
+      grp.forEach(function (pp) { yp = pole(xP + 3, yp, cw - 6, pp[0], pp[1]); });
     });
-    numTable(R.struktura, h2("Struktura kosztów", Math.max(yCol[0], yCol[1]) + 2));
+    if (K.dlMiejsca) yp = pole(xP + 3, yp, cw - 6, "Długość miejsca postojowego", K.dlMiejsca);
+    var yk = Math.max(yl, yp) - 1.5;
+    doc.setDrawColor.apply(doc, LINE); doc.setLineWidth(0.3);
+    doc.roundedRect(xL, y0, cw, yk - y0, 1.5, 1.5, "S"); doc.roundedRect(xP, y0, cw, yk - y0, 1.5, 1.5, "S");
+    doc.setFont("Carlito", "bold"); doc.setFontSize(7.6); doc.setTextColor.apply(doc, ACC);
+    doc.text("ZAKRES", xL + cw - 3, y0 + 5, { align: "right" }); doc.text("WYMIARY", xP + cw - 3, y0 + 5, { align: "right" });
+    y = yk + 5;
+    /* opis wariantu, lokalizacja, montaż, transport */
+    doc.setFont("Carlito", "normal"); doc.setFontSize(7.6); doc.setTextColor.apply(doc, MUT); doc.text("Opis wariantu", 14, y);
+    doc.setFont("Courier", "normal"); doc.setFontSize(8.2); doc.setTextColor.apply(doc, INK);
+    var lo = doc.splitTextToSize(K.opis || "–", 182); doc.text(lo, 14, y + 4.3); y += 4.3 + lo.length * 3.6 + 2.5;
+    var c3 = (182 - 8) / 3;
+    var yy3 = [pole(14, y, c3, "Lokalizacja", K.lok, 9.5), pole(14 + c3 + 4, y, c3, "Montaż", K.montaz, 9.5), pole(14 + 2 * (c3 + 4), y, c3, "Transport", K.transport, 9.5)];
+    y = Math.max.apply(null, yy3) + 1;
+    /* konserwacja: oba warianty obok siebie */
+    K.konserwacja.forEach(function (kk, i) {
+      var x = 14 + i * (cw + 4);
+      doc.setFillColor.apply(doc, TILE); doc.rect(x, y, cw, 17, "F");
+      doc.setFillColor.apply(doc, ACC); doc.rect(x, y, 0.9, 17, "F");
+      doc.setFont("Carlito", "normal"); doc.setFontSize(8); doc.setTextColor.apply(doc, MUT); doc.text(kk.nazwa + " · " + kk.stawka, x + 4, y + 5);
+      doc.setFont("Carlito", "bold"); doc.setFontSize(13); doc.setTextColor.apply(doc, INK); doc.text(zl(kk.rok) + " rocznie", x + 4, y + 11);
+      doc.setFont("Carlito", "normal"); doc.setFontSize(8); doc.setTextColor.apply(doc, MUT);
+      doc.text(zl(kk.mies) + " miesięcznie" + (R.przeglad ? " · przegląd półroczny " + zl(kk.pol) : ""), x + 4, y + 15);
+    });
+
+    /* 2. strona: warianty, opcje, struktura kosztów i pozostałe dane */
+    doc.addPage(); head("Warianty, opcje i koszty", stopka);
+    y = numTable(R.ceny, h2("Warianty wykonania", 36));
+    if (R.opcje.rows.length) y = numTable(R.opcje, h2("Opcje do oferty (cena z narzutami)", y), { columnStyles: { 0: { halign: "left", cellWidth: 50 } } });
+    y = numTable(R.struktura, h2("Struktura kosztów", y));
+    y = h2("Pozostałe dane wejściowe", y);
+    L.autoTable(doc, Object.assign({}, base, { startY: y, body: R.szczegoly, theme: "plain",
+      styles: Object.assign({}, base.styles, { fontSize: 7.6, cellPadding: { top: 0.6, bottom: 0.6, left: 2, right: 2 } }),
+      columnStyles: { 0: { textColor: MUT, cellWidth: 62 }, 1: { cellWidth: 120 } },
+      didParseCell: function (h) { if (h.row.index % 2 === 1) h.cell.styles.fillColor = [247, 248, 249]; } }));
 
     doc.addPage(); head("Obliczenia krok po kroku", stopka);
     y = h2("Materiały i urządzenia", 36);
