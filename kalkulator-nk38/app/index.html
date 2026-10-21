@@ -965,7 +965,7 @@ table.t.edt input[type=text], table.t.edt td input:not([type=number]) { min-widt
       strukturaCeny(w) +
       '<div class="kpis">' +
       kpi("Montaż", w.tygodnie + " tyg.<small>" + w.dni + " dni pracy, " + w.osoby + " os." + (recz ? ", tygodnie wpisane ręcznie" : "") + "</small>", true) +
-      kpi("Zysk z narzutem " + pct(d.zysk), zl(w.zyskN) + "<small>przy " + pct(d.zysk2) + ": " + zl(w.zyskN2) + "</small>") +
+      kpi("Zysk z narzutem " + pct(d.zysk), zl(w.zyskN) + '<small style="white-space:nowrap">przy ' + pct(d.zysk2) + ": " + zl(w.zyskN2) + "</small>") +
       kpi("Konserwacja roczna", zl(K[0].rok) + "<small>przy " + K[0].stawka + " zł/" + jm + " · " + zl(K[1].rok) + " przy " + K[1].stawka + " zł/" + jm + "</small>") +
       (r.szablon.opcje.przeglad ? kpi("Przegląd półroczny", zl(K[0].pol) + "<small>przy " + K[0].stawka + " zł/" + jm + " · " + zl(K[1].pol) + " przy " + K[1].stawka + " zł/" + jm + "</small>") : "") + "</div>";
     liczbyHero(w, r.szablon.id + "|" + sel);
