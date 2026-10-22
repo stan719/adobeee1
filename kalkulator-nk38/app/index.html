@@ -379,6 +379,11 @@ table.t.edt td { padding: 3px 6px; }
 table.t.edt td:first-child { min-width: 120px; }
 table.t.edt input, table.t.edt select { padding: 4px 7px; font-size: 13px; min-width: 70px; }
 table.t.edt input[type=text], table.t.edt td input:not([type=number]) { min-width: 140px; }
+/* telefon: pola min. 16 px, żeby iPhone nie powiększał strony po dotknięciu pola (po powiększeniu strona przesuwa się na boki);
+   strona nigdy nie przewija się w poziomie, szerokie tabele przewijają się w swoich ramkach */
+@media (max-width: 1000px), (pointer: coarse) { input, select, textarea, .kv input, .dimtab input, table.t.edt input, table.t.edt select { font-size: 16px; } }
+html, body { overflow-x: clip; max-width: 100%; }
+@media (max-width: 700px) { .appbar { position: static; } }   /* na telefonie zawinięty pasek zajmowałby pół ekranu */
 </style>
 
 <header class="appbar">
