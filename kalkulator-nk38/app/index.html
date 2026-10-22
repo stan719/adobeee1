@@ -570,7 +570,7 @@ html, body { overflow-x: clip; max-width: 100%; }
 (function () {
   "use strict";
   /* Wersja programu: podnoś przy każdym wydaniu (pokazywana na pulpicie, zapisywana w kopii zapasowej). */
-  var WERSJA = { nr: "1.27", data: "22.10.2026" };
+  var WERSJA = { nr: "1.28", data: "22.10.2026" };
   var E = window.NK38, X = window.NK38X;
   var LS = { robocze: "nk38.robocze.v1", drafty: "nk38.szkice.v1", draft: "nk38.szkic.v1", tab: "nk38.zakladka", sel: "nk38.wariant", logo: "nk38.logo.v1", podpis: "nk38.podpis.v1",
     szablony: "nk38.szablony.v1", wyceny: "nk38.wyceny.v1", tekstyOferty: "nk38.szablon.v1", numery: "nk38.numery.v1", cennikStary: "nk38.cennik.v1", usuniete: "nk38.usuniete.v1", migracja2: "nk38.migracja2", migracja3: "nk38.migracja3", historia: "nk38.historia.v1", uzytkownik: "nk38.uzytkownik.v1" };
@@ -1094,7 +1094,7 @@ html, body { overflow-x: clip; max-width: 100%; }
       '<div class="kpis">' +
       kpi("Montaż", w.tygodnie + " tyg.<small>" + w.dni + " dni pracy, " + w.osoby + " os." + (recz ? ", tygodnie wpisane ręcznie" : "") + "</small>", true) +
       kpi("Zysk z narzutem " + pct(d.zysk), zl(w.zyskN) + drugaKwota("przy " + pct(d.zysk2), w.zyskN2)) +
-      kpi("Konserwacja roczna, " + K[0].stawka + " zł/" + jm, zl(K[0].rok) + drugaKwota("przy " + K[1].stawka + " zł/" + jm, K[1].rok)) +
+      kpi("Kons. roczna, " + K[0].stawka + " zł/" + jm, zl(K[0].rok) + drugaKwota("przy " + K[1].stawka + " zł/" + jm, K[1].rok)) +
       (r.szablon.opcje.przeglad ? kpi("Przegląd półroczny, " + K[0].stawka + " zł/" + jm, zl(K[0].pol) + drugaKwota("przy " + K[1].stawka + " zł/" + jm, K[1].pol)) : "") + "</div>";
     liczbyHero(w, r.szablon.id + "|" + sel);
     /* zamiast kart wariantów: dopłaty za 2500 kg, słupki i opcje przy obu poziomach zysku */
