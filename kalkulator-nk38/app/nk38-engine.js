@@ -151,7 +151,7 @@
     s.opisOferty = "Platformy służące do zależnego parkowania pojazdów {typ}";
     s.typy = {
       S: { nazwa: "Urządzenia NKPXLH", mp: 2, osd: 2, cena: 2300, waluta: "USD", dzwig: 0.06,
-        oferta: "{n} szt. – NKPXL szer. użytkowa miejsca postojowego 250cm;" },
+        oferta: "{n} szt. – NKPXLH szer. użytkowa miejsca postojowego 250cm;" },
       D: { nazwa: "", mp: 0, osd: 0, cena: 0, waluta: "USD", dzwig: 0, oferta: "" },
       NP: { nazwa: "", mp: 0, osd: 0, cena: 0, waluta: "USD", dzwig: 0, oferta: "" }
     };
@@ -193,7 +193,7 @@
     s.opisOferty = "Platformy służące do zależnego parkowania pojazdów w pochyleniu {typ}";
     s.typy = {
       S: { nazwa: "Platformy NK41", mp: 2, osd: 2.2, cena: 12000, waluta: "PLN", dzwig: 1 / 15,
-        oferta: "{n} szt. – NKPXL szer. użytkowa miejsca postojowego 250cm, szer. zewnętrzna urządzenia 280cm;" },
+        oferta: "{n} szt. – NK41 szer. użytkowa miejsca postojowego 250cm, szer. zewnętrzna urządzenia 280cm;" },
       D: { nazwa: "", mp: 0, osd: 0, cena: 0, waluta: "PLN", dzwig: 0, oferta: "" },
       NP: { nazwa: "", mp: 0, osd: 0, cena: 0, waluta: "PLN", dzwig: 0, oferta: "" }
     };
@@ -203,15 +203,15 @@
       { id: "ster_a", nazwa: "Sterowanie i elektryka: na agregat", cena: 1400, waluta: "PLN", naCo: "agregat", wsp: 1, osd: 0, opcja: false, tekst: "" },
       { id: "ster_u", nazwa: "Sterowanie i elektryka: na urządzenie", cena: 500, waluta: "PLN", naCo: "szt", wsp: 1, osd: 0, opcja: false, tekst: "" }
     ];
-    s.wariantB = { nazwa: "", tryb: "%", wartosc: 0, waluta: "PLN" };
+    s.wariantB = { nazwa: "2500 kg", tryb: "szt", wartosc: 0, waluta: "PLN" };   // dopłata wpisywana w wycenie; bez niej wariant niedostępny
     s.opcje.rozladunekNaTransport = true; s.opcje.konserwacjaNa = "szt"; s.opcje.agregaty = true; s.opcje.slupki = true;
     s.wysokosci = { tryb: "przeswit2", k: -20, dol: 150, dlugosc: 400 };
     s.domyslne = { zysk: 0.14, zysk2: 0.11, konserwA: 40, konserwB: 50, tir: 1, tir_cena: 3200, rozl_cena: 1500 };
-    Object.assign(s.cennik, { stawka_1: 500, stawka_2: 400, stawka_kolejna: 350, hotel: 130, dieta: 45, odbiory_osoby: 2, dzwig: 2400, rozl_TIR: 0.5, kob: 0.00515, gdw: 0.02585, slupek: 1700 });
+    Object.assign(s.cennik, { stawka_1: 500, stawka_2: 400, stawka_kolejna: 350, hotel: 130, dieta: 45, odbiory_osoby: 2, dzwig: 2400, rozl_TIR: 0.5, slupek: 1700 });
     s.teksty = Object.assign(tekstyNK38(), {
       obciazenie: "Obciążenie platformy: 2.000kg/miejsce;",
       zabezpieczenie: "Zabezpieczenie antykorozyjne: platforma ocynkowana ogniowo, słupy i siłowniki malowane.",
-      barierki: "", opcjaQ2500: "",
+      barierki: "", opcjaQ2500: "Obciążenie platformy: 2.500kg/miejsce.",
       uwagaTech: "*parametry pojazdów dopuszczonych do wjazdu w obręb urządzeń są zależne od wysokości prześwitu dostępnego na danym miejscu w garażu.",
       wstep: "przedstawiamy {oferte} na dostawę i montaż {n} platform służących do zależnego parkowania {mp} pojazdów w pochyleniu dla inwestycji {garaz}.",
       tech: "Zagłębienie: brak;\nWysokość prześwitu: {P}cm;\nWysokość parkowanych pojazdów*: ▲-{G}cm, ▼-{D}cm;\nDługość parkowanych pojazdów: ▲-{M}cm, ▼-{M}cm;",
@@ -253,7 +253,7 @@
 
   function domyslneDane() {
     return {
-      nazwa: "", data: "", nr: "", opis: "", h1: null, h2: null, dl: "", przeswit: null, pary: [], poz: {}, usd: 3.86, nadpis: {}, dlMiejsca: null, agrOpis: "",
+      nazwa: "", data: "", nr: "", opis: "", h1: null, h2: null, dl: "", przeswit: null, pary: [], poz: {}, usd: 3.86, nadpis: {}, dlMiejsca: null, agrOpis: "", dopB: null,
       lok: "Poza Krakowem", km: 0, km_pom: null, km_mon: null,
       szablon: "nk38", S: 0, D: 0, NP: 0, agregaty: 0, magistrala: 0, barierki: 0, maskownice: 0, utr_dod: 0,
       gl_S: {}, gl_D: {},
@@ -295,7 +295,9 @@
     });
     var dodatki = linie.filter(function (l) { return !l.opcja; }).reduce(function (a, l) { return a + l.kwota; }, 0);
     var suma = plat.S + plat.D + plat.NP + dodatki, wb = sz.wariantB, q, suma2;
-    if (wb.tryb === "szt") { suma2 = suma + szt * num(wb.wartosc) * (K[wb.waluta] || 1); q = suma ? suma2 / suma - 1 : 0; }
+    /* dopłata za wariant 2 na sztukę: z wyceny (zł/szt.) albo z szablonu; zero = brak ceny, wariant niedostępny */
+    var dopB = opt(d.dopB) !== null ? Number(d.dopB) : num(wb.wartosc) * (K[wb.waluta] || 1);
+    if (wb.tryb === "szt") { suma2 = suma + szt * dopB; q = suma ? suma2 / suma - 1 : 0; }
     else { q = opt(d.q2500) === null ? num(wb.wartosc) : Number(d.q2500); suma2 = suma * (1 + q); }
     var utrAuto = ceil(linie.reduce(function (a, l) { return a + (l.opcja ? 0 : l.osd); }, 0));
     var wiersze = [];
@@ -309,7 +311,7 @@
       model: "lista", cenaD: cenaJ.D, cenaS: cenaJ.S, cenaNP: cenaJ.NP, platformy: szt, MP: mp,
       platS: plat.S, platD: plat.D, platNP: plat.NP, sil: { std: 0, s2000: 0, s2250: 0 },
       hydraulika: 0, barierki: 0, elektryka: 0, mechanika: dodatki,
-      suma2000: suma, suma2500: suma2, q2500: q, malowanie: 0, linie: linie, fracht: fracht, frachtSzt: frachtSzt, ubezp: ubezp,
+      suma2000: suma, suma2500: suma2, q2500: q, dopB: wb.tryb === "szt" ? dopB : null, brakB: !!wb.nazwa && wb.tryb === "szt" && !(dopB > 0), malowanie: 0, linie: linie, fracht: fracht, frachtSzt: frachtSzt, ubezp: ubezp,
       wiersze: wiersze, utrAuto: utrAuto, utr: utrAuto + num(d.utr_dod)
     };
   }

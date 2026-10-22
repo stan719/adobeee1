@@ -49,9 +49,13 @@ blisko(r2.mat.suma2500 - r2.mat.suma2000, 18 * 700 * 3.86, "2500 kg: 3000 USD/sz
 
 // NK41: arkusz "-NK3 2T A .10.26" przeliczony w LibreOffice dla 23 urządzeń, 6 agregatów, 300 km (montaż 350 km), 1 wyjazd montażowy.
 const r3 = E.oblicz(Object.assign(E.domyslneDane(), szablon("nk41").domyslne, {
-  szablon: "nk41", S: 23, agregaty: 6, km: 300, wyjazdy: 1, eur: 4.325
+  szablon: "nk41", S: 23, agregaty: 6, km: 300, wyjazdy: 1, eur: 4.325,
+  nadpis: { kob: 0.00515, gdw: 0.02585 }   // arkusz NK41 miał KOB/GDW 0,515/2,585%; w szablonie standardowe 0,5/2,5%
 }), szablon("nk41"));
 console.log("NK41");
+if (!r3.mat.brakB || r3.warianty[1].cena !== r3.warianty[0].cena) throw new Error("NK41 bez dopłaty: wariant 2500 kg powinien być niedostępny");
+const r3b = E.oblicz(Object.assign(E.domyslneDane(), szablon("nk41").domyslne, { szablon: "nk41", S: 10, dopB: 1000 }), szablon("nk41"));
+blisko(r3b.mat.suma2500 - r3b.mat.suma2000, 10000, "NK41 z dopłatą 1000 zł/szt.: wariant 2500 kg");
 blisko(r3.mat.suma2000, 276000 + 20241 + 19900 + 32660, "urządzenia, agregaty, sterowanie, hydraulika (I14:I17)");
 blisko(r3.warianty[0].osd, 50.6, "osobodni montażu (F51)");
 blisko(r3.warianty[0].koszty.dzwig, 4800, "Spider Crane 2 dni (K26)");

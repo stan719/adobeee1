@@ -52,7 +52,7 @@
   /* Wartości: liczba + format ("zl" | "eur" | "n" | "int" | "txt"). */
   /* Warianty pokazywane w tabelach: bez wariantu B (np. 2500 kg), gdy szablon go nie ma. */
   function widoczneWarianty(r) {
-    var maB = !!(r.szablon.wariantB && r.szablon.wariantB.nazwa);
+    var maB = !!(r.szablon.wariantB && r.szablon.wariantB.nazwa) && !r.mat.brakB;   // bez wpisanej dopłaty wariant 2 się nie liczy
     var sl = r.szablon.opcje.slupki !== false;
     return r.warianty.filter(function (x, i) { return (maB || i % 2 === 0) && (sl || i < 2); });
   }
@@ -92,7 +92,7 @@
         ["Czas podróży", d.wzor === "uproszczony" ? "uproszczony (650 km dziennie)" : "stary wzór (poprawiony)"]]) },
       { tytul: "Narzuty i serwis", pary: [
         ["Zysk", pct(d.zysk) + " oraz " + pct(d.zysk2) + " do porównania"]]
-        .concat(nB ? [["Dopłata " + nB, sz.wariantB.tryb === "szt" ? sz.wariantB.wartosc + " " + sz.wariantB.waluta + "/szt. (" + pct(m.q2500) + ")" : pct(m.q2500)]] : [])
+        .concat(nB ? [["Dopłata " + nB, m.brakB ? "nie wpisano" : sz.wariantB.tryb === "szt" ? zl(m.dopB) + "/szt. (" + pct(m.q2500) + ")" : pct(m.q2500)]] : [])
         .concat([["Kurs EUR/PLN" + (lista ? " / USD/PLN" : ""), String(d.eur) + (lista ? " / " + d.usd : "")],
         ["Konserwacja", r.konserwacja.map(function (k) { return k.stawka + " zł/" + jm + "/mies.: " + zl(k.rok) + " rocznie" + (sz.opcje.przeglad ? ", " + zl(k.pol) + " półrocznie" : ""); }).join("; ")]]) }
     ];
@@ -179,7 +179,8 @@
     /* raport: jedna kolumna (wariant podstawowy), pozycje zerowe pominięte; 2500 kg i słupki tylko jako dopłaty */
     var mon1 = mon.rows.filter(function (x) { return !(x.koszt && !x.vals[0]); }).map(function (x) { return { label: x.label, info: x.info, fmt: x.fmt, bold: x.bold, val: x.vals[0] }; });
     var W = r.warianty, dod = [];
-    if (nB) dod.push({ label: "Wariant " + nB, info: sz.wariantB.tryb === "szt" ? "+" + sz.wariantB.wartosc + " " + sz.wariantB.waluta + "/szt. do ceny urządzeń" : "+" + pct(m.q2500) + " do ceny urządzeń",
+    if (nB && m.brakB) dod.push({ label: "Wariant " + nB, info: "nie wpisano ceny dla zwiększonego udźwigu", vals: [null, null] });
+    else if (nB) dod.push({ label: "Wariant " + nB, info: sz.wariantB.tryb === "szt" ? "+" + st(m.dopB) + " zł/szt. do ceny urządzeń" : "+" + pct(m.q2500) + " do ceny urządzeń",
       vals: [W[1].cena - W[0].cena, W[1].cena2 - W[0].cena2] });
     if (sz.opcje.slupki !== false) {
       dod.push({ label: "Słupki e-ładowarek 3,7 kW", info: m.MP + " MP × " + st(C.slupek) + " zł + montaż", vals: [r.opcje.slupki37[0], r.opcje.slupki37b[0]] });
@@ -433,7 +434,7 @@
       s1.mergeCells(hd.number, 2, hd.number, 4);
       hd.eachCell(function (c, i) { c.fill = fill(C.accSoft); c.border = box; c.font = font({ bold: true, size: 9, color: { argb: C.acc } }); c.alignment = { horizontal: i < 5 ? "left" : "right", vertical: "middle", wrapText: true, indent: i < 5 ? 1 : 0 }; });
       R.dodatki.rows.forEach(function (q) {
-        var x = s1.addRow([q.label, q.info, "", "", q.vals[0], q.vals[1]]); s1.mergeCells(x.number, 2, x.number, 4);
+        var x = s1.addRow([q.label, q.info, "", "", q.vals[0] == null ? "–" : q.vals[0], q.vals[1] == null ? "–" : q.vals[1]]); s1.mergeCells(x.number, 2, x.number, 4);
         x.eachCell({ includeEmpty: true }, function (c, i) {
           c.border = box; c.font = font({ bold: i === 1, color: { argb: i > 1 && i < 5 ? C.muted : C.ink }, size: i > 1 && i < 5 ? 9 : 10 });
           c.alignment = i < 5 ? { indent: 1, vertical: "middle", wrapText: true } : { horizontal: "right", vertical: "middle" };
@@ -666,7 +667,7 @@
     /* opcje: 2500 kg i słupki tylko jako dopłata przy obu poziomach zysku */
     if (R.dodatki.rows.length) {
       L.autoTable(doc, Object.assign({}, base, { startY: y, head: [R.dodatki.head],
-        body: R.dodatki.rows.map(function (x) { return [x.label, x.info, "+" + zl(x.vals[0]), "+" + zl(x.vals[1])]; }),
+        body: R.dodatki.rows.map(function (x) { return [x.label, x.info].concat(x.vals.map(function (v) { return v == null ? "–" : "+" + zl(v); })); }),
         styles: Object.assign({}, base.styles, { fontSize: 8.2, cellPadding: 0.75 }),
         columnStyles: { 0: { halign: "left", cellWidth: 52, fontStyle: "bold" }, 1: { halign: "left", textColor: MUT, cellWidth: 70 }, 2: { halign: "right" }, 3: { halign: "right" } },
         didParseCell: function (h) { if (h.section === "head" && h.column.index < 2) h.cell.styles.halign = "left"; } }));
@@ -844,7 +845,7 @@
     ].concat((r.opcje.pozycje || []).map(function (p) { return ["poz_" + p.id, p.tekst || p.nazwa, B ? p.kwotaB : p.kwota]; })).filter(Boolean);
     var opcje = [], ceny = [{ klucz: "poz10", label: "Pozycja 1:", auto: ceil100(c(ws[0])) }];
     opcjeDef.forEach(function (x) {
-      if (!o.opcje[x[0]]) return;
+      if (!o.opcje[x[0]] || (x[0] === "q2500" && m.brakB)) return;   // 2500 kg bez wpisanej dopłaty nie trafia do oferty
       var nr = "Opcja " + (opcje.length + 1) + ":";
       opcje.push({ label: nr, tekst: x[1] });
       ceny.push({ klucz: x[0], label: nr, auto: ceil100(x[2]) });
