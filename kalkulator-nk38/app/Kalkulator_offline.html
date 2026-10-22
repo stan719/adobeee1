@@ -138,7 +138,10 @@ details.dims summary span { font-weight: 400; color: var(--muted); }
 .kpi .v small { display: block; font-size: 12px; color: var(--muted); font-weight: 400; }
 .kpi .v.t { color: var(--accent); }
 .kpi .v .kw2 { color: var(--ink); white-space: nowrap; }
-.compare { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 8px; }
+.compare { display: block; }
+.compare:empty { display: none; }
+.dopl { padding: 12px 16px; }
+.dopl h3.sec { margin: 0 0 4px; }
 @media (max-width: 760px) { .compare { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
 .cmp { text-align: left; background: var(--surface); border: 1px solid var(--line); border-radius: 10px; padding: 10px 12px; box-shadow: var(--shadow); min-width: 0; transition: border-color .15s; }
 .cmp:hover { border-color: var(--line-2); }
@@ -1247,8 +1250,10 @@ window.NK38_FONTS = { regular: "AAEAAAAOAIAAAwBgR0RFRgS1BUEAAH9cAAAARkdQT1MAGQAM
     ];
     /* krótka informacja o stawce przy pozycji (wartości bieżącej wyceny, z ewentualnymi zmianami) */
     var C = r.cennik, w0 = ws[0], st = function (x) { return fmt0.format(Math.round(x)); };
+    /* opisy liczone dla danego wariantu (na ekranie: wariant wybrany przełącznikiem) */
+    function infoDla(w0) {
     var brutto0 = w0.baza / (1 - (C.kob + C.gdw + d.zysk));
-    var info = {
+    return {
       paliwo: w0.km + " km × " + n2(Math.ceil(C.spalanie * C.paliwo)) + " zł/100 km (" + n2(C.spalanie) + " l × " + n2(C.paliwo) + " zł)",
       hotel: w.krk ? "Kraków: bez hotelu" : w0.noclegi + " noclegów × " + st(C.hotel) + " zł/doba",
       dzwig: d.dzwig_koszt != null ? "wpisane ręcznie" : w.dzwDni + " dni × " + st(C.dzwig) + " zł/dzień",
@@ -1275,6 +1280,8 @@ window.NK38_FONTS = { regular: "AAEAAAAOAIAAAwBgR0RFRgS1BUEAAH9cAAAARkdQT1MAGQAM
       dni: "(osd montażu + podróży) ÷ " + w0.osoby + " os.",
       noclegi: w.krk ? "Kraków: bez noclegów" : "(dni pracy + 1) × " + w0.osoby + " os."
     };
+    }
+    var infoW = ws.map(infoDla), info = infoW[0];
     var mon = { head: head, rows: [
       ["Osobodni montażu (F50)", "n", "osd"], ["Tygodnie / dni montażu (B55)", "int", "wyjazdy"],
       ["Osobodni podróży i rozładunku (G59)", "n", "podroze"], ["Dni pracy ekipy (J39)", "int", "dni"],
@@ -1286,7 +1293,7 @@ window.NK38_FONTS = { regular: "AAEAAAAOAIAAAwBgR0RFRgS1BUEAAH9cAAAARkdQT1MAGQAM
       ["Suma przed narzutami", "zl", "baza", 1], ["KOB", "zl", "kob"], ["GDW", "zl", "gdw"], ["Zysk " + pct(d.zysk), "zl", "zysk"], ["Zysk z narzutem (zysk + GDW)", "zl", "zyskN"],
       ["Podatek", "zl", "podatek"], ["Cena kontraktu, " + zA + " (K39)", "zl", "cena", 1], ["Koszt rzeczywisty", "zl", "koszt", 1]
     ].map(function (row) {
-      return { label: row[0], info: info[row[2]] || "", fmt: row[1], bold: !!row[3], koszt: !!row[4], vals: ws.map(function (x) { return row[4] ? x.koszty[row[2]] : x[row[2]]; }) };
+      return { label: row[0], info: info[row[2]] || "", infoW: infoW.map(function (q) { return q[row[2]] || ""; }), fmt: row[1], bold: !!row[3], koszt: !!row[4], vals: ws.map(function (x) { return row[4] ? x.koszty[row[2]] : x[row[2]]; }) };
     }) };
     /* raport: jedna kolumna (wariant podstawowy), pozycje zerowe pominięte; 2500 kg i słupki tylko jako dopłaty */
     var mon1 = mon.rows.filter(function (x) { return !(x.koszt && !x.vals[0]); }).map(function (x) { return { label: x.label, info: x.info, fmt: x.fmt, bold: x.bold, val: x.vals[0] }; });
@@ -2155,7 +2162,7 @@ window.NK38_FONTS = { regular: "AAEAAAAOAIAAAwBgR0RFRgS1BUEAAH9cAAAARkdQT1MAGQAM
 (function () {
   "use strict";
   /* Wersja programu: podnoś przy każdym wydaniu (pokazywana na pulpicie, zapisywana w kopii zapasowej). */
-  var WERSJA = { nr: "1.26", data: "22.10.2026" };
+  var WERSJA = { nr: "1.27", data: "22.10.2026" };
   var E = window.NK38, X = window.NK38X;
   var LS = { robocze: "nk38.robocze.v1", drafty: "nk38.szkice.v1", draft: "nk38.szkic.v1", tab: "nk38.zakladka", sel: "nk38.wariant", logo: "nk38.logo.v1", podpis: "nk38.podpis.v1",
     szablony: "nk38.szablony.v1", wyceny: "nk38.wyceny.v1", tekstyOferty: "nk38.szablon.v1", numery: "nk38.numery.v1", cennikStary: "nk38.cennik.v1", usuniete: "nk38.usuniete.v1", migracja2: "nk38.migracja2", migracja3: "nk38.migracja3", historia: "nk38.historia.v1", uzytkownik: "nk38.uzytkownik.v1" };
@@ -2616,8 +2623,11 @@ window.NK38_FONTS = { regular: "AAEAAAAOAIAAAwBgR0RFRgS1BUEAAH9cAAAARkdQT1MAGQAM
     tipEl.style.left = x + "px"; tipEl.style.top = (r.top - tipEl.offsetHeight - 8) + "px";
   });
 
+  /* tabele na ekranie: tylko wariant wybrany przełącznikami 2500 kg / słupki */
+  function wybrany(r) { var w = r.warianty[state.sel]; return [X.widoczneWarianty(r).indexOf(w) >= 0 ? w : r.warianty[0]]; }
   /* --- render --- */
   function render() {
+    if (wynik.mat.brakB && state.sel % 2) state.sel -= 1;   // 2500 kg bez dopłaty: wróć do 2000 kg
     var r = wynik, d = r.dane, m = r.mat, sel = state.sel, w = r.warianty[sel], T = r.szablon.typy;
     var zA = "zysk " + pct(d.zysk), zB = "zysk " + pct(d.zysk2);
     if (state.view === "kalk") { $("appTitle").textContent = "Kalkulator " + d.typ; $("projline").textContent = (d.nazwa || "Nowa wycena") + " · " + d.typ; }
@@ -2679,12 +2689,12 @@ window.NK38_FONTS = { regular: "AAEAAAAOAIAAAwBgR0RFRgS1BUEAAH9cAAAARkdQT1MAGQAM
       kpi("Konserwacja roczna, " + K[0].stawka + " zł/" + jm, zl(K[0].rok) + drugaKwota("przy " + K[1].stawka + " zł/" + jm, K[1].rok)) +
       (r.szablon.opcje.przeglad ? kpi("Przegląd półroczny, " + K[0].stawka + " zł/" + jm, zl(K[0].pol) + drugaKwota("przy " + K[1].stawka + " zł/" + jm, K[1].pol)) : "") + "</div>";
     liczbyHero(w, r.szablon.id + "|" + sel);
-    $("compare").innerHTML = r.warianty.map(function (x, i) {
-      if ((!maB && i % 2) || (!maSl && i >= 2)) return "";
-      if (i % 2 && r.mat.brakB) return '<button type="button" class="cmp" data-brakb="1" style="opacity:.65"><div class="n">' + esc(x.nazwa) + '</div><div class="p">brak ceny</div><div class="d">wpisz dopłatę</div></button>';
-      return '<button type="button" class="cmp" data-sel="' + i + '" aria-pressed="' + (i === sel) + '"><div class="n">' + esc(x.nazwa) +
-        '</div><div class="p">' + zl(x.cena) + '</div><div class="d">' + pct(d.zysk2) + ': ' + zl(x.cena2) + "</div></button>";
-    }).join("");
+    /* zamiast kart wariantów: dopłaty za 2500 kg, słupki i opcje przy obu poziomach zysku */
+    var Dd = X.raport(r, r.szablon.glebokosci.map(function (g) { return g.cm; }), d.oferta).dodatki;
+    $("compare").innerHTML = Dd.rows.length ? '<div class="card dopl"><h3 class="sec">Opcje: dopłata do ceny ' + esc(r.warianty[0].nazwa) + '</h3><div class="scroll">' +
+      '<table class="t"><thead><tr><th>Opcja</th><th>' + Dd.head[2] + '</th><th>' + Dd.head[3] + '</th></tr></thead><tbody>' +
+      Dd.rows.map(function (x) { return "<tr><td>" + esc(x.label) + (x.info ? '<div class="muted" style="font-size:11.5px">' + esc(x.info) + "</div>" : "") + "</td>" + x.vals.map(function (v) { return "<td>" + (v == null ? "brak ceny" : "+" + zl(v)) + "</td>"; }).join("") + "</tr>"; }).join("") +
+      "</tbody></table></div></div>" : "";
     var o = d.oferta;
     $("ofertaSub").textContent = (o.adr.firma || o.adr.imie ? "dla: " + [o.adr.imie, o.adr.firma].filter(Boolean).join(", ") + " · " : "") +
       "nr " + (o.nr || o.nrAuto || nastepnyNumer()) + " · adresat, opcje, ceny, podgląd i plik Word";
@@ -2717,7 +2727,7 @@ window.NK38_FONTS = { regular: "AAEAAAAOAIAAAwBgR0RFRgS1BUEAAH9cAAAARkdQT1MAGQAM
   }
 
   function paneWynik() {
-    var r = wynik, ws = X.widoczneWarianty(r), d = r.dane, zA = "zysk " + pct(d.zysk), zB = "zysk " + pct(d.zysk2);
+    var r = wynik, ws = wybrany(r), d = r.dane, zA = "zysk " + pct(d.zysk), zB = "zysk " + pct(d.zysk2);
     var h = '<div class="scroll"><table class="t">' + thead("Wariant", ws) + "<tbody>";
     h += tableRows([
       ["Cena netto, " + zA, function (w) { return zl(w.cena); }, "total"],
@@ -2816,13 +2826,12 @@ window.NK38_FONTS = { regular: "AAEAAAAOAIAAAwBgR0RFRgS1BUEAAH9cAAAARkdQT1MAGQAM
       STAWKI.map(function (x) { return "<label for=\"st_" + x[0] + "\">" + x[1] + (nd[x[0]] != null ? ' <span class="tag">zmienione</span>' : "") + '</label><input id="st_' + x[0] + '" data-stawka="' + x[0] + '" type="number" step="any" placeholder="' + esc(n2(sc[x[0]] * (x[2] || 1))) + '"' + (x[2] ? ' data-mnoznik="' + x[2] + '"' : "") + ' value="' + (nd[x[0]] != null ? +(nd[x[0]] * (x[2] || 1)).toFixed(6) : "") + '">'; }).join("") + "</div>";
     h += '<h3 class="sec">Materiały i urządzenia</h3><div class="scroll"><table class="t"><tbody>' +
       R.mat.map(function (x) { return '<tr class="' + (/^Suma/.test(x[0]) ? "strong" : "") + '"><td>' + esc(x[0]) + "</td><td>" + esc(x[1]) + "</td></tr>"; }).join("") + "</tbody></table></div>";
-    var wv = X.widoczneWarianty(wynik);
+    /* jedna kolumna: wariant wybrany przełącznikiem, opisy liczone dla niego */
+    var wv = wybrany(wynik), ix = Math.max(0, X.widoczneWarianty(wynik).indexOf(wv[0]));
     h += '<h3 class="sec">Montaż i cena</h3><div class="scroll"><table class="t">' + thead("Pozycja", wv) + "<tbody>" +
       R.mon.rows.map(function (row) {
-        return '<tr class="' + (row.bold ? "strong" : "") + '"><td>' + row.label + (row.info ? '<div class="muted" style="font-size:11.5px;font-weight:400">' + esc(row.info) + "</div>" : "") + "</td>" + row.vals.map(function (v, i) {
-          var f = row.fmt === "zl" ? zl(v) : row.fmt === "int" ? fmtPLN.format(v) : n2(v);
-          return '<td class="' + (wv[i] === wynik.warianty[state.sel] ? "sel" : "") + '">' + f + "</td>";
-        }).join("") + "</tr>";
+        var v = row.vals[ix], inf = row.infoW[ix], f = row.fmt === "zl" ? zl(v) : row.fmt === "int" ? fmtPLN.format(v) : n2(v);
+        return '<tr class="' + (row.bold ? "strong" : "") + '"><td>' + row.label + (inf ? '<div class="muted" style="font-size:11.5px;font-weight:400">' + esc(inf) + "</div>" : "") + '</td><td class="sel">' + f + "</td></tr>";
       }).join("") + "</tbody></table></div>";
     return h;
   }
@@ -3366,14 +3375,12 @@ window.NK38_FONTS = { regular: "AAEAAAAOAIAAAwBgR0RFRgS1BUEAAH9cAAAARkdQT1MAGQAM
     var b = e.target.closest("button"); if (!b) return;
     var q = state.sel % 2, sl = state.sel >= 2 ? 1 : 0;
     if (b.dataset.q !== undefined) q = +b.dataset.q;
+    if (q === 1 && wynik.mat.brakB) { alertBrakB(); return; }   // 2500 kg bez wpisanej dopłaty
     if (b.dataset.sl !== undefined) sl = +b.dataset.sl;
     setSel(q + 2 * sl);
   });
   function alertBrakB() { alert("Nie wpisano ceny dla zwiększonego udźwigu (" + wynik.szablon.wariantB.nazwa + "). Wpisz dopłatę w polu „Dopłata " + wynik.szablon.wariantB.nazwa + " [zł/szt.]” w sekcji Narzuty i serwis albo w szablonie urządzenia."); }
-  $("compare").addEventListener("click", function (e) {
-    if (e.target.closest("button[data-brakb]")) { alertBrakB(); return; }
-    var b = e.target.closest("button[data-sel]"); if (b) setSel(+b.dataset.sel);
-  });
+
   $("tabs").addEventListener("click", function (e) {
     var b = e.target.closest("button[data-tab]"); if (!b) return;
     state.tab = b.dataset.tab; state.confirm = null; state.szUsun = false; lsSet(LS.tab, state.tab);

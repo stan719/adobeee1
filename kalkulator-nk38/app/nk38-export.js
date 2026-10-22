@@ -135,8 +135,10 @@
     ];
     /* krótka informacja o stawce przy pozycji (wartości bieżącej wyceny, z ewentualnymi zmianami) */
     var C = r.cennik, w0 = ws[0], st = function (x) { return fmt0.format(Math.round(x)); };
+    /* opisy liczone dla danego wariantu (na ekranie: wariant wybrany przełącznikiem) */
+    function infoDla(w0) {
     var brutto0 = w0.baza / (1 - (C.kob + C.gdw + d.zysk));
-    var info = {
+    return {
       paliwo: w0.km + " km × " + n2(Math.ceil(C.spalanie * C.paliwo)) + " zł/100 km (" + n2(C.spalanie) + " l × " + n2(C.paliwo) + " zł)",
       hotel: w.krk ? "Kraków: bez hotelu" : w0.noclegi + " noclegów × " + st(C.hotel) + " zł/doba",
       dzwig: d.dzwig_koszt != null ? "wpisane ręcznie" : w.dzwDni + " dni × " + st(C.dzwig) + " zł/dzień",
@@ -163,6 +165,8 @@
       dni: "(osd montażu + podróży) ÷ " + w0.osoby + " os.",
       noclegi: w.krk ? "Kraków: bez noclegów" : "(dni pracy + 1) × " + w0.osoby + " os."
     };
+    }
+    var infoW = ws.map(infoDla), info = infoW[0];
     var mon = { head: head, rows: [
       ["Osobodni montażu (F50)", "n", "osd"], ["Tygodnie / dni montażu (B55)", "int", "wyjazdy"],
       ["Osobodni podróży i rozładunku (G59)", "n", "podroze"], ["Dni pracy ekipy (J39)", "int", "dni"],
@@ -174,7 +178,7 @@
       ["Suma przed narzutami", "zl", "baza", 1], ["KOB", "zl", "kob"], ["GDW", "zl", "gdw"], ["Zysk " + pct(d.zysk), "zl", "zysk"], ["Zysk z narzutem (zysk + GDW)", "zl", "zyskN"],
       ["Podatek", "zl", "podatek"], ["Cena kontraktu, " + zA + " (K39)", "zl", "cena", 1], ["Koszt rzeczywisty", "zl", "koszt", 1]
     ].map(function (row) {
-      return { label: row[0], info: info[row[2]] || "", fmt: row[1], bold: !!row[3], koszt: !!row[4], vals: ws.map(function (x) { return row[4] ? x.koszty[row[2]] : x[row[2]]; }) };
+      return { label: row[0], info: info[row[2]] || "", infoW: infoW.map(function (q) { return q[row[2]] || ""; }), fmt: row[1], bold: !!row[3], koszt: !!row[4], vals: ws.map(function (x) { return row[4] ? x.koszty[row[2]] : x[row[2]]; }) };
     }) };
     /* raport: jedna kolumna (wariant podstawowy), pozycje zerowe pominięte; 2500 kg i słupki tylko jako dopłaty */
     var mon1 = mon.rows.filter(function (x) { return !(x.koszt && !x.vals[0]); }).map(function (x) { return { label: x.label, info: x.info, fmt: x.fmt, bold: x.bold, val: x.vals[0] }; });
