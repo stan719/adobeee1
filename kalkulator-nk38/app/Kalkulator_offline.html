@@ -389,6 +389,13 @@ table.t tr.negb td { background: var(--good-soft); font-weight: 600; } table.t t
 .paryadd { margin-top: 10px; }
 .paper .lub { font-weight: 700; }
 table.t.edt td { padding: 3px 6px; }
+/* tabele edytora szablonu: przewijają się w swojej ramce, a wiersz nagłówków zostaje widoczny */
+.scroll:has(> table.edt) { max-height: min(72vh, 680px); overflow: auto; overscroll-behavior: contain; }
+table.t.edt thead th { position: sticky; top: 0; z-index: 1; background: var(--surface); box-shadow: inset 0 -1px 0 var(--line-2); }
+@media (min-width: 1001px) {   /* komputer: tabela w całości na stronie, nagłówki przyklejone pod paskiem aplikacji */
+  .scroll:has(> table.edt) { max-height: none; overflow: visible; }
+  table.t.edt thead th { top: var(--appbar-h, 62px); }
+}
 table.t.edt td:first-child { min-width: 120px; }
 table.t.edt input, table.t.edt select { padding: 4px 7px; font-size: 13px; min-width: 70px; }
 table.t.edt input[type=text], table.t.edt td input:not([type=number]) { min-width: 140px; }
@@ -2187,7 +2194,7 @@ window.NK38_FONTS = { regular: "AAEAAAAOAIAAAwBgR0RFRgS1BUEAAH9cAAAARkdQT1MAGQAM
 (function () {
   "use strict";
   /* Wersja programu: podnoś przy każdym wydaniu (pokazywana na pulpicie, zapisywana w kopii zapasowej). */
-  var WERSJA = { nr: "1.31", data: "23.10.2026" };
+  var WERSJA = { nr: "1.32", data: "23.10.2026" };
   var E = window.NK38, X = window.NK38X;
   var LS = { robocze: "nk38.robocze.v1", drafty: "nk38.szkice.v1", draft: "nk38.szkic.v1", tab: "nk38.zakladka", sel: "nk38.wariant", logo: "nk38.logo.v1", podpis: "nk38.podpis.v1",
     szablony: "nk38.szablony.v1", wyceny: "nk38.wyceny.v1", tekstyOferty: "nk38.szablon.v1", numery: "nk38.numery.v1", cennikStary: "nk38.cennik.v1", usuniete: "nk38.usuniete.v1", migracja2: "nk38.migracja2", migracja3: "nk38.migracja3", historia: "nk38.historia.v1", uzytkownik: "nk38.uzytkownik.v1" };
@@ -3330,6 +3337,8 @@ window.NK38_FONTS = { regular: "AAEAAAAOAIAAAwBgR0RFRgS1BUEAAH9cAAAARkdQT1MAGQAM
   });
   $("form").addEventListener("submit", function (e) { e.preventDefault(); });
   /* opis wariantu: pole rośnie z tekstem, żeby był widoczny w całości; Enter nie łamie linii */
+  function wysokoscPaska() { document.documentElement.style.setProperty("--appbar-h", document.querySelector(".appbar").offsetHeight + "px"); }
+  window.addEventListener("resize", wysokoscPaska); setTimeout(wysokoscPaska, 0);
   function wysokoscOpisu() { var t = $("opis"); t.style.height = "auto"; t.style.height = (t.scrollHeight + 2) + "px"; }
   $("opis").addEventListener("keydown", function (e) { if (e.key === "Enter") e.preventDefault(); });
   $("opis").addEventListener("input", wysokoscOpisu);
@@ -3714,9 +3723,9 @@ window.NK38_FONTS = { regular: "AAEAAAAOAIAAAwBgR0RFRgS1BUEAAH9cAAAARkdQT1MAGQAM
       return '<article class="card dev wejscie" style="--i:' + i + '"><div class="dev-top"><div class="head"><div class="mono-tile" aria-hidden="true">' + esc(znak) + '</div><div style="min-width:0"><h3>' + esc(s.nazwa) + "</h3><p>" + esc(rodzaj) + '</p></div></div><span class="tg' + (wb ? "" : " own") + '">' + (wb ? "wbudowany" : "własny") + "</span></div>" +
         (s.model === "lista"
           ? "<dl><dt>" + esc(s.typy.S.nazwa || "Typ 1") + "</dt><dd>" + n2(s.typy.S.cena || 0) + " " + esc(s.typy.S.waluta) + "/szt.</dd><dt>MP / osobodni na szt.</dt><dd>" + (s.typy.S.mp || 0) + " / " + n2(s.typy.S.osd || 0) + "</dd>" +
-            "<dt>Pozycje kosztowe</dt><dd>" + s.pozycje.length + "</dd><dt>Import z frachtem</dt><dd>" + (s.import.wl ? "tak, " + s.import.koszty.length + " kosztów" : "nie") + "</dd></dl>"
+            "<dt>Import z frachtem</dt><dd>" + (s.import.wl ? "tak, " + s.import.koszty.length + " kosztów" : "nie") + "</dd></dl>"
           : "<dl><dt>Cena platformy D</dt><dd>" + zl(c.cena_D || 0) + "</dd><dt>MP na S / D</dt><dd>" + (s.typy.S.mp || 0) + " / " + (s.typy.D.mp || 0) + "</dd>" +
-            "<dt>Osobodni S / D</dt><dd>" + n2(s.typy.S.osd || 0) + " / " + n2(s.typy.D.osd || 0) + "</dd><dt>Zagłębienia / składowe</dt><dd>" + s.glebokosci.length + " / " + s.skladowe.length + "</dd></dl>") +
+            "<dt>Osobodni S / D</dt><dd>" + n2(s.typy.S.osd || 0) + " / " + n2(s.typy.D.osd || 0) + "</dd></dl>") +
         (conf ? '<div class="row"><span class="muted">Usunąć szablon?</span><button class="btn small danger" type="button" data-dev-usun-tak="' + esc(s.id) + '">Tak, usuń</button><button class="btn small" type="button" data-dev-usun-nie="1">Anuluj</button></div>'
           : '<div class="row"><button class="btn primary" type="button" data-dev-policz="' + esc(s.id) + '">Policz</button><button class="btn small" type="button" data-dev-edytuj="' + esc(s.id) + '">Edytuj</button>' +
             '<button class="btn small" type="button" data-dev-kopiuj="' + esc(s.id) + '">Kopiuj</button><button class="btn small ghost danger" type="button" data-dev-usun="' + esc(s.id) + '">Usuń</button></div>') + "</article>";
