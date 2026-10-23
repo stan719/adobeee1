@@ -52,11 +52,13 @@
     var a3 = Number(d.agr3) || 0, a6 = Number(d.agr6) || 0;
     return a3 || a6 ? [a3 ? a3 + "× 3 kW" : "", a6 ? a6 + "× 6 kW" : ""].filter(Boolean).join(", ") : "";
   }
-  function agregatyOferta(d, tekst) {
-    var a3 = Number(d.agr3) || 0, a6 = Number(d.agr6) || 0, kw = function (k) { return /\d+(,\d+)?\s?kW/i.test(tekst) ? tekst.replace(/\d+(,\d+)?\s?kW/i, k + "kW") : tekst + ", " + k + "kW"; };
-    if (!a3 && !a6) return d.agregaty + " szt. – " + tekst + ".";
-    return [a3 ? a3 + " szt. – " + kw(3) + "." : "", a6 ? a6 + " szt. – " + kw(6) + "." : ""].filter(Boolean).join("\n");
+  /* W ofercie bez podziału na sztuki: jedna linia z łączną liczbą i mocą "3/6kW" (podział tylko w raporcie i Excelu). */
+  function agrKw(d) {
+    var a3 = Number(d.agr3) || 0, a6 = Number(d.agr6) || 0;
+    return a3 && a6 ? "3/6kW" : a3 ? "3kW" : a6 ? "6kW" : "";
   }
+  function zMoca(tekst, kw) { return !kw ? tekst : /\d+(,\d+)?(\/\d+)?\s?kW/i.test(tekst) ? tekst.replace(/\d+(,\d+)?(\/\d+)?\s?kW/i, kw) : tekst + ", " + kw; }
+  function agregatyOferta(d, tekst) { return d.agregaty + " szt. – " + zMoca(tekst, agrKw(d)) + "."; }
   function opisEfektywny(d, o) { return d.opis || opisAuto(d, o); }
 
   /* Wartości: liczba + format ("zl" | "eur" | "n" | "int" | "txt"). */
@@ -826,7 +828,7 @@
     var t = [o.montOd !== "" && o.montOd != null ? Number(o.montOd) : ws[0].tygodnieZakres[0], o.montDo !== "" && o.montDo != null ? Number(o.montDo) : ws[0].tygodnieZakres[1]];
     var typ = d.typ;
     var eff = {
-      agregat: o.agregat || TT.agregat || "Agregat hydrauliczny 400V, 50Hz, 6kW", kw: o.kw || TT.kw || "6kW", gw: o.gw || TT.gw || "36/60",
+      agregat: o.agregat || TT.agregat || "Agregat hydrauliczny 400V, 50Hz, 6kW", kw: o.kw || agrKw(d) || TT.kw || "6kW", gw: o.gw || TT.gw || "36/60",
       dostawa: o.dostawa !== "" && o.dostawa != null ? o.dostawa : (TT.dostawa || 24), platnosci: o.platnosci || TT.platnosci || PLATNOSCI
     };
     var vars = { tir: o.tir || 20, kw: eff.kw, gw: eff.gw, typ: typ, P: v(wy.p), G: v(wy.gor), D: v(wy.dol) };

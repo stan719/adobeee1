@@ -489,8 +489,8 @@ html, body { overflow-x: clip; max-width: 100%; }
           <label class="f" id="boxD"><span id="lblD">Platformy D</span><input id="D" type="number" min="0" step="1"><span class="hint" id="hintD"></span></label>
           <label class="f" id="boxNP"><span id="lblNP">Systemy N.P.</span><input id="NP" type="number" min="0" step="1"><span class="hint" id="hintNP"></span></label>
           <label class="f pAgr">Agregaty<input id="agregaty" type="number" min="0" step="1"><span class="hint" id="hintAgr">wg układu garażu</span></label>
-          <label class="f pAgr">w tym 3 kW<input id="agr3" type="number" min="0" step="1" class="auto"><span class="hint">puste = bez podziału</span></label>
-          <label class="f pAgr">w tym 6 kW<input id="agr6" type="number" min="0" step="1" class="auto"><span class="hint">w ofercie osobne linie</span></label>
+          <label class="f pAgr">w tym 3 kW<input id="agr3" type="number" min="0" step="1" class="auto"><span class="hint">w ofercie moc 3/6kW</span></label>
+          <label class="f pAgr">w tym 6 kW<input id="agr6" type="number" min="0" step="1" class="auto"><span class="hint">podział tylko w raporcie</span></label>
           <label class="f pNK">Magistrala 6 m<input id="magistrala" type="number" min="0" step="1"></label>
           <label class="f pNK">Barierki<input id="barierki" type="number" min="0" step="1"><span class="hint">szt. na stronę</span></label>
           <label class="f pNK">Maskownice<input id="maskownice" type="number" min="0" step="1"></label>
@@ -1178,11 +1178,13 @@ window.NK38_FONTS = { regular: "AAEAAAAOAIAAAwBgR0RFRgS1BUEAAH9cAAAARkdQT1MAGQAM
     var a3 = Number(d.agr3) || 0, a6 = Number(d.agr6) || 0;
     return a3 || a6 ? [a3 ? a3 + "× 3 kW" : "", a6 ? a6 + "× 6 kW" : ""].filter(Boolean).join(", ") : "";
   }
-  function agregatyOferta(d, tekst) {
-    var a3 = Number(d.agr3) || 0, a6 = Number(d.agr6) || 0, kw = function (k) { return /\d+(,\d+)?\s?kW/i.test(tekst) ? tekst.replace(/\d+(,\d+)?\s?kW/i, k + "kW") : tekst + ", " + k + "kW"; };
-    if (!a3 && !a6) return d.agregaty + " szt. – " + tekst + ".";
-    return [a3 ? a3 + " szt. – " + kw(3) + "." : "", a6 ? a6 + " szt. – " + kw(6) + "." : ""].filter(Boolean).join("\n");
+  /* W ofercie bez podziału na sztuki: jedna linia z łączną liczbą i mocą "3/6kW" (podział tylko w raporcie i Excelu). */
+  function agrKw(d) {
+    var a3 = Number(d.agr3) || 0, a6 = Number(d.agr6) || 0;
+    return a3 && a6 ? "3/6kW" : a3 ? "3kW" : a6 ? "6kW" : "";
   }
+  function zMoca(tekst, kw) { return !kw ? tekst : /\d+(,\d+)?(\/\d+)?\s?kW/i.test(tekst) ? tekst.replace(/\d+(,\d+)?(\/\d+)?\s?kW/i, kw) : tekst + ", " + kw; }
+  function agregatyOferta(d, tekst) { return d.agregaty + " szt. – " + zMoca(tekst, agrKw(d)) + "."; }
   function opisEfektywny(d, o) { return d.opis || opisAuto(d, o); }
 
   /* Wartości: liczba + format ("zl" | "eur" | "n" | "int" | "txt"). */
@@ -1952,7 +1954,7 @@ window.NK38_FONTS = { regular: "AAEAAAAOAIAAAwBgR0RFRgS1BUEAAH9cAAAARkdQT1MAGQAM
     var t = [o.montOd !== "" && o.montOd != null ? Number(o.montOd) : ws[0].tygodnieZakres[0], o.montDo !== "" && o.montDo != null ? Number(o.montDo) : ws[0].tygodnieZakres[1]];
     var typ = d.typ;
     var eff = {
-      agregat: o.agregat || TT.agregat || "Agregat hydrauliczny 400V, 50Hz, 6kW", kw: o.kw || TT.kw || "6kW", gw: o.gw || TT.gw || "36/60",
+      agregat: o.agregat || TT.agregat || "Agregat hydrauliczny 400V, 50Hz, 6kW", kw: o.kw || agrKw(d) || TT.kw || "6kW", gw: o.gw || TT.gw || "36/60",
       dostawa: o.dostawa !== "" && o.dostawa != null ? o.dostawa : (TT.dostawa || 24), platnosci: o.platnosci || TT.platnosci || PLATNOSCI
     };
     var vars = { tir: o.tir || 20, kw: eff.kw, gw: eff.gw, typ: typ, P: v(wy.p), G: v(wy.gor), D: v(wy.dol) };
@@ -2184,7 +2186,7 @@ window.NK38_FONTS = { regular: "AAEAAAAOAIAAAwBgR0RFRgS1BUEAAH9cAAAARkdQT1MAGQAM
 (function () {
   "use strict";
   /* Wersja programu: podnoś przy każdym wydaniu (pokazywana na pulpicie, zapisywana w kopii zapasowej). */
-  var WERSJA = { nr: "1.29", data: "23.10.2026" };
+  var WERSJA = { nr: "1.30", data: "23.10.2026" };
   var E = window.NK38, X = window.NK38X;
   var LS = { robocze: "nk38.robocze.v1", drafty: "nk38.szkice.v1", draft: "nk38.szkic.v1", tab: "nk38.zakladka", sel: "nk38.wariant", logo: "nk38.logo.v1", podpis: "nk38.podpis.v1",
     szablony: "nk38.szablony.v1", wyceny: "nk38.wyceny.v1", tekstyOferty: "nk38.szablon.v1", numery: "nk38.numery.v1", cennikStary: "nk38.cennik.v1", usuniete: "nk38.usuniete.v1", migracja2: "nk38.migracja2", migracja3: "nk38.migracja3", historia: "nk38.historia.v1", uzytkownik: "nk38.uzytkownik.v1" };

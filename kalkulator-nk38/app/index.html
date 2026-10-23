@@ -485,8 +485,8 @@ html, body { overflow-x: clip; max-width: 100%; }
           <label class="f" id="boxD"><span id="lblD">Platformy D</span><input id="D" type="number" min="0" step="1"><span class="hint" id="hintD"></span></label>
           <label class="f" id="boxNP"><span id="lblNP">Systemy N.P.</span><input id="NP" type="number" min="0" step="1"><span class="hint" id="hintNP"></span></label>
           <label class="f pAgr">Agregaty<input id="agregaty" type="number" min="0" step="1"><span class="hint" id="hintAgr">wg układu garażu</span></label>
-          <label class="f pAgr">w tym 3 kW<input id="agr3" type="number" min="0" step="1" class="auto"><span class="hint">puste = bez podziału</span></label>
-          <label class="f pAgr">w tym 6 kW<input id="agr6" type="number" min="0" step="1" class="auto"><span class="hint">w ofercie osobne linie</span></label>
+          <label class="f pAgr">w tym 3 kW<input id="agr3" type="number" min="0" step="1" class="auto"><span class="hint">w ofercie moc 3/6kW</span></label>
+          <label class="f pAgr">w tym 6 kW<input id="agr6" type="number" min="0" step="1" class="auto"><span class="hint">podział tylko w raporcie</span></label>
           <label class="f pNK">Magistrala 6 m<input id="magistrala" type="number" min="0" step="1"></label>
           <label class="f pNK">Barierki<input id="barierki" type="number" min="0" step="1"><span class="hint">szt. na stronę</span></label>
           <label class="f pNK">Maskownice<input id="maskownice" type="number" min="0" step="1"></label>
@@ -580,7 +580,7 @@ html, body { overflow-x: clip; max-width: 100%; }
 (function () {
   "use strict";
   /* Wersja programu: podnoś przy każdym wydaniu (pokazywana na pulpicie, zapisywana w kopii zapasowej). */
-  var WERSJA = { nr: "1.29", data: "23.10.2026" };
+  var WERSJA = { nr: "1.30", data: "23.10.2026" };
   var E = window.NK38, X = window.NK38X;
   var LS = { robocze: "nk38.robocze.v1", drafty: "nk38.szkice.v1", draft: "nk38.szkic.v1", tab: "nk38.zakladka", sel: "nk38.wariant", logo: "nk38.logo.v1", podpis: "nk38.podpis.v1",
     szablony: "nk38.szablony.v1", wyceny: "nk38.wyceny.v1", tekstyOferty: "nk38.szablon.v1", numery: "nk38.numery.v1", cennikStary: "nk38.cennik.v1", usuniete: "nk38.usuniete.v1", migracja2: "nk38.migracja2", migracja3: "nk38.migracja3", historia: "nk38.historia.v1", uzytkownik: "nk38.uzytkownik.v1" };
