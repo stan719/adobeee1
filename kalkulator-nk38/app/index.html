@@ -587,7 +587,7 @@ html, body { overflow-x: clip; max-width: 100%; }
 (function () {
   "use strict";
   /* Wersja programu: podnoś przy każdym wydaniu (pokazywana na pulpicie, zapisywana w kopii zapasowej). */
-  var WERSJA = { nr: "1.32", data: "23.10.2026" };
+  var WERSJA = { nr: "1.33", data: "23.10.2026" };
   var E = window.NK38, X = window.NK38X;
   var LS = { robocze: "nk38.robocze.v1", drafty: "nk38.szkice.v1", draft: "nk38.szkic.v1", tab: "nk38.zakladka", sel: "nk38.wariant", logo: "nk38.logo.v1", podpis: "nk38.podpis.v1",
     szablony: "nk38.szablony.v1", wyceny: "nk38.wyceny.v1", tekstyOferty: "nk38.szablon.v1", numery: "nk38.numery.v1", cennikStary: "nk38.cennik.v1", usuniete: "nk38.usuniete.v1", migracja2: "nk38.migracja2", migracja3: "nk38.migracja3", historia: "nk38.historia.v1", uzytkownik: "nk38.uzytkownik.v1" };
@@ -2116,7 +2116,7 @@ html, body { overflow-x: clip; max-width: 100%; }
       return '<article class="card dev wejscie" style="--i:' + i + '"><div class="dev-top"><div class="head"><div class="mono-tile" aria-hidden="true">' + esc(znak) + '</div><div style="min-width:0"><h3>' + esc(s.nazwa) + "</h3><p>" + esc(rodzaj) + '</p></div></div><span class="tg' + (wb ? "" : " own") + '">' + (wb ? "wbudowany" : "własny") + "</span></div>" +
         (s.model === "lista"
           ? "<dl><dt>" + esc(s.typy.S.nazwa || "Typ 1") + "</dt><dd>" + n2(s.typy.S.cena || 0) + " " + esc(s.typy.S.waluta) + "/szt.</dd><dt>MP / osobodni na szt.</dt><dd>" + (s.typy.S.mp || 0) + " / " + n2(s.typy.S.osd || 0) + "</dd>" +
-            "<dt>Import z frachtem</dt><dd>" + (s.import.wl ? "tak, " + s.import.koszty.length + " kosztów" : "nie") + "</dd></dl>"
+            (s.import.wl ? "<dt>Import z frachtem</dt><dd>" + s.import.koszty.length + " kosztów kontenera</dd>" : "") + "</dl>"
           : "<dl><dt>Cena platformy D</dt><dd>" + zl(c.cena_D || 0) + "</dd><dt>MP na S / D</dt><dd>" + (s.typy.S.mp || 0) + " / " + (s.typy.D.mp || 0) + "</dd>" +
             "<dt>Osobodni S / D</dt><dd>" + n2(s.typy.S.osd || 0) + " / " + n2(s.typy.D.osd || 0) + "</dd></dl>") +
         (conf ? '<div class="row"><span class="muted">Usunąć szablon?</span><button class="btn small danger" type="button" data-dev-usun-tak="' + esc(s.id) + '">Tak, usuń</button><button class="btn small" type="button" data-dev-usun-nie="1">Anuluj</button></div>'
