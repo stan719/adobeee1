@@ -156,7 +156,7 @@ details.dims summary span { font-weight: 400; color: var(--muted); }
 .exp { display: inline-flex; gap: 6px; }
 .btn[disabled] { opacity: .5; cursor: default; }
 .info { padding: 10px 12px; border-radius: 10px; background: var(--sunken); border: 1px solid var(--line); font-size: 12.5px; color: var(--ink-2); margin-top: 12px; }
-.ofgrid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+.ofgrid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; align-items: start; }
 @media (max-width: 560px) { .ofgrid { grid-template-columns: minmax(0, 1fr); } }
 details.grp { border: 1px solid var(--line); border-radius: 10px; padding: 10px 12px; margin-top: 10px; }
 details.grp > summary { cursor: pointer; font-weight: 600; font-size: 13px; }
@@ -587,7 +587,7 @@ html, body { overflow-x: clip; max-width: 100%; }
 (function () {
   "use strict";
   /* Wersja programu: podnoś przy każdym wydaniu (pokazywana na pulpicie, zapisywana w kopii zapasowej). */
-  var WERSJA = { nr: "1.34", data: "23.10.2026" };
+  var WERSJA = { nr: "1.35", data: "23.10.2026" };
   var E = window.NK38, X = window.NK38X;
   var LS = { robocze: "nk38.robocze.v1", drafty: "nk38.szkice.v1", draft: "nk38.szkic.v1", tab: "nk38.zakladka", sel: "nk38.wariant", logo: "nk38.logo.v1", podpis: "nk38.podpis.v1",
     szablony: "nk38.szablony.v1", wyceny: "nk38.wyceny.v1", tekstyOferty: "nk38.szablon.v1", numery: "nk38.numery.v1", cennikStary: "nk38.cennik.v1", usuniete: "nk38.usuniete.v1", migracja2: "nk38.migracja2", migracja3: "nk38.migracja3", historia: "nk38.historia.v1", uzytkownik: "nk38.uzytkownik.v1" };
@@ -1548,7 +1548,7 @@ html, body { overflow-x: clip; max-width: 100%; }
           ofField("Wysokość pojazdów ▼ dolna [cm]", pre + "hd", { num: 1, ph: w.dolAuto == null ? "" : String(w.dolAuto), hint: "puste = niższe H − 15, w dół do 5 cm" }) +
           ofField("Wysokość pojazdów ▲ górna [cm]", pre + "hg", { num: 1, ph: w.gorAuto == null ? "" : String(w.gorAuto), hint: "puste = (prześwit − 320) − (dolna − 150) + 150, w dół do 5 cm" });
       }).join("") +
-      (r.szablon.opcje.agregaty ? ofField("Opis agregatu", "agregat", { ph: F.eff.agregat, hint: "puste = z szablonu urządzenia" }) : "") + ofField("Moc agregatu / zasilania (do warunków elektrycznych)", "kw", { ph: F.eff.kw }) + "</div>" +
+      (r.szablon.opcje.agregaty ? ofField("Opis agregatu", "agregat", { ph: F.eff.agregat, hint: "puste = z szablonu urządzenia" }) : "") + ofField("Moc agregatu", "kw", { ph: F.eff.kw, hint: "do warunków elektrycznych; puste = automatycznie" }) + "</div>" +
       autoTekst("tech", "Dane techniczne", F) + autoTekst("wyposazenie", "Obciążenie i zabezpieczenia", F) + autoTekst("lista", "Lista urządzeń", F) +
       '<div class="ofsep">Opcje</div><div class="checks">' + F.opcjeDost.map(function (x) {
         var nazwa = { q2500: r.szablon.wariantB.nazwa, slupki37: "Słupki 3,7 kW", slupki22: "Słupki 22 kW", malowanie: "Malowanie RAL" }[x.klucz];
