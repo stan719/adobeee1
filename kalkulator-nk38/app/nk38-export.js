@@ -12,6 +12,7 @@
   function ceil100(v) { return Math.ceil(Math.round(v * 100) / 10000) * 100; }
   function kwotaOferta(v) { return fmt0.format(v).replace(/\s/g, ".") + ",00 zł"; }
 
+  var DL_STD = "530";   // standardowa długość zagłębienia (podpowiedź w polu formularza)
   var DIMS = [["szer1", "Szerokość 260 (S) / 520 (D)"], ["szer2", "Szerokość 270 (S) / 540 (D)"],
     ["dl500", "Długość 500–510 cm"], ["dl540", "Długość 540 cm"], ["dl550", "Długość 550 cm"]];
 
@@ -788,9 +789,9 @@
     var op = zOpisu(d.opis), num = function (v) { return v === "" || v == null || isNaN(v) ? null : Number(v); };
     var h1 = num(d.h1) != null ? num(d.h1) : num(op.h1), h2 = num(d.h2) != null ? num(d.h2) : num(op.h2);
     var p = num(d.przeswit) != null ? num(d.przeswit) : num((op.p || "").match(/\d+/) && op.p.match(/\d+/)[0]);
-    var dl = d.dl || op.l || "";
     var hs = [h1, h2].filter(function (x) { return x != null; });
     var W = d.wysokosci || { tryb: "zaglebienie" }, dolAuto, gorAuto, dol;
+    var dl = d.dl || op.l || (W.tryb === "zaglebienie" && hs.length ? DL_STD : "");   // puste pole = standardowa długość zagłębienia
     var dol5 = function (x) { return x == null ? null : Math.floor(x / 5) * 5; };   // wysokości pojazdów w dół do 5 cm
     if (W.tryb === "przeswit") {            // jeden poziom: górna = prześwit − k
       dolAuto = null; dol = num(o.hd);

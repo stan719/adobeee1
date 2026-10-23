@@ -456,7 +456,7 @@ html, body { overflow-x: clip; max-width: 100%; }
           <label class="f">Szablon urządzenia<select id="szablon"></select></label>
           <label class="f zagl">Zagłębienie H1 [cm]<input id="h1" type="number" min="0" step="1"></label>
           <label class="f zagl">Zagłębienie H2 [cm]<input id="h2" type="number" min="0" step="1"></label>
-          <label class="f zagl">Długość zagłębienia [cm]<input id="dl" type="text" placeholder="530"></label>
+          <label class="f zagl">Długość zagłębienia [cm]<input id="dl" type="text" placeholder="530"><span class="hint">puste = 530 cm</span></label>
           <label class="f">Prześwit [cm]<input id="przeswit" type="number" min="0" step="1"></label>
           <label class="f nzagl">Długość miejsca / pojazdów [cm]<input id="dlMiejsca" type="number" min="0" step="1" placeholder="500"><span class="hint">do danych technicznych oferty</span></label>
           <label class="f">Agregaty w opisie<input id="agrOpis" type="text" placeholder="np. 3xA4+2xA5"><span class="hint">puste = liczba agregatów</span></label>
@@ -580,7 +580,7 @@ html, body { overflow-x: clip; max-width: 100%; }
 (function () {
   "use strict";
   /* Wersja programu: podnoś przy każdym wydaniu (pokazywana na pulpicie, zapisywana w kopii zapasowej). */
-  var WERSJA = { nr: "1.30", data: "23.10.2026" };
+  var WERSJA = { nr: "1.31", data: "23.10.2026" };
   var E = window.NK38, X = window.NK38X;
   var LS = { robocze: "nk38.robocze.v1", drafty: "nk38.szkice.v1", draft: "nk38.szkic.v1", tab: "nk38.zakladka", sel: "nk38.wariant", logo: "nk38.logo.v1", podpis: "nk38.podpis.v1",
     szablony: "nk38.szablony.v1", wyceny: "nk38.wyceny.v1", tekstyOferty: "nk38.szablon.v1", numery: "nk38.numery.v1", cennikStary: "nk38.cennik.v1", usuniete: "nk38.usuniete.v1", migracja2: "nk38.migracja2", migracja3: "nk38.migracja3", historia: "nk38.historia.v1", uzytkownik: "nk38.uzytkownik.v1" };
