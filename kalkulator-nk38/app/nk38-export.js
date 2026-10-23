@@ -47,6 +47,16 @@
     }
     return pary.join(" lub ") + " | A-" + (d.agrOpis || d.agregaty || 0) + " | Bok-" + (d.barierki || 0) + " Tył-" + (d.maskownice || 0) + " | mgstrl-" + (d.magistrala || 0);
   }
+  /* Agregaty z podziałem na moc: "2× 3 kW, 1× 6 kW"; w ofercie osobna linia dla każdej mocy. */
+  function agrMoc(d) {
+    var a3 = Number(d.agr3) || 0, a6 = Number(d.agr6) || 0;
+    return a3 || a6 ? [a3 ? a3 + "× 3 kW" : "", a6 ? a6 + "× 6 kW" : ""].filter(Boolean).join(", ") : "";
+  }
+  function agregatyOferta(d, tekst) {
+    var a3 = Number(d.agr3) || 0, a6 = Number(d.agr6) || 0, kw = function (k) { return /\d+(,\d+)?\s?kW/i.test(tekst) ? tekst.replace(/\d+(,\d+)?\s?kW/i, k + "kW") : tekst + ", " + k + "kW"; };
+    if (!a3 && !a6) return d.agregaty + " szt. – " + tekst + ".";
+    return [a3 ? a3 + " szt. – " + kw(3) + "." : "", a6 ? a6 + " szt. – " + kw(6) + "." : ""].filter(Boolean).join("\n");
+  }
   function opisEfektywny(d, o) { return d.opis || opisAuto(d, o); }
 
   /* Wartości: liczba + format ("zl" | "eur" | "n" | "int" | "txt"). */
@@ -213,7 +223,7 @@
       lok: d.lok + (w.krk ? "" : " · " + (d.km || 0) + " km od Krakowa"),
       urz: ["S", "D", "NP"].filter(function (x) { return d[x]; }).map(function (x) { return d[x] + "× " + kod(x); }).join(" + ") || "–",
       razem: m.platformy + " " + odmiana(m.platformy, "urządzenie", "urządzenia", "urządzeń") + " = " + m.MP + " " + odmiana(m.MP, "miejsce postojowe", "miejsca postojowe", "miejsc postojowych"),
-      agregaty: sz.opcje.agregaty || d.agregaty ? (d.agregaty || 0) + " szt." + (d.agrOpis ? " (" + d.agrOpis + ")" : "") : "",
+      agregaty: sz.opcje.agregaty || d.agregaty ? (d.agregaty || 0) + " szt." + (agrMoc(d) ? " (" + agrMoc(d) + ")" : d.agrOpis ? " (" + d.agrOpis + ")" : "") : "",
       wymiary: wp.map(function (x, i) {
         var t = [];
         if (x.h1 != null && x.h1 !== "") t.push(["Zagłębienie" + (wp.length > 1 ? " (wariant " + (i + 1) + ")" : ""), (x.h2 != null && x.h2 !== x.h1 ? "H1 " + x.h1 + " / H2 " + x.h2 : x.h1) + " cm" + (x.dl ? ", dł. " + x.dl + " cm" : "")]);
@@ -779,16 +789,17 @@
     var dl = d.dl || op.l || "";
     var hs = [h1, h2].filter(function (x) { return x != null; });
     var W = d.wysokosci || { tryb: "zaglebienie" }, dolAuto, gorAuto, dol;
+    var dol5 = function (x) { return x == null ? null : Math.floor(x / 5) * 5; };   // wysokości pojazdów w dół do 5 cm
     if (W.tryb === "przeswit") {            // jeden poziom: górna = prześwit − k
       dolAuto = null; dol = num(o.hd);
-      gorAuto = p != null ? p - num(W.k) : null;
+      gorAuto = p != null ? dol5(p - num(W.k)) : null;
     } else if (W.tryb === "przeswit2") {    // dwa poziomy bez zagłębienia: górna + dolna = prześwit − k
-      dolAuto = num(W.dol); dol = num(o.hd) != null ? num(o.hd) : dolAuto;
-      gorAuto = p != null && dol != null ? p - num(W.k) - dol : null;
+      dolAuto = dol5(num(W.dol)); dol = num(o.hd) != null ? num(o.hd) : dolAuto;
+      gorAuto = p != null && dol != null ? dol5(p - num(W.k) - dol) : null;
     } else {                                // zagłębienie (NK38): dolna = niższe H − 15
-      dolAuto = hs.length ? Math.min.apply(null, hs) - 15 : null;
+      dolAuto = hs.length ? dol5(Math.min.apply(null, hs) - 15) : null;
       dol = num(o.hd) != null ? num(o.hd) : dolAuto;
-      gorAuto = p != null && dol != null ? (p - 320) - (dol - 150) + 150 : null;
+      gorAuto = p != null && dol != null ? dol5((p - 320) - (dol - 150) + 150) : null;
     }
     var gor = num(o.hg) != null ? num(o.hg) : gorAuto;
     return { h1: h1, h2: h2, p: p, dl: dl, dolAuto: dolAuto, gorAuto: gorAuto, dol: dol, gor: gor };
@@ -835,7 +846,7 @@
       tech: tech,
       wyposazenie: [TT.obciazenie, TT.zabezpieczenie, d.barierki && !lista ? TT.barierki : ""].filter(Boolean).join("\n"),
       lista: ["S", "D", "NP"].map(function (k) { return d[k] ? sub(TY[k].oferta, { n: d[k], typ: typ }) : ""; }).concat([
-        d.agregaty && r.szablon.opcje.agregaty ? d.agregaty + " szt. – " + eff.agregat + "." : ""]).filter(Boolean).join("\n"),
+        d.agregaty && r.szablon.opcje.agregaty ? agregatyOferta(d, eff.agregat) : ""]).filter(Boolean).join("\n"),
       platnosci: eff.platnosci,
       dostawa: "Pierwsza dostawa nastąpi nie wcześniej niż po ok. " + eff.dostawa + " tygodniach od zawarcia umowy, w zależności od aktualnie realizowanych zleceń.",
       montaz: "Przewidywany czas montażu " + (t[0] === t[1] ? "ok. " + t[0] : t[0] + "-" + t[1]) + " tygodni od dnia dostawy, w zależności od warunków panujących na budowie."

@@ -92,6 +92,12 @@ input.auto { background: var(--sunken); border-style: dashed; }
 input::placeholder { color: var(--muted); }
 input:disabled { opacity: .55; }
 textarea { resize: vertical; min-height: 70px; font-family: var(--f-num); font-size: 12.5px; }
+.sciezka { display: flex; flex-wrap: wrap; align-items: baseline; gap: 2px 6px; }
+.sciezka button { border: 0; background: none; padding: 0; font: inherit; color: var(--accent); cursor: pointer; }
+.sciezka button:hover { text-decoration: underline; }
+.sciezka i { font-style: normal; color: var(--muted); }
+.brand p.sciezka { white-space: normal; max-width: none; }
+textarea#opis { min-height: 0; resize: none; overflow: hidden; line-height: 1.45; font-size: 13.5px; }
 .seg { display: inline-flex; padding: 3px; gap: 2px; background: var(--sunken); border: 1px solid var(--line); border-radius: 10px; }
 .seg button { border: 0; background: transparent; padding: 6px 12px; border-radius: 7px; font-size: 13.5px; font-weight: 500; color: var(--muted); white-space: nowrap; }
 .seg button[aria-pressed=true] { background: var(--surface); color: var(--ink); box-shadow: 0 1px 2px rgba(14, 23, 28, .12); }
@@ -384,7 +390,7 @@ table.t.edt input, table.t.edt select { padding: 4px 7px; font-size: 13px; min-w
 table.t.edt input[type=text], table.t.edt td input:not([type=number]) { min-width: 140px; }
 /* telefon: pola min. 16 px, żeby iPhone nie powiększał strony po dotknięciu pola (po powiększeniu strona przesuwa się na boki);
    strona nigdy nie przewija się w poziomie, szerokie tabele przewijają się w swoich ramkach */
-@media (max-width: 1000px), (pointer: coarse) { input, select, textarea, .kv input, .dimtab input, table.t.edt input, table.t.edt select { font-size: 16px; } }
+@media (max-width: 1000px), (pointer: coarse) { input, select, textarea, .kv input, .dimtab input, table.t.edt input, table.t.edt select, textarea#opis { font-size: 16px; } }
 html, body { overflow-x: clip; max-width: 100%; }
 @media (max-width: 700px) { .appbar { position: static; } }   /* na telefonie zawinięty pasek zajmowałby pół ekranu */
 </style>
@@ -393,12 +399,13 @@ html, body { overflow-x: clip; max-width: 100%; }
   <div class="appbar-in">
     <div class="brand">
       <div class="logo" aria-hidden="true">NK</div>
-      <div style="min-width:0"><h1 id="appTitle">Kalkulator NK38</h1><p id="projline">Cena kontraktu: urządzenia, montaż, narzuty</p></div>
+      <div style="min-width:0"><h1 id="appTitle">Kalkulator NK38</h1><p id="projline" class="sciezka" aria-label="Gdzie jesteś">Pulpit</p></div>
     </div>
     <div class="actions">
       <span class="chip" id="storeTag" hidden></span>
       <button class="btn" id="bPulpit" type="button" hidden>← Pulpit</button>
       <span class="actions" id="kalkActions" hidden>
+      <span class="exp"><button class="btn ghost" id="bCofnij" type="button" title="Cofnij zmianę (Ctrl+Z)" disabled>↶ Cofnij</button><button class="btn ghost" id="bPonow" type="button" title="Ponów zmianę (Ctrl+Y)" disabled>Ponów ↷</button></span>
       <button class="btn" id="bNew" type="button">Nowa wycena</button>
       <span class="exp"><button class="btn" id="bXlsx" type="button">Excel</button><button class="btn" id="bPdf" type="button">Raport PDF</button><button class="btn" id="bDocxTop" type="button">Oferta Word</button></span>
       <button class="btn primary" id="bSave" type="button">Zapisz</button>
@@ -454,7 +461,7 @@ html, body { overflow-x: clip; max-width: 100%; }
           <label class="f nzagl">Długość miejsca / pojazdów [cm]<input id="dlMiejsca" type="number" min="0" step="1" placeholder="500"><span class="hint">do danych technicznych oferty</span></label>
           <label class="f">Agregaty w opisie<input id="agrOpis" type="text" placeholder="np. 3xA4+2xA5"><span class="hint">puste = liczba agregatów</span></label>
           <div class="full" id="paryBox"></div>
-          <label class="f full"><span>Opis / wariant <span class="autotag" id="opisTag">automatyczny</span><button type="button" class="linkbtn" id="opisReset" hidden>Przywróć automatyczny</button></span><input id="opis" type="text"><span class="hint">Tworzy się sam z wpisanych wymiarów, wysokości pojazdów i wyposażenia. Możesz go nadpisać.</span></label>
+          <label class="f full"><span>Opis / wariant <span class="autotag" id="opisTag">automatyczny</span><button type="button" class="linkbtn" id="opisReset" hidden>Przywróć automatyczny</button></span><textarea id="opis" rows="2" spellcheck="false"></textarea><span class="hint">Tworzy się sam z wpisanych wymiarów, wysokości pojazdów i wyposażenia. Możesz go nadpisać.</span></label>
         </div>
       </fieldset>
 
@@ -477,7 +484,9 @@ html, body { overflow-x: clip; max-width: 100%; }
           <label class="f" id="boxS"><span id="lblS">Platformy S</span><input id="S" type="number" min="0" step="1"><span class="hint" id="hintS"></span></label>
           <label class="f" id="boxD"><span id="lblD">Platformy D</span><input id="D" type="number" min="0" step="1"><span class="hint" id="hintD"></span></label>
           <label class="f" id="boxNP"><span id="lblNP">Systemy N.P.</span><input id="NP" type="number" min="0" step="1"><span class="hint" id="hintNP"></span></label>
-          <label class="f pAgr">Agregaty<input id="agregaty" type="number" min="0" step="1"><span class="hint">wg układu garażu</span></label>
+          <label class="f pAgr">Agregaty<input id="agregaty" type="number" min="0" step="1"><span class="hint" id="hintAgr">wg układu garażu</span></label>
+          <label class="f pAgr">w tym 3 kW<input id="agr3" type="number" min="0" step="1" class="auto"><span class="hint">puste = bez podziału</span></label>
+          <label class="f pAgr">w tym 6 kW<input id="agr6" type="number" min="0" step="1" class="auto"><span class="hint">w ofercie osobne linie</span></label>
           <label class="f pNK">Magistrala 6 m<input id="magistrala" type="number" min="0" step="1"></label>
           <label class="f pNK">Barierki<input id="barierki" type="number" min="0" step="1"><span class="hint">szt. na stronę</span></label>
           <label class="f pNK">Maskownice<input id="maskownice" type="number" min="0" step="1"></label>
@@ -543,6 +552,7 @@ html, body { overflow-x: clip; max-width: 100%; }
       <div class="row">
         <div class="seg ov-toggle" role="group" aria-label="Widok"><button type="button" data-ovview="form" aria-pressed="true">Dane</button><button type="button" data-ovview="prev" aria-pressed="false">Podgląd</button></div>
         <button class="btn primary" type="button" id="bDocx">Pobierz ofertę (Word)</button>
+        <span class="exp"><button class="btn ghost" id="bCofnij2" type="button" title="Cofnij zmianę (Ctrl+Z)" disabled>↶ Cofnij</button><button class="btn ghost" id="bPonow2" type="button" title="Ponów zmianę (Ctrl+Y)" disabled>Ponów ↷</button></span>
         <button class="btn" type="button" id="bOvClose">Zamknij</button>
       </div>
     </div>
@@ -570,13 +580,13 @@ html, body { overflow-x: clip; max-width: 100%; }
 (function () {
   "use strict";
   /* Wersja programu: podnoś przy każdym wydaniu (pokazywana na pulpicie, zapisywana w kopii zapasowej). */
-  var WERSJA = { nr: "1.28", data: "22.10.2026" };
+  var WERSJA = { nr: "1.29", data: "23.10.2026" };
   var E = window.NK38, X = window.NK38X;
   var LS = { robocze: "nk38.robocze.v1", drafty: "nk38.szkice.v1", draft: "nk38.szkic.v1", tab: "nk38.zakladka", sel: "nk38.wariant", logo: "nk38.logo.v1", podpis: "nk38.podpis.v1",
     szablony: "nk38.szablony.v1", wyceny: "nk38.wyceny.v1", tekstyOferty: "nk38.szablon.v1", numery: "nk38.numery.v1", cennikStary: "nk38.cennik.v1", usuniete: "nk38.usuniete.v1", migracja2: "nk38.migracja2", migracja3: "nk38.migracja3", historia: "nk38.historia.v1", uzytkownik: "nk38.uzytkownik.v1" };
   var NUMF = ["km", "km_pom", "km_mon", "S", "D", "NP", "agregaty", "magistrala", "barierki", "maskownice", "utr_dod",
-    "tir", "tir_cena", "rozl_cena", "rozl_dni", "dzwig_koszt", "osoby", "wyjazdy", "eur", "usd", "h1", "h2", "przeswit", "konserwA", "konserwB", "dlMiejsca", "dopB"];
-  var OPTF = { km_pom: 1, km_mon: 1, rozl_dni: 1, dzwig_koszt: 1, wyjazdy: 1, h1: 1, h2: 1, przeswit: 1, dlMiejsca: 1, dopB: 1 };
+    "tir", "tir_cena", "rozl_cena", "rozl_dni", "dzwig_koszt", "osoby", "wyjazdy", "eur", "usd", "h1", "h2", "przeswit", "konserwA", "konserwB", "dlMiejsca", "dopB", "agr3", "agr6"];
+  var OPTF = { km_pom: 1, km_mon: 1, rozl_dni: 1, dzwig_koszt: 1, wyjazdy: 1, h1: 1, h2: 1, przeswit: 1, dlMiejsca: 1, dopB: 1, agr3: 1, agr6: 1 };
   var PCTF = ["zysk", "zysk2", "q2500"];
   var TXTF = ["nazwa", "data", "wzor", "dl", "agrOpis"];
   var DIMKEYS = ["szer1", "szer2", "dl500", "dl540", "dl550"];
@@ -615,7 +625,7 @@ html, body { overflow-x: clip; max-width: 100%; }
   function sgn(v) { var r = Math.round(v); return (r > 0 ? "+" : r < 0 ? "−" : "") + fmtPLN.format(Math.abs(r)) + " zł"; }
   function esc(s) { return String(s == null ? "" : s).replace(/[&<>"]/g, function (c) { return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]; }); }
   function lsGet(k, d) { try { var v = localStorage.getItem(k); return v ? JSON.parse(v) : d; } catch (e) { return d; } }
-  function lsSet(k, v) { try { localStorage.setItem(k, JSON.stringify(v)); } catch (e) { /* brak pamięci przeglądarki */ } if (typeof Plik !== "undefined") Plik.zmiana(k); }
+  function lsSet(k, v) { try { localStorage.setItem(k, JSON.stringify(v)); } catch (e) { /* brak pamięci przeglądarki */ } if (typeof Plik !== "undefined") Plik.zmiana(k); if (k === LS.draft && Cof) cofZapamietaj(); }
   function sumO(o) { var s = 0; for (var k in o) s += Number(o[k] || 0); return s; }
   function dzis() { var t = new Date(), z = function (x) { return ("0" + x).slice(-2); }; return t.getFullYear() + "-" + z(t.getMonth() + 1) + "-" + z(t.getDate()); }
   /* Odmiana polska: 1 urządzenie, 2–4 urządzenia, 5+ urządzeń (12–14 → forma mnoga dopełniacza). */
@@ -1038,14 +1048,19 @@ html, body { overflow-x: clip; max-width: 100%; }
     if (wynik.mat.brakB && state.sel % 2) state.sel -= 1;   // 2500 kg bez dopłaty: wróć do 2000 kg
     var r = wynik, d = r.dane, m = r.mat, sel = state.sel, w = r.warianty[sel], T = r.szablon.typy;
     var zA = "zysk " + pct(d.zysk), zB = "zysk " + pct(d.zysk2);
-    if (state.view === "kalk") { $("appTitle").textContent = "Kalkulator " + d.typ; $("projline").textContent = (d.nazwa || "Nowa wycena") + " · " + d.typ; }
+    if (state.view === "kalk") { $("appTitle").textContent = "Kalkulator " + d.typ; sciezka(); }
     $("mpNote").textContent = r.szablon.model === "lista" ? m.platformy + " " + odm(m.platformy, "urządzenie", "urządzenia", "urządzeń") + " · " + m.MP + " MP" : m.platformy + " platform · " + m.MP + " MP";
     ["S", "D", "NP"].forEach(function (k) {
       var t = T[k], wb = r.szablon.wariantB, txt = t.mp + " MP";
       if (r.szablon.model === "lista" && t.cena) txt += " · " + fmtPLN.format(t.cena) + " " + t.waluta + "/szt." +
         (wb.nazwa && wb.tryb === "szt" && wb.waluta === t.waluta ? " (" + wb.nazwa + ": " + fmtPLN.format(t.cena + Number(wb.wartosc)) + " " + t.waluta + ")" : "");
-      $("lbl" + k).textContent = t.nazwa; $("hint" + k).textContent = txt;
+      /* NK38/NK37: nazwy jak w ofercie (NK38S, NK38D, NK38NP), opis typu w podpowiedzi */
+      var nk = r.szablon.model !== "lista";
+      $("lbl" + k).textContent = nk ? d.typ + k : t.nazwa; $("hint" + k).textContent = nk ? t.nazwa + " · " + txt : txt;
     });
+    var podzial = d.agr3 != null || d.agr6 != null;   // agregaty 3 kW + 6 kW: razem liczy się samo
+    $("agregaty").disabled = podzial; if (podzial) $("agregaty").value = d.agregaty || 0;
+    $("hintAgr").textContent = podzial ? "= 3 kW + 6 kW" : "wg układu garażu";
     $("std_S").textContent = Math.max(0, (d.S || 0) - sumO(d.gl_S));
     $("std_D").textContent = Math.max(0, (d.D || 0) - sumO(d.gl_D));
     var surowe = (d.magistrala || 0) * r.cennik.osd_magistrala + ((d.barierki || 0) + (d.maskownice || 0)) * r.cennik.osd_barierka;
@@ -1070,6 +1085,7 @@ html, body { overflow-x: clip; max-width: 100%; }
     var auto = X.opisAuto(d, d.oferta);
     state.opisAuto = auto;
     if (document.activeElement !== $("opis")) $("opis").value = d.opis || auto;
+    wysokoscOpisu();
     $("opis").classList.toggle("auto", !d.opis);
     $("opisTag").textContent = d.opis ? "zmieniony" : "automatyczny";
     $("opisTag").classList.toggle("ch", !!d.opis);
@@ -1522,8 +1538,8 @@ html, body { overflow-x: clip; max-width: 100%; }
       F.wymiaryPary.map(function (w, i) {
         var pre = w.idx == null ? "" : "wysPary." + w.idx + ".";
         return '<div class="full note">' + (F.wymiaryPary.length > 1 ? "<b>Para " + (i + 1) + ":</b> " : "") + 'zagłębienie H1 ' + (w.h1 == null ? "–" : w.h1) + ', H2 ' + (w.h2 == null ? "–" : w.h2) + ', długość ' + (w.dl || "–") + ', prześwit ' + (w.p == null ? "–" : w.p) + ' cm (z karty Inwestycja).</div>' +
-          ofField("Wysokość pojazdów ▼ dolna [cm]", pre + "hd", { num: 1, ph: w.dolAuto == null ? "" : String(w.dolAuto), hint: "puste = niższe H − 15" }) +
-          ofField("Wysokość pojazdów ▲ górna [cm]", pre + "hg", { num: 1, ph: w.gorAuto == null ? "" : String(w.gorAuto), hint: "puste = (prześwit − 320) − (dolna − 150) + 150" });
+          ofField("Wysokość pojazdów ▼ dolna [cm]", pre + "hd", { num: 1, ph: w.dolAuto == null ? "" : String(w.dolAuto), hint: "puste = niższe H − 15, w dół do 5 cm" }) +
+          ofField("Wysokość pojazdów ▲ górna [cm]", pre + "hg", { num: 1, ph: w.gorAuto == null ? "" : String(w.gorAuto), hint: "puste = (prześwit − 320) − (dolna − 150) + 150, w dół do 5 cm" });
       }).join("") +
       (r.szablon.opcje.agregaty ? ofField("Opis agregatu", "agregat", { ph: F.eff.agregat, hint: "puste = z szablonu urządzenia" }) : "") + ofField("Moc agregatu / zasilania (do warunków elektrycznych)", "kw", { ph: F.eff.kw }) + "</div>" +
       autoTekst("tech", "Dane techniczne", F) + autoTekst("wyposazenie", "Obciążenie i zabezpieczenia", F) + autoTekst("lista", "Lista urządzeń", F) +
@@ -1593,9 +1609,12 @@ html, body { overflow-x: clip; max-width: 100%; }
   function otworzOferte() {
     $("ov").hidden = false; document.body.style.overflow = "hidden";
     renderOfertaForm(); renderPodglad(); ustawWidokOv();
-    $("bOvClose").focus();
+    $("bOvClose").focus(); navZapisz();
   }
-  function zamknijOferte() { $("ov").hidden = true; document.body.style.overflow = ""; render(); $("bOferta").focus(); }
+  function zamknijOferte() {
+    if (!Nav.zHistorii && /\/oferta$/.test(location.hash)) { history.back(); return; }   // zamknięcie = krok wstecz w historii przeglądarki
+    $("ov").hidden = true; document.body.style.overflow = ""; render(); $("bOferta").focus(); navZapisz();
+  }
   function ustawWidokOv() {
     document.querySelectorAll("[data-ovview]").forEach(function (b) { b.setAttribute("aria-pressed", b.dataset.ovview === state.ovView); });
     $("ovBody").dataset.view = state.ovView;
@@ -1703,6 +1722,10 @@ html, body { overflow-x: clip; max-width: 100%; }
     state.dane = fromForm(); buildDimTable(); state.dane = fromForm(); state.edytowany = state.dane.szablon; recalc();
   });
   $("form").addEventListener("submit", function (e) { e.preventDefault(); });
+  /* opis wariantu: pole rośnie z tekstem, żeby był widoczny w całości; Enter nie łamie linii */
+  function wysokoscOpisu() { var t = $("opis"); t.style.height = "auto"; t.style.height = (t.scrollHeight + 2) + "px"; }
+  $("opis").addEventListener("keydown", function (e) { if (e.key === "Enter") e.preventDefault(); });
+  $("opis").addEventListener("input", wysokoscOpisu);
   $("form").addEventListener("click", function (e) {
     var t = e.target.closest("button"); if (!t) return;
     if (t.id === "bParaAdd") {
@@ -1793,7 +1816,7 @@ html, body { overflow-x: clip; max-width: 100%; }
     var b = e.target.closest("button[data-tab]"); if (!b) return;
     state.tab = b.dataset.tab; state.confirm = null; state.szUsun = false; lsSet(LS.tab, state.tab);
     if (document.activeElement) document.activeElement.blur();
-    render(); animuj($("pane"));
+    render(); animuj($("pane")); navZapisz();
   });
 
   /* --- zdarzenia: zakładki (wyceny, szablony) --- */
@@ -1973,6 +1996,94 @@ html, body { overflow-x: clip; max-width: 100%; }
     try { navigator.clipboard.writeText(txt).then(function () { toast(msg); }, fallback); } catch (e) { fallback(); }
   }
 
+  /* --- cofanie i ponawianie zmian w wycenie (dane i oferta), Ctrl+Z / Ctrl+Y --- */
+  var Cof = { stos: [], dalej: [], biez: null, t: null, wstrzym: false };
+  function cofReset() { clearTimeout(Cof.t); Cof.stos = []; Cof.dalej = []; Cof.biez = JSON.stringify(state.dane); cofPrzyciski(); }
+  function cofZapamietaj() { if (Cof.wstrzym) return; clearTimeout(Cof.t); Cof.t = setTimeout(cofZapisz, 450); }   // pisanie w polu = jeden krok
+  function cofZapisz() {
+    clearTimeout(Cof.t);
+    var s = JSON.stringify(state.dane);
+    if (Cof.biez == null) Cof.biez = s;
+    if (s === Cof.biez) return;
+    Cof.stos.push(Cof.biez); if (Cof.stos.length > 200) Cof.stos.shift();
+    Cof.biez = s; Cof.dalej = []; cofPrzyciski();
+  }
+  function cofKrok(kier) {
+    cofZapisz();
+    var z = kier < 0 ? Cof.stos : Cof.dalej, na = kier < 0 ? Cof.dalej : Cof.stos;
+    if (!z.length) return;
+    na.push(Cof.biez); Cof.biez = z.pop();
+    Cof.wstrzym = true;
+    try { setDane(JSON.parse(Cof.biez)); if (!$("ov").hidden) { renderOfertaForm(); renderPodglad(); } } finally { Cof.wstrzym = false; }
+    cofPrzyciski(); toast(kier < 0 ? "Cofnięto zmianę" : "Przywrócono zmianę");
+  }
+  function cofPrzyciski() {
+    ["", "2"].forEach(function (n) { $("bCofnij" + n).disabled = !Cof.stos.length; $("bPonow" + n).disabled = !Cof.dalej.length; });
+  }
+  ["", "2"].forEach(function (n) {
+    $("bCofnij" + n).addEventListener("click", function () { cofKrok(-1); });
+    $("bPonow" + n).addEventListener("click", function () { cofKrok(1); });
+  });
+  document.addEventListener("keydown", function (e) {
+    if (!(e.ctrlKey || e.metaKey) || e.altKey || (state.view !== "kalk" && $("ov").hidden)) return;
+    var k = e.key.toLowerCase(), el = document.activeElement, pole = el && (el.tagName === "TEXTAREA" || (el.tagName === "INPUT" && !/checkbox|radio|button/.test(el.type)));
+    if (pole) return;   // w polu działa zwykłe cofanie pisania
+    if (k === "z" && !e.shiftKey) { e.preventDefault(); cofKrok(-1); }
+    else if (k === "y" || (k === "z" && e.shiftKey)) { e.preventDefault(); cofKrok(1); }
+  });
+
+  /* --- ścieżka i historia przeglądarki: strzałki wstecz/dalej przechodzą między widokami --- */
+  var Nav = { zHistorii: false, ostatni: null };
+  function navHash() {
+    if (state.view === "edytor") return "#edytor/" + encodeURIComponent(state.edytowany || "");
+    if (state.view === "kalk") return "#kalk/" + state.tab + ($("ov").hidden ? "" : "/oferta");
+    return "#pulpit";
+  }
+  function navZapisz(zamien) {
+    sciezka();
+    if (Nav.zHistorii) return;
+    var h = navHash(); if (h === location.hash) return;
+    Nav.ostatni = h;
+    try { if (zamien) history.replaceState(null, "", h); else location.hash = h; } catch (e) { /* widok bez historii */ }
+  }
+  window.addEventListener("hashchange", function () {
+    var h = location.hash; if (h === Nav.ostatni) { Nav.ostatni = null; return; }
+    var cz = h.replace(/^#/, "").split("/"), v = cz[0];
+    Nav.zHistorii = true;
+    try {
+      var ov = v === "kalk" && cz[2] === "oferta";
+      if (!ov && !$("ov").hidden) zamknijOferte();
+      if (v === "edytor") {
+        var id = decodeURIComponent(cz[1] || "");
+        if (szablony.some(function (x) { return x.id === id; })) { state.edytowany = id; if (state.view !== "edytor") pokaz("edytor"); else renderEdytor(); }
+        else pokaz("pulpit");
+      } else if (v === "kalk") {
+        if (cz[1] && TABS.some(function (t) { return t[0] === cz[1]; })) state.tab = cz[1];
+        if (state.view !== "kalk") pokaz("kalk"); else render();
+        if (ov && $("ov").hidden) otworzOferte();
+      } else if (state.view !== "pulpit") pokaz("pulpit");
+    } finally { Nav.zHistorii = false; }
+    sciezka();
+  });
+  function sciezka() {
+    var el = $("projline"); if (!el) return;
+    var cz = [["Pulpit", "pulpit"]], d = state.dane || {};
+    if (state.view === "edytor") cz.push(["Edycja szablonu " + szEdytowany().nazwa]);
+    if (state.view === "kalk") {
+      var tab = TABS.filter(function (t) { return t[0] === state.tab; })[0];
+      cz.push([(wynik && wynik.dane.typ) || szablonAktywny().nazwa], [d.nazwa || "Nowa wycena", $("ov").hidden ? null : "kalk"]);
+      cz.push($("ov").hidden ? [tab ? tab[1] : ""] : ["Oferta"]);
+    }
+    el.innerHTML = cz.filter(function (c) { return c[0]; }).map(function (c, i, a) {
+      return (i ? "<i>›</i>" : "") + (c[1] && i < a.length - 1 ? '<button type="button" data-nav="' + c[1] + '">' + esc(c[0]) + "</button>" : "<span>" + esc(c[0]) + "</span>");
+    }).join("");
+  }
+  $("projline").addEventListener("click", function (e) {
+    var b = e.target.closest("button[data-nav]"); if (!b) return;
+    if (b.dataset.nav === "pulpit") { if (!$("ov").hidden) { $("ov").hidden = true; document.body.style.overflow = ""; } pokaz("pulpit"); }
+    else if (b.dataset.nav === "kalk") zamknijOferte();
+  });
+
   /* --- widoki: pulpit (wybór urządzenia), edytor szablonu, kalkulator --- */
   function pokaz(v) {
     if (state.view === "kalk" && v !== "kalk") odlozSzkic();
@@ -1981,11 +2092,12 @@ html, body { overflow-x: clip; max-width: 100%; }
     $("vPulpit").hidden = v !== "pulpit"; $("vEdytor").hidden = v !== "edytor"; $("vKalk").hidden = v !== "kalk";
     $("kalkActions").hidden = v !== "kalk"; $("bPulpit").hidden = v === "pulpit";
     $("mbar").style.display = v === "kalk" ? "" : "none";
-    if (v === "pulpit") { $("appTitle").textContent = "Kalkulator urządzeń"; $("projline").textContent = "Pulpit · wybierz urządzenie do wyceny"; renderPulpit(); }
-    if (v === "edytor") { $("appTitle").textContent = szEdytowany().nazwa; $("projline").textContent = "Edycja urządzenia"; renderEdytor(); }
+    if (v === "pulpit") { $("appTitle").textContent = "Kalkulator urządzeń"; renderPulpit(); }
+    if (v === "edytor") { $("appTitle").textContent = szEdytowany().nazwa; renderEdytor(); }
     if (v === "kalk") render();
     animuj({ pulpit: $("vPulpit"), edytor: $("vEdytor"), kalk: $("vKalk") }[v]);
     window.scrollTo(0, 0);
+    navZapisz();
   }
   function renderPulpit() {
     var h = szablony.map(function (s, i) {
@@ -2063,7 +2175,7 @@ html, body { overflow-x: clip; max-width: 100%; }
     lsSet(LS.robocze, l.slice(0, 30)); stanCzysty();
   }
   function usunRobocza(id) { lsSet(LS.robocze, robocze().filter(function (x) { return x.id !== id; })); }
-  function otworzDane(d) { setDane(d); stanCzysty(); pokaz("kalk"); }
+  function otworzDane(d) { setDane(d); stanCzysty(); cofReset(); pokaz("kalk"); }
   function otworzUrzadzenie(id) { otworzDane(nowaWycena(id)); }   // zawsze czysta kalkulacja z wartości szablonu
   function edytuj(id) { state.edytowany = id; state.szUsun = false; pokaz("edytor"); }
   $("vPulpit").addEventListener("click", function (e) {
@@ -2182,8 +2294,8 @@ html, body { overflow-x: clip; max-width: 100%; }
     tag.textContent = Store.db ? "Zapis na koncie" : "Zapis w tej przeglądarce";
     tag.title = Store.db ? "Szablony, wyceny i numery ofert zapisują się trwale i są dostępne na każdym urządzeniu." : "Baza kalkulatora jest niedostępna w tym widoku. Dane zostają tylko w tej przeglądarce.";
     tag.classList.toggle("ok", !!Store.db);
-    recalc(); stanCzysty();
-    pokaz("pulpit");
+    recalc(); stanCzysty(); cofReset();
+    Nav.zHistorii = true; pokaz("pulpit"); Nav.zHistorii = false; navZapisz(true);
   })();
 })();
 </script>
