@@ -2194,7 +2194,7 @@ window.NK38_FONTS = { regular: "AAEAAAAOAIAAAwBgR0RFRgS1BUEAAH9cAAAARkdQT1MAGQAM
 (function () {
   "use strict";
   /* Wersja programu: podnoś przy każdym wydaniu (pokazywana na pulpicie, zapisywana w kopii zapasowej). */
-  var WERSJA = { nr: "1.33", data: "23.10.2026" };
+  var WERSJA = { nr: "1.34", data: "23.10.2026" };
   var E = window.NK38, X = window.NK38X;
   var LS = { robocze: "nk38.robocze.v1", drafty: "nk38.szkice.v1", draft: "nk38.szkic.v1", tab: "nk38.zakladka", sel: "nk38.wariant", logo: "nk38.logo.v1", podpis: "nk38.podpis.v1",
     szablony: "nk38.szablony.v1", wyceny: "nk38.wyceny.v1", tekstyOferty: "nk38.szablon.v1", numery: "nk38.numery.v1", cennikStary: "nk38.cennik.v1", usuniete: "nk38.usuniete.v1", migracja2: "nk38.migracja2", migracja3: "nk38.migracja3", historia: "nk38.historia.v1", uzytkownik: "nk38.uzytkownik.v1" };
@@ -3432,7 +3432,15 @@ window.NK38_FONTS = { regular: "AAEAAAAOAIAAAwBgR0RFRgS1BUEAAH9cAAAARkdQT1MAGQAM
     var b = e.target.closest("button[data-tab]"); if (!b) return;
     state.tab = b.dataset.tab; state.confirm = null; state.szUsun = false; lsSet(LS.tab, state.tab);
     if (document.activeElement) document.activeElement.blur();
-    render(); animuj($("pane")); navZapisz();
+    /* krótsza zakładka nie może przesunąć strony: zakładki zostają w tym samym miejscu ekranu */
+    var pane = $("pane"), top0 = $("tabs").getBoundingClientRect().top; pane.style.minHeight = "";
+    render(); animuj(pane); navZapisz();
+    var dy = $("tabs").getBoundingClientRect().top - top0;
+    if (dy > 1) {
+      pane.style.minHeight = (pane.offsetHeight + dy) + "px";
+      var res = document.querySelector(".result");
+      if (res.scrollHeight > res.clientHeight + 1 && getComputedStyle(res).overflowY !== "visible") res.scrollTop += dy; else window.scrollBy(0, dy);
+    }
   });
 
   /* --- zdarzenia: zakładki (wyceny, szablony) --- */
