@@ -227,7 +227,7 @@
       urz: ["S", "D", "NP"].filter(function (x) { return d[x]; }).map(function (x) { return d[x] + "× " + kod(x); }).join(" + ") || "–",
       razem: m.platformy + " " + odmiana(m.platformy, "urządzenie", "urządzenia", "urządzeń") + " = " + m.MP + " " + odmiana(m.MP, "miejsce postojowe", "miejsca postojowe", "miejsc postojowych"),
       agregaty: sz.opcje.agregaty || d.agregaty ? (d.agregaty || 0) + " szt." + (agrMoc(d) ? " (" + agrMoc(d) + ")" : "") : "",
-      agrOpis: d.agrOpis || "",
+      agrOpis: d.agrOpis || "", kobGdw: pct(r.cennik.kob) + " / " + pct(r.cennik.gdw),
       wymiary: wp.map(function (x, i) {
         var t = [];
         if (x.h1 != null && x.h1 !== "") t.push(["Zagłębienie" + (wp.length > 1 ? " (wariant " + (i + 1) + ")" : ""), (x.h2 != null && x.h2 !== x.h1 ? "H1 " + x.h1 + " / H2 " + x.h2 : x.h1) + " cm" + (x.dl ? ", dł. " + x.dl + " cm" : "")]);
@@ -419,6 +419,7 @@
     K.wymiary.forEach(function (grp) { grp.forEach(function (pp) { prawa.push([pp[0], Array.isArray(pp[1]) ? "▲ " + pp[1][0] + "    ▼ " + pp[1][1] : pp[1]]); }); });
     if (K.dlMiejsca) prawa.push(["Długość miejsca postojowego", K.dlMiejsca]);
     if (K.agrOpis) prawa.push(["Układ agregatów", K.agrOpis]);
+    prawa.push(["KOB / GDW", K.kobGdw]);
     var naglK = s1.addRow(["ZAKRES", "", "", "WYMIARY"]); s1.mergeCells(naglK.number, 1, naglK.number, 3); s1.mergeCells(naglK.number, 4, naglK.number, 6);
     [1, 4].forEach(function (ci) { var c = naglK.getCell(ci); c.font = font({ size: 8, bold: true, color: { argb: C.acc } }); c.fill = fill(C.tile); c.alignment = { indent: 1 }; c.border = { top: { style: "medium", color: { argb: C.acc } } }; });
     for (var li = 0; li < Math.max(lewa.length, prawa.length); li++) {
@@ -557,19 +558,6 @@
       }));
       return doc.lastAutoTable.finalY + 7;
     }
-    /* kafelki dyskretne: cienka ramka bez tła; cena całkowita i cena za MP tym samym krojem i rozmiarem */
-    function kafelki(y, items) {
-      var wdt = (182 - (items.length - 1) * 4) / items.length;
-      items.forEach(function (t, i) {
-        var x = 14 + i * (wdt + 4);
-        doc.setDrawColor.apply(doc, LINE); doc.setLineWidth(0.3); doc.roundedRect(x, y, wdt, 20, 1.2, 1.2, "S");
-        doc.setFont("Carlito", "normal"); doc.setFontSize(7.8); doc.setTextColor.apply(doc, MUT); doc.text(t[0], x + 3, y + 5.2);
-        doc.setFont("Carlito", "bold"); doc.setFontSize(13); doc.setTextColor.apply(doc, INK);
-        doc.text(t[1], x + 3, y + 11.8); if (t[3]) doc.text(t[3], x + wdt - 3, y + 11.8, { align: "right" });
-        doc.setFont("Carlito", "normal"); doc.setFontSize(7.6); doc.setTextColor.apply(doc, MUT); doc.text(doc.splitTextToSize(t[2], wdt - 5)[0], x + 3, y + 16.8);
-      });
-      return y + 27;
-    }
     var stopka = (d.nazwa || "Wycena") + " · szablon " + d.typ + " · wygenerowano " + new Date().toLocaleDateString("pl-PL");
 
     var GOOD = [227, 244, 234], GOODT = [19, 121, 74], WARN = [253, 243, 221], WARNT = [138, 83, 0], BAD = [253, 236, 234], BADT = [180, 35, 24];
@@ -588,12 +576,17 @@
     var mapa = ctx.mapa, znak = function (id, nazwa, y0, y1) { if (mapa) mapa.push({ strona: doc.getNumberOfPages(), id: id, nazwa: nazwa, y0: y0, y1: y1 }); };
     znak("naglowek", "Nagłówek: adres i data", 11, 35);
     var mpz = function (c) { return r.mat.MP ? c / r.mat.MP : 0; };
-    var y = kafelki(36, [
-      ["Cena ofertowa · zysk " + pct(N.zA), zl(N.cenaA), w0.nazwa + (w0.cenaMPeur ? " · " + eur(w0.cenaMPeur) + " / MP" : ""), zl(mpz(N.cenaA)) + " / MP"],
-      ["Można zejść do · zysk " + pct(N.zB), zl(N.cenaB), "rabat −" + zl(N.cenaA - N.cenaB) + " (−" + n2((N.cenaA - N.cenaB) / N.cenaA * 100) + "%)", zl(mpz(N.cenaB)) + " / MP"],
-      ["Próg opłacalności · zysk 0%", zl(N.cenaMin), "maks. rabat −" + zl(N.cenaA - N.cenaMin) + " (−" + n2((N.cenaA - N.cenaMin) / N.cenaA * 100) + "%)", zl(mpz(N.cenaMin)) + " / MP"]
-    ]);
-    znak("kafelki", "Kafelki: cena ofertowa, zejście, próg", 36, y - 6);
+    /* ceny w zwykłej tabelce, jak tabela opcji: cena całkowita i za MP tym samym krojem */
+    var rab = function (c) { return "−" + zl(N.cenaA - c) + " (−" + n2((N.cenaA - c) / N.cenaA * 100) + "%)"; };
+    L.autoTable(doc, Object.assign({}, base, { startY: 35, head: [["Cena", "Cena netto", "Cena za MP", "Rabat od oferty"]],
+      body: [["Cena ofertowa · zysk " + pct(N.zA) + " · " + w0.nazwa, zl(N.cenaA), zl(mpz(N.cenaA)) + (w0.cenaMPeur ? " · " + eur(w0.cenaMPeur) : ""), "–"],
+        ["Można zejść do · zysk " + pct(N.zB), zl(N.cenaB), zl(mpz(N.cenaB)), rab(N.cenaB)],
+        ["Próg opłacalności · zysk 0%", zl(N.cenaMin), zl(mpz(N.cenaMin)), "maks. " + rab(N.cenaMin)]],
+      styles: Object.assign({}, base.styles, { fontSize: 8.6, cellPadding: 0.9 }),
+      columnStyles: { 0: { halign: "left", cellWidth: 66 }, 1: { halign: "right", fontStyle: "bold" }, 2: { halign: "right", fontStyle: "bold" }, 3: { halign: "right" } },
+      didParseCell: function (h) { if (h.section === "head" && h.column.index === 0) h.cell.styles.halign = "left"; } }));
+    var y = doc.lastAutoTable.finalY + 9;
+    znak("kafelki", "Ceny: oferta, zejście, próg", 34, y - 6);
     var yPas = y - 5;
     y = h2("Pole do negocjacji (" + w0.nazwa + ")", y - 1) + 4;   // bez paska: drabinka zaraz pod nagłówkiem
     /* długa drabinka (wysoki zysk ofertowy): poniżej zysku do porównania co 4 pkt proc., żeby zmieścić kartę inwestycji */
@@ -627,7 +620,8 @@
     var wierszP = [];
     K.wymiary.forEach(function (grp) { grp.forEach(function (pp) { wierszP.push(pp); }); });
     if (K.dlMiejsca) wierszP.push(["Długość miejsca postojowego", K.dlMiejsca]);
-    if (K.agrOpis) wierszP.push(["Układ agregatów", K.agrOpis]);   // opis z kalkulacji, np. 2A3+3A4
+    /* układ agregatów (opis z kalkulacji, np. 2A3+3A4) i obok narzuty KOB / GDW w jednym wierszu */
+    wierszP.push(K.agrOpis ? ["Układ agregatów", K.agrOpis, 0, ["KOB / GDW", K.kobGdw]] : ["KOB / GDW", K.kobGdw]);
     function wartosc(x, yy, wdt, v, akcent) {
       doc.setFont("Carlito", "bold"); doc.setFontSize(10.5); doc.setTextColor.apply(doc, akcent ? ACC : INK);
       if (Array.isArray(v)) {   // wysokości pojazdów: trójkąty jak w ofercie (Carlito nie ma ▲▼)
@@ -648,8 +642,13 @@
       var nl = 1;
       [[wierszL[wi], xL], [wierszP[wi], xP]].forEach(function (z) {
         if (!z[0]) return;
+        var obok = z[0][3], sz2 = obok ? (cw - 6) / 2 : cw - 6;
         doc.setFont("Carlito", "normal"); doc.setFontSize(7.6); doc.setTextColor.apply(doc, MUT); doc.text(z[0][0], z[1] + 3, yy);
-        nl = Math.max(nl, wartosc(z[1] + 3, yy + 4.1, cw - 6, z[0][1], z[0][2]));
+        nl = Math.max(nl, wartosc(z[1] + 3, yy + 4.1, sz2, z[0][1], z[0][2]));
+        if (obok) {
+          doc.setFont("Carlito", "normal"); doc.setFontSize(7.6); doc.setTextColor.apply(doc, MUT); doc.text(obok[0], z[1] + 3 + sz2, yy);
+          nl = Math.max(nl, wartosc(z[1] + 3 + sz2, yy + 4.1, sz2, obok[1]));
+        }
       });
       yy += 4.1 + nl * 4.3 + 0.9;
     }
