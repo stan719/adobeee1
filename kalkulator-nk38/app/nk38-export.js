@@ -132,8 +132,7 @@
     var opcje = {
       head: ["Opcja"].concat(wybierz([nA + ", " + zA, nB + ", " + zA, nA + ", " + zB, nB + ", " + zB])),
       rows: (sz.opcje.slupki === false ? [] : [
-        { label: "Słupki e-ładowarek 3,7 kW", fmt: "zl", vals: wybierz([r.opcje.slupki37[0], r.opcje.slupki37[1], r.opcje.slupki37b[0], r.opcje.slupki37b[1]]) },
-        { label: "Słupki e-ładowarek 22 kW", fmt: "zl", vals: wybierz([r.opcje.slupki22[0], r.opcje.slupki22[1], r.opcje.slupki22b[0], r.opcje.slupki22b[1]]) }
+        { label: "Słupki e-ładowarek 3,7 kW", fmt: "zl", vals: wybierz([r.opcje.slupki37[0], r.opcje.slupki37[1], r.opcje.slupki37b[0], r.opcje.slupki37b[1]]) }
       ]).concat(lista ? [] : [{ label: "Malowanie proszkowe RAL", fmt: "zl", vals: wybierz([r.opcje.malowanie, r.opcje.malowanie, r.opcje.malowanieB, r.opcje.malowanieB]) }])
         .concat((r.opcje.pozycje || []).map(function (p) { return { label: p.nazwa, fmt: "zl", vals: wybierz([p.kwota, p.kwota, p.kwotaB, p.kwotaB]) }; }))
     };
@@ -201,7 +200,6 @@
       vals: [W[1].cena - W[0].cena, W[1].cena2 - W[0].cena2] });
     if (sz.opcje.slupki !== false) {
       dod.push({ label: "Słupki e-ładowarek 3,7 kW", info: m.MP + " MP × " + st(C.slupek) + " zł + montaż", vals: [r.opcje.slupki37[0], r.opcje.slupki37b[0]] });
-      dod.push({ label: "Słupki e-ładowarek 22 kW", info: "jak 3,7 kW + " + st(C.slupek22 - C.slupek) + " zł/MP", vals: [r.opcje.slupki22[0], r.opcje.slupki22b[0]] });
     }
     if (!lista) dod.push({ label: "Malowanie proszkowe RAL", info: "", vals: [r.opcje.malowanie, r.opcje.malowanieB] });
     (r.opcje.pozycje || []).forEach(function (q) { dod.push({ label: q.nazwa, info: "", vals: [q.kwota, q.kwotaB] }); });
@@ -753,7 +751,7 @@
       nr: "", nrAuto: "", miejsce: "Kraków", powod: "zapytanie", garaz: "",
       adr: { zwrot: "Szanowna Pani", imie: "", stanowisko: "", tel: "", email: "", firma: "", ulica: "", kod: "", nip: "" },
       hg: "", hd: "", wysPary: [], montOd: "", montDo: "", agregat: "", kw: "",
-      opcje: { q2500: true, slupki37: false, slupki22: false, malowanie: false },
+      opcje: { q2500: true, slupki37: false, malowanie: false },
       zysk: "A", ceny: {}, platnosci: "",
       dostawa: "", montaz: "", tir: 20, gw: "", tekst: {}
     };
@@ -859,7 +857,6 @@
     var opcjeDef = [
       maB && TT.opcjaQ2500 ? ["q2500", TT.opcjaQ2500, c(ws[1]) - c(ws[0])] : null,
       r.szablon.opcje.slupki === false ? null : ["slupki37", "Słupki do e-ładowania na każdym ze " + m.MP + " miejsc postojowych, obejmujące montaż słupka pod ładowarkę, prowadnic, i puszki przyłączeniowej, bez samej stacji ładowania.", B ? r.opcje.slupki37b[0] : r.opcje.slupki37[0]],
-      r.szablon.opcje.slupki === false ? null : ["slupki22", "Słupki do e-ładowania do 22 kW na każdym ze " + m.MP + " miejsc postojowych, obejmujące montaż słupka pod ładowarkę, prowadnic, i puszki przyłączeniowej, bez samej stacji ładowania.", B ? r.opcje.slupki22b[0] : r.opcje.slupki22[0]],
       lista ? null : ["malowanie", "Malowanie proszkowe platform w kolorze RAL wybranym przez Zamawiającego.", B ? r.opcje.malowanieB : r.opcje.malowanie]
     ].concat((r.opcje.pozycje || []).map(function (p) { return ["poz_" + p.id, p.tekst || p.nazwa, B ? p.kwotaB : p.kwota]; })).filter(Boolean);
     var opcje = [], ceny = [{ klucz: "poz10", label: "Pozycja 1:", auto: ceil100(c(ws[0])) }];

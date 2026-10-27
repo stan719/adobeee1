@@ -588,7 +588,7 @@ html, body { overflow-x: clip; max-width: 100%; }
 (function () {
   "use strict";
   /* Wersja programu: podnoś przy każdym wydaniu (pokazywana na pulpicie, zapisywana w kopii zapasowej). */
-  var WERSJA = { nr: "1.42", data: "23.10.2026" };
+  var WERSJA = { nr: "1.43", data: "23.10.2026" };
   var E = window.NK38, X = window.NK38X;
   var LS = { robocze: "nk38.robocze.v1", drafty: "nk38.szkice.v1", draft: "nk38.szkic.v1", tab: "nk38.zakladka", sel: "nk38.wariant", logo: "nk38.logo.v1", podpis: "nk38.podpis.v1",
     szablony: "nk38.szablony.v1", wyceny: "nk38.wyceny.v1", tekstyOferty: "nk38.szablon.v1", numery: "nk38.numery.v1", cennikStary: "nk38.cennik.v1", usuniete: "nk38.usuniete.v1", migracja2: "nk38.migracja2", migracja3: "nk38.migracja3", historia: "nk38.historia.v1", uzytkownik: "nk38.uzytkownik.v1" };
@@ -609,7 +609,7 @@ html, body { overflow-x: clip; max-width: 100%; }
     ["Inne materiały", null], ["barierka", "Barierka / stronę", "zł"], ["maskownica", "Maskownica", "zł"],
     ["skrzynka_zasil", "Skrzynka zasilająca / agregat", "zł"], ["admin", "Administracja / agregat", "zł"],
     ["Opcje", null], ["mal_S", "Malowanie RAL S", "zł"], ["mal_D", "Malowanie RAL D / NP", "zł"], ["mal_bar", "Malowanie barierki", "zł"],
-    ["slupek", "Słupek 3,7 kW / MP", "zł"], ["slupek22", "Słupek 22 kW / MP", "zł"], ["slupek_rbd", "Robocizna słupka [rbd / MP]", ""],
+    ["slupek", "Słupek 3,7 kW / MP", "zł"], ["slupek_rbd", "Robocizna słupka [rbd / MP]", ""],
     ["Montaż", null], ["osd_magistrala", "Utrudnienia / magistrala", "osd"], ["osd_barierka", "Utrudnienia / barierka", "osd"], ["rozl_TIR", "Dni rozładunku / TIR", ""],
     ["dzwig", "Spider Crane / dzień", "zł"], ["dzwig_D", "Systemów D na dzień dźwigu", ""], ["dzwig_wspS", "Współczynnik S (dźwig)", ""],
     ["dni_tydzien", "Dni pracy w tygodniu", ""], ["km_montaz_dodatek", "Montaż: km dodane", "km"], ["km_krakow", "Kraków: km", "km"],
@@ -1557,7 +1557,7 @@ html, body { overflow-x: clip; max-width: 100%; }
       (r.szablon.opcje.agregaty ? ofField("Opis agregatu", "agregat", { ph: F.eff.agregat, hint: "puste = z szablonu urządzenia" }) : "") + ofField("Moc agregatu", "kw", { ph: F.eff.kw, hint: "do warunków elektrycznych; puste = automatycznie" }) + "</div>" +
       autoTekst("tech", "Dane techniczne", F) + autoTekst("wyposazenie", "Obciążenie i zabezpieczenia", F) + autoTekst("lista", "Lista urządzeń", F) +
       '<div class="ofsep">Opcje</div><div class="checks">' + F.opcjeDost.map(function (x) {
-        var nazwa = { q2500: r.szablon.wariantB.nazwa, slupki37: "Słupki 3,7 kW", slupki22: "Słupki 22 kW", malowanie: "Malowanie RAL" }[x.klucz];
+        var nazwa = { q2500: r.szablon.wariantB.nazwa, slupki37: "Słupki 3,7 kW", malowanie: "Malowanie RAL" }[x.klucz];
         if (!nazwa) { var pz = (r.opcje.pozycje || []).filter(function (p) { return "poz_" + p.id === x.klucz; })[0]; nazwa = pz ? pz.nazwa : x.klucz; }
         return ch(x.klucz, esc(nazwa));
       }).join("") + "</div>", true);

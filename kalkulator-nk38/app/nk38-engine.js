@@ -13,7 +13,7 @@
     sil_1700: 1080, sil_2000: 1175, sil_2250: 1250,
     magistrala: 0.2 * 11 + 0.4 * 11 + 2 * 14 + 6 * 11 + 6 * 5 + 6 * 10,
     barierka: 600, maskownica: 700, skrzynka_zasil: 1000, admin: 1800,
-    mal_S: 6400, mal_D: 13500, mal_bar: 200, slupek: 1700, slupek22: 6300, slupek_rbd: 0.37,
+    mal_S: 6400, mal_D: 13500, mal_bar: 200, slupek: 1700, slupek_rbd: 0.37,
     osd_magistrala: 0.5, osd_barierka: 0.5,
     rozl_TIR: 0.5, dzwig: 2400, dzwig_D: 5, dzwig_wspS: 0.6,
     dni_tydzien: 5, km_montaz_dodatek: 50, km_krakow: 20, km_dzien: 650,
@@ -488,17 +488,15 @@
     function mn(z) { return (1 + c.podatek * (c.gdw + z)) / (1 - (c.kob + c.gdw + z)); }
     var mnoznik = mn(num(d.zysk)), mnoznik2 = mn(num(d.zysk2));
     var sl37 = [warianty[2].cena - warianty[0].cena, warianty[3].cena - warianty[1].cena];
-    var dop22 = (c.slupek22 - c.slupek) * m.MP * mnoznik;
     var sl37b = [warianty[2].cena2 - warianty[0].cena2, warianty[3].cena2 - warianty[1].cena2];
-    var dop22b = (c.slupek22 - c.slupek) * m.MP * mnoznik2;
     var wynik = {
       tirAuto: tirAuto,
       dane: d, cennik: c, szablon: sz, mat: m, wspolne: w, warianty: warianty,
       analiza: analiza, analizaWariant: nazwy[a],
       opcje: {
-        slupki37: sl37, slupki22: [sl37[0] + dop22, sl37[1] + dop22],
+        slupki37: sl37,
         malowanie: m.malowanie * mnoznik,
-        slupki37b: sl37b, slupki22b: [sl37b[0] + dop22b, sl37b[1] + dop22b],
+        slupki37b: sl37b,
         malowanieB: m.malowanie * mnoznik2,
         pozycje: (m.linie || []).filter(function (l) { return l.opcja; }).map(function (l) { return { id: l.id, nazwa: l.nazwa, tekst: l.tekst, kwota: l.kwota * mnoznik, kwotaB: l.kwota * mnoznik2 }; })
       },
