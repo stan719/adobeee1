@@ -588,7 +588,7 @@ html, body { overflow-x: clip; max-width: 100%; }
 (function () {
   "use strict";
   /* Wersja programu: podnoś przy każdym wydaniu (pokazywana na pulpicie, zapisywana w kopii zapasowej). */
-  var WERSJA = { nr: "1.37", data: "23.10.2026" };
+  var WERSJA = { nr: "1.38", data: "23.10.2026" };
   var E = window.NK38, X = window.NK38X;
   var LS = { robocze: "nk38.robocze.v1", drafty: "nk38.szkice.v1", draft: "nk38.szkic.v1", tab: "nk38.zakladka", sel: "nk38.wariant", logo: "nk38.logo.v1", podpis: "nk38.podpis.v1",
     szablony: "nk38.szablony.v1", wyceny: "nk38.wyceny.v1", tekstyOferty: "nk38.szablon.v1", numery: "nk38.numery.v1", cennikStary: "nk38.cennik.v1", usuniete: "nk38.usuniete.v1", migracja2: "nk38.migracja2", migracja3: "nk38.migracja3", historia: "nk38.historia.v1", uzytkownik: "nk38.uzytkownik.v1" };
@@ -2238,7 +2238,10 @@ html, body { overflow-x: clip; max-width: 100%; }
     }
     if (ds.pLoad) {
       var w = (state.wyceny || []).filter(function (x) { return x.id === ds.pLoad; })[0];
-      if (w) { otworzDane(Object.assign({}, w.dane, { _wid: w.id, _wnazwa: w.nazwa })); toast("Wczytano: " + w.nazwa); }
+      /* jeśli wycena ma nowszą wersję roboczą (zmiany po zapisie, np. w ofercie), otwieramy ją zamiast starej */
+      var rw = w && robocze().filter(function (x) { return x.dane && x.dane._wid === w.id && (x.ts || 0) > (w.ts || 0); })[0];
+      if (rw) { otworzDane(rw.dane); state.czysta = null; toast("Wczytano: " + w.nazwa + " z niezapisanymi zmianami"); }
+      else if (w) { otworzDane(Object.assign({}, w.dane, { _wid: w.id, _wnazwa: w.nazwa })); toast("Wczytano: " + w.nazwa); }
       return;
     }
     if (t.id === "bBackup") return busy(t, kopiaZapasowa);
