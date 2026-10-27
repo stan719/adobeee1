@@ -10,7 +10,7 @@ const fonts = { regular: font("Carlito-Regular.ttf"), bold: font("Carlito-Bold.t
 const wersja = (fs.readFileSync(path.join(__dirname, "index.html"), "utf8").match(/WERSJA = \{ nr: "([^"]+)"/) || [])[1] || "?";
 const szablony = E.szablonyWbudowane();
 const PRZYKLADY = [
-  ["nk38", "lipowa", "ul. Lipowa 12, Kraków", { lok: "Kraków", S: 6, D: 10, h1: 190, h2: 195, dl: "530", przeswit: 360, agregaty: 3, barierki: 12, maskownice: 2, tir_cena: 1600, rozl_cena: 1500 }],
+  ["nk38", "lipowa", "ul. Lipowa 12, Kraków", { lok: "Kraków", S: 6, D: 10, h1: 190, h2: 195, dl: "530", przeswit: 360, agregaty: 3, agrOpis: "1A3+2A4", barierki: 12, maskownice: 2, tir_cena: 1600, rozl_cena: 1500 }],
   ["nk41", "lesna", "ul. Leśna 5, Wrocław", { km: 270, S: 23, agregaty: 6, agr3: 4, agr6: 2, przeswit: 280, dlMiejsca: 400 }]
 ];
 const esc = (t) => String(t).replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));

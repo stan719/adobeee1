@@ -226,7 +226,8 @@
       lok: d.lok + (w.krk ? "" : " · " + (d.km || 0) + " km od Krakowa"),
       urz: ["S", "D", "NP"].filter(function (x) { return d[x]; }).map(function (x) { return d[x] + "× " + kod(x); }).join(" + ") || "–",
       razem: m.platformy + " " + odmiana(m.platformy, "urządzenie", "urządzenia", "urządzeń") + " = " + m.MP + " " + odmiana(m.MP, "miejsce postojowe", "miejsca postojowe", "miejsc postojowych"),
-      agregaty: sz.opcje.agregaty || d.agregaty ? (d.agregaty || 0) + " szt." + (agrMoc(d) ? " (" + agrMoc(d) + ")" : d.agrOpis ? " (" + d.agrOpis + ")" : "") : "",
+      agregaty: sz.opcje.agregaty || d.agregaty ? (d.agregaty || 0) + " szt." + (agrMoc(d) ? " (" + agrMoc(d) + ")" : "") : "",
+      agrOpis: d.agrOpis || "",
       wymiary: wp.map(function (x, i) {
         var t = [];
         if (x.h1 != null && x.h1 !== "") t.push(["Zagłębienie" + (wp.length > 1 ? " (wariant " + (i + 1) + ")" : ""), (x.h2 != null && x.h2 !== x.h1 ? "H1 " + x.h1 + " / H2 " + x.h2 : x.h1) + " cm" + (x.dl ? ", dł. " + x.dl + " cm" : "")]);
@@ -417,6 +418,7 @@
     var prawa = [];
     K.wymiary.forEach(function (grp) { grp.forEach(function (pp) { prawa.push([pp[0], Array.isArray(pp[1]) ? "▲ " + pp[1][0] + "    ▼ " + pp[1][1] : pp[1]]); }); });
     if (K.dlMiejsca) prawa.push(["Długość miejsca postojowego", K.dlMiejsca]);
+    if (K.agrOpis) prawa.push(["Układ agregatów", K.agrOpis]);
     var naglK = s1.addRow(["ZAKRES", "", "", "WYMIARY"]); s1.mergeCells(naglK.number, 1, naglK.number, 3); s1.mergeCells(naglK.number, 4, naglK.number, 6);
     [1, 4].forEach(function (ci) { var c = naglK.getCell(ci); c.font = font({ size: 8, bold: true, color: { argb: C.acc } }); c.fill = fill(C.tile); c.alignment = { indent: 1 }; c.border = { top: { style: "medium", color: { argb: C.acc } } }; });
     for (var li = 0; li < Math.max(lewa.length, prawa.length); li++) {
@@ -533,9 +535,9 @@
     var base = { styles: { font: "Carlito", fontSize: 8.5, cellPadding: 1.3, textColor: INK, lineColor: LINE, lineWidth: 0.1 },
       headStyles: { fillColor: SOFT, textColor: ACC, fontStyle: "bold", halign: "right" },
       columnStyles: { 0: { halign: "left" } }, margin: { left: 14, right: 14 }, theme: "grid" };
-    function head(t, sub) {
-      doc.setFillColor.apply(doc, ACC); doc.rect(14, 12, 182, 11, "F");
-      doc.setFont("Carlito", "bold"); doc.setFontSize(14); doc.setTextColor(255, 255, 255); doc.text(t, 17, 19.5);
+    function head(t, sub) {   // bez zalanego tła (oszczędność tuszu): tytuł i linia akcentu
+      doc.setFont("Carlito", "bold"); doc.setFontSize(12); doc.setTextColor.apply(doc, INK); doc.text(t, 14, 19.5);
+      doc.setDrawColor.apply(doc, ACC); doc.setLineWidth(0.5); doc.line(14, 22, 196, 22);
       doc.setFont("Carlito", "normal"); doc.setFontSize(8.5); doc.setTextColor.apply(doc, MUT); doc.text(sub, 14, 28);
     }
     function h2(t, y) {
@@ -555,71 +557,45 @@
       }));
       return doc.lastAutoTable.finalY + 7;
     }
+    /* kafelki dyskretne: cienka ramka bez tła; cena całkowita i cena za MP tym samym krojem i rozmiarem */
     function kafelki(y, items) {
       var wdt = (182 - (items.length - 1) * 4) / items.length;
       items.forEach(function (t, i) {
         var x = 14 + i * (wdt + 4);
-        doc.setFillColor.apply(doc, TILE); doc.rect(x, y, wdt, 22, "F");
-        doc.setFillColor.apply(doc, ACC); doc.rect(x, y, wdt, 0.9, "F");
-        doc.setFont("Carlito", "normal"); doc.setFontSize(8); doc.setTextColor.apply(doc, MUT); doc.text(t[0], x + 3, y + 6);
-        doc.setFont("Carlito", "bold"); doc.setFontSize(16); doc.setTextColor.apply(doc, i < 2 ? ACC : INK); doc.text(t[1], x + 3, y + 14);
-        doc.setFont("Carlito", "normal"); doc.setFontSize(7.8); doc.setTextColor.apply(doc, MUT); doc.text(doc.splitTextToSize(t[2], wdt - 5)[0], x + 3, y + 19.2);
+        doc.setDrawColor.apply(doc, LINE); doc.setLineWidth(0.3); doc.roundedRect(x, y, wdt, 20, 1.2, 1.2, "S");
+        doc.setFont("Carlito", "normal"); doc.setFontSize(7.8); doc.setTextColor.apply(doc, MUT); doc.text(t[0], x + 3, y + 5.2);
+        doc.setFont("Carlito", "bold"); doc.setFontSize(13); doc.setTextColor.apply(doc, INK);
+        doc.text(t[1], x + 3, y + 11.8); if (t[3]) doc.text(t[3], x + wdt - 3, y + 11.8, { align: "right" });
+        doc.setFont("Carlito", "normal"); doc.setFontSize(7.6); doc.setTextColor.apply(doc, MUT); doc.text(doc.splitTextToSize(t[2], wdt - 5)[0], x + 3, y + 16.8);
       });
-      return y + 29;
+      return y + 27;
     }
     var stopka = (d.nazwa || "Wycena") + " · szablon " + d.typ + " · wygenerowano " + new Date().toLocaleDateString("pl-PL");
 
     var GOOD = [227, 244, 234], GOODT = [19, 121, 74], WARN = [253, 243, 221], WARNT = [138, 83, 0], BAD = [253, 236, 234], BADT = [180, 35, 24];
     var N = R.neg.N;
-    /* pasek: od progu (zysk 0%) do ceny ofertowej; zielone pole = rabat bez zejścia poniżej zysku do porównania */
-    function pasek(y) {
-      var x0 = 14, W = 182, h = 8, lo = N.cenaMin, hi = N.cenaA, span = (hi - lo) || 1;
-      var X = function (v) { return x0 + (v - lo) / span * W; }, xb = X(N.cenaB);
-      doc.setFont("Carlito", "bold"); doc.setFontSize(8);
-      if (x0 + W - xb <= doc.getTextWidth("rabat do −" + zl(N.cenaA - N.cenaB) + " zachowuje zysk " + pct(N.zB)) + 4) y += 5;   // miejsce na podpis nad paskiem
-      doc.setFillColor.apply(doc, WARN); doc.rect(x0, y, xb - x0, h, "F");
-      doc.setFillColor.apply(doc, GOOD); doc.rect(xb, y, x0 + W - xb, h, "F");
-      doc.setFont("Carlito", "bold"); doc.setFontSize(8);
-      var tg = "rabat do −" + zl(N.cenaA - N.cenaB) + " zachowuje zysk " + pct(N.zB), tw = "poniżej zysku " + pct(N.zB);
-      doc.setTextColor.apply(doc, GOODT);
-      if (x0 + W - xb > doc.getTextWidth(tg) + 4) doc.text(tg, (xb + x0 + W) / 2, y + 5.3, { align: "center" });
-      else doc.text(tg, x0 + W, y - 2.5, { align: "right" });   // wąskie pole: podpis nad paskiem
-      doc.setTextColor.apply(doc, WARNT);
-      if (xb - x0 > doc.getTextWidth(tw) + 4) doc.text(tw, (x0 + xb) / 2, y + 5.3, { align: "center" });
-      doc.setDrawColor.apply(doc, INK); doc.setLineWidth(0.5);
-      /* znacznik zysku do porównania blisko końca paska: podpis wyrównany do kreski, żeby nie nachodził na sąsiedni */
-      var alB = xb > x0 + W - 40 ? "right" : xb < x0 + 40 ? "left" : "center", dB = alB === "right" ? -1.5 : alB === "left" ? 1.5 : 0;
-      if (alB === "right" && x0 + W - xb < 2) alB = "center";
-      [[lo, "Próg · zysk 0%", "left", 0], [N.cenaB, "Zysk " + pct(N.zB), alB, dB], [hi, "Oferta · zysk " + pct(N.zA), "right", 0]].forEach(function (m, i) {
-        var x = X(m[0]), lx = x + m[3]; doc.line(x, y - 1.5, x, y + h + 1.5);
-        if (i === 1 && alB === "right") lx = Math.min(lx, x0 + W - 34);
-        doc.setFont("Carlito", "normal"); doc.setFontSize(7.8); doc.setTextColor.apply(doc, MUT); doc.text(m[1], lx, y + h + 5, { align: m[2] });
-        doc.setFont("Carlito", "bold"); doc.setFontSize(9); doc.setTextColor.apply(doc, INK); doc.text(zl(m[0]), lx, y + h + 9.2, { align: m[2] });
-      });
-      return y + h + 16;
-    }
     /* 1. strona: nagłówek z adresem i datą kalkulacji, pole do negocjacji, karta inwestycji jak w ofercie */
-    var K = R.karta, JASNY = [196, 228, 231];
-    doc.setFillColor.apply(doc, ACC); doc.rect(14, 12, 182, 17, "F");
-    doc.setFont("Carlito", "normal"); doc.setFontSize(8); doc.setTextColor.apply(doc, JASNY);
-    doc.text("KALKULACJA " + d.typ, 17, 17.5); doc.text("Data kalkulacji", 193, 17.5, { align: "right" });
-    doc.setFont("Carlito", "bold"); doc.setTextColor(255, 255, 255);
-    doc.setFontSize(13); doc.text(K.data, 193, 24.5, { align: "right" });
-    doc.setFontSize(15); doc.text(doc.splitTextToSize(K.adres, 140)[0], 17, 24.5);
+    var K = R.karta;   /* nagłówek bez zalanego tła: adres i data na białym, linia akcentu pod spodem */
+    doc.setFont("Carlito", "normal"); doc.setFontSize(8); doc.setTextColor.apply(doc, MUT);
+    doc.text("KALKULACJA " + d.typ, 14, 16.5); doc.text("Data kalkulacji", 196, 16.5, { align: "right" });
+    doc.setFont("Carlito", "bold"); doc.setTextColor.apply(doc, INK);
+    doc.setFontSize(13); doc.text(K.data, 196, 24, { align: "right" });
+    doc.setFontSize(16); doc.text(doc.splitTextToSize(K.adres, 140)[0], 14, 24);
+    doc.setDrawColor.apply(doc, ACC); doc.setLineWidth(0.6); doc.line(14, 27.5, 196, 27.5);
     doc.setFont("Carlito", "normal"); doc.setFontSize(8.5); doc.setTextColor.apply(doc, MUT);
-    doc.text("Ceny netto · wygenerowano " + new Date().toLocaleDateString("pl-PL"), 14, 33.5);
+    doc.text("Ceny netto · wygenerowano " + new Date().toLocaleDateString("pl-PL"), 14, 32);
     /* mapa części strony (dla narzędzia podglądu z komentarzami): ctx.mapa = [] zbiera {strona, id, nazwa, y0, y1} w mm */
     var mapa = ctx.mapa, znak = function (id, nazwa, y0, y1) { if (mapa) mapa.push({ strona: doc.getNumberOfPages(), id: id, nazwa: nazwa, y0: y0, y1: y1 }); };
-    znak("naglowek", "Nagłówek: adres i data", 12, 35);
-    var y = kafelki(37, [
-      ["Cena ofertowa · zysk " + pct(N.zA), zl(N.cenaA), w0.nazwa + " · " + zl(w0.cenaMP) + " / MP" + (w0.cenaMPeur ? " · " + eur(w0.cenaMPeur) + " / MP" : "")],
-      ["Można zejść do · zysk " + pct(N.zB), zl(N.cenaB), "rabat −" + zl(N.cenaA - N.cenaB) + " (−" + n2((N.cenaA - N.cenaB) / N.cenaA * 100) + "%)"],
-      ["Próg opłacalności · zysk 0%", zl(N.cenaMin), "maks. rabat −" + zl(N.cenaA - N.cenaMin) + " (−" + n2((N.cenaA - N.cenaMin) / N.cenaA * 100) + "%)"]
+    znak("naglowek", "Nagłówek: adres i data", 11, 35);
+    var mpz = function (c) { return r.mat.MP ? c / r.mat.MP : 0; };
+    var y = kafelki(36, [
+      ["Cena ofertowa · zysk " + pct(N.zA), zl(N.cenaA), w0.nazwa + (w0.cenaMPeur ? " · " + eur(w0.cenaMPeur) + " / MP" : ""), zl(mpz(N.cenaA)) + " / MP"],
+      ["Można zejść do · zysk " + pct(N.zB), zl(N.cenaB), "rabat −" + zl(N.cenaA - N.cenaB) + " (−" + n2((N.cenaA - N.cenaB) / N.cenaA * 100) + "%)", zl(mpz(N.cenaB)) + " / MP"],
+      ["Próg opłacalności · zysk 0%", zl(N.cenaMin), "maks. rabat −" + zl(N.cenaA - N.cenaMin) + " (−" + n2((N.cenaA - N.cenaMin) / N.cenaA * 100) + "%)", zl(mpz(N.cenaMin)) + " / MP"]
     ]);
-    znak("kafelki", "Kafelki: cena ofertowa, zejście, próg", 37, y - 6);
+    znak("kafelki", "Kafelki: cena ofertowa, zejście, próg", 36, y - 6);
     var yPas = y - 5;
-    y = pasek(h2("Pole do negocjacji (" + w0.nazwa + ")", y - 1) + 3);
-    znak("pasek", "Pole do negocjacji: pasek", yPas, y - 4);
+    y = h2("Pole do negocjacji (" + w0.nazwa + ")", y - 1) + 4;   // bez paska: drabinka zaraz pod nagłówkiem
     /* długa drabinka (wysoki zysk ofertowy): poniżej zysku do porównania co 4 pkt proc., żeby zmieścić kartę inwestycji */
     var negRows = R.neg.rows.length <= 11 ? R.neg.rows : R.neg.rows.filter(function (q) {
       var x = q.x; return x.oferta || x.porownanie || x.prog || x.zysk > N.zB || Math.round(x.zysk * 100) % 4 === 0;
@@ -641,7 +617,7 @@
     }));
     doc.setFont("Carlito", "normal"); doc.setFontSize(7.4); doc.setTextColor.apply(doc, MUT);
     doc.text("Zielone: rabat bez zejścia poniżej zysku " + pct(N.zB) + ". Żółte: poniżej zysku do porównania. Przy zysku 0% w cenie zostają koszty, KOB, GDW i podatek.", 14, doc.lastAutoTable.finalY + 3.6);
-    znak("drabinka", "Drabinka cenowa i legenda", y - 3, doc.lastAutoTable.finalY + 5);
+    znak("drabinka", "Pole do negocjacji: drabinka cenowa i legenda", yPas, doc.lastAutoTable.finalY + 5);
     y = h2("Dane wejściowe", doc.lastAutoTable.finalY + 10) + 2.5;
 
     /* karta inwestycji: w obu okienkach ta sama siatka (etykieta + wartość jednym krojem), wiersze na tej samej wysokości */
@@ -651,6 +627,7 @@
     var wierszP = [];
     K.wymiary.forEach(function (grp) { grp.forEach(function (pp) { wierszP.push(pp); }); });
     if (K.dlMiejsca) wierszP.push(["Długość miejsca postojowego", K.dlMiejsca]);
+    if (K.agrOpis) wierszP.push(["Układ agregatów", K.agrOpis]);   // opis z kalkulacji, np. 2A3+3A4
     function wartosc(x, yy, wdt, v, akcent) {
       doc.setFont("Carlito", "bold"); doc.setFontSize(10.5); doc.setTextColor.apply(doc, akcent ? ACC : INK);
       if (Array.isArray(v)) {   // wysokości pojazdów: trójkąty jak w ofercie (Carlito nie ma ▲▼)
@@ -702,21 +679,20 @@
       znak("dodatki", "Opcje: dopłaty 2500 kg, słupki", y, doc.lastAutoTable.finalY);
       y = doc.lastAutoTable.finalY + 4;
     }
-    znak("konserwacja", "Konserwacja: oba warianty", y, y + 23);
+    znak("konserwacja", "Konserwacja: oba warianty", y, y + 21);
     /* konserwacja: stawka za miejsce wyraźnie, pod nią kwota roczna i za jeden przegląd */
     K.konserwacja.forEach(function (kk, i) {
       var x = 14 + i * (cw + 4);
-      doc.setFillColor.apply(doc, TILE); doc.rect(x, y, cw, 23, "F");
-      doc.setFillColor.apply(doc, ACC); doc.rect(x, y, 0.9, 23, "F");
-      doc.setFont("Carlito", "normal"); doc.setFontSize(8); doc.setTextColor.apply(doc, MUT); doc.text(kk.nazwa + " · " + kk.baza, x + 4, y + 5);
-      doc.setFont("Carlito", "bold"); doc.setFontSize(15); doc.setTextColor.apply(doc, ACC); doc.text(kk.stawka, x + 4, y + 11.5);
-      doc.setFontSize(10); doc.setTextColor.apply(doc, INK); doc.text(zl(kk.rok) + " rocznie", x + 4, y + 16.5);
-      doc.setFont("Carlito", "normal"); doc.setFontSize(8.5); doc.setTextColor.apply(doc, INK);
-      doc.text("jeden przegląd (co pół roku): " + zl(kk.przeglad), x + 4, y + 20.7);
+      doc.setDrawColor.apply(doc, LINE); doc.setLineWidth(0.3); doc.roundedRect(x, y, cw, 21, 1.2, 1.2, "S");   // dyskretnie: ramka bez tła
+      doc.setFont("Carlito", "normal"); doc.setFontSize(7.8); doc.setTextColor.apply(doc, MUT); doc.text(kk.nazwa + " · " + kk.baza, x + 3, y + 5);
+      doc.setFont("Carlito", "bold"); doc.setFontSize(12.5); doc.setTextColor.apply(doc, INK); doc.text(kk.stawka, x + 3, y + 11);
+      doc.setFont("Carlito", "normal"); doc.setFontSize(9.5); doc.text(zl(kk.rok) + " rocznie", x + 3, y + 15.6);
+      doc.setFontSize(8.2); doc.setTextColor.apply(doc, MUT);
+      doc.text("jeden przegląd (co pół roku): " + zl(kk.przeglad), x + 3, y + 19.2);
     });
 
     /* 2. strona: skąd się biorą kwoty (wariant podstawowy) i pozostałe dane */
-    doc.addPage(); head("Koszty krok po kroku · " + w0.nazwa + ", " + R.zA, stopka);
+    doc.addPage(); head("Koszty · " + w0.nazwa + " · " + pct(d.zysk), stopka);
     znak("naglowek2", "Strona 2: nagłówek", 12, 30);
     y = h2("Materiały i urządzenia", 36);
     L.autoTable(doc, Object.assign({}, base, { startY: y, body: R.mat, theme: "striped",
