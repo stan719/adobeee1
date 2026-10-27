@@ -588,7 +588,7 @@ html, body { overflow-x: clip; max-width: 100%; }
 (function () {
   "use strict";
   /* Wersja programu: podnoś przy każdym wydaniu (pokazywana na pulpicie, zapisywana w kopii zapasowej). */
-  var WERSJA = { nr: "1.38", data: "23.10.2026" };
+  var WERSJA = { nr: "1.39", data: "23.10.2026" };
   var E = window.NK38, X = window.NK38X;
   var LS = { robocze: "nk38.robocze.v1", drafty: "nk38.szkice.v1", draft: "nk38.szkic.v1", tab: "nk38.zakladka", sel: "nk38.wariant", logo: "nk38.logo.v1", podpis: "nk38.podpis.v1",
     szablony: "nk38.szablony.v1", wyceny: "nk38.wyceny.v1", tekstyOferty: "nk38.szablon.v1", numery: "nk38.numery.v1", cennikStary: "nk38.cennik.v1", usuniete: "nk38.usuniete.v1", migracja2: "nk38.migracja2", migracja3: "nk38.migracja3", historia: "nk38.historia.v1", uzytkownik: "nk38.uzytkownik.v1" };
@@ -2130,7 +2130,7 @@ html, body { overflow-x: clip; max-width: 100%; }
       return '<article class="card dev wejscie" style="--i:' + i + '"><div class="dev-top"><div class="head"><div class="mono-tile" aria-hidden="true">' + esc(znak) + '</div><div style="min-width:0"><h3>' + esc(s.nazwa) + "</h3><p>" + esc(rodzaj) + '</p></div></div><span class="tg' + (wb ? "" : " own") + '">' + (wb ? "wbudowany" : "własny") + "</span></div>" +
         (s.model === "lista"
           ? "<dl><dt>" + esc(s.typy.S.nazwa || "Typ 1") + "</dt><dd>" + n2(s.typy.S.cena || 0) + " " + esc(s.typy.S.waluta) + "/szt.</dd><dt>MP / osobodni na szt.</dt><dd>" + (s.typy.S.mp || 0) + " / " + n2(s.typy.S.osd || 0) + "</dd>" +
-            (s.import.wl ? "<dt>Import z frachtem</dt><dd>" + s.import.koszty.length + " kosztów kontenera</dd>" : "") + "</dl>"
+            "</dl>"
           : "<dl><dt>Cena platformy D</dt><dd>" + zl(c.cena_D || 0) + "</dd><dt>MP na S / D</dt><dd>" + (s.typy.S.mp || 0) + " / " + (s.typy.D.mp || 0) + "</dd>" +
             "<dt>Osobodni S / D</dt><dd>" + n2(s.typy.S.osd || 0) + " / " + n2(s.typy.D.osd || 0) + "</dd></dl>") +
         (conf ? '<div class="row"><span class="muted">Usunąć szablon?</span><button class="btn small danger" type="button" data-dev-usun-tak="' + esc(s.id) + '">Tak, usuń</button><button class="btn small" type="button" data-dev-usun-nie="1">Anuluj</button></div>'
@@ -2171,7 +2171,7 @@ html, body { overflow-x: clip; max-width: 100%; }
       return '<div class="it' + (x.rob ? " rob" : "") + '"><div style="min-width:0"><b>' + esc(x.nazwa) + "</b>" + (x.rob ? ' <span class="tg own">wersja robocza, niezapisana</span>' : "") +
         '<div class="muted" style="font-size:12px">' + esc(x.typ) + (x.adres && x.adres !== x.nazwa ? " · " + esc(x.adres) : "") + " · " + esc(x.kiedy || "") + " · " + zl(x.cena || 0) + '</div></div><div class="row">' +
         (x.rob ? '<button class="btn small" type="button" data-r-load="' + esc(x.id) + '">Otwórz</button><button class="btn small ghost danger" type="button" data-r-del="' + esc(x.id) + '">Usuń</button>'
-          : '<button class="btn small" type="button" data-p-load="' + esc(x.id) + '">Otwórz</button><button class="btn small ghost danger" type="button" data-p-del="' + esc(x.id) + '">Usuń</button>') + "</div></div>";
+          : '<button class="btn small" type="button" data-p-load="' + esc(x.id) + '">Otwórz</button><button class="btn small" type="button" data-p-copy="' + esc(x.id) + '">Kopiuj</button><button class="btn small ghost danger" type="button" data-p-del="' + esc(x.id) + '">Usuń</button>') + "</div></div>";
     }).join("") : '<div class="empty">' + (q ? "Nic nie pasuje do wyszukiwania." : "Brak wycen. Zapisujesz je przyciskiem „Zapisz” w kalkulatorze.") + "</div>") +
       (!q && wsz.length > 10 ? '<button class="btn small ghost" type="button" id="pWszystkie">' + (state.pWszystkie ? "Pokaż ostatnie 10" : "Zobacz wszystkie (" + wsz.length + ")") + "</button>" : "");
   }
@@ -2235,6 +2235,25 @@ html, body { overflow-x: clip; max-width: 100%; }
       szablony = szablony.filter(function (x) { return x.id !== ds.devUsunTak; }); state.pUsun = null;
       if (state.dane.szablon === ds.devUsunTak) state.dane.szablon = szablony[0].id;
       zapiszSzablony(); wypelnijSzablony(); $("szablon").value = szablonAktywny().id; buildDimTable(); recalc(); renderPulpit(); toast("Usunięto szablon"); return;
+    }
+    if (ds.pCopy) {   // kopia zapisanej wyceny pod nową nazwą, bez otwierania
+      var wk = (state.wyceny || []).filter(function (x) { return x.id === ds.pCopy; })[0]; if (!wk) return;
+      var row = t.parentNode, bylo = row.innerHTML;
+      row.innerHTML = '<input type="text" class="kopia-nazwa" aria-label="Nazwa kopii" style="min-width:220px;flex:1">' +
+        '<button type="button" class="btn small primary kp-tak">Zapisz kopię</button><button type="button" class="btn small kp-nie">Anuluj</button>';
+      var inp = row.querySelector(".kopia-nazwa"); inp.value = wk.nazwa + " (kopia " + dzis() + ")"; inp.focus(); inp.select();
+      var zapisz = async function () {
+        var nazwa = inp.value.trim() || wk.nazwa + " (kopia)", dk = kopia(wk.dane);
+        if (dk.oferta) { delete dk.oferta.nr; delete dk.oferta.nrAuto; }   // kopia dostaje nowy numer oferty
+        try { await Store.zapiszWycene({ nazwa: nazwa, kiedy: new Date().toLocaleString("pl-PL"), cena: wk.cena, dane: dk }); toast("Utworzono kopię: " + nazwa); }
+        catch (er) { toast("Nie udało się utworzyć kopii. Spróbuj ponownie."); }
+        renderPulpitWyceny();
+      };
+      row.querySelector(".kp-tak").addEventListener("click", function (e) { e.stopPropagation(); zapisz(); });
+      row.querySelector(".kp-nie").addEventListener("click", function (e) { e.stopPropagation(); row.innerHTML = bylo; });
+      inp.addEventListener("keydown", function (e) { if (e.key === "Enter") { e.preventDefault(); zapisz(); } else if (e.key === "Escape") row.innerHTML = bylo; });
+      inp.addEventListener("click", function (e) { e.stopPropagation(); });
+      return;
     }
     if (ds.pLoad) {
       var w = (state.wyceny || []).filter(function (x) { return x.id === ds.pLoad; })[0];
