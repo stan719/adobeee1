@@ -253,7 +253,7 @@
 
   function domyslneDane() {
     return {
-      nazwa: "", data: "", nr: "", opis: "", h1: null, h2: null, dl: "", przeswit: null, pary: [], poz: {}, usd: 3.86, nadpis: {}, dlMiejsca: null, agrOpis: "", dopB: null, agr3: null, agr6: null,
+      nazwa: "", data: "", nr: "", opis: "", h1: null, h2: null, dl: "", przeswit: null, pary: [], poz: {}, usd: 3.86, nadpis: {}, dlMiejsca: null, agrOpis: "", dopB: null, agr3: null, agr6: null, dodatkowe: [],
       lok: "Poza Krakowem", km: 0, km_pom: null, km_mon: null,
       szablon: "nk38", S: 0, D: 0, NP: 0, agregaty: 0, magistrala: 0, barierki: 0, maskownice: 0, utr_dod: 0,
       gl_S: {}, gl_D: {},
@@ -390,11 +390,20 @@
     };
   }
 
-  function montaz(d, c, m, w, q, sl, osoby, sz) {
+  /* Osobodni montażu jednej pozycji (urządzenia wg typów szablonu + utrudnienia + słupki). */
+  function osdPozycji(d, c, m, sz, sl) {
     var T = sz.typy;
-    var S = num(d.S), D = num(d.D), NP = num(d.NP);
+    return num(T.S.osd) * num(d.S) + num(T.D.osd) * num(d.D) + num(T.NP.osd) * num(d.NP) + m.utr + (sl ? c.slupek_rbd * m.MP : 0);
+  }
+
+  /* dod: dodatkowe urządzenia wyceny łączonej [{ d, m, sz }] – ta sama ekipa i wyjazdy, osobodni i materiały się sumują. */
+  function montaz(d, c, m, w, q, sl, osoby, sz, dod) {
+    dod = dod || [];
     var os = Math.max(1, osoby), st = stawkaSrednia(os, c);
-    var osd = num(T.S.osd) * S + num(T.D.osd) * D + num(T.NP.osd) * NP + m.utr + (sl ? c.slupek_rbd * m.MP : 0);
+    var poz = [{ m: m, osd: osdPozycji(d, c, m, sz, sl) }].concat(dod.map(function (x) { return { m: x.m, osd: osdPozycji(x.d, c, x.m, x.sz, sl) }; }));
+    poz.forEach(function (p) { p.urz = q ? p.m.suma2500 : p.m.suma2000; p.sl = sl ? c.slupek * p.m.MP : 0; });
+    var suma = function (f) { return poz.reduce(function (a, p) { return a + f(p); }, 0); };
+    var osd = suma(function (p) { return p.osd; }), MP = suma(function (p) { return p.m.MP; });
     function podroze(wyj) { return w.podrPom + os * (w.rozl + czasPodrozy(w.kmMon, wyj, d.wzor, c)); }
     function zDni(dni) { return w.krk ? dni : ceil(dni / c.dni_tydzien); }
     var wyj = 1, iteracje = [];
@@ -403,8 +412,8 @@
     var podr = podroze(wyj), osdAll = osd + podr, dni = ceil(osdAll / os);
     var km = 2 * (w.kmMon * wyj + (1 + num(c.odbiory_wyjazdy, 1)) * w.kmPom);
     var k = {
-      urzadzenia: q ? m.suma2500 : m.suma2000,
-      slupki: sl ? c.slupek * m.MP : 0,
+      urzadzenia: suma(function (p) { return p.urz; }),
+      slupki: suma(function (p) { return p.sl; }),
       paliwo: km / 100 * ceil(c.spalanie * c.paliwo),
       hotel: w.krk ? 0 : c.hotel * (dni + 1) * os,
       transport: num(d.tir_cena) * num(d.tir),
@@ -426,34 +435,46 @@
     var n = narzuty(baza, zysk), n2 = narzuty(baza, zysk2);
     var cena = n.brutto + n.podatek, cena2 = n2.brutto + n2.podatek;
     var tyg = w.krk ? ceil(dni / c.dni_tydzien) : wyj;
+    /* cena pozycji: jej materiały i słupki + udział we wspólnych kosztach wg osobodni; suma pozycji = cena całości */
+    var wsp = baza - k.urzadzenia - k.slupki;
+    var pozycje = dod.length ? poz.map(function (p) {
+      var u = baza ? (p.urz + p.sl + (osd ? wsp * p.osd / osd : wsp / poz.length)) / baza : 0;
+      return { osd: p.osd, MP: p.m.MP, koszt: u * baza, cena: u * cena, cena2: u * cena2, cenaMP: p.m.MP ? u * cena / p.m.MP : 0, cenaMP2: p.m.MP ? u * cena2 / p.m.MP : 0 };
+    }) : null;
     return {
+      pozycje: pozycje,
       robocizna: robocizna, osoby: os, stawka: st, osd: osd, iteracje: iteracje, wyjazdy: wyj, podroze: podr,
       osobodni: osdAll, dni: dni, km: km, koszty: k, baza: baza,
       kob: n.brutto * c.kob, gdw: n.brutto * c.gdw, zysk: n.brutto * zysk, podatek: n.podatek,
       /* Jak w Excelu: koszt rzeczywisty = koszty + KOB + podatek, zysk z narzutem = cena − koszt = zysk + GDW. */
       zyskN: n.brutto * (c.gdw + zysk), zyskN2: n2.brutto * (c.gdw + zysk2),
-      cena: cena, koszt: cena - n.brutto * (c.gdw + zysk), cenaMP: m.MP ? cena / m.MP : 0,
-      cenaMPeur: m.MP && num(d.eur) > 0 ? cena / m.MP / num(d.eur) : 0,
-      cena2: cena2, zysk2: n2.brutto * zysk2, podatek2: n2.podatek, cenaMP2: m.MP ? cena2 / m.MP : 0,
+      cena: cena, koszt: cena - n.brutto * (c.gdw + zysk), cenaMP: MP ? cena / MP : 0,
+      cenaMPeur: MP && num(d.eur) > 0 ? cena / MP / num(d.eur) : 0,
+      cena2: cena2, zysk2: n2.brutto * zysk2, podatek2: n2.podatek, cenaMP2: MP ? cena2 / MP : 0,
       tygodnie: tyg, tygodnieZakres: [tyg, Math.max(tyg, Math.round(tyg * 1.25))],
       noclegi: w.krk ? 0 : (dni + 1) * os
     };
   }
 
-  function ostrzezenia(d, sz) {
+  function ostrzezenia(d, sz, dod) {
     var w = [], S = num(d.S), D = num(d.D), NP = num(d.NP);
+    var szt2 = (dod || []).reduce(function (a, x) { return a + num(x.d.S) + num(x.d.D) + num(x.d.NP); }, 0);
     if (sumObj(d.gl_S) > S || sumObj(d.gl_D) > D) w.push({ typ: "blad", tekst: "Więcej zagłębień niż platform." });
     if (num(d.szer1_S) + num(d.szer2_S) > S || num(d.szer1_D) + num(d.szer2_D) > D)
       w.push({ typ: "blad", tekst: "Więcej szerokości niestandardowych niż platform." });
     if (num(d.dl500_S) + num(d.dl540_S) + num(d.dl550_S) > S || num(d.dl500_D) + num(d.dl540_D) + num(d.dl550_D) > D)
       w.push({ typ: "blad", tekst: "Więcej długości niestandardowych niż platform." });
-    if (S + D + NP === 0) w.push({ typ: "uwaga", tekst: "Brak urządzeń." });
+    (dod || []).forEach(function (x) {
+      if (x.sz.model === "nk38" && num(x.d.agregaty) === 0) w.push({ typ: "uwaga", tekst: "Brak agregatów (" + x.sz.nazwa + ")." });
+      if (x.m.brakB) w.push({ typ: "uwaga", tekst: "Brak dopłaty za " + (x.sz.wariantB.nazwa || "wariant 2") + " (" + x.sz.nazwa + "): wariant niedostępny." });
+    });
+    if (S + D + NP + szt2 === 0) w.push({ typ: "uwaga", tekst: "Brak urządzeń." });
     else {
       if (sz.model === "nk38") {
         if (num(d.agregaty) === 0) w.push({ typ: "uwaga", tekst: "Brak agregatów." });
         else if (num(d.agregaty) * 6 < S + D + NP) w.push({ typ: "uwaga", tekst: "Mniej niż 1 agregat na 6 platform." });
       }
-      if (num(d.tir) === 0) w.push({ typ: "uwaga", tekst: sz.import.wl ? "Brak kontenerów / transportów (fracht = 0)." : "Brak transportów TIR." });
+      if (num(d.tir) === 0 && S + D + NP > 0) w.push({ typ: "uwaga", tekst: sz.import.wl ? "Brak kontenerów / transportów (fracht = 0)." : "Brak transportów TIR." });
     }
     if (d.lok !== "Kraków" && num(d.km) === 0) w.push({ typ: "uwaga", tekst: "Brak odległości od Krakowa." });
     return w;
@@ -464,7 +485,23 @@
     return [a, b, a + " + słupki", b + " + słupki"];
   }
 
-  function oblicz(dane, szablon) {
+  /* Dane i materiały dodatkowego urządzenia wyceny łączonej: własny szablon, liczba sztuk, agregaty, dopłata 2500;
+     lokalizacja, kursy i ekipa wspólne z wyceną. */
+  function pozycjaDodatkowa(x, d, szablony) {
+    var src = (szablony || []).filter(function (s) { return s.id === x.szablon; })[0] || szablonyWbudowane().filter(function (s) { return s.id === x.szablon; })[0];
+    if (!src) return null;
+    var sz = uzupelnijSzablon(src), c = Object.assign({}, sz.cennik);
+    var dx = Object.assign(domyslneDane(), sz.domyslne || {}, { tir: null, q2500: null, dopB: null, magistrala: 0, barierki: 0, maskownice: 0, poz: {} }, x,
+      { eur: d.eur, usd: d.usd, lok: d.lok, km: d.km, gl_S: x.gl_S || {}, gl_D: x.gl_D || {} });
+    if (opt(dx.agr3) !== null || opt(dx.agr6) !== null) dx.agregaty = num(dx.agr3) + num(dx.agr6);
+    var tirAuto = sz.model === "lista" ? 0 : ceil(num(dx.D) / 6 + (num(dx.S) + num(dx.NP)) / 8);
+    if (opt(dx.tir) === null) dx.tir = tirAuto;
+    dx.typ = sz.nazwa; dx.model = sz.model; dx.wysokosci = sz.wysokosci; dx.pokazAgregaty = sz.opcje.agregaty;
+    var m = sz.model === "lista" ? materialyLista(dx, c, sz) : materialy(dx, c, sz);
+    return { d: dx, m: m, sz: sz, c: c, tir: num(dx.tir), dzwDni: wspolne(dx, c, sz).dzwDni };
+  }
+
+  function oblicz(dane, szablon, szablony) {
     var d = Object.assign(domyslneDane(), dane || {});
     if (opt(d.agr3) !== null || opt(d.agr6) !== null) d.agregaty = num(d.agr3) + num(d.agr6);   // agregaty 3 kW + 6 kW
     if ((dane || {}).zysk2 === undefined && (dane || {}).zysk_min !== undefined) d.zysk2 = dane.zysk_min;
@@ -476,33 +513,48 @@
     var c = sz.cennik = Object.assign({}, sz.cennik);
     Object.keys(d.nadpis || {}).forEach(function (k) { var v = opt(d.nadpis[k]); if (v !== null && k in c) c[k] = v; });
     d.typ = sz.nazwa; d.wysokosci = sz.wysokosci; d.model = sz.model; d.pokazAgregaty = sz.opcje.agregaty;
-    var m = sz.model === "lista" ? materialyLista(d, c, sz) : materialy(d, c, sz), w = wspolne(d, c, sz), os = Math.max(1, num(d.osoby, 4));
+    var m = sz.model === "lista" ? materialyLista(d, c, sz) : materialy(d, c, sz), os = Math.max(1, num(d.osoby, 4));
+    /* wycena łączona: drugie urządzenie (na razie jedno) z własnego szablonu, wspólne wyjazdy i ekipa */
+    var dod = (Array.isArray(d.dodatkowe) ? d.dodatkowe : []).slice(0, 1).map(function (x) { return x && x.szablon ? pozycjaDodatkowa(x, d, szablony) : null; })
+      .filter(function (x) { return x && x.m.platformy > 0; });
+    if (dod.length && opt((dane || {}).tir) === null) { d.tir += dod.reduce(function (a, x) { return a + x.tir; }, 0); tirAuto = d.tir; }
+    var w = wspolne(d, c, sz);
+    dod.forEach(function (x) { w.dzwDni += x.dzwDni; });
     var nazwy = nazwyWariantow(sz);
     var warianty = nazwy.map(function (nazwa, i) {
-      return Object.assign({ nazwa: nazwa }, montaz(d, c, m, w, i % 2 === 1, i >= 2, os, sz));
+      return Object.assign({ nazwa: nazwa }, montaz(d, c, m, w, i % 2 === 1, i >= 2, os, sz, dod));
     });
     var a = Math.min(3, Math.max(0, num(d.analiza)));
     var analiza = OSOBY_ANALIZA.map(function (n) {
-      return Object.assign({ n: n }, montaz(d, c, m, w, a % 2 === 1, a >= 2, n, sz));
+      return Object.assign({ n: n }, montaz(d, c, m, w, a % 2 === 1, a >= 2, n, sz, dod));
     });
+    var wszystkie = [{ m: m, sz: sz }].concat(dod);
+    var razem = {
+      MP: wszystkie.reduce(function (s, x) { return s + x.m.MP; }, 0),
+      platformy: wszystkie.reduce(function (s, x) { return s + x.m.platformy; }, 0),
+      brakB: wszystkie.some(function (x) { return x.m.brakB; }),
+      konsBaza: wszystkie.reduce(function (s, x) { return s + (x.sz.opcje.konserwacjaNa === "szt" ? x.m.platformy : x.m.MP); }, 0)
+    };
     function mn(z) { return (1 + c.podatek * (c.gdw + z)) / (1 - (c.kob + c.gdw + z)); }
     var mnoznik = mn(num(d.zysk)), mnoznik2 = mn(num(d.zysk2));
     var sl37 = [warianty[2].cena - warianty[0].cena, warianty[3].cena - warianty[1].cena];
     var sl37b = [warianty[2].cena2 - warianty[0].cena2, warianty[3].cena2 - warianty[1].cena2];
     var wynik = {
-      tirAuto: tirAuto,
+      tirAuto: tirAuto, razem: razem,
+      /* dodatkowe urządzenia: dane, materiały i szablon każdego (pusta lista = zwykła wycena) */
+      dodatkowe: dod.map(function (x) { return { dane: x.d, mat: x.m, szablon: x.sz, tir: x.tir, dzwDni: x.dzwDni }; }),
       dane: d, cennik: c, szablon: sz, mat: m, wspolne: w, warianty: warianty,
       analiza: analiza, analizaWariant: nazwy[a],
       opcje: {
         slupki37: sl37,
-        malowanie: m.malowanie * mnoznik,
+        malowanie: (m.malowanie + dod.reduce(function (s, x) { return s + x.m.malowanie; }, 0)) * mnoznik,
         slupki37b: sl37b,
-        malowanieB: m.malowanie * mnoznik2,
-        pozycje: (m.linie || []).filter(function (l) { return l.opcja; }).map(function (l) { return { id: l.id, nazwa: l.nazwa, tekst: l.tekst, kwota: l.kwota * mnoznik, kwotaB: l.kwota * mnoznik2 }; })
+        malowanieB: (m.malowanie + dod.reduce(function (s, x) { return s + x.m.malowanie; }, 0)) * mnoznik2,
+        pozycje: wszystkie.reduce(function (a, x) { return a.concat(x.m.linie || []); }, []).filter(function (l) { return l.opcja; }).map(function (l) { return { id: l.id, nazwa: l.nazwa, tekst: l.tekst, kwota: l.kwota * mnoznik, kwotaB: l.kwota * mnoznik2 }; })
       },
-      mnoznik: mnoznik, ostrzezenia: ostrzezenia(d, sz),
+      mnoznik: mnoznik, ostrzezenia: ostrzezenia(d, sz, dod),
       konserwacja: [num(d.konserwA, 40), num(d.konserwB, 50)].map(function (st) {
-        var baza = sz.opcje.konserwacjaNa === "szt" ? m.platformy : m.MP;
+        var baza = razem.konsBaza;
         return { stawka: st, rok: st * baza * 12, pol: sz.opcje.przeglad ? st * baza * 6 : 0 };
       })
     };
@@ -513,7 +565,8 @@
   /* Cena wariantu przy dowolnym procencie zysku (te same koszty i narzuty): do drabinki negocjacyjnej. */
   function cenaPrzyZysku(r, w, z) {
     var c = r.cennik, b = w.baza / (1 - (c.kob + c.gdw + z)), pod = c.podatek * (w.robocizna + b * (c.gdw + z)), cena = b + pod;
-    return { zysk: z, cena: cena, zyskN: b * (c.gdw + z), cenaMP: r.mat.MP ? cena / r.mat.MP : 0 };
+    var mp = r.razem ? r.razem.MP : r.mat.MP;
+    return { zysk: z, cena: cena, zyskN: b * (c.gdw + z), cenaMP: mp ? cena / mp : 0 };
   }
   /* Drabinka: od zysku ofertowego w dół co 2 pkt proc. do 0%, z zyskiem do porównania; rabat liczony od ceny ofertowej. */
   function negocjacje(r, wi) {

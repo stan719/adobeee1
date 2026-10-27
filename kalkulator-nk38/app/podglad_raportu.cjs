@@ -11,7 +11,9 @@ const wersja = (fs.readFileSync(path.join(__dirname, "index.html"), "utf8").matc
 const szablony = E.szablonyWbudowane();
 const PRZYKLADY = [
   ["nk38", "lipowa", "ul. Lipowa 12, Kraków", { lok: "Kraków", S: 6, D: 10, h1: 190, h2: 195, dl: "530", przeswit: 360, agregaty: 3, agr3: 1, agr6: 2, agrOpis: "1A3+2A4", barierki: 12, maskownice: 2, tir_cena: 1600, rozl_cena: 1500 }],
-  ["nk41", "lesna", "ul. Leśna 5, Wrocław", { km: 270, S: 23, agregaty: 6, agr3: 4, agr6: 2, przeswit: 280, dlMiejsca: 400 }]
+  ["nk41", "lesna", "ul. Leśna 5, Wrocław", { km: 270, S: 23, agregaty: 6, agr3: 4, agr6: 2, przeswit: 280, dlMiejsca: 400 }],
+  ["nk38", "brzozowa", "ul. Brzozowa 9, Poznań · NK38 + NK41", { km: 460, S: 4, D: 6, h1: 190, h2: 195, dl: "530", przeswit: 360, agregaty: 2, barierki: 6, tir_cena: 4500, rozl_cena: 2000,
+    dodatkowe: [{ szablon: "nk41", S: 12, agr3: 2, agr6: 1, przeswit: 280, dlMiejsca: 400 }] }]   // wycena łączona
 ];
 const esc = (t) => String(t).replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
 
@@ -22,7 +24,7 @@ const esc = (t) => String(t).replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&l
   for (const [id, klucz, nazwa, dd] of PRZYKLADY) {
     const sz = szablony.find((s) => s.id === id);
     const dane = Object.assign(E.domyslneDane(), sz.domyslne, { szablon: id, nazwa, data: new Date().toISOString().slice(0, 10) }, dd);
-    const r = E.oblicz(dane, sz), mapa = [];
+    const r = E.oblicz(dane, sz, szablony), mapa = [];
     const ctx = { GLEBOKOSCI: sz.glebokosci.map((g) => g.cm), zestawienie: "", uwagi: [], cennikPola: [], cennikZmiany: {}, oferta: X.domyslnaOferta(), fonts, mapa };
     const pdf = path.join(tmp, klucz + ".pdf"), xlsx = path.join(tmp, klucz + ".xlsx");
     fs.writeFileSync(pdf, Buffer.from(X.pdf(r, ctx)));

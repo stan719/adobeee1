@@ -15,7 +15,9 @@ const P = [
   ["nk37", "PRZYKŁAD – ul. Słoneczna 3, Wrocław", { km: 270, S: 4, D: 8, h1: 185, h2: 190, dl: "520", przeswit: 350, agregaty: 2, barierki: 8, tir: 2, tir_cena: 3300, rozl_cena: 2500 }],
   ["nk6501", "PRZYKŁAD – ul. Ogrodowa 8, Warszawa", { km: 300, S: 6, przeswit: 215, utr_dod: 2, poz: { mufas: 19900 } }],
   ["nkpxlh", "PRZYKŁAD – ul. Kwiatowa 24, Piastów", { km: 310, S: 18, agregaty: 3, przeswit: 340, dlMiejsca: 500, agrOpis: "3xA3" }],
-  ["nk41", "PRZYKŁAD – ul. Leśna 5, Wrocław", { km: 270, S: 23, agregaty: 6, przeswit: 280, dlMiejsca: 400 }]
+  ["nk41", "PRZYKŁAD – ul. Leśna 5, Wrocław", { km: 270, S: 23, agregaty: 6, przeswit: 280, dlMiejsca: 400 }],
+  ["nk38", "PRZYKŁAD – ul. Brzozowa 9, Poznań", { km: 460, S: 4, D: 6, h1: 190, h2: 195, dl: "530", przeswit: 360, agregaty: 2, barierki: 6, tir_cena: 4500, rozl_cena: 2000,
+    dodatkowe: [{ szablon: "nk41", S: 12, agr3: 2, agr6: 1, przeswit: 280, dlMiejsca: 400 }] }]   // wycena łączona NK38 + NK41
 ];
 const adr = { zwrot: "Szanowny Pan", imie: "Jan Przykładowy", stanowisko: "Kierownik Budowy", tel: "+48 500 000 000", email: "jan.przykladowy@example.com",
   firma: "Przykładowy Inwestor Sp. z o.o.", ulica: "ul. Testowa 1", kod: "00-001 Warszawa", nip: "000-000-00-00" };
@@ -26,7 +28,7 @@ const slug = (t) => t.normalize("NFD").replace(/[̀-ͯ]/g, "").replace(/ł/g, "l
   for (const [id, nazwa, dd] of P) {
     const sz = szablony.find((s) => s.id === id);
     const dane = Object.assign(E.domyslneDane(), sz.domyslne, { szablon: id, nazwa: nazwa.replace("PRZYKŁAD – ", ""), data: "2026-10-21" }, dd);
-    const r = E.oblicz(dane, sz), w = r.warianty[0], N = r.negocjacje;
+    const r = E.oblicz(dane, sz, szablony), w = r.warianty[0], N = r.negocjacje;
     /* audyt: liczby skończone, sensowne relacje, drabinka malejąca */
     const liczby = [w.cena, w.cena2, w.koszt, w.zyskN, w.osobodni, r.mat.suma2000, N.cenaMin];
     liczby.forEach((v) => assert(Number.isFinite(v) && v >= 0, nazwa + ": nieprawidłowa liczba " + v));
@@ -39,6 +41,10 @@ const slug = (t) => t.normalize("NFD").replace(/[̀-ͯ]/g, "").replace(/ł/g, "l
     const tekst = [F.wstep, F.pozycja].concat(F.tech, F.lista, F.wyposazenie, F.platnosci, F.zakres, F.warunki, F.gwarancja).join("\n");
     assert(!/\{[A-Za-z]+\}/.test(tekst), nazwa + ": niewypełnione pole w ofercie: " + (tekst.match(/\{[A-Za-z]+\}/) || [])[0]);
     assert(!/…/.test(F.tech.join(" ")), nazwa + ": brak wymiaru w danych technicznych");
+    if (r.dodatkowe.length) {
+      assert(F.dalsze.length === 1 && F.ceny[1].label === "Pozycja 2:", nazwa + ": oferta bez pozycji 2");
+      assert(Math.abs(w.pozycje[0].cena + w.pozycje[1].cena - w.cena) < 0.01, nazwa + ": ceny pozycji ≠ cena całości");
+    }
     const ctx = { GLEBOKOSCI: sz.glebokosci.map((g) => g.cm), zestawienie: nazwa, uwagi: [], cennikPola: [["Montaż", null], ["hotel", "Hotel / doba / osoba", "zł"], ["dieta", "Dieta dzienna", "zł"]], cennikZmiany: {}, oferta: o, fonts };
     const plik = slug(nazwa.replace("PRZYKŁAD – ", "")) + "_" + sz.nazwa;
     fs.writeFileSync(path.join(out, "Kalkulator_" + plik + ".xlsx"), Buffer.from(await X.xlsx(r, ctx)));

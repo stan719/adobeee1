@@ -64,4 +64,22 @@ blisko(r3.warianty[0].koszty.paliwo, 2147, "paliwo (K20)");
 blisko(r3.warianty[0].cena, 491465.267590832, "kontrakt, zysk 14% (K40)");
 blisko(r3.warianty[0].zyskN, 79060.474933655, "zysk z narzutem (K45)");
 blisko(r3.konserwacja[0].rok, 11040, "konserwacja 40 zł × 23 szt. (J46)");
+
+// Wycena łączona NK38 + NK41: wspólna ekipa i wyjazdy, osobodni i materiały się sumują, ceny pozycji dają cenę całości.
+console.log("NK38 + NK41 (wycena łączona)");
+const dGl = { szablon: "nk38", S: 6, D: 10, agregaty: 3, km: 300 };
+const rGl = E.oblicz(Object.assign(E.domyslneDane(), szablon("nk38").domyslne, dGl), szablon("nk38"));
+const rDr = E.oblicz(Object.assign(E.domyslneDane(), szablon("nk41").domyslne, { szablon: "nk41", S: 23, agregaty: 6, km: 300 }), szablon("nk41"));
+const rL = E.oblicz(Object.assign(E.domyslneDane(), szablon("nk38").domyslne, dGl, { dodatkowe: [{ szablon: "nk41", S: 23, agr3: 4, agr6: 2 }] }), szablon("nk38"), E.szablonyWbudowane());
+const wL = rL.warianty[0];
+blisko(wL.koszty.urzadzenia, rGl.mat.suma2000 + rDr.mat.suma2000, "materiały: suma obu pozycji");
+blisko(wL.osd, rGl.warianty[0].osd + rDr.warianty[0].osd, "osobodni montażu: suma obu pozycji");
+blisko(wL.pozycje[0].cena + wL.pozycje[1].cena, wL.cena, "ceny pozycji = cena całości");
+blisko(wL.pozycje[0].cena2 + wL.pozycje[1].cena2, wL.cena2, "ceny pozycji przy zysku 2 = cena całości");
+blisko(rL.razem.MP, rGl.mat.MP + rDr.mat.MP, "miejsca postojowe razem");
+assert(wL.cena < rGl.warianty[0].cena + rDr.warianty[0].cena - 10000, "łącznie taniej niż dwie osobne wyceny");
+assert(rL.razem.brakB && rL.ostrzezenia.some((x) => /NK41/.test(x.tekst)), "NK41 bez dopłaty: wariant 2500 kg niedostępny w całej wycenie");
+const rBez = E.oblicz(Object.assign(E.domyslneDane(), szablon("nk38").domyslne, dGl, { dodatkowe: [] }), szablon("nk38"), E.szablonyWbudowane());
+blisko(rBez.warianty[0].cena, rGl.warianty[0].cena, "bez drugiego urządzenia cena bez zmian");
+assert(rBez.warianty[0].pozycje === null, "bez drugiego urządzenia brak podziału na pozycje");
 console.log("szablony: OK");
