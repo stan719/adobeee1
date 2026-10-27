@@ -1169,6 +1169,7 @@ window.NK38_FONTS = { regular: "AAEAAAAOAIAAAwBgR0RFRgS1BUEAAH9cAAAARkdQT1MAGQAM
   function n2(v) { return fmt2.format(v); }
   function pct(v) { return fmt2.format(v * 100) + "%"; }
   var fmt3 = new Intl.NumberFormat("pl-PL", { maximumFractionDigits: 3 });
+  function godzina() { var t = new Date(); return ("0" + t.getHours()).slice(-2) + ":" + ("0" + t.getMinutes()).slice(-2); }   // godzina przygotowania raportu
   function pct3(v) { return fmt3.format(v * 100) + "%"; }   // stawki typu KOB 0,515%
   function ceil100(v) { return Math.ceil(Math.round(v * 100) / 10000) * 100; }
   function kwotaOferta(v) { return fmt0.format(v).replace(/\s/g, ".") + ",00 zł"; }
@@ -1381,7 +1382,7 @@ window.NK38_FONTS = { regular: "AAEAAAAOAIAAAwBgR0RFRgS1BUEAAH9cAAAARkdQT1MAGQAM
     };
     var baza = sz.opcje.konserwacjaNa === "szt" ? m.platformy : m.MP;
     var karta = {
-      adres: d.nazwa || "bez nazwy", data: /^\d{4}-\d{2}-\d{2}$/.test(d.data || "") ? d.data.split("-").reverse().join(".") : (d.data || "–"),
+      adres: d.nazwa || "bez nazwy", data: (/^\d{4}-\d{2}-\d{2}$/.test(d.data || "") ? d.data.split("-").reverse().join(".") : (d.data || "–")) + ", " + godzina(),
       lok: d.lok + (w.krk ? "" : " · " + (d.km || 0) + " km od Krakowa"),
       urz: ["S", "D", "NP"].filter(function (x) { return d[x]; }).map(function (x) { return d[x] + "× " + kod(x); }).join(" + ") || "–",
       razem: m.platformy + " " + odmiana(m.platformy, "urządzenie", "urządzenia", "urządzeń") + " = " + m.MP + " " + odmiana(m.MP, "miejsce postojowe", "miejsca postojowe", "miejsc postojowych"),
@@ -2213,7 +2214,7 @@ window.NK38_FONTS = { regular: "AAEAAAAOAIAAAwBgR0RFRgS1BUEAAH9cAAAARkdQT1MAGQAM
 (function () {
   "use strict";
   /* Wersja programu: podnoś przy każdym wydaniu (pokazywana na pulpicie, zapisywana w kopii zapasowej). */
-  var WERSJA = { nr: "1.46", data: "23.10.2026" };
+  var WERSJA = { nr: "1.47", data: "23.10.2026" };
   var E = window.NK38, X = window.NK38X;
   var LS = { robocze: "nk38.robocze.v1", drafty: "nk38.szkice.v1", draft: "nk38.szkic.v1", tab: "nk38.zakladka", sel: "nk38.wariant", logo: "nk38.logo.v1", podpis: "nk38.podpis.v1",
     szablony: "nk38.szablony.v1", wyceny: "nk38.wyceny.v1", tekstyOferty: "nk38.szablon.v1", numery: "nk38.numery.v1", cennikStary: "nk38.cennik.v1", usuniete: "nk38.usuniete.v1", migracja2: "nk38.migracja2", migracja3: "nk38.migracja3", migracja4: "nk38.migracja4", historia: "nk38.historia.v1", uzytkownik: "nk38.uzytkownik.v1" };

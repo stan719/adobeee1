@@ -10,6 +10,7 @@
   function n2(v) { return fmt2.format(v); }
   function pct(v) { return fmt2.format(v * 100) + "%"; }
   var fmt3 = new Intl.NumberFormat("pl-PL", { maximumFractionDigits: 3 });
+  function godzina() { var t = new Date(); return ("0" + t.getHours()).slice(-2) + ":" + ("0" + t.getMinutes()).slice(-2); }   // godzina przygotowania raportu
   function pct3(v) { return fmt3.format(v * 100) + "%"; }   // stawki typu KOB 0,515%
   function ceil100(v) { return Math.ceil(Math.round(v * 100) / 10000) * 100; }
   function kwotaOferta(v) { return fmt0.format(v).replace(/\s/g, ".") + ",00 zł"; }
@@ -222,7 +223,7 @@
     };
     var baza = sz.opcje.konserwacjaNa === "szt" ? m.platformy : m.MP;
     var karta = {
-      adres: d.nazwa || "bez nazwy", data: /^\d{4}-\d{2}-\d{2}$/.test(d.data || "") ? d.data.split("-").reverse().join(".") : (d.data || "–"),
+      adres: d.nazwa || "bez nazwy", data: (/^\d{4}-\d{2}-\d{2}$/.test(d.data || "") ? d.data.split("-").reverse().join(".") : (d.data || "–")) + ", " + godzina(),
       lok: d.lok + (w.krk ? "" : " · " + (d.km || 0) + " km od Krakowa"),
       urz: ["S", "D", "NP"].filter(function (x) { return d[x]; }).map(function (x) { return d[x] + "× " + kod(x); }).join(" + ") || "–",
       razem: m.platformy + " " + odmiana(m.platformy, "urządzenie", "urządzenia", "urządzeń") + " = " + m.MP + " " + odmiana(m.MP, "miejsce postojowe", "miejsca postojowe", "miejsc postojowych"),
