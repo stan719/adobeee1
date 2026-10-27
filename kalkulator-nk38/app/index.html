@@ -131,7 +131,8 @@ details.dims summary span { font-weight: 400; color: var(--muted); }
 .big { font-family: var(--f-num); font-weight: 500; font-size: clamp(26px, 3.4vw, 40px); letter-spacing: -.035em; line-height: 1.05; margin-top: 4px; font-variant-numeric: tabular-nums; white-space: nowrap; }
 .big small { font-size: .45em; color: var(--muted); letter-spacing: 0; margin-left: 4px; }
 .pz.b .big { color: var(--ink-2); }
-.pz .d { font-family: var(--f-num); font-size: 12px; color: var(--muted); margin-top: 3px; }
+.pz .d { font-family: var(--f-num); font-size: 12px; color: var(--muted); margin-top: 6px; display: flex; flex-wrap: wrap; align-items: center; gap: 4px 10px; }
+.pz .d .mp { font-size: 15px; font-weight: 600; color: var(--ink); background: var(--accent-soft); border-radius: 6px; padding: 2px 8px; white-space: nowrap; }   /* cena za miejsce postojowe wyróżniona */
 .kpis { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 12px 0; margin-top: 16px; border-top: 1px solid var(--line); padding-top: 14px; }
 .kpi { padding: 0 14px; border-left: 1px solid var(--line); min-width: 0; }
 .kpi:first-child { border-left: 0; padding-left: 0; }
@@ -587,7 +588,7 @@ html, body { overflow-x: clip; max-width: 100%; }
 (function () {
   "use strict";
   /* Wersja programu: podnoś przy każdym wydaniu (pokazywana na pulpicie, zapisywana w kopii zapasowej). */
-  var WERSJA = { nr: "1.36", data: "23.10.2026" };
+  var WERSJA = { nr: "1.37", data: "23.10.2026" };
   var E = window.NK38, X = window.NK38X;
   var LS = { robocze: "nk38.robocze.v1", drafty: "nk38.szkice.v1", draft: "nk38.szkic.v1", tab: "nk38.zakladka", sel: "nk38.wariant", logo: "nk38.logo.v1", podpis: "nk38.podpis.v1",
     szablony: "nk38.szablony.v1", wyceny: "nk38.wyceny.v1", tekstyOferty: "nk38.szablon.v1", numery: "nk38.numery.v1", cennikStary: "nk38.cennik.v1", usuniete: "nk38.usuniete.v1", migracja2: "nk38.migracja2", migracja3: "nk38.migracja3", historia: "nk38.historia.v1", uzytkownik: "nk38.uzytkownik.v1" };
@@ -1115,9 +1116,9 @@ html, body { overflow-x: clip; max-width: 100%; }
       (maSl ? '<div class="seg" role="group" aria-label="Słupki e-ładowarek"><button type="button" data-sl="0" aria-pressed="' + (sl === 0) + '">Bez słupków</button><button type="button" data-sl="1" aria-pressed="' + (sl === 1) + '">Ze słupkami</button></div>' : "") +
       '</div><span class="eyebrow">' + esc(d.typ) + ' · ' + m.MP + ' MP · ' + esc(d.lok) + '</span></div>' +
       '<div class="prices"><div class="pz"><div class="eyebrow">Cena netto · ' + zA + '</div><div class="big">' + fmtPLN.format(Math.round(w.cena)) + '<small>zł</small></div>' +
-      '<div class="d">' + zl(w.cenaMP) + ' / MP · ' + eur(w.cenaMPeur) + ' / MP</div></div>' +
+      '<div class="d"><span class="mp">' + zl(w.cenaMP) + ' / MP</span> ' + eur(w.cenaMPeur) + ' / MP</div></div>' +
       '<div class="pz b"><div class="eyebrow">Cena netto · ' + zB + '</div><div class="big">' + fmtPLN.format(Math.round(w.cena2)) + '<small>zł</small></div>' +
-      '<div class="d">' + zl(w.cenaMP2) + ' / MP · ' + sgn(w.cena2 - w.cena) + '</div></div></div>' +
+      '<div class="d"><span class="mp">' + zl(w.cenaMP2) + ' / MP</span> ' + sgn(w.cena2 - w.cena) + '</div></div></div>' +
       strukturaCeny(w) +
       '<div class="kpis">' +
       kpi("Montaż", w.tygodnie + " tyg.<small>" + w.dni + " dni pracy, " + w.osoby + " os." + (recz ? ", tygodnie wpisane ręcznie" : "") + "</small>", true) +
