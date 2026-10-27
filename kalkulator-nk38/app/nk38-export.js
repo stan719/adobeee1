@@ -224,7 +224,7 @@
       lok: d.lok + (w.krk ? "" : " · " + (d.km || 0) + " km od Krakowa"),
       urz: ["S", "D", "NP"].filter(function (x) { return d[x]; }).map(function (x) { return d[x] + "× " + kod(x); }).join(" + ") || "–",
       razem: m.platformy + " " + odmiana(m.platformy, "urządzenie", "urządzenia", "urządzeń") + " = " + m.MP + " " + odmiana(m.MP, "miejsce postojowe", "miejsca postojowe", "miejsc postojowych"),
-      agregaty: sz.opcje.agregaty || d.agregaty ? (d.agregaty || 0) + " szt." + (agrMoc(d) ? " (" + agrMoc(d) + ")" : "") : "",
+      agregaty: sz.opcje.agregaty || d.agregaty ? (d.agregaty || 0) + " szt. (" + (agrMoc(d) || "3 kW / 6 kW: nie podano") + ")" : "",   // suma, w nawiasie podział na moc
       agrOpis: d.agrOpis || "", kobGdw: pct(r.cennik.kob) + " / " + pct(r.cennik.gdw),
       wymiary: wp.map(function (x, i) {
         var t = [];
