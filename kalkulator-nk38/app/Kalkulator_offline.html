@@ -266,6 +266,16 @@ ul.notes li::before { content: ""; position: absolute; left: 0; top: .6em; width
 /* panel oferty (pełny ekran) */
 .ov { position: fixed; inset: 0; z-index: 25; background: var(--bg); overflow-y: auto; overscroll-behavior: contain; }
 .ov[hidden] { display: none; }
+/* podgląd raportu PDF / Excela przed pobraniem */
+.pv { z-index: 26; }
+.pv-body { max-width: 980px; margin: 0 auto; display: flex; flex-direction: column; gap: 18px; align-items: center;
+  padding: 20px max(16px, env(safe-area-inset-right, 0px)) calc(32px + env(safe-area-inset-bottom, 0px)) max(16px, env(safe-area-inset-left, 0px)); }
+.pv-body canvas { display: block; width: 100%; max-width: 900px; height: auto; background: #ffffff; box-shadow: var(--shadow); border-radius: 3px; }
+.pv-arkusz { width: 100%; overflow-x: auto; background: #ffffff; color: #111111; box-shadow: var(--shadow); border-radius: 3px; padding: 18px; }
+.pv-arkusz table { border-collapse: collapse; font-family: Arial, "Liberation Sans", sans-serif; font-size: 13px; table-layout: fixed; }
+.pv-arkusz td { padding: 1px 4px; vertical-align: bottom; overflow: hidden; white-space: nowrap; }
+.pv-arkusz td.zaw { white-space: normal; }
+.pv-info { color: var(--muted); font-size: 13px; }
 .ov-head { position: sticky; top: 0; z-index: 2; background: color-mix(in srgb, var(--surface) 92%, transparent); backdrop-filter: blur(10px); border-bottom: 1px solid var(--line); padding-top: env(safe-area-inset-top, 0px); }
 .ov-head-in { max-width: 1360px; margin: 0 auto; display: flex; flex-wrap: wrap; gap: 10px 16px; align-items: center; justify-content: space-between;
   padding: 10px max(16px, env(safe-area-inset-right, 0px)) 10px max(16px, env(safe-area-inset-left, 0px)); }
@@ -557,6 +567,19 @@ html, body { overflow-x: clip; max-width: 100%; }
   </div>
 </div>
 
+<div class="ov pv" id="pv" hidden role="dialog" aria-modal="true" aria-labelledby="pvTitle">
+  <div class="ov-head">
+    <div class="ov-head-in">
+      <div style="min-width:0"><h2 id="pvTitle">Podgląd</h2><p class="note" id="pvSub"></p></div>
+      <div class="row">
+        <div class="seg" role="group" aria-label="Arkusz" id="pvTabs" hidden></div>
+        <button class="btn primary" type="button" id="pvPobierz">Pobierz</button>
+        <button class="btn" type="button" id="pvZamknij">Zamknij</button>
+      </div>
+    </div>
+  </div>
+  <div class="pv-body" id="pvBody"></div>
+</div>
 <div class="ov" id="ov" hidden role="dialog" aria-modal="true" aria-labelledby="ovTitle">
   <div class="ov-head">
     <div class="ov-head-in">
@@ -2190,7 +2213,7 @@ window.NK38_FONTS = { regular: "AAEAAAAOAIAAAwBgR0RFRgS1BUEAAH9cAAAARkdQT1MAGQAM
 (function () {
   "use strict";
   /* Wersja programu: podnoś przy każdym wydaniu (pokazywana na pulpicie, zapisywana w kopii zapasowej). */
-  var WERSJA = { nr: "1.45", data: "23.10.2026" };
+  var WERSJA = { nr: "1.46", data: "23.10.2026" };
   var E = window.NK38, X = window.NK38X;
   var LS = { robocze: "nk38.robocze.v1", drafty: "nk38.szkice.v1", draft: "nk38.szkic.v1", tab: "nk38.zakladka", sel: "nk38.wariant", logo: "nk38.logo.v1", podpis: "nk38.podpis.v1",
     szablony: "nk38.szablony.v1", wyceny: "nk38.wyceny.v1", tekstyOferty: "nk38.szablon.v1", numery: "nk38.numery.v1", cennikStary: "nk38.cennik.v1", usuniete: "nk38.usuniete.v1", migracja2: "nk38.migracja2", migracja3: "nk38.migracja3", migracja4: "nk38.migracja4", historia: "nk38.historia.v1", uzytkownik: "nk38.uzytkownik.v1" };
@@ -3253,12 +3276,14 @@ window.NK38_FONTS = { regular: "AAEAAAAOAIAAAwBgR0RFRgS1BUEAAH9cAAAARkdQT1MAGQAM
   }
 
   /* --- eksporty --- */
-  var LIBS = window.NK38_LIBS || {
+  var LIBS = Object.assign({
+    pdfjs: "https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js",
+    pdfjsworker: "https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js",
     exceljs: "https://cdn.jsdelivr.net/npm/exceljs@4.4.0/dist/exceljs.min.js",
     jspdf: "https://cdn.jsdelivr.net/npm/jspdf@2.5.1/dist/jspdf.umd.min.js",
     autotable: "https://cdn.jsdelivr.net/npm/jspdf-autotable@3.8.2/dist/jspdf.plugin.autotable.min.js",
     docx: "https://cdn.jsdelivr.net/npm/docx@8.5.0/build/index.umd.js"
-  };
+  }, window.NK38_LIBS || {});
   var loaded = {};
   function loadScript(key) {
     if (!loaded[key]) loaded[key] = new Promise(function (ok, fail) {
@@ -3306,14 +3331,92 @@ window.NK38_FONTS = { regular: "AAEAAAAOAIAAAwBgR0RFRgS1BUEAAH9cAAAARkdQT1MAGQAM
   }
   async function eksportXlsx() {
     await loadScript("exceljs"); X.setLibs({ ExcelJS: window.ExcelJS });
-    var buf = await X.xlsx(wynik, ctxExport(null));
-    await zapisz(nazwaPliku("Kalkulator_" + wynik.dane.typ, "xlsx"), new Blob([buf]));
+    var buf = await X.xlsx(wynik, ctxExport(null)), nazwa = nazwaPliku("Kalkulator_" + wynik.dane.typ, "xlsx");
+    var wb = new window.ExcelJS.Workbook(); await wb.xlsx.load(buf);
+    otworzPodglad("Podgląd: Excel", nazwa, function () { return zapisz(nazwa, new Blob([buf])); });
+    var arkusze = wb.worksheets.map(function (ws) { return { nazwa: ws.name, html: arkuszHtml(ws) }; });
+    var pokazArk = function (i) {
+      $("pvBody").innerHTML = '<div class="pv-arkusz">' + arkusze[i].html + "</div>";
+      $("pvTabs").querySelectorAll("button").forEach(function (b, j) { b.setAttribute("aria-pressed", j === i); });
+    };
+    $("pvTabs").innerHTML = arkusze.map(function (a, i) { return '<button type="button" data-ark="' + i + '">' + esc(a.nazwa) + "</button>"; }).join("");
+    $("pvTabs").hidden = arkusze.length < 2;
+    $("pvTabs").onclick = function (e) { var b = e.target.closest("button[data-ark]"); if (b) pokazArk(+b.dataset.ark); };
+    pokazArk(0);
   }
   async function eksportPdf() {
     await loadScript("jspdf"); await loadScript("autotable");
     X.setLibs({ jsPDF: window.jspdf.jsPDF, autoTable: function (doc, o) { return doc.autoTable(o); } });
-    var buf = X.pdf(wynik, ctxExport(await fonts()));
-    await zapisz(nazwaPliku("Raport_" + wynik.dane.typ, "pdf"), new Blob([buf]));
+    var buf = X.pdf(wynik, ctxExport(await fonts())), nazwa = nazwaPliku("Raport_" + wynik.dane.typ, "pdf");
+    otworzPodglad("Podgląd: Raport PDF", nazwa, function () { return zapisz(nazwa, new Blob([buf])); });
+    $("pvTabs").hidden = true;
+    $("pvBody").innerHTML = '<p class="pv-info">Wczytuję podgląd…</p>';
+    try {
+      await loadScript("pdfjs"); await loadScript("pdfjsworker");   // worker jako zwykły skrypt: pdf.js liczy w głównym wątku
+      var pdf = await window.pdfjsLib.getDocument({ data: new Uint8Array(buf.slice(0)) }).promise;
+      $("pvBody").innerHTML = "";
+      for (var n = 1; n <= pdf.numPages; n++) {
+        var strona = await pdf.getPage(n), v = strona.getViewport({ scale: 1 }), skala = Math.min(900, $("pvBody").clientWidth || 900) / v.width * (window.devicePixelRatio || 1);
+        var vp = strona.getViewport({ scale: skala }), cv = document.createElement("canvas");
+        cv.width = vp.width; cv.height = vp.height; cv.setAttribute("aria-label", "Strona " + n + " z " + pdf.numPages);
+        $("pvBody").appendChild(cv);
+        await strona.render({ canvasContext: cv.getContext("2d"), viewport: vp }).promise;
+      }
+    } catch (e) { $("pvBody").innerHTML = '<p class="pv-info">Nie udało się pokazać podglądu (sprawdź internet). Raport możesz pobrać przyciskiem „Pobierz”.</p>'; }
+  }
+  /* --- podgląd przed pobraniem --- */
+  var pvPobierz = null;
+  function otworzPodglad(tytul, nazwa, pobierz) {
+    pvPobierz = pobierz; $("pvTitle").textContent = tytul; $("pvSub").textContent = nazwa;
+    $("pv").hidden = false; document.body.style.overflow = "hidden"; $("pvZamknij").focus();
+  }
+  function zamknijPodglad() { $("pv").hidden = true; document.body.style.overflow = ""; $("pvBody").innerHTML = ""; pvPobierz = null; }
+  $("pvZamknij").addEventListener("click", zamknijPodglad);
+  $("pvPobierz").addEventListener("click", function () { if (pvPobierz) busy($("pvPobierz"), pvPobierz); });
+  /* arkusz ExcelJS jako tabela HTML: szerokości kolumn, scalenia, czcionki, wypełnienia, ramki i formaty liczb */
+  function arkuszHtml(ws) {
+    var kolumny = ws.columnCount || 1, scal = {}, ukryte = {};
+    ((ws.model && ws.model.merges) || []).forEach(function (zakres) {
+      var m = zakres.match(/^([A-Z]+)(\d+):([A-Z]+)(\d+)$/); if (!m) return;
+      var kol = function (t) { return t.split("").reduce(function (a, ch) { return a * 26 + ch.charCodeAt(0) - 64; }, 0); };
+      var c1 = kol(m[1]), r1 = +m[2], c2 = kol(m[3]), r2 = +m[4];
+      scal[r1 + ":" + c1] = { cs: c2 - c1 + 1, rs: r2 - r1 + 1 };
+      for (var r = r1; r <= r2; r++) for (var c = c1; c <= c2; c++) if (r !== r1 || c !== c1) ukryte[r + ":" + c] = 1;
+    });
+    var kolor = function (o) { return o && o.argb ? "#" + o.argb.slice(-6) : ""; };
+    var ramka = function (b) { return b && b.style ? (b.style === "medium" ? "2px" : "1px") + " solid " + (kolor(b.color) || "#d3d9dd") : ""; };
+    var tekst = function (cell) {
+      var v = cell.value, f = cell.numFmt || "";
+      if (v == null) return "";
+      if (typeof v === "object" && v.richText) return v.richText.map(function (t) { return t.text; }).join("");
+      if (typeof v !== "number") return String(v);
+      var dopisek = (f.match(/"\s+([^"]+)"$/) || [])[1];
+      if (/%/.test(f)) return v === 0 && /"–"/.test(f) ? "–" : n2(Math.round(v * 1000) / 10) + "%" + (dopisek ? "  " + dopisek : "");
+      if (/zł/.test(f)) return (v === 0 && /"–"/.test(f) ? "–" : (/^"\+"/.test(f) && v > 0 ? "+" : "") + zl(v));
+      if (/0\.00/.test(f)) return n2(v);
+      if (/#,##0/.test(f)) return fmtPLN.format(Math.round(v));
+      return n2(v);
+    };
+    var h = '<table><colgroup>';
+    for (var c = 1; c <= kolumny; c++) h += '<col style="width:' + Math.round(((ws.getColumn(c).width || 10) * 7.2) + 6) + 'px">';
+    h += "</colgroup><tbody>";
+    for (var r = 1; r <= ws.rowCount; r++) {
+      var row = ws.getRow(r);
+      h += '<tr style="height:' + Math.round((row.height || 15) * 1.333) + 'px">';
+      for (c = 1; c <= kolumny; c++) {
+        if (ukryte[r + ":" + c]) continue;
+        var cell = row.getCell(c), st = [], sc = scal[r + ":" + c], fo = cell.font || {}, al = cell.alignment || {}, bo = cell.border || {}, fi = cell.fill;
+        if (fo.bold) st.push("font-weight:700"); if (fo.size) st.push("font-size:" + Math.round(fo.size * 1.333) + "px"); if (kolor(fo.color)) st.push("color:" + kolor(fo.color));
+        if (fo.name === "Consolas") st.push("font-family:Consolas,monospace");
+        if (fi && fi.type === "pattern" && kolor(fi.fgColor)) st.push("background:" + kolor(fi.fgColor));
+        if (al.horizontal) st.push("text-align:" + al.horizontal); if (al.vertical) st.push("vertical-align:" + (al.vertical === "middle" ? "middle" : al.vertical));
+        if (al.indent) st.push("padding-left:" + (4 + al.indent * 8) + "px");
+        ["top", "bottom", "left", "right"].forEach(function (k) { var b = ramka(bo[k]); if (b) st.push("border-" + k + ":" + b); });
+        h += "<td" + (sc ? (sc.cs > 1 ? ' colspan="' + sc.cs + '"' : "") + (sc.rs > 1 ? ' rowspan="' + sc.rs + '"' : "") : "") + (al.wrapText ? ' class="zaw"' : "") + ' style="' + st.join(";") + '">' + esc(tekst(cell)) + "</td>";
+      }
+      h += "</tr>";
+    }
+    return h + "</tbody></table>";
   }
   var logoDomP = null;
   function logoDomyslne() {
@@ -3381,7 +3484,10 @@ window.NK38_FONTS = { regular: "AAEAAAAOAIAAAwBgR0RFRgS1BUEAAH9cAAAARkdQT1MAGQAM
   $("bSave").addEventListener("click", function () { oknoZapisu(); });
   $("bOferta").addEventListener("click", otworzOferte);
   $("bOvClose").addEventListener("click", zamknijOferte);
-  document.addEventListener("keydown", function (e) { if (e.key === "Escape" && !$("ov").hidden) zamknijOferte(); });
+  document.addEventListener("keydown", function (e) {
+    if (e.key !== "Escape") return;
+    if (!$("pv").hidden) zamknijPodglad(); else if (!$("ov").hidden) zamknijOferte();
+  });
 
   /* Zapis wyceny: nadpisanie wczytanej albo nowa pozycja pod nową nazwą (domyślnie z dzisiejszą datą). */
   function oknoZapisu(nazwa) {
