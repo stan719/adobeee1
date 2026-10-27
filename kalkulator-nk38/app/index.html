@@ -588,7 +588,7 @@ html, body { overflow-x: clip; max-width: 100%; }
 (function () {
   "use strict";
   /* Wersja programu: podnoś przy każdym wydaniu (pokazywana na pulpicie, zapisywana w kopii zapasowej). */
-  var WERSJA = { nr: "1.44", data: "23.10.2026" };
+  var WERSJA = { nr: "1.45", data: "23.10.2026" };
   var E = window.NK38, X = window.NK38X;
   var LS = { robocze: "nk38.robocze.v1", drafty: "nk38.szkice.v1", draft: "nk38.szkic.v1", tab: "nk38.zakladka", sel: "nk38.wariant", logo: "nk38.logo.v1", podpis: "nk38.podpis.v1",
     szablony: "nk38.szablony.v1", wyceny: "nk38.wyceny.v1", tekstyOferty: "nk38.szablon.v1", numery: "nk38.numery.v1", cennikStary: "nk38.cennik.v1", usuniete: "nk38.usuniete.v1", migracja2: "nk38.migracja2", migracja3: "nk38.migracja3", migracja4: "nk38.migracja4", historia: "nk38.historia.v1", uzytkownik: "nk38.uzytkownik.v1" };
@@ -1268,7 +1268,7 @@ html, body { overflow-x: clip; max-width: 100%; }
   function paneObl() {
     var R = X.raport(wynik, wynik.szablon.glebokosci.map(function (g) { return g.cm; }), wynik.dane.oferta), nd = wynik.dane.nadpis || {}, sc = szablonAktywny().cennik;
     var h = '<h3 class="sec">Stawki w tej wycenie</h3><p class="note" style="margin-bottom:8px">Zmiana dotyczy tylko tej wyceny, szablon zostaje bez zmian. Puste pole = wartość z szablonu.</p><div class="kv stawki">' +
-      STAWKI.map(function (x) { return "<label for=\"st_" + x[0] + "\">" + x[1] + (nd[x[0]] != null ? ' <span class="tag">zmienione</span>' : "") + '</label><input id="st_' + x[0] + '" data-stawka="' + x[0] + '" type="number" step="any" placeholder="' + esc(n2(sc[x[0]] * (x[2] || 1))) + '"' + (x[2] ? ' data-mnoznik="' + x[2] + '"' : "") + ' value="' + (nd[x[0]] != null ? +(nd[x[0]] * (x[2] || 1)).toFixed(6) : "") + '">'; }).join("") + "</div>";
+      STAWKI.map(function (x) { return "<label for=\"st_" + x[0] + "\">" + x[1] + (nd[x[0]] != null ? ' <span class="tag">zmienione</span>' : "") + '</label><input id="st_' + x[0] + '" data-stawka="' + x[0] + '" type="number" step="any" placeholder="' + esc(String(+(sc[x[0]] * (x[2] || 1)).toFixed(4)).replace(".", ",")) + '"' + (x[2] ? ' data-mnoznik="' + x[2] + '"' : "") + ' value="' + (nd[x[0]] != null ? +(nd[x[0]] * (x[2] || 1)).toFixed(6) : "") + '">'; }).join("") + "</div>";
     h += '<h3 class="sec">Materiały i urządzenia</h3><div class="scroll"><table class="t"><tbody>' +
       R.mat.map(function (x) { return '<tr class="' + (/^Suma/.test(x[0]) ? "strong" : "") + '"><td>' + esc(x[0]) + "</td><td>" + esc(x[1]) + "</td></tr>"; }).join("") + "</tbody></table></div>";
     /* jedna kolumna: wariant wybrany przełącznikiem, opisy liczone dla niego */

@@ -1145,6 +1145,8 @@ window.NK38_FONTS = { regular: "AAEAAAAOAIAAAwBgR0RFRgS1BUEAAH9cAAAARkdQT1MAGQAM
   function eur(v) { return fmt0.format(Math.round(v)) + " €"; }
   function n2(v) { return fmt2.format(v); }
   function pct(v) { return fmt2.format(v * 100) + "%"; }
+  var fmt3 = new Intl.NumberFormat("pl-PL", { maximumFractionDigits: 3 });
+  function pct3(v) { return fmt3.format(v * 100) + "%"; }   // stawki typu KOB 0,515%
   function ceil100(v) { return Math.ceil(Math.round(v * 100) / 10000) * 100; }
   function kwotaOferta(v) { return fmt0.format(v).replace(/\s/g, ".") + ",00 zł"; }
 
@@ -1299,10 +1301,10 @@ window.NK38_FONTS = { regular: "AAEAAAAOAIAAAwBgR0RFRgS1BUEAAH9cAAAARkdQT1MAGQAM
       rozladunek_ludzie: n2(w.rozl) + " dni × " + w0.osoby + " os. × " + st(w0.stawka) + " zł",
       dojazdy: n2(w0.podroze - w0.osoby * w.rozl) + " osd podróży × " + st(w0.stawka) + " zł",
       baza: "suma kosztów powyżej",
-      kob: pct(C.kob) + " ceny przed podatkiem (" + zl(brutto0) + ")",
-      gdw: pct(C.gdw) + " ceny przed podatkiem",
+      kob: pct3(C.kob) + " ceny przed podatkiem (" + zl(brutto0) + ")",
+      gdw: pct3(C.gdw) + " ceny przed podatkiem",
       zysk: pct(d.zysk) + " ceny przed podatkiem",
-      zyskN: "zysk " + pct(d.zysk) + " + GDW " + pct(C.gdw),
+      zyskN: "zysk " + pct(d.zysk) + " + GDW " + pct3(C.gdw),
       podatek: pct(C.podatek) + " od robocizny (" + zl(w0.robocizna) + ") i zysku z narzutem",
       cena: "suma ÷ (1 − KOB − GDW − zysk) + podatek",
       koszt: "cena − zysk z narzutem",
@@ -1361,7 +1363,7 @@ window.NK38_FONTS = { regular: "AAEAAAAOAIAAAwBgR0RFRgS1BUEAAH9cAAAARkdQT1MAGQAM
       urz: ["S", "D", "NP"].filter(function (x) { return d[x]; }).map(function (x) { return d[x] + "× " + kod(x); }).join(" + ") || "–",
       razem: m.platformy + " " + odmiana(m.platformy, "urządzenie", "urządzenia", "urządzeń") + " = " + m.MP + " " + odmiana(m.MP, "miejsce postojowe", "miejsca postojowe", "miejsc postojowych"),
       agregaty: sz.opcje.agregaty || d.agregaty ? (d.agregaty || 0) + " szt. (" + (agrMoc(d) || "3 kW / 6 kW: nie podano") + ")" : "",   // suma, w nawiasie podział na moc
-      agrOpis: d.agrOpis || "", kobGdw: pct(r.cennik.kob) + " / " + pct(r.cennik.gdw),
+      agrOpis: d.agrOpis || "", kobGdw: pct3(r.cennik.kob) + " / " + pct3(r.cennik.gdw),
       wymiary: wp.map(function (x, i) {
         var t = [];
         if (x.h1 != null && x.h1 !== "") t.push(["Zagłębienie" + (wp.length > 1 ? " (wariant " + (i + 1) + ")" : ""), (x.h2 != null && x.h2 !== x.h1 ? "H1 " + x.h1 + " / H2 " + x.h2 : x.h1) + " cm" + (x.dl ? ", dł. " + x.dl + " cm" : "")]);
@@ -1444,8 +1446,8 @@ window.NK38_FONTS = { regular: "AAEAAAAOAIAAAwBgR0RFRgS1BUEAAH9cAAAARkdQT1MAGQAM
     }
     function banner(ws, title, sub, cols) {
       var r1 = ws.addRow([title]); ws.mergeCells(r1.number, 1, r1.number, cols);
-      r1.height = 28; r1.getCell(1).font = font({ size: 15, bold: true, color: { argb: "FFFFFFFF" } });
-      r1.getCell(1).fill = fill(C.acc); r1.getCell(1).alignment = { vertical: "middle", indent: 1 };
+      r1.height = 24; r1.getCell(1).font = font({ size: 13, bold: true });   // bez zalanego tła, jak w raporcie PDF
+      r1.getCell(1).alignment = { vertical: "bottom" }; r1.getCell(1).border = { bottom: { style: "medium", color: { argb: C.acc } } };
       var r2 = ws.addRow([sub]); ws.mergeCells(r2.number, 1, r2.number, cols);
       r2.getCell(1).font = font({ size: 9, color: { argb: C.muted } }); r2.getCell(1).alignment = { indent: 1 };
       ws.addRow([]);
@@ -1485,47 +1487,37 @@ window.NK38_FONTS = { regular: "AAEAAAAOAIAAAwBgR0RFRgS1BUEAAH9cAAAARkdQT1MAGQAM
       });
       ws.addRow([]);
     }
-    /* kafelki z najważniejszymi liczbami: 2 kolumny na kafelek */
-    function tiles(ws, items) {
-      var r1 = ws.addRow([]), r2 = ws.addRow([]), r3 = ws.addRow([]);
-      r1.height = 18; r2.height = 30; r3.height = 16;
-      var spans = items.spans || [[1, 2], [3, 5]];
-      items.forEach(function (t, i) {
-        var col = spans[i][0];
-        [r1, r2, r3].forEach(function (row) { ws.mergeCells(row.number, spans[i][0], row.number, spans[i][1]); });
-        var a = r1.getCell(col), b = r2.getCell(col), c = r3.getCell(col);
-        a.value = t[0]; b.value = t[1]; c.value = t[2] || "";
-        [a, b, c].forEach(function (x) { x.fill = fill(C.tile); x.alignment = { indent: 1, vertical: "middle" }; });
-        a.font = font({ size: 9, color: { argb: C.muted } });
-        b.font = font({ size: 16, bold: true, color: { argb: t[4] ? C.ink : C.acc } }); b.numFmt = t[3] || NF.zl;
-        b.alignment = { indent: 1, vertical: "middle", horizontal: "left" };
-        c.font = font({ size: 9, color: { argb: C.muted } });
-        a.border = { top: { style: "medium", color: { argb: C.acc } }, left: thin, right: thin };
-        b.border = { left: thin, right: thin }; c.border = { bottom: thin, left: thin, right: thin };
-      });
-      ws.addRow([]);
-    }
     var gen = "Wygenerowano " + new Date().toLocaleString("pl-PL") + " · ceny netto w zł · szablon " + d.typ;
 
     /* 1. Podsumowanie */
-    var s1 = sheet("Podsumowanie", [30, 17, 17, 16, 17, 17], 80), N = R.neg.N, K = R.karta;
+    var s1 = sheet("Podsumowanie", [30, 17, 15, 16, 17, 21], 80), N = R.neg.N, K = R.karta;
     /* nagłówek: adres inwestycji i data kalkulacji */
     var b1 = s1.addRow(["KALKULACJA " + d.typ, "", "", "", "Data kalkulacji"]), b2 = s1.addRow([K.adres, "", "", "", K.data]);
     [b1, b2].forEach(function (row) { s1.mergeCells(row.number, 1, row.number, 4); s1.mergeCells(row.number, 5, row.number, 6); });
     b1.height = 16; b2.height = 26;
-    [b1.getCell(1), b1.getCell(5), b2.getCell(1), b2.getCell(5)].forEach(function (c, i) {
-      c.fill = fill(C.acc); c.alignment = { vertical: "middle", horizontal: i % 2 ? "right" : "left", indent: 1 };
-      c.font = i < 2 ? font({ size: 8, color: { argb: "FFC4E4E7" } }) : font({ size: i === 2 ? 15 : 13, bold: true, color: { argb: "FFFFFFFF" } });
+    [b1.getCell(1), b1.getCell(5), b2.getCell(1), b2.getCell(5)].forEach(function (c, i) {   // bez tła: adres i data, linia akcentu pod spodem
+      c.alignment = { vertical: i < 2 ? "bottom" : "middle", horizontal: i % 2 ? "right" : "left" };
+      c.font = i < 2 ? font({ size: 8, color: { argb: C.muted } }) : font({ size: i === 2 ? 16 : 13, bold: true });
+      if (i >= 2) c.border = { bottom: { style: "medium", color: { argb: C.acc } } };
     });
     var b3 = s1.addRow([gen]); s1.mergeCells(b3.number, 1, b3.number, 6);
-    b3.getCell(1).font = font({ size: 9, color: { argb: C.muted } }); b3.getCell(1).alignment = { indent: 1 };
+    b3.getCell(1).font = font({ size: 9, color: { argb: C.muted } });
     s1.addRow([]);
-    var t1 = [
-      ["Cena ofertowa · zysk " + pct(N.zA), N.cenaA, zl(w0.cenaMP) + " / MP" + (w0.cenaMPeur ? " · " + eur(w0.cenaMPeur) + " / MP" : "")],
-      ["Można zejść do · zysk " + pct(N.zB), N.cenaB, "rabat −" + zl(N.cenaA - N.cenaB) + " (−" + n2((N.cenaA - N.cenaB) / N.cenaA * 100) + "%)"],
-      ["Próg opłacalności · zysk 0%", N.cenaMin, "maks. rabat −" + zl(N.cenaA - N.cenaMin) + " (−" + n2((N.cenaA - N.cenaMin) / N.cenaA * 100) + "%)", null, 1]];
-    t1.spans = [[1, 2], [3, 4], [5, 6]];
-    tiles(s1, t1);
+    /* tabelka cen jak w raporcie: cena całkowita i za MP tym samym krojem */
+    var MPn = r.mat.MP || 0, rabS = function (c) { return "−" + zl(N.cenaA - c) + " (−" + n2((N.cenaA - c) / N.cenaA * 100) + "%)"; };
+    var hc = s1.addRow(["Cena", "", "", "Cena netto", "Cena za MP", "Rabat od oferty"]); s1.mergeCells(hc.number, 1, hc.number, 3); hc.height = 20;
+    hc.eachCell(function (c, i) { if (i === 2 || i === 3) return; c.fill = fill(C.accSoft); c.border = box; c.font = font({ bold: true, size: 9, color: { argb: C.acc } }); c.alignment = { horizontal: i === 1 ? "left" : "right", vertical: "middle", indent: i === 1 ? 1 : 0 }; });
+    [["Cena ofertowa · zysk " + pct(N.zA) + " · " + w0.nazwa + (w0.cenaMPeur ? " · " + eur(w0.cenaMPeur) + " / MP" : ""), N.cenaA, "–"],
+     ["Można zejść do · zysk " + pct(N.zB), N.cenaB, rabS(N.cenaB)], ["Próg opłacalności · zysk 0% (maks. rabat)", N.cenaMin, rabS(N.cenaMin)]].forEach(function (q) {
+      var x = s1.addRow([q[0], "", "", q[1], MPn ? q[1] / MPn : 0, q[2]]); s1.mergeCells(x.number, 1, x.number, 3);
+      x.eachCell({ includeEmpty: true }, function (c, i) {
+        if (i === 2 || i === 3) return;   // scalone z kolumną 1: wspólny styl
+        c.border = box; c.font = font({ bold: i === 4 || i === 5 });
+        c.alignment = i === 1 ? { indent: 1, vertical: "middle" } : { horizontal: "right", vertical: "middle" };
+        if (i === 4 || i === 5) c.numFmt = NF.zl;
+      });
+    });
+    s1.addRow([]);
     section(s1, "Pole do negocjacji: o ile można zejść z ceny (" + w0.nazwa + ")", 6);
     var GOOD = "FFE3F4EA", GOODT = "FF13794A", WARN = "FFFDF3DD", BAD = "FFFDECEA", BADT = "FFB42318";
     var hn = s1.addRow(R.neg.head); hn.height = 26;
@@ -1555,14 +1547,14 @@ window.NK38_FONTS = { regular: "AAEAAAAOAIAAAwBgR0RFRgS1BUEAAH9cAAAARkdQT1MAGQAM
     if (K.agrOpis) prawa.push(["Układ agregatów", K.agrOpis]);
     prawa.push(["KOB / GDW", K.kobGdw]);
     var naglK = s1.addRow(["ZAKRES", "", "", "WYMIARY"]); s1.mergeCells(naglK.number, 1, naglK.number, 3); s1.mergeCells(naglK.number, 4, naglK.number, 6);
-    [1, 4].forEach(function (ci) { var c = naglK.getCell(ci); c.font = font({ size: 8, bold: true, color: { argb: C.acc } }); c.fill = fill(C.tile); c.alignment = { indent: 1 }; c.border = { top: { style: "medium", color: { argb: C.acc } } }; });
+    [1, 4].forEach(function (ci) { var c = naglK.getCell(ci); c.font = font({ size: 8, bold: true, color: { argb: C.acc } }); c.alignment = { indent: 1 }; c.border = { top: thin }; });
     for (var li = 0; li < Math.max(lewa.length, prawa.length); li++) {
       [0, 1].forEach(function (etap) {
         var L1 = lewa[li], P1 = prawa[li], kr = s1.addRow([L1 ? L1[etap] : "", "", "", P1 ? P1[etap] : ""]);
         s1.mergeCells(kr.number, 1, kr.number, 3); s1.mergeCells(kr.number, 4, kr.number, 6);
         kr.height = etap ? 18 : 13;
         [[L1, 1], [P1, 4]].forEach(function (z) {
-          var c = kr.getCell(z[1]); c.fill = fill(C.tile); c.alignment = { indent: 1, vertical: etap ? "top" : "bottom" };
+          var c = kr.getCell(z[1]); c.alignment = { indent: 1, vertical: etap ? "top" : "bottom" };
           c.font = etap ? font({ size: 11, bold: true, color: { argb: z[0] && z[0][2] ? C.acc : C.ink } }) : font({ size: 8.5, color: { argb: C.muted } });
         });
       });
@@ -1570,7 +1562,7 @@ window.NK38_FONTS = { regular: "AAEAAAAOAIAAAwBgR0RFRgS1BUEAAH9cAAAARkdQT1MAGQAM
     s1.addRow([]);
     var op = s1.addRow(["Opis wariantu", K.opis || "–"]); s1.mergeCells(op.number, 2, op.number, 6);
     op.getCell(1).font = font({ size: 8.5, color: { argb: C.muted } }); op.getCell(1).alignment = { indent: 1, vertical: "top" };
-    op.getCell(2).font = font({ name: "Consolas", size: 9.5 }); op.getCell(2).alignment = { wrapText: true, vertical: "top" };
+    op.getCell(2).font = font({ size: 10, bold: true }); op.getCell(2).alignment = { wrapText: true, vertical: "top" };
     if (String(K.opis).length > 75) op.height = 15 * Math.ceil(String(K.opis).length / 75);
     var e3 = s1.addRow(["Lokalizacja", "", "Montaż", "", "Transport", ""]), v3 = s1.addRow([K.lok, "", K.montaz, "", K.transport, ""]);
     [e3, v3].forEach(function (row, ri) {
@@ -1597,16 +1589,19 @@ window.NK38_FONTS = { regular: "AAEAAAAOAIAAAwBgR0RFRgS1BUEAAH9cAAAARkdQT1MAGQAM
       });
       s1.addRow([]);
     }
-    /* konserwacja: stawka za miejsce wyraźnie, pod nią kwota roczna i za jeden przegląd */
-    var kk1 = s1.addRow([]), kk2 = s1.addRow([]), kk3 = s1.addRow([]), kk4 = s1.addRow([]);
-    kk1.height = 16; kk2.height = 24; kk3.height = 17; kk4.height = 15;
-    K.konserwacja.forEach(function (kk, i) {
-      var c0 = i ? 4 : 1;
-      [[kk1, kk.nazwa + " · " + kk.baza, font({ size: 9, color: { argb: C.muted } })], [kk2, kk.stawka, font({ size: 16, bold: true, color: { argb: C.acc } })],
-       [kk3, zl(kk.rok) + " rocznie", font({ size: 11, bold: true })], [kk4, "jeden przegląd (co pół roku): " + zl(kk.przeglad), font({ size: 9.5 })]].forEach(function (z, zi) {
-        s1.mergeCells(z[0].number, c0, z[0].number, c0 + 2);
-        var c = z[0].getCell(c0); c.value = z[1]; c.font = z[2]; c.fill = fill(C.tile); c.alignment = { indent: 1, vertical: "middle" };
-        c.border = zi === 0 ? { top: { style: "medium", color: { argb: C.acc } } } : zi === 3 ? { bottom: thin } : {};
+    /* konserwacja: tabelka stawek 35–60 zł co 5 zł plus stawki z wyceny (pogrubione), jak w raporcie */
+    var bK = K.konserwacja[0].bazaN, stW = r.konserwacja.map(function (k) { return k.stawka; }), stK = [35, 40, 45, 50, 55, 60];
+    stW.forEach(function (v) { if (stK.indexOf(v) < 0) stK.push(v); }); stK.sort(function (a, b) { return a - b; });
+    var hk = s1.addRow(["Konserwacja (" + K.konserwacja[0].baza + ")", "", "", "Miesięcznie", "Rocznie", "Jeden przegląd (co pół roku)"]); s1.mergeCells(hk.number, 1, hk.number, 3); hk.height = 26;
+    hk.eachCell(function (c, i) { if (i === 2 || i === 3) return; c.fill = fill(C.accSoft); c.border = box; c.font = font({ bold: true, size: 9, color: { argb: C.acc } }); c.alignment = { horizontal: i === 1 ? "left" : "right", vertical: "middle", wrapText: true, indent: i === 1 ? 1 : 0 }; });
+    stK.forEach(function (v) {
+      var wi = stW.indexOf(v), mies = v * bK;
+      var x = s1.addRow([v + " zł / " + R.jm + " / mies." + (wi >= 0 ? "  · wariant " + (wi + 1) : ""), "", "", mies, mies * 12, mies * 6]); s1.mergeCells(x.number, 1, x.number, 3);
+      x.eachCell({ includeEmpty: true }, function (c, i) {
+        if (i === 2 || i === 3) return;
+        c.border = box; c.font = font({ bold: wi >= 0 });
+        c.alignment = i === 1 ? { indent: 1, vertical: "middle" } : { horizontal: "right", vertical: "middle" };
+        if (i >= 4) c.numFmt = NF.zl;
       });
     });
     s1.addRow([]);
@@ -1617,7 +1612,7 @@ window.NK38_FONTS = { regular: "AAEAAAAOAIAAAwBgR0RFRgS1BUEAAH9cAAAARkdQT1MAGQAM
 
     /* 2. Koszty krok po kroku (wariant podstawowy, ze źródłem każdej kwoty) i cennik */
     var s2 = sheet("Obliczenia i cennik", [40, 19, 19, 19, 19], 82);
-    banner(s2, "Koszty krok po kroku · " + w0.nazwa + ", " + R.zA, "Strona 1: obliczenia · strona 2: cennik szablonu " + d.typ, 5);
+    banner(s2, "Koszty · " + w0.nazwa + " · " + pct(d.zysk), "Strona 1: obliczenia · strona 2: cennik szablonu " + d.typ, 5);
     section(s2, "Materiały i urządzenia", 5);
     pairs(s2, R.mat, 5);
     section(s2, "Montaż, narzuty i cena", 5);
@@ -2195,7 +2190,7 @@ window.NK38_FONTS = { regular: "AAEAAAAOAIAAAwBgR0RFRgS1BUEAAH9cAAAARkdQT1MAGQAM
 (function () {
   "use strict";
   /* Wersja programu: podnoś przy każdym wydaniu (pokazywana na pulpicie, zapisywana w kopii zapasowej). */
-  var WERSJA = { nr: "1.44", data: "23.10.2026" };
+  var WERSJA = { nr: "1.45", data: "23.10.2026" };
   var E = window.NK38, X = window.NK38X;
   var LS = { robocze: "nk38.robocze.v1", drafty: "nk38.szkice.v1", draft: "nk38.szkic.v1", tab: "nk38.zakladka", sel: "nk38.wariant", logo: "nk38.logo.v1", podpis: "nk38.podpis.v1",
     szablony: "nk38.szablony.v1", wyceny: "nk38.wyceny.v1", tekstyOferty: "nk38.szablon.v1", numery: "nk38.numery.v1", cennikStary: "nk38.cennik.v1", usuniete: "nk38.usuniete.v1", migracja2: "nk38.migracja2", migracja3: "nk38.migracja3", migracja4: "nk38.migracja4", historia: "nk38.historia.v1", uzytkownik: "nk38.uzytkownik.v1" };
@@ -2875,7 +2870,7 @@ window.NK38_FONTS = { regular: "AAEAAAAOAIAAAwBgR0RFRgS1BUEAAH9cAAAARkdQT1MAGQAM
   function paneObl() {
     var R = X.raport(wynik, wynik.szablon.glebokosci.map(function (g) { return g.cm; }), wynik.dane.oferta), nd = wynik.dane.nadpis || {}, sc = szablonAktywny().cennik;
     var h = '<h3 class="sec">Stawki w tej wycenie</h3><p class="note" style="margin-bottom:8px">Zmiana dotyczy tylko tej wyceny, szablon zostaje bez zmian. Puste pole = wartość z szablonu.</p><div class="kv stawki">' +
-      STAWKI.map(function (x) { return "<label for=\"st_" + x[0] + "\">" + x[1] + (nd[x[0]] != null ? ' <span class="tag">zmienione</span>' : "") + '</label><input id="st_' + x[0] + '" data-stawka="' + x[0] + '" type="number" step="any" placeholder="' + esc(n2(sc[x[0]] * (x[2] || 1))) + '"' + (x[2] ? ' data-mnoznik="' + x[2] + '"' : "") + ' value="' + (nd[x[0]] != null ? +(nd[x[0]] * (x[2] || 1)).toFixed(6) : "") + '">'; }).join("") + "</div>";
+      STAWKI.map(function (x) { return "<label for=\"st_" + x[0] + "\">" + x[1] + (nd[x[0]] != null ? ' <span class="tag">zmienione</span>' : "") + '</label><input id="st_' + x[0] + '" data-stawka="' + x[0] + '" type="number" step="any" placeholder="' + esc(String(+(sc[x[0]] * (x[2] || 1)).toFixed(4)).replace(".", ",")) + '"' + (x[2] ? ' data-mnoznik="' + x[2] + '"' : "") + ' value="' + (nd[x[0]] != null ? +(nd[x[0]] * (x[2] || 1)).toFixed(6) : "") + '">'; }).join("") + "</div>";
     h += '<h3 class="sec">Materiały i urządzenia</h3><div class="scroll"><table class="t"><tbody>' +
       R.mat.map(function (x) { return '<tr class="' + (/^Suma/.test(x[0]) ? "strong" : "") + '"><td>' + esc(x[0]) + "</td><td>" + esc(x[1]) + "</td></tr>"; }).join("") + "</tbody></table></div>";
     /* jedna kolumna: wariant wybrany przełącznikiem, opisy liczone dla niego */
