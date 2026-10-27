@@ -231,7 +231,7 @@
       wymiary: wp.map(function (x, i) {
         var t = [];
         if (x.h1 != null && x.h1 !== "") t.push(["Zagłębienie" + (wp.length > 1 ? " (wariant " + (i + 1) + ")" : ""), (x.h2 != null && x.h2 !== x.h1 ? "H1 " + x.h1 + " / H2 " + x.h2 : x.h1) + " cm" + (x.dl ? ", dł. " + x.dl + " cm" : "")]);
-        if (x.p != null && x.p !== "") t.push(["Prześwit", x.p + " cm"]);
+        if (x.p != null && x.p !== "") t.push(["Prześwit", "P " + x.p + " cm"]);   // oznaczenie jak przy zagłębieniu (H1 …)
         if (x.gor != null || x.dol != null) t.push(["Wysokość pojazdów", [k(x.gor) + " cm", k(x.dol) + " cm"]]);
         return t;
       }),
