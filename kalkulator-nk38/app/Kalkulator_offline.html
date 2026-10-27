@@ -515,7 +515,7 @@ html, body { overflow-x: clip; max-width: 100%; }
       <fieldset class="card">
         <legend>Transport i ekipa</legend>
         <div class="g2">
-          <label class="f"><span id="lblTir">Liczba TIR</span><input id="tir" type="number" min="0" step="1"><span class="hint" id="hintTir"></span></label>
+          <label class="f"><span id="lblTir">Liczba TIR</span><input id="tir" type="number" min="0" step="1" class="auto"><span class="hint" id="hintTir"></span></label>
           <label class="f"><span id="lblTirCena">Cena za TIR [zł]</span><input id="tir_cena" type="number" min="0" step="100"><span class="hint" id="hintTirCena">KRK 1600 · WAW/WRO 3300 · POZ/ZG 4500</span></label>
           <label class="f">Rozładunek sprzętu [zł]<input id="rozl_cena" type="number" min="0" step="100"><span class="hint" id="hintRozl">jednorazowo: przyjazd i wyjazd wózka</span></label>
           <label class="f">Dni rozładunku<input id="rozl_dni" type="number" min="0" step="0.5" class="auto"><span class="hint" id="hintRozlDni">puste = 0,5 dnia na TIR</span></label>
@@ -850,7 +850,7 @@ window.NK38_FONTS = { regular: "AAEAAAAOAIAAAwBgR0RFRgS1BUEAAH9cAAAARkdQT1MAGQAM
       gl_S: {}, gl_D: {},
       szer1_S: 0, szer2_S: 0, szer1_D: 0, szer2_D: 0,
       dl500_S: 0, dl540_S: 0, dl550_S: 0, dl500_D: 0, dl540_D: 0, dl550_D: 0,
-      tir: 0, tir_cena: 0, rozl_cena: 0, rozl_dni: null, dzwig_koszt: null,
+      tir: null, tir_cena: 0, rozl_cena: 0, rozl_dni: null, dzwig_koszt: null,
       osoby: 4, wyjazdy: null, wzor: "stary",
       zysk: 0.14, zysk2: 0.10, q2500: null, konserwA: 40, konserwB: 50, eur: 4.325, analiza: 0
     };
@@ -1060,6 +1060,9 @@ window.NK38_FONTS = { regular: "AAEAAAAOAIAAAwBgR0RFRgS1BUEAAH9cAAAARkdQT1MAGQAM
     if (opt(d.agr3) !== null || opt(d.agr6) !== null) d.agregaty = num(d.agr3) + num(d.agr6);   // agregaty 3 kW + 6 kW
     if ((dane || {}).zysk2 === undefined && (dane || {}).zysk_min !== undefined) d.zysk2 = dane.zysk_min;
     var sz = uzupelnijSzablon(szablon), T = sz.typy;
+    /* NK38/NK37: liczba TIR-ów, gdy nie wpisano ręcznie: D/6 + S/8 (N.P. jak S), w górę */
+    var tirAuto = sz.model === "lista" ? 0 : ceil(num(d.D) / 6 + (num(d.S) + num(d.NP)) / 8);
+    if (opt(d.tir) === null) d.tir = tirAuto;
     /* stawki zmienione tylko w tej wycenie (hotel, dieta, paliwo, dźwig…) nie ruszają szablonu */
     var c = sz.cennik = Object.assign({}, sz.cennik);
     Object.keys(d.nadpis || {}).forEach(function (k) { var v = opt(d.nadpis[k]); if (v !== null && k in c) c[k] = v; });
@@ -1080,6 +1083,7 @@ window.NK38_FONTS = { regular: "AAEAAAAOAIAAAwBgR0RFRgS1BUEAAH9cAAAARkdQT1MAGQAM
     var sl37b = [warianty[2].cena2 - warianty[0].cena2, warianty[3].cena2 - warianty[1].cena2];
     var dop22b = (c.slupek22 - c.slupek) * m.MP * mnoznik2;
     var wynik = {
+      tirAuto: tirAuto,
       dane: d, cennik: c, szablon: sz, mat: m, wspolne: w, warianty: warianty,
       analiza: analiza, analizaWariant: nazwy[a],
       opcje: {
@@ -2194,13 +2198,13 @@ window.NK38_FONTS = { regular: "AAEAAAAOAIAAAwBgR0RFRgS1BUEAAH9cAAAARkdQT1MAGQAM
 (function () {
   "use strict";
   /* Wersja programu: podnoś przy każdym wydaniu (pokazywana na pulpicie, zapisywana w kopii zapasowej). */
-  var WERSJA = { nr: "1.35", data: "23.10.2026" };
+  var WERSJA = { nr: "1.36", data: "23.10.2026" };
   var E = window.NK38, X = window.NK38X;
   var LS = { robocze: "nk38.robocze.v1", drafty: "nk38.szkice.v1", draft: "nk38.szkic.v1", tab: "nk38.zakladka", sel: "nk38.wariant", logo: "nk38.logo.v1", podpis: "nk38.podpis.v1",
     szablony: "nk38.szablony.v1", wyceny: "nk38.wyceny.v1", tekstyOferty: "nk38.szablon.v1", numery: "nk38.numery.v1", cennikStary: "nk38.cennik.v1", usuniete: "nk38.usuniete.v1", migracja2: "nk38.migracja2", migracja3: "nk38.migracja3", historia: "nk38.historia.v1", uzytkownik: "nk38.uzytkownik.v1" };
   var NUMF = ["km", "km_pom", "km_mon", "S", "D", "NP", "agregaty", "magistrala", "barierki", "maskownice", "utr_dod",
     "tir", "tir_cena", "rozl_cena", "rozl_dni", "dzwig_koszt", "osoby", "wyjazdy", "eur", "usd", "h1", "h2", "przeswit", "konserwA", "konserwB", "dlMiejsca", "dopB", "agr3", "agr6"];
-  var OPTF = { km_pom: 1, km_mon: 1, rozl_dni: 1, dzwig_koszt: 1, wyjazdy: 1, h1: 1, h2: 1, przeswit: 1, dlMiejsca: 1, dopB: 1, agr3: 1, agr6: 1 };
+  var OPTF = { km_pom: 1, km_mon: 1, rozl_dni: 1, dzwig_koszt: 1, wyjazdy: 1, h1: 1, h2: 1, przeswit: 1, dlMiejsca: 1, dopB: 1, agr3: 1, agr6: 1, tir: 1 };
   var PCTF = ["zysk", "zysk2", "q2500"];
   var TXTF = ["nazwa", "data", "wzor", "dl", "agrOpis"];
   var DIMKEYS = ["szer1", "szer2", "dl500", "dl540", "dl550"];
@@ -2672,6 +2676,11 @@ window.NK38_FONTS = { regular: "AAEAAAAOAIAAAwBgR0RFRgS1BUEAAH9cAAAARkdQT1MAGQAM
       var nk = r.szablon.model !== "lista";
       $("lbl" + k).textContent = nk ? d.typ + k : t.nazwa; $("hint" + k).textContent = nk ? t.nazwa + " · " + txt : txt;
     });
+    if (r.szablon.model !== "lista") {   // podpowiedź liczby TIR-ów (D/6 + S/8), pole puste = automatycznie
+      var tirR = state.dane.tir != null;
+      $("tir").placeholder = String(r.tirAuto);
+      $("hintTir").textContent = "ok. " + r.tirAuto + " TIR (D/6 + S/8, w górę)" + (tirR && state.dane.tir !== r.tirAuto ? "; wpisano ręcznie" : "; puste = automatycznie");
+    } else $("tir").placeholder = "";
     var podzial = d.agr3 != null || d.agr6 != null;   // agregaty 3 kW + 6 kW: razem liczy się samo
     $("agregaty").disabled = podzial; if (podzial) $("agregaty").value = d.agregaty || 0;
     $("hintAgr").textContent = podzial ? "= 3 kW + 6 kW" : "wg układu garażu";

@@ -259,7 +259,7 @@
       gl_S: {}, gl_D: {},
       szer1_S: 0, szer2_S: 0, szer1_D: 0, szer2_D: 0,
       dl500_S: 0, dl540_S: 0, dl550_S: 0, dl500_D: 0, dl540_D: 0, dl550_D: 0,
-      tir: 0, tir_cena: 0, rozl_cena: 0, rozl_dni: null, dzwig_koszt: null,
+      tir: null, tir_cena: 0, rozl_cena: 0, rozl_dni: null, dzwig_koszt: null,
       osoby: 4, wyjazdy: null, wzor: "stary",
       zysk: 0.14, zysk2: 0.10, q2500: null, konserwA: 40, konserwB: 50, eur: 4.325, analiza: 0
     };
@@ -469,6 +469,9 @@
     if (opt(d.agr3) !== null || opt(d.agr6) !== null) d.agregaty = num(d.agr3) + num(d.agr6);   // agregaty 3 kW + 6 kW
     if ((dane || {}).zysk2 === undefined && (dane || {}).zysk_min !== undefined) d.zysk2 = dane.zysk_min;
     var sz = uzupelnijSzablon(szablon), T = sz.typy;
+    /* NK38/NK37: liczba TIR-ów, gdy nie wpisano ręcznie: D/6 + S/8 (N.P. jak S), w górę */
+    var tirAuto = sz.model === "lista" ? 0 : ceil(num(d.D) / 6 + (num(d.S) + num(d.NP)) / 8);
+    if (opt(d.tir) === null) d.tir = tirAuto;
     /* stawki zmienione tylko w tej wycenie (hotel, dieta, paliwo, dźwig…) nie ruszają szablonu */
     var c = sz.cennik = Object.assign({}, sz.cennik);
     Object.keys(d.nadpis || {}).forEach(function (k) { var v = opt(d.nadpis[k]); if (v !== null && k in c) c[k] = v; });
@@ -489,6 +492,7 @@
     var sl37b = [warianty[2].cena2 - warianty[0].cena2, warianty[3].cena2 - warianty[1].cena2];
     var dop22b = (c.slupek22 - c.slupek) * m.MP * mnoznik2;
     var wynik = {
+      tirAuto: tirAuto,
       dane: d, cennik: c, szablon: sz, mat: m, wspolne: w, warianty: warianty,
       analiza: analiza, analizaWariant: nazwy[a],
       opcje: {
