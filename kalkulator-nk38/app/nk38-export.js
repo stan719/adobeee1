@@ -507,6 +507,8 @@
         else {
           l.font = font({ size: 8.5, bold: it.zm, color: { argb: it.zm ? C.warn : C.ink } }); l.alignment = { indent: 1 };
           v.font = font({ size: 8.5 }); v.alignment = { horizontal: "right" };
+          var lekka = { bottom: { style: "hair", color: { argb: C.line } } };   // lekko widoczna linia między pozycjami cennika
+          l.border = lekka; v.border = lekka; if (z[1] === 3) x.getCell(4).border = lekka;
           if (typeof it.val === "number") v.numFmt = Math.abs(it.val) < 1 && it.val !== 0 ? "0.00###" : "#,##0.##";
           if (it.jedn) v.note = undefined;
         }

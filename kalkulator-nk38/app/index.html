@@ -271,7 +271,7 @@ ul.notes li::before { content: ""; position: absolute; left: 0; top: .6em; width
 .pv-arkusz table { border-collapse: collapse; font-family: Arial, "Liberation Sans", sans-serif; font-size: 13px; table-layout: fixed; }
 .pv-arkusz td { padding: 1px 4px; vertical-align: bottom; overflow: hidden; white-space: nowrap; }
 .pv-arkusz td.zaw { white-space: normal; }
-.pv-info { color: var(--muted); font-size: 13px; }
+.pv-info { color: var(--muted); font-size: 13px; align-self: flex-start; margin: 0 0 -10px; }
 .ov-head { position: sticky; top: 0; z-index: 2; background: color-mix(in srgb, var(--surface) 92%, transparent); backdrop-filter: blur(10px); border-bottom: 1px solid var(--line); padding-top: env(safe-area-inset-top, 0px); }
 .ov-head-in { max-width: 1360px; margin: 0 auto; display: flex; flex-wrap: wrap; gap: 10px 16px; align-items: center; justify-content: space-between;
   padding: 10px max(16px, env(safe-area-inset-right, 0px)) 10px max(16px, env(safe-area-inset-left, 0px)); }
@@ -611,7 +611,7 @@ html, body { overflow-x: clip; max-width: 100%; }
 (function () {
   "use strict";
   /* Wersja programu: podnoś przy każdym wydaniu (pokazywana na pulpicie, zapisywana w kopii zapasowej). */
-  var WERSJA = { nr: "1.47", data: "23.10.2026" };
+  var WERSJA = { nr: "1.48", data: "23.10.2026" };
   var E = window.NK38, X = window.NK38X;
   var LS = { robocze: "nk38.robocze.v1", drafty: "nk38.szkice.v1", draft: "nk38.szkic.v1", tab: "nk38.zakladka", sel: "nk38.wariant", logo: "nk38.logo.v1", podpis: "nk38.podpis.v1",
     szablony: "nk38.szablony.v1", wyceny: "nk38.wyceny.v1", tekstyOferty: "nk38.szablon.v1", numery: "nk38.numery.v1", cennikStary: "nk38.cennik.v1", usuniete: "nk38.usuniete.v1", migracja2: "nk38.migracja2", migracja3: "nk38.migracja3", migracja4: "nk38.migracja4", historia: "nk38.historia.v1", uzytkownik: "nk38.uzytkownik.v1" };
@@ -1732,15 +1732,9 @@ html, body { overflow-x: clip; max-width: 100%; }
     var buf = await X.xlsx(wynik, ctxExport(null)), nazwa = nazwaPliku("Kalkulator_" + wynik.dane.typ, "xlsx");
     var wb = new window.ExcelJS.Workbook(); await wb.xlsx.load(buf);
     otworzPodglad("Podgląd: Excel", nazwa, function () { return zapisz(nazwa, new Blob([buf])); });
-    var arkusze = wb.worksheets.map(function (ws) { return { nazwa: ws.name, html: arkuszHtml(ws) }; });
-    var pokazArk = function (i) {
-      $("pvBody").innerHTML = '<div class="pv-arkusz">' + arkusze[i].html + "</div>";
-      $("pvTabs").querySelectorAll("button").forEach(function (b, j) { b.setAttribute("aria-pressed", j === i); });
-    };
-    $("pvTabs").innerHTML = arkusze.map(function (a, i) { return '<button type="button" data-ark="' + i + '">' + esc(a.nazwa) + "</button>"; }).join("");
-    $("pvTabs").hidden = arkusze.length < 2;
-    $("pvTabs").onclick = function (e) { var b = e.target.closest("button[data-ark]"); if (b) pokazArk(+b.dataset.ark); };
-    pokazArk(0);
+    /* wszystkie arkusze naraz, jeden pod drugim */
+    $("pvTabs").hidden = true;
+    $("pvBody").innerHTML = wb.worksheets.map(function (ws) { return '<p class="pv-info">Arkusz: ' + esc(ws.name) + '</p><div class="pv-arkusz">' + arkuszHtml(ws) + "</div>"; }).join("");
   }
   async function eksportPdf() {
     await loadScript("jspdf"); await loadScript("autotable");
@@ -1782,7 +1776,7 @@ html, body { overflow-x: clip; max-width: 100%; }
       for (var r = r1; r <= r2; r++) for (var c = c1; c <= c2; c++) if (r !== r1 || c !== c1) ukryte[r + ":" + c] = 1;
     });
     var kolor = function (o) { return o && o.argb ? "#" + o.argb.slice(-6) : ""; };
-    var ramka = function (b) { return b && b.style ? (b.style === "medium" ? "2px" : "1px") + " solid " + (kolor(b.color) || "#d3d9dd") : ""; };
+    var ramka = function (b) { return b && b.style ? (b.style === "medium" ? "2px" : "1px") + (b.style === "hair" ? " dotted " : " solid ") + (kolor(b.color) || "#d3d9dd") : ""; };
     var tekst = function (cell) {
       var v = cell.value, f = cell.numFmt || "";
       if (v == null) return "";
