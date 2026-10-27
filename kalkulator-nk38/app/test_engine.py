@@ -20,6 +20,7 @@ def do_js(inp):
     d["analiza"] = WARIANTY.index(inp.get("in_analiza", WARIANTY[0]))
     d["dzwig_koszt"] = inp.get("in_dzwig_koszt")
     d["szablon"] = "nk37" if inp.get("in_typ") == "NK37" else "nk38"
+    d["nadpis"] = {"kob": 0.005, "gdw": 0.025}   # stary arkusz Excela liczył KOB/GDW 0,5/2,5%; aplikacja ma dziś inne stawki domyślne
     return d
 
 

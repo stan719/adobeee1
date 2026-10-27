@@ -19,7 +19,7 @@
     dni_tydzien: 5, km_montaz_dodatek: 50, km_krakow: 20, km_dzien: 650,
     spalanie: 12, paliwo: 9.4, pomiary_osoby: 1, odbiory_osoby: 2, odbiory_wyjazdy: 1,
     stawka_1: 500, stawka_2: 400, stawka_kolejna: 350, dieta: 45, hotel: 130,
-    kob: 0.005, gdw: 0.025, podatek: 0.14
+    kob: 0.00515, gdw: 0.02685, podatek: 0.14
   };
 
   /* Teksty oferty zależne od urządzenia (pusta uwaga = tekst wspólny z ustawień oferty). */

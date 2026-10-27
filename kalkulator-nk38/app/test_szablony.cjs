@@ -11,7 +11,7 @@ const s1 = szablon("nk6501");
 Object.assign(s1.cennik, { hotel: 100, dieta: 0 });
 const r1 = E.oblicz(Object.assign(E.domyslneDane(), {
   szablon: "nk6501", S: 6, utr_dod: 2, km: 310, wyjazdy: 2, tir: 1, tir_cena: 3500, rozl_cena: 3000,
-  osoby: 4, zysk: 0.11, zysk2: 0.10, poz: { mufas: 19900 }, eur: 4.325, konserwA: 50, nadpis: { paliwo: 7 }
+  osoby: 4, zysk: 0.11, zysk2: 0.10, poz: { mufas: 19900 }, eur: 4.325, konserwA: 50, nadpis: { paliwo: 7, kob: 0.005, gdw: 0.025 }
 }), s1);
 console.log("NK6501");
 blisko(r1.mat.suma2000, 82900, "urządzenia (K39)");
@@ -30,7 +30,7 @@ blisko(r1.konserwacja[0].rok, 50 * 6 * 12, "konserwacja roczna 50 zł/MP");
 const s2 = szablon("nkpxlh");
 const r2 = E.oblicz(Object.assign(E.domyslneDane(), {
   szablon: "nkpxlh", S: 18, agregaty: 3, km: 310, wyjazdy: 3, tir: 1, tir_cena: 3500, rozl_cena: 2800,
-  osoby: 4, zysk: 0.28, zysk2: 0.255, eur: 4.33, usd: 3.86, konserwA: 35, nadpis: { paliwo: 7, hotel: 120 }
+  osoby: 4, zysk: 0.28, zysk2: 0.255, eur: 4.33, usd: 3.86, konserwA: 35, nadpis: { paliwo: 7, hotel: 120, kob: 0.005, gdw: 0.025 }
 }), s2);
 console.log("NKPXLH");
 blisko(r2.mat.frachtSzt, 2022.8098982222223, "fracht na urządzenie (F3)");
@@ -50,7 +50,7 @@ blisko(r2.mat.suma2500 - r2.mat.suma2000, 18 * 700 * 3.86, "2500 kg: 3000 USD/sz
 // NK41: arkusz "-NK3 2T A .10.26" przeliczony w LibreOffice dla 23 urządzeń, 6 agregatów, 300 km (montaż 350 km), 1 wyjazd montażowy.
 const r3 = E.oblicz(Object.assign(E.domyslneDane(), szablon("nk41").domyslne, {
   szablon: "nk41", S: 23, agregaty: 6, km: 300, wyjazdy: 1, eur: 4.325,
-  nadpis: { kob: 0.00515, gdw: 0.02585 }   // arkusz NK41 miał KOB/GDW 0,515/2,585%; w szablonie standardowe 0,5/2,5%
+  nadpis: { kob: 0.00515, gdw: 0.02585 }   // arkusz NK41 miał KOB/GDW 0,515/2,585%; domyślnie w aplikacji 0,515/2,685%
 }), szablon("nk41"));
 console.log("NK41");
 if (!r3.mat.brakB || r3.warianty[1].cena !== r3.warianty[0].cena) throw new Error("NK41 bez dopłaty: wariant 2500 kg powinien być niedostępny");
