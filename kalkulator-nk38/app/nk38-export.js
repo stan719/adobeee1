@@ -143,8 +143,8 @@
       ["Platformy S z dopłatami", zl(m.platS)], ["Platformy D z dopłatami", zl(m.platD)], ["Platformy N.P.", zl(m.platNP)],
       ["Siłowniki (pary): std / 2000 / 2250", m.sil.std + " / " + m.sil.s2000 + " / " + m.sil.s2250],
       ["Hydraulika", zl(m.hydraulika)], ["Barierki i maskownice", zl(m.barierki)], ["Elektryka", zl(m.elektryka)],
-      ["Mechanika zakupowa i pozostałe", zl(m.mechanika)], ["Suma Q=2000 (dawne F87)", zl(m.suma2000)],
-      ["Suma Q=2500 (dawne F90, +" + pct(m.q2500) + ")", zl(m.suma2500)]
+      ["Mechanika zakupowa i pozostałe", zl(m.mechanika)], ["Suma Q=2000", zl(m.suma2000)],
+      ["Suma Q=2500 (+" + pct(m.q2500) + ")", zl(m.suma2500)]
     ];
     /* krótka informacja o stawce przy pozycji (wartości bieżącej wyceny, z ewentualnymi zmianami) */
     var C = r.cennik, w0 = ws[0], st = function (x) { return fmt0.format(Math.round(x)); };
@@ -181,15 +181,15 @@
     }
     var infoW = ws.map(infoDla), info = infoW[0];
     var mon = { head: head, rows: [
-      ["Osobodni montażu (F50)", "n", "osd"], ["Tygodnie / dni montażu (B55)", "int", "wyjazdy"],
-      ["Osobodni podróży i rozładunku (G59)", "n", "podroze"], ["Dni pracy ekipy (J39)", "int", "dni"],
+      ["Osobodni montażu", "n", "osd"], ["Tygodnie / dni montażu", "int", "wyjazdy"],
+      ["Osobodni podróży i rozładunku", "n", "podroze"], ["Dni pracy ekipy", "int", "dni"],
       ["Kilometry auta", "int", "km"], ["Noclegi (osobonoce)", "int", "noclegi"],
       ["Urządzenia", "zl", "urzadzenia", 0, 1], ["Słupki", "zl", "slupki", 0, 1], ["Paliwo", "zl", "paliwo", 0, 1],
       ["Hotel", "zl", "hotel", 0, 1], ["Transport", "zl", "transport", 0, 1], ["Spider Crane", "zl", "dzwig", 0, 1],
       ["Rozładunek, sprzęt", "zl", "rozladunek_sprzet", 0, 1], ["Rozładunek, ludzie", "zl", "rozladunek_ludzie", 0, 1],
       ["Dojazdy, ludzie", "zl", "dojazdy", 0, 1], ["Montaż", "zl", "montaz", 0, 1], ["Diety", "zl", "diety", 0, 1],
       ["Suma przed narzutami", "zl", "baza", 1], ["KOB", "zl", "kob"], ["GDW", "zl", "gdw"], ["Zysk " + pct(d.zysk), "zl", "zysk"], ["Zysk z narzutem (zysk + GDW)", "zl", "zyskN"],
-      ["Podatek", "zl", "podatek"], ["Cena kontraktu, " + zA + " (K39)", "zl", "cena", 1], ["Koszt rzeczywisty", "zl", "koszt", 1]
+      ["Podatek", "zl", "podatek"], ["Cena kontraktu, " + zA, "zl", "cena", 1], ["Koszt rzeczywisty", "zl", "koszt", 1]
     ].map(function (row) {
       return { label: row[0], info: info[row[2]] || "", infoW: infoW.map(function (q) { return q[row[2]] || ""; }), fmt: row[1], bold: !!row[3], koszt: !!row[4], vals: ws.map(function (x) { return row[4] ? x.koszty[row[2]] : x[row[2]]; }) };
     }) };
@@ -241,7 +241,7 @@
       montaz: ws[0].tygodnie + " tyg. (" + ws[0].dni + " dni pracy), ekipa " + ws[0].osoby + " os.",
       transport: (d.tir || 0) + (sz.import.wl ? " kont." : " TIR") + " × " + zl(d.tir_cena || 0) + (r.cennik.dzwig || d.dzwig_koszt != null ? " · Spider Crane " + w.dzwDni + " " + odmiana(w.dzwDni, "dzień", "dni", "dni") : ""),
       konserwacja: r.konserwacja.map(function (x, i) {
-        return { nazwa: "Konserwacja · wariant " + (i + 1), stawka: x.stawka + " zł / " + jm + " / mies.", baza: baza + " " + jm, mies: x.stawka * baza, rok: x.rok, przeglad: x.rok / 2 };
+        return { nazwa: "Konserwacja · wariant " + (i + 1), stawka: x.stawka + " zł / " + jm + " / mies.", baza: baza + " " + jm, bazaN: baza, mies: x.stawka * baza, rok: x.rok, przeglad: x.rok / 2 };
       })
     };
     var naPierwszej = /^(Nazwa \/ adres|Data|Opis \/ wariant|Prześwit|Zagłębienie H1|Długość zagłębienia|Wysokość pojazdów|Lokalizacja|Platformy|Urządzenia|Agregaty|Magistrala|Transport|Czas montażu|Ekipa|Konserwacja|Szablon urządzenia|Zysk|Dopłata|Spider Crane|Rozładunek sprzętu)/, szczegoly = [];
@@ -678,17 +678,24 @@
       znak("dodatki", "Opcje: dopłaty 2500 kg, słupki", y, doc.lastAutoTable.finalY);
       y = doc.lastAutoTable.finalY + 4;
     }
-    znak("konserwacja", "Konserwacja: oba warianty", y, y + 21);
-    /* konserwacja: stawka za miejsce wyraźnie, pod nią kwota roczna i za jeden przegląd */
-    K.konserwacja.forEach(function (kk, i) {
-      var x = 14 + i * (cw + 4);
-      doc.setDrawColor.apply(doc, LINE); doc.setLineWidth(0.3); doc.roundedRect(x, y, cw, 21, 1.2, 1.2, "S");   // dyskretnie: ramka bez tła
-      doc.setFont("Carlito", "normal"); doc.setFontSize(7.8); doc.setTextColor.apply(doc, MUT); doc.text(kk.nazwa + " · " + kk.baza, x + 3, y + 5);
-      doc.setFont("Carlito", "bold"); doc.setFontSize(12.5); doc.setTextColor.apply(doc, INK); doc.text(kk.stawka, x + 3, y + 11);
-      doc.setFont("Carlito", "normal"); doc.setFontSize(9.5); doc.text(zl(kk.rok) + " rocznie", x + 3, y + 15.6);
-      doc.setFontSize(8.2); doc.setTextColor.apply(doc, MUT);
-      doc.text("jeden przegląd (co pół roku): " + zl(kk.przeglad), x + 3, y + 19.2);
-    });
+    /* konserwacja: tabelka jak ceny u góry; stawki 35–60 zł co 5 zł plus stawki z wyceny, te z wyceny pogrubione */
+    var bazaK = K.konserwacja[0].bazaN;
+    var stawkiW = r.konserwacja.map(function (k) { return k.stawka; }), stawki = [35, 40, 45, 50, 55, 60];
+    stawkiW.forEach(function (v) { if (stawki.indexOf(v) < 0) stawki.push(v); });
+    stawki.sort(function (a, b) { return a - b; });
+    var yKon = y;
+    L.autoTable(doc, Object.assign({}, base, { startY: y, head: [["Konserwacja (" + K.konserwacja[0].baza + ")", "Miesięcznie", "Rocznie", "Jeden przegląd (co pół roku)"]],
+      body: stawki.map(function (v) {
+        var w = stawkiW.indexOf(v), mies = v * bazaK;
+        return [v + " zł / " + R.jm + " / mies." + (w >= 0 ? "  · wariant " + (w + 1) : ""), zl(mies), zl(mies * 12), zl(mies * 6)];
+      }),
+      styles: Object.assign({}, base.styles, { fontSize: 8.4, cellPadding: 0.75 }),
+      columnStyles: { 0: { halign: "left", cellWidth: 66 }, 1: { halign: "right" }, 2: { halign: "right" }, 3: { halign: "right" } },
+      didParseCell: function (h) {
+        if (h.section === "head" && h.column.index === 0) h.cell.styles.halign = "left";
+        if (h.section === "body" && stawkiW.indexOf(stawki[h.row.index]) >= 0) h.cell.styles.fontStyle = "bold";
+      } }));
+    znak("konserwacja", "Konserwacja: stawki 35–60 zł", yKon, doc.lastAutoTable.finalY);
 
     /* 2. strona: skąd się biorą kwoty (wariant podstawowy) i pozostałe dane */
     doc.addPage(); head("Koszty · " + w0.nazwa + " · " + pct(d.zysk), stopka);
