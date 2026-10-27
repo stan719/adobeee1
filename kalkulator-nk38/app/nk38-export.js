@@ -608,12 +608,18 @@
     doc.setFontSize(15); doc.text(doc.splitTextToSize(K.adres, 140)[0], 17, 24.5);
     doc.setFont("Carlito", "normal"); doc.setFontSize(8.5); doc.setTextColor.apply(doc, MUT);
     doc.text("Ceny netto · wygenerowano " + new Date().toLocaleDateString("pl-PL"), 14, 33.5);
+    /* mapa części strony (dla narzędzia podglądu z komentarzami): ctx.mapa = [] zbiera {strona, id, nazwa, y0, y1} w mm */
+    var mapa = ctx.mapa, znak = function (id, nazwa, y0, y1) { if (mapa) mapa.push({ strona: doc.getNumberOfPages(), id: id, nazwa: nazwa, y0: y0, y1: y1 }); };
+    znak("naglowek", "Nagłówek: adres i data", 12, 35);
     var y = kafelki(37, [
       ["Cena ofertowa · zysk " + pct(N.zA), zl(N.cenaA), w0.nazwa + " · " + zl(w0.cenaMP) + " / MP" + (w0.cenaMPeur ? " · " + eur(w0.cenaMPeur) + " / MP" : "")],
       ["Można zejść do · zysk " + pct(N.zB), zl(N.cenaB), "rabat −" + zl(N.cenaA - N.cenaB) + " (−" + n2((N.cenaA - N.cenaB) / N.cenaA * 100) + "%)"],
       ["Próg opłacalności · zysk 0%", zl(N.cenaMin), "maks. rabat −" + zl(N.cenaA - N.cenaMin) + " (−" + n2((N.cenaA - N.cenaMin) / N.cenaA * 100) + "%)"]
     ]);
+    znak("kafelki", "Kafelki: cena ofertowa, zejście, próg", 37, y - 6);
+    var yPas = y - 5;
     y = pasek(h2("Pole do negocjacji (" + w0.nazwa + ")", y - 1) + 3);
+    znak("pasek", "Pole do negocjacji: pasek", yPas, y - 4);
     /* długa drabinka (wysoki zysk ofertowy): poniżej zysku do porównania co 4 pkt proc., żeby zmieścić kartę inwestycji */
     var negRows = R.neg.rows.length <= 11 ? R.neg.rows : R.neg.rows.filter(function (q) {
       var x = q.x; return x.oferta || x.porownanie || x.prog || x.zysk > N.zB || Math.round(x.zysk * 100) % 4 === 0;
@@ -635,6 +641,7 @@
     }));
     doc.setFont("Carlito", "normal"); doc.setFontSize(7.4); doc.setTextColor.apply(doc, MUT);
     doc.text("Zielone: rabat bez zejścia poniżej zysku " + pct(N.zB) + ". Żółte: poniżej zysku do porównania. Przy zysku 0% w cenie zostają koszty, KOB, GDW i podatek.", 14, doc.lastAutoTable.finalY + 3.6);
+    znak("drabinka", "Drabinka cenowa i legenda", y - 3, doc.lastAutoTable.finalY + 5);
     y = h2("Dane wejściowe", doc.lastAutoTable.finalY + 10) + 2.5;
 
     /* karta inwestycji: w obu okienkach ta sama siatka (etykieta + wartość jednym krojem), wiersze na tej samej wysokości */
@@ -671,16 +678,20 @@
     }
     doc.setDrawColor.apply(doc, LINE); doc.setLineWidth(0.3);
     doc.roundedRect(xL, y0, cw, yy - y0 - 1, 1.5, 1.5, "S"); doc.roundedRect(xP, y0, cw, yy - y0 - 1, 1.5, 1.5, "S");
+    znak("karta", "Dane wejściowe: Zakres i Wymiary", y0 - 7, yy);
     y = yy + 3.5;
     function pole(x, yy, wdt, et, wart) {
       doc.setFont("Carlito", "normal"); doc.setFontSize(7.6); doc.setTextColor.apply(doc, MUT); doc.text(et, x, yy);
       return yy + 4.4 + wartosc(x, yy + 4.4, wdt, wart) * 4.4 + 1.5;
     }
+    var yOp = y;
     doc.setFont("Carlito", "normal"); doc.setFontSize(7.6); doc.setTextColor.apply(doc, MUT); doc.text("Opis wariantu", 14, y);
     doc.setFont("Carlito", "bold"); doc.setFontSize(9.5); doc.setTextColor.apply(doc, INK);
     var lo = doc.splitTextToSize(K.opis || "–", 182); doc.text(lo, 14, y + 4.3); y += 4.3 + lo.length * 4.1 + 2;
-    var c3 = (182 - 8) / 3;
+    znak("opis", "Opis wariantu", yOp - 3.5, y - 1);
+    var c3 = (182 - 8) / 3, yLok = y;
     y = Math.max(pole(14, y, c3, "Lokalizacja", K.lok), pole(14 + c3 + 4, y, c3, "Montaż", K.montaz), pole(14 + 2 * (c3 + 4), y, c3, "Transport", K.transport)) + 2;
+    znak("lokalizacja", "Lokalizacja, montaż, transport", yLok - 3.5, y - 1.5);
     /* opcje: 2500 kg i słupki tylko jako dopłata przy obu poziomach zysku */
     if (R.dodatki.rows.length) {
       L.autoTable(doc, Object.assign({}, base, { startY: y, head: [R.dodatki.head],
@@ -688,8 +699,10 @@
         styles: Object.assign({}, base.styles, { fontSize: 8.2, cellPadding: 0.75 }),
         columnStyles: { 0: { halign: "left", cellWidth: 52, fontStyle: "bold" }, 1: { halign: "left", textColor: MUT, cellWidth: 70 }, 2: { halign: "right" }, 3: { halign: "right" } },
         didParseCell: function (h) { if (h.section === "head" && h.column.index < 2) h.cell.styles.halign = "left"; } }));
+      znak("dodatki", "Opcje: dopłaty 2500 kg, słupki", y, doc.lastAutoTable.finalY);
       y = doc.lastAutoTable.finalY + 4;
     }
+    znak("konserwacja", "Konserwacja: oba warianty", y, y + 23);
     /* konserwacja: stawka za miejsce wyraźnie, pod nią kwota roczna i za jeden przegląd */
     K.konserwacja.forEach(function (kk, i) {
       var x = 14 + i * (cw + 4);
@@ -704,10 +717,13 @@
 
     /* 2. strona: skąd się biorą kwoty (wariant podstawowy) i pozostałe dane */
     doc.addPage(); head("Koszty krok po kroku · " + w0.nazwa + ", " + R.zA, stopka);
+    znak("naglowek2", "Strona 2: nagłówek", 12, 30);
     y = h2("Materiały i urządzenia", 36);
     L.autoTable(doc, Object.assign({}, base, { startY: y, body: R.mat, theme: "striped",
       styles: Object.assign({}, base.styles, { fontSize: 8, cellPadding: 0.9 }),
       columnStyles: { 0: { cellWidth: 90 }, 1: { halign: "right" } } }));
+    znak("materialy", "Materiały i urządzenia", 31, doc.lastAutoTable.finalY);
+    var yMon = doc.lastAutoTable.finalY + 2;
     y = h2("Montaż, narzuty i cena", doc.lastAutoTable.finalY + 6);
     L.autoTable(doc, Object.assign({}, base, { startY: y, head: [["Pozycja", "Skąd ta kwota", "Kwota"]],
       body: R.mon1.map(function (x) { return [x.label, x.info, fmtVal(x.val, x.fmt)]; }),
@@ -717,12 +733,15 @@
         if (h.section === "head" && h.column.index < 2) h.cell.styles.halign = "left";
         if (h.section === "body" && R.mon1[h.row.index].bold) { h.cell.styles.fontStyle = "bold"; h.cell.styles.fillColor = SOFT; }
       } }));
+    znak("montaz", "Montaż, narzuty i cena (skąd kwoty)", yMon, doc.lastAutoTable.finalY);
     if (R.szczegoly.length) {
+      var ySz = doc.lastAutoTable.finalY + 2;
       y = h2("Pozostałe dane wejściowe", doc.lastAutoTable.finalY + 6);
       L.autoTable(doc, Object.assign({}, base, { startY: y, body: R.szczegoly, theme: "plain",
         styles: Object.assign({}, base.styles, { fontSize: 7.6, cellPadding: { top: 0.6, bottom: 0.6, left: 2, right: 2 } }),
         columnStyles: { 0: { textColor: MUT, cellWidth: 58 }, 1: { cellWidth: 124 } },
         didParseCell: function (h) { if (h.row.index % 2 === 1) h.cell.styles.fillColor = [247, 248, 249]; } }));
+      znak("szczegoly", "Pozostałe dane wejściowe", ySz, doc.lastAutoTable.finalY);
     }
 
     var pages = doc.getNumberOfPages();
