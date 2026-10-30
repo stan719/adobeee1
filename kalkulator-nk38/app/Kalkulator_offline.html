@@ -878,7 +878,7 @@ window.NK38_FONTS = { regular: "AAEAAAAOAIAAAwBgR0RFRgS1BUEAAH9cAAAARkdQT1MAGQAM
 
   function domyslneDane() {
     return {
-      nazwa: "", data: "", nr: "", opis: "", h1: null, h2: null, dl: "", przeswit: null, pary: [], poz: {}, usd: 3.86, nadpis: {}, dlMiejsca: null, agrOpis: "", dopB: null, agr3: null, agr6: null, dodatkowe: [],
+      nazwa: "", data: "", nr: "", opis: "", h1: null, h2: null, dl: "", przeswit: null, pary: [], poz: {}, usd: 3.86, nadpis: {}, dlMiejsca: null, agrOpis: "", dopB: null, agr3: null, agr6: null, dodatkowe: [], opisNad: {},
       lok: "Poza Krakowem", km: 0, km_pom: null, km_mon: null,
       szablon: "nk38", S: 0, D: 0, NP: 0, agregaty: 0, magistrala: 0, barierki: 0, maskownice: 0, utr_dod: 0,
       gl_S: {}, gl_D: {},
@@ -1255,12 +1255,12 @@ window.NK38_FONTS = { regular: "AAEAAAAOAIAAAwBgR0RFRgS1BUEAAH9cAAAARkdQT1MAGQAM
   /* Opis wariantu budowany z danych: H, L, P, wysokości pojazdów, agregaty, barierki, maskownice, magistrala. */
   function opisAuto(d, o) {
     var v = function (x) { return x == null || x === "" ? "" : x; };
-    var pary = wymiaryPary(Object.assign({}, d, { opis: "" }), o || {}).map(function (w) {
+    var pary = wymiaryPary(Object.assign({}, d, { opis: "", opisNad: {} }), o || {}).map(function (w) {
       var h = [w.h1, w.h2].filter(function (x) { return x != null; }).join("/");
       return "H-" + h + " | L-" + v(w.dl) + " | P-" + v(w.p) + " | Hpoj. G-" + v(w.gor) + " D-" + v(w.dol);
     });
     if (d.model === "lista") {   // urządzenia bez tabel NK38: tylko to, co wpisano
-      var lp = wymiaryPary(Object.assign({}, d, { opis: "" }), o || {}).map(function (w) {
+      var lp = wymiaryPary(Object.assign({}, d, { opis: "", opisNad: {} }), o || {}).map(function (w) {
         var h = [w.h1, w.h2].filter(function (x) { return x != null; }).join("/"), g = [];
         if (h) g.push("H-" + h); if (h && w.dl) g.push("L-" + w.dl); if (w.p != null) g.push("P-" + w.p);
         var hp = (w.gor != null ? "G-" + w.gor : "") + (w.dol != null ? (w.gor != null ? " " : "") + "D-" + w.dol : "");
@@ -1285,7 +1285,46 @@ window.NK38_FONTS = { regular: "AAEAAAAOAIAAAwBgR0RFRgS1BUEAAH9cAAAARkdQT1MAGQAM
   }
   function zMoca(tekst, kw) { return !kw ? tekst : /\d+(,\d+)?(\/\d+)?\s?kW/i.test(tekst) ? tekst.replace(/\d+(,\d+)?(\/\d+)?\s?kW/i, kw) : tekst + ", " + kw; }
   function agregatyOferta(d, tekst) { return d.agregaty + " szt. – " + zMoca(tekst, agrKw(d)) + "."; }
-  function opisEfektywny(d, o) { return d.opis || opisAuto(d, o); }
+  /* Opis ma fragmenty rozdzielone " | " lub " lub "; każdy ma klucz z prefiksu (H-, L-, P-, Hpoj., A-, Bok-, mgstrl-; powtórzenia #2…).
+     Ręczne zmiany zapisują się tylko dla zmienionych fragmentów (d.opisNad), reszta opisu nadal liczy się automatycznie. */
+  function opisFragmenty(tekst) {
+    var licz = {}, czesci = String(tekst || "").split(/( \| | lub )/), out = [];
+    for (var i = 0; i < czesci.length; i += 2) {
+      var t = czesci[i], m = t.match(/^\s*(Hpoj\.|[A-Za-zł]+-)/), k = m ? m[1] : "?";
+      licz[k] = (licz[k] || 0) + 1;
+      out.push({ sep: i ? czesci[i - 1] : "", key: licz[k] > 1 ? k + "#" + licz[k] : k, txt: t });
+    }
+    return out;
+  }
+  function opisZNadpisan(auto, nad) {
+    nad = nad || {};
+    var fr = opisFragmenty(auto), uzyte = {}, wynik = "";
+    fr.forEach(function (f) {
+      var t = f.key in nad ? nad[f.key] : f.txt; uzyte[f.key] = 1;
+      if (t === "" && f.key in nad) return;   // fragment usunięty ręcznie
+      wynik += (wynik ? (f.sep || " | ") : "") + t;
+    });
+    Object.keys(nad).forEach(function (k) { if (!uzyte[k] && nad[k] !== "") wynik += (wynik ? " | " : "") + nad[k]; });   // fragmenty dopisane ręcznie
+    return wynik;
+  }
+  /* Różnice między tekstem wpisanym w pole a opisem automatycznym → nadpisania per fragment. */
+  function opisNadpisania(auto, tekst) {
+    var a = opisFragmenty(auto), t = opisFragmenty(tekst), nad = {}, ak = {}, n = 0;
+    a.forEach(function (f) { ak[f.key] = f.txt; });
+    var tk = {};
+    t.forEach(function (f) {
+      tk[f.key] = 1;
+      if (!(f.key in ak)) { if (f.txt.trim()) nad["+" + (++n)] = f.txt.trim(); }
+      else if (f.txt !== ak[f.key]) nad[f.key] = f.txt;
+    });
+    a.forEach(function (f) { if (!tk[f.key]) nad[f.key] = ""; });
+    return nad;
+  }
+  function opisEfektywny(d, o) {
+    if (d.opis) return d.opis;   // stare wyceny: cały opis wpisany ręcznie
+    var auto = opisAuto(d, o), nad = d.opisNad || {};
+    return Object.keys(nad).length ? opisZNadpisan(auto, nad) : auto;
+  }
 
   /* Wartości: liczba + format ("zl" | "eur" | "n" | "int" | "txt"). */
   /* Warianty pokazywane w tabelach: bez wariantu B (np. 2500 kg), gdy szablon go nie ma. */
@@ -2057,7 +2096,7 @@ window.NK38_FONTS = { regular: "AAEAAAAOAIAAAwBgR0RFRgS1BUEAAH9cAAAARkdQT1MAGQAM
   /* Wymiary zagłębienia i domyślne wysokości pojazdów: dolny = min(H) - 15,
      górny = (prześwit - 320) - (dolny - 150) + 150. */
   function wymiary(d, o) {
-    var op = zOpisu(d.opis), num = function (v) { return v === "" || v == null || isNaN(v) ? null : Number(v); };
+    var op = zOpisu(d.opis || Object.keys(d.opisNad || {}).map(function (k) { return d.opisNad[k]; }).join(" | ")), num = function (v) { return v === "" || v == null || isNaN(v) ? null : Number(v); };
     var h1 = num(d.h1) != null ? num(d.h1) : num(op.h1), h2 = num(d.h2) != null ? num(d.h2) : num(op.h2);
     var p = num(d.przeswit) != null ? num(d.przeswit) : num((op.p || "").match(/\d+/) && op.p.match(/\d+/)[0]);
     var hs = [h1, h2].filter(function (x) { return x != null; });
@@ -2191,7 +2230,7 @@ window.NK38_FONTS = { regular: "AAEAAAAOAIAAAwBgR0RFRgS1BUEAAH9cAAAARkdQT1MAGQAM
     function body(children, opt) { return p(children, Object.assign({ indent: { left: IND }, alignment: D.AlignmentType.JUSTIFIED }, opt || {})); }
     function heading(nr, t) {
       return p([run(nr + ".", { bold: true }), new D.TextRun({ children: [new D.Tab()] }), run(t, { bold: true })],
-        { spacing: { before: 200, after: 20, line: 240 }, indent: { left: IND, hanging: IND }, tabStops: [{ type: D.TabStopType.LEFT, position: IND }] });
+        { spacing: { before: 200, after: 20, line: 240 }, indent: { left: IND, hanging: IND }, tabStops: [{ type: D.TabStopType.LEFT, position: IND }], keepNext: true });   // nagłówek nie zostaje sam na dole strony
     }
     /* Niebieska etykieta "Pozycja 1:" / "Opcja 1:" */
     function etykieta(label, extra) { return [run(label, Object.assign({ color: BLUE, bold: true }, extra || {}))]; }
@@ -2358,7 +2397,7 @@ window.NK38_FONTS = { regular: "AAEAAAAOAIAAAwBgR0RFRgS1BUEAAH9cAAAARkdQT1MAGQAM
 
   var api = {
     setLibs: function (x) { Object.assign(L, x); }, xlsx: xlsx, pdf: pdf, docx: docxOferta,
-    oferta: oferta, domyslnaOferta: domyslnaOferta, widoczneWarianty: widoczneWarianty, wymiary: wymiary, wymiaryPary: wymiaryPary, opisAuto: opisAuto, opisEfektywny: opisEfektywny, SZABLON: SZABLON, zOpisu: zOpisu, ceil100: ceil100, raport: raport
+    oferta: oferta, domyslnaOferta: domyslnaOferta, widoczneWarianty: widoczneWarianty, wymiary: wymiary, wymiaryPary: wymiaryPary, opisAuto: opisAuto, opisEfektywny: opisEfektywny, opisNadpisania: opisNadpisania, SZABLON: SZABLON, zOpisu: zOpisu, ceil100: ceil100, raport: raport
   };
   if (typeof module !== "undefined" && module.exports) module.exports = api;
   else root.NK38X = api;
@@ -2369,7 +2408,7 @@ window.NK38_FONTS = { regular: "AAEAAAAOAIAAAwBgR0RFRgS1BUEAAH9cAAAARkdQT1MAGQAM
 (function () {
   "use strict";
   /* Wersja programu: podnoś przy każdym wydaniu (pokazywana na pulpicie, zapisywana w kopii zapasowej). */
-  var WERSJA = { nr: "1.52", data: "30.10.2026" };
+  var WERSJA = { nr: "1.53", data: "30.10.2026" };
   var E = window.NK38, X = window.NK38X;
   var LS = { robocze: "nk38.robocze.v1", drafty: "nk38.szkice.v1", draft: "nk38.szkic.v1", tab: "nk38.zakladka", sel: "nk38.wariant", logo: "nk38.logo.v1", podpis: "nk38.podpis.v1",
     szablony: "nk38.szablony.v1", wyceny: "nk38.wyceny.v1", tekstyOferty: "nk38.szablon.v1", numery: "nk38.numery.v1", cennikStary: "nk38.cennik.v1", usuniete: "nk38.usuniete.v1", migracja2: "nk38.migracja2", migracja3: "nk38.migracja3", migracja4: "nk38.migracja4", historia: "nk38.historia.v1", uzytkownik: "nk38.uzytkownik.v1" };
@@ -2775,7 +2814,7 @@ window.NK38_FONTS = { regular: "AAEAAAAOAIAAAwBgR0RFRgS1BUEAAH9cAAAARkdQT1MAGQAM
 
   function fromForm() {
     var d = E.domyslneDane(), s = state.dane;
-    ["lok", "analiza", "oferta", "opis", "_wid", "_wnazwa", "_rid", "nadpis"].forEach(function (k) { if (s && s[k] !== undefined) d[k] = s[k]; });
+    ["lok", "analiza", "oferta", "opis", "opisNad", "_wid", "_wnazwa", "_rid", "nadpis"].forEach(function (k) { if (s && s[k] !== undefined) d[k] = s[k]; });
     d.nadpis = Object.assign({}, d.nadpis || {});
     ["hotel", "dieta"].forEach(function (k) { var v = $("nad_" + k).value; if (v === "") delete d.nadpis[k]; else d.nadpis[k] = Number(v); });
     TXTF.forEach(function (k) { d[k] = $(k).value; });
@@ -2798,7 +2837,10 @@ window.NK38_FONTS = { regular: "AAEAAAAOAIAAAwBgR0RFRgS1BUEAAH9cAAAARkdQT1MAGQAM
     });
     d.dodatkowe = dodZFormularza();
     var opisPole = $("opis").value;
-    d.opis = opisPole === "" || opisPole === state.opisAuto ? "" : opisPole;
+    /* ręczna zmiana opisu zapisuje tylko zmienione fragmenty (d.opisNad); reszta opisu dalej liczy się automatycznie */
+    if (opisPole !== state.opisShown && state.opisAuto != null) {
+      d.opisNad = X.opisNadpisania(state.opisAuto, opisPole); d.opis = "";
+    }
     return d;
   }
 
@@ -2941,14 +2983,14 @@ window.NK38_FONTS = { regular: "AAEAAAAOAIAAAwBgR0RFRgS1BUEAAH9cAAAARkdQT1MAGQAM
     var dzwAuto = r.cennik.dzwig * r.wspolne.dzwDni;
     $("dzwig_koszt").placeholder = String(Math.round(dzwAuto));
     $("dzwigHint").textContent = "Cena za 1 dzień: " + zl(r.cennik.dzwig) + " × " + r.wspolne.dzwDni + " dni = " + zl(dzwAuto) + (d.dzwig_koszt != null ? " (wpisano ręcznie " + zl(d.dzwig_koszt) + ")" : "");
-    var auto = X.opisAuto(d, d.oferta);
+    var auto = X.opisAuto(d, d.oferta), zmiany = Object.keys(d.opisNad || {}), efekt = X.opisEfektywny(d, d.oferta);
     state.opisAuto = auto;
-    if (document.activeElement !== $("opis")) $("opis").value = d.opis || auto;
+    if (document.activeElement !== $("opis")) { $("opis").value = efekt; state.opisShown = efekt; }
     wysokoscOpisu();
-    $("opis").classList.toggle("auto", !d.opis);
-    $("opisTag").textContent = d.opis ? "zmieniony" : "automatyczny";
-    $("opisTag").classList.toggle("ch", !!d.opis);
-    $("opisReset").hidden = !d.opis;
+    $("opis").classList.toggle("auto", !d.opis && !zmiany.length);
+    $("opisTag").textContent = d.opis ? "zmieniony" : zmiany.length ? "część zmieniona ręcznie (" + zmiany.map(function (k) { return k.replace(/#\d+$/, "").replace(/^\+\d+$/, "dopisek"); }).join(", ") + "), reszta automatycznie" : "automatyczny";
+    $("opisTag").classList.toggle("ch", !!d.opis || zmiany.length > 0);
+    $("opisReset").hidden = !d.opis && !zmiany.length;
     var ds = r.szablon.glebokosci.filter(function (g) { return d.gl_S[g.cm] || d.gl_D[g.cm]; }).map(function (g) { return g.cm + " cm"; });
     $("dimSummary").textContent = ds.length ? "· " + ds.join(", ") : "· wszystkie standardowe";
 
@@ -3702,7 +3744,7 @@ window.NK38_FONTS = { regular: "AAEAAAAOAIAAAwBgR0RFRgS1BUEAAH9cAAAARkdQT1MAGQAM
       state.dane = fromForm(); state.dane.dodatkowe = []; renderDod(state.dane); recalc();
     }
   });
-  $("opisReset").addEventListener("click", function () { state.dane.opis = ""; $("opis").value = ""; recalc(); });
+  $("opisReset").addEventListener("click", function () { state.dane.opis = ""; state.dane.opisNad = {}; state.opisShown = ""; $("opis").value = ""; recalc(); });
   $("lokKrk").addEventListener("click", function () { state.dane.lok = "Kraków"; lokButtons("Kraków"); recalc(); });
   $("lokPoza").addEventListener("click", function () { state.dane.lok = "Poza Krakowem"; lokButtons("Poza Krakowem"); recalc(); });
   /* Nowa wycena dla urządzenia: wartości startowe z szablonu (zysk, konserwacja, transport…). */

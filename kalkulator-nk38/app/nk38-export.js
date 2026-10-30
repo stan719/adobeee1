@@ -33,12 +33,12 @@
   /* Opis wariantu budowany z danych: H, L, P, wysokości pojazdów, agregaty, barierki, maskownice, magistrala. */
   function opisAuto(d, o) {
     var v = function (x) { return x == null || x === "" ? "" : x; };
-    var pary = wymiaryPary(Object.assign({}, d, { opis: "" }), o || {}).map(function (w) {
+    var pary = wymiaryPary(Object.assign({}, d, { opis: "", opisNad: {} }), o || {}).map(function (w) {
       var h = [w.h1, w.h2].filter(function (x) { return x != null; }).join("/");
       return "H-" + h + " | L-" + v(w.dl) + " | P-" + v(w.p) + " | Hpoj. G-" + v(w.gor) + " D-" + v(w.dol);
     });
     if (d.model === "lista") {   // urządzenia bez tabel NK38: tylko to, co wpisano
-      var lp = wymiaryPary(Object.assign({}, d, { opis: "" }), o || {}).map(function (w) {
+      var lp = wymiaryPary(Object.assign({}, d, { opis: "", opisNad: {} }), o || {}).map(function (w) {
         var h = [w.h1, w.h2].filter(function (x) { return x != null; }).join("/"), g = [];
         if (h) g.push("H-" + h); if (h && w.dl) g.push("L-" + w.dl); if (w.p != null) g.push("P-" + w.p);
         var hp = (w.gor != null ? "G-" + w.gor : "") + (w.dol != null ? (w.gor != null ? " " : "") + "D-" + w.dol : "");
@@ -63,7 +63,46 @@
   }
   function zMoca(tekst, kw) { return !kw ? tekst : /\d+(,\d+)?(\/\d+)?\s?kW/i.test(tekst) ? tekst.replace(/\d+(,\d+)?(\/\d+)?\s?kW/i, kw) : tekst + ", " + kw; }
   function agregatyOferta(d, tekst) { return d.agregaty + " szt. – " + zMoca(tekst, agrKw(d)) + "."; }
-  function opisEfektywny(d, o) { return d.opis || opisAuto(d, o); }
+  /* Opis ma fragmenty rozdzielone " | " lub " lub "; każdy ma klucz z prefiksu (H-, L-, P-, Hpoj., A-, Bok-, mgstrl-; powtórzenia #2…).
+     Ręczne zmiany zapisują się tylko dla zmienionych fragmentów (d.opisNad), reszta opisu nadal liczy się automatycznie. */
+  function opisFragmenty(tekst) {
+    var licz = {}, czesci = String(tekst || "").split(/( \| | lub )/), out = [];
+    for (var i = 0; i < czesci.length; i += 2) {
+      var t = czesci[i], m = t.match(/^\s*(Hpoj\.|[A-Za-zł]+-)/), k = m ? m[1] : "?";
+      licz[k] = (licz[k] || 0) + 1;
+      out.push({ sep: i ? czesci[i - 1] : "", key: licz[k] > 1 ? k + "#" + licz[k] : k, txt: t });
+    }
+    return out;
+  }
+  function opisZNadpisan(auto, nad) {
+    nad = nad || {};
+    var fr = opisFragmenty(auto), uzyte = {}, wynik = "";
+    fr.forEach(function (f) {
+      var t = f.key in nad ? nad[f.key] : f.txt; uzyte[f.key] = 1;
+      if (t === "" && f.key in nad) return;   // fragment usunięty ręcznie
+      wynik += (wynik ? (f.sep || " | ") : "") + t;
+    });
+    Object.keys(nad).forEach(function (k) { if (!uzyte[k] && nad[k] !== "") wynik += (wynik ? " | " : "") + nad[k]; });   // fragmenty dopisane ręcznie
+    return wynik;
+  }
+  /* Różnice między tekstem wpisanym w pole a opisem automatycznym → nadpisania per fragment. */
+  function opisNadpisania(auto, tekst) {
+    var a = opisFragmenty(auto), t = opisFragmenty(tekst), nad = {}, ak = {}, n = 0;
+    a.forEach(function (f) { ak[f.key] = f.txt; });
+    var tk = {};
+    t.forEach(function (f) {
+      tk[f.key] = 1;
+      if (!(f.key in ak)) { if (f.txt.trim()) nad["+" + (++n)] = f.txt.trim(); }
+      else if (f.txt !== ak[f.key]) nad[f.key] = f.txt;
+    });
+    a.forEach(function (f) { if (!tk[f.key]) nad[f.key] = ""; });
+    return nad;
+  }
+  function opisEfektywny(d, o) {
+    if (d.opis) return d.opis;   // stare wyceny: cały opis wpisany ręcznie
+    var auto = opisAuto(d, o), nad = d.opisNad || {};
+    return Object.keys(nad).length ? opisZNadpisan(auto, nad) : auto;
+  }
 
   /* Wartości: liczba + format ("zl" | "eur" | "n" | "int" | "txt"). */
   /* Warianty pokazywane w tabelach: bez wariantu B (np. 2500 kg), gdy szablon go nie ma. */
@@ -835,7 +874,7 @@
   /* Wymiary zagłębienia i domyślne wysokości pojazdów: dolny = min(H) - 15,
      górny = (prześwit - 320) - (dolny - 150) + 150. */
   function wymiary(d, o) {
-    var op = zOpisu(d.opis), num = function (v) { return v === "" || v == null || isNaN(v) ? null : Number(v); };
+    var op = zOpisu(d.opis || Object.keys(d.opisNad || {}).map(function (k) { return d.opisNad[k]; }).join(" | ")), num = function (v) { return v === "" || v == null || isNaN(v) ? null : Number(v); };
     var h1 = num(d.h1) != null ? num(d.h1) : num(op.h1), h2 = num(d.h2) != null ? num(d.h2) : num(op.h2);
     var p = num(d.przeswit) != null ? num(d.przeswit) : num((op.p || "").match(/\d+/) && op.p.match(/\d+/)[0]);
     var hs = [h1, h2].filter(function (x) { return x != null; });
@@ -969,7 +1008,7 @@
     function body(children, opt) { return p(children, Object.assign({ indent: { left: IND }, alignment: D.AlignmentType.JUSTIFIED }, opt || {})); }
     function heading(nr, t) {
       return p([run(nr + ".", { bold: true }), new D.TextRun({ children: [new D.Tab()] }), run(t, { bold: true })],
-        { spacing: { before: 200, after: 20, line: 240 }, indent: { left: IND, hanging: IND }, tabStops: [{ type: D.TabStopType.LEFT, position: IND }] });
+        { spacing: { before: 200, after: 20, line: 240 }, indent: { left: IND, hanging: IND }, tabStops: [{ type: D.TabStopType.LEFT, position: IND }], keepNext: true });   // nagłówek nie zostaje sam na dole strony
     }
     /* Niebieska etykieta "Pozycja 1:" / "Opcja 1:" */
     function etykieta(label, extra) { return [run(label, Object.assign({ color: BLUE, bold: true }, extra || {}))]; }
@@ -1136,7 +1175,7 @@
 
   var api = {
     setLibs: function (x) { Object.assign(L, x); }, xlsx: xlsx, pdf: pdf, docx: docxOferta,
-    oferta: oferta, domyslnaOferta: domyslnaOferta, widoczneWarianty: widoczneWarianty, wymiary: wymiary, wymiaryPary: wymiaryPary, opisAuto: opisAuto, opisEfektywny: opisEfektywny, SZABLON: SZABLON, zOpisu: zOpisu, ceil100: ceil100, raport: raport
+    oferta: oferta, domyslnaOferta: domyslnaOferta, widoczneWarianty: widoczneWarianty, wymiary: wymiary, wymiaryPary: wymiaryPary, opisAuto: opisAuto, opisEfektywny: opisEfektywny, opisNadpisania: opisNadpisania, SZABLON: SZABLON, zOpisu: zOpisu, ceil100: ceil100, raport: raport
   };
   if (typeof module !== "undefined" && module.exports) module.exports = api;
   else root.NK38X = api;

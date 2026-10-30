@@ -82,4 +82,15 @@ assert(rL.razem.brakB && rL.ostrzezenia.some((x) => /NK41/.test(x.tekst)), "NK41
 const rBez = E.oblicz(Object.assign(E.domyslneDane(), szablon("nk38").domyslne, dGl, { dodatkowe: [] }), szablon("nk38"), E.szablonyWbudowane());
 blisko(rBez.warianty[0].cena, rGl.warianty[0].cena, "bez drugiego urządzenia cena bez zmian");
 assert(rBez.warianty[0].pozycje === null, "bez drugiego urządzenia brak podziału na pozycje");
+
+// Opis wariantu: ręczna zmiana jednego fragmentu nie wyłącza automatyki reszty.
+const sz38 = szablon("nk38"), dOp = Object.assign(E.domyslneDane(), sz38.domyslne, { S: 4, D: 6, agregaty: 2, h1: 190, h2: 195, przeswit: 360 });
+const X = require("./nk38-export.js");
+const autoOp = X.opisAuto(E.oblicz(dOp, sz38).dane, {});
+const nadOp = X.opisNadpisania(autoOp, autoOp.replace("P-360", "P-350"));
+assert.deepStrictEqual(nadOp, { "P-": "P-350" });
+const opZm = X.opisEfektywny(E.oblicz(Object.assign({}, dOp, { opisNad: nadOp, h1: 200, h2: 205 }), sz38).dane, {});
+assert(/H-200\/205/.test(opZm) && /P-350/.test(opZm), "opis: H z automatu, P ręcznie: " + opZm);
+assert.strictEqual(X.opisEfektywny(E.oblicz(Object.assign({}, dOp, { opis: "ręczny" }), sz38).dane, {}), "ręczny", "stary opis cały ręczny nadal działa");
+console.log("  ok opis wariantu: nadpisania per fragment");
 console.log("szablony: OK");

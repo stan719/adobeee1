@@ -621,7 +621,7 @@ html, body { overflow-x: clip; max-width: 100%; }
 (function () {
   "use strict";
   /* Wersja programu: podnoś przy każdym wydaniu (pokazywana na pulpicie, zapisywana w kopii zapasowej). */
-  var WERSJA = { nr: "1.52", data: "30.10.2026" };
+  var WERSJA = { nr: "1.53", data: "30.10.2026" };
   var E = window.NK38, X = window.NK38X;
   var LS = { robocze: "nk38.robocze.v1", drafty: "nk38.szkice.v1", draft: "nk38.szkic.v1", tab: "nk38.zakladka", sel: "nk38.wariant", logo: "nk38.logo.v1", podpis: "nk38.podpis.v1",
     szablony: "nk38.szablony.v1", wyceny: "nk38.wyceny.v1", tekstyOferty: "nk38.szablon.v1", numery: "nk38.numery.v1", cennikStary: "nk38.cennik.v1", usuniete: "nk38.usuniete.v1", migracja2: "nk38.migracja2", migracja3: "nk38.migracja3", migracja4: "nk38.migracja4", historia: "nk38.historia.v1", uzytkownik: "nk38.uzytkownik.v1" };
@@ -1027,7 +1027,7 @@ html, body { overflow-x: clip; max-width: 100%; }
 
   function fromForm() {
     var d = E.domyslneDane(), s = state.dane;
-    ["lok", "analiza", "oferta", "opis", "_wid", "_wnazwa", "_rid", "nadpis"].forEach(function (k) { if (s && s[k] !== undefined) d[k] = s[k]; });
+    ["lok", "analiza", "oferta", "opis", "opisNad", "_wid", "_wnazwa", "_rid", "nadpis"].forEach(function (k) { if (s && s[k] !== undefined) d[k] = s[k]; });
     d.nadpis = Object.assign({}, d.nadpis || {});
     ["hotel", "dieta"].forEach(function (k) { var v = $("nad_" + k).value; if (v === "") delete d.nadpis[k]; else d.nadpis[k] = Number(v); });
     TXTF.forEach(function (k) { d[k] = $(k).value; });
@@ -1050,7 +1050,10 @@ html, body { overflow-x: clip; max-width: 100%; }
     });
     d.dodatkowe = dodZFormularza();
     var opisPole = $("opis").value;
-    d.opis = opisPole === "" || opisPole === state.opisAuto ? "" : opisPole;
+    /* ręczna zmiana opisu zapisuje tylko zmienione fragmenty (d.opisNad); reszta opisu dalej liczy się automatycznie */
+    if (opisPole !== state.opisShown && state.opisAuto != null) {
+      d.opisNad = X.opisNadpisania(state.opisAuto, opisPole); d.opis = "";
+    }
     return d;
   }
 
@@ -1193,14 +1196,14 @@ html, body { overflow-x: clip; max-width: 100%; }
     var dzwAuto = r.cennik.dzwig * r.wspolne.dzwDni;
     $("dzwig_koszt").placeholder = String(Math.round(dzwAuto));
     $("dzwigHint").textContent = "Cena za 1 dzień: " + zl(r.cennik.dzwig) + " × " + r.wspolne.dzwDni + " dni = " + zl(dzwAuto) + (d.dzwig_koszt != null ? " (wpisano ręcznie " + zl(d.dzwig_koszt) + ")" : "");
-    var auto = X.opisAuto(d, d.oferta);
+    var auto = X.opisAuto(d, d.oferta), zmiany = Object.keys(d.opisNad || {}), efekt = X.opisEfektywny(d, d.oferta);
     state.opisAuto = auto;
-    if (document.activeElement !== $("opis")) $("opis").value = d.opis || auto;
+    if (document.activeElement !== $("opis")) { $("opis").value = efekt; state.opisShown = efekt; }
     wysokoscOpisu();
-    $("opis").classList.toggle("auto", !d.opis);
-    $("opisTag").textContent = d.opis ? "zmieniony" : "automatyczny";
-    $("opisTag").classList.toggle("ch", !!d.opis);
-    $("opisReset").hidden = !d.opis;
+    $("opis").classList.toggle("auto", !d.opis && !zmiany.length);
+    $("opisTag").textContent = d.opis ? "zmieniony" : zmiany.length ? "część zmieniona ręcznie (" + zmiany.map(function (k) { return k.replace(/#\d+$/, "").replace(/^\+\d+$/, "dopisek"); }).join(", ") + "), reszta automatycznie" : "automatyczny";
+    $("opisTag").classList.toggle("ch", !!d.opis || zmiany.length > 0);
+    $("opisReset").hidden = !d.opis && !zmiany.length;
     var ds = r.szablon.glebokosci.filter(function (g) { return d.gl_S[g.cm] || d.gl_D[g.cm]; }).map(function (g) { return g.cm + " cm"; });
     $("dimSummary").textContent = ds.length ? "· " + ds.join(", ") : "· wszystkie standardowe";
 
@@ -1954,7 +1957,7 @@ html, body { overflow-x: clip; max-width: 100%; }
       state.dane = fromForm(); state.dane.dodatkowe = []; renderDod(state.dane); recalc();
     }
   });
-  $("opisReset").addEventListener("click", function () { state.dane.opis = ""; $("opis").value = ""; recalc(); });
+  $("opisReset").addEventListener("click", function () { state.dane.opis = ""; state.dane.opisNad = {}; state.opisShown = ""; $("opis").value = ""; recalc(); });
   $("lokKrk").addEventListener("click", function () { state.dane.lok = "Kraków"; lokButtons("Kraków"); recalc(); });
   $("lokPoza").addEventListener("click", function () { state.dane.lok = "Poza Krakowem"; lokButtons("Poza Krakowem"); recalc(); });
   /* Nowa wycena dla urządzenia: wartości startowe z szablonu (zysk, konserwacja, transport…). */
