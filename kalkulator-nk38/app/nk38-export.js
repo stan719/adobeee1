@@ -51,6 +51,49 @@
     }
     return pary.join(" lub ") + " | A-" + (d.agrOpis || d.agregaty || 0) + " | Bok-" + (d.barierki || 0) + " Tył-" + (d.maskownice || 0) + " | mgstrl-" + (d.magistrala || 0);
   }
+  /* Odmiana nazwy inwestycji do zdania wstępu: "ul. Brzozowa 9, Poznań" → "przy ul. Brzozowej 9 w Poznaniu".
+     Miasta ze słownika (miejscownik), ulice wg reguł przymiotnikowych; czego nie rozpozna, zostawia bez zmian. */
+  var MIASTA = ("Warszawa:Warszawie|Kraków:Krakowie|Łódź:Łodzi|Wrocław:Wrocławiu|Poznań:Poznaniu|Gdańsk:Gdańsku|Szczecin:Szczecinie|Bydgoszcz:Bydgoszczy|Lublin:Lublinie|Białystok:Białymstoku|Katowice:Katowicach|Gdynia:Gdyni|Częstochowa:Częstochowie|Radom:Radomiu|Rzeszów:Rzeszowie|Toruń:Toruniu|Sosnowiec:Sosnowcu|Kielce:Kielcach|Gliwice:Gliwicach|Olsztyn:Olsztynie|Zabrze:Zabrzu|Bielsko-Biała:Bielsku-Białej|Bytom:Bytomiu|Zielona Góra:Zielonej Górze|Rybnik:Rybniku|Ruda Śląska:Rudzie Śląskiej|Opole:Opolu|Tychy:Tychach|Gorzów Wielkopolski:Gorzowie Wielkopolskim|Płock:Płocku|Elbląg:Elblągu|Wałbrzych:Wałbrzychu|Włocławek:Włocławku|Tarnów:Tarnowie|Chorzów:Chorzowie|Koszalin:Koszalinie|Kalisz:Kaliszu|Legnica:Legnicy|Grudziądz:Grudziądzu|Słupsk:Słupsku|Jaworzno:Jaworznie|Piastów:Piastowie|Pruszków:Pruszkowie|Piaseczno:Piasecznie|Legionowo:Legionowie|Ząbki:Ząbkach|Marki:Markach|Wieliczka:Wieliczce|Skawina:Skawinie|Zakopane:Zakopanem|Nowy Sącz:Nowym Sączu|Nowy Targ:Nowym Targu|Tarnobrzeg:Tarnobrzegu|Przemyśl:Przemyślu|Siedlce:Siedlcach|Mielec:Mielcu|Stalowa Wola:Stalowej Woli|Konin:Koninie|Leszno:Lesznie|Piła:Pile|Inowrocław:Inowrocławiu|Lubin:Lubinie|Głogów:Głogowie|Świdnica:Świdnicy|Bełchatów:Bełchatowie|Sopot:Sopocie|Gniezno:Gnieźnie|Pabianice:Pabianicach|Zgierz:Zgierzu|Oświęcim:Oświęcimiu|Chrzanów:Chrzanowie|Myślenice:Myślenicach|Bochnia:Bochni|Wadowice:Wadowicach|Krosno:Krośnie|Sanok:Sanoku|Dębica:Dębicy|Chełm:Chełmie|Zamość:Zamościu|Puławy:Puławach|Mińsk Mazowiecki:Mińsku Mazowieckim|Otwock:Otwocku|Wołomin:Wołominie|Józefów:Józefowie|Nadarzyn:Nadarzynie|Rumia:Rumi|Wejherowo:Wejherowie|Tczew:Tczewie|Malbork:Malborku|Kołobrzeg:Kołobrzegu|Police:Policach|Stargard:Stargardzie|Suwałki:Suwałkach|Łomża:Łomży|Ełk:Ełku|Gubin:Gubinie|Nysa:Nysie|Racibórz:Raciborzu|Cieszyn:Cieszynie|Żory:Żorach|Mysłowice:Mysłowicach|Siemianowice Śląskie:Siemianowicach Śląskich|Dąbrowa Górnicza:Dąbrowie Górniczej").split("|").reduce(function (m, x) { var p = x.split(":"); m[p[0].toLowerCase()] = p[1]; return m; }, {});
+  function dopelniaczUlicy(w) {
+    if (/^(Jana|Pawła|Piotra|Marii|Wojciecha|Mikołaja|Tadeusza|Stefana|Józefa|Henryka|Adama|Andrzeja|Karola|Kazimierza|Stanisława|Władysława|Bolesława|Zygmunta|Sienkiewicza|Mickiewicza)$/i.test(w) || /(awła|sława)$/i.test(w)) return w;   // imiona i nazwiska już w dopełniaczu
+    if (/(sk|ck|dzk)ie$/i.test(w)) return w.replace(/(sk|ck|dzk)ie$/i, "$1ich");   // al. Jerozolimskie → Jerozolimskich
+    if (/^(ul\.?|al\.?|pl\.?|os\.?)$/i.test(w) || /(skiej|ckiej|dzkiej|ej|ego|ich|ych|ów|ow|go)$/i.test(w) || w.length < 4) return w;
+    var r = [[/(sk)a$/i, "$1iej"], [/(ck)a$/i, "$1iej"], [/(dzk)a$/i, "$1iej"], [/(zk)a$/i, "$1iej"], [/(ow)a$/i, "$1ej"], [/(ew)a$/i, "$1ej"],
+      [/(n)a$/i, "$1ej"], [/(ł)a$/i, "$1ej"], [/(cz)a$/i, "$1ej"], [/(sz)a$/i, "$1ej"], [/(rz)a$/i, "$1ej"], [/(ż)a$/i, "$1ej"]];
+    for (var i = 0; i < r.length; i++) if (r[i][0].test(w)) return w.replace(r[i][0], r[i][1]);
+    return w;
+  }
+  function lokalizacjaOdmieniona(nazwa) {
+    var t = String(nazwa || "").trim();
+    if (!t) return "przy …";
+    var m = t.match(/^(ul\.?|al\.?|pl\.?|os\.?|ulica|aleja|plac|osiedle)\s+(.+)$/i);
+    if (!m) return "przy " + t;
+    var pref = { ulica: "ul.", aleja: "al.", plac: "pl.", osiedle: "os." }[m[1].toLowerCase()] || m[1];
+    var tok = m[2].replace(/,/g, " ").split(/\s+/).filter(Boolean), ulica = [], liczba = [], miasto = "", reszta = [], i = 0;
+    for (; i < tok.length; i++) {
+      if (/^\d/.test(tok[i])) break;
+      if (czyMiasto(tok, i)) break;
+      ulica.push(tok[i]);
+    }
+    for (; i < tok.length; i++) {
+      var c = czyMiasto(tok, i);
+      if (!miasto && c) { miasto = c.tekst; i += c.dl - 1; }
+      else if (!miasto && /^\d/.test(tok[i]) && !reszta.length) liczba.push(tok[i]);
+      else reszta.push(tok[i]);
+    }
+    if (!ulica.length) return "przy " + t;
+    var wynik = "przy " + pref + " " + ulica.map(dopelniaczUlicy).join(" ") + (liczba.length ? " " + liczba.join(" ") : "");
+    if (miasto) wynik += " " + (/^[wf][^aeiouyąęó]/i.test(miasto) ? "we " : "w ") + miasto;
+    return wynik + (reszta.length ? " (" + reszta.join(" ") + ")" : "");
+  }
+  function czyMiasto(tok, i) {
+    for (var n = 3; n >= 1; n--) {
+      if (i + n > tok.length) continue;
+      var klucz = tok.slice(i, i + n).join(" ").toLowerCase();
+      if (MIASTA[klucz]) return { tekst: MIASTA[klucz], dl: n };
+    }
+    return null;
+  }
   /* Agregaty z podziałem na moc: "2× 3 kW, 1× 6 kW"; w ofercie osobna linia dla każdej mocy. */
   function agrMoc(d) {
     var a3 = Number(d.agr3) || 0, a6 = Number(d.agr6) || 0;
@@ -929,7 +972,7 @@
       return "Zagłębienie: wysokość " + zagl + "cm; długość " + v(w.dl) + "cm;\nPrześwit między-kondygnacyjny: min. " + v(w.p) +
         "cm;\nWysokość parkowanych pojazdów*: ▲-" + v(w.gor) + "cm, ▼-" + v(w.dol) + "cm;";
     }).join("\nlub\n");
-    var garazTxt = o.garaz || ("przy " + (d.nazwa || "…"));
+    var garazTxt = o.garaz || lokalizacjaOdmieniona(d.nazwa);
     var DOD = r.dodatkowe || [], RZ = r.razem || m, pozW = ws[0].pozycje;
     /* wycena łączona: kolejne pozycje z danymi technicznymi i listą urządzeń ze swojego szablonu */
     var dalsze = DOD.map(function (x, i) {
@@ -954,7 +997,7 @@
     var auto = {
       wstep: TT.wstep ? sub(TT.wstep, { n: RZ.platformy, mp: RZ.MP, typ: typ, garaz: garazTxt, oferte: o.powod === "rabat" ? "naszą zrabatowaną ofertę" : "naszą ofertę" }) : "w związku z " + (o.powod === "rabat" ? "Państwa prośbą o rabat przedstawiamy naszą zrabatowaną ofertę" : "otrzymanym zapytaniem przedstawiamy naszą ofertę") +
         " na dostawę i montaż " + RZ.platformy + " platform służących do niezależnego parkowania " + RZ.MP + " pojazdów w garażu " +
-        (o.garaz || ("inwestycji " + (d.nazwa || "…"))) + ".",
+        (o.garaz || ("inwestycji " + lokalizacjaOdmieniona(d.nazwa))) + ".",
       tech: tech,
       wyposazenie: [TT.obciazenie, TT.zabezpieczenie, d.barierki && !lista ? TT.barierki : ""].filter(Boolean).join("\n"),
       lista: ["S", "D", "NP"].map(function (k) { return d[k] ? sub(TY[k].oferta, { n: d[k], typ: d.typ }) : ""; }).concat([
@@ -1175,7 +1218,7 @@
 
   var api = {
     setLibs: function (x) { Object.assign(L, x); }, xlsx: xlsx, pdf: pdf, docx: docxOferta,
-    oferta: oferta, domyslnaOferta: domyslnaOferta, widoczneWarianty: widoczneWarianty, wymiary: wymiary, wymiaryPary: wymiaryPary, opisAuto: opisAuto, opisEfektywny: opisEfektywny, opisNadpisania: opisNadpisania, SZABLON: SZABLON, zOpisu: zOpisu, ceil100: ceil100, raport: raport
+    oferta: oferta, domyslnaOferta: domyslnaOferta, widoczneWarianty: widoczneWarianty, wymiary: wymiary, wymiaryPary: wymiaryPary, opisAuto: opisAuto, opisEfektywny: opisEfektywny, opisNadpisania: opisNadpisania, lokalizacjaOdmieniona: lokalizacjaOdmieniona, SZABLON: SZABLON, zOpisu: zOpisu, ceil100: ceil100, raport: raport
   };
   if (typeof module !== "undefined" && module.exports) module.exports = api;
   else root.NK38X = api;

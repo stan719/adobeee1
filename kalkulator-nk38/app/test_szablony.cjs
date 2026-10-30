@@ -93,4 +93,8 @@ const opZm = X.opisEfektywny(E.oblicz(Object.assign({}, dOp, { opisNad: nadOp, h
 assert(/H-200\/205/.test(opZm) && /P-350/.test(opZm), "opis: H z automatu, P ręcznie: " + opZm);
 assert.strictEqual(X.opisEfektywny(E.oblicz(Object.assign({}, dOp, { opis: "ręczny" }), sz38).dane, {}), "ręczny", "stary opis cały ręczny nadal działa");
 console.log("  ok opis wariantu: nadpisania per fragment");
+[["ul. Brzozowa 9, Poznań", "przy ul. Brzozowej 9 w Poznaniu"], ["ul. Krupnicza 31 Kraków", "przy ul. Krupniczej 31 w Krakowie"], ["ul. Polna 5 Katowice", "przy ul. Polnej 5 w Katowicach"],
+  ["ul. Słoneczna 3, Wrocław", "przy ul. Słonecznej 3 we Wrocławiu"], ["ul. Dekerta 12 Kraków", "przy ul. Dekerta 12 w Krakowie"], ["ul. Jana Pawła II 10 Gdańsk", "przy ul. Jana Pawła II 10 w Gdańsku"],
+  ["KRAKOWSKA VITA", "przy KRAKOWSKA VITA"]].forEach(([n, o]) => assert.strictEqual(X.lokalizacjaOdmieniona(n), o, "odmiana: " + n));
+console.log("  ok odmiana nazwy inwestycji");
 console.log("szablony: OK");

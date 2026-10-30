@@ -621,7 +621,7 @@ html, body { overflow-x: clip; max-width: 100%; }
 (function () {
   "use strict";
   /* Wersja programu: podnoś przy każdym wydaniu (pokazywana na pulpicie, zapisywana w kopii zapasowej). */
-  var WERSJA = { nr: "1.53", data: "30.10.2026" };
+  var WERSJA = { nr: "1.54", data: "30.10.2026" };
   var E = window.NK38, X = window.NK38X;
   var LS = { robocze: "nk38.robocze.v1", drafty: "nk38.szkice.v1", draft: "nk38.szkic.v1", tab: "nk38.zakladka", sel: "nk38.wariant", logo: "nk38.logo.v1", podpis: "nk38.podpis.v1",
     szablony: "nk38.szablony.v1", wyceny: "nk38.wyceny.v1", tekstyOferty: "nk38.szablon.v1", numery: "nk38.numery.v1", cennikStary: "nk38.cennik.v1", usuniete: "nk38.usuniete.v1", migracja2: "nk38.migracja2", migracja3: "nk38.migracja3", migracja4: "nk38.migracja4", historia: "nk38.historia.v1", uzytkownik: "nk38.uzytkownik.v1" };
@@ -1651,7 +1651,7 @@ html, body { overflow-x: clip; max-width: 100%; }
       '</div><p class="note" style="margin-top:8px">Puste pola nie pojawiają się w ofercie.</p>', true);
     h += sekcja("B", "Wstęp", '<div class="ofgrid">' +
       '<label class="f">Powód oferty<select data-of="powod" id="of_powod"><option value="zapytanie"' + (o.powod !== "rabat" ? " selected" : "") + '>Otrzymane zapytanie</option><option value="rabat"' + (o.powod === "rabat" ? " selected" : "") + '>Prośba o rabat (oferta zrabatowana)</option></select></label>' +
-      ofField(r.szablon.teksty.wstep ? "Lokalizacja inwestycji…" : "W garażu…", "garaz", { ph: (r.szablon.teksty.wstep ? "przy " : "inwestycji ") + (d.nazwa || "…"), hint: "Tab = wpisz podpowiedź · np. wznoszonego budynku przy ul. Dekerta w Krakowie" }) + "</div>" + autoTekst("wstep", "Treść wstępu", F), true);
+      ofField(r.szablon.teksty.wstep ? "Lokalizacja inwestycji…" : "W garażu…", "garaz", { ph: (r.szablon.teksty.wstep ? "" : "inwestycji ") + X.lokalizacjaOdmieniona(d.nazwa), hint: "Tab = wpisz podpowiedź (nazwy odmieniają się automatycznie, popraw w razie potrzeby) · np. wznoszonego budynku przy ul. Dekerta w Krakowie" }) + "</div>" + autoTekst("wstep", "Treść wstępu", F), true);
     h += sekcja("1", "Specyfikacja oferty", '<div class="ofgrid">' +
       F.wymiaryPary.map(function (w, i) {
         var pre = w.idx == null ? "" : "wysPary." + w.idx + ".";
