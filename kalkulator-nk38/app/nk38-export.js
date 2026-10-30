@@ -421,13 +421,13 @@
     var R = raport(r, ctx.GLEBOKOSCI, ctx.oferta), d = r.dane, w0 = r.warianty[0];
     var wb = new L.ExcelJS.Workbook();
     wb.creator = "Kalkulator NK38";
-    var FONT = "Arial";
+    var FONT = "Calibri";   // jak Carlito w raporcie PDF (metrycznie zgodny); w programach bez Calibri zastępuje go Carlito
     var C = { acc: "FF0A6B74", accSoft: "FFE3F2F2", ink: "FF0E171C", muted: "FF6A7780", line: "FFD3D9DD", zebra: "FFF7F8F9", warn: "FF8A5300", tile: "FFF3F8F8" };
     var NF = { zl: '#,##0 "zł";-#,##0 "zł";"–"', eur: '#,##0 "€"', int: "#,##0", n: "#,##0.00" };
     var thin = { style: "thin", color: { argb: C.line } };
     var box = { top: thin, bottom: thin, left: thin, right: thin };
     function fill(argb) { return { type: "pattern", pattern: "solid", fgColor: { argb: argb } }; }
-    function font(o) { return Object.assign({ name: FONT, size: 10, color: { argb: C.ink } }, o || {}); }
+    function font(o) { o = Object.assign({ name: FONT, size: 10, color: { argb: C.ink } }, o || {}); o.size = Math.round(o.size * 1.1 * 2) / 2; return o; }   // Calibri jest węższy od Arial, więc pismo trochę większe
     /* skala zamiast "dopasuj do strony": Excel przy dopasowaniu ignoruje ręczne podziały stron */
     function sheet(name, widths, scale) {
       var ws = wb.addWorksheet(name, { views: [{ showGridLines: false }],
@@ -482,10 +482,10 @@
       });
       ws.addRow([]);
     }
-    var gen = "Wygenerowano " + new Date().toLocaleString("pl-PL") + " · ceny netto w zł · szablon " + d.typ;
+    var gen = "Ceny netto · wygenerowano " + new Date().toLocaleDateString("pl-PL");
 
     /* 1. Podsumowanie */
-    var s1 = sheet("Kalkulacja", [30, 17, 15, 16, 17, 21], 78), N = R.neg.N, K = R.karta;
+    var s1 = sheet("Kalkulacja", [30, 17, 15, 16, 17, 21], 82), N = R.neg.N, K = R.karta;
     /* nagłówek: adres inwestycji i data kalkulacji */
     var b1 = s1.addRow(["KALKULACJA " + d.typ, "", "", "", "Data kalkulacji"]), b2 = s1.addRow([K.adres, "", "", "", K.data]);
     [b1, b2].forEach(function (row) { s1.mergeCells(row.number, 1, row.number, 4); s1.mergeCells(row.number, 5, row.number, 6); });
@@ -502,10 +502,10 @@
     var MPn = (r.razem || r.mat).MP || 0, rabS = function (c) { return "−" + zl(N.cenaA - c) + " (−" + n2((N.cenaA - c) / N.cenaA * 100) + "%)"; };
     var hc = s1.addRow(["Cena", "", "", "Cena netto", "Cena za MP", "Rabat od oferty"]); s1.mergeCells(hc.number, 1, hc.number, 3); hc.height = 20;
     hc.eachCell(function (c, i) { if (i === 2 || i === 3) return; c.fill = fill(C.accSoft); c.border = box; c.font = font({ bold: true, size: 9, color: { argb: C.acc } }); c.alignment = { horizontal: i === 1 ? "left" : "right", vertical: "middle", indent: i === 1 ? 1 : 0 }; });
-    [["Cena ofertowa · zysk " + pct(N.zA) + " · " + w0.nazwa + (w0.cenaMPeur ? " · " + eur(w0.cenaMPeur) + " / MP" : ""), N.cenaA, "–"],
-     ["Można zejść do · zysk " + pct(N.zB), N.cenaB, rabS(N.cenaB)], ["Próg opłacalności · zysk 0% (maks. rabat)", N.cenaMin, rabS(N.cenaMin)]]
+    [["Cena ofertowa · zysk " + pct(N.zA) + " · " + w0.nazwa, N.cenaA, "–", 0, w0.cenaMPeur ? zl(MPn ? N.cenaA / MPn : 0) + " · " + eur(w0.cenaMPeur) : null],
+     ["Można zejść do · zysk " + pct(N.zB), N.cenaB, rabS(N.cenaB)], ["Próg opłacalności · zysk 0% · maks. rabat", N.cenaMin, rabS(N.cenaMin)]]
       .concat((K.pozycje || []).map(function (q) { return ["   w tym " + q.nazwa, q.cena, "–", q.MP]; })).forEach(function (q) {
-      var x = s1.addRow([q[0], "", "", q[1], (q[3] || MPn) ? q[1] / (q[3] || MPn) : 0, q[2]]); s1.mergeCells(x.number, 1, x.number, 3);
+      var x = s1.addRow([q[0], "", "", q[1], q[4] || ((q[3] || MPn) ? q[1] / (q[3] || MPn) : 0), q[2]]); s1.mergeCells(x.number, 1, x.number, 3);
       x.eachCell({ includeEmpty: true }, function (c, i) {
         if (i === 2 || i === 3) return;   // scalone z kolumną 1: wspólny styl
         c.border = box; c.font = font({ bold: i === 4 || i === 5 });
@@ -514,7 +514,7 @@
       });
     });
     s1.addRow([]);
-    section(s1, "Pole do negocjacji: o ile można zejść z ceny (" + w0.nazwa + ")", 6);
+    section(s1, "Pole do negocjacji (" + w0.nazwa + ")", 6);
     var GOOD = "FFE3F4EA", GOODT = "FF13794A", WARN = "FFFDF3DD", BAD = "FFFDECEA", BADT = "FFB42318";
     var hn = s1.addRow(R.neg.head); hn.height = 26;
     hn.eachCell(function (c, i) { c.fill = fill(C.accSoft); c.border = box; c.font = font({ bold: true, size: 9, color: { argb: C.acc } }); c.alignment = { horizontal: i === 1 ? "left" : "right", vertical: "middle", wrapText: true, indent: i === 1 ? 1 : 0 }; });
@@ -534,32 +534,39 @@
 
     /* karta inwestycji: zakres (lewa połowa) i wymiary (prawa), w obu ta sama siatka etykieta + wartość */
     section(s1, "Dane wejściowe", 6);
-    var plasko = function (rows) { return rows.reduce(function (a, x) { a.push([x[0], Array.isArray(x[1]) ? "▲ " + x[1][0] + "    ▼ " + x[1][1] : x[1], x[2]]); if (x[3]) a.push([x[3][0], x[3][1]]); return a; }, []); };
-    var lewa = plasko(K.zakres);
+    var wartK = function (v) { return Array.isArray(v) ? "▲ " + v[0] + "    ▼ " + v[1] : v; };
+    var lewa = K.zakres.reduce(function (acc, x) { acc.push(x.slice(0, 3)); if (x[3]) acc.push(x[3]); return acc; }, []);   // w Excelu agregaty osobnym wierszem (wąska kolumna obok ucinałaby tekst)
     if (K.wyposazenie) lewa.push(["Barierki / maskownice / magistrala", K.wyposazenie]);
     var prawa = [];
-    K.wymiary.forEach(function (grp) { prawa = prawa.concat(plasko(grp)); });
+    K.wymiary.forEach(function (grp) { prawa = prawa.concat(grp); });
     if (K.dlMiejsca) prawa.push(["Długość miejsca postojowego", K.dlMiejsca]);
-    if (K.agrOpis) prawa.push(["Układ agregatów", K.agrOpis]);
-    prawa.push(["KOB / GDW", K.kobGdw]);
+    prawa.push(K.agrOpis ? ["Układ agregatów", K.agrOpis, 0, ["KOB / GDW", K.kobGdw]] : ["KOB / GDW", K.kobGdw]);   // jak w raporcie: układ agregatów i KOB / GDW obok siebie
+    var ramka = C.line, kr0 = s1.rowCount + 1, nK = Math.max(lewa.length, prawa.length);
+    function polowa(wiersz, c0, item, etap, pierwszy, ostatni) {
+      var obok = item && item[3], masters = obok ? [[c0, c0 + 1], [c0 + 2, c0 + 2]] : [[c0, c0 + 2]];
+      masters.forEach(function (m, mi) {
+        if (m[1] > m[0]) s1.mergeCells(wiersz.number, m[0], wiersz.number, m[1]);
+        var c = wiersz.getCell(m[0]), tekst = item ? (mi ? (etap ? wartK(obok[1]) : obok[0]) : (etap ? wartK(item[1]) : item[0])) : "";
+        c.value = tekst;
+        c.alignment = { indent: 1, vertical: etap ? "top" : "bottom" };
+        c.font = etap ? font({ size: 11, bold: true, color: { argb: item && item[2] && !mi ? C.acc : C.ink } }) : font({ size: 8.5, color: { argb: C.muted } });
+        c.border = { left: mi === 0 ? { style: "thin", color: { argb: ramka } } : undefined, right: mi === masters.length - 1 ? { style: "thin", color: { argb: ramka } } : undefined, bottom: ostatni && etap ? { style: "thin", color: { argb: ramka } } : undefined };
+      });
+    }
     var naglK = s1.addRow(["ZAKRES", "", "", "WYMIARY"]); s1.mergeCells(naglK.number, 1, naglK.number, 3); s1.mergeCells(naglK.number, 4, naglK.number, 6);
-    [1, 4].forEach(function (ci) { var c = naglK.getCell(ci); c.font = font({ size: 8, bold: true, color: { argb: C.acc } }); c.alignment = { indent: 1 }; c.border = { top: thin }; });
-    for (var li = 0; li < Math.max(lewa.length, prawa.length); li++) {
+    [1, 4].forEach(function (ci) { var c = naglK.getCell(ci); c.font = font({ size: 8, bold: true, color: { argb: C.acc } }); c.alignment = { indent: 1, vertical: "bottom" }; c.border = { top: { style: "thin", color: { argb: ramka } }, left: { style: "thin", color: { argb: ramka } }, right: { style: "thin", color: { argb: ramka } } }; });
+    for (var li = 0; li < nK; li++) {
       [0, 1].forEach(function (etap) {
-        var L1 = lewa[li], P1 = prawa[li], kr = s1.addRow([L1 ? L1[etap] : "", "", "", P1 ? P1[etap] : ""]);
-        s1.mergeCells(kr.number, 1, kr.number, 3); s1.mergeCells(kr.number, 4, kr.number, 6);
-        kr.height = etap ? 18 : 13;
-        [[L1, 1], [P1, 4]].forEach(function (z) {
-          var c = kr.getCell(z[1]); c.alignment = { indent: 1, vertical: etap ? "top" : "bottom" };
-          c.font = etap ? font({ size: 11, bold: true, color: { argb: z[0] && z[0][2] ? C.acc : C.ink } }) : font({ size: 8.5, color: { argb: C.muted } });
-        });
+        var kr = s1.addRow([]); kr.height = etap ? 18 : 13;
+        polowa(kr, 1, lewa[li], etap, li === 0, li === nK - 1); polowa(kr, 4, prawa[li], etap, li === 0, li === nK - 1);
       });
     }
     s1.addRow([]);
-    var op = s1.addRow(["Opis wariantu", K.opis || "–"]); s1.mergeCells(op.number, 2, op.number, 6);
-    op.getCell(1).font = font({ size: 8.5, color: { argb: C.muted } }); op.getCell(1).alignment = { indent: 1, vertical: "top" };
-    op.getCell(2).font = font({ size: 10, bold: true }); op.getCell(2).alignment = { wrapText: true, vertical: "top" };
-    if (String(K.opis).length > 75) op.height = 15 * Math.ceil(String(K.opis).length / 75);
+    var opE = s1.addRow(["Opis wariantu"]); s1.mergeCells(opE.number, 1, opE.number, 6);   // jak w raporcie: etykieta nad wartością
+    opE.getCell(1).font = font({ size: 8.5, color: { argb: C.muted } }); opE.getCell(1).alignment = { vertical: "bottom" };
+    var op = s1.addRow([K.opis || "–"]); s1.mergeCells(op.number, 1, op.number, 6);
+    op.getCell(1).font = font({ size: 10.5, bold: true }); op.getCell(1).alignment = { wrapText: true, vertical: "top" };
+    if (String(K.opis).length > 95) op.height = 15 * Math.ceil(String(K.opis).length / 95);
     var e3 = s1.addRow(["Lokalizacja", "", "Montaż", "", "Transport", ""]), v3 = s1.addRow([K.lok, "", K.montaz, "", K.transport, ""]);
     [e3, v3].forEach(function (row, ri) {
       [1, 3, 5].forEach(function (ci) {
