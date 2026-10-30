@@ -34,10 +34,10 @@ const esc = (t) => String(t).replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&l
     dokumenty.push({ tytul: "Raport PDF · " + sz.nazwa + " · " + nazwa, strony: strony.map((f, i) => ({ plik: "img/" + f, sekcje: mapa.filter((m) => m.strona === i + 1) })) });
     try {   // Excel: arkusz Podsumowanie przeliczony przez LibreOffice (liczby w zapisie angielskim)
       execFileSync("soffice", ["--headless", "--convert-to", "pdf", "--outdir", tmp, xlsx], { stdio: "ignore", timeout: 120000 });
-      execFileSync("pdftoppm", ["-r", "110", "-png", "-f", "1", "-l", "1", path.join(tmp, klucz + ".pdf"), path.join(img, "xls-" + klucz)]);
+      execFileSync("pdftoppm", ["-r", "110", "-png", "-f", "1", "-l", "3", path.join(tmp, klucz + ".pdf"), path.join(img, "xls-" + klucz)]);
     } catch (e) { console.error("Excel: " + e.message); }
-    const xl = fs.readdirSync(img).filter((f) => f.startsWith("xls-" + klucz)).sort()[0];
-    if (xl) dokumenty.push({ tytul: "Excel · Podsumowanie · " + sz.nazwa + " · " + nazwa, strony: [{ plik: "img/" + xl, sekcje: [{ id: "excel", nazwa: "Arkusz Podsumowanie", y0: 0, y1: 297 }], excel: true }] });
+    const xl = fs.readdirSync(img).filter((f) => f.startsWith("xls-" + klucz)).sort();
+    if (xl.length) dokumenty.push({ tytul: "Excel · jeden arkusz · " + sz.nazwa + " · " + nazwa, strony: xl.map((f, i) => ({ plik: "img/" + f, sekcje: [{ id: "excel" + (i + 1), nazwa: ["Excel strona 1: podsumowanie", "Excel strona 2: koszty", "Excel strona 3: cennik"][i] || "Excel", y0: 0, y1: 297 }], excel: true })) });
   }
   fs.rmSync(tmp, { recursive: true, force: true });
   fs.writeFileSync(path.join(out, "index.html"), html(dokumenty));
