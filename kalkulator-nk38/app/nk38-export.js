@@ -798,7 +798,7 @@
       nr: "", nrAuto: "", miejsce: "Kraków", powod: "zapytanie", garaz: "",
       adr: { zwrot: "Szanowna Pani", imie: "", stanowisko: "", tel: "", email: "", firma: "", ulica: "", kod: "", nip: "" },
       hg: "", hd: "", wysPary: [], montOd: "", montDo: "", agregat: "", kw: "",
-      opcje: { q2500: true, slupki37: false, malowanie: false },
+      opcje: { q2500: false, slupki37: false, malowanie: false },
       zysk: "A", ceny: {}, platnosci: "",
       dostawa: "", montaz: "", tir: 20, gw: "", tekst: {}
     };
@@ -972,10 +972,12 @@
     function etykieta(label, extra) { return [run(label, Object.assign({ color: BLUE, bold: true }, extra || {}))]; }
     /* Pogrubia liczby i wymiary ("195/202", "▲-180(170)") w tekście danych technicznych. */
     function liczbyBold(text, opt) {
-      var out = [], re = /([▲▼]?-?\d[\d\/\-().,]*)/g, last = 0, m;
+      /* oznaczenia typu H1-, H2- (litera z cyfrą) zostają zwykłe, pogrubiona jest tylko wartość po nich */
+      var out = [], re = /([A-Za-z]\d+-?)|([▲▼]?-?\d[\d\/\-().,]*)/g, last = 0, m;
       while ((m = re.exec(text))) {
+        if (m[1]) continue;
         if (m.index > last) out.push(run(text.slice(last, m.index), opt));
-        out.push(run(m[1], Object.assign({}, opt || {}, { bold: true })));
+        out.push(run(m[2], Object.assign({}, opt || {}, { bold: true })));
         last = re.lastIndex;
       }
       if (last < text.length) out.push(run(text.slice(last), opt));

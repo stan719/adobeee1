@@ -280,6 +280,7 @@ ul.notes li::before { content: ""; position: absolute; left: 0; top: .6em; width
 .pv-arkusz td { padding: 1px 4px; vertical-align: bottom; overflow: hidden; white-space: nowrap; }
 .pv-arkusz td.zaw { white-space: normal; }
 .pv-info { color: var(--muted); font-size: 13px; align-self: flex-start; margin: 0 0 -10px; }
+.pv-oferta { width: 100%; max-width: 820px; }
 .ov-head { position: sticky; top: 0; z-index: 2; background: color-mix(in srgb, var(--surface) 92%, transparent); backdrop-filter: blur(10px); border-bottom: 1px solid var(--line); padding-top: env(safe-area-inset-top, 0px); }
 .ov-head-in { max-width: 1360px; margin: 0 auto; display: flex; flex-wrap: wrap; gap: 10px 16px; align-items: center; justify-content: space-between;
   padding: 10px max(16px, env(safe-area-inset-right, 0px)) 10px max(16px, env(safe-area-inset-left, 0px)); }
@@ -2019,7 +2020,7 @@ window.NK38_FONTS = { regular: "AAEAAAAOAIAAAwBgR0RFRgS1BUEAAH9cAAAARkdQT1MAGQAM
       nr: "", nrAuto: "", miejsce: "Kraków", powod: "zapytanie", garaz: "",
       adr: { zwrot: "Szanowna Pani", imie: "", stanowisko: "", tel: "", email: "", firma: "", ulica: "", kod: "", nip: "" },
       hg: "", hd: "", wysPary: [], montOd: "", montDo: "", agregat: "", kw: "",
-      opcje: { q2500: true, slupki37: false, malowanie: false },
+      opcje: { q2500: false, slupki37: false, malowanie: false },
       zysk: "A", ceny: {}, platnosci: "",
       dostawa: "", montaz: "", tir: 20, gw: "", tekst: {}
     };
@@ -2193,10 +2194,12 @@ window.NK38_FONTS = { regular: "AAEAAAAOAIAAAwBgR0RFRgS1BUEAAH9cAAAARkdQT1MAGQAM
     function etykieta(label, extra) { return [run(label, Object.assign({ color: BLUE, bold: true }, extra || {}))]; }
     /* Pogrubia liczby i wymiary ("195/202", "▲-180(170)") w tekście danych technicznych. */
     function liczbyBold(text, opt) {
-      var out = [], re = /([▲▼]?-?\d[\d\/\-().,]*)/g, last = 0, m;
+      /* oznaczenia typu H1-, H2- (litera z cyfrą) zostają zwykłe, pogrubiona jest tylko wartość po nich */
+      var out = [], re = /([A-Za-z]\d+-?)|([▲▼]?-?\d[\d\/\-().,]*)/g, last = 0, m;
       while ((m = re.exec(text))) {
+        if (m[1]) continue;
         if (m.index > last) out.push(run(text.slice(last, m.index), opt));
-        out.push(run(m[1], Object.assign({}, opt || {}, { bold: true })));
+        out.push(run(m[2], Object.assign({}, opt || {}, { bold: true })));
         last = re.lastIndex;
       }
       if (last < text.length) out.push(run(text.slice(last), opt));
@@ -2363,7 +2366,7 @@ window.NK38_FONTS = { regular: "AAEAAAAOAIAAAwBgR0RFRgS1BUEAAH9cAAAARkdQT1MAGQAM
 (function () {
   "use strict";
   /* Wersja programu: podnoś przy każdym wydaniu (pokazywana na pulpicie, zapisywana w kopii zapasowej). */
-  var WERSJA = { nr: "1.50", data: "30.10.2026" };
+  var WERSJA = { nr: "1.51", data: "30.10.2026" };
   var E = window.NK38, X = window.NK38X;
   var LS = { robocze: "nk38.robocze.v1", drafty: "nk38.szkice.v1", draft: "nk38.szkic.v1", tab: "nk38.zakladka", sel: "nk38.wariant", logo: "nk38.logo.v1", podpis: "nk38.podpis.v1",
     szablony: "nk38.szablony.v1", wyceny: "nk38.wyceny.v1", tekstyOferty: "nk38.szablon.v1", numery: "nk38.numery.v1", cennikStary: "nk38.cennik.v1", usuniete: "nk38.usuniete.v1", migracja2: "nk38.migracja2", migracja3: "nk38.migracja3", migracja4: "nk38.migracja4", historia: "nk38.historia.v1", uzytkownik: "nk38.uzytkownik.v1" };
@@ -3432,7 +3435,11 @@ window.NK38_FONTS = { regular: "AAEAAAAOAIAAAwBgR0RFRgS1BUEAAH9cAAAARkdQT1MAGQAM
       '<div style="height:12px"></div>' + stale("naglowek", "Nagłówek (prawa strona)") + stale("stopka", "Stopka") + stale("zakonczenie", "Zakończenie") + stale("podpis", "Imię, nazwisko i stanowisko pod podpisem") +
       stale("klauzula", "Klauzula poufności (dół 2. strony)") + stale("uwaga_tech", "Uwaga pod danymi technicznymi") +
       '<button type="button" class="btn small" id="bSzReset">Przywróć teksty stałe</button>', false);
+    /* po przebudowie formularza (np. zmiana zysku w ofercie) sekcje zostają rozwinięte/zwinięte jak były */
+    var stare = Array.prototype.map.call($("ovForm").querySelectorAll("details.ofsec"), function (x) { return x.open; }), przewin = $("ovForm").scrollTop;
     $("ovForm").innerHTML = h;
+    if (stare.length) $("ovForm").querySelectorAll("details.ofsec").forEach(function (x, i) { if (i < stare.length) x.open = stare[i]; });
+    $("ovForm").scrollTop = przewin;
     $("ovSub").textContent = (d.nazwa || "Inwestycja") + " · nr " + (o.nr || nrNast) + " · zysk " + pct(o.zysk === "B" ? d.zysk2 : d.zysk);
   }
   function autoTekst(k, l, F) {
@@ -3440,7 +3447,8 @@ window.NK38_FONTS = { regular: "AAEAAAAOAIAAAwBgR0RFRgS1BUEAAH9cAAAARkdQT1MAGQAM
     return '<label class="f" style="margin-top:10px">' + l + '<span><span class="autotag' + (changed ? " ch" : "") + '" id="tag_' + k + '">' + (changed ? "zmieniony" : "automatyczny") + "</span>" +
       '<button type="button" class="linkbtn" data-reset="' + k + '"' + (changed ? "" : " hidden") + '>Przywróć automatyczny</button></span><textarea rows="3" data-of="tekst.' + k + '" id="of_tekst_' + k + '">' + esc(changed ? o.tekst[k] : F.auto[k]) + "</textarea></label>";
   }
-  function renderPodglad() {
+  function renderPodglad() { $("ovPrev").innerHTML = podgladOfertyHtml(); }
+  function podgladOfertyHtml() {
     var F = X.oferta(wynik, state.dane.oferta, tekstyOferty());
     var logo = lsGet(LS.logo, null) || { dataUrl: LOGO_URL }, pd = lsGet(LS.podpis, null);
     var P = function (arr, cls) { return arr.map(function (l) { return '<p class="' + (cls || "") + '">' + (esc(l) || "&nbsp;") + "</p>"; }).join(""); };
@@ -3466,7 +3474,7 @@ window.NK38_FONTS = { regular: "AAEAAAAOAIAAAwBgR0RFRgS1BUEAAH9cAAAARkdQT1MAGQAM
       '</div><h4>5. Warunki montażu.</h4><div class="in">' + P(F.warunki) + '</div><h4>6. Gwarancja.</h4><div class="in">' + P(F.gwarancja) + "</div><br>" +
       P(F.zakonczenie, "in") + (pd ? '<img src="' + pd.dataUrl + '" alt="Podpis" class="sig">' : "<br><br>") + P(F.podpis, "in") +
       '<p class="kl">' + esc(F.klauzula) + '</p><div class="ft">' + F.stopka.map(esc).join("<br>") + "</div></div>";
-    $("ovPrev").innerHTML = h;
+    return h;
   }
   function otworzOferte() {
     $("ov").hidden = false; document.body.style.overflow = "hidden";
@@ -3630,6 +3638,8 @@ window.NK38_FONTS = { regular: "AAEAAAAOAIAAAwBgR0RFRgS1BUEAAH9cAAAARkdQT1MAGQAM
   }
   var logoDomP = null;
   function logoDomyslne() {
+    /* wersja offline / artefakt: logo wbudowane jako data URL, bez fetch (strona może blokować pobieranie data:) */
+    if (/^data:/.test(LOGO_URL)) return Promise.resolve({ data: zDataUrl(LOGO_URL), w: 232, h: 58, type: "png" });
     if (!logoDomP) logoDomP = fetch(LOGO_URL).then(function (r) { if (!r.ok) throw new Error("logo"); return r.arrayBuffer(); })
       .then(function (b) { return { data: new Uint8Array(b), w: 232, h: 58, type: "png" }; }, function () { logoDomP = null; return null; });
     return logoDomP;
@@ -3697,13 +3707,21 @@ window.NK38_FONTS = { regular: "AAEAAAAOAIAAAwBgR0RFRgS1BUEAAH9cAAAARkdQT1MAGQAM
     var sz = szablony.filter(function (x) { return x.id === id; })[0] || szablony[0];
     var dm = {}; Object.keys((sz && sz.domyslne) || {}).forEach(function (k) { var v = sz.domyslne[k]; if (v != null && v !== "") dm[k] = v; });
     return Object.assign(E.domyslneDane(), dm, { data: dzis(), szablon: sz.id,
-      oferta: { opcje: { q2500: sz.model !== "lista" } } });   // w nowych urządzeniach opcja wariantu 2 domyślnie wyłączona
+      oferta: { opcje: { q2500: false } } });   // opcja wariantu 2 (2500 kg) domyślnie wyłączona
   }
   $("bNew").addEventListener("click", function () { odlozSzkic(); setDane(nowaWycena(szablonAktywny().id)); stanCzysty(); toast("Nowa wycena"); });
   $("bXlsx").addEventListener("click", function () { busy($("bXlsx"), eksportXlsx); });
   $("bPdf").addEventListener("click", function () { busy($("bPdf"), eksportPdf); });
-  $("bDocxTop").addEventListener("click", function () { busy($("bDocxTop"), eksportDocx); });
-  $("bDocx").addEventListener("click", function () { busy($("bDocx"), eksportDocx); });
+  /* oferta Word: najpierw podgląd (ten sam układ co plik), pobranie przyciskiem „Pobierz” */
+  function podgladDocx() {
+    var o = state.dane.oferta;
+    if (!o.nr && !o.nrAuto) { o.nrAuto = nadajNumer(); lsSet(LS.draft, { dane: state.dane }); if (!$("ov").hidden) renderOfertaForm(); }
+    otworzPodglad("Podgląd: Oferta Word", "Oferta nr " + (o.nr || o.nrAuto) + " · " + (wynik.dane.nazwa || wynik.dane.typ), eksportDocx);
+    $("pvTabs").hidden = true;
+    $("pvBody").innerHTML = '<div class="pv-oferta">' + podgladOfertyHtml() + "</div>";
+  }
+  $("bDocxTop").addEventListener("click", podgladDocx);
+  $("bDocx").addEventListener("click", podgladDocx);
   $("bSave").addEventListener("click", function () { oknoZapisu(); });
   $("bOferta").addEventListener("click", otworzOferte);
   $("bOvClose").addEventListener("click", zamknijOferte);

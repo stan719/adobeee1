@@ -1,7 +1,7 @@
 {
  "aplikacja": "kalkulator-nk38",
  "wersja": 1,
- "utworzono": "2026-10-27T17:30:55.243Z",
+ "utworzono": "2026-10-30T10:10:16.935Z",
  "szablony": [],
  "wyceny": [
   {
@@ -93,7 +93,7 @@
      "agregat": "",
      "kw": "",
      "opcje": {
-      "q2500": true,
+      "q2500": false,
       "slupki37": false,
       "malowanie": false
      },
@@ -199,7 +199,7 @@
      "agregat": "",
      "kw": "",
      "opcje": {
-      "q2500": true,
+      "q2500": false,
       "slupki37": false,
       "malowanie": false
      },
@@ -303,7 +303,7 @@
      "agregat": "",
      "kw": "",
      "opcje": {
-      "q2500": true,
+      "q2500": false,
       "slupki37": false,
       "malowanie": false
      },
@@ -409,7 +409,7 @@
      "agregat": "",
      "kw": "",
      "opcje": {
-      "q2500": true,
+      "q2500": false,
       "slupki37": false,
       "malowanie": false
      },
@@ -513,7 +513,7 @@
      "agregat": "",
      "kw": "",
      "opcje": {
-      "q2500": true,
+      "q2500": false,
       "slupki37": false,
       "malowanie": false
      },
@@ -617,7 +617,7 @@
      "agregat": "",
      "kw": "",
      "opcje": {
-      "q2500": true,
+      "q2500": false,
       "slupki37": false,
       "malowanie": false
      },
@@ -730,7 +730,7 @@
      "agregat": "",
      "kw": "",
      "opcje": {
-      "q2500": true,
+      "q2500": false,
       "slupki37": false,
       "malowanie": false
      },
