@@ -486,7 +486,7 @@ html, body { overflow-x: clip; max-width: 100%; }
           <label class="f zagl">Długość zagłębienia [cm]<input id="dl" type="text" placeholder="530"><span class="hint">puste = 530 cm</span></label>
           <label class="f">Prześwit [cm]<input id="przeswit" type="number" min="0" step="1"></label>
           <label class="f nzagl">Długość miejsca / pojazdów [cm]<input id="dlMiejsca" type="number" min="0" step="1" placeholder="500"><span class="hint">do danych technicznych oferty</span></label>
-          <label class="f">Agregaty w opisie<input id="agrOpis" type="text" placeholder="np. 3xA4+2xA5"><span class="hint">puste = liczba agregatów</span></label>
+          <label class="f">Układ agregatów<input id="agrOpis" type="text" placeholder="np. 3+3"><span class="hint">puste = liczba agregatów; wpisz np. 3+3</span></label>
           <div class="full" id="paryBox"></div>
           <label class="f full"><span>Opis / wariant <span class="autotag" id="opisTag">automatyczny</span><button type="button" class="linkbtn" id="opisReset" hidden>Przywróć automatyczny</button></span><textarea id="opis" rows="2" spellcheck="false"></textarea><span class="hint">Tworzy się sam z wpisanych wymiarów, wysokości pojazdów i wyposażenia. Możesz go nadpisać.</span></label>
         </div>
@@ -2458,7 +2458,7 @@ window.NK38_FONTS = { regular: "AAEAAAAOAIAAAwBgR0RFRgS1BUEAAH9cAAAARkdQT1MAGQAM
 (function () {
   "use strict";
   /* Wersja programu: podnoś przy każdym wydaniu (pokazywana na pulpicie, zapisywana w kopii zapasowej). */
-  var WERSJA = { nr: "1.55", data: "30.10.2026" };
+  var WERSJA = { nr: "1.56", data: "02.11.2026" };
   var E = window.NK38, X = window.NK38X;
   var LS = { robocze: "nk38.robocze.v1", drafty: "nk38.szkice.v1", draft: "nk38.szkic.v1", tab: "nk38.zakladka", sel: "nk38.wariant", logo: "nk38.logo.v1", podpis: "nk38.podpis.v1",
     szablony: "nk38.szablony.v1", wyceny: "nk38.wyceny.v1", tekstyOferty: "nk38.szablon.v1", numery: "nk38.numery.v1", cennikStary: "nk38.cennik.v1", usuniete: "nk38.usuniete.v1", migracja2: "nk38.migracja2", migracja3: "nk38.migracja3", migracja4: "nk38.migracja4", historia: "nk38.historia.v1", uzytkownik: "nk38.uzytkownik.v1" };
@@ -2834,7 +2834,7 @@ window.NK38_FONTS = { regular: "AAEAAAAOAIAAAwBgR0RFRgS1BUEAAH9cAAAARkdQT1MAGQAM
     if (sz.wysokosci.tryb === "zaglebienie") h += pole("h1", "Zagłębienie H1 [cm]") + pole("h2", "Zagłębienie H2 [cm]") + pole("dl", "Długość zagłębienia [cm]", "puste = 530 cm", "530");
     h += pole("przeswit", "Prześwit [cm]");
     if (sz.wysokosci.tryb !== "zaglebienie") h += pole("dlMiejsca", "Długość miejsca / pojazdów [cm]", "do danych technicznych oferty", "500");
-    h += pole("agrOpis", "Agregaty w opisie", "puste = liczba agregatów", "np. 2xA3");
+    h += pole("agrOpis", "Układ agregatów", "puste = liczba agregatów; wpisz np. 3+3", "np. 3+3");
     h += '</div><div class="row" style="margin-top:10px"><button type="button" class="linkbtn" id="bDodDel">Usuń drugie urządzenie</button><span class="note" id="dodInfo"></span></div>';
     $("dodBox").innerHTML = h;
   }
@@ -2858,8 +2858,8 @@ window.NK38_FONTS = { regular: "AAEAAAAOAIAAAwBgR0RFRgS1BUEAAH9cAAAARkdQT1MAGQAM
       return '<div class="paryhd"><span class="ofsep">Para ' + (i + 2) + ' (w ofercie „lub”)</span><button type="button" class="linkbtn" data-para-del="' + i + '">Usuń</button></div><div class="para">' +
         '<label class="f">H1 [cm]' + inp(i, "h1", p.h1, 1) + '</label><label class="f">H2 [cm]' + inp(i, "h2", p.h2, 1) + '</label>' +
         '<label class="f">Długość [cm]' + inp(i, "dl", p.dl, 0, d.dl || "jak w parze 1") + '</label><label class="f">Prześwit [cm]' + inp(i, "przeswit", p.przeswit, 1) + "</label></div>";
-    }).join("") + '<div class="row paryadd"><button type="button" class="btn small" id="bParaAdd">+ Dodaj parę zagłębienie / prześwit</button>' +
-      '<span class="note">gdy w garażu są różne zagłębienia lub prześwity</span></div>';
+    }).join("") + (d.szablon === "nk6501" ? "" : '<div class="row paryadd"><button type="button" class="btn small" id="bParaAdd">+ Dodaj parę zagłębienie / prześwit</button>' +
+      '<span class="note">gdy w garażu są różne zagłębienia lub prześwity</span></div>');   // NK6501: bez dodatkowych par
   }
 
   function fromForm() {
@@ -3765,7 +3765,7 @@ window.NK38_FONTS = { regular: "AAEAAAAOAIAAAwBgR0RFRgS1BUEAAH9cAAAARkdQT1MAGQAM
     recalc();
   });
   $("szablon").addEventListener("change", function () {
-    state.dane = fromForm(); buildDimTable(); state.dane = fromForm(); state.edytowany = state.dane.szablon; recalc();
+    state.dane = fromForm(); buildDimTable(); state.dane = fromForm(); renderPary(state.dane); state.edytowany = state.dane.szablon; recalc();
   });
   $("form").addEventListener("submit", function (e) { e.preventDefault(); });
   /* opis wariantu: pole rośnie z tekstem, żeby był widoczny w całości; Enter nie łamie linii */
