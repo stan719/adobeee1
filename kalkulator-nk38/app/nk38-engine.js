@@ -120,8 +120,7 @@
     };
     s.pozycje = [
       { id: "silnik", nazwa: "Silnik, przekładnia i reszta", cena: 1000, waluta: "PLN", naCo: "S", wsp: 1, osd: 0, opcja: false, tekst: "" },
-      { id: "mufas", nazwa: "Sterowanie palet (Mufas)", cena: 0, waluta: "PLN", naCo: "kwota", wsp: 1, osd: 0, opcja: false, tekst: "" },
-      { id: "malowanie", nazwa: "Malowanie RAL", cena: 500, waluta: "PLN", naCo: "S", wsp: 1, osd: 0, opcja: true, tekst: "Malowanie proszkowe palet w kolorze RAL wybranym przez Zamawiającego." }
+      { id: "mufas", nazwa: "Sterowanie palet (Mufas)", cena: 0, waluta: "PLN", naCo: "kwota", wsp: 1, osd: 0, opcja: false, tekst: "" }
     ];
     s.wariantB = { nazwa: "", tryb: "%", wartosc: 0, waluta: "PLN" };
     s.opcje.przeglad = false; s.opcje.slupki = false;

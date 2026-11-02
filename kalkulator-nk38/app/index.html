@@ -621,10 +621,10 @@ html, body { overflow-x: clip; max-width: 100%; }
 (function () {
   "use strict";
   /* Wersja programu: podnoś przy każdym wydaniu (pokazywana na pulpicie, zapisywana w kopii zapasowej). */
-  var WERSJA = { nr: "1.56", data: "02.11.2026" };
+  var WERSJA = { nr: "1.57", data: "02.11.2026" };
   var E = window.NK38, X = window.NK38X;
   var LS = { robocze: "nk38.robocze.v1", drafty: "nk38.szkice.v1", draft: "nk38.szkic.v1", tab: "nk38.zakladka", sel: "nk38.wariant", logo: "nk38.logo.v1", podpis: "nk38.podpis.v1",
-    szablony: "nk38.szablony.v1", wyceny: "nk38.wyceny.v1", tekstyOferty: "nk38.szablon.v1", numery: "nk38.numery.v1", cennikStary: "nk38.cennik.v1", usuniete: "nk38.usuniete.v1", migracja2: "nk38.migracja2", migracja3: "nk38.migracja3", migracja4: "nk38.migracja4", historia: "nk38.historia.v1", uzytkownik: "nk38.uzytkownik.v1" };
+    szablony: "nk38.szablony.v1", wyceny: "nk38.wyceny.v1", tekstyOferty: "nk38.szablon.v1", numery: "nk38.numery.v1", cennikStary: "nk38.cennik.v1", usuniete: "nk38.usuniete.v1", migracja2: "nk38.migracja2", migracja3: "nk38.migracja3", migracja4: "nk38.migracja4", migracja5: "nk38.migracja5", historia: "nk38.historia.v1", uzytkownik: "nk38.uzytkownik.v1" };
   var NUMF = ["km", "km_pom", "km_mon", "S", "D", "NP", "agregaty", "magistrala", "barierki", "maskownice", "utr_dod",
     "tir", "tir_cena", "rozl_cena", "rozl_dni", "dzwig_koszt", "osoby", "wyjazdy", "eur", "usd", "h1", "h2", "przeswit", "konserwA", "konserwB", "dlMiejsca", "dopB", "agr3", "agr6"];
   var OPTF = { km_pom: 1, km_mon: 1, rozl_dni: 1, dzwig_koszt: 1, wyjazdy: 1, h1: 1, h2: 1, przeswit: 1, dlMiejsca: 1, dopB: 1, agr3: 1, agr6: 1, tir: 1 };
@@ -710,7 +710,7 @@ html, body { overflow-x: clip; max-width: 100%; }
     zmiana: function (klucz) {
       if (!this.h || this.wczytuje) return;
       var rodzaj = klucz === LS.wyceny ? "wyceny" : klucz === LS.robocze ? "robocze" : klucz === LS.historia ? "historia" :
-        [LS.szablony, LS.tekstyOferty, LS.numery, LS.usuniete, LS.migracja2, LS.migracja3, LS.migracja4, LS.uzytkownik].indexOf(klucz) >= 0 ? "ustawienia" : null;
+        [LS.szablony, LS.tekstyOferty, LS.numery, LS.usuniete, LS.migracja2, LS.migracja3, LS.migracja4, LS.migracja5, LS.uzytkownik].indexOf(klucz) >= 0 ? "ustawienia" : null;
       if (!rodzaj) return;
       var self = this; clearTimeout(this.timery[rodzaj]);
       this.timery[rodzaj] = setTimeout(function () { self.pisz(rodzaj, self.dane(rodzaj)).catch(function () { toast("Nie udało się zapisać pliku w folderze danych. Sprawdź dostęp do folderu."); }); }, 400);
@@ -723,7 +723,7 @@ html, body { overflow-x: clip; max-width: 100%; }
         for (var r in PLIKI) await this.pisz(r, this.dane(r));
         toast("Folder danych gotowy: zapisano w nim obecne dane.");
       } else {
-        var map = { szablony: LS.szablony, tekstyOferty: LS.tekstyOferty, numery: LS.numery, usuniete: LS.usuniete, migracja2: LS.migracja2, migracja3: LS.migracja3, migracja4: LS.migracja4, uzytkownik: LS.uzytkownik };
+        var map = { szablony: LS.szablony, tekstyOferty: LS.tekstyOferty, numery: LS.numery, usuniete: LS.usuniete, migracja2: LS.migracja2, migracja3: LS.migracja3, migracja4: LS.migracja4, migracja5: LS.migracja5, uzytkownik: LS.uzytkownik };
         this.wczytuje = true;   // bez zapisu zwrotnego podczas wczytywania
         Object.keys(map).forEach(function (k) { if (ust[k] !== undefined) lsSet(map[k], ust[k]); });
         lsSet(LS.wyceny, (await this.czytaj("wyceny")) || []); lsSet(LS.robocze, (await this.czytaj("robocze")) || []); lsSet(LS.historia, (await this.czytaj("historia")) || []);
@@ -753,7 +753,7 @@ html, body { overflow-x: clip; max-width: 100%; }
         } catch (e) { this.db = null; }
       }
       this.cache = { szablony: lsGet(LS.szablony, null), tekstyOferty: lsGet(LS.tekstyOferty, null), numery: lsGet(LS.numery, null),
-        usuniete: lsGet(LS.usuniete, null), migracja2: lsGet(LS.migracja2, null), migracja3: lsGet(LS.migracja3, null), migracja4: lsGet(LS.migracja4, null), uzytkownik: lsGet(LS.uzytkownik, null) };
+        usuniete: lsGet(LS.usuniete, null), migracja2: lsGet(LS.migracja2, null), migracja3: lsGet(LS.migracja3, null), migracja4: lsGet(LS.migracja4, null), migracja5: lsGet(LS.migracja5, null), uzytkownik: lsGet(LS.uzytkownik, null) };
       if (Plik.dostepny()) {   // wersja offline: ostatnio używany folder danych
         var hf = await Plik.uchwyt();
         if (hf) {
@@ -865,6 +865,10 @@ html, body { overflow-x: clip; max-width: 100%; }
         if (x.cennik.gdw == null || Math.abs(x.cennik.gdw - 0.025) < 1e-9) x.cennik.gdw = 0.02685;
       });
       Store.set("migracja4", true); Store.set("szablony", lista.map(E.uzupelnijSzablon));
+    }
+    if (!Store.get("migracja5", false)) {   // 02.11: NK6501 bez opcji „Malowanie RAL”
+      lista.forEach(function (x) { if (x.id === "nk6501" && x.pozycje) x.pozycje = x.pozycje.filter(function (q) { return q.id !== "malowanie"; }); });
+      Store.set("migracja5", true); Store.set("szablony", lista.map(E.uzupelnijSzablon));
     }
     lista.forEach(function (x) {   // nowe ustawienia wbudowanych urządzeń dla szablonów zapisanych wcześniej
       var wb = E.szablonyWbudowane().filter(function (y) { return y.id === x.id; })[0];
@@ -1294,6 +1298,7 @@ html, body { overflow-x: clip; max-width: 100%; }
     ], ws);
     h += "</tbody></table></div>";
     var RO = X.raport(r, r.szablon.glebokosci.map(function (g) { return g.cm; }), d.oferta).opcje;
+    if (!RO.rows.length) return h;   // urządzenie bez opcji (np. NK6501): bez pustej tabeli
     h += '<h3 class="sec">Opcje do oferty, cena z narzutami</h3><div class="scroll"><table class="t"><thead><tr>' + RO.head.map(function (x) { return "<th>" + esc(x) + "</th>"; }).join("") + "</tr></thead><tbody>";
     RO.rows.forEach(function (x) { h += "<tr><td>" + esc(x.label) + "</td><td>" + x.vals.map(zl).join("</td><td>") + "</td></tr>"; });
     return h + "</tbody></table></div>";
@@ -1371,7 +1376,7 @@ html, body { overflow-x: clip; max-width: 100%; }
     /* jedna kolumna: wariant wybrany przełącznikiem, opisy liczone dla niego */
     var wv = wybrany(wynik), ix = Math.max(0, X.widoczneWarianty(wynik).indexOf(wv[0]));
     h += '<h3 class="sec">Montaż i cena</h3><div class="scroll"><table class="t">' + thead("Pozycja", wv) + "<tbody>" +
-      R.mon.rows.map(function (row) {
+      R.mon.rows.filter(function (row) { return !(row.koszt && !row.vals[ix]); }).map(function (row) {   // pozycje kosztowe równe zero (np. słupki bez słupków) pomijamy
         var v = row.vals[ix], inf = row.infoW[ix], f = row.fmt === "zl" ? zl(v) : row.fmt === "int" ? fmtPLN.format(v) : n2(v);
         return '<tr class="' + (row.bold ? "strong" : "") + '"><td>' + row.label + (inf ? '<div class="muted" style="font-size:11.5px;font-weight:400">' + esc(inf) + "</div>" : "") + '</td><td class="sel">' + f + "</td></tr>";
       }).join("") + "</tbody></table></div>";
@@ -1656,10 +1661,12 @@ html, body { overflow-x: clip; max-width: 100%; }
       F.wymiaryPary.map(function (w, i) {
         var pre = w.idx == null ? "" : "wysPary." + w.idx + ".";
         return '<div class="full note">' + (F.wymiaryPary.length > 1 ? "<b>Para " + (i + 1) + ":</b> " : "") + 'zagłębienie H1 ' + (w.h1 == null ? "–" : w.h1) + ', H2 ' + (w.h2 == null ? "–" : w.h2) + ', długość ' + (w.dl || "–") + ', prześwit ' + (w.p == null ? "–" : w.p) + ' cm (z karty Inwestycja).</div>' +
-          ofField("Wysokość pojazdów ▼ dolna [cm]", pre + "hd", { num: 1, ph: w.dolAuto == null ? "" : String(w.dolAuto), hint: "puste = niższe H − 15, w dół do 5 cm" }) +
-          ofField("Wysokość pojazdów ▲ górna [cm]", pre + "hg", { num: 1, ph: w.gorAuto == null ? "" : String(w.gorAuto), hint: "puste = (prześwit − 320) − (dolna − 150) + 150, w dół do 5 cm" });
+          (r.dane.wysokosci.tryb === "przeswit"   // jedna wysokość pojazdów (np. NK6501): bez dolnej
+            ? ofField("Wysokość pojazdów [cm]", pre + "hg", { num: 1, ph: w.gorAuto == null ? "" : String(w.gorAuto), hint: "puste = prześwit − " + r.dane.wysokosci.k + ", w dół do 5 cm" })
+            : ofField("Wysokość pojazdów ▼ dolna [cm]", pre + "hd", { num: 1, ph: w.dolAuto == null ? "" : String(w.dolAuto), hint: "puste = niższe H − 15, w dół do 5 cm" }) +
+              ofField("Wysokość pojazdów ▲ górna [cm]", pre + "hg", { num: 1, ph: w.gorAuto == null ? "" : String(w.gorAuto), hint: "puste = (prześwit − 320) − (dolna − 150) + 150, w dół do 5 cm" }));
       }).join("") +
-      (r.szablon.opcje.agregaty ? ofField("Opis agregatu", "agregat", { ph: F.eff.agregat, hint: "puste = z szablonu urządzenia" }) : "") + ofField("Moc agregatu", "kw", { ph: F.eff.kw, hint: "do warunków elektrycznych; puste = automatycznie" }) + "</div>" +
+      (r.szablon.opcje.agregaty ? ofField("Opis agregatu", "agregat", { ph: F.eff.agregat, hint: "puste = z szablonu urządzenia" }) : "") + (r.szablon.opcje.agregaty ? ofField("Moc agregatu", "kw", { ph: F.eff.kw, hint: "do warunków elektrycznych; puste = automatycznie" }) : "") + "</div>" +
       autoTekst("tech", "Dane techniczne", F) + autoTekst("wyposazenie", "Obciążenie i zabezpieczenia", F) + autoTekst("lista", "Lista urządzeń", F) +
       '<div class="ofsep">Opcje</div><div class="checks">' + F.opcjeDost.map(function (x) {
         var nazwa = { q2500: r.szablon.wariantB.nazwa, slupki37: "Słupki 3,7 kW", malowanie: "Malowanie RAL" }[x.klucz];
