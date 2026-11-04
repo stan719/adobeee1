@@ -621,7 +621,7 @@ html, body { overflow-x: clip; max-width: 100%; }
 (function () {
   "use strict";
   /* Wersja programu: podnoś przy każdym wydaniu (pokazywana na pulpicie, zapisywana w kopii zapasowej). */
-  var WERSJA = { nr: "1.57", data: "02.11.2026" };
+  var WERSJA = { nr: "1.58", data: "04.11.2026" };
   var E = window.NK38, X = window.NK38X;
   var LS = { robocze: "nk38.robocze.v1", drafty: "nk38.szkice.v1", draft: "nk38.szkic.v1", tab: "nk38.zakladka", sel: "nk38.wariant", logo: "nk38.logo.v1", podpis: "nk38.podpis.v1",
     szablony: "nk38.szablony.v1", wyceny: "nk38.wyceny.v1", tekstyOferty: "nk38.szablon.v1", numery: "nk38.numery.v1", cennikStary: "nk38.cennik.v1", usuniete: "nk38.usuniete.v1", migracja2: "nk38.migracja2", migracja3: "nk38.migracja3", migracja4: "nk38.migracja4", migracja5: "nk38.migracja5", historia: "nk38.historia.v1", uzytkownik: "nk38.uzytkownik.v1" };
@@ -734,6 +734,8 @@ html, body { overflow-x: clip; max-width: 100%; }
     }
   };
 
+  /* Podpis i logo oferty: w bazie kalkulatora (prywatna, dostępna na każdym komputerze po zalogowaniu), a bez bazy w tej przeglądarce */
+  function obraz(k) { return Store.get(k, null) || lsGet(LS[k], null); }
   var Store = {
     db: null, cache: {},
     init: async function () {
@@ -748,6 +750,11 @@ html, body { overflow-x: clip; max-width: 100%; }
             await this.db.doc("nk38/ustawienia").set(this.cache);
             var stare = lsGet(LS.wyceny, []);
             for (var i = 0; i < stare.length; i++) await this.db.collection("nk38/dane/wyceny").add(stare[i]);
+          }
+          /* podpis i logo z tej przeglądarki: jednorazowo do bazy, żeby były na każdym komputerze */
+          for (var oi = 0, ok = ["logo", "podpis"]; oi < ok.length; oi++) {
+            var lok = lsGet(LS[ok[oi]], null);
+            if (this.cache[ok[oi]] == null && lok) { this.cache[ok[oi]] = lok; var pm = {}; pm[ok[oi]] = lok; await this.db.doc("nk38/ustawienia").update(pm); }
           }
           return;
         } catch (e) { this.db = null; }
@@ -1690,11 +1697,11 @@ html, body { overflow-x: clip; max-width: 100%; }
     h += sekcja("4–6", "Zakres, warunki montażu, gwarancja", ofField("Gwarancja [mies.]", "gw", { ph: F.eff.gw, hint: "puste = " + F.eff.gw + " z szablonu" }) + '<div style="height:10px"></div>' +
       stale("zakres", "4. Zakres oferty") + stale("warunki", "5. Warunki montażu ({tir}, {kw}, {typ} wstawiane automatycznie)") + stale("gwarancja", "6. Gwarancja ({gw})") +
       '<p class="note">Te teksty są wspólne dla wszystkich ofert.</p>', false);
-    var lg = lsGet(LS.logo, null), pd = lsGet(LS.podpis, null);
+    var lg = obraz("logo"), pd = obraz("podpis");
     h += sekcja("P", "Podpis, logo, nagłówek i stopka",
       '<div class="ofgrid"><div><div class="ofsep">Podpis</div><div class="row">' + (pd ? '<img src="' + pd.dataUrl + '" alt="Podpis" class="thumb">' : '<span class="muted">Brak podpisu w ofercie.</span>') +
       '</div><div class="row" style="margin-top:6px"><label class="btn small" for="podpisFile">' + (pd ? "Zmień" : "Wgraj") + ' podpis</label><input type="file" id="podpisFile" accept="image/png,image/jpeg" hidden>' +
-      (pd ? '<button type="button" class="btn small ghost danger" id="bPodpisDel">Usuń</button>' : "") + '</div><p class="note" style="margin-top:6px">Podpis zostaje tylko w tej przeglądarce i nie jest zapisywany na stronie.</p></div>' +
+      (pd ? '<button type="button" class="btn small ghost danger" id="bPodpisDel">Usuń</button>' : "") + '</div><p class="note" style="margin-top:6px">' + (Store.db ? 'Podpis i logo są zapisane w prywatnej bazie kalkulatora (tylko Pana konto) i widoczne na każdym komputerze.' : 'Podpis i logo zostają w tej przeglądarce (bez bazy kalkulatora).') + '</p></div>' +
       '<div><div class="ofsep">Logo</div><div class="row"><img src="' + (lg ? lg.dataUrl : LOGO_URL) + '" alt="Logo" class="thumb"></div><div class="row" style="margin-top:6px"><label class="btn small" for="logoFile">Wgraj inne logo</label><input type="file" id="logoFile" accept="image/png,image/jpeg" hidden>' +
       (lg ? '<button type="button" class="btn small ghost danger" id="bLogoDel">Wróć do logo firmowego</button>' : "") + "</div></div></div>" +
       '<div style="height:12px"></div>' + stale("naglowek", "Nagłówek (prawa strona)") + stale("stopka", "Stopka") + stale("zakonczenie", "Zakończenie") + stale("podpis", "Imię, nazwisko i stanowisko pod podpisem") +
@@ -1715,7 +1722,7 @@ html, body { overflow-x: clip; max-width: 100%; }
   function renderPodglad() { $("ovPrev").innerHTML = podgladOfertyHtml(); }
   function podgladOfertyHtml() {
     var F = X.oferta(wynik, state.dane.oferta, tekstyOferty());
-    var logo = lsGet(LS.logo, null) || { dataUrl: LOGO_URL }, pd = lsGet(LS.podpis, null);
+    var logo = obraz("logo") || { dataUrl: LOGO_URL }, pd = obraz("podpis");
     var P = function (arr, cls) { return arr.map(function (l) { return '<p class="' + (cls || "") + '">' + (esc(l) || "&nbsp;") + "</p>"; }).join(""); };
     var h = '<div class="paper"><div class="hd"><img src="' + logo.dataUrl + '" alt="Logo"><div class="lh">' +
       F.naglowek.map(function (l, i) { return i < 2 ? "<b>" + esc(l) + "</b>" : esc(l) + "<br>"; }).join("") + '</div><span class="pg">1</span></div>';
@@ -1913,7 +1920,7 @@ html, body { overflow-x: clip; max-width: 100%; }
     await loadScript("docx"); X.setLibs({ docx: window.docx });
     var o = state.dane.oferta;
     if (!o.nr && !o.nrAuto) { o.nrAuto = nadajNumer(); lsSet(LS.draft, { dane: state.dane }); }
-    var lg = lsGet(LS.logo, null), pd = lsGet(LS.podpis, null);
+    var lg = obraz("logo"), pd = obraz("podpis");
     var logo = lg ? { data: zDataUrl(lg.dataUrl), w: lg.w, h: lg.h, type: /png/.test(lg.dataUrl.slice(0, 30)) ? "png" : "jpg" } : await logoDomyslne();
     var podpis = pd ? { data: zDataUrl(pd.dataUrl), w: pd.w, h: pd.h, type: /png/.test(pd.dataUrl.slice(0, 30)) ? "png" : "jpg" } : null;
     var blob = await X.docx(wynik, o, tekstyOferty(), logo, podpis);
@@ -2234,10 +2241,10 @@ html, body { overflow-x: clip; max-width: 100%; }
       renderOfertaForm(); renderPodglad(); return;
     }
     if ((t.id === "logoFile" || t.id === "podpisFile") && t.files && t.files[0]) {
-      var klucz = t.id === "logoFile" ? LS.logo : LS.podpis, wys = t.id === "logoFile" ? 58 : 47, fr = new FileReader();
+      var klucz = t.id === "logoFile" ? "logo" : "podpis", wys = t.id === "logoFile" ? 58 : 47, fr = new FileReader();
       fr.onload = function () {
         var img = new Image();
-        img.onload = function () { lsSet(klucz, { dataUrl: fr.result, w: Math.round(img.width * wys / img.height), h: wys }); renderOfertaForm(); renderPodglad(); toast(t.id === "logoFile" ? "Wgrano logo" : "Wgrano podpis"); };
+        img.onload = function () { Store.set(klucz, { dataUrl: fr.result, w: Math.round(img.width * wys / img.height), h: wys }); renderOfertaForm(); renderPodglad(); toast(t.id === "logoFile" ? "Wgrano logo" : "Wgrano podpis"); };
         img.src = fr.result;
       };
       fr.readAsDataURL(t.files[0]);
@@ -2249,8 +2256,8 @@ html, body { overflow-x: clip; max-width: 100%; }
     if (t.dataset.reset) { delete state.dane.oferta.tekst[t.dataset.reset]; renderOfertaForm(); renderPodglad(); return; }
     if (t.id === "bNowyNr") { state.dane.oferta.nrAuto = nadajNumer(); renderOfertaForm(); renderPodglad(); return; }
     if (t.id === "bSzReset") { Store.set("tekstyOferty", {}); renderOfertaForm(); renderPodglad(); toast("Przywrócono teksty stałe"); return; }
-    if (t.id === "bLogoDel") { try { localStorage.removeItem(LS.logo); } catch (er) { /* brak pamięci */ } renderOfertaForm(); renderPodglad(); return; }
-    if (t.id === "bPodpisDel") { try { localStorage.removeItem(LS.podpis); } catch (er) { /* brak pamięci */ } renderOfertaForm(); renderPodglad(); }
+    if (t.id === "bLogoDel") { Store.set("logo", null); try { localStorage.removeItem(LS.logo); } catch (er) { /* brak pamięci */ } renderOfertaForm(); renderPodglad(); return; }
+    if (t.id === "bPodpisDel") { Store.set("podpis", null); try { localStorage.removeItem(LS.podpis); } catch (er) { /* brak pamięci */ } renderOfertaForm(); renderPodglad(); }
   });
   document.querySelectorAll("[data-ovview]").forEach(function (b) { b.addEventListener("click", function () { state.ovView = b.dataset.ovview; ustawWidokOv(); }); });
 
