@@ -934,9 +934,10 @@
     if (W.tryb === "przeswit") {            // jeden poziom: górna = prześwit − k
       dolAuto = null; dol = num(o.hd);
       gorAuto = p != null ? dol5(p - num(W.k)) : null;
-    } else if (W.tryb === "przeswit2") {    // dwa poziomy bez zagłębienia: górna + dolna = prześwit − k
-      dolAuto = dol5(num(W.dol)); dol = num(o.hd) != null ? num(o.hd) : dolAuto;
-      gorAuto = p != null && dol != null ? dol5(p - num(W.k) - dol) : null;
+    } else if (W.tryb === "przeswit2") {    // dwa poziomy bez zagłębienia: górna domyślnie stała (150), dolna = prześwit − k − górna
+      gorAuto = dol5(num(W.gor) != null ? num(W.gor) : 150);
+      var gor0 = num(o.hg) != null ? num(o.hg) : gorAuto;
+      dolAuto = p != null ? dol5(p - num(W.k) - gor0) : dol5(num(W.dol)); dol = num(o.hd) != null ? num(o.hd) : dolAuto;
     } else {                                // zagłębienie (NK38): dolna = niższe H − 15
       dolAuto = hs.length ? dol5(Math.min.apply(null, hs) - 15) : null;
       dol = num(o.hd) != null ? num(o.hd) : dolAuto;

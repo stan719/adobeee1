@@ -238,7 +238,7 @@
     s.wariantA = s.wariantA || "2000 kg";
     s.wariantB = Object.assign({ nazwa: "2500 kg", tryb: "%", wartosc: 0, waluta: "PLN" }, s.wariantB || {});
     s.opcje = Object.assign({ rozladunekNaTransport: false, przeglad: true, konserwacjaNa: "MP", agregaty: true, slupki: true, dodatkiNK38: s.model === "nk38", wymiary: s.model === "nk38" }, s.opcje || {});
-    s.wysokosci = Object.assign({ tryb: "zaglebienie", k: 15, dol: 170 }, s.wysokosci || {});
+    s.wysokosci = Object.assign({ tryb: "zaglebienie", k: 15, dol: 170, gor: 150 }, s.wysokosci || {});
     s.domyslne = s.domyslne || {};
     ["glebokosci", "szerokosci", "dlugosci", "skladowe", "opisOferty"].forEach(function (k) { if (s[k] == null) s[k] = b[k]; });
     return s;

@@ -97,4 +97,13 @@ console.log("  ok opis wariantu: nadpisania per fragment");
   ["ul. Słoneczna 3, Wrocław", "przy ul. Słonecznej 3 we Wrocławiu"], ["ul. Dekerta 12 Kraków", "przy ul. Dekerta 12 w Krakowie"], ["ul. Jana Pawła II 10 Gdańsk", "przy ul. Jana Pawła II 10 w Gdańsku"],
   ["KRAKOWSKA VITA", "przy KRAKOWSKA VITA"]].forEach(([n, o]) => assert.strictEqual(X.lokalizacjaOdmieniona(n), o, "odmiana: " + n));
 console.log("  ok odmiana nazwy inwestycji");
+
+// Dwa poziomy (NKPXLH, NK41): górna domyślnie 150, dolna = prześwit − k − górna; ręczne wartości mają pierwszeństwo.
+const wys = (id, przeswit, o) => { const sz = szablon(id), r = E.oblicz(Object.assign(E.domyślne ? {} : E.domyslneDane(), sz.domyslne, { szablon: id, S: 2, przeswit }), sz); return X.wymiary(r.dane, o || {}); };
+[["nkpxlh", 340, 150, 170], ["nkpxlh", 360, 150, 190], ["nkpxlh", 320, 150, 150], ["nk41", 280, 150, 150], ["nk41", 300, 150, 170]].forEach(([id, p, g, dn]) => {
+  const w = wys(id, p); assert(w.gor === g && w.dol === dn, id + " P=" + p + ": " + w.gor + "/" + w.dol + " ≠ " + g + "/" + dn);
+});
+assert.strictEqual(wys("nkpxlh", 340, { hg: 140 }).dol, 180, "ręczna górna przesuwa dolną");
+assert.strictEqual(wys("nkpxlh", 340, { hd: 160 }).dol, 160, "ręczna dolna ma pierwszeństwo");
+console.log("  ok wysokości pojazdów na dwóch poziomach");
 console.log("szablony: OK");
