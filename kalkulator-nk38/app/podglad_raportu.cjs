@@ -1,4 +1,4 @@
-// Podgląd raportu do wspólnej edycji komentarzami: strony raportu PDF i arkusz Podsumowanie z Excela
+// Podgląd raportu do wspólnej edycji komentarzami: strony raportu PDF, arkusz Excela i wersje graficzne oferty
 // jako obrazy, a na nich podpisane ramki części raportu (mapa z X.pdf, ctx.mapa).
 // Użycie: node podglad_raportu.cjs [katalog]   (domyślnie ../podglad; wymaga pdftoppm i soffice)
 const fs = require("fs"), path = require("path"), { execFileSync } = require("child_process");
@@ -39,6 +39,9 @@ const esc = (t) => String(t).replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&l
     const xl = fs.readdirSync(img).filter((f) => f.startsWith("xls-" + klucz)).sort();
     if (xl.length) dokumenty.push({ tytul: "Excel · jeden arkusz · " + sz.nazwa + " · " + nazwa, strony: xl.map((f, i) => ({ plik: "img/" + f, sekcje: [{ id: "excel" + (i + 1), nazwa: ["Excel strona 1: podsumowanie", "Excel strona 2: koszty", "Excel strona 3: cennik"][i] || "Excel", y0: 0, y1: 297 }], excel: true })) });
   }
+  try {   // trzy wersje graficzne oferty do porównania (makiety HTML renderowane Playwrightem)
+    (await require("./oferta_warianty.cjs").generuj(img)).forEach((w) => dokumenty.push(w));
+  } catch (e) { console.error("Wersje oferty pominięte: " + e.message); }
   fs.rmSync(tmp, { recursive: true, force: true });
   fs.writeFileSync(path.join(out, "index.html"), html(dokumenty));
   console.log("podgląd: " + out + " (" + dokumenty.length + " dokumentów, wersja " + wersja + ")");
@@ -86,7 +89,7 @@ section h2 { margin: 0 0 12px; font-size: 17px; font-weight: 600; }
 <div class="wrap">
   <header>
     <h1>Podgląd raportu</h1>
-    <p>Strony raportu PDF i arkusz Excela wygenerowane z przykładowych wycen. Każda część raportu ma podpisaną ramkę. Zaznacz ramkę albo fragment i dodaj komentarz, wyślij go do Claude, a poprawiony podgląd pojawi się pod tym samym linkiem.</p>
+    <p>Strony raportu PDF, arkusz Excela i trzy wersje graficzne oferty (A, B, C) do porównania, wygenerowane z przykładowych wycen. Każda część raportu ma podpisaną ramkę. Zaznacz ramkę albo fragment i dodaj komentarz, wyślij go do Claude, a poprawiony podgląd pojawi się pod tym samym linkiem.</p>
     <ul class="kroki"><li>1. Najedź na część raportu</li><li>2. Dodaj komentarz i wyślij do Claude</li><li>3. Odśwież po chwili</li></ul>
     <div class="meta">Kalkulator w wersji ${esc(wersja)} · wygenerowano ${esc(new Date().toLocaleString("pl-PL"))} · Excel przeliczony w LibreOffice, więc liczby mają zapis 800,611 zamiast 800 611</div>
   </header>
