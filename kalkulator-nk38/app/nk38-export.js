@@ -542,7 +542,8 @@
     var prawa = [];
     K.wymiary.forEach(function (grp) { prawa = prawa.concat(grp); });
     if (K.dlMiejsca) prawa.push(["Długość miejsca postojowego", K.dlMiejsca]);
-    prawa.push(K.agrOpis ? ["Układ agregatów", K.agrOpis, 0, ["KOB / GDW", K.kobGdw]] : ["KOB / GDW", K.kobGdw]);   // jak w raporcie: układ agregatów i KOB / GDW obok siebie
+    if (K.agrOpis) lewa.push(["Układ agregatów", K.agrOpis]);   // jak w raporcie: układ agregatów i KOB / GDW w okienku Zakres (po lewej)
+    lewa.push(["KOB / GDW", K.kobGdw]);
     var ramka = C.line, kr0 = s1.rowCount + 1, nK = Math.max(lewa.length, prawa.length);
     function polowa(wiersz, c0, item, etap, pierwszy, ostatni) {
       var obok = item && item[3], masters = obok ? [[c0, c0 + 1], [c0 + 2, c0 + 2]] : [[c0, c0 + 2]];
@@ -766,8 +767,8 @@
     var wierszP = [];
     K.wymiary.forEach(function (grp) { grp.forEach(function (pp) { wierszP.push(pp); }); });
     if (K.dlMiejsca) wierszP.push(["Długość miejsca postojowego", K.dlMiejsca]);
-    /* układ agregatów (opis z kalkulacji, np. 2A3+3A4) i obok narzuty KOB / GDW w jednym wierszu */
-    wierszP.push(K.agrOpis ? ["Układ agregatów", K.agrOpis, 0, ["KOB / GDW", K.kobGdw]] : ["KOB / GDW", K.kobGdw]);
+    /* układ agregatów (opis z kalkulacji, np. 2A3+3A4) i obok narzuty KOB / GDW w jednym wierszu, w okienku Zakres po lewej */
+    wierszL.push(K.agrOpis ? ["Układ agregatów", K.agrOpis, 0, ["KOB / GDW", K.kobGdw]] : ["KOB / GDW", K.kobGdw]);
     function wartosc(x, yy, wdt, v, akcent) {
       doc.setFont("Carlito", "bold"); doc.setFontSize(10.5); doc.setTextColor.apply(doc, akcent ? ACC : INK);
       if (Array.isArray(v)) {   // wysokości pojazdów: trójkąty jak w ofercie (Carlito nie ma ▲▼)
