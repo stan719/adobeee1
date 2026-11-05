@@ -296,7 +296,8 @@
     var dodatki = linie.filter(function (l) { return !l.opcja; }).reduce(function (a, l) { return a + l.kwota; }, 0);
     var suma = plat.S + plat.D + plat.NP + dodatki, wb = sz.wariantB, q, suma2;
     /* dopłata za wariant 2 na sztukę: z wyceny (zł/szt.) albo z szablonu; zero = brak ceny, wariant niedostępny */
-    var dopB = opt(d.dopB) !== null ? Number(d.dopB) : num(wb.wartosc) * (K[wb.waluta] || 1);
+    /* dopłata z wyceny wpisywana w walucie szablonu (np. 700 USD), przeliczana kursem; zero = brak ceny */
+    var dopB = (opt(d.dopB) !== null ? Number(d.dopB) : num(wb.wartosc)) * (K[wb.waluta] || 1);
     if (wb.tryb === "szt") { suma2 = suma + szt * dopB; q = suma ? suma2 / suma - 1 : 0; }
     else { q = opt(d.q2500) === null ? num(wb.wartosc) : Number(d.q2500); suma2 = suma * (1 + q); }
     var utrAuto = ceil(linie.reduce(function (a, l) { return a + (l.opcja ? 0 : l.osd); }, 0));

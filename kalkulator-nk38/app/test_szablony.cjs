@@ -118,4 +118,12 @@ console.log("  ok wysokości pojazdów na dwóch poziomach");
   assert.strictEqual(r41.dane.agregaty, 3, "NK41: agregaty = 3 kW + 6 kW");
   console.log("  ok agregaty: NKPXLH jedna moc, NK41 z podziałem");
 }
+
+// Dopłata 2500 kg wpisana w walucie szablonu (NKPXLH: USD): 700 USD × kurs, nie 700 zł.
+{
+  const szu = szablon("nkpxlh"), rb = E.oblicz(Object.assign(E.domyslneDane(), szu.domyslne, { szablon: "nkpxlh", S: 4, usd: 4 }), szu);
+  blisko(rb.mat.dopB, 700 * 4, "NKPXLH: dopłata z szablonu 700 USD × kurs 4");
+  const rb2 = E.oblicz(Object.assign(E.domyslneDane(), szu.domyslne, { szablon: "nkpxlh", S: 4, usd: 4, dopB: 500 }), szu);
+  blisko(rb2.mat.dopB, 500 * 4, "NKPXLH: dopłata wpisana 500 USD × kurs 4");
+}
 console.log("szablony: OK");

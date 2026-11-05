@@ -921,7 +921,8 @@ window.NK38_FONTS = { regular: "AAEAAAAOAIAAAwBgR0RFRgS1BUEAAH9cAAAARkdQT1MAGQAM
     var dodatki = linie.filter(function (l) { return !l.opcja; }).reduce(function (a, l) { return a + l.kwota; }, 0);
     var suma = plat.S + plat.D + plat.NP + dodatki, wb = sz.wariantB, q, suma2;
     /* dopłata za wariant 2 na sztukę: z wyceny (zł/szt.) albo z szablonu; zero = brak ceny, wariant niedostępny */
-    var dopB = opt(d.dopB) !== null ? Number(d.dopB) : num(wb.wartosc) * (K[wb.waluta] || 1);
+    /* dopłata z wyceny wpisywana w walucie szablonu (np. 700 USD), przeliczana kursem; zero = brak ceny */
+    var dopB = (opt(d.dopB) !== null ? Number(d.dopB) : num(wb.wartosc)) * (K[wb.waluta] || 1);
     if (wb.tryb === "szt") { suma2 = suma + szt * dopB; q = suma ? suma2 / suma - 1 : 0; }
     else { q = opt(d.q2500) === null ? num(wb.wartosc) : Number(d.q2500); suma2 = suma * (1 + q); }
     var utrAuto = ceil(linie.reduce(function (a, l) { return a + (l.opcja ? 0 : l.osd); }, 0));
@@ -2464,7 +2465,7 @@ window.NK38_FONTS = { regular: "AAEAAAAOAIAAAwBgR0RFRgS1BUEAAH9cAAAARkdQT1MAGQAM
 (function () {
   "use strict";
   /* Wersja programu: podnoś przy każdym wydaniu (pokazywana na pulpicie, zapisywana w kopii zapasowej). */
-  var WERSJA = { nr: "1.60", data: "05.11.2026" };
+  var WERSJA = { nr: "1.61", data: "05.11.2026" };
   var E = window.NK38, X = window.NK38X;
   var LS = { robocze: "nk38.robocze.v1", drafty: "nk38.szkice.v1", draft: "nk38.szkic.v1", tab: "nk38.zakladka", sel: "nk38.wariant", logo: "nk38.logo.v1", podpis: "nk38.podpis.v1",
     szablony: "nk38.szablony.v1", wyceny: "nk38.wyceny.v1", tekstyOferty: "nk38.szablon.v1", numery: "nk38.numery.v1", cennikStary: "nk38.cennik.v1", usuniete: "nk38.usuniete.v1", migracja2: "nk38.migracja2", migracja3: "nk38.migracja3", migracja4: "nk38.migracja4", migracja5: "nk38.migracja5", migracja6: "nk38.migracja6", historia: "nk38.historia.v1", uzytkownik: "nk38.uzytkownik.v1" };
@@ -2757,7 +2758,7 @@ window.NK38_FONTS = { regular: "AAEAAAAOAIAAAwBgR0RFRgS1BUEAAH9cAAAARkdQT1MAGQAM
     pokaz(".pNK", !lista); pokaz(".pAgr", lista ? sz.opcje.agregaty : true); pokaz(".pAgrSplit", !sz.opcje.mocAgregatu && (lista ? sz.opcje.agregaty : true));   // bez podziału 3/6 kW, gdy urządzenie ma jedną moc agregatu
     pokaz(".pDzw", !lista || c.dzwig > 0 || d.dzwig_koszt != null);
     pokaz(".pUSD", lista); pokaz(".pQ", !!sz.wariantB.nazwa && sz.wariantB.tryb === "%"); pokaz(".pQs", !!sz.wariantB.nazwa && sz.wariantB.tryb === "szt");
-    $("lblQs").textContent = "Dopłata " + (sz.wariantB.nazwa || "2500 kg") + " [zł/szt.]";
+    $("lblQs").textContent = "Dopłata " + (sz.wariantB.nazwa || "2500 kg") + " [" + (sz.wariantB.waluta === "PLN" || !sz.wariantB.waluta ? "zł" : sz.wariantB.waluta) + "/szt.]";
     ["S", "D", "NP"].forEach(function (k) { $("box" + k).classList.toggle("ukryj", lista && !sz.typy[k].nazwa); });
     $("lblQ").textContent = "Dopłata " + (sz.wariantB.nazwa || "Q=2500") + " [%]";
     var imp = sz.import.wl;
@@ -2849,7 +2850,7 @@ window.NK38_FONTS = { regular: "AAEAAAAOAIAAAwBgR0RFRgS1BUEAAH9cAAAARkdQT1MAGQAM
       h += podzial ? '<label class="f">Agregaty<input type="number" disabled value="' + ((+x.agr3 || 0) + (+x.agr6 || 0)) + '"><span class="hint">= 3 kW + 6 kW</span></label>' : pole("agregaty", "Agregaty", "wg układu garażu");
       if (!jednaMoc) h += pole("agr3", "w tym 3 kW", "w ofercie moc 3/6kW") + pole("agr6", "w tym 6 kW", "podział tylko w raporcie");
     }
-    if (sz.wariantB.nazwa && sz.wariantB.tryb === "szt") h += pole("dopB", "Dopłata " + sz.wariantB.nazwa + " [zł/szt.]", Number(sz.wariantB.wartosc) ? "puste = " + sz.wariantB.wartosc + " " + sz.wariantB.waluta + "/szt." : "puste: wariant niedostępny", Number(sz.wariantB.wartosc) ? String(sz.wariantB.wartosc) : "brak");
+    if (sz.wariantB.nazwa && sz.wariantB.tryb === "szt") h += pole("dopB", "Dopłata " + sz.wariantB.nazwa + " [" + (sz.wariantB.waluta === "PLN" || !sz.wariantB.waluta ? "zł" : sz.wariantB.waluta) + "/szt.]", Number(sz.wariantB.wartosc) ? "puste = " + sz.wariantB.wartosc + " " + sz.wariantB.waluta + "/szt." : "puste: wariant niedostępny", Number(sz.wariantB.wartosc) ? String(sz.wariantB.wartosc) : "brak");
     h += pole("utr_dod", lista ? "Tonaż [osd]" : "Utrudnienia ręcznie", "dodatkowe osobodni");
     h += "</div><div class=\"g3\" style=\"margin-top:10px\">";
     if (sz.wysokosci.tryb === "zaglebienie") h += pole("h1", "Zagłębienie H1 [cm]") + pole("h2", "Zagłębienie H2 [cm]") + pole("dl", "Długość zagłębienia [cm]", "puste = 530 cm", "530");
@@ -3047,9 +3048,9 @@ window.NK38_FONTS = { regular: "AAEAAAAOAIAAAwBgR0RFRgS1BUEAAH9cAAAARkdQT1MAGQAM
     $("q2500").placeholder = n2(qDom * 100);
     $("q2500Hint").textContent = "puste = " + n2(qDom * 100) + "% z szablonu";
     if (r.mat.dopB != null || r.szablon.wariantB.tryb === "szt") {
-      var wbS = r.szablon.wariantB, dSz = (Number(wbS.wartosc) || 0) * ({ EUR: d.eur, USD: d.usd }[wbS.waluta] || 1);
-      $("dopB").placeholder = dSz ? String(Math.round(dSz)) : "brak";
-      $("dopBHint").textContent = dSz ? "puste = " + wbS.wartosc + " " + wbS.waluta + "/szt. z szablonu" : "nie wpisano: wariant " + wbS.nazwa + " niedostępny";
+      var wbS = r.szablon.wariantB, dSz = Number(wbS.wartosc) || 0, plnSz = dSz * ({ EUR: d.eur, USD: d.usd }[wbS.waluta] || 1);
+      $("dopB").placeholder = dSz ? String(dSz) : "brak";   // w walucie szablonu (np. 700 USD), bez przeliczenia na zł
+      $("dopBHint").textContent = dSz ? "puste = " + wbS.wartosc + " " + wbS.waluta + "/szt. z szablonu" + (wbS.waluta !== "PLN" ? " (≈ " + fmtPLN.format(Math.round(plnSz)) + " zł)" : "") : "nie wpisano: wariant " + wbS.nazwa + " niedostępny";
     }
     var dzwAuto = r.cennik.dzwig * r.wspolne.dzwDni;
     $("dzwig_koszt").placeholder = String(Math.round(dzwAuto));
