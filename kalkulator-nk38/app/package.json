@@ -3,7 +3,7 @@
  "private": true,
  "description": "Testy eksport\u00f3w aplikacji (biblioteki w tych samych wersjach co na stronie, z CDN jsDelivr).",
  "scripts": {
-  "test": "node test_szablony.cjs && node test_export.cjs",
+  "test": "node test_szablony.cjs && node test_export.cjs && node test_oferta_b.cjs",
   "przyklady": "node przyklady.cjs"
  },
  "devDependencies": {
