@@ -661,8 +661,16 @@
   }
 
   /* ------------------------------------------------------------ PDF (max 4 strony) */
+  /* kom: poziom zagęszczenia 1. strony (0 = standardowo); pdf() zwiększa go, aż strona 1 mieści się na jednej kartce */
   function pdf(r, ctx) {
+    var wynik;
+    for (var kom = 0; kom <= 3; kom++) { wynik = pdfBuduj(r, ctx, kom); if (wynik.strona1Ok) break; }
+    return wynik.buf;
+  }
+  function pdfBuduj(r, ctx, kom) {
+    if (ctx.mapa) ctx.mapa.length = 0;   // podgląd z komentarzami dostaje mapę tylko ostatniej próby
     var R = raport(r, ctx.GLEBOKOSCI, ctx.oferta), d = r.dane, w0 = r.warianty[0];
+    var fz = kom >= 1 ? 0.4 : 0, pad = kom >= 1 ? 0.3 : 0, odstep = kom >= 1 ? 2 : 0;   // mniejsze pismo, wypełnienia i odstępy
     var doc = new L.jsPDF({ unit: "mm", format: "a4" });
     doc.addFileToVFS("Carlito-Regular.ttf", ctx.fonts.regular);
     doc.addFileToVFS("Carlito-Bold.ttf", ctx.fonts.bold);
@@ -720,20 +728,21 @@
         ["Można zejść do · zysk " + pct(N.zB), zl(N.cenaB), zl(mpz(N.cenaB)), rab(N.cenaB)],
         ["Próg opłacalności · zysk 0%", zl(N.cenaMin), zl(mpz(N.cenaMin)), "maks. " + rab(N.cenaMin)]]
         .concat((K.pozycje || []).map(function (q) { return ["w tym " + q.nazwa, zl(q.cena), zl(q.cenaMP), "–"]; })),
-      styles: Object.assign({}, base.styles, { fontSize: 8.6, cellPadding: 0.9 }),
+      styles: Object.assign({}, base.styles, { fontSize: 8.6 - fz, cellPadding: 0.9 - pad }),
       columnStyles: { 0: { halign: "left", cellWidth: 66 }, 1: { halign: "right", fontStyle: "bold" }, 2: { halign: "right", fontStyle: "bold" }, 3: { halign: "right" } },
       didParseCell: function (h) { if (h.section === "head" && h.column.index === 0) h.cell.styles.halign = "left"; } }));
-    var y = doc.lastAutoTable.finalY + 9;
+    var y = doc.lastAutoTable.finalY + 9 - odstep;
     znak("kafelki", "Ceny: oferta, zejście, próg", 34, y - 6);
     var yPas = y - 5;
     y = h2("Pole do negocjacji (" + w0.nazwa + ")", y - 1) + 4;   // bez paska: drabinka zaraz pod nagłówkiem
     /* długa drabinka (wysoki zysk ofertowy): poniżej zysku do porównania co 4 pkt proc., żeby zmieścić kartę inwestycji */
-    var negRows = R.neg.rows.length <= 11 ? R.neg.rows : R.neg.rows.filter(function (q) {
-      var x = q.x; return x.oferta || x.porownanie || x.prog || x.zysk > N.zB || Math.round(x.zysk * 100) % 4 === 0;
+    var negRows = R.neg.rows.length <= 11 && kom < 3 ? R.neg.rows : R.neg.rows.filter(function (q) {
+      var x = q.x; if (kom >= 3) return x.oferta || x.porownanie || x.prog;   // najbardziej zagęszczone: tylko trzy kluczowe poziomy
+      return x.oferta || x.porownanie || x.prog || x.zysk > N.zB || Math.round(x.zysk * 100) % 4 === 0;
     });
     L.autoTable(doc, Object.assign({}, base, {
       startY: y - 3, head: [R.neg.head], body: negRows.map(function (x) { return x.vals; }),
-      styles: Object.assign({}, base.styles, { fontSize: 8.2, cellPadding: 0.75 }),
+      styles: Object.assign({}, base.styles, { fontSize: 8.2 - fz, cellPadding: 0.75 - pad }),
       columnStyles: { 0: { halign: "left", cellWidth: 40 } }, bodyStyles: { halign: "right" },
       didParseCell: function (hh) {
         if (hh.section === "head" && hh.column.index === 0) hh.cell.styles.halign = "left";
@@ -749,7 +758,7 @@
     doc.setFont("Carlito", "normal"); doc.setFontSize(7.4); doc.setTextColor.apply(doc, MUT);
     doc.text("Zielone: rabat bez zejścia poniżej zysku " + pct(N.zB) + ". Żółte: poniżej zysku do porównania. Przy zysku 0% w cenie zostają koszty, KOB, GDW i podatek.", 14, doc.lastAutoTable.finalY + 3.6);
     znak("drabinka", "Pole do negocjacji: drabinka cenowa i legenda", yPas, doc.lastAutoTable.finalY + 5);
-    y = h2("Dane wejściowe", doc.lastAutoTable.finalY + 10) + 2.5;
+    y = h2("Dane wejściowe", doc.lastAutoTable.finalY + 10 - odstep) + 2.5;
 
     /* karta inwestycji: w obu okienkach ta sama siatka (etykieta + wartość jednym krojem), wiersze na tej samej wysokości */
     var cw = 89, xL = 14, xP = 14 + cw + 4, y0 = y, wierszL = K.zakres.slice();
@@ -775,19 +784,26 @@
     var yy = y0 + 4.5;
     doc.setFont("Carlito", "bold"); doc.setFontSize(7.6); doc.setTextColor.apply(doc, ACC);
     doc.text("ZAKRES", xL + 3, yy); doc.text("WYMIARY", xP + 3, yy); yy += 4.5;
+    var wiersz1 = kom >= 2;   // zagęszczenie: etykieta i wartość w jednej linii (połowa wysokości)
+    if (wiersz1) {   // bez par "obok": każdy element w osobnym, jednoliniowym wierszu
+      var splaszcz = function (lista) { return lista.reduce(function (acc, x) { acc.push(x.slice(0, 3)); if (x[3]) acc.push(x[3]); return acc; }, []); };
+      wierszL = splaszcz(wierszL); wierszP = splaszcz(wierszP);
+    }
     for (var wi = 0; wi < Math.max(wierszL.length, wierszP.length); wi++) {
       var nl = 1;
       [[wierszL[wi], xL], [wierszP[wi], xP]].forEach(function (z) {
         if (!z[0]) return;
-        var obok = z[0][3], sz2 = obok ? (cw - 6) * 0.6 : cw - 6, sz3 = (cw - 6) - sz2;
-        doc.setFont("Carlito", "normal"); doc.setFontSize(7.6); doc.setTextColor.apply(doc, MUT); doc.text(z[0][0], z[1] + 3, yy);
-        nl = Math.max(nl, wartosc(z[1] + 3, yy + 4.1, sz2, z[0][1], z[0][2]));
+        var obok = z[0][3], sz2 = obok ? (cw - 6) * 0.6 : cw - 6, sz3 = (cw - 6) - sz2, yw = wiersz1 ? yy + 3.4 : yy + 4.1;
+        doc.setFont("Carlito", "normal"); doc.setFontSize(7.6); doc.setTextColor.apply(doc, MUT); doc.text(z[0][0], z[1] + 3, wiersz1 ? yw : yy);
+        var lw = wiersz1 ? doc.getTextWidth(z[0][0]) + 2 : 0;
+        nl = Math.max(nl, wartosc(z[1] + 3 + lw, yw, sz2 - lw, z[0][1], z[0][2]));
         if (obok) {
-          doc.setFont("Carlito", "normal"); doc.setFontSize(7.6); doc.setTextColor.apply(doc, MUT); doc.text(obok[0], z[1] + 3 + sz2, yy);
-          nl = Math.max(nl, wartosc(z[1] + 3 + sz2, yy + 4.1, sz3 - 1, obok[1]));
+          doc.setFont("Carlito", "normal"); doc.setFontSize(7.6); doc.setTextColor.apply(doc, MUT); doc.text(obok[0], z[1] + 3 + sz2, wiersz1 ? yw : yy);
+          var lw2 = wiersz1 ? doc.getTextWidth(obok[0]) + 2 : 0;
+          nl = Math.max(nl, wartosc(z[1] + 3 + sz2 + lw2, yw, sz3 - 1 - lw2, obok[1]));
         }
       });
-      yy += 4.1 + nl * 4.3 + 0.9;
+      yy += wiersz1 ? 0.6 + nl * 4.3 : (kom >= 1 ? 3.7 : 4.1) + nl * (kom >= 1 ? 4.0 : 4.3) + (kom >= 1 ? 0.5 : 0.9);
     }
     doc.setDrawColor.apply(doc, LINE); doc.setLineWidth(0.3);
     doc.roundedRect(xL, y0, cw, yy - y0 - 1, 1.5, 1.5, "S"); doc.roundedRect(xP, y0, cw, yy - y0 - 1, 1.5, 1.5, "S");
@@ -799,8 +815,8 @@
     }
     var yOp = y;
     doc.setFont("Carlito", "normal"); doc.setFontSize(7.6); doc.setTextColor.apply(doc, MUT); doc.text("Opis wariantu", 14, y);
-    doc.setFont("Carlito", "bold"); doc.setFontSize(9.5); doc.setTextColor.apply(doc, INK);
-    var lo = doc.splitTextToSize(K.opis || "–", 182); doc.text(lo, 14, y + 4.3); y += 4.3 + lo.length * 4.1 + 2;
+    doc.setFont("Carlito", "bold"); doc.setFontSize(kom >= 3 ? 8.4 : 9.5); doc.setTextColor.apply(doc, INK);
+    var lo = doc.splitTextToSize(K.opis || "–", 182); doc.text(lo, 14, y + 4.3); y += 4.3 + lo.length * (kom >= 3 ? 3.6 : 4.1) + 2;
     znak("opis", "Opis wariantu", yOp - 3.5, y - 1);
     var c3 = (182 - 8) / 3, yLok = y;
     y = Math.max(pole(14, y, c3, "Lokalizacja", K.lok), pole(14 + c3 + 4, y, c3, "Montaż", K.montaz), pole(14 + 2 * (c3 + 4), y, c3, "Transport", K.transport)) + 2;
@@ -809,24 +825,25 @@
     if (R.dodatki.rows.length) {
       L.autoTable(doc, Object.assign({}, base, { startY: y, head: [R.dodatki.head],
         body: R.dodatki.rows.map(function (x) { return [x.label, x.info].concat(x.vals.map(function (v) { return v == null ? "–" : "+" + zl(v); })); }),
-        styles: Object.assign({}, base.styles, { fontSize: 8.2, cellPadding: 0.75 }),
+        styles: Object.assign({}, base.styles, { fontSize: 8.2 - fz, cellPadding: 0.75 - pad }),
         columnStyles: { 0: { halign: "left", cellWidth: 52, fontStyle: "bold" }, 1: { halign: "left", textColor: MUT, cellWidth: 70 }, 2: { halign: "right" }, 3: { halign: "right" } },
         didParseCell: function (h) { if (h.section === "head" && h.column.index < 2) h.cell.styles.halign = "left"; } }));
       znak("dodatki", "Opcje: dopłaty 2500 kg, słupki", y, doc.lastAutoTable.finalY);
-      y = doc.lastAutoTable.finalY + 4;
+      y = doc.lastAutoTable.finalY + 4 - odstep / 2;
     }
     /* konserwacja: tabelka jak ceny u góry; stawki 35–60 zł co 5 zł plus stawki z wyceny, te z wyceny pogrubione */
     var bazaK = K.konserwacja[0].bazaN;
     var stawkiW = r.konserwacja.map(function (k) { return k.stawka; }), stawki = [35, 40, 45, 50, 55, 60];
     stawkiW.forEach(function (v) { if (stawki.indexOf(v) < 0) stawki.push(v); });
     stawki.sort(function (a, b) { return a - b; });
+    if (kom >= 2) stawki = stawki.filter(function (v) { return stawkiW.some(function (x) { return Math.abs(x - v) <= 5; }); });   // tylko stawki z wyceny i ich sąsiedzi
     var yKon = y;
     L.autoTable(doc, Object.assign({}, base, { startY: y, head: [["Konserwacja (" + K.konserwacja[0].baza + ")", "Miesięcznie", "Rocznie", "Jeden przegląd (co pół roku)"]],
       body: stawki.map(function (v) {
         var w = stawkiW.indexOf(v), mies = v * bazaK;
         return [v + " zł / " + R.jm + " / mies." + (w >= 0 ? "  · wariant " + (w + 1) : ""), zl(mies), zl(mies * 12), zl(mies * 6)];
       }),
-      styles: Object.assign({}, base.styles, { fontSize: 8.4, cellPadding: 0.75 }),
+      styles: Object.assign({}, base.styles, { fontSize: 8.4 - fz, cellPadding: 0.75 - pad }),
       columnStyles: { 0: { halign: "left", cellWidth: 66 }, 1: { halign: "right" }, 2: { halign: "right" }, 3: { halign: "right" } },
       didParseCell: function (h) {
         if (h.section === "head" && h.column.index === 0) h.cell.styles.halign = "left";
@@ -834,6 +851,7 @@
       } }));
     znak("konserwacja", "Konserwacja: stawki 35–60 zł", yKon, doc.lastAutoTable.finalY);
 
+    var strona1Ok = doc.getNumberOfPages() === 1;
     /* 2. strona: skąd się biorą kwoty (wariant podstawowy) i pozostałe dane */
     doc.addPage(); head("Koszty · " + w0.nazwa + " · " + pct(d.zysk), stopka);
     znak("naglowek2", "Strona 2: nagłówek", 12, 30);
@@ -870,7 +888,7 @@
       doc.setPage(p); doc.setFontSize(8); doc.setTextColor.apply(doc, MUT);
       doc.text("Strona " + p + " z " + pages, 196, 290, { align: "right" });
     }
-    return doc.output("arraybuffer");
+    return { buf: doc.output("arraybuffer"), strona1Ok: strona1Ok };
   }
 
   /* ------------------------------------------------------------ oferta */
