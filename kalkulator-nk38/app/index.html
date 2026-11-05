@@ -508,8 +508,8 @@ html, body { overflow-x: clip; max-width: 100%; }
           <label class="f" id="boxD"><span id="lblD">Platformy D</span><input id="D" type="number" min="0" step="1"><span class="hint" id="hintD"></span></label>
           <label class="f" id="boxNP"><span id="lblNP">Systemy N.P.</span><input id="NP" type="number" min="0" step="1"><span class="hint" id="hintNP"></span></label>
           <label class="f pAgr">Agregaty<input id="agregaty" type="number" min="0" step="1"><span class="hint" id="hintAgr">wg układu garażu</span></label>
-          <label class="f pAgr">w tym 3 kW<input id="agr3" type="number" min="0" step="1" class="auto"><span class="hint">w ofercie moc 3/6kW</span></label>
-          <label class="f pAgr">w tym 6 kW<input id="agr6" type="number" min="0" step="1" class="auto"><span class="hint">podział tylko w raporcie</span></label>
+          <label class="f pAgr pAgrSplit">w tym 3 kW<input id="agr3" type="number" min="0" step="1" class="auto"><span class="hint">w ofercie moc 3/6kW</span></label>
+          <label class="f pAgr pAgrSplit">w tym 6 kW<input id="agr6" type="number" min="0" step="1" class="auto"><span class="hint">podział tylko w raporcie</span></label>
           <label class="f pNK">Magistrala 6 m<input id="magistrala" type="number" min="0" step="1"></label>
           <label class="f pNK">Barierki<input id="barierki" type="number" min="0" step="1"><span class="hint">szt. na stronę</span></label>
           <label class="f pNK">Maskownice<input id="maskownice" type="number" min="0" step="1"></label>
@@ -621,10 +621,10 @@ html, body { overflow-x: clip; max-width: 100%; }
 (function () {
   "use strict";
   /* Wersja programu: podnoś przy każdym wydaniu (pokazywana na pulpicie, zapisywana w kopii zapasowej). */
-  var WERSJA = { nr: "1.59", data: "05.11.2026" };
+  var WERSJA = { nr: "1.60", data: "05.11.2026" };
   var E = window.NK38, X = window.NK38X;
   var LS = { robocze: "nk38.robocze.v1", drafty: "nk38.szkice.v1", draft: "nk38.szkic.v1", tab: "nk38.zakladka", sel: "nk38.wariant", logo: "nk38.logo.v1", podpis: "nk38.podpis.v1",
-    szablony: "nk38.szablony.v1", wyceny: "nk38.wyceny.v1", tekstyOferty: "nk38.szablon.v1", numery: "nk38.numery.v1", cennikStary: "nk38.cennik.v1", usuniete: "nk38.usuniete.v1", migracja2: "nk38.migracja2", migracja3: "nk38.migracja3", migracja4: "nk38.migracja4", migracja5: "nk38.migracja5", historia: "nk38.historia.v1", uzytkownik: "nk38.uzytkownik.v1" };
+    szablony: "nk38.szablony.v1", wyceny: "nk38.wyceny.v1", tekstyOferty: "nk38.szablon.v1", numery: "nk38.numery.v1", cennikStary: "nk38.cennik.v1", usuniete: "nk38.usuniete.v1", migracja2: "nk38.migracja2", migracja3: "nk38.migracja3", migracja4: "nk38.migracja4", migracja5: "nk38.migracja5", migracja6: "nk38.migracja6", historia: "nk38.historia.v1", uzytkownik: "nk38.uzytkownik.v1" };
   var NUMF = ["km", "km_pom", "km_mon", "S", "D", "NP", "agregaty", "magistrala", "barierki", "maskownice", "utr_dod",
     "tir", "tir_cena", "rozl_cena", "rozl_dni", "dzwig_koszt", "osoby", "wyjazdy", "eur", "usd", "h1", "h2", "przeswit", "konserwA", "konserwB", "dlMiejsca", "dopB", "agr3", "agr6"];
   var OPTF = { km_pom: 1, km_mon: 1, rozl_dni: 1, dzwig_koszt: 1, wyjazdy: 1, h1: 1, h2: 1, przeswit: 1, dlMiejsca: 1, dopB: 1, agr3: 1, agr6: 1, tir: 1 };
@@ -710,7 +710,7 @@ html, body { overflow-x: clip; max-width: 100%; }
     zmiana: function (klucz) {
       if (!this.h || this.wczytuje) return;
       var rodzaj = klucz === LS.wyceny ? "wyceny" : klucz === LS.robocze ? "robocze" : klucz === LS.historia ? "historia" :
-        [LS.szablony, LS.tekstyOferty, LS.numery, LS.usuniete, LS.migracja2, LS.migracja3, LS.migracja4, LS.migracja5, LS.uzytkownik].indexOf(klucz) >= 0 ? "ustawienia" : null;
+        [LS.szablony, LS.tekstyOferty, LS.numery, LS.usuniete, LS.migracja2, LS.migracja3, LS.migracja4, LS.migracja5, LS.migracja6, LS.uzytkownik].indexOf(klucz) >= 0 ? "ustawienia" : null;
       if (!rodzaj) return;
       var self = this; clearTimeout(this.timery[rodzaj]);
       this.timery[rodzaj] = setTimeout(function () { self.pisz(rodzaj, self.dane(rodzaj)).catch(function () { toast("Nie udało się zapisać pliku w folderze danych. Sprawdź dostęp do folderu."); }); }, 400);
@@ -723,7 +723,7 @@ html, body { overflow-x: clip; max-width: 100%; }
         for (var r in PLIKI) await this.pisz(r, this.dane(r));
         toast("Folder danych gotowy: zapisano w nim obecne dane.");
       } else {
-        var map = { szablony: LS.szablony, tekstyOferty: LS.tekstyOferty, numery: LS.numery, usuniete: LS.usuniete, migracja2: LS.migracja2, migracja3: LS.migracja3, migracja4: LS.migracja4, migracja5: LS.migracja5, uzytkownik: LS.uzytkownik };
+        var map = { szablony: LS.szablony, tekstyOferty: LS.tekstyOferty, numery: LS.numery, usuniete: LS.usuniete, migracja2: LS.migracja2, migracja3: LS.migracja3, migracja4: LS.migracja4, migracja5: LS.migracja5, migracja6: LS.migracja6, uzytkownik: LS.uzytkownik };
         this.wczytuje = true;   // bez zapisu zwrotnego podczas wczytywania
         Object.keys(map).forEach(function (k) { if (ust[k] !== undefined) lsSet(map[k], ust[k]); });
         lsSet(LS.wyceny, (await this.czytaj("wyceny")) || []); lsSet(LS.robocze, (await this.czytaj("robocze")) || []); lsSet(LS.historia, (await this.czytaj("historia")) || []);
@@ -760,7 +760,7 @@ html, body { overflow-x: clip; max-width: 100%; }
         } catch (e) { this.db = null; }
       }
       this.cache = { szablony: lsGet(LS.szablony, null), tekstyOferty: lsGet(LS.tekstyOferty, null), numery: lsGet(LS.numery, null),
-        usuniete: lsGet(LS.usuniete, null), migracja2: lsGet(LS.migracja2, null), migracja3: lsGet(LS.migracja3, null), migracja4: lsGet(LS.migracja4, null), migracja5: lsGet(LS.migracja5, null), uzytkownik: lsGet(LS.uzytkownik, null) };
+        usuniete: lsGet(LS.usuniete, null), migracja2: lsGet(LS.migracja2, null), migracja3: lsGet(LS.migracja3, null), migracja4: lsGet(LS.migracja4, null), migracja5: lsGet(LS.migracja5, null), migracja6: lsGet(LS.migracja6, null), uzytkownik: lsGet(LS.uzytkownik, null) };
       if (Plik.dostepny()) {   // wersja offline: ostatnio używany folder danych
         var hf = await Plik.uchwyt();
         if (hf) {
@@ -873,6 +873,10 @@ html, body { overflow-x: clip; max-width: 100%; }
       });
       Store.set("migracja4", true); Store.set("szablony", lista.map(E.uzupelnijSzablon));
     }
+    if (!Store.get("migracja6", false)) {   // 05.11: NKPXLH z jedną mocą agregatu (3 kW), bez podziału 3/6 kW
+      lista.forEach(function (x) { if (x.id === "nkpxlh") { x.opcje = x.opcje || {}; x.opcje.mocAgregatu = "3"; } });
+      Store.set("migracja6", true); Store.set("szablony", lista.map(E.uzupelnijSzablon));
+    }
     if (!Store.get("migracja5", false)) {   // 02.11: NK6501 bez opcji „Malowanie RAL”
       lista.forEach(function (x) { if (x.id === "nk6501" && x.pozycje) x.pozycje = x.pozycje.filter(function (q) { return q.id !== "malowanie"; }); });
       Store.set("migracja5", true); Store.set("szablony", lista.map(E.uzupelnijSzablon));
@@ -907,7 +911,7 @@ html, body { overflow-x: clip; max-width: 100%; }
     var lista = sz.model === "lista", c = sz.cennik, pokaz = function (sel, on) { document.querySelectorAll(sel).forEach(function (el) { el.classList.toggle("ukryj", !on); }); };
     pokaz(".zagl", sz.wysokosci.tryb === "zaglebienie"); pokaz(".nzagl", sz.wysokosci.tryb !== "zaglebienie");
     var cs = sz.cennik; $("nad_hotel").placeholder = cs.hotel; $("nad_dieta").placeholder = cs.dieta; $("hintHotel").textContent = "puste = " + cs.hotel + " zł z szablonu";
-    pokaz(".pNK", !lista); pokaz(".pAgr", lista ? sz.opcje.agregaty : true);
+    pokaz(".pNK", !lista); pokaz(".pAgr", lista ? sz.opcje.agregaty : true); pokaz(".pAgrSplit", !sz.opcje.mocAgregatu && (lista ? sz.opcje.agregaty : true));   // bez podziału 3/6 kW, gdy urządzenie ma jedną moc agregatu
     pokaz(".pDzw", !lista || c.dzwig > 0 || d.dzwig_koszt != null);
     pokaz(".pUSD", lista); pokaz(".pQ", !!sz.wariantB.nazwa && sz.wariantB.tryb === "%"); pokaz(".pQs", !!sz.wariantB.nazwa && sz.wariantB.tryb === "szt");
     $("lblQs").textContent = "Dopłata " + (sz.wariantB.nazwa || "2500 kg") + " [zł/szt.]";
@@ -998,9 +1002,9 @@ html, body { overflow-x: clip; max-width: 100%; }
       h += pole(k, lista ? t.nazwa : sz.nazwa + k, t.mp + " MP" + (lista && t.cena ? " · " + fmtPLN.format(t.cena) + " " + t.waluta + "/szt." : ""));
     });
     if (!lista || sz.opcje.agregaty) {
-      var podzial = x.agr3 != null || x.agr6 != null;
+      var jednaMoc = !!sz.opcje.mocAgregatu, podzial = !jednaMoc && (x.agr3 != null || x.agr6 != null);
       h += podzial ? '<label class="f">Agregaty<input type="number" disabled value="' + ((+x.agr3 || 0) + (+x.agr6 || 0)) + '"><span class="hint">= 3 kW + 6 kW</span></label>' : pole("agregaty", "Agregaty", "wg układu garażu");
-      h += pole("agr3", "w tym 3 kW", "w ofercie moc 3/6kW") + pole("agr6", "w tym 6 kW", "podział tylko w raporcie");
+      if (!jednaMoc) h += pole("agr3", "w tym 3 kW", "w ofercie moc 3/6kW") + pole("agr6", "w tym 6 kW", "podział tylko w raporcie");
     }
     if (sz.wariantB.nazwa && sz.wariantB.tryb === "szt") h += pole("dopB", "Dopłata " + sz.wariantB.nazwa + " [zł/szt.]", Number(sz.wariantB.wartosc) ? "puste = " + sz.wariantB.wartosc + " " + sz.wariantB.waluta + "/szt." : "puste: wariant niedostępny", Number(sz.wariantB.wartosc) ? String(sz.wariantB.wartosc) : "brak");
     h += pole("utr_dod", lista ? "Tonaż [osd]" : "Utrudnienia ręcznie", "dodatkowe osobodni");
@@ -1183,9 +1187,9 @@ html, body { overflow-x: clip; max-width: 100%; }
       $("tir").placeholder = String(r.tirAuto);
       $("hintTir").textContent = "ok. " + r.tirAuto + " TIR (D/6 + S/8, w górę)" + (tirR && state.dane.tir !== r.tirAuto ? "; wpisano ręcznie" : "; puste = automatycznie");
     } else $("tir").placeholder = "";
-    var podzial = d.agr3 != null || d.agr6 != null;   // agregaty 3 kW + 6 kW: razem liczy się samo
+    var podzial = !r.szablon.opcje.mocAgregatu && (d.agr3 != null || d.agr6 != null);   // agregaty 3 kW + 6 kW: razem liczy się samo
     $("agregaty").disabled = podzial; if (podzial) $("agregaty").value = d.agregaty || 0;
-    $("hintAgr").textContent = podzial ? "= 3 kW + 6 kW" : "wg układu garażu";
+    $("hintAgr").textContent = podzial ? "= 3 kW + 6 kW" : r.szablon.opcje.mocAgregatu ? "wg układu garażu, każdy " + r.szablon.opcje.mocAgregatu + " kW" : "wg układu garażu";
     $("std_S").textContent = Math.max(0, (d.S || 0) - sumO(d.gl_S));
     $("std_D").textContent = Math.max(0, (d.D || 0) - sumO(d.gl_D));
     var surowe = (d.magistrala || 0) * r.cennik.osd_magistrala + ((d.barierki || 0) + (d.maskownice || 0)) * r.cennik.osd_barierka;

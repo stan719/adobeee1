@@ -106,4 +106,16 @@ const wys = (id, przeswit, o) => { const sz = szablon(id), r = E.oblicz(Object.a
 assert.strictEqual(wys("nkpxlh", 340, { hg: 140 }).dol, 180, "ręczna górna przesuwa dolną");
 assert.strictEqual(wys("nkpxlh", 340, { hd: 160 }).dol, 160, "ręczna dolna ma pierwszeństwo");
 console.log("  ok wysokości pojazdów na dwóch poziomach");
+
+// NKPXLH: jedna moc agregatu (3 kW), bez podziału 3/6 kW; NK41 nadal z podziałem.
+{
+  const szx = szablon("nkpxlh"), rx = E.oblicz(Object.assign(E.domyslneDane(), szx.domyslne, { szablon: "nkpxlh", S: 6, agregaty: 3, agr3: 1, agr6: 2, przeswit: 340 }), szx);
+  assert.strictEqual(rx.dane.agregaty, 3, "NKPXLH: agr3/agr6 ignorowane, liczba agregatów z pola");
+  const Fx = X.oferta(rx, X.domyslnaOferta(), X.SZABLON), Rx = X.raport(rx, [], X.domyslnaOferta());
+  assert(/3kW/.test(Fx.lista.join(" ")) && !/3\/6/.test(Fx.lista.join(" ")), "oferta NKPXLH: 3kW: " + Fx.lista.join(" | "));
+  assert(/3 szt\. \(3 kW\)/.test(Rx.karta.agregaty), "raport NKPXLH: " + Rx.karta.agregaty);
+  const r41 = E.oblicz(Object.assign(E.domyslneDane(), szablon("nk41").domyslne, { szablon: "nk41", S: 6, agr3: 1, agr6: 2 }), szablon("nk41"));
+  assert.strictEqual(r41.dane.agregaty, 3, "NK41: agregaty = 3 kW + 6 kW");
+  console.log("  ok agregaty: NKPXLH jedna moc, NK41 z podziałem");
+}
 console.log("szablony: OK");

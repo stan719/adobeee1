@@ -166,6 +166,7 @@
     s.wariantB = { nazwa: "2500 kg", tryb: "szt", wartosc: 700, waluta: "USD" };   // 2500 kg: 3000 USD/szt. zamiast 2300
     s.opcje.rozladunekNaTransport = true; s.opcje.konserwacjaNa = "szt"; s.opcje.agregaty = true; s.opcje.slupki = false;
     s.wysokosci = { tryb: "przeswit2", k: 20, dol: 170 };
+    s.opcje.mocAgregatu = "3";   // agregaty tylko 3 kW: bez podziału 3/6 kW
     s.domyslne = { zysk: 0.28, zysk2: 0.255, konserwA: 35, konserwB: 45, tir: 1, tir_cena: 3500, rozl_cena: 2800, eur: 4.33, usd: 3.86 };
     Object.assign(s.cennik, { stawka_1: 550, stawka_2: 400, stawka_kolejna: 350, hotel: 130, dieta: 45, odbiory_osoby: 2, odbiory_wyjazdy: 2, dzwig: 1200, rozl_TIR: 1 });
     s.teksty = Object.assign(tekstyNK38(), {
@@ -237,7 +238,7 @@
     s.import = Object.assign({ wl: false, koszty: [], ubezpWartosc: 0, ubezpWaluta: "USD", ubezpStawka: 0.0014, ubezpWsp: 1.1 }, s.import || {});
     s.wariantA = s.wariantA || "2000 kg";
     s.wariantB = Object.assign({ nazwa: "2500 kg", tryb: "%", wartosc: 0, waluta: "PLN" }, s.wariantB || {});
-    s.opcje = Object.assign({ rozladunekNaTransport: false, przeglad: true, konserwacjaNa: "MP", agregaty: true, slupki: true, dodatkiNK38: s.model === "nk38", wymiary: s.model === "nk38" }, s.opcje || {});
+    s.opcje = Object.assign({ mocAgregatu: "", rozladunekNaTransport: false, przeglad: true, konserwacjaNa: "MP", agregaty: true, slupki: true, dodatkiNK38: s.model === "nk38", wymiary: s.model === "nk38" }, s.opcje || {});
     s.wysokosci = Object.assign({ tryb: "zaglebienie", k: 15, dol: 170, gor: 150 }, s.wysokosci || {});
     s.domyslne = s.domyslne || {};
     ["glebokosci", "szerokosci", "dlugosci", "skladowe", "opisOferty"].forEach(function (k) { if (s[k] == null) s[k] = b[k]; });
@@ -492,7 +493,8 @@
     var sz = uzupelnijSzablon(src), c = Object.assign({}, sz.cennik);
     var dx = Object.assign(domyslneDane(), sz.domyslne || {}, { tir: null, q2500: null, dopB: null, magistrala: 0, barierki: 0, maskownice: 0, poz: {} }, x,
       { eur: d.eur, usd: d.usd, lok: d.lok, km: d.km, gl_S: x.gl_S || {}, gl_D: x.gl_D || {} });
-    if (opt(dx.agr3) !== null || opt(dx.agr6) !== null) dx.agregaty = num(dx.agr3) + num(dx.agr6);
+    if (!sz.opcje.mocAgregatu && (opt(dx.agr3) !== null || opt(dx.agr6) !== null)) dx.agregaty = num(dx.agr3) + num(dx.agr6);
+    dx.mocAgr = sz.opcje.mocAgregatu || "";
     var tirAuto = sz.model === "lista" ? 0 : ceil(num(dx.D) / 6 + (num(dx.S) + num(dx.NP)) / 8);
     if (opt(dx.tir) === null) dx.tir = tirAuto;
     dx.typ = sz.nazwa; dx.model = sz.model; dx.wysokosci = sz.wysokosci; dx.pokazAgregaty = sz.opcje.agregaty;
@@ -502,9 +504,11 @@
 
   function oblicz(dane, szablon, szablony) {
     var d = Object.assign(domyslneDane(), dane || {});
-    if (opt(d.agr3) !== null || opt(d.agr6) !== null) d.agregaty = num(d.agr3) + num(d.agr6);   // agregaty 3 kW + 6 kW
     if ((dane || {}).zysk2 === undefined && (dane || {}).zysk_min !== undefined) d.zysk2 = dane.zysk_min;
     var sz = uzupelnijSzablon(szablon), T = sz.typy;
+    /* agregaty 3 kW + 6 kW (urządzenia z jedną mocą agregatu, np. NKPXLH, nie mają podziału) */
+    if (!sz.opcje.mocAgregatu && (opt(d.agr3) !== null || opt(d.agr6) !== null)) d.agregaty = num(d.agr3) + num(d.agr6);
+    d.mocAgr = sz.opcje.mocAgregatu || "";
     /* NK38/NK37: liczba TIR-ów, gdy nie wpisano ręcznie: D/6 + S/8 (N.P. jak S), w górę */
     var tirAuto = sz.model === "lista" ? 0 : ceil(num(d.D) / 6 + (num(d.S) + num(d.NP)) / 8);
     if (opt(d.tir) === null) d.tir = tirAuto;

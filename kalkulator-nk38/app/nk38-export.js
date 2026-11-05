@@ -96,11 +96,13 @@
   }
   /* Agregaty z podziałem na moc: "2× 3 kW, 1× 6 kW"; w ofercie osobna linia dla każdej mocy. */
   function agrMoc(d) {
+    if (d.mocAgr) return d.mocAgr + " kW";   // urządzenie z jedną mocą agregatu (np. NKPXLH)
     var a3 = Number(d.agr3) || 0, a6 = Number(d.agr6) || 0;
     return a3 || a6 ? [a3 ? a3 + "× 3 kW" : "", a6 ? a6 + "× 6 kW" : ""].filter(Boolean).join(", ") : "";
   }
   /* W ofercie bez podziału na sztuki: jedna linia z łączną liczbą i mocą "3/6kW" (podział tylko w raporcie i Excelu). */
   function agrKw(d) {
+    if (d.mocAgr) return d.mocAgr + "kW";
     var a3 = Number(d.agr3) || 0, a6 = Number(d.agr6) || 0;
     return a3 && a6 ? "3/6kW" : a3 ? "3kW" : a6 ? "6kW" : "";
   }
