@@ -164,7 +164,7 @@
       { id: "hydr", nazwa: "Hydraulika PXL (140 + 65 + 29 EUR/szt.)", cena: 234, waluta: "EUR", naCo: "szt", wsp: 0.2, osd: 0, opcja: false, tekst: "" }
     ];
     s.wariantB = { nazwa: "2500 kg", tryb: "szt", wartosc: 700, waluta: "USD" };   // 2500 kg: 3000 USD/szt. zamiast 2300
-    s.opcje.rozladunekNaTransport = true; s.opcje.konserwacjaNa = "szt"; s.opcje.agregaty = true; s.opcje.slupki = false;
+    s.opcje.rozladunekNaTransport = false; s.opcje.konserwacjaNa = "szt"; s.opcje.agregaty = true; s.opcje.slupki = false;   // rozładunek sprzętu jednorazowo jak w NK38
     s.wysokosci = { tryb: "przeswit2", k: 20, dol: 170 };
     s.opcje.mocAgregatu = "3";   // agregaty tylko 3 kW: bez podziału 3/6 kW
     s.domyslne = { zysk: 0.28, zysk2: 0.255, konserwA: 35, konserwB: 45, tir: 1, tir_cena: 3500, rozl_cena: 2800, eur: 4.33, usd: 3.86 };
