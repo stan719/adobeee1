@@ -453,7 +453,7 @@ html, body { overflow-x: clip; max-width: 100%; }
           <div class="row"><button class="btn small primary" type="button" id="bFolderPolacz" hidden>Połącz folder</button><button class="btn small" type="button" id="bFolder">Wybierz folder danych</button></div></div>
         <div><h4>Kopia zapasowa danych</h4><p>Jeden plik z szablonami urządzeń, tekstami oferty, numeracją ofert i zapisanymi wycenami. Wczytanie dodaje wyceny i zastępuje szablony o tym samym identyfikatorze.</p>
           <div class="row"><button class="btn small" type="button" id="bBackup">Pobierz kopię zapasową</button><label class="btn small" for="backupFile">Wczytaj kopię zapasową</label><input type="file" id="backupFile" accept="application/json,.json" hidden></div></div>
-        <div id="offlineBox"><h4>Wersja offline</h4><p>Jeden plik HTML z całą aplikacją. Otwierasz go w przeglądarce na dowolnym komputerze, bez claude.ai. Dane zapisuje w tej przeglądarce; przenieś je kopią zapasową. Eksporty potrzebują internetu do pobrania bibliotek.</p>
+        <div id="offlineBox"><h4>Wersja offline</h4><p>Jeden plik HTML z całą aplikacją. Otwierasz go w przeglądarce na dowolnym komputerze, bez claude.ai. Dane zapisuje w tej przeglądarce; przenieś je kopią zapasową. Logo, podpis i biblioteki eksportu (Excel, PDF, Word) są w pliku, więc działa bez internetu.</p>
           <div class="row"><button class="btn small" type="button" id="bOffline">Pobierz wersję offline</button></div></div>
       </div>
     </section>
@@ -621,7 +621,7 @@ html, body { overflow-x: clip; max-width: 100%; }
 (function () {
   "use strict";
   /* Wersja programu: podnoś przy każdym wydaniu (pokazywana na pulpicie, zapisywana w kopii zapasowej). */
-  var WERSJA = { nr: "1.65", data: "05.11.2026" };
+  var WERSJA = { nr: "1.66", data: "10.11.2026" };
   var E = window.NK38, X = window.NK38X;
   var LS = { robocze: "nk38.robocze.v1", drafty: "nk38.szkice.v1", draft: "nk38.szkic.v1", tab: "nk38.zakladka", sel: "nk38.wariant", logo: "nk38.logo.v1", podpis: "nk38.podpis.v1",
     szablony: "nk38.szablony.v1", wyceny: "nk38.wyceny.v1", tekstyOferty: "nk38.szablon.v1", numery: "nk38.numery.v1", cennikStary: "nk38.cennik.v1", usuniete: "nk38.usuniete.v1", migracja2: "nk38.migracja2", migracja3: "nk38.migracja3", migracja4: "nk38.migracja4", migracja5: "nk38.migracja5", migracja6: "nk38.migracja6", migracja7: "nk38.migracja7", historia: "nk38.historia.v1", uzytkownik: "nk38.uzytkownik.v1" };
@@ -735,7 +735,8 @@ html, body { overflow-x: clip; max-width: 100%; }
   };
 
   /* Podpis i logo oferty: w bazie kalkulatora (prywatna, dostępna na każdym komputerze po zalogowaniu), a bez bazy w tej przeglądarce */
-  function obraz(k) { return Store.get(k, null) || lsGet(LS[k], null); }
+  function obraz(k) { return Store.get(k, null) || lsGet(LS[k], null) || (k === "podpis" && window.NK38_PODPIS ? window.NK38_PODPIS : null); }
+  function obrazWlasny(k) { return Store.get(k, null) || lsGet(LS[k], null); }   // wgrany przez użytkownika (pierwszeństwo przed wbudowanym)
   var Store = {
     db: null, cache: {},
     init: async function () {
@@ -1705,11 +1706,11 @@ html, body { overflow-x: clip; max-width: 100%; }
     h += sekcja("4–6", "Zakres, warunki montażu, gwarancja", ofField("Gwarancja [mies.]", "gw", { ph: F.eff.gw, hint: "puste = " + F.eff.gw + " z szablonu" }) + '<div style="height:10px"></div>' +
       stale("zakres", "4. Zakres oferty") + stale("warunki", "5. Warunki montażu ({tir}, {kw}, {typ} wstawiane automatycznie)") + stale("gwarancja", "6. Gwarancja ({gw})") +
       '<p class="note">Te teksty są wspólne dla wszystkich ofert.</p>', false);
-    var lg = obraz("logo"), pd = obraz("podpis");
+    var lg = obraz("logo"), pd = obraz("podpis"), pdW = obrazWlasny("podpis"), wbud = !!window.NK38_PODPIS;
     h += sekcja("P", "Podpis, logo, nagłówek i stopka",
-      '<div class="ofgrid"><div><div class="ofsep">Podpis</div><div class="row">' + (pd ? '<img src="' + pd.dataUrl + '" alt="Podpis" class="thumb">' : '<span class="muted">Brak podpisu w ofercie.</span>') +
-      '</div><div class="row" style="margin-top:6px"><label class="btn small" for="podpisFile">' + (pd ? "Zmień" : "Wgraj") + ' podpis</label><input type="file" id="podpisFile" accept="image/png,image/jpeg" hidden>' +
-      (pd ? '<button type="button" class="btn small ghost danger" id="bPodpisDel">Usuń</button>' : "") + '</div><p class="note" style="margin-top:6px">' + (Store.db ? 'Podpis i logo są zapisane w prywatnej bazie kalkulatora (tylko Pana konto) i widoczne na każdym komputerze.' : 'Podpis i logo zostają w tej przeglądarce (bez bazy kalkulatora).') + '</p></div>' +
+      '<div class="ofgrid"><div><div class="ofsep">Podpis</div><div class="row">' + (pd ? '<img src="' + pd.dataUrl + '" alt="Podpis" class="thumb">' + (pdW ? "" : '<span class="muted">wbudowany (domyślny)</span>') : '<span class="muted">Brak podpisu w ofercie.</span>') +
+      '</div><div class="row" style="margin-top:6px"><label class="btn small" for="podpisFile">' + (pdW ? "Zmień" : "Wgraj własny") + ' podpis</label><input type="file" id="podpisFile" accept="image/png,image/jpeg" hidden>' +
+      (pdW ? '<button type="button" class="btn small ghost danger" id="bPodpisDel">' + (wbud ? "Usuń własny (wróć do wbudowanego)" : "Usuń") + '</button>' : "") + '</div><p class="note" style="margin-top:6px">' + (wbud ? 'Logo i podpis są wbudowane w ten plik, więc na innym komputerze niczego nie trzeba wgrywać. Wgrany własny podpis lub logo ma pierwszeństwo.' : Store.db ? 'Podpis i logo są zapisane w prywatnej bazie kalkulatora (tylko Pana konto) i widoczne na każdym komputerze.' : 'Podpis i logo zostają w tej przeglądarce (bez bazy kalkulatora).') + '</p></div>' +
       '<div><div class="ofsep">Logo</div><div class="row"><img src="' + (lg ? lg.dataUrl : LOGO_URL) + '" alt="Logo" class="thumb"></div><div class="row" style="margin-top:6px"><label class="btn small" for="logoFile">Wgraj inne logo</label><input type="file" id="logoFile" accept="image/png,image/jpeg" hidden>' +
       (lg ? '<button type="button" class="btn small ghost danger" id="bLogoDel">Wróć do logo firmowego</button>' : "") + "</div></div></div>" +
       '<div style="height:12px"></div>' + stale("naglowek", "Nagłówek (prawa strona)") + stale("stopka", "Stopka") + stale("zakonczenie", "Zakończenie") + stale("podpis", "Imię, nazwisko i stanowisko pod podpisem") +
@@ -1788,6 +1789,10 @@ html, body { overflow-x: clip; max-width: 100%; }
     autotable: "https://cdn.jsdelivr.net/npm/jspdf-autotable@3.8.2/dist/jspdf.plugin.autotable.min.js",
     docx: "https://cdn.jsdelivr.net/npm/docx@8.5.0/build/index.umd.js"
   }, window.NK38_LIBS || {});
+  /* wersja offline: biblioteki wbudowane w plik jako <script type="text/plain" data-lib="…"> (bez internetu) */
+  document.querySelectorAll("script[data-lib]").forEach(function (el) {
+    try { LIBS[el.dataset.lib] = URL.createObjectURL(new Blob([el.textContent], { type: "text/javascript" })); } catch (e) { /* zostaje adres z sieci */ }
+  });
   var loaded = {};
   function loadScript(key) {
     if (!loaded[key]) loaded[key] = new Promise(function (ok, fail) {
