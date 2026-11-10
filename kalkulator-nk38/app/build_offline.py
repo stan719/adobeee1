@@ -32,7 +32,7 @@ def biblioteki():
     out = ""
     for klucz, sciezka in BIBLIOTEKI:
         src = (APP / "node_modules" / sciezka).read_text(encoding="utf8")
-        src = src.replace("</script", "<\\/script").replace("//# sourceMappingURL=", "// sourceMappingURL=")
+        src = src.replace("</script", "<\\/script").replace("//# sourceMappingURL=", "// sourceMappingURL=").replace("\ufffd", "\\uFFFD")
         out += '<script type="text/plain" data-lib="%s">%s</script>\n' % (klucz, src)
     return out
 
