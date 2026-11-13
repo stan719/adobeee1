@@ -351,10 +351,10 @@
     var N = r.negocjacje, nazwyPoz = [d.typ].concat(DOD.map(function (x) { return x.szablon.nazwa; }));
     var powt = nazwyPoz.filter(function (x, i) { return nazwyPoz.indexOf(x) !== i; }).length > 0;
     var mpPoz = [m.MP].concat(DOD.map(function (x) { return x.mat.MP; }));
-    var kolPoz = N && N.pozycje ? nazwyPoz.map(function (x, i) { return "Cena za MP · " + (powt ? "poz. " + (i + 1) + " " : "") + x + " (" + mpPoz[i] + " MP)"; }) : [];
+    var kolPoz = N && N.pozycje ? nazwyPoz.map(function (x, i) { return "cena/MP " + x + (powt ? " (poz. " + (i + 1) + ")" : ""); }) : [];
     var neg = N && {
       N: N, kolPoz: kolPoz.length,
-      head: ["Zysk", "Cena netto", "Rabat od oferty", "Rabat %", "Zysk z narzutem", kolPoz.length ? "Cena za MP (średnio, " + RZ.MP + " MP)" : "Cena za MP"].concat(kolPoz),
+      head: ["Zysk", "Cena netto", "Rabat od oferty", "Rabat %", "Zysk z narzutem", kolPoz.length ? "cena/MP średnio" : "Cena za MP"].concat(kolPoz),
       rows: N.wiersze.map(function (x) {
         return { x: x, vals: [pct(x.zysk) + (x.oferta ? "  oferta" : x.porownanie ? "  do porównania" : x.prog ? "  próg" : ""), zl(x.cena), x.rabat ? "−" + zl(x.rabat) : "–",
           x.rabat ? "−" + n2(x.rabatPct * 100) + "%" : "–", zl(x.zyskN), zl(x.cenaMP)].concat(kolPoz.length ? x.pozycje.map(function (p) { return zl(p.cenaMP); }) : []) };

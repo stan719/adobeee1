@@ -643,7 +643,7 @@ html, body { overflow-x: clip; max-width: 100%; }
 (function () {
   "use strict";
   /* Wersja programu: podnoś przy każdym wydaniu (pokazywana na pulpicie, zapisywana w kopii zapasowej). */
-  var WERSJA = { nr: "1.78", data: "13.11.2026" };
+  var WERSJA = { nr: "1.79", data: "13.11.2026" };
   var E = window.NK38, X = window.NK38X;
   var LS = { robocze: "nk38.robocze.v1", drafty: "nk38.szkice.v1", draft: "nk38.szkic.v1", tab: "nk38.zakladka", sel: "nk38.wariant", logo: "nk38.logo.v1", podpis: "nk38.podpis.v1",
     szablony: "nk38.szablony.v1", wyceny: "nk38.wyceny.v1", tekstyOferty: "nk38.szablon.v1", numery: "nk38.numery.v1", cennikStary: "nk38.cennik.v1", usuniete: "nk38.usuniete.v1", migracja2: "nk38.migracja2", migracja3: "nk38.migracja3", migracja4: "nk38.migracja4", migracja5: "nk38.migracja5", migracja6: "nk38.migracja6", migracja7: "nk38.migracja7", migracja8: "nk38.migracja8", migracja9: "nk38.migracja9", migracja10: "nk38.migracja10", historia: "nk38.historia.v1", uzytkownik: "nk38.uzytkownik.v1" };
@@ -1499,8 +1499,8 @@ html, body { overflow-x: clip; max-width: 100%; }
       '<div class="pr"><span>Próg minimalny · zysk ' + pct(N.zMin) + "</span><b>" + zl(N.cenaMin) + "</b><small>maks. rabat −" + zl(N.cenaA - N.cenaMin) + " (−" + n2((N.cenaA - N.cenaMin) / N.cenaA * 100) + "%)</small></div></div>";
     h += '<div class="negbar" role="img" aria-label="Pole do negocjacji"><i class="w" style="width:' + pb.toFixed(1) + '%"></i><i class="g" style="width:' + (100 - pb).toFixed(1) + '%"></i></div>' +
       '<div class="negosi"><span>' + zl(lo) + "<br><small>zysk " + pct(N.zMin) + "</small></span><span style=\"left:" + pb.toFixed(1) + '%">' + zl(N.cenaB) + "<br><small>zysk " + pct(N.zB) + "</small></span><span>" + zl(hi) + "<br><small>oferta</small></span></div>";
-    h += '<div class="scroll" style="margin-top:14px"><table class="t"><thead><tr><th>Zysk</th><th>Cena netto</th><th>Rabat od oferty</th><th>Rabat %</th><th>Zysk z narzutem</th><th>Cena za MP' + (poz ? " (średnio, razem " + wynik.razem.MP + " MP)" : "") + "</th>" +
-      (poz ? nazwy.map(function (n, i) { return "<th>Cena za MP<br>poz. " + (i + 1) + " · " + esc(n) + " (" + poz[i].MP + " MP)</th>"; }).join("") : "") + "</tr></thead><tbody>" +
+    h += '<div class="scroll" style="margin-top:14px"><table class="t"><thead><tr><th>Zysk</th><th>Cena netto</th><th>Rabat od oferty</th><th>Rabat %</th><th>Zysk z narzutem</th><th>' + (poz ? "cena/MP średnio" : "Cena za MP") + "</th>" +
+      (poz ? nazwy.map(function (n, i) { return "<th>cena/MP " + esc(n) + "</th>"; }).join("") : "") + "</tr></thead><tbody>" +
       N.wiersze.map(function (x) {
         var kl = x.oferta ? "strong" : x.porownanie ? "negb" : x.prog ? "negp" : x.zysk < N.zB ? "negw" : "";
         return '<tr class="' + kl + '"><td>' + pct(x.zysk) + (x.oferta ? ' <span class="tag">oferta</span>' : x.porownanie ? ' <span class="tag">do porównania</span>' : x.prog ? ' <span class="tag">próg</span>' : "") +
