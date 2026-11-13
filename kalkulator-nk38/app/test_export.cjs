@@ -34,7 +34,7 @@ const PRZYKLADY = {
       dodatkowe: [{ szablon: "nk41", S: 12, agr3: 2, agr6: 1, przeswit: 280, dlMiejsca: 400, dopB: 1000 }] });
     const r = E.oblicz(d, sz, szt), pdf = Buffer.from(X.pdf(r, ctx));
     const pages = (pdf.toString("latin1").match(/\/Type\s*\/Page[^s]/g) || []).length;
-    if (pages > 3) throw new Error("przypadek skrajny: raport ma " + pages + " stron");
+    if (pages > 4) throw new Error("przypadek skrajny: raport ma " + pages + " stron");   // zysk 28%: pełna drabinka do 7% jest długa
     console.log("skrajny ok, raport PDF:", pages, "str.");
     fs.writeFileSync(path.join(out, "skrajny.pdf"), pdf);
   }

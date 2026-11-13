@@ -743,7 +743,7 @@
     var wynik;
     for (var kom = 0; kom <= 3; kom++) { wynik = pdfBuduj(r, ctx, kom); if (wynik.strona1Ok) break; }
     /* wycena łączona, która i tak nie mieści się na 1. stronie: pełna drabinka i bloki urządzeń, dane przechodzą na stronę 2 */
-    if (!wynik.strona1Ok && (r.dodatkowe || []).length) wynik = pdfBuduj(r, ctx, 0);
+    if (!wynik.strona1Ok) wynik = pdfBuduj(r, ctx, (r.dodatkowe || []).length ? 0 : 1);   // nie mieści się mimo zagęszczenia: dalsza część przechodzi na stronę 2
     return wynik.buf;
   }
   function pdfBuduj(r, ctx, kom) {
@@ -802,13 +802,9 @@
     /* bez osobnej tabelki cen: cena ofertowa, zejście i próg są w polu do negocjacji (wiersze oznaczone) */
     var yPas = 36, y = h2("Pole do negocjacji (" + w0.nazwa + ")", 40) + 1;
     /* długa drabinka: przy zagęszczaniu strony 1 zostają pełne punkty procentowe, potem co 2 pkt, w końcu tylko trzy kluczowe poziomy */
-    var negRows = R.neg.rows.filter(function (q) {
-      var x = q.x, bpz = Math.round(x.zysk * 10000), krok = Math.round(N.krok * 10000);
-      if (x.oferta || x.porownanie || x.prog) return true;
-      if (kom >= 3) return false;
-      if (kom === 0 && R.neg.rows.length <= 16) return true;
-      var co = kom <= 1 ? Math.max(krok, 100) : Math.max(krok, 200);
-      return bpz % co === 0;
+    /* drabinka zawsze pełna (co 0,5 pkt do progu 7%, NKPXLH co 2 pkt do 12%); zagęszcza się pismo, a nie liczba wierszy */
+    var negRows = R.neg.rows.length <= 30 ? R.neg.rows : R.neg.rows.filter(function (q) {   // bardzo wysoki zysk ofertowy: nad zyskiem do porównania co 1 pkt, niżej pełny krok
+      var x = q.x; return x.oferta || x.porownanie || x.prog || x.zysk <= N.zB + 1e-9 || Math.round(x.zysk * 10000) % 100 === 0;
     });
     var wielePoz = R.neg.kolPoz > 0;
     L.autoTable(doc, Object.assign({}, base, {
@@ -889,6 +885,7 @@
       if (K.dlMiejsca) wierszP.push(["Długość miejsca postojowego", K.dlMiejsca]);
       /* układ agregatów (opis z kalkulacji, np. 2A3+3A4) i obok narzuty KOB / GDW w jednym wierszu, w okienku Zakres po lewej */
       wierszL.push(K.agrOpis ? ["Układ agregatów", K.agrOpis, 0, ["KOB / GDW", K.kobGdw]] : ["KOB / GDW", K.kobGdw]);
+      if (y0 + 10 + Math.max(wierszL.length, wierszP.length) * (wiersz1 ? 4.9 : 9) > 270) { doc.addPage(); head("Dane wejściowe · cd.", stopka); y0 = 38; }   // karta nie dzieli się między strony
       y = okienka(wierszL, wierszP, y0, "ZAKRES", "WYMIARY");
       znak("karta", "Dane wejściowe: Zakres i Wymiary", y0 - 7, y);
       y += 3.5; yOp = y;
