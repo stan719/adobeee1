@@ -418,7 +418,11 @@
       opis = (DN ? DN + " D/N.P. ÷ " + fmtL(c.dzwig_D) : "") + (num(d.S) ? (DN ? " + " : "") + num(d.S) + " S × " + fmtL(c.dzwig_wspS) + " ÷ " + fmtL(c.dzwig_D) : "") + (sur ? " (1 dzień na " + fmtL(c.dzwig_D) + " systemów D)" : "");
     }
     var dni = ceil(sur), auto = num(c.dzwig) * dni, r = opt(d.dzwig_urz);
-    return { dni: dni, surowe: sur, stawka: num(c.dzwig), auto: auto, koszt: r !== null ? r : auto, recznie: r !== null,
+    /* krótko, do podpowiedzi pod polem: np. "5D/1 dzień, S = 0,6D, 2400 zł/dzień → 3 dni" */
+    var wsp = lista ? ["S", "D", "NP"].map(function (k) { return num(sz.typy[k].dzwig); }).filter(Boolean)[0] : 0;
+    var krotko = lista && !(wsp && num(c.dzwig)) ? "bez dźwigu" : (lista ? fmtL(1 / wsp, 1) + " szt./1 dzień" : fmtL(c.dzwig_D) + "D/1 dzień, S = " + fmtL(c.dzwig_wspS) + "D") +
+      ", " + fmtL(num(c.dzwig), 0) + " zł/dzień" + (sur ? " → " + dni + " " + (dni === 1 ? "dzień" : "dni") : "");
+    return { dni: dni, surowe: sur, stawka: num(c.dzwig), auto: auto, koszt: r !== null ? r : auto, recznie: r !== null, krotko: krotko,
       opis: sur ? opis + " = " + fmtL(sur) + " → " + dni + " " + (dni === 1 ? "dzień" : "dni") + " × " + fmtL(num(c.dzwig), 0) + " zł/dzień" : "brak urządzeń wymagających dźwigu" };
   }
 

@@ -521,7 +521,7 @@ html, body { overflow-x: clip; max-width: 100%; }
           <label class="f pNK">Barierki<input id="barierki" type="number" min="0" step="1"><span class="hint">szt. na stronę</span></label>
           <label class="f pNK">Maskownice<input id="maskownice" type="number" min="0" step="1"></label>
           <label class="f"><span id="lblUtr">Utrudnienia ręcznie</span><input id="utr_dod" type="number" min="0" step="0.5"><span class="hint">dodatkowe osobodni</span></label>
-          <label class="f pDzwU">Spider Crane tego urządzenia [zł]<input id="dzwig_urz" type="number" min="0" step="100" class="auto"><span class="hint" id="dzwUrzHint"></span></label>
+          <label class="f pDzwU">Spider Crane [zł]<input id="dzwig_urz" type="number" min="0" step="100" class="auto"><span class="hint" id="dzwUrzHint"></span></label>
         </div>
         <div class="g2" id="pozBox" style="margin-top:12px"></div>
         <div class="calcline pNK" id="utrLine"></div>
@@ -21665,7 +21665,11 @@ var __async = (__this, __arguments, generator) => {
       opis = (DN ? DN + " D/N.P. ÷ " + fmtL(c.dzwig_D) : "") + (num(d.S) ? (DN ? " + " : "") + num(d.S) + " S × " + fmtL(c.dzwig_wspS) + " ÷ " + fmtL(c.dzwig_D) : "") + (sur ? " (1 dzień na " + fmtL(c.dzwig_D) + " systemów D)" : "");
     }
     var dni = ceil(sur), auto = num(c.dzwig) * dni, r = opt(d.dzwig_urz);
-    return { dni: dni, surowe: sur, stawka: num(c.dzwig), auto: auto, koszt: r !== null ? r : auto, recznie: r !== null,
+    /* krótko, do podpowiedzi pod polem: np. "5D/1 dzień, S = 0,6D, 2400 zł/dzień → 3 dni" */
+    var wsp = lista ? ["S", "D", "NP"].map(function (k) { return num(sz.typy[k].dzwig); }).filter(Boolean)[0] : 0;
+    var krotko = lista && !(wsp && num(c.dzwig)) ? "bez dźwigu" : (lista ? fmtL(1 / wsp, 1) + " szt./1 dzień" : fmtL(c.dzwig_D) + "D/1 dzień, S = " + fmtL(c.dzwig_wspS) + "D") +
+      ", " + fmtL(num(c.dzwig), 0) + " zł/dzień" + (sur ? " → " + dni + " " + (dni === 1 ? "dzień" : "dni") : "");
+    return { dni: dni, surowe: sur, stawka: num(c.dzwig), auto: auto, koszt: r !== null ? r : auto, recznie: r !== null, krotko: krotko,
       opis: sur ? opis + " = " + fmtL(sur) + " → " + dni + " " + (dni === 1 ? "dzień" : "dni") + " × " + fmtL(num(c.dzwig), 0) + " zł/dzień" : "brak urządzeń wymagających dźwigu" };
   }
 
@@ -23241,7 +23245,7 @@ var __async = (__this, __arguments, generator) => {
 (function () {
   "use strict";
   /* Wersja programu: podnoś przy każdym wydaniu (pokazywana na pulpicie, zapisywana w kopii zapasowej). */
-  var WERSJA = { nr: "1.69", data: "13.11.2026" };
+  var WERSJA = { nr: "1.70", data: "13.11.2026" };
   var E = window.NK38, X = window.NK38X;
   var LS = { robocze: "nk38.robocze.v1", drafty: "nk38.szkice.v1", draft: "nk38.szkic.v1", tab: "nk38.zakladka", sel: "nk38.wariant", logo: "nk38.logo.v1", podpis: "nk38.podpis.v1",
     szablony: "nk38.szablony.v1", wyceny: "nk38.wyceny.v1", tekstyOferty: "nk38.szablon.v1", numery: "nk38.numery.v1", cennikStary: "nk38.cennik.v1", usuniete: "nk38.usuniete.v1", migracja2: "nk38.migracja2", migracja3: "nk38.migracja3", migracja4: "nk38.migracja4", migracja5: "nk38.migracja5", migracja6: "nk38.migracja6", migracja7: "nk38.migracja7", migracja8: "nk38.migracja8", migracja9: "nk38.migracja9", historia: "nk38.historia.v1", uzytkownik: "nk38.uzytkownik.v1" };
@@ -23650,7 +23654,7 @@ var __async = (__this, __arguments, generator) => {
       }
       if (sz.wariantB.nazwa && sz.wariantB.tryb === "szt") g += pole("dopB", "Dopłata " + sz.wariantB.nazwa + " [" + (sz.wariantB.waluta === "PLN" || !sz.wariantB.waluta ? "zł" : sz.wariantB.waluta) + "/szt.]", Number(sz.wariantB.wartosc) ? "puste = " + sz.wariantB.wartosc + " " + sz.wariantB.waluta + "/szt." : "puste: wariant niedostępny", Number(sz.wariantB.wartosc) ? String(sz.wariantB.wartosc) : "brak");
       g += pole("utr_dod", lista ? "Tonaż [osd]" : "Utrudnienia ręcznie", "dodatkowe osobodni");
-      g += pole("dzwig_urz", "Spider Crane tego urządzenia [zł]", "", "", "dodDzwHint" + i);
+      g += pole("dzwig_urz", "Spider Crane [zł]", "", "", "dodDzwHint" + i);
       g += "</div><div class=\"g3\" style=\"margin-top:10px\">";
       if (sz.wysokosci.tryb === "zaglebienie") g += pole("h1", "Zagłębienie H1 [cm]") + pole("h2", "Zagłębienie H2 [cm]") + pole("dl", "Długość zagłębienia [cm]", "puste = 530 cm", "530");
       g += pole("przeswit", "Prześwit [cm]");
@@ -23843,11 +23847,11 @@ var __async = (__this, __arguments, generator) => {
         (pz ? " · cena pozycji " + (j + 2) + ": " + zl(pz[j + 1].cena) + " (" + zl(pz[j + 1].cenaMP) + " / MP), przy " + pct(d.zysk2) + ": " + zl(pz[j + 1].cena2) + " (" + zl(pz[j + 1].cenaMP2) + " / MP)" : "") : "wpisz liczbę urządzeń";
       var inp = document.querySelector('[data-dodi="' + i + '"][data-dod="dzwig_urz"]'), hz = $("dodDzwHint" + i);
       if (inp) inp.placeholder = x2 ? String(Math.round(x2.dzwig.auto)) : "";
-      if (hz) hz.textContent = x2 ? (x2.dzwig.auto || x2.dzwig.dni ? "puste = " + zl(x2.dzwig.auto) + ": " + x2.dzwig.opis : "bez Spider Crane: " + x2.dzwig.opis) : "";
+      if (hz) hz.textContent = x2 ? (x2.dzwig.auto ? "puste = " + zl(x2.dzwig.auto) + ": " : "") + x2.dzwig.krotko : "";
     });
     var dz0 = r.wspolne.dzwigi[0];
     $("dzwig_urz").placeholder = String(Math.round(dz0.auto));
-    $("dzwUrzHint").textContent = (dz0.auto ? "puste = " + zl(dz0.auto) + ": " : "") + dz0.opis + (dz0.recznie ? "; wpisano ręcznie " + zl(dz0.koszt) : "");
+    $("dzwUrzHint").textContent = (dz0.auto ? "puste = " + zl(dz0.auto) + ": " : "") + dz0.krotko;
     ["S", "D", "NP"].forEach(function (k) {
       var t = T[k], wb = r.szablon.wariantB, txt = t.mp + " MP";
       if (r.szablon.model === "lista" && t.cena) txt += " · " + fmtPLN.format(t.cena) + " " + t.waluta + "/szt." +
