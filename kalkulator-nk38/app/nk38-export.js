@@ -746,7 +746,9 @@
   /* kom: poziom zagęszczenia 1. strony (0 = standardowo); pdf() zwiększa go, aż strona 1 mieści się na jednej kartce */
   function pdf(r, ctx) {
     var wynik;
-    for (var kom = 0; kom <= 3; kom++) { wynik = pdfBuduj(r, ctx, kom); if (wynik.strona1Ok) break; }
+    /* wycena łączona: najwyżej lekkie zagęszczenie (bez etykiet w jednej linii z wartością, które rozjeżdżają bloki urządzeń) */
+    var maxKom = (r.dodatkowe || []).length ? 1 : 3;
+    for (var kom = 0; kom <= maxKom; kom++) { wynik = pdfBuduj(r, ctx, kom); if (wynik.strona1Ok) break; }
     /* wycena łączona, która i tak nie mieści się na 1. stronie: pełna drabinka i bloki urządzeń, dane przechodzą na stronę 2 */
     if (!wynik.strona1Ok) wynik = pdfBuduj(r, ctx, (r.dodatkowe || []).length ? 0 : 1);   // nie mieści się mimo zagęszczenia: dalsza część przechodzi na stronę 2
     return wynik.buf;
@@ -815,7 +817,13 @@
     L.autoTable(doc, Object.assign({}, base, {
       startY: y, head: [R.neg.head], body: negRows.map(function (x) { return x.vals; }),
       styles: Object.assign({}, base.styles, { fontSize: (wielePoz ? 7.6 : 8.2) - fz, cellPadding: 0.75 - pad }),
-      columnStyles: wielePoz ? { 0: { halign: "left", cellWidth: 26 }, 1: { cellWidth: 19 }, 2: { cellWidth: 16 }, 3: { cellWidth: 13 }, 4: { cellWidth: 17 }, 5: { cellWidth: 19 } } : { 0: { halign: "left", cellWidth: 40 } }, bodyStyles: { halign: "right" },
+      columnStyles: wielePoz ? (function () {   // kolumny liczbowe równej szerokości (2–4 urządzenia)
+        var n = R.neg.head.length - 1, w = (182 - 26) / n, cs = { 0: { halign: "left", cellWidth: 26 } };
+        for (var ci = 1; ci <= n; ci++) cs[ci] = { cellWidth: ci === 3 ? Math.min(w, 14) : w + (w > 14 ? 0 : 0) };
+        var reszta = 182 - 26 - Object.keys(cs).filter(function (k) { return k > 0; }).reduce(function (a, k) { return a + cs[k].cellWidth; }, 0);
+        cs[1].cellWidth += reszta;
+        return cs;
+      })() : { 0: { halign: "left", cellWidth: 40 } }, bodyStyles: { halign: "right" },
       didParseCell: function (hh) {
         if (hh.section === "head") { if (hh.column.index === 0) hh.cell.styles.halign = "left"; if (hh.column.index >= 6) hh.cell.styles.textColor = INK; return; }
         var x = negRows[hh.row.index].x;
@@ -831,7 +839,7 @@
     doc.text(legL, 14, doc.lastAutoTable.finalY + 3.6);
     var yLeg = doc.lastAutoTable.finalY + 3.6 + (legL.length - 1) * 3;
     znak("drabinka", "Pole do negocjacji: drabinka cenowa i legenda", yPas, yLeg + 1.5);
-    y = h2("Dane wejściowe", yLeg + 6.4 - odstep) + 2.5;
+    y = h2("Dane wejściowe", yLeg + 8 - odstep) + 2.5;
 
     var cw = 89, xL = 14, xP = 14 + cw + 4, wiersz1 = kom >= 2;   // zagęszczenie: etykieta i wartość w jednej linii (połowa wysokości)
     var fWart = 10.5;   // pismo wartości (bloki urządzeń wyceny łączonej: mniejsze)
@@ -897,7 +905,9 @@
       /* układ agregatów (opis z kalkulacji, np. 2A3+3A4) i obok narzuty KOB / GDW w jednym wierszu, w okienku Zakres po lewej */
       wierszL.push(K.agrOpis ? ["Układ agregatów", K.agrOpis, 0, ["KOB / GDW", K.kobGdw]] : ["KOB / GDW", K.kobGdw]);
       if (y0 + 10 + Math.max(wierszL.length, wierszP.length) * (wiersz1 ? 4.9 : 9) > 270) { doc.addPage(); head("Dane wejściowe · cd.", stopka); y0 = 38; }   // karta nie dzieli się między strony
-      y = okienka(wierszL, wierszP, y0, "ZAKRES", "WYMIARY");
+      /* oba okienka podobnej wysokości: gdy Zakres jest dużo dłuższy, ostatnie pozycje (KOB / GDW, układ agregatów) przechodzą do Wymiarów */
+      while (wierszL.length - wierszP.length > 1 && wierszL.length > 2) wierszP.push(wierszL.pop());
+      y = okienka(wierszL, wierszP, y0, wierszP.length ? "ZAKRES" : "ZAKRES", "WYMIARY", true);
       znak("karta", "Dane wejściowe: Zakres i Wymiary", y0 - 7, y);
       y += 3.5; yOp = y;
       y = opisWar("Opis wariantu", K.opis, y);
@@ -983,6 +993,24 @@
       } }));
     znak("konserwacja", "Konserwacja: stawki 35–60 zł", yKon, doc.lastAutoTable.finalY);
 
+    /* pozostałe dane wejściowe: tabelka w dwóch kolumnach (para etykieta + wartość obok pary);
+       na stronie 1, gdy jest tam miejsce, inaczej pod kosztami (nie sama na prawie pustej stronie) */
+    var parySz = [];
+    for (var pi = 0; pi < R.szczegoly.length; pi += 2) parySz.push(R.szczegoly[pi].concat(R.szczegoly[pi + 1] || ["", ""]));
+    var wysSzcz = parySz.length * 4.3 + 2;
+    function rysujSzczegoly(yy) {
+      L.autoTable(doc, Object.assign({}, base, { startY: yy, body: parySz, theme: "plain",
+        styles: Object.assign({}, base.styles, { fontSize: 7.6, cellPadding: { top: 0.6, bottom: 0.6, left: 2, right: 2 } }),
+        columnStyles: { 0: { textColor: MUT, cellWidth: 34 }, 1: { cellWidth: 57 }, 2: { textColor: MUT, cellWidth: 34 }, 3: { cellWidth: 57 } },
+        didParseCell: function (h) { if (h.row.index % 2 === 1) h.cell.styles.fillColor = [247, 248, 249]; } }));
+    }
+    var szczegolyNaStr1 = false;
+    if (R.szczegoly.length && doc.lastAutoTable.finalY + 10 + wysSzcz < 285) {   // zaraz pod danymi wejściowymi (strona 1 albo jej ciąg na stronie 2)
+      var ySz1 = doc.lastAutoTable.finalY + 4;
+      rysujSzczegoly(h2("Pozostałe dane wejściowe", ySz1 + 5));
+      znak("szczegoly", "Pozostałe dane wejściowe", ySz1, doc.lastAutoTable.finalY);
+      szczegolyNaStr1 = true;
+    }
     var strona1Ok = doc.getNumberOfPages() === 1;
     /* koszty: od nowej strony; gdy dane wejściowe przeszły już na stronę 2 i zostało na niej dość miejsca, ciągiem pod nimi (bez pustej połowy strony) */
     var yKon2 = doc.lastAutoTable.finalY;
@@ -994,30 +1022,35 @@
       znak("naglowek2", "Strona 2: nagłówek", 12, 30);
       y = h2("Materiały i urządzenia", 36);
     }
-    L.autoTable(doc, Object.assign({}, base, { startY: y, body: R.mat, theme: "striped",
-      styles: Object.assign({}, base.styles, { fontSize: 8, cellPadding: 0.9 }),
+    /* tabela kosztów przechodząca na nową stronę: u góry tytuł „Koszty · cd.” i odstęp jak na innych stronach */
+    var tytulCd = {}, cdKoszty = function () {
+      var nr = doc.getNumberOfPages();
+      if (nr > 1 && !tytulCd[nr] && doc.internal.getCurrentPageInfo().pageNumber === nr && naNowej) { tytulCd[nr] = 1; head("Koszty · " + w0.nazwa + " · " + pct(d.zysk) + " · cd.", stopka); }
+    }, naNowej = false, strStart;
+    var kontynuacja = { margin: { left: 14, right: 14, top: 34 }, willDrawPage: function () { naNowej = doc.getNumberOfPages() > strStart; cdKoszty(); } };
+    strStart = doc.getNumberOfPages();
+    L.autoTable(doc, Object.assign({}, base, kontynuacja, { startY: y, body: R.mat, theme: "striped",
+      styles: Object.assign({}, base.styles, { fontSize: 7.7, cellPadding: 0.65 }),
       columnStyles: { 0: { cellWidth: 90 }, 1: { halign: "right" } },
       didParseCell: function (h) { if (h.section === "body" && R.mat[h.row.index][1] === "") { h.cell.styles.fontStyle = "bold"; h.cell.styles.textColor = ACC; } } }));
     znak("materialy", "Materiały i urządzenia", 31, doc.lastAutoTable.finalY);
     var yMon = doc.lastAutoTable.finalY + 2;
     y = h2("Montaż, narzuty i cena", doc.lastAutoTable.finalY + 6);
-    L.autoTable(doc, Object.assign({}, base, { startY: y, head: [["Pozycja", "Skąd ta kwota", "Kwota"]],
+    strStart = doc.getNumberOfPages();
+    L.autoTable(doc, Object.assign({}, base, kontynuacja, { startY: y, head: [["Pozycja", "Skąd ta kwota", "Kwota"]],
       body: R.mon1.map(function (x) { return [x.label, x.info, fmtVal(x.val, x.fmt)]; }),
-      styles: Object.assign({}, base.styles, { fontSize: 7.9, cellPadding: 0.8 }),
+      styles: Object.assign({}, base.styles, { fontSize: 7.7, cellPadding: 0.6 }),
       columnStyles: { 0: { halign: "left", cellWidth: 58 }, 1: { halign: "left", textColor: MUT }, 2: { halign: "right", cellWidth: 30 } },
       didParseCell: function (h) {
         if (h.section === "head" && h.column.index < 2) h.cell.styles.halign = "left";
         if (h.section === "body" && R.mon1[h.row.index].bold) { h.cell.styles.fontStyle = "bold"; h.cell.styles.fillColor = SOFT; }
       } }));
     znak("montaz", "Montaż, narzuty i cena (skąd kwoty)", yMon, doc.lastAutoTable.finalY);
-    if (R.szczegoly.length) {
+    if (R.szczegoly.length && !szczegolyNaStr1) {
       var ySz = doc.lastAutoTable.finalY + 2, yH = doc.lastAutoTable.finalY + 6;
-      if (yH > 297 - 40) { doc.addPage(); head("Koszty · " + w0.nazwa + " · " + pct(d.zysk) + " · cd.", stopka); ySz = 31; yH = 36; }   // nagłówek nie zostaje sam na dole strony
+      if (yH + wysSzcz + 6 > 287) { doc.addPage(); head("Koszty · " + w0.nazwa + " · " + pct(d.zysk) + " · cd.", stopka); ySz = 31; yH = 36; }   // nagłówek nie zostaje sam na dole strony
       y = h2("Pozostałe dane wejściowe", yH);
-      L.autoTable(doc, Object.assign({}, base, { startY: y, body: R.szczegoly, theme: "plain",
-        styles: Object.assign({}, base.styles, { fontSize: 7.6, cellPadding: { top: 0.6, bottom: 0.6, left: 2, right: 2 } }),
-        columnStyles: { 0: { textColor: MUT, cellWidth: 58 }, 1: { cellWidth: 124 } },
-        didParseCell: function (h) { if (h.row.index % 2 === 1) h.cell.styles.fillColor = [247, 248, 249]; } }));
+      rysujSzczegoly(y);
       znak("szczegoly", "Pozostałe dane wejściowe", ySz, doc.lastAutoTable.finalY);
     }
 
