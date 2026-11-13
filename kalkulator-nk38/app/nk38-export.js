@@ -1201,8 +1201,22 @@
       };
     });
     if (DOD.length) { typ = [d.typ].concat(DOD.map(function (x) { return x.dane.typ; })).join(" i "); vars.typ = typ; }
+    /* wycena łączona: wstęp wymienia każde urządzenie z jego rodzajem (zależne / niezależne) i liczbą miejsc */
+    var odmW = function (n, a, b, c) { var r10 = n % 10, r100 = n % 100; return n === 1 ? a : r10 >= 2 && r10 <= 4 && (r100 < 12 || r100 > 14) ? b : c; };
+    var fraza = function (zs, dd, mm) {
+      var n = mm.platformy, mp = mm.MP, poj = mp + " " + odmW(mp, "pojazdu", "pojazdów", "pojazdów"), id = zs.id, t = zs.nazwa;
+      if (id === "nk41") return n + " " + odmW(n, "platformy", "platform", "platform") + " " + t + " do zależnego parkowania " + poj + " w pochyleniu";
+      if (id === "nkpxlh") return n + " " + odmW(n, "urządzenia", "urządzeń", "urządzeń") + " " + t + " do zależnego parkowania " + poj;
+      if (id === "nk6501") return n + " " + odmW(n, "palety poprzecznie przesuwnej", "palet poprzecznie przesuwnych", "palet poprzecznie przesuwnych") + " " + t + " do niezależnego parkowania " + poj;
+      if (zs.model !== "lista") return n + " " + odmW(n, "platformy", "platform", "platform") + " " + t + " do niezależnego parkowania " + poj;
+      return n + " " + odmW(n, "urządzenia", "urządzeń", "urządzeń") + " " + t + " (" + mp + " " + odmW(mp, "miejsce postojowe", "miejsca postojowe", "miejsc postojowych") + ")";
+    };
+    var wstepLaczony = DOD.length ? "w związku z " + (o.powod === "rabat" ? "Państwa prośbą o rabat przedstawiamy naszą zrabatowaną ofertę" : "otrzymanym zapytaniem przedstawiamy naszą ofertę") +
+      " na dostawę i montaż urządzeń parkingowych na inwestycję zlokalizowaną " + garazTxt + ": " +
+      [{ szablon: r.szablon, dane: d, mat: m }].concat(DOD).map(function (x) { return fraza(x.szablon, x.dane, x.mat); }).reduce(function (a, f, i, arr) { return a + (i ? (i === arr.length - 1 ? " oraz " : ", ") : "") + f; }, "") +
+      " – łącznie " + RZ.MP + " " + odmW(RZ.MP, "miejsce postojowe", "miejsca postojowe", "miejsc postojowych") + "." : null;
     var auto = {
-      wstep: TT.wstep ? sub(TT.wstep, { n: RZ.platformy, mp: RZ.MP, typ: typ, garaz: garazTxt, oferte: o.powod === "rabat" ? "naszą zrabatowaną ofertę" : "naszą ofertę" }) : "w związku z " + (o.powod === "rabat" ? "Państwa prośbą o rabat przedstawiamy naszą zrabatowaną ofertę" : "otrzymanym zapytaniem przedstawiamy naszą ofertę") +
+      wstep: wstepLaczony ? wstepLaczony : TT.wstep ? sub(TT.wstep, { n: RZ.platformy, mp: RZ.MP, typ: typ, garaz: garazTxt, oferte: o.powod === "rabat" ? "naszą zrabatowaną ofertę" : "naszą ofertę" }) : "w związku z " + (o.powod === "rabat" ? "Państwa prośbą o rabat przedstawiamy naszą zrabatowaną ofertę" : "otrzymanym zapytaniem przedstawiamy naszą ofertę") +
         " na dostawę i montaż " + RZ.platformy + " platform służących do niezależnego parkowania " + RZ.MP + " pojazdów w garażu " +
         (o.garaz || ("inwestycji " + lokalizacjaOdmieniona(d.nazwa))) + ".",
       tech: tech,
