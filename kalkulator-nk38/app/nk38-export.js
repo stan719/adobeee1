@@ -1191,13 +1191,22 @@
           "cm;\nWysokość parkowanych pojazdów*: ▲-" + v(w.gor) + "cm, ▼-" + v(w.dol) + "cm;";
       }).join("\nlub\n");
       var kw2 = agrKw(d2) || T2.kw || "6kW", agr2 = T2.agregat || "Agregat hydrauliczny 400V, 50Hz, 6kW";
-      return {
-        label: "Pozycja " + (i + 2) + ":", typ: d2.typ, pozycja: sub(x.szablon.opisOferty || "Urządzenia {typ}", { typ: d2.typ }),
-        tech: tech2.split("\n"), uwagaTech: (T2.uwagaTech || sz.uwaga_tech).split("\n"),
-        wyposazenie: [T2.obciazenie, T2.zabezpieczenie, d2.barierki && x.szablon.model !== "lista" ? T2.barierki : ""].filter(Boolean),
+      /* specyfikacja kolejnej pozycji do edycji w ofercie: klucze p2_tech, p2_wyposazenie, p2_lista, p2_poLiscie (puste = automatycznie) */
+      var kl = "p" + (i + 2) + "_", tx = function (k, autoT) { var v = o.tekst && o.tekst[kl + k]; return v != null ? v : autoT; };
+      var autoP = {
+        tech: tech2, uwagaTech: T2.uwagaTech || sz.uwaga_tech,
+        wyposazenie: [T2.obciazenie, T2.zabezpieczenie, d2.barierki && x.szablon.model !== "lista" ? T2.barierki : ""].filter(Boolean).join("\n"),
         lista: ["S", "D", "NP"].map(function (k) { return d2[k] ? sub(x.szablon.typy[k].oferta, { n: d2[k], typ: d2.typ }) : ""; })
-          .concat([d2.agregaty && x.szablon.opcje.agregaty ? agregatyOferta(d2, agr2) : ""]).filter(Boolean),
-        poLiscie: (T2.poLiscie ? sub(T2.poLiscie, { tir: o.tir || 20, kw: kw2, gw: eff.gw, typ: d2.typ, P: v(w2.p), G: v(w2.gor), D: v(w2.dol) }) : "").split("\n").filter(Boolean)
+          .concat([d2.agregaty && x.szablon.opcje.agregaty ? agregatyOferta(d2, agr2) : ""]).filter(Boolean).join("\n"),
+        poLiscie: T2.poLiscie ? sub(T2.poLiscie, { tir: o.tir || 20, kw: kw2, gw: eff.gw, typ: d2.typ, P: v(w2.p), G: v(w2.gor), D: v(w2.dol) }) : ""
+      };
+      return {
+        klucz: kl, auto: autoP,
+        label: "Pozycja " + (i + 2) + ":", typ: d2.typ, pozycja: sub(x.szablon.opisOferty || "Urządzenia {typ}", { typ: d2.typ }),
+        tech: tx("tech", autoP.tech).split("\n"), uwagaTech: tx("uwagaTech", autoP.uwagaTech).split("\n").filter(Boolean),
+        wyposazenie: tx("wyposazenie", autoP.wyposazenie).split("\n").filter(Boolean),
+        lista: tx("lista", autoP.lista).split("\n").filter(Boolean),
+        poLiscie: tx("poLiscie", autoP.poLiscie).split("\n").filter(Boolean)
       };
     });
     if (DOD.length) { typ = [d.typ].concat(DOD.map(function (x) { return x.dane.typ; })).join(" i "); vars.typ = typ; }
@@ -1227,6 +1236,7 @@
       dostawa: "Pierwsza dostawa nastąpi nie wcześniej niż po ok. " + eff.dostawa + " tygodniach od zawarcia umowy, w zależności od aktualnie realizowanych zleceń.",
       montaz: "Przewidywany czas montażu " + (t[0] === t[1] ? "ok. " + t[0] : t[0] + "-" + t[1]) + " tygodni od dnia dostawy, w zależności od warunków panujących na budowie."
     };
+    dalsze.forEach(function (x) { Object.keys(x.auto).forEach(function (k) { auto[x.klucz + k] = x.auto[k]; }); });
     function txt(k) { return o.tekst[k] != null ? o.tekst[k] : auto[k]; }
     var opcjeDef = [
       maB && tekstB ? ["q2500", tekstB.replace(/\.?\s*$/, "") + dotyczyB + ".", c(ws[1]) - c(ws[0])] : null,
