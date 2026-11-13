@@ -158,7 +158,7 @@ console.log("szablony: OK");
   assert.strictEqual(R4.neg.head.length, 6 + 4, "pole do negocjacji: kolumna ceny za MP dla każdego z 4 urządzeń");
   assert.strictEqual(R4.karta.urzadzenia.length, 4, "dane wejściowe: blok każdego urządzenia");
   const F41 = X2.oferta(E.oblicz(Object.assign(E.domyslneDane(), szablon("nk41").domyslne, { szablon: "nk41", S: 4, przeswit: 280 }), szablon("nk41")), X2.domyslnaOferta(), X2.SZABLON);
-  assert(!/[▲▼]/.test(F41.tech.join(" ")) && /w zależności od dostępnej długości miejsca/.test(F41.tech.join(" ")), "NK41: w ofercie bez wymiarów pojazdów: " + F41.tech.join(" | "));
+  assert(!/[▲▼]/.test(F41.tech.join(" ")) && /pojazdów\*;/.test(F41.tech.join(" ")) && /^\*w zależności od dostępnej długości miejsca postojowego i prześwitu;$/.test(F41.uwagaTech.join(" ")), "NK41: w ofercie bez wymiarów pojazdów: " + F41.tech.concat(F41.uwagaTech).join(" | "));
   const Rp = X2.raport(rp, [], X2.domyslnaOferta());
   assert(Rp.mat.some((x) => /THC Gdańsk/.test(x[0])) && Rp.mat.some((x) => /Ubezpieczenie/.test(x[0])), "NKPXLH: pełna kalkulacja frachtu w raporcie");
   console.log("  ok 4 urządzenia, Spider Crane per urządzenie, drabinki, NK41 bez wymiarów, fracht NKPXLH");

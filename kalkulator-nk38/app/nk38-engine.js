@@ -194,7 +194,9 @@
     });
     return s;
   }
-  var TECH_NK41 = "Zagłębienie: brak;\nWysokość prześwitu: {P}cm;\nWysokość i długość parkowanych pojazdów*: w zależności od dostępnej długości miejsca postojowego i prześwitu;";
+  var TECH_NK41 = "Zagłębienie: brak;\nWysokość prześwitu: {P}cm;\nWysokość i długość parkowanych pojazdów*;";
+  var TECH_NK41_V1 = "Zagłębienie: brak;\nWysokość prześwitu: {P}cm;\nWysokość i długość parkowanych pojazdów*: w zależności od dostępnej długości miejsca postojowego i prześwitu;";
+  var UWAGA_NK41 = "*w zależności od dostępnej długości miejsca postojowego i prześwitu;", UWAGA_NK41_STARA = "*parametry pojazdów dopuszczonych do wjazdu w obręb urządzeń są zależne od wysokości prześwitu dostępnego na danym miejscu w garażu.";
   var TECH_NK41_STARY = "Zagłębienie: brak;\nWysokość prześwitu: {P}cm;\nWysokość parkowanych pojazdów*: ▲-{G}cm, ▼-{D}cm;\nDługość parkowanych pojazdów: ▲-{M}cm, ▼-{M}cm;";
   /* NK41: platformy zależne pochylane (kalkulator "-NK3 2T A .10.26", oferta Żegiestowska 5 Wrocław). Koszty produkcji z dołu arkusza. */
   function szablonNK41() {
@@ -222,7 +224,7 @@
       obciazenie: "Obciążenie platformy: 2.000kg/miejsce;",
       zabezpieczenie: "Zabezpieczenie antykorozyjne: platforma ocynkowana ogniowo, słupy i siłowniki malowane.",
       barierki: "", opcjaQ2500: "Obciążenie platformy: 2.500kg/miejsce.",
-      uwagaTech: "*parametry pojazdów dopuszczonych do wjazdu w obręb urządzeń są zależne od wysokości prześwitu dostępnego na danym miejscu w garażu.",
+      uwagaTech: UWAGA_NK41,
       wstep: "przedstawiamy {oferte} na dostawę i montaż {n} platform służących do zależnego parkowania {mp} pojazdów w pochyleniu dla inwestycji {garaz}.",
       tech: TECH_NK41,
       agregat: "agregat hydrauliczny 400V, 50Hz, 3kW", kw: "3kW",
@@ -663,7 +665,7 @@
   }
 
   var api = {
-    cenaPrzyZysku: cenaPrzyZysku, negocjacje: negocjacje, MAX_DOD: MAX_DOD, KOB_WSP: KOB_WSP, GDW_WSP: GDW_WSP, TECH_NK41: TECH_NK41, TECH_NK41_STARY: TECH_NK41_STARY, dzwig: dzwig,
+    cenaPrzyZysku: cenaPrzyZysku, negocjacje: negocjacje, MAX_DOD: MAX_DOD, KOB_WSP: KOB_WSP, GDW_WSP: GDW_WSP, TECH_NK41: TECH_NK41, TECH_NK41_STARY: TECH_NK41_STARY, TECH_NK41_V1: TECH_NK41_V1, UWAGA_NK41: UWAGA_NK41, UWAGA_NK41_STARA: UWAGA_NK41_STARA, dzwig: dzwig,
     oblicz: oblicz, domyslneDane: domyslneDane, CENNIK: CENNIK,
     GLEBOKOSCI: szablonNK38().glebokosci.map(function (g) { return g.cm; }),
     szablonNK38: szablonNK38, szablonNK6501: szablonNK6501, szablonNKPXLH: szablonNKPXLH, szablonNK41: szablonNK41, szablonPusty: szablonPusty, nazwyWariantow: nazwyWariantow, szablonyWbudowane: szablonyWbudowane, uzupelnijSzablon: uzupelnijSzablon,
