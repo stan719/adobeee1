@@ -140,9 +140,19 @@ details.dims summary span { font-weight: 400; color: var(--muted); }
 .pz .d { font-family: var(--f-num); font-size: 12px; color: var(--muted); margin-top: 6px; display: flex; flex-wrap: wrap; align-items: center; gap: 4px 10px; }
 .pz .d .mp { font-size: 15px; font-weight: 600; color: var(--ink); background: var(--accent-soft); border-radius: 6px; padding: 2px 8px; white-space: nowrap; }   /* cena za miejsce postojowe wyróżniona */
 .pozceny { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 10px; margin-top: 14px; }
-.pozceny > div { border: 1px solid var(--line); border-radius: 10px; padding: 8px 12px; display: flex; flex-direction: column; gap: 2px; min-width: 0; }
-.pozceny b { font-size: 18px; font-variant-numeric: tabular-nums; }
-.pozceny small { color: var(--muted); font-size: 12px; }
+.pozceny { grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); }
+.pozceny > div { border: 1px solid var(--line); border-top: 3px solid var(--accent); border-radius: 10px; padding: 10px 12px 12px; display: flex; flex-direction: column; gap: 6px; min-width: 0; }
+.pozceny .ph { display: flex; align-items: baseline; gap: 8px; min-width: 0; }
+.pozceny .pnr { font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: .04em; color: var(--accent); background: var(--accent-soft); border-radius: 5px; padding: 1px 6px; white-space: nowrap; }
+.pozceny .pnaz { font-size: 17px; font-weight: 700; color: var(--ink); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.pozceny .pmp { margin-left: auto; font-size: 12.5px; font-weight: 600; color: var(--ink-2); white-space: nowrap; }
+.pozceny .psk { font-size: 12px; color: var(--muted); }
+.pozceny .pcen { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; border-top: 1px solid var(--line); padding-top: 8px; }
+.pozceny .pc { display: flex; flex-direction: column; gap: 2px; min-width: 0; }
+.pozceny .pc > span:first-child { font-size: 11.5px; color: var(--muted); }
+.pozceny .pc b { font-size: 17px; font-variant-numeric: tabular-nums; white-space: nowrap; }
+.pozceny .pc.b b { color: var(--ink-2); font-weight: 600; }
+.pozceny .pc .mp { align-self: flex-start; font-size: 13px; font-weight: 600; color: var(--ink); background: var(--accent-soft); border-radius: 6px; padding: 1px 7px; white-space: nowrap; }
 .kpis { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 12px 0; margin-top: 16px; border-top: 1px solid var(--line); padding-top: 14px; }
 .kpi { padding: 0 14px; border-left: 1px solid var(--line); min-width: 0; }
 .kpi:first-child { border-left: 0; padding-left: 0; }
@@ -633,7 +643,7 @@ html, body { overflow-x: clip; max-width: 100%; }
 (function () {
   "use strict";
   /* Wersja programu: podnoś przy każdym wydaniu (pokazywana na pulpicie, zapisywana w kopii zapasowej). */
-  var WERSJA = { nr: "1.71", data: "13.11.2026" };
+  var WERSJA = { nr: "1.72", data: "13.11.2026" };
   var E = window.NK38, X = window.NK38X;
   var LS = { robocze: "nk38.robocze.v1", drafty: "nk38.szkice.v1", draft: "nk38.szkic.v1", tab: "nk38.zakladka", sel: "nk38.wariant", logo: "nk38.logo.v1", podpis: "nk38.podpis.v1",
     szablony: "nk38.szablony.v1", wyceny: "nk38.wyceny.v1", tekstyOferty: "nk38.szablon.v1", numery: "nk38.numery.v1", cennikStary: "nk38.cennik.v1", usuniete: "nk38.usuniete.v1", migracja2: "nk38.migracja2", migracja3: "nk38.migracja3", migracja4: "nk38.migracja4", migracja5: "nk38.migracja5", migracja6: "nk38.migracja6", migracja7: "nk38.migracja7", migracja8: "nk38.migracja8", migracja9: "nk38.migracja9", historia: "nk38.historia.v1", uzytkownik: "nk38.uzytkownik.v1" };
@@ -1304,8 +1314,12 @@ html, body { overflow-x: clip; max-width: 100%; }
       '<div class="pz b"><div class="eyebrow">Cena netto · ' + zB + '</div><div class="big">' + fmtPLN.format(Math.round(w.cena2)) + '<small>zł</small></div>' +
       '<div class="d"><span class="mp">' + zl(w.cenaMP2) + ' / MP</span> ' + sgn(w.cena2 - w.cena) + '</div></div></div>' +
       (w.pozycje ? '<div class="pozceny">' + w.pozycje.map(function (p, i) {
-        var nz = i ? r.dodatkowe[i - 1].szablon.nazwa : d.typ;
-        return '<div><span class="eyebrow">Pozycja ' + (i + 1) + " · " + esc(nz) + " · " + p.MP + ' MP</span><b>' + zl(p.cena) + "</b><small>" + zl(p.cenaMP) + " / MP · przy " + pct(d.zysk2) + ": " + zl(p.cena2) + "</small></div>";
+        /* kafelek pozycji: urządzenie wyraźnie u góry, pod nim skład, niżej ceny przy obu poziomach zysku */
+        var zr = i ? r.dodatkowe[i - 1] : { szablon: r.szablon, dane: d }, nz = zr.szablon.nazwa, lst = zr.szablon.model === "lista";
+        var sklad = ["S", "D", "NP"].filter(function (k) { return zr.dane[k]; }).map(function (k) { return zr.dane[k] + "× " + esc(lst ? nz : nz + k); }).join(" + ");
+        var kol = function (et, c, mp, b) { return '<div class="pc' + (b ? " b" : "") + '"><span>' + et + "</span><b>" + zl(c) + '</b><span class="mp">' + zl(mp) + " / MP</span></div>"; };
+        return '<div><div class="ph"><span class="pnr">Pozycja ' + (i + 1) + '</span><span class="pnaz">' + esc(nz) + '</span><span class="pmp">' + p.MP + " MP</span></div>" +
+          '<div class="psk">' + (sklad || "–") + "</div>" + '<div class="pcen">' + kol("zysk " + pct(d.zysk), p.cena, p.cenaMP) + kol("zysk " + pct(d.zysk2), p.cena2, p.cenaMP2, 1) + "</div></div>";
       }).join("") + "</div>" : "") +
       strukturaCeny(w) +
       '<div class="kpis">' +
