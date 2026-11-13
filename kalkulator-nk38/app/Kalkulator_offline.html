@@ -22861,12 +22861,17 @@ var __async = (__this, __arguments, generator) => {
       doc.setDrawColor.apply(doc, LINE); doc.setLineWidth(0.3); doc.line(14, y - 2, 196, y - 2);
       /* wspólne dla wszystkich urządzeń: jedno okienko na całą szerokość (razem, KOB / GDW, lokalizacja, montaż, transport) */
       if (y + 32 > 287) { doc.addPage(); head("Dane wejściowe · cd.", stopka); y = 38; yW = y; }
-      var yB = y + 0.5, c3w = (182 - 6 - 8) / 3, kx = function (i) { return 17 + i * (c3w + 4); };
-      doc.setFont("Carlito", "bold"); doc.setFontSize(7.6); doc.setTextColor.apply(doc, ACC); doc.text("WSPÓLNE DLA WSZYSTKICH URZĄDZEŃ", 17, yB + 4.5);
-      var yR = yB + 9.5;
-      yR = Math.max(pole(kx(0), yR, 2 * c3w + 4, "Razem", K.zakres[0][1], true), pole(kx(2), yR, c3w, "KOB / GDW", K.kobGdw)) + 0.5;
-      yR = Math.max(pole(kx(0), yR, c3w, "Lokalizacja", K.lok), pole(kx(1), yR, c3w, "Montaż", K.montaz), pole(kx(2), yR, c3w, "Transport", K.transport));
-      doc.setDrawColor.apply(doc, LINE); doc.setLineWidth(0.3); doc.roundedRect(14, yB, 182, yR - yB, 1.5, 1.5, "S");
+      /* upakowane: dwa wiersze po trzy pola, długie wartości (razem, transport) w szerszych kolumnach */
+      var yB = y + 0.5, kol = [17, 81, 155], szer = [60, 70, 38];
+      var poleK = function (x, yy, wdt, et, wart, akc) {
+        doc.setFont("Carlito", "normal"); doc.setFontSize(7.4); doc.setTextColor.apply(doc, MUT); doc.text(et, x, yy);
+        return yy + 3.9 + wartosc(x, yy + 3.9, wdt, wart, akc) * 4.1 + 0.6;
+      };
+      doc.setFont("Carlito", "bold"); doc.setFontSize(7.4); doc.setTextColor.apply(doc, ACC); doc.text("WSPÓLNE DLA WSZYSTKICH URZĄDZEŃ", 17, yB + 3.9);
+      var yR = yB + 7.6;
+      yR = Math.max(poleK(kol[0], yR, szer[0], "Razem", K.zakres[0][1], true), poleK(kol[1], yR, szer[1], "Lokalizacja", K.lok), poleK(kol[2], yR, szer[2], "KOB / GDW", K.kobGdw)) + 1.4;
+      yR = Math.max(poleK(kol[0], yR, szer[0], "Montaż", K.montaz), poleK(kol[1], yR, 196 - kol[1] - 3, "Transport", K.transport));
+      doc.setDrawColor.apply(doc, LINE); doc.setLineWidth(0.3); doc.roundedRect(14, yB, 182, yR - yB + 0.6, 1.5, 1.5, "S");
       y = yR + 5;
       znak("karta", "Dane wejściowe: wspólne (razem, KOB / GDW, lokalizacja, montaż, transport)", yW - 2, y - 4);
     }
@@ -23324,7 +23329,7 @@ var __async = (__this, __arguments, generator) => {
 (function () {
   "use strict";
   /* Wersja programu: podnoś przy każdym wydaniu (pokazywana na pulpicie, zapisywana w kopii zapasowej). */
-  var WERSJA = { nr: "1.76", data: "13.11.2026" };
+  var WERSJA = { nr: "1.77", data: "13.11.2026" };
   var E = window.NK38, X = window.NK38X;
   var LS = { robocze: "nk38.robocze.v1", drafty: "nk38.szkice.v1", draft: "nk38.szkic.v1", tab: "nk38.zakladka", sel: "nk38.wariant", logo: "nk38.logo.v1", podpis: "nk38.podpis.v1",
     szablony: "nk38.szablony.v1", wyceny: "nk38.wyceny.v1", tekstyOferty: "nk38.szablon.v1", numery: "nk38.numery.v1", cennikStary: "nk38.cennik.v1", usuniete: "nk38.usuniete.v1", migracja2: "nk38.migracja2", migracja3: "nk38.migracja3", migracja4: "nk38.migracja4", migracja5: "nk38.migracja5", migracja6: "nk38.migracja6", migracja7: "nk38.migracja7", migracja8: "nk38.migracja8", migracja9: "nk38.migracja9", migracja10: "nk38.migracja10", historia: "nk38.historia.v1", uzytkownik: "nk38.uzytkownik.v1" };

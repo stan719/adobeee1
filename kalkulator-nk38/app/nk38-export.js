@@ -921,12 +921,17 @@
       doc.setDrawColor.apply(doc, LINE); doc.setLineWidth(0.3); doc.line(14, y - 2, 196, y - 2);
       /* wspólne dla wszystkich urządzeń: jedno okienko na całą szerokość (razem, KOB / GDW, lokalizacja, montaż, transport) */
       if (y + 32 > 287) { doc.addPage(); head("Dane wejściowe · cd.", stopka); y = 38; yW = y; }
-      var yB = y + 0.5, c3w = (182 - 6 - 8) / 3, kx = function (i) { return 17 + i * (c3w + 4); };
-      doc.setFont("Carlito", "bold"); doc.setFontSize(7.6); doc.setTextColor.apply(doc, ACC); doc.text("WSPÓLNE DLA WSZYSTKICH URZĄDZEŃ", 17, yB + 4.5);
-      var yR = yB + 9.5;
-      yR = Math.max(pole(kx(0), yR, 2 * c3w + 4, "Razem", K.zakres[0][1], true), pole(kx(2), yR, c3w, "KOB / GDW", K.kobGdw)) + 0.5;
-      yR = Math.max(pole(kx(0), yR, c3w, "Lokalizacja", K.lok), pole(kx(1), yR, c3w, "Montaż", K.montaz), pole(kx(2), yR, c3w, "Transport", K.transport));
-      doc.setDrawColor.apply(doc, LINE); doc.setLineWidth(0.3); doc.roundedRect(14, yB, 182, yR - yB, 1.5, 1.5, "S");
+      /* upakowane: dwa wiersze po trzy pola, długie wartości (razem, transport) w szerszych kolumnach */
+      var yB = y + 0.5, kol = [17, 81, 155], szer = [60, 70, 38];
+      var poleK = function (x, yy, wdt, et, wart, akc) {
+        doc.setFont("Carlito", "normal"); doc.setFontSize(7.4); doc.setTextColor.apply(doc, MUT); doc.text(et, x, yy);
+        return yy + 3.9 + wartosc(x, yy + 3.9, wdt, wart, akc) * 4.1 + 0.6;
+      };
+      doc.setFont("Carlito", "bold"); doc.setFontSize(7.4); doc.setTextColor.apply(doc, ACC); doc.text("WSPÓLNE DLA WSZYSTKICH URZĄDZEŃ", 17, yB + 3.9);
+      var yR = yB + 7.6;
+      yR = Math.max(poleK(kol[0], yR, szer[0], "Razem", K.zakres[0][1], true), poleK(kol[1], yR, szer[1], "Lokalizacja", K.lok), poleK(kol[2], yR, szer[2], "KOB / GDW", K.kobGdw)) + 1.4;
+      yR = Math.max(poleK(kol[0], yR, szer[0], "Montaż", K.montaz), poleK(kol[1], yR, 196 - kol[1] - 3, "Transport", K.transport));
+      doc.setDrawColor.apply(doc, LINE); doc.setLineWidth(0.3); doc.roundedRect(14, yB, 182, yR - yB + 0.6, 1.5, 1.5, "S");
       y = yR + 5;
       znak("karta", "Dane wejściowe: wspólne (razem, KOB / GDW, lokalizacja, montaż, transport)", yW - 2, y - 4);
     }
