@@ -22945,7 +22945,9 @@ var __async = (__this, __arguments, generator) => {
         didParseCell: function (h) { if (h.row.index % 2 === 1) h.cell.styles.fillColor = [247, 248, 249]; } }));
     }
     var szczegolyNaStr1 = false;
-    if (R.szczegoly.length && doc.lastAutoTable.finalY + 10 + wysSzcz < 285) {   // zaraz pod danymi wejściowymi (strona 1 albo jej ciąg na stronie 2)
+    /* raport PDF bez „Pozostałych danych wejściowych”: te informacje są już wyżej (dane wejściowe, koszty krok po kroku); zostają w Excelu */
+    var bezSzczegolow = true;
+    if (!bezSzczegolow && R.szczegoly.length && doc.lastAutoTable.finalY + 10 + wysSzcz < 285) {   // zaraz pod danymi wejściowymi (strona 1 albo jej ciąg na stronie 2)
       var ySz1 = doc.lastAutoTable.finalY + 4;
       rysujSzczegoly(h2("Pozostałe dane wejściowe", ySz1 + 5));
       znak("szczegoly", "Pozostałe dane wejściowe", ySz1, doc.lastAutoTable.finalY);
@@ -22986,7 +22988,7 @@ var __async = (__this, __arguments, generator) => {
         if (h.section === "body" && R.mon1[h.row.index].bold) { h.cell.styles.fontStyle = "bold"; h.cell.styles.fillColor = SOFT; }
       } }));
     znak("montaz", "Montaż, narzuty i cena (skąd kwoty)", yMon, doc.lastAutoTable.finalY);
-    if (R.szczegoly.length && !szczegolyNaStr1) {
+    if (!bezSzczegolow && R.szczegoly.length && !szczegolyNaStr1) {
       var ySz = doc.lastAutoTable.finalY + 2, yH = doc.lastAutoTable.finalY + 6;
       if (yH + wysSzcz + 6 > 287) { doc.addPage(); head("Koszty · " + w0.nazwa + " · " + pct(d.zysk) + " · cd.", stopka); ySz = 31; yH = 36; }   // nagłówek nie zostaje sam na dole strony
       y = h2("Pozostałe dane wejściowe", yH);
@@ -23374,7 +23376,7 @@ var __async = (__this, __arguments, generator) => {
 (function () {
   "use strict";
   /* Wersja programu: podnoś przy każdym wydaniu (pokazywana na pulpicie, zapisywana w kopii zapasowej). */
-  var WERSJA = { nr: "1.80", data: "13.11.2026" };
+  var WERSJA = { nr: "1.81", data: "13.11.2026" };
   var E = window.NK38, X = window.NK38X;
   var LS = { robocze: "nk38.robocze.v1", drafty: "nk38.szkice.v1", draft: "nk38.szkic.v1", tab: "nk38.zakladka", sel: "nk38.wariant", logo: "nk38.logo.v1", podpis: "nk38.podpis.v1",
     szablony: "nk38.szablony.v1", wyceny: "nk38.wyceny.v1", tekstyOferty: "nk38.szablon.v1", numery: "nk38.numery.v1", cennikStary: "nk38.cennik.v1", usuniete: "nk38.usuniete.v1", migracja2: "nk38.migracja2", migracja3: "nk38.migracja3", migracja4: "nk38.migracja4", migracja5: "nk38.migracja5", migracja6: "nk38.migracja6", migracja7: "nk38.migracja7", migracja8: "nk38.migracja8", migracja9: "nk38.migracja9", migracja10: "nk38.migracja10", historia: "nk38.historia.v1", uzytkownik: "nk38.uzytkownik.v1" };

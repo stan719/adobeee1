@@ -1005,7 +1005,9 @@
         didParseCell: function (h) { if (h.row.index % 2 === 1) h.cell.styles.fillColor = [247, 248, 249]; } }));
     }
     var szczegolyNaStr1 = false;
-    if (R.szczegoly.length && doc.lastAutoTable.finalY + 10 + wysSzcz < 285) {   // zaraz pod danymi wejściowymi (strona 1 albo jej ciąg na stronie 2)
+    /* raport PDF bez „Pozostałych danych wejściowych”: te informacje są już wyżej (dane wejściowe, koszty krok po kroku); zostają w Excelu */
+    var bezSzczegolow = true;
+    if (!bezSzczegolow && R.szczegoly.length && doc.lastAutoTable.finalY + 10 + wysSzcz < 285) {   // zaraz pod danymi wejściowymi (strona 1 albo jej ciąg na stronie 2)
       var ySz1 = doc.lastAutoTable.finalY + 4;
       rysujSzczegoly(h2("Pozostałe dane wejściowe", ySz1 + 5));
       znak("szczegoly", "Pozostałe dane wejściowe", ySz1, doc.lastAutoTable.finalY);
@@ -1046,7 +1048,7 @@
         if (h.section === "body" && R.mon1[h.row.index].bold) { h.cell.styles.fontStyle = "bold"; h.cell.styles.fillColor = SOFT; }
       } }));
     znak("montaz", "Montaż, narzuty i cena (skąd kwoty)", yMon, doc.lastAutoTable.finalY);
-    if (R.szczegoly.length && !szczegolyNaStr1) {
+    if (!bezSzczegolow && R.szczegoly.length && !szczegolyNaStr1) {
       var ySz = doc.lastAutoTable.finalY + 2, yH = doc.lastAutoTable.finalY + 6;
       if (yH + wysSzcz + 6 > 287) { doc.addPage(); head("Koszty · " + w0.nazwa + " · " + pct(d.zysk) + " · cd.", stopka); ySz = 31; yH = 36; }   // nagłówek nie zostaje sam na dole strony
       y = h2("Pozostałe dane wejściowe", yH);
