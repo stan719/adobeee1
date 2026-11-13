@@ -815,7 +815,7 @@
     L.autoTable(doc, Object.assign({}, base, {
       startY: y, head: [R.neg.head], body: negRows.map(function (x) { return x.vals; }),
       styles: Object.assign({}, base.styles, { fontSize: (wielePoz ? 7.6 : 8.2) - fz, cellPadding: 0.75 - pad }),
-      columnStyles: wielePoz ? { 0: { halign: "left", cellWidth: 22 }, 1: { cellWidth: 19 }, 2: { cellWidth: 17 }, 3: { cellWidth: 13 }, 4: { cellWidth: 18 }, 5: { cellWidth: 19 } } : { 0: { halign: "left", cellWidth: 40 } }, bodyStyles: { halign: "right" },
+      columnStyles: wielePoz ? { 0: { halign: "left", cellWidth: 26 }, 1: { cellWidth: 19 }, 2: { cellWidth: 16 }, 3: { cellWidth: 13 }, 4: { cellWidth: 17 }, 5: { cellWidth: 19 } } : { 0: { halign: "left", cellWidth: 40 } }, bodyStyles: { halign: "right" },
       didParseCell: function (hh) {
         if (hh.section === "head") { if (hh.column.index === 0) hh.cell.styles.halign = "left"; if (hh.column.index >= 6) hh.cell.styles.textColor = INK; return; }
         var x = negRows[hh.row.index].x;
@@ -834,8 +834,9 @@
     y = h2("Dane wejściowe", yLeg + 6.4 - odstep) + 2.5;
 
     var cw = 89, xL = 14, xP = 14 + cw + 4, wiersz1 = kom >= 2;   // zagęszczenie: etykieta i wartość w jednej linii (połowa wysokości)
+    var fWart = 10.5;   // pismo wartości (bloki urządzeń wyceny łączonej: mniejsze)
     function wartosc(x, yy, wdt, v, akcent) {
-      doc.setFont("Carlito", "bold"); doc.setFontSize(10.5); doc.setTextColor.apply(doc, akcent ? ACC : INK);
+      doc.setFont("Carlito", "bold"); doc.setFontSize(fWart); doc.setTextColor.apply(doc, akcent ? ACC : INK);
       if (Array.isArray(v)) {   // wysokości pojazdów: trójkąty jak w ofercie (Carlito nie ma ▲▼)
         var xx = x; doc.setFillColor.apply(doc, ACC);
         v.forEach(function (t, i) {
@@ -851,7 +852,7 @@
     /* jedno okienko: lista [etykieta, wartość, akcent, obok?]; wysokość wg zawartości */
     var rysujListe = function (lista, xz, yz) {
       lista.forEach(function (it) {
-        var obok = it[3], sz2 = obok ? (cw - 6) * (Array.isArray(obok[1]) ? 0.36 : 0.6) : cw - 6, sz3 = (cw - 6) - sz2, yw = wiersz1 ? yz + 3.4 : yz + 4.1, nl = 1;
+        var obok = it[3], sz2 = obok ? (cw - 6) * (it[4] || (Array.isArray(obok[1]) ? 0.36 : 0.6)) : cw - 6, sz3 = (cw - 6) - sz2, yw = wiersz1 ? yz + 3.4 : yz + 4.1, nl = 1;
         doc.setFont("Carlito", "normal"); doc.setFontSize(7.6); doc.setTextColor.apply(doc, MUT); doc.text(it[0], xz + 3, wiersz1 ? yw : yz);
         var lw = wiersz1 ? doc.getTextWidth(it[0]) + 2 : 0;
         nl = Math.max(nl, wartosc(xz + 3 + lw, yw, sz2 - lw, it[1], it[2]));
@@ -904,7 +905,7 @@
     } else {
       /* wycena łączona: każde urządzenie osobnym blokiem z nagłówkiem (zakres, wymiary i opis wariantu tego urządzenia) */
       K.urzadzenia.forEach(function (u, i) {
-        var wys = 18 + (u.zakres.length + 1) * (wiersz1 ? 4.9 : 9);
+        var wys = 18 + (Math.ceil(u.zakres.length / 2) + 1) * (wiersz1 ? 4.9 : 9);
         if (y + wys > 287) { doc.addPage(); head("Dane wejściowe · cd.", stopka); y = 38; }   // blok urządzenia nie dzieli się między strony
         var yb = y;
         doc.setFillColor.apply(doc, ACC); doc.rect(14, y - 3.2, 1.2, 4.2, "F");
@@ -913,7 +914,18 @@
           doc.setFont("Carlito", "normal"); doc.setFontSize(8.2); doc.setTextColor.apply(doc, MUT);
           doc.text("cena pozycji " + zl(u.cena) + " · " + zl(u.cenaMP) + " / MP (" + u.MP + " MP)", 196, y, { align: "right" });
         }
-        y = okienka(u.zakres, u.wymiary.length ? u.wymiary[0] : [], y + 1.8, "ZAKRES", "WYMIARY", true) + 2;
+        /* upakowanie: krótkie pozycje parami obok siebie (pół na pół), mniejsze pismo wartości */
+        var paruj = function (lista) {
+          var out = [], dl = function (q) { return !q[3] && !Array.isArray(q[1]) && String(q[1]).length <= 30; };
+          for (var j = 0; j < lista.length; j++) {
+            var a = lista[j], b = lista[j + 1];
+            if (j > 0 && b && dl(a) && dl(b)) { out.push([a[0], a[1], a[2] || 0, [b[0], b[1]], 0.5]); j++; } else out.push(a);
+          }
+          return out;
+        };
+        fWart = 9.6;
+        y = okienka(paruj(u.zakres), u.wymiary.length ? paruj(u.wymiary[0]) : [], y + 1.8, "ZAKRES", "WYMIARY", true) + 2;
+        fWart = 10.5;
         y += kom >= 1 ? 2 : 3.5;   // bez linii „Opis wariantu”: te same dane są w okienkach
         znak("urzadzenie" + (i + 1), "Dane wejściowe: " + u.tytul, yb - 4, y - 1);
       });
