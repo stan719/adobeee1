@@ -88,6 +88,7 @@ fieldset.card legend + * { clear: both; }
 .full { grid-column: 1 / -1; }
 label.f { display: flex; flex-direction: column; gap: 5px; font-size: 12.5px; font-weight: 500; color: var(--ink-2); min-width: 0; }
 label.f .hint { font-weight: 400; font-size: 11.5px; color: var(--muted); }
+.pDzw .hint { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 input, select, textarea { font: inherit; font-size: 14px; color: var(--ink); background: var(--surface); border: 1px solid var(--line-2); border-radius: var(--r-s); padding: 7px 10px; width: 100%; min-width: 0; transition: border-color .15s, box-shadow .15s; }
 input:hover, select:hover { border-color: var(--muted); }
 input:focus, select:focus, textarea:focus { outline: none; border-color: var(--accent); box-shadow: 0 0 0 3px var(--accent-soft); }
@@ -540,7 +541,7 @@ html, body { overflow-x: clip; max-width: 100%; }
           <label class="f"><span id="lblTirCena">Cena za TIR [zł]</span><input id="tir_cena" type="number" min="0" step="100"><span class="hint" id="hintTirCena">KRK 1600 · WAW/WRO 3300 · POZ/ZG 4500</span></label>
           <label class="f">Rozładunek sprzętu [zł]<input id="rozl_cena" type="number" min="0" step="100"><span class="hint" id="hintRozl">jednorazowo: przyjazd i wyjazd wózka</span></label>
           <label class="f">Dni rozładunku<input id="rozl_dni" type="number" min="0" step="0.5" class="auto"><span class="hint" id="hintRozlDni">puste = 0,5 dnia na TIR</span></label>
-          <label class="f pDzw">Spider Crane, koszt razem [zł]<input id="dzwig_koszt" type="number" min="0" step="100" class="auto"><span class="hint" id="dzwigHint"></span></label>
+          <label class="f pDzw"><span>Spider Crane, koszt razem [zł]</span><input id="dzwig_koszt" type="number" min="0" step="100" class="auto"><span class="hint" id="dzwigHint"></span></label>
           <label class="f">Osób na montażu<input id="osoby" type="number" min="1" max="12" step="1"><span class="hint" id="hintOsoby">500 / 400 / kolejne 350 zł</span></label>
           <label class="f">Tygodnie montażu<input id="wyjazdy" type="number" min="0" step="1" class="auto"><span class="hint">puste = automatycznie (Kraków: dni)</span></label>
           <label class="f">Hotel [zł/doba]<input id="nad_hotel" type="number" min="0" step="5" class="auto"><span class="hint" id="hintHotel"></span></label>
@@ -23108,7 +23109,7 @@ var __async = (__this, __arguments, generator) => {
 (function () {
   "use strict";
   /* Wersja programu: podnoś przy każdym wydaniu (pokazywana na pulpicie, zapisywana w kopii zapasowej). */
-  var WERSJA = { nr: "1.68", data: "13.11.2026" };
+  var WERSJA = { nr: "1.69", data: "13.11.2026" };
   var E = window.NK38, X = window.NK38X;
   var LS = { robocze: "nk38.robocze.v1", drafty: "nk38.szkice.v1", draft: "nk38.szkic.v1", tab: "nk38.zakladka", sel: "nk38.wariant", logo: "nk38.logo.v1", podpis: "nk38.podpis.v1",
     szablony: "nk38.szablony.v1", wyceny: "nk38.wyceny.v1", tekstyOferty: "nk38.szablon.v1", numery: "nk38.numery.v1", cennikStary: "nk38.cennik.v1", usuniete: "nk38.usuniete.v1", migracja2: "nk38.migracja2", migracja3: "nk38.migracja3", migracja4: "nk38.migracja4", migracja5: "nk38.migracja5", migracja6: "nk38.migracja6", migracja7: "nk38.migracja7", migracja8: "nk38.migracja8", historia: "nk38.historia.v1", uzytkownik: "nk38.uzytkownik.v1" };
@@ -23706,7 +23707,9 @@ var __async = (__this, __arguments, generator) => {
     }
     var dzwAuto = r.cennik.dzwig * r.wspolne.dzwDni;
     $("dzwig_koszt").placeholder = String(Math.round(dzwAuto));
-    $("dzwigHint").textContent = "Cena za 1 dzień: " + zl(r.cennik.dzwig) + " × " + r.wspolne.dzwDni + " dni = " + zl(dzwAuto) + (d.dzwig_koszt != null ? " (wpisano ręcznie " + zl(d.dzwig_koszt) + ")" : "");
+    var cz = r.cennik, lz = function (x) { return String(Math.round(x * 100) / 100).replace(".", ","); };
+    $("dzwigHint").textContent = lz(cz.dzwig_D) + "D/1dzień×" + lz(cz.dzwig) + " 1D=" + lz(cz.dzwig_wspS) + "S, " + lz(cz.dzwig) + "zł/dzień";
+    $("dzwigHint").title = "Cena za 1 dzień: " + zl(cz.dzwig) + " × " + r.wspolne.dzwDni + " dni = " + zl(dzwAuto) + (d.dzwig_koszt != null ? " (wpisano ręcznie " + zl(d.dzwig_koszt) + ")" : "");
     var auto = X.opisAuto(d, d.oferta), zmiany = Object.keys(d.opisNad || {}), efekt = X.opisEfektywny(d, d.oferta);
     state.opisAuto = auto;
     if (document.activeElement !== $("opis")) { $("opis").value = efekt; state.opisShown = efekt; }
