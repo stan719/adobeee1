@@ -21854,6 +21854,10 @@ var __async = (__this, __arguments, generator) => {
   var fmt3 = new Intl.NumberFormat("pl-PL", { maximumFractionDigits: 3 });
   function godzina() { var t = new Date(); return ("0" + t.getHours()).slice(-2) + ":" + ("0" + t.getMinutes()).slice(-2); }   // godzina przygotowania raportu
   function pct3(v) { return fmt3.format(v * 100) + "%"; }   // stawki typu KOB 0,515%
+  /* Stawki KOB i GDW liczymy od ceny przed podatkiem (0,515% i 2,685%), a efektywnie, jak w Excelu, to 0,5% i 2,5%:
+     w raporcie i Excelu pokazujemy wartości „jak w Excelu” (stawka z cennika × 0,5/0,515 oraz × 2,5/2,685). */
+  function kobPokaz(c) { return pct3(c.kob * 0.005 / 0.00515); }
+  function gdwPokaz(c) { return pct3(c.gdw * 0.025 / 0.02685); }
   function ceil100(v) { return Math.ceil(Math.round(v * 100) / 10000) * 100; }
   function kwotaOferta(v) { return fmt0.format(v).replace(/\s/g, ".") + ",00 zł"; }
 
@@ -22100,10 +22104,10 @@ var __async = (__this, __arguments, generator) => {
       rozladunek_ludzie: n2(w.rozl) + " dni × " + w0.osoby + " os. × " + st(w0.stawka) + " zł",
       dojazdy: n2(w0.podroze - w0.osoby * w.rozl) + " osd podróży × " + st(w0.stawka) + " zł",
       baza: "suma kosztów powyżej",
-      kob: pct3(C.kob) + " ceny przed podatkiem (" + zl(brutto0) + ")",
-      gdw: pct3(C.gdw) + " ceny przed podatkiem",
+      kob: kobPokaz(C) + " ceny przed podatkiem (" + zl(brutto0) + ")",
+      gdw: gdwPokaz(C) + " ceny przed podatkiem",
       zysk: pct(d.zysk) + " ceny przed podatkiem",
-      zyskN: "zysk " + pct(d.zysk) + " + GDW " + pct3(C.gdw),
+      zyskN: "zysk " + pct(d.zysk) + " + GDW " + gdwPokaz(C),
       podatek: pct(C.podatek) + " od robocizny (" + zl(w0.robocizna) + ") i zysku z narzutem",
       cena: "suma ÷ (1 − KOB − GDW − zysk) + podatek",
       koszt: "cena − zysk z narzutem",
@@ -22207,7 +22211,7 @@ var __async = (__this, __arguments, generator) => {
       urz: ["S", "D", "NP"].filter(function (x) { return d[x]; }).map(function (x) { return d[x] + "× " + kod(x); }).join(" + ") || "–",
       razem: RZ.platformy + " " + odmiana(RZ.platformy, "urządzenie", "urządzenia", "urządzeń") + " = " + mpOdm(RZ.MP),
       agregaty: sz.opcje.agregaty || d.agregaty ? (d.agregaty || 0) + " szt. (" + (agrMoc(d) || "3 kW / 6 kW: nie podano") + ")" : "",   // suma, w nawiasie podział na moc
-      agrOpis: d.agrOpis || "", kobGdw: pct3(r.cennik.kob) + " / " + pct3(r.cennik.gdw),
+      agrOpis: d.agrOpis || "", kobGdw: kobPokaz(r.cennik) + " / " + gdwPokaz(r.cennik),
       wymiary: wymiaryK,
       dlMiejsca: DOD.length ? "" : dlDla(d, sz),   // przy wycenie łączonej obok wysokości pojazdów każdej pozycji
       wyposazenie: lista ? "" : "barierki " + (d.barierki || 0) + " · maskownice " + (d.maskownice || 0) + " · magistrala " + (d.magistrala || 0) + " × 6 m",
@@ -23104,7 +23108,7 @@ var __async = (__this, __arguments, generator) => {
 (function () {
   "use strict";
   /* Wersja programu: podnoś przy każdym wydaniu (pokazywana na pulpicie, zapisywana w kopii zapasowej). */
-  var WERSJA = { nr: "1.67", data: "13.11.2026" };
+  var WERSJA = { nr: "1.68", data: "13.11.2026" };
   var E = window.NK38, X = window.NK38X;
   var LS = { robocze: "nk38.robocze.v1", drafty: "nk38.szkice.v1", draft: "nk38.szkic.v1", tab: "nk38.zakladka", sel: "nk38.wariant", logo: "nk38.logo.v1", podpis: "nk38.podpis.v1",
     szablony: "nk38.szablony.v1", wyceny: "nk38.wyceny.v1", tekstyOferty: "nk38.szablon.v1", numery: "nk38.numery.v1", cennikStary: "nk38.cennik.v1", usuniete: "nk38.usuniete.v1", migracja2: "nk38.migracja2", migracja3: "nk38.migracja3", migracja4: "nk38.migracja4", migracja5: "nk38.migracja5", migracja6: "nk38.migracja6", migracja7: "nk38.migracja7", migracja8: "nk38.migracja8", historia: "nk38.historia.v1", uzytkownik: "nk38.uzytkownik.v1" };

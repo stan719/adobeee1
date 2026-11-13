@@ -12,6 +12,10 @@
   var fmt3 = new Intl.NumberFormat("pl-PL", { maximumFractionDigits: 3 });
   function godzina() { var t = new Date(); return ("0" + t.getHours()).slice(-2) + ":" + ("0" + t.getMinutes()).slice(-2); }   // godzina przygotowania raportu
   function pct3(v) { return fmt3.format(v * 100) + "%"; }   // stawki typu KOB 0,515%
+  /* Stawki KOB i GDW liczymy od ceny przed podatkiem (0,515% i 2,685%), a efektywnie, jak w Excelu, to 0,5% i 2,5%:
+     w raporcie i Excelu pokazujemy wartości „jak w Excelu” (stawka z cennika × 0,5/0,515 oraz × 2,5/2,685). */
+  function kobPokaz(c) { return pct3(c.kob * 0.005 / 0.00515); }
+  function gdwPokaz(c) { return pct3(c.gdw * 0.025 / 0.02685); }
   function ceil100(v) { return Math.ceil(Math.round(v * 100) / 10000) * 100; }
   function kwotaOferta(v) { return fmt0.format(v).replace(/\s/g, ".") + ",00 zł"; }
 
@@ -258,10 +262,10 @@
       rozladunek_ludzie: n2(w.rozl) + " dni × " + w0.osoby + " os. × " + st(w0.stawka) + " zł",
       dojazdy: n2(w0.podroze - w0.osoby * w.rozl) + " osd podróży × " + st(w0.stawka) + " zł",
       baza: "suma kosztów powyżej",
-      kob: pct3(C.kob) + " ceny przed podatkiem (" + zl(brutto0) + ")",
-      gdw: pct3(C.gdw) + " ceny przed podatkiem",
+      kob: kobPokaz(C) + " ceny przed podatkiem (" + zl(brutto0) + ")",
+      gdw: gdwPokaz(C) + " ceny przed podatkiem",
       zysk: pct(d.zysk) + " ceny przed podatkiem",
-      zyskN: "zysk " + pct(d.zysk) + " + GDW " + pct3(C.gdw),
+      zyskN: "zysk " + pct(d.zysk) + " + GDW " + gdwPokaz(C),
       podatek: pct(C.podatek) + " od robocizny (" + zl(w0.robocizna) + ") i zysku z narzutem",
       cena: "suma ÷ (1 − KOB − GDW − zysk) + podatek",
       koszt: "cena − zysk z narzutem",
@@ -365,7 +369,7 @@
       urz: ["S", "D", "NP"].filter(function (x) { return d[x]; }).map(function (x) { return d[x] + "× " + kod(x); }).join(" + ") || "–",
       razem: RZ.platformy + " " + odmiana(RZ.platformy, "urządzenie", "urządzenia", "urządzeń") + " = " + mpOdm(RZ.MP),
       agregaty: sz.opcje.agregaty || d.agregaty ? (d.agregaty || 0) + " szt. (" + (agrMoc(d) || "3 kW / 6 kW: nie podano") + ")" : "",   // suma, w nawiasie podział na moc
-      agrOpis: d.agrOpis || "", kobGdw: pct3(r.cennik.kob) + " / " + pct3(r.cennik.gdw),
+      agrOpis: d.agrOpis || "", kobGdw: kobPokaz(r.cennik) + " / " + gdwPokaz(r.cennik),
       wymiary: wymiaryK,
       dlMiejsca: DOD.length ? "" : dlDla(d, sz),   // przy wycenie łączonej obok wysokości pojazdów każdej pozycji
       wyposazenie: lista ? "" : "barierki " + (d.barierki || 0) + " · maskownice " + (d.maskownice || 0) + " · magistrala " + (d.magistrala || 0) + " × 6 m",
