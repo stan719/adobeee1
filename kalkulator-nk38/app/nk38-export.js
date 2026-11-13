@@ -405,14 +405,16 @@
     } else {
       urzadzeniaK = [{ dane: d, szablon: sz, mat: m, o: o }].concat(DOD.map(function (x) { return { dane: x.dane, szablon: x.szablon, mat: x.mat, o: {} }; })).map(function (x, i) {
         var zk = [["Urządzenia", urzDla(x.dane, x.szablon.typy) + " = " + mpOdm(x.mat.MP), 1]], ag = agrDla(x.dane, x.szablon), dz = (w.dzwigi || [])[i];
-        if (ag) zk.push(["Agregaty", ag].concat(x.dane.agrOpis ? [0, ["Układ agregatów", x.dane.agrOpis]] : []));
-        else if (x.dane.agrOpis) zk.push(["Układ agregatów", x.dane.agrOpis]);
-        if (x.szablon.model !== "lista") zk.push(["Barierki / maskownice / magistrala", (x.dane.barierki || 0) + " / " + (x.dane.maskownice || 0) + " / " + (x.dane.magistrala || 0) + " × 6 m"]);
+        if (ag) zk.push(["Agregaty", ag]);
         var tr = (w.transporty || [])[i];
         if (tr) zk.push(["Transport", trJeden(tr)]);
         if (dz && dz.koszt) zk.push(["Spider Crane", dz.recznie ? zl(dz.koszt) + " (ręcznie)" : dz.dni + " " + odmiana(dz.dni, "dzień", "dni", "dni") + " × " + zl(dz.stawka) + " = " + zl(dz.koszt)]);
         var wm = wymDla(x.dane, x.o).reduce(function (a, g) { return a.concat(g); }, []), dlM = dlDla(x.dane, x.szablon);
         if (dlM) wm.push(["Długość miejsca postojowego", dlM]);
+        /* w prawym okienku też układ agregatów i wyposażenie (bok = barierki, tył = maskownice, magistrala): opis wariantu nie jest już potrzebny */
+        var agU = x.dane.agrOpis || (x.dane.agregaty ? "A-" + x.dane.agregaty : "");
+        var wyp = x.szablon.model !== "lista" ? ["Bok / tył / magistrala", (x.dane.barierki || 0) + " / " + (x.dane.maskownice || 0) + " / " + (x.dane.magistrala || 0) + " × 6 m"] : null;
+        if (agU && wyp) wm.push(["Układ agregatów", agU, 0, wyp]); else if (agU) wm.push(["Układ agregatów", agU]); else if (wyp) wm.push(wyp);
         return { tytul: "Pozycja " + (i + 1) + " · " + x.szablon.nazwa, nazwa: x.szablon.nazwa, zakres: zk, wymiary: wm.length ? [wm] : [], opis: opisEfektywny(x.dane, x.o),
           cena: pozW ? pozW[i].cena : null, cenaMP: pozW ? pozW[i].cenaMP : null, MP: x.mat.MP };
       });
@@ -644,7 +646,6 @@
         t.getCell(1).border = { left: { style: "thick", color: { argb: C.acc } } };
         t.getCell(4).font = font({ size: 9, color: { argb: C.muted } }); t.getCell(4).alignment = { horizontal: "right", vertical: "bottom" };
         okienkaX(splaszczX(u.zakres), u.wymiary.length ? splaszczX(u.wymiary[0]) : [], "ZAKRES", "WYMIARY");
-        opisX("Opis wariantu · " + u.nazwa, u.opis);
         s1.addRow([]);
       });
       okienkaX([K.zakres[0].slice(0, 3), ["KOB / GDW", K.kobGdw]], [], "WSPÓLNE", "");
@@ -913,7 +914,7 @@
           doc.text("cena pozycji " + zl(u.cena) + " · " + zl(u.cenaMP) + " / MP (" + u.MP + " MP)", 196, y, { align: "right" });
         }
         y = okienka(u.zakres, u.wymiary.length ? u.wymiary[0] : [], y + 1.8, "ZAKRES", "WYMIARY", true) + 2;
-        y = opisWar("Opis wariantu · " + u.nazwa, u.opis, y + 1) + (kom >= 1 ? 1 : 2.5);
+        y += kom >= 1 ? 2 : 3.5;   // bez linii „Opis wariantu”: te same dane są w okienkach
         znak("urzadzenie" + (i + 1), "Dane wejściowe: " + u.tytul, yb - 4, y - 1);
       });
       var yW = y;
@@ -966,10 +967,16 @@
     znak("konserwacja", "Konserwacja: stawki 35–60 zł", yKon, doc.lastAutoTable.finalY);
 
     var strona1Ok = doc.getNumberOfPages() === 1;
-    /* 2. strona: skąd się biorą kwoty (wariant podstawowy) i pozostałe dane */
-    doc.addPage(); head("Koszty · " + w0.nazwa + " · " + pct(d.zysk), stopka);
-    znak("naglowek2", "Strona 2: nagłówek", 12, 30);
-    y = h2("Materiały i urządzenia", 36);
+    /* koszty: od nowej strony; gdy dane wejściowe przeszły już na stronę 2 i zostało na niej dość miejsca, ciągiem pod nimi (bez pustej połowy strony) */
+    var yKon2 = doc.lastAutoTable.finalY;
+    if (!strona1Ok && yKon2 < 297 - 45) {
+      y = h2("Koszty · " + w0.nazwa + " · " + pct(d.zysk), yKon2 + 12) + 3;
+      y = h2("Materiały i urządzenia", y + 4);
+    } else {
+      doc.addPage(); head("Koszty · " + w0.nazwa + " · " + pct(d.zysk), stopka);
+      znak("naglowek2", "Strona 2: nagłówek", 12, 30);
+      y = h2("Materiały i urządzenia", 36);
+    }
     L.autoTable(doc, Object.assign({}, base, { startY: y, body: R.mat, theme: "striped",
       styles: Object.assign({}, base.styles, { fontSize: 8, cellPadding: 0.9 }),
       columnStyles: { 0: { cellWidth: 90 }, 1: { halign: "right" } },
