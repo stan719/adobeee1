@@ -197,6 +197,8 @@
   function raport(r, GL, o) {
     var d = r.dane, m = r.mat, w = r.wspolne, ws = widoczneWarianty(r), wy = opisWymiarow(d, GL), sz = r.szablon, T = sz.typy;
     var lista = sz.model === "lista", nA = r.warianty[0].nazwa, nB = r.razem && r.razem.maB ? r.razem.nazwaB : sz.wariantB.nazwa, jm = sz.opcje.konserwacjaNa === "szt" ? "szt." : "MP";
+    var jmy = [sz].concat((r.dodatkowe || []).map(function (x) { return x.szablon; })).map(function (q) { return q.opcje.konserwacjaNa === "szt" ? "szt." : "MP"; });
+    if (jmy.some(function (x) { return x !== jm; })) jm = "MP lub szt.";   // wycena łączona: konserwacja części urządzeń od sztuki
     var zA = "zysk " + pct(d.zysk), zB = "zysk " + pct(d.zysk2);
     var urz = [d.S ? d.S + " × " + T.S.nazwa : "", d.D ? d.D + " × " + T.D.nazwa : "", d.NP ? d.NP + " × " + T.NP.nazwa : ""].filter(Boolean).join(", ");
     var wp = wymiaryPary(d, o || {}), lub = function (f) { return wp.map(f).join(" lub "); }, k = function (x) { return x == null || x === "" ? "–" : x; };
@@ -348,10 +350,11 @@
     /* pole do negocjacji: przy wycenie łączonej dodatkowe kolumny z ceną za MP każdego urządzenia (udział w kosztach × cena) */
     var N = r.negocjacje, nazwyPoz = [d.typ].concat(DOD.map(function (x) { return x.szablon.nazwa; }));
     var powt = nazwyPoz.filter(function (x, i) { return nazwyPoz.indexOf(x) !== i; }).length > 0;
-    var kolPoz = N && N.pozycje ? nazwyPoz.map(function (x, i) { return "Cena za MP · " + (powt ? "poz. " + (i + 1) + " " : "") + x; }) : [];
+    var mpPoz = [m.MP].concat(DOD.map(function (x) { return x.mat.MP; }));
+    var kolPoz = N && N.pozycje ? nazwyPoz.map(function (x, i) { return "Cena za MP · " + (powt ? "poz. " + (i + 1) + " " : "") + x + " (" + mpPoz[i] + " MP)"; }) : [];
     var neg = N && {
       N: N, kolPoz: kolPoz.length,
-      head: ["Zysk", "Cena netto", "Rabat od oferty", "Rabat %", "Zysk z narzutem", kolPoz.length ? "Cena za MP (średnio)" : "Cena za MP"].concat(kolPoz),
+      head: ["Zysk", "Cena netto", "Rabat od oferty", "Rabat %", "Zysk z narzutem", kolPoz.length ? "Cena za MP (średnio, " + RZ.MP + " MP)" : "Cena za MP"].concat(kolPoz),
       rows: N.wiersze.map(function (x) {
         return { x: x, vals: [pct(x.zysk) + (x.oferta ? "  oferta" : x.porownanie ? "  do porównania" : x.prog ? "  próg" : ""), zl(x.cena), x.rabat ? "−" + zl(x.rabat) : "–",
           x.rabat ? "−" + n2(x.rabatPct * 100) + "%" : "–", zl(x.zyskN), zl(x.cenaMP)].concat(kolPoz.length ? x.pozycje.map(function (p) { return zl(p.cenaMP); }) : []) };
@@ -436,7 +439,8 @@
       montaz: ws[0].tygodnie + " tyg. (" + ws[0].dni + " dni pracy), ekipa " + ws[0].osoby + " os.",
       transport: (DOD.length ? (w.tirRazem || 0) + " transp. = " + zl(ws[0].koszty.transport) : (d.tir || 0) + (sz.import.wl ? " kont." : " TIR") + " × " + zl(d.tir_cena || 0)) + (ws[0].koszty.dzwig || d.dzwig_koszt != null ? " · Spider Crane " + (DOD.length ? zl(ws[0].koszty.dzwig) : w.dzwDni + " " + odmiana(w.dzwDni, "dzień", "dni", "dni")) : ""),
       konserwacja: r.konserwacja.map(function (x, i) {
-        var bazaT = !DOD.length ? baza + " " + jm : [{ dane: d, szablon: sz, mat: m }].concat(DOD).map(function (q) { return q.szablon.opcje.konserwacjaNa === "szt" ? q.mat.platformy + " szt." : q.mat.MP + " MP"; }).join(" + ");
+        var czesci = [{ dane: d, szablon: sz, mat: m }].concat(DOD).map(function (q) { return q.szablon.opcje.konserwacjaNa === "szt" ? q.mat.platformy + " szt." : q.mat.MP + " MP"; });
+        var bazaT = !DOD.length ? baza + " " + jm : baza + " = " + czesci.join(" + ");   // suma do mnożenia przez stawkę
         return { nazwa: "Konserwacja · wariant " + (i + 1), stawka: x.stawka + " zł / " + jm + " / mies.", baza: bazaT, bazaN: baza, mies: x.stawka * baza, rok: x.rok, przeglad: x.rok / 2 };
       })
     };
@@ -810,7 +814,7 @@
     L.autoTable(doc, Object.assign({}, base, {
       startY: y, head: [R.neg.head], body: negRows.map(function (x) { return x.vals; }),
       styles: Object.assign({}, base.styles, { fontSize: (wielePoz ? 7.6 : 8.2) - fz, cellPadding: 0.75 - pad }),
-      columnStyles: wielePoz ? { 0: { halign: "left", cellWidth: 25 }, 1: { cellWidth: 19 }, 2: { cellWidth: 17 } } : { 0: { halign: "left", cellWidth: 40 } }, bodyStyles: { halign: "right" },
+      columnStyles: wielePoz ? { 0: { halign: "left", cellWidth: 22 }, 1: { cellWidth: 19 }, 2: { cellWidth: 17 }, 3: { cellWidth: 13 }, 4: { cellWidth: 18 }, 5: { cellWidth: 19 } } : { 0: { halign: "left", cellWidth: 40 } }, bodyStyles: { halign: "right" },
       didParseCell: function (hh) {
         if (hh.section === "head") { if (hh.column.index === 0) hh.cell.styles.halign = "left"; if (hh.column.index >= 6) hh.cell.styles.textColor = INK; return; }
         var x = negRows[hh.row.index].x;
@@ -860,13 +864,14 @@
       return yz;
     };
     /* dwa okienka obok siebie (Zakres i Wymiary); zwraca dolną krawędź wyższego */
-    function okienka(wL, wP, y0, nL, nP) {
+    function okienka(wL, wP, y0, nL, nP, rowne) {   // rowne: oba okienka tej samej wysokości (bloki urządzeń wyceny łączonej)
       if (wiersz1) { wL = splaszcz(wL); wP = splaszcz(wP); }
       var yy = y0 + 4.5;
       doc.setFont("Carlito", "bold"); doc.setFontSize(7.6); doc.setTextColor.apply(doc, ACC);
       doc.text(nL, xL + 3, yy); if (wP.length) doc.text(nP, xP + 3, yy); yy += 4.5;
       var yyL = rysujListe(wL, xL, yy), yyP = wP.length ? rysujListe(wP, xP, yy) : yy;
       doc.setDrawColor.apply(doc, LINE); doc.setLineWidth(0.3);
+      if (rowne) yyL = yyP = Math.max(yyL, yyP);
       doc.roundedRect(xL, y0, cw, yyL - y0 - 1, 1.5, 1.5, "S"); if (wP.length) doc.roundedRect(xP, y0, cw, yyP - y0 - 1, 1.5, 1.5, "S");
       return Math.max(yyL, yyP);
     }
@@ -876,6 +881,10 @@
       var lo = doc.splitTextToSize(tekst || "–", 182); doc.text(lo, 14, yy + 4.3); return yy + 4.3 + lo.length * (kom >= 3 ? 3.6 : 4.1) + 2;
     }
     var y0 = y, yOp;
+    function pole(x, yy, wdt, et, wart, akcent) {
+      doc.setFont("Carlito", "normal"); doc.setFontSize(7.6); doc.setTextColor.apply(doc, MUT); doc.text(et, x, yy);
+      return yy + 4.4 + wartosc(x, yy + 4.4, wdt, wart, akcent) * 4.4 + 1.5;
+    }
     if (!K.urzadzenia) {
       /* jedno urządzenie: karta inwestycji w dwóch okienkach (etykieta + wartość jednym krojem) */
       var wierszL = K.zakres.slice();
@@ -903,23 +912,29 @@
           doc.setFont("Carlito", "normal"); doc.setFontSize(8.2); doc.setTextColor.apply(doc, MUT);
           doc.text("cena pozycji " + zl(u.cena) + " · " + zl(u.cenaMP) + " / MP (" + u.MP + " MP)", 196, y, { align: "right" });
         }
-        y = okienka(u.zakres, u.wymiary.length ? u.wymiary[0] : [], y + 1.8, "ZAKRES", "WYMIARY") + 2;
+        y = okienka(u.zakres, u.wymiary.length ? u.wymiary[0] : [], y + 1.8, "ZAKRES", "WYMIARY", true) + 2;
         y = opisWar("Opis wariantu · " + u.nazwa, u.opis, y + 1) + (kom >= 1 ? 1 : 2.5);
         znak("urzadzenie" + (i + 1), "Dane wejściowe: " + u.tytul, yb - 4, y - 1);
       });
       var yW = y;
       doc.setDrawColor.apply(doc, LINE); doc.setLineWidth(0.3); doc.line(14, y - 2, 196, y - 2);
-      y = okienka([K.zakres[0].slice(0, 3).concat([["KOB / GDW", K.kobGdw]])], [], y + 0.5, "WSPÓLNE", "") + 3.5;
-      znak("karta", "Dane wejściowe: razem, KOB / GDW", yW - 2, y);
+      /* wspólne dla wszystkich urządzeń: jedno okienko na całą szerokość (razem, KOB / GDW, lokalizacja, montaż, transport) */
+      if (y + 32 > 287) { doc.addPage(); head("Dane wejściowe · cd.", stopka); y = 38; yW = y; }
+      var yB = y + 0.5, c3w = (182 - 6 - 8) / 3, kx = function (i) { return 17 + i * (c3w + 4); };
+      doc.setFont("Carlito", "bold"); doc.setFontSize(7.6); doc.setTextColor.apply(doc, ACC); doc.text("WSPÓLNE DLA WSZYSTKICH URZĄDZEŃ", 17, yB + 4.5);
+      var yR = yB + 9.5;
+      yR = Math.max(pole(kx(0), yR, 2 * c3w + 4, "Razem", K.zakres[0][1], true), pole(kx(2), yR, c3w, "KOB / GDW", K.kobGdw)) + 0.5;
+      yR = Math.max(pole(kx(0), yR, c3w, "Lokalizacja", K.lok), pole(kx(1), yR, c3w, "Montaż", K.montaz), pole(kx(2), yR, c3w, "Transport", K.transport));
+      doc.setDrawColor.apply(doc, LINE); doc.setLineWidth(0.3); doc.roundedRect(14, yB, 182, yR - yB, 1.5, 1.5, "S");
+      y = yR + 5;
+      znak("karta", "Dane wejściowe: wspólne (razem, KOB / GDW, lokalizacja, montaż, transport)", yW - 2, y - 4);
     }
-    function pole(x, yy, wdt, et, wart) {
-      doc.setFont("Carlito", "normal"); doc.setFontSize(7.6); doc.setTextColor.apply(doc, MUT); doc.text(et, x, yy);
-      return yy + 4.4 + wartosc(x, yy + 4.4, wdt, wart) * 4.4 + 1.5;
+    if (!K.urzadzenia) {   // wycena łączona ma lokalizację, montaż i transport w okienku wspólnym
+      if (y + 14 > 287) { doc.addPage(); head("Dane wejściowe · cd.", stopka); y = 38; }
+      var c3 = (182 - 8) / 3, yLok = y;
+      y = Math.max(pole(14, y, c3, "Lokalizacja", K.lok), pole(14 + c3 + 4, y, c3, "Montaż", K.montaz), pole(14 + 2 * (c3 + 4), y, c3, "Transport", K.transport)) + 2;
+      znak("lokalizacja", "Lokalizacja, montaż, transport", yLok - 3.5, y - 1.5);
     }
-    if (y + 14 > 287) { doc.addPage(); head("Dane wejściowe · cd.", stopka); y = 38; }
-    var c3 = (182 - 8) / 3, yLok = y;
-    y = Math.max(pole(14, y, c3, "Lokalizacja", K.lok), pole(14 + c3 + 4, y, c3, "Montaż", K.montaz), pole(14 + 2 * (c3 + 4), y, c3, "Transport", K.transport)) + 2;
-    znak("lokalizacja", "Lokalizacja, montaż, transport", yLok - 3.5, y - 1.5);
     /* opcje: 2500 kg i słupki tylko jako dopłata przy obu poziomach zysku */
     if (R.dodatki.rows.length) {
       L.autoTable(doc, Object.assign({}, base, { startY: y, head: [R.dodatki.head],
