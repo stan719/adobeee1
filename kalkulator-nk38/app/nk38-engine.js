@@ -3,6 +3,7 @@
 (function (root) {
   "use strict";
 
+  var MAX_DOD = 3;   // wycena łączona: urządzenie główne + do 3 kolejnych
   var WARIANTY = ["2000 kg", "2500 kg", "2000 kg + słupki", "2500 kg + słupki"];
   var OSOBY_ANALIZA = [2, 3, 4, 5, 6, 7];
 
@@ -19,8 +20,14 @@
     dni_tydzien: 5, km_montaz_dodatek: 50, km_krakow: 20, km_dzien: 650,
     spalanie: 12, paliwo: 9.4, pomiary_osoby: 1, odbiory_osoby: 2, odbiory_wyjazdy: 1,
     stawka_1: 500, stawka_2: 400, stawka_kolejna: 350, dieta: 45, hotel: 130,
-    kob: 0.00515, gdw: 0.02685, podatek: 0.14
+    kob: 0.005, gdw: 0.025, podatek: 0.14
   };
+  /* KOB i GDW wpisujemy jako stawki efektywne (0,5% i 2,5%, jak kolumna obok w Excelu); do obliczeń, jak w Excelu,
+     idą stawki nominalne 0,515% i 2,685%, czyli efektywna × 1,03 i × 1,074. */
+  var KOB_WSP = 0.515 / 0.5, GDW_WSP = 2.685 / 2.5;
+  function narzutyNominalne(c) { c.kobN = num(c.kob) * KOB_WSP; c.gdwN = num(c.gdw) * GDW_WSP; return c; }
+  /* Drabinka negocjacyjna: od zysku ofertowego w dół co krok do progu minimalnego (NKPXLH: co 2 pkt do 12%). */
+  var NEGOCJACJE = { min: 0.07, krok: 0.005 };
 
   /* Teksty oferty zależne od urządzenia (pusta uwaga = tekst wspólny z ustawień oferty). */
   function tekstyNK38() {
@@ -168,6 +175,7 @@
     s.wysokosci = { tryb: "przeswit2", k: 20, dol: 170 };
     s.opcje.mocAgregatu = "3";   // agregaty tylko 3 kW: bez podziału 3/6 kW
     s.domyslne = { zysk: 0.28, zysk2: 0.255, konserwA: 35, konserwB: 45, tir: 1, tir_cena: 3500, rozl_cena: 2800, eur: 4.33, usd: 3.86 };
+    s.negocjacje = { min: 0.12, krok: 0.02 };
     Object.assign(s.cennik, { stawka_1: 550, stawka_2: 400, stawka_kolejna: 350, hotel: 130, dieta: 45, odbiory_osoby: 2, odbiory_wyjazdy: 2, dzwig: 1200, rozl_TIR: 1 });
     s.teksty = Object.assign(tekstyNK38(), {
       obciazenie: "Obciążenie platformy: 2.000kg/miejsce;",
@@ -186,6 +194,8 @@
     });
     return s;
   }
+  var TECH_NK41 = "Zagłębienie: brak;\nWysokość prześwitu: {P}cm;\nWysokość i długość parkowanych pojazdów*: w zależności od dostępnej długości miejsca postojowego i prześwitu;";
+  var TECH_NK41_STARY = "Zagłębienie: brak;\nWysokość prześwitu: {P}cm;\nWysokość parkowanych pojazdów*: ▲-{G}cm, ▼-{D}cm;\nDługość parkowanych pojazdów: ▲-{M}cm, ▼-{M}cm;";
   /* NK41: platformy zależne pochylane (kalkulator "-NK3 2T A .10.26", oferta Żegiestowska 5 Wrocław). Koszty produkcji z dołu arkusza. */
   function szablonNK41() {
     var s = bazaLista();
@@ -214,7 +224,7 @@
       barierki: "", opcjaQ2500: "Obciążenie platformy: 2.500kg/miejsce.",
       uwagaTech: "*parametry pojazdów dopuszczonych do wjazdu w obręb urządzeń są zależne od wysokości prześwitu dostępnego na danym miejscu w garażu.",
       wstep: "przedstawiamy {oferte} na dostawę i montaż {n} platform służących do zależnego parkowania {mp} pojazdów w pochyleniu dla inwestycji {garaz}.",
-      tech: "Zagłębienie: brak;\nWysokość prześwitu: {P}cm;\nWysokość parkowanych pojazdów*: ▲-{G}cm, ▼-{D}cm;\nDługość parkowanych pojazdów: ▲-{M}cm, ▼-{M}cm;",
+      tech: TECH_NK41,
       agregat: "agregat hydrauliczny 400V, 50Hz, 3kW", kw: "3kW",
       platnosci: "30% zaliczka płatna na 22 tygodnie przed dostawą,\n30% płatność na 7 dni przed dostawą,\n90% płatność do 21 dni po dostawie,\n100% płatność do 21 dni po zakończeniu montażu i pierwszym badaniu UDT.\nOferta ważna jest 2 miesiące.",
       dostawa: 22, gw: "60",
@@ -241,6 +251,7 @@
     s.opcje = Object.assign({ mocAgregatu: "", rozladunekNaTransport: false, przeglad: true, konserwacjaNa: "MP", agregaty: true, slupki: true, dodatkiNK38: s.model === "nk38", wymiary: s.model === "nk38" }, s.opcje || {});
     s.wysokosci = Object.assign({ tryb: "zaglebienie", k: 15, dol: 170, gor: 150 }, s.wysokosci || {});
     s.domyslne = s.domyslne || {};
+    s.negocjacje = Object.assign({}, s.id === "nkpxlh" ? { min: 0.12, krok: 0.02 } : NEGOCJACJE, s.negocjacje || {});
     ["glebokosci", "szerokosci", "dlugosci", "skladowe", "opisOferty"].forEach(function (k) { if (s[k] == null) s[k] = b[k]; });
     return s;
   }
@@ -259,7 +270,7 @@
       gl_S: {}, gl_D: {},
       szer1_S: 0, szer2_S: 0, szer1_D: 0, szer2_D: 0,
       dl500_S: 0, dl540_S: 0, dl550_S: 0, dl500_D: 0, dl540_D: 0, dl550_D: 0,
-      tir: null, tir_cena: 0, rozl_cena: 0, rozl_dni: null, dzwig_koszt: null,
+      tir: null, tir_cena: 0, rozl_cena: 0, rozl_dni: null, dzwig_koszt: null, dzwig_urz: null,
       osoby: 4, wyjazdy: null, wzor: "stary",
       zysk: 0.14, zysk2: 0.10, q2500: null, konserwA: 40, konserwB: 50, eur: 4.325, analiza: 0
     };
@@ -385,10 +396,30 @@
     return {
       krk: krk, kmPom: kmPom, kmMon: kmMon, rozl: rozl,
       podrPom: c.pomiary_osoby * czasPodrozy(kmPom, 1, d.wzor, c) + c.odbiory_osoby * czasPodrozy(kmPom, num(c.odbiory_wyjazdy, 1), d.wzor, c),
-      dzwDni: sz && sz.model === "lista"
-        ? ceil(["S", "D", "NP"].reduce(function (a, k) { return a + num(d[k]) * num(sz.typy[k].dzwig); }, 0))
-        : ceil(DN / c.dzwig_D + num(d.S) * c.dzwig_wspS / c.dzwig_D)
+      dzwDni: dzwig(d, c, sz).dni
     };
+  }
+  function fmtL(v, n) { return String(Math.round(v * Math.pow(10, n || 2)) / Math.pow(10, n || 2)).replace(".", ","); }
+  /* Spider Crane jednego urządzenia: dni wg szablonu (NK38: D/5 + S×0,6/5, lista: dni na sztukę) × stawka dzienna szablonu.
+     d.dzwig_urz = koszt wpisany ręcznie dla tego urządzenia; opis mówi, skąd się bierze wartość domyślna. */
+  function dzwig(d, c, sz) {
+    var lista = sz && sz.model === "lista", sur, opis;
+    if (lista) {
+      var cz = [];
+      sur = ["S", "D", "NP"].reduce(function (a, k) {
+        var n = num(d[k]), w = num(sz.typy[k].dzwig);
+        if (n && w) cz.push(n + " szt. × " + fmtL(w, 3) + " dnia" + (w < 1 ? " (1 dzień na " + fmtL(1 / w, 1) + " szt.)" : ""));
+        return a + n * w;
+      }, 0);
+      opis = cz.join(" + ");
+    } else {
+      var DN = num(d.D) + num(d.NP);
+      sur = DN / c.dzwig_D + num(d.S) * c.dzwig_wspS / c.dzwig_D;
+      opis = (DN ? DN + " D/N.P. ÷ " + fmtL(c.dzwig_D) : "") + (num(d.S) ? (DN ? " + " : "") + num(d.S) + " S × " + fmtL(c.dzwig_wspS) + " ÷ " + fmtL(c.dzwig_D) : "") + (sur ? " (1 dzień na " + fmtL(c.dzwig_D) + " systemów D)" : "");
+    }
+    var dni = ceil(sur), auto = num(c.dzwig) * dni, r = opt(d.dzwig_urz);
+    return { dni: dni, surowe: sur, stawka: num(c.dzwig), auto: auto, koszt: r !== null ? r : auto, recznie: r !== null,
+      opis: sur ? opis + " = " + fmtL(sur) + " → " + dni + " " + (dni === 1 ? "dzień" : "dni") + " × " + fmtL(num(c.dzwig), 0) + " zł/dzień" : "brak urządzeń wymagających dźwigu" };
   }
 
   /* Osobodni montażu jednej pozycji (urządzenia wg typów szablonu + utrudnienia + słupki). */
@@ -400,9 +431,10 @@
   /* dod: dodatkowe urządzenia wyceny łączonej [{ d, m, sz }] – ta sama ekipa i wyjazdy, osobodni i materiały się sumują. */
   function montaz(d, c, m, w, q, sl, osoby, sz, dod) {
     dod = dod || [];
-    var os = Math.max(1, osoby), st = stawkaSrednia(os, c);
-    var poz = [{ m: m, osd: osdPozycji(d, c, m, sz, sl) }].concat(dod.map(function (x) { return { m: x.m, osd: osdPozycji(x.d, c, x.m, x.sz, sl) }; }));
-    poz.forEach(function (p) { p.urz = q ? p.m.suma2500 : p.m.suma2000; p.sl = sl ? c.slupek * p.m.MP : 0; });
+    var os = Math.max(1, osoby), st = stawkaSrednia(os, c), KOB = c.kobN, GDW = c.gdwN;
+    var dz = w.dzwigi || [];
+    var poz = [{ m: m, osd: osdPozycji(d, c, m, sz, sl), tir: w.tirWlasne || 0 }].concat(dod.map(function (x) { return { m: x.m, osd: osdPozycji(x.d, c, x.m, x.sz, sl), tir: x.tir }; }));
+    poz.forEach(function (p, i) { p.urz = q ? p.m.suma2500 : p.m.suma2000; p.sl = sl ? c.slupek * p.m.MP : 0; p.dzw = dz[i] ? dz[i].koszt : 0; });
     var suma = function (f) { return poz.reduce(function (a, p) { return a + f(p); }, 0); };
     var osd = suma(function (p) { return p.osd; }), MP = suma(function (p) { return p.m.MP; });
     function podroze(wyj) { return w.podrPom + os * (w.rozl + czasPodrozy(w.kmMon, wyj, d.wzor, c)); }
@@ -418,7 +450,7 @@
       paliwo: km / 100 * ceil(c.spalanie * c.paliwo),
       hotel: w.krk ? 0 : c.hotel * (dni + 1) * os,
       transport: num(d.tir_cena) * num(d.tir),
-      dzwig: opt(d.dzwig_koszt) !== null ? Number(d.dzwig_koszt) : c.dzwig * w.dzwDni,
+      dzwig: opt(d.dzwig_koszt) !== null ? Number(d.dzwig_koszt) : w.dzwigSuma != null ? w.dzwigSuma : c.dzwig * w.dzwDni,
       rozladunek_sprzet: num(d.rozl_cena) * (sz.opcje.rozladunekNaTransport ? num(d.tir) : 1),
       rozladunek_ludzie: st * w.rozl * os,
       dojazdy: st * (podr - os * w.rozl),
@@ -429,27 +461,32 @@
     var baza = 0;
     for (var key in k) baza += k[key];
     function narzuty(b, zysk) {
-      var brutto = b / (1 - (c.kob + c.gdw + zysk));
-      return { brutto: brutto, podatek: c.podatek * (robocizna + brutto * (c.gdw + zysk)) };
+      var brutto = b / (1 - (KOB + GDW + zysk));
+      return { brutto: brutto, podatek: c.podatek * (robocizna + brutto * (GDW + zysk)) };
     }
     var zysk = num(d.zysk), zysk2 = num(d.zysk2);
     var n = narzuty(baza, zysk), n2 = narzuty(baza, zysk2);
     var cena = n.brutto + n.podatek, cena2 = n2.brutto + n2.podatek;
     var tyg = w.krk ? ceil(dni / c.dni_tydzien) : wyj;
-    /* cena pozycji: jej materiały i słupki + udział we wspólnych kosztach wg osobodni; suma pozycji = cena całości */
-    var wsp = baza - k.urzadzenia - k.slupki;
+    /* cena pozycji proporcjonalnie do kosztów, które pozycja dokłada: jej materiały, słupki i Spider Crane wprost,
+       transport wg liczby transportów pozycji, reszta wspólnych kosztów (ekipa, dojazdy, hotel, rozładunek) wg osobodni;
+       suma pozycji = cena całości, ta sama proporcja przy każdym poziomie zysku */
+    var dzSuma = poz.reduce(function (a, p) { return a + p.dzw; }, 0), tirSuma = poz.reduce(function (a, p) { return a + num(p.tir); }, 0);
+    var wsp = baza - k.urzadzenia - k.slupki - k.dzwig - k.transport;
     var pozycje = dod.length ? poz.map(function (p) {
-      var u = baza ? (p.urz + p.sl + (osd ? wsp * p.osd / osd : wsp / poz.length)) / baza : 0;
-      return { osd: p.osd, MP: p.m.MP, koszt: u * baza, cena: u * cena, cena2: u * cena2, cenaMP: p.m.MP ? u * cena / p.m.MP : 0, cenaMP2: p.m.MP ? u * cena2 / p.m.MP : 0 };
+      var udzOsd = osd ? p.osd / osd : 1 / poz.length;
+      var dzP = dzSuma ? k.dzwig * p.dzw / dzSuma : k.dzwig * udzOsd, trP = tirSuma ? k.transport * num(p.tir) / tirSuma : k.transport * udzOsd;
+      var u = baza ? (p.urz + p.sl + dzP + trP + wsp * udzOsd) / baza : 0;
+      return { u: u, osd: p.osd, MP: p.m.MP, koszt: u * baza, cena: u * cena, cena2: u * cena2, cenaMP: p.m.MP ? u * cena / p.m.MP : 0, cenaMP2: p.m.MP ? u * cena2 / p.m.MP : 0 };
     }) : null;
     return {
       pozycje: pozycje,
       robocizna: robocizna, osoby: os, stawka: st, osd: osd, iteracje: iteracje, wyjazdy: wyj, podroze: podr,
       osobodni: osdAll, dni: dni, km: km, koszty: k, baza: baza,
-      kob: n.brutto * c.kob, gdw: n.brutto * c.gdw, zysk: n.brutto * zysk, podatek: n.podatek,
+      kob: n.brutto * KOB, gdw: n.brutto * GDW, zysk: n.brutto * zysk, podatek: n.podatek,
       /* Jak w Excelu: koszt rzeczywisty = koszty + KOB + podatek, zysk z narzutem = cena − koszt = zysk + GDW. */
-      zyskN: n.brutto * (c.gdw + zysk), zyskN2: n2.brutto * (c.gdw + zysk2),
-      cena: cena, koszt: cena - n.brutto * (c.gdw + zysk), cenaMP: MP ? cena / MP : 0,
+      zyskN: n.brutto * (GDW + zysk), zyskN2: n2.brutto * (GDW + zysk2),
+      cena: cena, koszt: cena - n.brutto * (GDW + zysk), cenaMP: MP ? cena / MP : 0,
       cenaMPeur: MP && num(d.eur) > 0 ? cena / MP / num(d.eur) : 0,
       cena2: cena2, zysk2: n2.brutto * zysk2, podatek2: n2.podatek, cenaMP2: MP ? cena2 / MP : 0,
       tygodnie: tyg, tygodnieZakres: [tyg, Math.max(tyg, Math.round(tyg * 1.25))],
@@ -500,7 +537,7 @@
     if (opt(dx.tir) === null) dx.tir = tirAuto;
     dx.typ = sz.nazwa; dx.model = sz.model; dx.wysokosci = sz.wysokosci; dx.pokazAgregaty = sz.opcje.agregaty;
     var m = sz.model === "lista" ? materialyLista(dx, c, sz) : materialy(dx, c, sz);
-    return { d: dx, m: m, sz: sz, c: c, tir: num(dx.tir), dzwDni: wspolne(dx, c, sz).dzwDni };
+    return { d: dx, m: m, sz: sz, c: c, tir: num(dx.tir), dzwDni: wspolne(dx, c, sz).dzwDni, dzwig: dzwig(dx, c, sz) };
   }
 
   function oblicz(dane, szablon, szablony) {
@@ -516,14 +553,20 @@
     /* stawki zmienione tylko w tej wycenie (hotel, dieta, paliwo, dźwig…) nie ruszają szablonu */
     var c = sz.cennik = Object.assign({}, sz.cennik);
     Object.keys(d.nadpis || {}).forEach(function (k) { var v = opt(d.nadpis[k]); if (v !== null && k in c) c[k] = v; });
+    narzutyNominalne(c);
     d.typ = sz.nazwa; d.wysokosci = sz.wysokosci; d.model = sz.model; d.pokazAgregaty = sz.opcje.agregaty;
     var m = sz.model === "lista" ? materialyLista(d, c, sz) : materialy(d, c, sz), os = Math.max(1, num(d.osoby, 4));
-    /* wycena łączona: drugie urządzenie (na razie jedno) z własnego szablonu, wspólne wyjazdy i ekipa */
-    var dod = (Array.isArray(d.dodatkowe) ? d.dodatkowe : []).slice(0, 1).map(function (x) { return x && x.szablon ? pozycjaDodatkowa(x, d, szablony) : null; })
+    /* wycena łączona: do trzech kolejnych urządzeń (razem 4) z własnych szablonów, wspólne wyjazdy i ekipa */
+    var dod = (Array.isArray(d.dodatkowe) ? d.dodatkowe : []).slice(0, MAX_DOD).map(function (x, i) { var p = x && x.szablon ? pozycjaDodatkowa(x, d, szablony) : null; if (p) p.idx = i; return p; })
       .filter(function (x) { return x && x.m.platformy > 0; });
+    var tirWlasne = num(d.tir);
     if (dod.length && opt((dane || {}).tir) === null) { d.tir += dod.reduce(function (a, x) { return a + x.tir; }, 0); tirAuto = d.tir; }
     var w = wspolne(d, c, sz);
     dod.forEach(function (x) { w.dzwDni += x.dzwDni; });
+    /* Spider Crane: każde urządzenie ze swoją stawką i czasem wynajmu; razem = suma (albo kwota wpisana w Transport i ekipa) */
+    w.dzwigi = [dzwig(d, c, sz)].concat(dod.map(function (x) { return x.dzwig; }));
+    w.dzwigSuma = w.dzwigi.reduce(function (a, x) { return a + x.koszt; }, 0);
+    w.tirWlasne = tirWlasne;
     var nazwy = nazwyWariantow(sz);
     var warianty = nazwy.map(function (nazwa, i) {
       return Object.assign({ nazwa: nazwa }, montaz(d, c, m, w, i % 2 === 1, i >= 2, os, sz, dod));
@@ -539,14 +582,14 @@
       brakB: wszystkie.some(function (x) { return x.m.brakB; }),
       konsBaza: wszystkie.reduce(function (s, x) { return s + (x.sz.opcje.konserwacjaNa === "szt" ? x.m.platformy : x.m.MP); }, 0)
     };
-    function mn(z) { return (1 + c.podatek * (c.gdw + z)) / (1 - (c.kob + c.gdw + z)); }
+    function mn(z) { return (1 + c.podatek * (c.gdwN + z)) / (1 - (c.kobN + c.gdwN + z)); }
     var mnoznik = mn(num(d.zysk)), mnoznik2 = mn(num(d.zysk2));
     var sl37 = [warianty[2].cena - warianty[0].cena, warianty[3].cena - warianty[1].cena];
     var sl37b = [warianty[2].cena2 - warianty[0].cena2, warianty[3].cena2 - warianty[1].cena2];
     var wynik = {
       tirAuto: tirAuto, razem: razem,
       /* dodatkowe urządzenia: dane, materiały i szablon każdego (pusta lista = zwykła wycena) */
-      dodatkowe: dod.map(function (x) { return { dane: x.d, mat: x.m, szablon: x.sz, tir: x.tir, dzwDni: x.dzwDni }; }),
+      dodatkowe: dod.map(function (x) { return { idx: x.idx, dane: x.d, mat: x.m, szablon: x.sz, tir: x.tir, dzwDni: x.dzwDni, dzwig: x.dzwig }; }),
       dane: d, cennik: c, szablon: sz, mat: m, wspolne: w, warianty: warianty,
       analiza: analiza, analizaWariant: nazwy[a],
       opcje: {
@@ -566,28 +609,35 @@
     return wynik;
   }
 
-  /* Cena wariantu przy dowolnym procencie zysku (te same koszty i narzuty): do drabinki negocjacyjnej. */
+  /* Cena wariantu przy dowolnym procencie zysku (te same koszty i narzuty): do drabinki negocjacyjnej.
+     Pozycje wyceny łączonej: cena pozycji = jej udział w kosztach × cena (udział nie zależy od zysku). */
   function cenaPrzyZysku(r, w, z) {
-    var c = r.cennik, b = w.baza / (1 - (c.kob + c.gdw + z)), pod = c.podatek * (w.robocizna + b * (c.gdw + z)), cena = b + pod;
+    var c = r.cennik, kob = c.kobN != null ? c.kobN : c.kob * KOB_WSP, gdw = c.gdwN != null ? c.gdwN : c.gdw * GDW_WSP;
+    var b = w.baza / (1 - (kob + gdw + z)), pod = c.podatek * (w.robocizna + b * (gdw + z)), cena = b + pod;
     var mp = r.razem ? r.razem.MP : r.mat.MP;
-    return { zysk: z, cena: cena, zyskN: b * (c.gdw + z), cenaMP: mp ? cena / mp : 0 };
+    return { zysk: z, cena: cena, zyskN: b * (gdw + z), cenaMP: mp ? cena / mp : 0,
+      pozycje: w.pozycje ? w.pozycje.map(function (p) { return { cena: p.u * cena, cenaMP: p.MP ? p.u * cena / p.MP : 0, MP: p.MP }; }) : null };
   }
-  /* Drabinka: od zysku ofertowego w dół co 2 pkt proc. do 0%, z zyskiem do porównania; rabat liczony od ceny ofertowej. */
+  /* Drabinka: od zysku ofertowego w dół co krok (domyślnie 0,5 pkt proc.) do progu minimalnego (domyślnie 7%, NKPXLH: co 2 pkt do 12%),
+     z zyskiem do porównania; rabat liczony od ceny ofertowej. */
   function negocjacje(r, wi) {
-    var w = r.warianty[wi || 0], zA = num(r.dane.zysk), zB = num(r.dane.zysk2), poz = [zA, zB, 0];
-    for (var p = Math.floor(zA * 100 / 2) * 2; p > 0; p -= 2) poz.push(p / 100);
-    poz = poz.map(function (z) { return Math.round(z * 10000) / 10000; }).filter(function (z, i, a) { return z <= zA + 1e-9 && a.indexOf(z) === i; }).sort(function (a, b) { return b - a; });
+    var w = r.warianty[wi || 0], zA = num(r.dane.zysk), zB = num(r.dane.zysk2);
+    var ng = Object.assign({}, NEGOCJACJE, (r.szablon && r.szablon.negocjacje) || {});
+    var bp = function (z) { return Math.round(z * 10000); }, krok = Math.max(1, bp(ng.krok)), min = Math.min(bp(ng.min), bp(zA)), poz = [bp(zA), bp(zB), min];
+    for (var p = Math.floor(bp(zA) / krok) * krok; p >= min; p -= krok) poz.push(p);
+    poz = poz.filter(function (z, i, a) { return z <= bp(zA) && a.indexOf(z) === i; }).sort(function (a, b) { return b - a; }).map(function (z) { return z / 10000; });
     var A = cenaPrzyZysku(r, w, zA);
     var wiersze = poz.map(function (z) {
       var x = cenaPrzyZysku(r, w, z);
-      return Object.assign(x, { rabat: A.cena - x.cena, rabatPct: A.cena ? (A.cena - x.cena) / A.cena : 0, oferta: z === Math.round(zA * 10000) / 10000, porownanie: z === Math.round(zB * 10000) / 10000 && zB < zA, prog: z === 0 });
+      return Object.assign(x, { rabat: A.cena - x.cena, rabatPct: A.cena ? (A.cena - x.cena) / A.cena : 0, oferta: bp(z) === bp(zA), porownanie: bp(z) === bp(zB) && zB < zA, prog: bp(z) === min && min < bp(zA) });
     });
-    var B = cenaPrzyZysku(r, w, Math.min(zA, zB)), Z = cenaPrzyZysku(r, w, 0);
-    return { wariant: w.nazwa, zA: zA, zB: Math.min(zA, zB), cenaA: A.cena, cenaB: B.cena, cenaMin: Z.cena, zyskNA: A.zyskN, zyskNB: B.zyskN, wiersze: wiersze };
+    var B = cenaPrzyZysku(r, w, Math.min(zA, zB)), Z = cenaPrzyZysku(r, w, min / 10000);
+    return { wariant: w.nazwa, zA: zA, zB: Math.min(zA, zB), zMin: min / 10000, krok: krok / 10000, cenaA: A.cena, cenaB: B.cena, cenaMin: Z.cena, zyskNA: A.zyskN, zyskNB: B.zyskN, wiersze: wiersze,
+      pozycje: A.pozycje, pozycjeB: B.pozycje, pozycjeMin: Z.pozycje };
   }
 
   var api = {
-    cenaPrzyZysku: cenaPrzyZysku, negocjacje: negocjacje,
+    cenaPrzyZysku: cenaPrzyZysku, negocjacje: negocjacje, MAX_DOD: MAX_DOD, KOB_WSP: KOB_WSP, GDW_WSP: GDW_WSP, TECH_NK41: TECH_NK41, TECH_NK41_STARY: TECH_NK41_STARY, dzwig: dzwig,
     oblicz: oblicz, domyslneDane: domyslneDane, CENNIK: CENNIK,
     GLEBOKOSCI: szablonNK38().glebokosci.map(function (g) { return g.cm; }),
     szablonNK38: szablonNK38, szablonNK6501: szablonNK6501, szablonNKPXLH: szablonNKPXLH, szablonNK41: szablonNK41, szablonPusty: szablonPusty, nazwyWariantow: nazwyWariantow, szablonyWbudowane: szablonyWbudowane, uzupelnijSzablon: uzupelnijSzablon,

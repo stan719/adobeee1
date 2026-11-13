@@ -399,6 +399,9 @@ table.t tr.negb td { background: var(--good-soft); font-weight: 600; } table.t t
 .para { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 8px 12px; margin-top: 6px; }
 @media (max-width: 480px) { .para { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
 .paryadd { margin-top: 10px; }
+/* kolejne urządzenia wyceny łączonej: każde w osobnej ramce z nagłówkiem pozycji */
+.dodpoz { border: 1px solid var(--line); border-left: 3px solid var(--accent); border-radius: 10px; padding: 10px 12px 12px; margin-bottom: 12px; }
+.dodpoz .paryhd { margin: 0 0 8px; }
 .paper .lub { font-weight: 700; }
 table.t.edt td { padding: 3px 6px; }
 /* tabele edytora szablonu: przewijają się w swojej ramce, a wiersz nagłówków zostaje widoczny */
@@ -514,6 +517,7 @@ html, body { overflow-x: clip; max-width: 100%; }
           <label class="f pNK">Barierki<input id="barierki" type="number" min="0" step="1"><span class="hint">szt. na stronę</span></label>
           <label class="f pNK">Maskownice<input id="maskownice" type="number" min="0" step="1"></label>
           <label class="f"><span id="lblUtr">Utrudnienia ręcznie</span><input id="utr_dod" type="number" min="0" step="0.5"><span class="hint">dodatkowe osobodni</span></label>
+          <label class="f pDzwU">Spider Crane tego urządzenia [zł]<input id="dzwig_urz" type="number" min="0" step="100" class="auto"><span class="hint" id="dzwUrzHint"></span></label>
         </div>
         <div class="g2" id="pozBox" style="margin-top:12px"></div>
         <div class="calcline pNK" id="utrLine"></div>
@@ -525,7 +529,7 @@ html, body { overflow-x: clip; max-width: 100%; }
       </fieldset>
 
       <fieldset class="card" id="dodCard">
-        <legend>Drugie urządzenie <small id="dodNote">wycena łączona: ta sama ekipa i wyjazdy</small></legend>
+        <legend>Kolejne urządzenia <small id="dodNote">wycena łączona: ta sama ekipa i wyjazdy, do 3 kolejnych (razem 4)</small></legend>
         <div id="dodBox"></div>
       </fieldset>
 
@@ -552,6 +556,8 @@ html, body { overflow-x: clip; max-width: 100%; }
           <label class="f">Zysk do porównania [%]<input id="zysk2" type="number" min="0" max="60" step="0.5"><span class="hint">domyślnie 10%</span></label>
           <label class="f pQ"><span id="lblQ">Dopłata Q=2500 [%]</span><input id="q2500" type="number" min="0" max="50" step="0.5" class="auto"><span class="hint" id="q2500Hint">puste = z szablonu</span></label>
           <label class="f pQs"><span id="lblQs">Dopłata 2500 kg [zł/szt.]</span><input id="dopB" type="number" min="0" step="100" class="auto"><span class="hint" id="dopBHint"></span></label>
+          <label class="f">KOB [%]<input id="nad_kob" type="number" min="0" step="0.005" class="auto"><span class="hint" id="hintKob">stawka efektywna; w obliczeniach × 1,03 (0,5% → 0,515%)</span></label>
+          <label class="f">GDW [%]<input id="nad_gdw" type="number" min="0" step="0.005" class="auto"><span class="hint" id="hintGdw">stawka efektywna; w obliczeniach × 1,074 (2,5% → 2,685%)</span></label>
           <label class="f">Kurs EUR/PLN<input id="eur" type="number" min="0" step="0.001"></label>
           <label class="f pUSD">Kurs USD/PLN<input id="usd" type="number" min="0" step="0.001"></label>
           <label class="f"><span id="lblKA">Konserwacja, cena 1 [zł/MP/mies.]</span><input id="konserwA" type="number" min="0" step="1"><span class="hint">domyślnie 40 zł</span></label>
@@ -621,14 +627,16 @@ html, body { overflow-x: clip; max-width: 100%; }
 (function () {
   "use strict";
   /* Wersja programu: podnoś przy każdym wydaniu (pokazywana na pulpicie, zapisywana w kopii zapasowej). */
-  var WERSJA = { nr: "1.68", data: "13.11.2026" };
+  var WERSJA = { nr: "1.69", data: "13.11.2026" };
   var E = window.NK38, X = window.NK38X;
   var LS = { robocze: "nk38.robocze.v1", drafty: "nk38.szkice.v1", draft: "nk38.szkic.v1", tab: "nk38.zakladka", sel: "nk38.wariant", logo: "nk38.logo.v1", podpis: "nk38.podpis.v1",
-    szablony: "nk38.szablony.v1", wyceny: "nk38.wyceny.v1", tekstyOferty: "nk38.szablon.v1", numery: "nk38.numery.v1", cennikStary: "nk38.cennik.v1", usuniete: "nk38.usuniete.v1", migracja2: "nk38.migracja2", migracja3: "nk38.migracja3", migracja4: "nk38.migracja4", migracja5: "nk38.migracja5", migracja6: "nk38.migracja6", migracja7: "nk38.migracja7", migracja8: "nk38.migracja8", historia: "nk38.historia.v1", uzytkownik: "nk38.uzytkownik.v1" };
+    szablony: "nk38.szablony.v1", wyceny: "nk38.wyceny.v1", tekstyOferty: "nk38.szablon.v1", numery: "nk38.numery.v1", cennikStary: "nk38.cennik.v1", usuniete: "nk38.usuniete.v1", migracja2: "nk38.migracja2", migracja3: "nk38.migracja3", migracja4: "nk38.migracja4", migracja5: "nk38.migracja5", migracja6: "nk38.migracja6", migracja7: "nk38.migracja7", migracja8: "nk38.migracja8", migracja9: "nk38.migracja9", historia: "nk38.historia.v1", uzytkownik: "nk38.uzytkownik.v1" };
   var NUMF = ["km", "km_pom", "km_mon", "S", "D", "NP", "agregaty", "magistrala", "barierki", "maskownice", "utr_dod",
-    "tir", "tir_cena", "rozl_cena", "rozl_dni", "dzwig_koszt", "osoby", "wyjazdy", "eur", "usd", "h1", "h2", "przeswit", "konserwA", "konserwB", "dlMiejsca", "dopB", "agr3", "agr6"];
-  var OPTF = { km_pom: 1, km_mon: 1, rozl_dni: 1, dzwig_koszt: 1, wyjazdy: 1, h1: 1, h2: 1, przeswit: 1, dlMiejsca: 1, dopB: 1, agr3: 1, agr6: 1, tir: 1 };
+    "tir", "tir_cena", "rozl_cena", "rozl_dni", "dzwig_koszt", "osoby", "wyjazdy", "eur", "usd", "h1", "h2", "przeswit", "konserwA", "konserwB", "dlMiejsca", "dopB", "agr3", "agr6", "dzwig_urz"];
+  var OPTF = { km_pom: 1, km_mon: 1, rozl_dni: 1, dzwig_koszt: 1, wyjazdy: 1, h1: 1, h2: 1, przeswit: 1, dlMiejsca: 1, dopB: 1, agr3: 1, agr6: 1, tir: 1, dzwig_urz: 1 };
   var PCTF = ["zysk", "zysk2", "q2500"];
+  /* stawki z szablonu zmieniane tylko w tej wycenie, wpisywane w formularzu: [klucz, mnożnik wyświetlania] (KOB i GDW w %) */
+  var NAD = [["hotel", 1], ["dieta", 1], ["kob", 100], ["gdw", 100]];
   var TXTF = ["nazwa", "data", "wzor", "dl", "agrOpis"];
   var DIMKEYS = ["szer1", "szer2", "dl500", "dl540", "dl550"];
   var CENNIK_POLA = [
@@ -650,7 +658,7 @@ html, body { overflow-x: clip; max-width: 100%; }
     ["stawka_1", "Stawka 1. osoby", "zł"], ["stawka_2", "Stawka 2. osoby", "zł"], ["stawka_kolejna", "Stawka kolejnych", "zł"],
     ["pomiary_osoby", "Pomiary: osób", ""], ["odbiory_osoby", "Odbiory: osób", ""], ["odbiory_wyjazdy", "Odbiory: wyjazdów", ""],
     ["dieta", "Dieta dzienna", "zł"], ["hotel", "Hotel / doba / osoba", "zł"],
-    ["Narzuty", null], ["kob", "KOB", "×"], ["gdw", "GDW", "×"], ["podatek", "Podatek efektywny", "×"]
+    ["Narzuty", null], ["kob", "KOB efektywny (liczony × 1,03)", "×"], ["gdw", "GDW efektywny (liczony × 1,074)", "×"], ["podatek", "Podatek efektywny", "×"]
   ];
   var GRUPY = ["Mechanika", "Hydraulika", "Elektryka", "Inne"];
   var TABS = [["wynik", "Warianty"], ["neg", "Negocjacje"], ["ekipa", "Ekipa"], ["zestaw", "Zestawienie"], ["obl", "Obliczenia"], ["wyceny", "Wyceny"]];
@@ -710,7 +718,7 @@ html, body { overflow-x: clip; max-width: 100%; }
     zmiana: function (klucz) {
       if (!this.h || this.wczytuje) return;
       var rodzaj = klucz === LS.wyceny ? "wyceny" : klucz === LS.robocze ? "robocze" : klucz === LS.historia ? "historia" :
-        [LS.szablony, LS.tekstyOferty, LS.numery, LS.usuniete, LS.migracja2, LS.migracja3, LS.migracja4, LS.migracja5, LS.migracja6, LS.migracja7, LS.migracja8, LS.uzytkownik].indexOf(klucz) >= 0 ? "ustawienia" : null;
+        [LS.szablony, LS.tekstyOferty, LS.numery, LS.usuniete, LS.migracja2, LS.migracja3, LS.migracja4, LS.migracja5, LS.migracja6, LS.migracja7, LS.migracja8, LS.migracja9, LS.uzytkownik].indexOf(klucz) >= 0 ? "ustawienia" : null;
       if (!rodzaj) return;
       var self = this; clearTimeout(this.timery[rodzaj]);
       this.timery[rodzaj] = setTimeout(function () { self.pisz(rodzaj, self.dane(rodzaj)).catch(function () { toast("Nie udało się zapisać pliku w folderze danych. Sprawdź dostęp do folderu."); }); }, 400);
@@ -723,7 +731,7 @@ html, body { overflow-x: clip; max-width: 100%; }
         for (var r in PLIKI) await this.pisz(r, this.dane(r));
         toast("Folder danych gotowy: zapisano w nim obecne dane.");
       } else {
-        var map = { szablony: LS.szablony, tekstyOferty: LS.tekstyOferty, numery: LS.numery, usuniete: LS.usuniete, migracja2: LS.migracja2, migracja3: LS.migracja3, migracja4: LS.migracja4, migracja5: LS.migracja5, migracja6: LS.migracja6, migracja7: LS.migracja7, migracja8: LS.migracja8, uzytkownik: LS.uzytkownik };
+        var map = { szablony: LS.szablony, tekstyOferty: LS.tekstyOferty, numery: LS.numery, usuniete: LS.usuniete, migracja2: LS.migracja2, migracja3: LS.migracja3, migracja4: LS.migracja4, migracja5: LS.migracja5, migracja6: LS.migracja6, migracja7: LS.migracja7, migracja8: LS.migracja8, migracja9: LS.migracja9, uzytkownik: LS.uzytkownik };
         this.wczytuje = true;   // bez zapisu zwrotnego podczas wczytywania
         Object.keys(map).forEach(function (k) { if (ust[k] !== undefined) lsSet(map[k], ust[k]); });
         lsSet(LS.wyceny, (await this.czytaj("wyceny")) || []); lsSet(LS.robocze, (await this.czytaj("robocze")) || []); lsSet(LS.historia, (await this.czytaj("historia")) || []);
@@ -761,7 +769,7 @@ html, body { overflow-x: clip; max-width: 100%; }
         } catch (e) { this.db = null; }
       }
       this.cache = { szablony: lsGet(LS.szablony, null), tekstyOferty: lsGet(LS.tekstyOferty, null), numery: lsGet(LS.numery, null),
-        usuniete: lsGet(LS.usuniete, null), migracja2: lsGet(LS.migracja2, null), migracja3: lsGet(LS.migracja3, null), migracja4: lsGet(LS.migracja4, null), migracja5: lsGet(LS.migracja5, null), migracja6: lsGet(LS.migracja6, null), migracja7: lsGet(LS.migracja7, null), migracja8: lsGet(LS.migracja8, null), uzytkownik: lsGet(LS.uzytkownik, null) };
+        usuniete: lsGet(LS.usuniete, null), migracja2: lsGet(LS.migracja2, null), migracja3: lsGet(LS.migracja3, null), migracja4: lsGet(LS.migracja4, null), migracja5: lsGet(LS.migracja5, null), migracja6: lsGet(LS.migracja6, null), migracja7: lsGet(LS.migracja7, null), migracja8: lsGet(LS.migracja8, null), migracja9: lsGet(LS.migracja9, null), uzytkownik: lsGet(LS.uzytkownik, null) };
       if (Plik.dostepny()) {   // wersja offline: ostatnio używany folder danych
         var hf = await Plik.uchwyt();
         if (hf) {
@@ -890,6 +898,16 @@ html, body { overflow-x: clip; max-width: 100%; }
       lista.forEach(function (x) { if (x.id === "nk6501" && x.pozycje) x.pozycje = x.pozycje.filter(function (q) { return q.id !== "malowanie"; }); });
       Store.set("migracja5", true); Store.set("szablony", lista.map(E.uzupelnijSzablon));
     }
+    if (!Store.get("migracja9", false)) {   // 13.11: KOB/GDW w cenniku jako stawki efektywne (0,5% / 2,5%), liczone × 1,03 / × 1,074; NK41 w ofercie bez wymiarów pojazdów
+      lista.forEach(function (x) {
+        x.cennik = x.cennik || {};
+        var ef = function (v, nom, efe, wsp) { return Math.abs(v - nom) < 1e-9 || Math.abs(v - efe) < 1e-9 ? efe : v / wsp; };   // 0,5% / 2,5% (np. nowe wbudowane) zostają
+        if (x.cennik.kob != null) x.cennik.kob = ef(x.cennik.kob, 0.00515, 0.005, E.KOB_WSP);
+        if (x.cennik.gdw != null) x.cennik.gdw = ef(x.cennik.gdw, 0.02685, 0.025, E.GDW_WSP);
+        if (x.id === "nk41" && x.teksty && (!x.teksty.tech || x.teksty.tech === E.TECH_NK41_STARY)) x.teksty.tech = E.TECH_NK41;
+      });
+      Store.set("migracja9", true); Store.set("szablony", lista.map(E.uzupelnijSzablon));
+    }
     lista.forEach(function (x) {   // nowe ustawienia wbudowanych urządzeń dla szablonów zapisanych wcześniej
       var wb = E.szablonyWbudowane().filter(function (y) { return y.id === x.id; })[0];
       if (wb && x.opcje && x.opcje.slupki === undefined) x.opcje.slupki = wb.opcje.slupki;
@@ -920,8 +938,10 @@ html, body { overflow-x: clip; max-width: 100%; }
     var lista = sz.model === "lista", c = sz.cennik, pokaz = function (sel, on) { document.querySelectorAll(sel).forEach(function (el) { el.classList.toggle("ukryj", !on); }); };
     pokaz(".zagl", sz.wysokosci.tryb === "zaglebienie"); pokaz(".nzagl", sz.wysokosci.tryb !== "zaglebienie");
     var cs = sz.cennik; $("nad_hotel").placeholder = cs.hotel; $("nad_dieta").placeholder = cs.dieta; $("hintHotel").textContent = "puste = " + cs.hotel + " zł z szablonu";
+    $("nad_kob").placeholder = +(cs.kob * 100).toFixed(4); $("nad_gdw").placeholder = +(cs.gdw * 100).toFixed(4);
     pokaz(".pNK", !lista); pokaz(".pAgr", lista ? sz.opcje.agregaty : true); pokaz(".pAgrSplit", !sz.opcje.mocAgregatu && (lista ? sz.opcje.agregaty : true));   // bez podziału 3/6 kW, gdy urządzenie ma jedną moc agregatu
-    pokaz(".pDzw", !lista || c.dzwig > 0 || d.dzwig_koszt != null);
+    pokaz(".pDzw", !lista || c.dzwig > 0 || d.dzwig_koszt != null || (d.dodatkowe || []).length > 0);
+    pokaz(".pDzwU", !lista || c.dzwig > 0 || d.dzwig_urz != null);
     pokaz(".pUSD", lista); pokaz(".pQ", !!sz.wariantB.nazwa && sz.wariantB.tryb === "%"); pokaz(".pQs", !!sz.wariantB.nazwa && sz.wariantB.tryb === "szt");
     $("lblQs").textContent = "Dopłata " + (sz.wariantB.nazwa || "2500 kg") + " [" + (sz.wariantB.waluta === "PLN" || !sz.wariantB.waluta ? "zł" : sz.wariantB.waluta) + "/szt.]";
     ["S", "D", "NP"].forEach(function (k) { $("box" + k).classList.toggle("ukryj", lista && !sz.typy[k].nazwa); });
@@ -980,62 +1000,78 @@ html, body { overflow-x: clip; max-width: 100%; }
     NUMF.forEach(function (k) { $(k).value = d[k] == null ? "" : d[k]; });
     PCTF.forEach(function (k) { $(k).value = d[k] == null ? "" : +(d[k] * 100).toFixed(4); });
     $("szablon").value = szablonAktywny().id;
-    ["hotel", "dieta"].forEach(function (k) { $("nad_" + k).value = (d.nadpis || {})[k] != null ? d.nadpis[k] : ""; });
+    NAD.forEach(function (x) { var v = (d.nadpis || {})[x[0]]; $("nad_" + x[0]).value = v != null ? +(v * x[1]).toFixed(6) : ""; });
     renderPary(d);
     renderDod(d);
     buildDimTable();
     lokButtons(d.lok);
   }
 
-  /* Wycena łączona: drugie urządzenie z innego (lub tego samego) szablonu; liczy się z tą samą ekipą i wyjazdami,
-     w ofercie i raporcie jako Pozycja 2 z własną ceną. */
-  var DOD_NUM = ["S", "D", "NP", "agregaty", "agr3", "agr6", "dopB", "utr_dod", "h1", "h2", "przeswit", "dlMiejsca"], DOD_OPT = { agr3: 1, agr6: 1, dopB: 1, h1: 1, h2: 1, przeswit: 1, dlMiejsca: 1 };
+  /* Wycena łączona: do 3 kolejnych urządzeń (razem 4) z innych (lub tych samych) szablonów; liczą się z tą samą ekipą i wyjazdami,
+     w ofercie i raporcie jako Pozycja 2, 3, 4 z własną ceną. */
+  var DOD_NUM = ["S", "D", "NP", "agregaty", "agr3", "agr6", "dopB", "utr_dod", "h1", "h2", "przeswit", "dlMiejsca", "dzwig_urz"], DOD_OPT = { agr3: 1, agr6: 1, dopB: 1, h1: 1, h2: 1, przeswit: 1, dlMiejsca: 1, dzwig_urz: 1 };
+  var MAX_DOD = E.MAX_DOD || 3;
   function renderDod(d) {
-    var x = (d.dodatkowe || [])[0];
-    if (!x) {
-      $("dodBox").innerHTML = '<div class="row"><button type="button" class="btn small" id="bDodAdd">+ Dodaj drugie urządzenie</button>' +
-        '<span class="note">np. NK38 i NK41 w jednym garażu: wspólne dojazdy, hotel i rozładunek, w ofercie dwie pozycje</span></div>';
-      return;
-    }
-    var sz = szablony.filter(function (s) { return s.id === x.szablon; })[0] || szablony[0], lista = sz.model === "lista";
-    var pole = function (k, lbl, hint, ph) {
-      var v = x[k];
-      return '<label class="f">' + esc(lbl) + '<input type="' + (k === "dl" || k === "agrOpis" ? "text" : "number") + '" min="0" step="' + (k === "utr_dod" ? "0.5" : "1") + '" data-dod="' + k + '" value="' + esc(v == null ? "" : v) + '"' +
-        (ph ? ' placeholder="' + esc(ph) + '"' : "") + ">" + (hint ? '<span class="hint">' + esc(hint) + "</span>" : "") + "</label>";
-    };
-    var h = '<div class="g3"><label class="f">Szablon urządzenia<select data-dod-sz>' + szablony.map(function (s) {
-      return '<option value="' + esc(s.id) + '"' + (s.id === sz.id ? " selected" : "") + ">" + esc(s.nazwa) + "</option>";
-    }).join("") + "</select></label>";
-    ["S", "D", "NP"].forEach(function (k) {
-      var t = sz.typy[k]; if (lista && !t.nazwa) return;
-      h += pole(k, lista ? t.nazwa : sz.nazwa + k, t.mp + " MP" + (lista && t.cena ? " · " + fmtPLN.format(t.cena) + " " + t.waluta + "/szt." : ""));
-    });
-    if (!lista || sz.opcje.agregaty) {
-      var jednaMoc = !!sz.opcje.mocAgregatu, podzial = !jednaMoc && (x.agr3 != null || x.agr6 != null);
-      h += podzial ? '<label class="f">Agregaty<input type="number" disabled value="' + ((+x.agr3 || 0) + (+x.agr6 || 0)) + '"><span class="hint">= 3 kW + 6 kW</span></label>' : pole("agregaty", "Agregaty", "wg układu garażu");
-      if (!jednaMoc) h += pole("agr3", "w tym 3 kW", "w ofercie moc 3/6kW") + pole("agr6", "w tym 6 kW", "podział tylko w raporcie");
-    }
-    if (sz.wariantB.nazwa && sz.wariantB.tryb === "szt") h += pole("dopB", "Dopłata " + sz.wariantB.nazwa + " [" + (sz.wariantB.waluta === "PLN" || !sz.wariantB.waluta ? "zł" : sz.wariantB.waluta) + "/szt.]", Number(sz.wariantB.wartosc) ? "puste = " + sz.wariantB.wartosc + " " + sz.wariantB.waluta + "/szt." : "puste: wariant niedostępny", Number(sz.wariantB.wartosc) ? String(sz.wariantB.wartosc) : "brak");
-    h += pole("utr_dod", lista ? "Tonaż [osd]" : "Utrudnienia ręcznie", "dodatkowe osobodni");
-    h += "</div><div class=\"g3\" style=\"margin-top:10px\">";
-    if (sz.wysokosci.tryb === "zaglebienie") h += pole("h1", "Zagłębienie H1 [cm]") + pole("h2", "Zagłębienie H2 [cm]") + pole("dl", "Długość zagłębienia [cm]", "puste = 530 cm", "530");
-    h += pole("przeswit", "Prześwit [cm]");
-    if (sz.wysokosci.tryb !== "zaglebienie") h += pole("dlMiejsca", "Długość miejsca / pojazdów [cm]", "do danych technicznych oferty", "500");
-    h += pole("agrOpis", "Układ agregatów", "puste = liczba agregatów; wpisz np. 3+3", "np. 3+3");
-    h += '</div><div class="row" style="margin-top:10px"><button type="button" class="linkbtn" id="bDodDel">Usuń drugie urządzenie</button><span class="note" id="dodInfo"></span></div>';
+    var lista0 = (d.dodatkowe || []).slice(0, MAX_DOD);
+    var h = lista0.map(function (x, i) {
+      var sz = szablony.filter(function (s) { return s.id === x.szablon; })[0] || szablony[0], lista = sz.model === "lista";
+      var pole = function (k, lbl, hint, ph, hid) {
+        var v = x[k];
+        return '<label class="f">' + esc(lbl) + '<input type="' + (k === "dl" || k === "agrOpis" ? "text" : "number") + '" min="0" step="' + (k === "utr_dod" ? "0.5" : k === "dzwig_urz" ? "100" : "1") + '" data-dod="' + k + '" data-dodi="' + i + '" value="' + esc(v == null ? "" : v) + '"' +
+          (ph ? ' placeholder="' + esc(ph) + '"' : "") + (DOD_OPT[k] ? ' class="auto"' : "") + ">" + (hint || hid ? '<span class="hint"' + (hid ? ' id="' + hid + '"' : "") + '>' + esc(hint || "") + "</span>" : "") + "</label>";
+      };
+      var g = '<div class="dodpoz" data-dodpoz="' + i + '"><div class="paryhd"><span class="ofsep">Pozycja ' + (i + 2) + ' · ' + esc(sz.nazwa) + '</span><button type="button" class="linkbtn" data-dod-del="' + i + '">Usuń pozycję ' + (i + 2) + '</button></div>' +
+        '<div class="g3"><label class="f">Szablon urządzenia<select data-dod-sz="' + i + '">' + szablony.map(function (s) {
+          return '<option value="' + esc(s.id) + '"' + (s.id === sz.id ? " selected" : "") + ">" + esc(s.nazwa) + "</option>";
+        }).join("") + "</select></label>";
+      ["S", "D", "NP"].forEach(function (k) {
+        var t = sz.typy[k]; if (lista && !t.nazwa) return;
+        g += pole(k, lista ? t.nazwa : sz.nazwa + k, t.mp + " MP" + (lista && t.cena ? " · " + fmtPLN.format(t.cena) + " " + t.waluta + "/szt." : ""));
+      });
+      if (!lista || sz.opcje.agregaty) {
+        var jednaMoc = !!sz.opcje.mocAgregatu, podzial = !jednaMoc && (x.agr3 != null || x.agr6 != null);
+        g += '<label class="f">Agregaty<input type="number" min="0" step="1" data-dod="agregaty" data-dodi="' + i + '" value="' + esc(podzial ? (+x.agr3 || 0) + (+x.agr6 || 0) : x.agregaty == null ? "" : x.agregaty) + '"' + (podzial ? " disabled" : "") +
+          '><span class="hint" data-dod-agrhint="' + i + '">' + (podzial ? "= 3 kW + 6 kW" : jednaMoc ? "wg układu garażu, każdy " + esc(sz.opcje.mocAgregatu) + " kW" : "wg układu garażu") + "</span></label>";
+        if (!jednaMoc) g += pole("agr3", "w tym 3 kW", "w ofercie moc 3/6kW") + pole("agr6", "w tym 6 kW", "podział tylko w raporcie");
+      }
+      if (sz.wariantB.nazwa && sz.wariantB.tryb === "szt") g += pole("dopB", "Dopłata " + sz.wariantB.nazwa + " [" + (sz.wariantB.waluta === "PLN" || !sz.wariantB.waluta ? "zł" : sz.wariantB.waluta) + "/szt.]", Number(sz.wariantB.wartosc) ? "puste = " + sz.wariantB.wartosc + " " + sz.wariantB.waluta + "/szt." : "puste: wariant niedostępny", Number(sz.wariantB.wartosc) ? String(sz.wariantB.wartosc) : "brak");
+      g += pole("utr_dod", lista ? "Tonaż [osd]" : "Utrudnienia ręcznie", "dodatkowe osobodni");
+      g += pole("dzwig_urz", "Spider Crane tego urządzenia [zł]", "", "", "dodDzwHint" + i);
+      g += "</div><div class=\"g3\" style=\"margin-top:10px\">";
+      if (sz.wysokosci.tryb === "zaglebienie") g += pole("h1", "Zagłębienie H1 [cm]") + pole("h2", "Zagłębienie H2 [cm]") + pole("dl", "Długość zagłębienia [cm]", "puste = 530 cm", "530");
+      g += pole("przeswit", "Prześwit [cm]");
+      if (sz.wysokosci.tryb !== "zaglebienie") g += pole("dlMiejsca", "Długość miejsca / pojazdów [cm]", "do danych technicznych oferty", "500");
+      g += pole("agrOpis", "Układ agregatów", "puste = liczba agregatów; wpisz np. 3+3", "np. 3+3");
+      return g + '</div><p class="note" style="margin-top:8px" data-dodinfo="' + i + '"></p></div>';
+    }).join("");
+    h += lista0.length < MAX_DOD ? '<div class="row' + (lista0.length ? " paryadd" : "") + '"><button type="button" class="btn small" id="bDodAdd">+ Dodaj ' + (lista0.length ? "kolejne" : "drugie") + ' urządzenie</button>' +
+      '<span class="note">' + (lista0.length ? "jeszcze " + (MAX_DOD - lista0.length) + " (razem do 4 urządzeń)" : "np. NK38 i NK41 w jednym garażu: wspólne dojazdy, hotel i rozładunek, w ofercie osobne pozycje") + "</span></div>" :
+      '<p class="note paryadd">Wycena ma już 4 urządzenia (najwięcej w jednej kalkulacji).</p>';
     $("dodBox").innerHTML = h;
   }
   function dodZFormularza() {
-    var sel = document.querySelector("[data-dod-sz]");
-    if (!sel) return [];
-    var x = { szablon: sel.value };
-    document.querySelectorAll("[data-dod]").forEach(function (el) {
-      var k = el.dataset.dod, v = el.value;
-      x[k] = k === "dl" || k === "agrOpis" ? v : v === "" ? (DOD_OPT[k] ? null : 0) : Number(v);
+    var wynikL = [];
+    document.querySelectorAll("[data-dod-sz]").forEach(function (sel) {
+      var i = +sel.dataset.dodSz, x = { szablon: sel.value };
+      document.querySelectorAll('[data-dodi="' + i + '"]').forEach(function (el) {
+        var k = el.dataset.dod, v = el.value;
+        if (el.disabled) return;   // agregaty z podziałem 3 kW + 6 kW liczy silnik
+        x[k] = k === "dl" || k === "agrOpis" ? v : v === "" ? (DOD_OPT[k] ? null : 0) : Number(v);
+      });
+      wynikL[i] = x;
     });
-    return [x];
+    return wynikL.filter(Boolean);
   }
 
+  /* podział agregatów 3 kW + 6 kW kolejnego urządzenia: pole „Agregaty” liczy się samo, bez przerysowania karty */
+  function dodAgregaty(i) {
+    var g = function (k) { return document.querySelector('[data-dodi="' + i + '"][data-dod="' + k + '"]'); }, a3 = g("agr3"), a6 = g("agr6"), ag = g("agregaty"), hint = document.querySelector('[data-dod-agrhint="' + i + '"]');
+    if (!a3 || !a6 || !ag) return;
+    var podzial = a3.value !== "" || a6.value !== "";
+    ag.disabled = podzial;
+    if (podzial) ag.value = (+a3.value || 0) + (+a6.value || 0);
+    if (hint) hint.textContent = podzial ? "= 3 kW + 6 kW" : "wg układu garażu";
+  }
   /* Kolejne pary zagłębienie + prześwit (pierwsza to pola H1/H2/dł./prześwit). */
   function renderPary(d) {
     var pary = d.pary || [], inp = function (i, k, v, num, ph) {
@@ -1051,9 +1087,9 @@ html, body { overflow-x: clip; max-width: 100%; }
 
   function fromForm() {
     var d = E.domyslneDane(), s = state.dane;
-    ["lok", "analiza", "oferta", "opis", "opisNad", "_wid", "_wnazwa", "_rid", "nadpis"].forEach(function (k) { if (s && s[k] !== undefined) d[k] = s[k]; });
+    ["lok", "analiza", "oferta", "opis", "opisNad", "_wid", "_wnazwa", "_rid", "nadpis", "narzutyEf"].forEach(function (k) { if (s && s[k] !== undefined) d[k] = s[k]; });
     d.nadpis = Object.assign({}, d.nadpis || {});
-    ["hotel", "dieta"].forEach(function (k) { var v = $("nad_" + k).value; if (v === "") delete d.nadpis[k]; else d.nadpis[k] = Number(v); });
+    NAD.forEach(function (x) { var v = $("nad_" + x[0]).value; if (v === "") delete d.nadpis[x[0]]; else d.nadpis[x[0]] = Number(v) / x[1]; });
     TXTF.forEach(function (k) { d[k] = $(k).value; });
     d.szablon = $("szablon").value;
     NUMF.forEach(function (k) {
@@ -1102,6 +1138,13 @@ html, body { overflow-x: clip; max-width: 100%; }
     if (d.zysk2 === undefined && d.zysk_min !== undefined) state.dane.zysk2 = d.zysk_min;
     if (!d.szablon && d.typ === "NK37") state.dane.szablon = "nk37";
     state.dane.oferta = normalizujOferte(state.dane);
+    /* wyceny zapisane przed 1.69: KOB/GDW zmienione w wycenie były stawkami nominalnymi (0,515% / 2,685%) */
+    if (!state.dane.narzutyEf) {
+      var nd = state.dane.nadpis = Object.assign({}, state.dane.nadpis || {});
+      if (nd.kob != null) nd.kob = Number(nd.kob) / E.KOB_WSP;
+      if (nd.gdw != null) nd.gdw = Number(nd.gdw) / E.GDW_WSP;
+      state.dane.narzutyEf = 1;
+    }
     toForm(state.dane);
     recalc();
   }
@@ -1177,12 +1220,20 @@ html, body { overflow-x: clip; max-width: 100%; }
     var zA = "zysk " + pct(d.zysk), zB = "zysk " + pct(d.zysk2);
     if (state.view === "kalk") { $("appTitle").textContent = "Kalkulator " + d.typ; sciezka(); }
     $("mpNote").textContent = (r.szablon.model === "lista" ? m.platformy + " " + odm(m.platformy, "urządzenie", "urządzenia", "urządzeń") + " · " + m.MP + " MP" : m.platformy + " platform · " + m.MP + " MP") +
-      (r.dodatkowe.length ? " · razem z drugim " + r.razem.MP + " MP" : "");
-    if ($("dodInfo")) {
-      var x2 = r.dodatkowe[0], pz = w.pozycje;
-      $("dodInfo").textContent = x2 ? x2.mat.platformy + " " + odm(x2.mat.platformy, "urządzenie", "urządzenia", "urządzeń") + " · " + x2.mat.MP + " MP" +
-        (pz ? " · cena pozycji 2: " + zl(pz[1].cena) + " (" + zl(pz[1].cenaMP) + " / MP)" : "") : ((d.dodatkowe || [])[0] ? "wpisz liczbę urządzeń" : "");
-    }
+      (r.dodatkowe.length ? " · razem z kolejnymi " + r.razem.MP + " MP" : "");
+    /* kolejne urządzenia: liczba, MP, cena pozycji i za MP, Spider Crane z podpowiedzią, skąd się bierze */
+    (d.dodatkowe || []).forEach(function (x0, i) {
+      var j = -1; r.dodatkowe.forEach(function (q, qi) { if (q.idx === i) j = qi; });
+      var x2 = r.dodatkowe[j], pz = w.pozycje, el = document.querySelector('[data-dodinfo="' + i + '"]');
+      if (el) el.textContent = x2 ? x2.mat.platformy + " " + odm(x2.mat.platformy, "urządzenie", "urządzenia", "urządzeń") + " · " + x2.mat.MP + " MP" +
+        (pz ? " · cena pozycji " + (j + 2) + ": " + zl(pz[j + 1].cena) + " (" + zl(pz[j + 1].cenaMP) + " / MP), przy " + pct(d.zysk2) + ": " + zl(pz[j + 1].cena2) + " (" + zl(pz[j + 1].cenaMP2) + " / MP)" : "") : "wpisz liczbę urządzeń";
+      var inp = document.querySelector('[data-dodi="' + i + '"][data-dod="dzwig_urz"]'), hz = $("dodDzwHint" + i);
+      if (inp) inp.placeholder = x2 ? String(Math.round(x2.dzwig.auto)) : "";
+      if (hz) hz.textContent = x2 ? (x2.dzwig.auto || x2.dzwig.dni ? "puste = " + zl(x2.dzwig.auto) + ": " + x2.dzwig.opis : "bez Spider Crane: " + x2.dzwig.opis) : "";
+    });
+    var dz0 = r.wspolne.dzwigi[0];
+    $("dzwig_urz").placeholder = String(Math.round(dz0.auto));
+    $("dzwUrzHint").textContent = (dz0.auto ? "puste = " + zl(dz0.auto) + ": " : "") + dz0.opis + (dz0.recznie ? "; wpisano ręcznie " + zl(dz0.koszt) : "");
     ["S", "D", "NP"].forEach(function (k) {
       var t = T[k], wb = r.szablon.wariantB, txt = t.mp + " MP";
       if (r.szablon.model === "lista" && t.cena) txt += " · " + fmtPLN.format(t.cena) + " " + t.waluta + "/szt." +
@@ -1217,9 +1268,11 @@ html, body { overflow-x: clip; max-width: 100%; }
       $("dopB").placeholder = dSz ? String(dSz) : "brak";   // w walucie szablonu (np. 700 USD), bez przeliczenia na zł
       $("dopBHint").textContent = dSz ? "puste = " + wbS.wartosc + " " + wbS.waluta + "/szt. z szablonu" + (wbS.waluta !== "PLN" ? " (≈ " + fmtPLN.format(Math.round(plnSz)) + " zł)" : "") : "nie wpisano: wariant " + wbS.nazwa + " niedostępny";
     }
-    var dzwAuto = r.cennik.dzwig * r.wspolne.dzwDni;
+    /* Spider Crane razem: suma kosztów urządzeń (każde ze swoją stawką i czasem wynajmu); wpisana kwota zastępuje sumę */
+    var dzwAuto = r.wspolne.dzwigSuma, dzN = r.wspolne.dzwigi.map(function (x, i) { return { n: i ? r.dodatkowe[i - 1].szablon.nazwa : d.typ, x: x }; });
     $("dzwig_koszt").placeholder = String(Math.round(dzwAuto));
-    $("dzwigHint").textContent = "Cena za 1 dzień: " + zl(r.cennik.dzwig) + " × " + r.wspolne.dzwDni + " dni = " + zl(dzwAuto) + (d.dzwig_koszt != null ? " (wpisano ręcznie " + zl(d.dzwig_koszt) + ")" : "");
+    $("dzwigHint").textContent = (dzN.length > 1 ? "suma urządzeń: " + dzN.map(function (q) { return q.n + " " + zl(q.x.koszt); }).join(" + ") + " = " + zl(dzwAuto)
+      : (dz0.recznie ? "z pola przy urządzeniu: " + zl(dzwAuto) : "puste = " + zl(dz0.stawka) + " × " + dz0.dni + " dni = " + zl(dzwAuto) + " (szczegóły przy urządzeniu)")) + (d.dzwig_koszt != null ? "; wpisano ręcznie " + zl(d.dzwig_koszt) : "");
     var auto = X.opisAuto(d, d.oferta), zmiany = Object.keys(d.opisNad || {}), efekt = X.opisEfektywny(d, d.oferta);
     state.opisAuto = auto;
     if (document.activeElement !== $("opis")) { $("opis").value = efekt; state.opisShown = efekt; }
@@ -1403,20 +1456,25 @@ html, body { overflow-x: clip; max-width: 100%; }
     return h;
   }
 
-  /* Negocjacje: o ile można zejść z ceny ofertowej przy kolejnych poziomach zysku */
+  /* Negocjacje: o ile można zejść z ceny ofertowej przy kolejnych poziomach zysku (do progu minimalnego);
+     przy wycenie łączonej dodatkowe kolumny z ceną za MP każdego urządzenia */
   function paneNeg() {
     var N = wynik.negocjacje, lo = N.cenaMin, hi = N.cenaA, span = (hi - lo) || 1, pb = (N.cenaB - lo) / span * 100;
+    var nazwy = [wynik.dane.typ].concat(wynik.dodatkowe.map(function (x) { return x.szablon.nazwa; })), poz = N.pozycje;
     var h = '<div class="negkaf"><div><span>Cena ofertowa · zysk ' + pct(N.zA) + "</span><b>" + zl(N.cenaA) + "</b></div>" +
       '<div class="ok"><span>Można zejść do · zysk ' + pct(N.zB) + "</span><b>" + zl(N.cenaB) + "</b><small>rabat −" + zl(N.cenaA - N.cenaB) + " (−" + n2((N.cenaA - N.cenaB) / N.cenaA * 100) + "%)</small></div>" +
-      '<div class="pr"><span>Próg opłacalności · zysk 0%</span><b>' + zl(N.cenaMin) + "</b><small>maks. rabat −" + zl(N.cenaA - N.cenaMin) + " (−" + n2((N.cenaA - N.cenaMin) / N.cenaA * 100) + "%)</small></div></div>";
+      '<div class="pr"><span>Próg minimalny · zysk ' + pct(N.zMin) + "</span><b>" + zl(N.cenaMin) + "</b><small>maks. rabat −" + zl(N.cenaA - N.cenaMin) + " (−" + n2((N.cenaA - N.cenaMin) / N.cenaA * 100) + "%)</small></div></div>";
     h += '<div class="negbar" role="img" aria-label="Pole do negocjacji"><i class="w" style="width:' + pb.toFixed(1) + '%"></i><i class="g" style="width:' + (100 - pb).toFixed(1) + '%"></i></div>' +
-      '<div class="negosi"><span>' + zl(lo) + "<br><small>zysk 0%</small></span><span style=\"left:" + pb.toFixed(1) + '%">' + zl(N.cenaB) + "<br><small>zysk " + pct(N.zB) + "</small></span><span>" + zl(hi) + "<br><small>oferta</small></span></div>";
-    h += '<div class="scroll" style="margin-top:14px"><table class="t"><thead><tr><th>Zysk</th><th>Cena netto</th><th>Rabat od oferty</th><th>Rabat %</th><th>Zysk z narzutem</th><th>Cena za MP</th></tr></thead><tbody>' +
+      '<div class="negosi"><span>' + zl(lo) + "<br><small>zysk " + pct(N.zMin) + "</small></span><span style=\"left:" + pb.toFixed(1) + '%">' + zl(N.cenaB) + "<br><small>zysk " + pct(N.zB) + "</small></span><span>" + zl(hi) + "<br><small>oferta</small></span></div>";
+    h += '<div class="scroll" style="margin-top:14px"><table class="t"><thead><tr><th>Zysk</th><th>Cena netto</th><th>Rabat od oferty</th><th>Rabat %</th><th>Zysk z narzutem</th><th>Cena za MP' + (poz ? " (średnio)" : "") + "</th>" +
+      (poz ? nazwy.map(function (n, i) { return "<th>Cena za MP<br>poz. " + (i + 1) + " · " + esc(n) + "</th>"; }).join("") : "") + "</tr></thead><tbody>" +
       N.wiersze.map(function (x) {
         var kl = x.oferta ? "strong" : x.porownanie ? "negb" : x.prog ? "negp" : x.zysk < N.zB ? "negw" : "";
         return '<tr class="' + kl + '"><td>' + pct(x.zysk) + (x.oferta ? ' <span class="tag">oferta</span>' : x.porownanie ? ' <span class="tag">do porównania</span>' : x.prog ? ' <span class="tag">próg</span>' : "") +
-          "</td><td>" + zl(x.cena) + "</td><td>" + (x.rabat ? "−" + zl(x.rabat) : "–") + "</td><td>" + (x.rabat ? "−" + n2(x.rabatPct * 100) + "%" : "–") + "</td><td>" + zl(x.zyskN) + "</td><td>" + zl(x.cenaMP) + "</td></tr>";
-      }).join("") + '</tbody></table></div><p class="note" style="margin-top:8px">Wariant ' + esc(N.wariant) + ". Te same koszty i narzuty, zmienia się tylko zysk. Przy zysku 0% w cenie zostają koszty, KOB, GDW i podatek.</p>";
+          "</td><td>" + zl(x.cena) + "</td><td>" + (x.rabat ? "−" + zl(x.rabat) : "–") + "</td><td>" + (x.rabat ? "−" + n2(x.rabatPct * 100) + "%" : "–") + "</td><td>" + zl(x.zyskN) + "</td><td>" + zl(x.cenaMP) + "</td>" +
+          (poz ? x.pozycje.map(function (p) { return "<td>" + zl(p.cenaMP) + "</td>"; }).join("") : "") + "</tr>";
+      }).join("") + '</tbody></table></div><p class="note" style="margin-top:8px">Wariant ' + esc(N.wariant) + ". Te same koszty i narzuty, zmienia się tylko zysk: co " + n2(N.krok * 100) + " pkt proc. do progu minimalnego " + pct(N.zMin) + "." +
+      (poz ? " Cena za MP urządzenia = jego udział w kosztach (materiały, Spider Crane, transport, osobodni ekipy) × cena, podzielony przez jego MP." : "") + "</p>";
     return h;
   }
   function paneWyceny() {
@@ -1951,11 +2009,10 @@ html, body { overflow-x: clip; max-width: 100%; }
   /* --- zdarzenia: formularz --- */
   $("form").addEventListener("input", function (e) {
     if (e.target.id === "szablon") return;
+    /* pola, w których się pisze, nigdy nie są przerysowywane w trakcie pisania (kursor zostaje na miejscu) */
+    if (e.target.matches("[data-dod=agr3], [data-dod=agr6]")) dodAgregaty(+e.target.dataset.dodi);
     state.dane = fromForm();
-    if (e.target.matches("[data-dod-sz], [data-dod=agr3], [data-dod=agr6]")) {   // inny szablon lub podział agregatów: nowe pola
-      var fokus = e.target.dataset.dod; renderDod(state.dane);
-      if (fokus) { var el = document.querySelector('[data-dod="' + fokus + '"]'); if (el) { el.focus(); try { el.setSelectionRange(el.value.length, el.value.length); } catch (er) { /* pole liczbowe */ } } }
-    }
+    if (e.target.matches("[data-dod-sz]")) renderDod(state.dane);   // inny szablon kolejnego urządzenia: nowe pola (lista wyboru, bez kursora)
     recalc();
   });
   $("szablon").addEventListener("change", function () {
@@ -1978,14 +2035,16 @@ html, body { overflow-x: clip; max-width: 100%; }
       var i = +t.dataset.paraDel; state.dane = fromForm();
       state.dane.pary.splice(i, 1); (state.dane.oferta.wysPary || []).splice(i, 1);
       renderPary(state.dane); recalc();
-    } else if (t.id === "bDodAdd") {   // drugie urządzenie: domyślnie inny szablon niż główny
+    } else if (t.id === "bDodAdd") {   // kolejne urządzenie: domyślnie szablon, którego jeszcze nie ma w wycenie
       state.dane = fromForm();
-      var inny = szablony.filter(function (s) { return s.id !== state.dane.szablon; })[0] || szablony[0];
-      state.dane.dodatkowe = [{ szablon: inny.id, S: 0, D: 0, NP: 0, agregaty: 0, agr3: null, agr6: null, utr_dod: 0 }];
+      var uzyte = [state.dane.szablon].concat(state.dane.dodatkowe.map(function (x) { return x.szablon; }));
+      var inny = szablony.filter(function (s) { return uzyte.indexOf(s.id) < 0; })[0] || szablony.filter(function (s) { return s.id !== state.dane.szablon; })[0] || szablony[0];
+      if (state.dane.dodatkowe.length >= MAX_DOD) return;
+      state.dane.dodatkowe.push({ szablon: inny.id, S: 0, D: 0, NP: 0, agregaty: 0, agr3: null, agr6: null, utr_dod: 0, dzwig_urz: null });
       renderDod(state.dane); recalc();
-      var pierwsze = document.querySelector("#dodBox [data-dod]"); if (pierwsze) pierwsze.focus();
-    } else if (t.id === "bDodDel") {
-      state.dane = fromForm(); state.dane.dodatkowe = []; renderDod(state.dane); recalc();
+      var nowa = document.querySelector('[data-dodpoz="' + (state.dane.dodatkowe.length - 1) + '"] [data-dod]'); if (nowa) nowa.focus();
+    } else if (t.dataset.dodDel != null) {
+      state.dane = fromForm(); state.dane.dodatkowe.splice(+t.dataset.dodDel, 1); renderDod(state.dane); recalc();
     }
   });
   $("opisReset").addEventListener("click", function () { state.dane.opis = ""; state.dane.opisNad = {}; state.opisShown = ""; $("opis").value = ""; recalc(); });
@@ -2074,7 +2133,7 @@ html, body { overflow-x: clip; max-width: 100%; }
   function alertBrakB() {
     if (!wynik.mat.brakB) {   // brakuje dopłaty tylko przy drugim urządzeniu wyceny łączonej
       var x = wynik.dodatkowe.filter(function (q) { return q.mat.brakB; })[0];
-      alert("Nie wpisano ceny dla zwiększonego udźwigu drugiego urządzenia (" + x.szablon.nazwa + ", " + x.szablon.wariantB.nazwa + "). Wpisz dopłatę w karcie „Drugie urządzenie”."); return;
+      alert("Nie wpisano ceny dla zwiększonego udźwigu urządzenia " + x.szablon.nazwa + " (" + x.szablon.wariantB.nazwa + "). Wpisz dopłatę w karcie „Kolejne urządzenia”."); return;
     }
     alert("Nie wpisano ceny dla zwiększonego udźwigu (" + wynik.szablon.wariantB.nazwa + "). Wpisz dopłatę w polu „Dopłata " + wynik.szablon.wariantB.nazwa + " [zł/szt.]” w sekcji Narzuty i serwis albo w szablonie urządzenia.");
   }
@@ -2103,12 +2162,10 @@ html, body { overflow-x: clip; max-width: 100%; }
     if (t.dataset.stawka) {   // stawka tylko dla tej wyceny
       var nd = state.dane.nadpis = Object.assign({}, state.dane.nadpis || {});
       if (t.value === "") delete nd[t.dataset.stawka]; else nd[t.dataset.stawka] = Number(t.value) / (Number(t.dataset.mnoznik) || 1);   // KOB/GDW wpisywane w %
-      ["hotel", "dieta"].forEach(function (k) { $("nad_" + k).value = nd[k] != null ? nd[k] : ""; });
+      NAD.forEach(function (x) { $("nad_" + x[0]).value = nd[x[0]] != null ? +(nd[x[0]] * x[1]).toFixed(6) : ""; });
       recalcBezPanelu();
-      clearTimeout(state.stT); state.stT = setTimeout(function () {   // tabela obliczeń odświeża się po chwili, kursor zostaje w polu
-        var a = document.activeElement, id = a && a.id; render();
-        var el = id && $(id); if (el) { el.focus(); try { var n = el.value.length; el.setSelectionRange && el.type !== "number" && el.setSelectionRange(n, n); } catch (er) { /* pola liczbowe */ } }
-      }, 700);
+      /* tabela obliczeń odświeża się dopiero po wyjściu z pola: przerysowanie w trakcie pisania przenosiło kursor na początek (np. 145 → 541) */
+      state.stOdswiez = true;
       return;
     }
     if (t.dataset.szp && t.tagName !== "SELECT" && t.type !== "checkbox") {
@@ -2124,6 +2181,13 @@ html, body { overflow-x: clip; max-width: 100%; }
     lsSet(LS.draft, { dane: state.dane });
     state.bezPanelu = true; render(); state.bezPanelu = false;   // dolna tabela zostaje (kursor w polu nie ucieka)
   }
+  $("pane").addEventListener("focusout", function (e) {
+    if (!state.stOdswiez || !e.target.dataset || !e.target.dataset.stawka) return;
+    setTimeout(function () {   // fokus przeszedł do innego pola stawki: odśwież po wyjściu z całej listy
+      var a = document.activeElement; if (a && a.dataset && a.dataset.stawka) return;
+      state.stOdswiez = false; render();
+    }, 0);
+  });
   naObu("change", function (e) {
     var t = e.target;
     if (t.id === "analizaSel") { state.dane.analiza = +t.value; recalc(); return; }

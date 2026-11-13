@@ -11,7 +11,7 @@ const s1 = szablon("nk6501");
 Object.assign(s1.cennik, { hotel: 100, dieta: 0 });
 const r1 = E.oblicz(Object.assign(E.domyslneDane(), {
   szablon: "nk6501", S: 6, utr_dod: 2, km: 310, wyjazdy: 2, tir: 1, tir_cena: 3500, rozl_cena: 3000,
-  osoby: 4, zysk: 0.11, zysk2: 0.10, poz: { mufas: 19900 }, eur: 4.325, konserwA: 50, nadpis: { paliwo: 7, kob: 0.005, gdw: 0.025 }
+  osoby: 4, zysk: 0.11, zysk2: 0.10, poz: { mufas: 19900 }, eur: 4.325, konserwA: 50, nadpis: { paliwo: 7, kob: 0.005 / E.KOB_WSP, gdw: 0.025 / E.GDW_WSP }   /* arkusz liczył nominalnie 0,5% / 2,5%: w kalkulatorze wpisujemy stawki efektywne */
 }), s1);
 console.log("NK6501");
 blisko(r1.mat.suma2000, 82900, "urządzenia (K39)");
@@ -30,7 +30,7 @@ blisko(r1.konserwacja[0].rok, 50 * 6 * 12, "konserwacja roczna 50 zł/MP");
 const s2 = szablon("nkpxlh");
 const r2 = E.oblicz(Object.assign(E.domyslneDane(), {
   szablon: "nkpxlh", S: 18, agregaty: 3, km: 310, wyjazdy: 3, tir: 1, tir_cena: 3500, rozl_cena: 2800,
-  osoby: 4, zysk: 0.28, zysk2: 0.255, eur: 4.33, usd: 3.86, konserwA: 35, nadpis: { paliwo: 7, hotel: 120, kob: 0.005, gdw: 0.025 }
+  osoby: 4, zysk: 0.28, zysk2: 0.255, eur: 4.33, usd: 3.86, konserwA: 35, nadpis: { paliwo: 7, hotel: 120, kob: 0.005 / E.KOB_WSP, gdw: 0.025 / E.GDW_WSP }   /* arkusz liczył nominalnie 0,5% / 2,5%: w kalkulatorze wpisujemy stawki efektywne */
 }), s2);
 console.log("NKPXLH");
 blisko(r2.mat.frachtSzt, 2022.8098982222223, "fracht na urządzenie (F3)");
@@ -50,7 +50,7 @@ blisko(r2.mat.suma2500 - r2.mat.suma2000, 18 * 700 * 3.86, "2500 kg: 3000 USD/sz
 // NK41: arkusz "-NK3 2T A .10.26" przeliczony w LibreOffice dla 23 urządzeń, 6 agregatów, 300 km (montaż 350 km), 1 wyjazd montażowy.
 const r3 = E.oblicz(Object.assign(E.domyslneDane(), szablon("nk41").domyslne, {
   szablon: "nk41", S: 23, agregaty: 6, km: 300, wyjazdy: 1, eur: 4.325,
-  nadpis: { kob: 0.00515, gdw: 0.02585 }   // arkusz NK41 miał KOB/GDW 0,515/2,585%; domyślnie w aplikacji 0,515/2,685%
+  nadpis: { kob: 0.005, gdw: 0.02585 / E.GDW_WSP }   // arkusz NK41 liczył KOB/GDW 0,515/2,585%; w kalkulatorze wpisujemy stawki efektywne (0,5% → 0,515%)
 }), szablon("nk41"));
 console.log("NK41");
 assert.strictEqual(r3.mat.MP, 23, "NK41: liczba MP = liczba urządzeń × 1");
@@ -128,3 +128,35 @@ console.log("  ok wysokości pojazdów na dwóch poziomach");
   blisko(rb2.mat.dopB, 500 * 4, "NKPXLH: dopłata wpisana 500 USD × kurs 4");
 }
 console.log("szablony: OK");
+
+// 13.11: KOB/GDW efektywne, do 4 urządzeń, Spider Crane per urządzenie, drabinka 7% / 0,5 pkt (NKPXLH 12% / 2 pkt).
+{
+  console.log("Wycena łączona do 4 urządzeń, Spider Crane, negocjacje");
+  const szt = E.szablonyWbudowane(), s38 = szablon("nk38");
+  assert.strictEqual(s38.cennik.kob, 0.005); assert.strictEqual(s38.cennik.gdw, 0.025);
+  const r0 = E.oblicz(Object.assign(E.domyslneDane(), s38.domyslne, { S: 6, D: 10, agregaty: 3, km: 300 }), s38);
+  blisko(r0.cennik.kobN, 0.00515, "KOB 0,5% liczony jako 0,515%"); blisko(r0.cennik.gdwN * 1000, 26.85, "GDW 2,5% liczony jako 2,685% (‰)");
+  const dod = [{ szablon: "nk41", S: 23, agregaty: 6 }, { szablon: "nkpxlh", S: 10, agregaty: 2 }, { szablon: "nk6501", S: 6 }, { szablon: "nk41", S: 5 }];
+  const r4 = E.oblicz(Object.assign(E.domyslneDane(), s38.domyslne, { S: 6, D: 10, agregaty: 3, km: 300, dodatkowe: dod }), s38, szt), w4 = r4.warianty[0];
+  assert.strictEqual(r4.dodatkowe.length, 3, "najwyżej 3 kolejne urządzenia (razem 4)");
+  blisko(w4.pozycje.reduce((a, p) => a + p.cena, 0), w4.cena, "4 pozycje: suma cen = cena całości");
+  blisko(w4.koszty.dzwig, 3 * 2400 + 2 * 2400 + 1 * 1200 + 0, "Spider Crane: NK38 3 dni × 2400 + NK41 2 × 2400 + NKPXLH 1 × 1200 + NK6501 0");
+  const rD = E.oblicz(Object.assign(E.domyslneDane(), s38.domyslne, { S: 6, D: 10, agregaty: 3, km: 300, dzwig_urz: 1000, dodatkowe: dod.slice(0, 1) }), s38, szt);
+  blisko(rD.warianty[0].koszty.dzwig, 1000 + 4800, "Spider Crane wpisany przy urządzeniu 1 + automatyczny przy urządzeniu 2");
+  const rD2 = E.oblicz(Object.assign(E.domyslneDane(), s38.domyslne, { S: 6, D: 10, agregaty: 3, km: 300, dzwig_koszt: 500, dodatkowe: dod.slice(0, 1) }), s38, szt);
+  blisko(rD2.warianty[0].koszty.dzwig, 500, "Spider Crane razem wpisany ręcznie zastępuje sumę");
+  const N4 = r4.negocjacje, zy = N4.wiersze.map((x) => Math.round(x.zysk * 1000) / 10);
+  assert.deepStrictEqual(zy, [14, 13.5, 13, 12.5, 12, 11.5, 11, 10.5, 10, 9.5, 9, 8.5, 8, 7.5, 7], "drabinka co 0,5 pkt do 7%: " + zy);
+  assert(N4.wiersze[N4.wiersze.length - 1].prog && N4.zMin === 0.07, "próg minimalny 7%");
+  N4.wiersze.forEach((x) => blisko(x.pozycje.reduce((a, p) => a + p.cena, 0), x.cena, "zysk " + x.zysk + ": ceny pozycji = cena"));
+  const sp = szablon("nkpxlh"), rp = E.oblicz(Object.assign(E.domyslneDane(), sp.domyslne, { szablon: "nkpxlh", S: 18, agregaty: 3 }), sp);
+  assert.deepStrictEqual(rp.negocjacje.wiersze.map((x) => Math.round(x.zysk * 1000) / 10), [28, 26, 25.5, 24, 22, 20, 18, 16, 14, 12], "NKPXLH: co 2 pkt do 12%");
+  const X2 = require("./nk38-export.js"), R4 = X2.raport(r4, s38.glebokosci.map((g) => g.cm), X2.domyslnaOferta());
+  assert.strictEqual(R4.neg.head.length, 6 + 4, "pole do negocjacji: kolumna ceny za MP dla każdego z 4 urządzeń");
+  assert.strictEqual(R4.karta.urzadzenia.length, 4, "dane wejściowe: blok każdego urządzenia");
+  const F41 = X2.oferta(E.oblicz(Object.assign(E.domyslneDane(), szablon("nk41").domyslne, { szablon: "nk41", S: 4, przeswit: 280 }), szablon("nk41")), X2.domyslnaOferta(), X2.SZABLON);
+  assert(!/[▲▼]/.test(F41.tech.join(" ")) && /w zależności od dostępnej długości miejsca/.test(F41.tech.join(" ")), "NK41: w ofercie bez wymiarów pojazdów: " + F41.tech.join(" | "));
+  const Rp = X2.raport(rp, [], X2.domyslnaOferta());
+  assert(Rp.mat.some((x) => /THC Gdańsk/.test(x[0])) && Rp.mat.some((x) => /Ubezpieczenie/.test(x[0])), "NKPXLH: pełna kalkulacja frachtu w raporcie");
+  console.log("  ok 4 urządzenia, Spider Crane per urządzenie, drabinki, NK41 bez wymiarów, fracht NKPXLH");
+}
