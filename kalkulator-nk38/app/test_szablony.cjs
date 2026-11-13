@@ -53,6 +53,7 @@ const r3 = E.oblicz(Object.assign(E.domyslneDane(), szablon("nk41").domyslne, {
   nadpis: { kob: 0.00515, gdw: 0.02585 }   // arkusz NK41 miał KOB/GDW 0,515/2,585%; domyślnie w aplikacji 0,515/2,685%
 }), szablon("nk41"));
 console.log("NK41");
+assert.strictEqual(r3.mat.MP, 23, "NK41: liczba MP = liczba urządzeń × 1");
 if (!r3.mat.brakB || r3.warianty[1].cena !== r3.warianty[0].cena) throw new Error("NK41 bez dopłaty: wariant 2500 kg powinien być niedostępny");
 const r3b = E.oblicz(Object.assign(E.domyslneDane(), szablon("nk41").domyslne, { szablon: "nk41", S: 10, dopB: 1000 }), szablon("nk41"));
 blisko(r3b.mat.suma2500 - r3b.mat.suma2000, 10000, "NK41 z dopłatą 1000 zł/szt.: wariant 2500 kg");

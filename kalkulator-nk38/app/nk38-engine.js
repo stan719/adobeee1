@@ -192,7 +192,7 @@
     s.id = "nk41"; s.nazwa = "NK41";
     s.opisOferty = "Platformy służące do zależnego parkowania pojazdów w pochyleniu {typ}";
     s.typy = {
-      S: { nazwa: "Platformy NK41", mp: 2, osd: 2.2, cena: 12000, waluta: "PLN", dzwig: 1 / 15,
+      S: { nazwa: "Platformy NK41", mp: 1, osd: 2.2, cena: 12000, waluta: "PLN", dzwig: 1 / 15,
         oferta: "{n} szt. – NK41 szer. użytkowa miejsca postojowego 250cm, szer. zewnętrzna urządzenia 280cm;" },
       D: { nazwa: "", mp: 0, osd: 0, cena: 0, waluta: "PLN", dzwig: 0, oferta: "" },
       NP: { nazwa: "", mp: 0, osd: 0, cena: 0, waluta: "PLN", dzwig: 0, oferta: "" }
