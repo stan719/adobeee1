@@ -84,6 +84,12 @@ fieldset.card legend + * { clear: both; }
 .full { grid-column: 1 / -1; }
 label.f { display: flex; flex-direction: column; gap: 5px; font-size: 12.5px; font-weight: 500; color: var(--ink-2); min-width: 0; }
 label.f .hint { font-weight: 400; font-size: 11.5px; color: var(--muted); }
+/* siatki samych pól: w każdym wierszu pola stoją równo, nawet gdy etykieta obok zawija się na dwie linie
+   (etykieta, pole i podpowiedź to trzy wspólne wiersze siatki) */
+.g2.wyr, .g3.wyr { grid-auto-rows: auto; row-gap: 0; }
+.wyr > label.f { display: grid; grid-row: span 3; grid-template-rows: subgrid; row-gap: 5px; align-content: start; padding-bottom: 12px; }
+.wyr > label.f > :first-child:not(input):not(select) { align-self: end; }
+.wyr > label.f > input, .wyr > label.f > select { align-self: start; }
 input, select, textarea { font: inherit; font-size: 14px; color: var(--ink); background: var(--surface); border: 1px solid var(--line-2); border-radius: var(--r-s); padding: 7px 10px; width: 100%; min-width: 0; transition: border-color .15s, box-shadow .15s; }
 input:hover, select:hover { border-color: var(--muted); }
 input:focus, select:focus, textarea:focus { outline: none; border-color: var(--accent); box-shadow: 0 0 0 3px var(--accent-soft); }
@@ -506,7 +512,7 @@ html, body { overflow-x: clip; max-width: 100%; }
 
       <fieldset class="card">
         <legend>Urządzenia <small id="mpNote"></small></legend>
-        <div class="g3">
+        <div class="g3 wyr">
           <label class="f" id="boxS"><span id="lblS">Platformy S</span><input id="S" type="number" min="0" step="1"><span class="hint" id="hintS"></span></label>
           <label class="f" id="boxD"><span id="lblD">Platformy D</span><input id="D" type="number" min="0" step="1"><span class="hint" id="hintD"></span></label>
           <label class="f" id="boxNP"><span id="lblNP">Systemy N.P.</span><input id="NP" type="number" min="0" step="1"><span class="hint" id="hintNP"></span></label>
@@ -535,7 +541,7 @@ html, body { overflow-x: clip; max-width: 100%; }
 
       <fieldset class="card">
         <legend>Transport i ekipa</legend>
-        <div class="g2">
+        <div class="g2 wyr">
           <label class="f"><span id="lblTir">Liczba TIR</span><input id="tir" type="number" min="0" step="1" class="auto"><span class="hint" id="hintTir"></span></label>
           <label class="f"><span id="lblTirCena">Cena za TIR [zł]</span><input id="tir_cena" type="number" min="0" step="100"><span class="hint" id="hintTirCena">KRK 1600 · WAW/WRO 3300 · POZ/ZG 4500</span></label>
           <label class="f">Rozładunek sprzętu [zł]<input id="rozl_cena" type="number" min="0" step="100"><span class="hint" id="hintRozl">jednorazowo: przyjazd i wyjazd wózka</span></label>
@@ -551,7 +557,7 @@ html, body { overflow-x: clip; max-width: 100%; }
 
       <fieldset class="card">
         <legend>Narzuty i serwis</legend>
-        <div class="g2">
+        <div class="g2 wyr">
           <label class="f">Zysk [%]<input id="zysk" type="number" min="0" max="60" step="0.5"><span class="hint">cena główna, domyślnie 14%</span></label>
           <label class="f">Zysk do porównania [%]<input id="zysk2" type="number" min="0" max="60" step="0.5"><span class="hint">domyślnie 10%</span></label>
           <label class="f pQ"><span id="lblQ">Dopłata Q=2500 [%]</span><input id="q2500" type="number" min="0" max="50" step="0.5" class="auto"><span class="hint" id="q2500Hint">puste = z szablonu</span></label>
@@ -627,7 +633,7 @@ html, body { overflow-x: clip; max-width: 100%; }
 (function () {
   "use strict";
   /* Wersja programu: podnoś przy każdym wydaniu (pokazywana na pulpicie, zapisywana w kopii zapasowej). */
-  var WERSJA = { nr: "1.70", data: "13.11.2026" };
+  var WERSJA = { nr: "1.71", data: "13.11.2026" };
   var E = window.NK38, X = window.NK38X;
   var LS = { robocze: "nk38.robocze.v1", drafty: "nk38.szkice.v1", draft: "nk38.szkic.v1", tab: "nk38.zakladka", sel: "nk38.wariant", logo: "nk38.logo.v1", podpis: "nk38.podpis.v1",
     szablony: "nk38.szablony.v1", wyceny: "nk38.wyceny.v1", tekstyOferty: "nk38.szablon.v1", numery: "nk38.numery.v1", cennikStary: "nk38.cennik.v1", usuniete: "nk38.usuniete.v1", migracja2: "nk38.migracja2", migracja3: "nk38.migracja3", migracja4: "nk38.migracja4", migracja5: "nk38.migracja5", migracja6: "nk38.migracja6", migracja7: "nk38.migracja7", migracja8: "nk38.migracja8", migracja9: "nk38.migracja9", historia: "nk38.historia.v1", uzytkownik: "nk38.uzytkownik.v1" };
@@ -1021,7 +1027,7 @@ html, body { overflow-x: clip; max-width: 100%; }
           (ph ? ' placeholder="' + esc(ph) + '"' : "") + (DOD_OPT[k] ? ' class="auto"' : "") + ">" + (hint || hid ? '<span class="hint"' + (hid ? ' id="' + hid + '"' : "") + '>' + esc(hint || "") + "</span>" : "") + "</label>";
       };
       var g = '<div class="dodpoz" data-dodpoz="' + i + '"><div class="paryhd"><span class="ofsep">Pozycja ' + (i + 2) + ' · ' + esc(sz.nazwa) + '</span><button type="button" class="linkbtn" data-dod-del="' + i + '">Usuń pozycję ' + (i + 2) + '</button></div>' +
-        '<div class="g3"><label class="f">Szablon urządzenia<select data-dod-sz="' + i + '">' + szablony.map(function (s) {
+        '<div class="g3 wyr"><label class="f">Szablon urządzenia<select data-dod-sz="' + i + '">' + szablony.map(function (s) {
           return '<option value="' + esc(s.id) + '"' + (s.id === sz.id ? " selected" : "") + ">" + esc(s.nazwa) + "</option>";
         }).join("") + "</select></label>";
       ["S", "D", "NP"].forEach(function (k) {
@@ -1037,7 +1043,7 @@ html, body { overflow-x: clip; max-width: 100%; }
       if (sz.wariantB.nazwa && sz.wariantB.tryb === "szt") g += pole("dopB", "Dopłata " + sz.wariantB.nazwa + " [" + (sz.wariantB.waluta === "PLN" || !sz.wariantB.waluta ? "zł" : sz.wariantB.waluta) + "/szt.]", Number(sz.wariantB.wartosc) ? "puste = " + sz.wariantB.wartosc + " " + sz.wariantB.waluta + "/szt." : "puste: wariant niedostępny", Number(sz.wariantB.wartosc) ? String(sz.wariantB.wartosc) : "brak");
       g += pole("utr_dod", lista ? "Tonaż [osd]" : "Utrudnienia ręcznie", "dodatkowe osobodni");
       g += pole("dzwig_urz", "Spider Crane [zł]", "", "", "dodDzwHint" + i);
-      g += "</div><div class=\"g3\" style=\"margin-top:10px\">";
+      g += "</div><div class=\"g3 wyr\" style=\"margin-top:10px\">";
       if (sz.wysokosci.tryb === "zaglebienie") g += pole("h1", "Zagłębienie H1 [cm]") + pole("h2", "Zagłębienie H2 [cm]") + pole("dl", "Długość zagłębienia [cm]", "puste = 530 cm", "530");
       g += pole("przeswit", "Prześwit [cm]");
       if (sz.wysokosci.tryb !== "zaglebienie") g += pole("dlMiejsca", "Długość miejsca / pojazdów [cm]", "do danych technicznych oferty", "500");
