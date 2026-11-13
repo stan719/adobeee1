@@ -79,7 +79,10 @@ blisko(wL.pozycje[0].cena + wL.pozycje[1].cena, wL.cena, "ceny pozycji = cena ca
 blisko(wL.pozycje[0].cena2 + wL.pozycje[1].cena2, wL.cena2, "ceny pozycji przy zysku 2 = cena całości");
 blisko(rL.razem.MP, rGl.mat.MP + rDr.mat.MP, "miejsca postojowe razem");
 assert(wL.cena < rGl.warianty[0].cena + rDr.warianty[0].cena - 10000, "łącznie taniej niż dwie osobne wyceny");
-assert(rL.razem.brakB && rL.ostrzezenia.some((x) => /NK41/.test(x.tekst)), "NK41 bez dopłaty: wariant 2500 kg niedostępny w całej wycenie");
+assert(!rL.razem.brakB && rL.razem.zB.join() === "NK38" && rL.ostrzezenia.some((x) => /NK41/.test(x.tekst)), "NK41 bez dopłaty: wariant 2500 kg dalej dostępny (NK38 z dopłatą), NK41 bez zmiany");
+blisko(rL.warianty[1].koszty.urzadzenia - rL.warianty[0].koszty.urzadzenia, rGl.mat.suma2500 - rGl.mat.suma2000, "2500 kg: dopłata tylko NK38");
+assert(rL.razem.slupki && rL.razem.MPsl === rGl.mat.MP, "słupki tylko NK38 (NK41 bez słupków)");
+blisko(rL.warianty[2].koszty.slupki, rGl.mat.MP * 1700, "słupki: tylko MP NK38");
 const rBez = E.oblicz(Object.assign(E.domyslneDane(), szablon("nk38").domyslne, dGl, { dodatkowe: [] }), szablon("nk38"), E.szablonyWbudowane());
 blisko(rBez.warianty[0].cena, rGl.warianty[0].cena, "bez drugiego urządzenia cena bez zmian");
 assert(rBez.warianty[0].pozycje === null, "bez drugiego urządzenia brak podziału na pozycje");
@@ -159,4 +162,17 @@ console.log("szablony: OK");
   const Rp = X2.raport(rp, [], X2.domyslnaOferta());
   assert(Rp.mat.some((x) => /THC Gdańsk/.test(x[0])) && Rp.mat.some((x) => /Ubezpieczenie/.test(x[0])), "NKPXLH: pełna kalkulacja frachtu w raporcie");
   console.log("  ok 4 urządzenia, Spider Crane per urządzenie, drabinki, NK41 bez wymiarów, fracht NKPXLH");
+}
+
+// Transport przy wycenie łączonej: każde urządzenie z własnymi transportami (wcześniej NK41/NKPXLH jako kolejne liczyły 0).
+{
+  const szt = E.szablonyWbudowane(), s38 = szablon("nk38");
+  const r = E.oblicz(Object.assign(E.domyslneDane(), s38.domyslne, { S: 6, D: 10, agregaty: 3, km: 300, tir_cena: 4500,
+    dodatkowe: [{ szablon: "nk41", S: 23 }, { szablon: "nkpxlh", S: 10, agregaty: 2 }] }), s38, szt), w = r.warianty[0];
+  blisko(w.koszty.transport, 3 * 4500 + 1 * 4500 + 1 * 3500, "transport: NK38 3 TIR + NK41 1 TIR (cena jak urz. 1) + NKPXLH 1 kontener (3500 z szablonu)");
+  blisko(r.wspolne.rozl, 3 * 0.5 + 0.5 + 1, "dni rozładunku: suma urządzeń");
+  const r2 = E.oblicz(Object.assign(E.domyslneDane(), s38.domyslne, { S: 6, D: 10, agregaty: 3, km: 300, tir: 2, tir_cena: 4000,
+    dodatkowe: [{ szablon: "nk41", S: 23, tir: 2, tir_cena: 3000 }] }), s38, szt);
+  blisko(r2.warianty[0].koszty.transport, 2 * 4000 + 2 * 3000, "transport wpisany ręcznie przy każdym urządzeniu");
+  console.log("  ok transport każdego urządzenia");
 }

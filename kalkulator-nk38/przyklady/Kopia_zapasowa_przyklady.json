@@ -1,7 +1,7 @@
 {
  "aplikacja": "kalkulator-nk38",
  "wersja": 1,
- "utworzono": "2026-11-13T12:12:31.845Z",
+ "utworzono": "2026-11-13T13:08:42.850Z",
  "szablony": [],
  "wyceny": [
   {
@@ -648,7 +648,7 @@
    "nazwa": "PRZYKŁAD – ul. Brzozowa 9, Poznań",
    "kiedy": "21.10.2026, 12:00:00",
    "ts": 1792577160000,
-   "cena": 811317.742437058,
+   "cena": 818104.0634636281,
    "dane": {
     "km": 460,
     "S": 4,
